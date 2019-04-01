@@ -8,7 +8,7 @@ import logo from './logo.svg';
 const Error = ({ classes }) => (
   <Grid container className={classes.container}>
     <div className={classes.logotype}>
-      <img src={logo} alt="logo" />
+      <img className={classes.logotypeIcon} src={logo} alt="logo" />
       <Typography variant="h3" color="white" className={classes.logotypeText}>Material Admin</Typography>
     </div>
     <Paper classes={{ root: classes.paperRoot }}>
@@ -36,12 +36,16 @@ const styles = theme => ({
   logotype: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: theme.spacing.unit * 6,
+    marginBottom: theme.spacing.unit * 12,
   },
   logotypeText: {
     fontWeight: 500,
     color: 'white',
     marginLeft: theme.spacing.unit * 2,
+  },
+  logotypeIcon: {
+    width: 70,
+    marginRight: theme.spacing.unit * 2,
   },
   paperRoot: {
     boxShadow: theme.customShadows.widgetDark,
@@ -59,11 +63,12 @@ const styles = theme => ({
     textAlign: 'center',
   },
   errorCode: {
-    fontSize: 144,
+    fontSize: 148,
     fontWeight: 600,
   },
   safetyText: {
     fontWeight: 300,
+    color: theme.palette.text.hint,
   },
   backButton: {
     boxShadow: theme.customShadows.widget,
