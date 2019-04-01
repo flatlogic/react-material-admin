@@ -30,7 +30,7 @@ const Notification = ({ classes, theme, ...props }) => {
   return (
     <div className={classes.notificationContainer}>
       {iconWithStyles}
-      <Typography>{props.message}</Typography>
+      <Typography variant="inherit">{props.message}</Typography>
     </div>
   );
 };

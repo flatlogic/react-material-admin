@@ -2,10 +2,11 @@ import { compose, withState, withHandlers } from 'recompose';
 import HeaderView from './HeaderView';
 
 export default compose(
-  withState('mailMenu', 'setMailMenu', false),
+  withState('mailMenu', 'setMailMenu', null),
   withState('isMailsUnread', 'setIsMailsUnread', true),
-  withState('notificationsMenu', 'setNotificationsMenu', false),
+  withState('notificationsMenu', 'setNotificationsMenu', null),
   withState('isNotificationsUnread', 'setIsNotificationsUnread', true),
+  withState('profileMenu', 'setProfileMenu', null),
   withState('isSearchOpen', 'setSearchOpen', false),
   withHandlers({
     openMailMenu: props => event => {
@@ -24,6 +25,12 @@ export default compose(
     },
     toggleSearch: props => () => {
       props.setSearchOpen(!props.isSearchOpen);
-    }
+    },
+    openProfileMenu: props => event => {
+      props.setProfileMenu(event.currentTarget);
+    },
+    closeProfileMenu: props => () => {
+      props.setProfileMenu(null);
+    },
   })
 )(HeaderView);

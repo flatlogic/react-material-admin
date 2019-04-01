@@ -116,6 +116,8 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         aria-haspopup="true"
         color="inherit"
         className={classes.headerMenuButton}
+        aria-controls="profile-menu"
+        onClick={props.openProfileMenu}
       >
         <AccountIcon classes={{ root: classes.headerIcon }} />
       </IconButton>
@@ -159,6 +161,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
           <MenuItem
             key={notification.id}
             onClick={props.closeNotificationsMenu}
+            className={classes.headerMenuItem}
           >
             <Notification {...notification} />
           </MenuItem>
@@ -170,18 +173,19 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         anchorEl={props.profileMenu}
         onClose={props.closeProfileMenu}
         className={classes.headerMenu}
+        classes={{ paper: classes.profileMenu }}
         disableAutoFocusItem
       >
-        {notifications.map(notification => {
-          console.log(notification);
-          return (
-          <MenuItem
-            key={notification.id}
-            onClick={props.closeNotificationsMenu}
-          >
-            <div>{notification.icon}</div>
-          </MenuItem>
-        )})}
+        <div className={classes.profileMenuUser}>
+          <Typography variant="h6">John Smith</Typography>
+          <Typography className={classes.profileMenuLink} component="a" color="primary" href="https://flatlogic.com">Flalogic.com</Typography>
+        </div>
+        <MenuItem className={classNames(classes.profileMenuItem, classes.headerMenuItem)}><AccountIcon className={classes.profileMenuIcon}/> Profile</MenuItem>
+        <MenuItem className={classNames(classes.profileMenuItem, classes.headerMenuItem)}><AccountIcon className={classes.profileMenuIcon}/> Tasks</MenuItem>
+        <MenuItem className={classNames(classes.profileMenuItem, classes.headerMenuItem)}><AccountIcon className={classes.profileMenuIcon}/> Messages</MenuItem>
+        <div className={classes.profileMenuUser}>
+          <Typography className={classes.profileMenuLink} component="a" color="primary">Sign Out</Typography>
+        </div>
       </Menu>
     </Toolbar>
   </AppBar>
@@ -273,6 +277,12 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column"
   },
+  headerMenuItem: {
+    '&:hover, &:focus': {
+      backgroundColor: theme.palette.primary.main,
+      color: 'white',
+    }
+  },
   headerMenuButton: {
     marginLeft: theme.spacing.unit * 2,
     padding: theme.spacing.unit / 2
@@ -287,6 +297,25 @@ const styles = theme => ({
   headerIconCollapse: {
     color: "white",
   },
+  profileMenu: {
+    minWidth: 265,
+  },
+  profileMenuUser: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: theme.spacing.unit * 2,
+  },
+  profileMenuItem: {
+    color: theme.palette.text.hint,
+  },
+  profileMenuIcon: {
+    marginRight: theme.spacing.unit * 2,
+    color: theme.palette.text.hint,
+  },
+  profileMenuLink: {
+    fontSize: 16,
+    textDecoration: 'none',
+  }
 });
 
 export default withStyles(styles)(Header);
