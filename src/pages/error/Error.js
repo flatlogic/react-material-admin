@@ -37,6 +37,9 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     marginBottom: theme.spacing.unit * 12,
+    [theme.breakpoints.down("sm")]: {
+      display: 'none',
+    }
   },
   logotypeText: {
     fontWeight: 500,
