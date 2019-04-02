@@ -3,6 +3,7 @@ import {
   AppBar,
   Toolbar,
   IconButton,
+  Button,
   InputBase,
   Menu,
   MenuItem,
@@ -184,7 +185,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         <MenuItem className={classNames(classes.profileMenuItem, classes.headerMenuItem)}><AccountIcon className={classes.profileMenuIcon}/> Tasks</MenuItem>
         <MenuItem className={classNames(classes.profileMenuItem, classes.headerMenuItem)}><AccountIcon className={classes.profileMenuIcon}/> Messages</MenuItem>
         <div className={classes.profileMenuUser}>
-          <Typography className={classes.profileMenuLink} component="a" color="primary">Sign Out</Typography>
+          <Typography className={classes.profileMenuLink} color="primary" onClick={props.signOut}>Sign Out</Typography>
         </div>
       </Menu>
     </Toolbar>
@@ -315,6 +316,9 @@ const styles = theme => ({
   profileMenuLink: {
     fontSize: 16,
     textDecoration: 'none',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   }
 });
 

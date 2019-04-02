@@ -1,7 +1,14 @@
 import { compose, withState, withHandlers } from 'recompose';
+import { connect } from 'react-redux';
+
 import HeaderView from './HeaderView';
+import { signOut } from '../../pages/login/LoginState';
 
 export default compose(
+  connect(
+    null,
+    { signOut },
+  ),
   withState('mailMenu', 'setMailMenu', null),
   withState('isMailsUnread', 'setIsMailsUnread', true),
   withState('notificationsMenu', 'setNotificationsMenu', null),

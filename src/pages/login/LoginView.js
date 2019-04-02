@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Paper, Typography, withStyles, Button, Tabs, Tab, TextField } from '@material-ui/core';
+import { Grid, CircularProgress, Typography, withStyles, Button, Tabs, Tab, TextField, Fade } from '@material-ui/core';
 import classnames from 'classnames';
 
 import logo from './logo.svg';
@@ -31,6 +30,7 @@ const Login = ({ classes, ...props }) => (
           <Typography className={classes.formDividerWord}>or</Typography>
           <div className={classes.formDivider} />
         </div>
+        <Fade in={props.error}><Typography color="secondary" className={classes.errorMessage}>Something is wrong with your login or password :(</Typography></Fade>
         <TextField
           id="email"
           InputProps={{ classes: { underline: classes.textFieldUnderline, input: classes.textField }}}
@@ -52,8 +52,11 @@ const Login = ({ classes, ...props }) => (
           fullWidth
         />
         <div className={classes.formButtons}>
-          <Button disabled={props.loginValue.length === 0 || props.passwordValue.length === 0} variant="contained" color="primary" size="large">Login</Button>
-          <Typography color="primary">Forget Password</Typography>
+            {props.isLoading
+              ? <CircularProgress size={26} className={classes.loginLoader}/>
+              : <Button disabled={props.loginValue.length === 0 || props.passwordValue.length === 0} onClick={props.handleLoginButtonClick} variant="contained" color="primary" size="large">Login</Button>
+            }
+          <Button color="primary" size="large" className={classes.forgetButton}>Forget Password</Button>
         </div>
       </div>
       <Typography color="primary" className={classes.copyright}>
@@ -150,6 +153,9 @@ const styles = theme => ({
     height: 1,
     backgroundColor: theme.palette.text.hint + '40',
   },
+  errorMessage: {
+    textAlign: 'center',
+  },
   textFieldUnderline: {
     '&:before': {
       borderBottomColor: theme.palette.primary.light,
@@ -170,6 +176,13 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  forgetButton: {
+    textTransform: 'none',
+    fontWeight: 400,
+  },
+  loginLoader: {
+    marginLeft: theme.spacing.unit * 4,
   },
   copyright: {
     position: 'absolute', 
