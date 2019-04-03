@@ -1,83 +1,103 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, withStyles } from '@material-ui/core';
 
+import PageTitle from '../../components/PageTitle';
 import Widget from '../../components/Widget';
+import { Typography } from '../../components/Wrappers';
 
-const TypographyPage = (props) => (
-  <Grid container spacing={32}>
-    <Grid item xs={12} md={6}>
-      <Widget title="Headings" upperTitle>
-        <Typography variant="h1" gutterBottom>
-          h1. Heading
-        </Typography>
-        <Typography variant="h2" gutterBottom>
-          h2. Heading
-        </Typography>
-        <Typography variant="h3" gutterBottom>
-          h3. Heading
-        </Typography>
-        <Typography variant="h4" gutterBottom>
-          h4. Heading
-        </Typography>
-        <Typography variant="h5" gutterBottom>
-          h5. Heading
-        </Typography>
-        <Typography variant="h6" gutterBottom>
-          h6. Heading
-        </Typography>
-      </Widget>
+const TypographyPage = ({ classes }) => (
+  <React.Fragment>
+    <PageTitle title="Typography"/>
+    <Grid container spacing={32}>
+      <Grid item xs={12} md={6}>
+        <Widget title="Headings" disableWidgetMenu>
+          <div className={classes.dashedBorder}>
+            <Typography variant="h1" className={classes.text}>
+              h1. Heading
+            </Typography>
+            <Typography variant="h2" className={classes.text}>
+              h2. Heading
+            </Typography>
+            <Typography variant="h3" className={classes.text}>
+              h3. Heading
+            </Typography>
+            <Typography variant="h4" className={classes.text}>
+              h4. Heading
+            </Typography>
+            <Typography variant="h5" className={classes.text}>
+              h5. Heading
+            </Typography>
+            <Typography variant="h6">
+              h6. Heading
+            </Typography>
+          </div>
+        </Widget>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Widget title="Typography Colors" disableWidgetMenu>
+          <div className={classes.dashedBorder}>
+            <Typography variant="h1" color="primary" className={classes.text}>
+              h1. Heading
+            </Typography>
+            <Typography variant="h2" color="success" className={classes.text}>
+              h2. Heading
+            </Typography>
+            <Typography variant="h3" color="secondary" className={classes.text}>
+              h3. Heading
+            </Typography>
+            <Typography variant="h4" color="warning" className={classes.text}>
+              h4. Heading
+            </Typography>
+            <Typography variant="h5" color="primary" colorBrightness="light" className={classes.text}>
+              h5. Heading
+            </Typography>
+            <Typography variant="h6" color="info">
+              h6. Heading
+            </Typography>
+          </div>
+        </Widget>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Widget title="Basic Text Settings" disableWidgetMenu>
+          <div className={classes.dashedBorder}>
+            <Typography className={classes.text}>Basic text</Typography>
+            <Typography className={classes.text} weight="light">Basic light text</Typography>
+            <Typography className={classes.text} weight="medium">Basic medium text</Typography>
+            <Typography className={classes.text} weight="bold">Basic bold text</Typography>
+            <Typography className={classes.text}>BASIC UPPERCASE TEXT</Typography>
+            <Typography className={classes.text}>basic lowercase text</Typography>
+            <Typography className={classes.text}>Basic Capitalized Text</Typography>
+            <Typography><i>Basic Cursive Text</i></Typography>
+          </div>
+        </Widget>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Widget title="Text Size" disableWidgetMenu>
+          <div className={classes.dashedBorder}>
+            <Typography className={classes.text} size="sm">Heading Typography SM Font Size</Typography>
+            <Typography className={classes.text}>Heading Typography Regular Font Size</Typography>
+            <Typography className={classes.text} size="md">Heading Typography MD Font Size</Typography>
+            <Typography className={classes.text} size="xl">Heading Typography XL Font Size</Typography>
+            <Typography className={classes.text} size="xxl">Heading Typography XXL Font Size</Typography>
+          </div>
+        </Widget>
+      </Grid>
     </Grid>
-    <Grid item xs={12} md={6}>
-      <Widget title="Content" upperTitle>
-        <Typography variant="subtitle1" gutterBottom>
-          subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-        </Typography>
-        <Typography variant="subtitle2" gutterBottom>
-          subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-          unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-          dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-        </Typography>
-        <Typography variant="body2" gutterBottom>
-          body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-          unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-          dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-        </Typography>
-        <Typography variant="button" gutterBottom>
-          button text
-        </Typography>
-        <Typography variant="caption" gutterBottom>
-          caption text
-        </Typography>
-        <Typography variant="overline" gutterBottom>
-          overline text
-        </Typography>
-      </Widget>
-    </Grid>
-    <Grid item xs={12} md={6}>
-      <Widget title="Typography Colors" upperTitle>
-        <Typography variant="h4" color="error" gutterBottom>
-          Error Color
-        </Typography>
-        <Typography variant="h4" color="primary" gutterBottom>
-          Primary Color
-        </Typography>
-        <Typography variant="h4" color="secondary" gutterBottom>
-          Secondary Color
-        </Typography>
-        <Typography variant="h4" color="textPrimary" gutterBottom>
-          TextPrimary Color
-        </Typography>
-        <Typography variant="h4" color="textSecondary" gutterBottom>
-          TextSecondary Color
-        </Typography>
-      </Widget>
-    </Grid>
-  </Grid>
+  </React.Fragment>
 );
 
+const styles = theme => ({
+  dashedBorder: {
+    border: '1px dashed',
+    borderColor: theme.palette.primary.main,
+    padding: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4,
+    marginTop: theme.spacing.unit,
+  },
+  text: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+})
 
-
-export default TypographyPage;
+export default withStyles(styles)(TypographyPage);

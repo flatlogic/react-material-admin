@@ -2,12 +2,12 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import themes from '../themes';
+import themes, { overrides } from '../themes';
 import Layout from './Layout';
 import Error from '../pages/error';
 import Login from '../pages/login';
 
-const theme = createMuiTheme(themes.default.theme);
+const theme = createMuiTheme({...themes.default, ...overrides});
 
 const PrivateRoute = ({ component, ...rest }) => {
   return (

@@ -154,11 +154,11 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
     "&:hover, &:focus": {
-      backgroundColor: theme.palette.primary.light
+      backgroundColor: theme.palette.background.light
     }
   },
   linkActive: {
-    backgroundColor: theme.palette.primary.light
+    backgroundColor: theme.palette.background.light
   },
   linkNested: {
     paddingLeft: 0,

@@ -1,9 +1,10 @@
 export default {
   palette: {
-    primary: { main: '#536DFE', light: '#f3f5ff' },
+    primary: { main: '#536DFE', light: '#909FFF' },
     secondary: { main: '#FF5C93', contrastText: 'white', dark: '#ED5689' },
     warning: { main: '#FFC260' },
     success: { main: '#3CD4A0' },
+    info: { main: '#9013FE' },
     text: {
       primary: '#4A4A4A',
       secondary: '#6E6E6E',
@@ -11,6 +12,7 @@ export default {
     },
     background: {
       default: '#F6F7FF',
+      light: '#F3F5FF',
     }
   },
   customShadows: {

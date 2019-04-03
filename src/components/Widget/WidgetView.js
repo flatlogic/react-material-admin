@@ -4,21 +4,23 @@ import { Paper, IconButton, Menu, MenuItem, withStyles } from "@material-ui/core
 import { MoreVert as MoreIcon } from '@material-ui/icons';
 import Typography from "@material-ui/core/es/Typography/Typography";
 
-const Widget = ({ classes, children, title, noBodyPadding, bodyClass, className, ...props }) => (
+const Widget = ({ classes, children, title, noBodyPadding, bodyClass, className, disableWidgetMenu, ...props }) => (
   <div className={classes.widgetWrapper}>
     <Paper className={classes.paper} classes={{ root: classes.widgetRoot }}>
       <div className={classes.widgetHeader}>
         <Typography variant="headline" color="textSecondary">{title}</Typography>
-        <IconButton
-          color="primary"
-          classes={{ root: classes.moreButton }}
-          aria-owns="widget-menu"
-          aria-haspopup="true"
-          onClick={() => props.setMoreMenuOpen(true)}
-          buttonRef={props.setMoreButtonRef}
-        >
-          <MoreIcon />
-        </IconButton>
+        {!disableWidgetMenu && (
+          <IconButton
+            color="primary"
+            classes={{ root: classes.moreButton }}
+            aria-owns="widget-menu"
+            aria-haspopup="true"
+            onClick={() => props.setMoreMenuOpen(true)}
+            buttonRef={props.setMoreButtonRef}
+          >
+            <MoreIcon />
+          </IconButton>
+        )}
       </div>
       <div className={classnames(classes.widgetBody, { [classes.noPadding]: noBodyPadding, [bodyClass]: bodyClass })}>
         {children}

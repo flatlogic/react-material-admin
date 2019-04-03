@@ -158,17 +158,17 @@ const styles = theme => ({
   },
   textFieldUnderline: {
     '&:before': {
-      borderBottomColor: theme.palette.primary.light,
+      borderBottomColor: theme.palette.background.light,
     },
     '&:after': {
       borderBottomColor: theme.palette.primary.main,
     },
     '&:hover:before': {
-      borderBottomColor: `${theme.palette.primary.light} !important`,
+      borderBottomColor: `${theme.palette.background.light} !important`,
     }
   },
   textField: {
-    borderBottomColor: theme.palette.primary.light,
+    borderBottomColor: theme.palette.background.light,
   },
   formButtons: {
     width: '100%',
