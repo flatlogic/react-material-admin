@@ -3,7 +3,7 @@ import { Button, Typography, withStyles } from "@material-ui/core";
 
 const PageTitle = ({ classes, ...props }) => (
   <div className={classes.pageTitleContainer}>
-    <Typography className={classes.typo} variant="h4">
+    <Typography className={classes.typo} variant="h2">
       {props.title}
     </Typography>
     {props.button && (
