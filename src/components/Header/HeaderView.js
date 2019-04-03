@@ -7,7 +7,6 @@ import {
   InputBase,
   Menu,
   MenuItem,
-  Typography,
   Fab,
   withStyles
 } from "@material-ui/core";
@@ -17,36 +16,67 @@ import {
   NotificationsNone as NotificationsIcon,
   Person as AccountIcon,
   Search as SearchIcon,
-  Navigation as NavigationIcon,
-  ArrowBack as ArrowBackIcon,
+  Send as SendIcon,
+  ArrowBack as ArrowBackIcon
 } from "@material-ui/icons";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import classNames from "classnames";
 
-import { Badge } from "../Wrappers";
-import Notification from '../Notification';
+import { Badge, Typography } from "../Wrappers";
+import Notification from "../Notification";
+import UserAvatar from "../UserAvatar";
 
-const mailNotifications = [
-  { id: 0, avatar: "", name: "Jane Hew", message: "Hey! How is it going?" },
+const messages = [
+  {
+    id: 0,
+    variant: "warning",
+    name: "Jane Hew",
+    message: "Hey! How is it going?",
+    time: "9:32"
+  },
   {
     id: 1,
-    avatar: "",
-    name: "Alies Rumiancaŭ",
-    message: "I will definitely buy this template"
+    variant: "success",
+    name: "Lloyd Brown",
+    message: "Check out my new Dashboard",
+    time: "9:18"
   },
   {
     id: 2,
-    avatar: "",
-    name: "Michał Rumiancaŭ",
-    message: "Is it really Lore ipsum? Lore ..."
+    variant: "primary",
+    name: "Mark Winstein",
+    message: "I want rearrange the appointment",
+    time: "9:15"
+  },
+  {
+    id: 3,
+    variant: "secondary",
+    name: "Liana Dutti",
+    message: "Good news from sale department",
+    time: "9:09"
   }
 ];
 
 const notifications = [
-  { id: 0, color: 'warning', message: "Check out this awesome ticket" },
-  { id: 1, color: 'success', type: 'info', message: "What is the best way to get ..." },
-  { id: 2, color: 'secondary', type: 'notification', message: "This is just a simple notification" },
-  { id: 3, color: 'primary', type: 'e-commerce', message: "12 new orders has arrived today" },
+  { id: 0, color: "warning", message: "Check out this awesome ticket" },
+  {
+    id: 1,
+    color: "success",
+    type: "info",
+    message: "What is the best way to get ..."
+  },
+  {
+    id: 2,
+    color: "secondary",
+    type: "notification",
+    message: "This is just a simple notification"
+  },
+  {
+    id: 3,
+    color: "primary",
+    type: "e-commerce",
+    message: "12 new orders has arrived today"
+  }
 ];
 
 const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
@@ -55,24 +85,38 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
       <IconButton
         color="inherit"
         onClick={toggleSidebar}
-        className={classNames(classes.headerMenuButton, classes.headerMenuButtonCollapse)}
+        className={classNames(
+          classes.headerMenuButton,
+          classes.headerMenuButtonCollapse
+        )}
       >
         {isSidebarOpened ? (
-          <ArrowBackIcon classes={{ root: classNames(classes.headerIcon, classes.headerIconCollapse) }} />
+          <ArrowBackIcon
+            classes={{
+              root: classNames(classes.headerIcon, classes.headerIconCollapse)
+            }}
+          />
         ) : (
-          <MenuIcon classes={{ root: classNames(classes.headerIcon, classes.headerIconCollapse) }} />
+          <MenuIcon
+            classes={{
+              root: classNames(classes.headerIcon, classes.headerIconCollapse)
+            }}
+          />
         )}
       </IconButton>
-      <Typography className={classes.logotype}>
-        Material Dashboard
-      </Typography>
+      <Typography className={classes.logotype}>Material Dashboard</Typography>
       <div className={classes.grow} />
       <div
         className={classNames(classes.search, {
           [classes.searchFocused]: props.isSearchOpen
         })}
       >
-        <div className={classNames(classes.searchIcon, { [classes.searchIconOpened]: props.isSearchOpen })} onClick={props.toggleSearch}>
+        <div
+          className={classNames(classes.searchIcon, {
+            [classes.searchIconOpened]: props.isSearchOpen
+          })}
+          onClick={props.toggleSearch}
+        >
           <SearchIcon classes={{ root: classes.headerIcon }} />
         </div>
         <InputBase
@@ -107,7 +151,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         className={classes.headerMenuButton}
       >
         <Badge
-          badgeContent={props.isMailsUnread ? mailNotifications.length : null}
+          badgeContent={props.isMailsUnread ? messages.length : null}
           color="secondary"
         >
           <MailIcon classes={{ root: classes.headerIcon }} />
@@ -129,25 +173,51 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         onClose={props.closeMailMenu}
         MenuListProps={{ className: classes.headerMenuList }}
         className={classes.headerMenu}
+        classes={{ paper: classes.profileMenu }}
         disableAutoFocusItem
       >
-        {mailNotifications.map(mail => (
-          <MenuItem key={mail.id} onClick={props.closeMailMenu}>
-            <div className={classes.messageContent}>
-              <Typography variant="subtitle2">{mail.name}</Typography>
-              <Typography>{mail.message}</Typography>
+        <div className={classes.profileMenuUser}>
+          <Typography variant="h4" weight="medium">
+            New Messages
+          </Typography>
+          <Typography
+            className={classes.profileMenuLink}
+            component="a"
+            color="secondary"
+          >
+            {messages.length} New Messages
+          </Typography>
+        </div>
+        {messages.map(message => (
+          <MenuItem key={message.id} className={classes.messageNotification}>
+            <div className={classes.messageNotificationSide}>
+              <UserAvatar color={message.variant} name={message.name} />
+              <Typography size="sm" color="textSecondary">
+                {message.time}
+              </Typography>
+            </div>
+            <div
+              className={classNames(
+                classes.messageNotificationSide,
+                classes.messageNotificationBodySide
+              )}
+            >
+              <Typography weight="medium" gutterBottom>
+                {message.name}
+              </Typography>
+              <Typography color="textSecondary">{message.message}</Typography>
             </div>
           </MenuItem>
         ))}
         <Fab
           variant="extended"
-          size="small"
+          // size="large"
           color="primary"
           aria-label="Add"
-          className={classes.headerMenuButton}
+          className={classes.sendMessageButton}
         >
-          <NavigationIcon />
-          New Message
+          Send New Message
+          <SendIcon className={classes.sendButtonIcon} />
         </Fab>
       </Menu>
       <Menu
@@ -178,14 +248,50 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         disableAutoFocusItem
       >
         <div className={classes.profileMenuUser}>
-          <Typography variant="h6">John Smith</Typography>
-          <Typography className={classes.profileMenuLink} component="a" color="primary" href="https://flatlogic.com">Flalogic.com</Typography>
+          <Typography variant="h4" weight="medium">
+            John Smith
+          </Typography>
+          <Typography
+            className={classes.profileMenuLink}
+            component="a"
+            color="primary"
+            href="https://flatlogic.com"
+          >
+            Flalogic.com
+          </Typography>
         </div>
-        <MenuItem className={classNames(classes.profileMenuItem, classes.headerMenuItem)}><AccountIcon className={classes.profileMenuIcon}/> Profile</MenuItem>
-        <MenuItem className={classNames(classes.profileMenuItem, classes.headerMenuItem)}><AccountIcon className={classes.profileMenuIcon}/> Tasks</MenuItem>
-        <MenuItem className={classNames(classes.profileMenuItem, classes.headerMenuItem)}><AccountIcon className={classes.profileMenuIcon}/> Messages</MenuItem>
+        <MenuItem
+          className={classNames(
+            classes.profileMenuItem,
+            classes.headerMenuItem
+          )}
+        >
+          <AccountIcon className={classes.profileMenuIcon} /> Profile
+        </MenuItem>
+        <MenuItem
+          className={classNames(
+            classes.profileMenuItem,
+            classes.headerMenuItem
+          )}
+        >
+          <AccountIcon className={classes.profileMenuIcon} /> Tasks
+        </MenuItem>
+        <MenuItem
+          className={classNames(
+            classes.profileMenuItem,
+            classes.headerMenuItem
+          )}
+        >
+          <AccountIcon className={classes.profileMenuIcon} /> Messages
+        </MenuItem>
         <div className={classes.profileMenuUser}>
-          <Typography className={classes.profileMenuLink} color="primary" onClick={props.signOut}>Sign Out</Typography>
+          <Typography
+            className={classes.profileMenuLink}
+            color="primary"
+            onClick={props.signOut}
+          >
+            Sign Out
+          </Typography>
         </div>
       </Menu>
     </Toolbar>
@@ -199,9 +305,9 @@ const styles = theme => ({
     marginRight: theme.spacing.unit * 2.5,
     fontWeight: 500,
     fontSize: 18,
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
     [theme.breakpoints.down("xs")]: {
-      display: 'none',
+      display: "none"
     }
   },
   appBar: {
@@ -255,7 +361,7 @@ const styles = theme => ({
     }
   },
   searchIconOpened: {
-    right: theme.spacing.unit * 1.25,
+    right: theme.spacing.unit * 1.25
   },
   inputRoot: {
     color: "inherit",
@@ -279,9 +385,9 @@ const styles = theme => ({
     flexDirection: "column"
   },
   headerMenuItem: {
-    '&:hover, &:focus': {
+    "&:hover, &:focus": {
       backgroundColor: theme.palette.primary.main,
-      color: 'white',
+      color: "white"
     }
   },
   headerMenuButton: {
@@ -289,36 +395,63 @@ const styles = theme => ({
     padding: theme.spacing.unit / 2
   },
   headerMenuButtonCollapse: {
-    marginRight: theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit * 2
   },
   headerIcon: {
     fontSize: 28,
     color: "rgba(255, 255, 255, 0.35)"
   },
   headerIconCollapse: {
-    color: "white",
+    color: "white"
   },
   profileMenu: {
-    minWidth: 265,
+    minWidth: 265
   },
   profileMenuUser: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: theme.spacing.unit * 2,
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing.unit * 2
   },
   profileMenuItem: {
-    color: theme.palette.text.hint,
+    color: theme.palette.text.hint
   },
   profileMenuIcon: {
     marginRight: theme.spacing.unit * 2,
-    color: theme.palette.text.hint,
+    color: theme.palette.text.hint
   },
   profileMenuLink: {
     fontSize: 16,
-    textDecoration: 'none',
-    '&:hover': {
-      cursor: 'pointer',
-    },
+    textDecoration: "none",
+    "&:hover": {
+      cursor: "pointer"
+    }
+  },
+  messageNotification: {
+    height: "auto",
+    display: "flex",
+    alignItems: "center",
+    "&:hover, &:focus": {
+      backgroundColor: theme.palette.background.light
+    }
+  },
+  messageNotificationSide: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginRight: theme.spacing.unit * 2
+  },
+  messageNotificationBodySide: {
+    alignItems: "flex-start",
+    marginRight: 0
+  },
+  sendMessageButton: {
+    margin: theme.spacing.unit * 4,
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
+    textTransform: "none"
+  },
+  sendButtonIcon: {
+    marginLeft: theme.spacing.unit * 2
   }
 });
 
