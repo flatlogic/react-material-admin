@@ -234,7 +234,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
             onClick={props.closeNotificationsMenu}
             className={classes.headerMenuItem}
           >
-            <Notification {...notification} />
+            <Notification {...notification} typographyVariant="inherit" />
           </MenuItem>
         ))}
       </Menu>

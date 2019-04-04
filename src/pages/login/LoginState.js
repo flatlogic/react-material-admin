@@ -1,6 +1,6 @@
 export const initialState = {
   isLoading: false,
-  isAuthenticated: false,
+  isAuthenticated: !!localStorage.getItem("id_token"),
   error: null
 };
 
