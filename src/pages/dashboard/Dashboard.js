@@ -371,6 +371,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
                   type="natural"
                   dataKey="desktop"
                   fill={theme.palette.background.light}
+                  strokeWidth={0}
                   activeDot={false}
                 />
                 <Line
