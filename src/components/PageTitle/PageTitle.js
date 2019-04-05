@@ -1,9 +1,10 @@
 import React from "react";
-import { Button, Typography, withStyles } from "@material-ui/core";
+import { Button, withStyles } from "@material-ui/core";
+import { Typography } from "../Wrappers";
 
 const PageTitle = ({ classes, ...props }) => (
   <div className={classes.pageTitleContainer}>
-    <Typography className={classes.typo} variant="h2">
+    <Typography className={classes.typo} variant="h1" size="sm">
       {props.title}
     </Typography>
     {props.button && (

@@ -1,39 +1,6 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { blue, green } from '@material-ui/core/colors';
-
-const options = {
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    curve: 'smooth'
-  },
-  xaxis: {
-    type: 'datetime',
-    categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00",
-      "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00",
-      "2018-09-19T06:30:00"
-    ],
-  },
-  tooltip: {
-    x: {
-      format: 'dd/MM/yy HH:mm'
-    },
-  },
-  fill: {
-    colors: [green[200], blue[200]]
-  },
-  colors: [green[500], blue[500]],
-  chart: {
-    toolbar: {
-      show: false,
-    },
-  },
-  legend: {
-    show: false,
-  }
-};
+import { withTheme } from "@material-ui/core";
 
 const series = [{
   name: 'series1',
@@ -43,8 +10,43 @@ const series = [{
   data: [11, 32, 45, 32, 34, 52, 41]
 }];
 
-const ApexLineChart = () => (
-  <ApexCharts options={options} series={series} type="area" height={350} />
+const themeOptions = (props) => {
+  return {
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    xaxis: {
+      type: 'datetime',
+      categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00",
+        "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00",
+        "2018-09-19T06:30:00"
+      ],
+    },
+    tooltip: {
+      x: {
+        format: 'dd/MM/yy HH:mm'
+      },
+    },
+    fill: {
+      colors: [props.theme.palette.primary.light, props.theme.palette.success.light]
+    },
+    colors: [props.theme.palette.primary.main, props.theme.palette.success.main],
+    chart: {
+      toolbar: {
+        show: false,
+      },
+    },
+    legend: {
+      show: false,
+    }
+  };
+};
+
+const ApexLineChart = (props) => (
+  <ApexCharts options={themeOptions(props)} series={series} type="area" height={350} />
 );
 
-export default ApexLineChart;
+export default withTheme()(ApexLineChart);

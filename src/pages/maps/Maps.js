@@ -31,7 +31,8 @@ const styles = theme => {
   console.log(theme.mixins.toolbar);
   return {
     mapContainer: {
-      height: `calc(100% - ${64}px)`,
+      height: '100%',
+      margin: -theme.spacing.unit*3
     }
   }
 };
