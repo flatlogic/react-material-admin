@@ -1,33 +1,25 @@
 import React from "react";
 import {
   Grid,
-  Paper,
   LinearProgress,
-  FormControl,
-  InputLabel,
   Select,
   OutlinedInput,
   MenuItem,
   withStyles,
-  withTheme
 } from "@material-ui/core";
-import { ShowChart as ShowChartIcon } from "@material-ui/icons";
 import {
   ResponsiveContainer,
   ComposedChart,
   AreaChart,
   LineChart,
-  CartesianGrid,
   Line,
   Area,
-  Tooltip,
   PieChart,
   Pie,
   Cell,
   YAxis,
   XAxis
 } from "recharts";
-import classnames from "classnames";
 
 import mock from "./mock";
 import Widget from "../../components/Widget";
@@ -128,15 +120,15 @@ const Dashboard = ({ classes, theme, ...props }) => {
               justify="space-between"
               alignItems="center"
             >
-              <Grid item direction="column" alignItems="center">
+              <Grid item>
                 <Typography color="textSecondary">Registrations</Typography>
                 <Typography size="md">860</Typography>
               </Grid>
-              <Grid item direction="column" alignItems="center">
+              <Grid item>
                 <Typography color="textSecondary">Sign Out</Typography>
                 <Typography size="md">32</Typography>
               </Grid>
-              <Grid item direction="column" alignItems="center">
+              <Grid item>
                 <Typography color="textSecondary">Rate</Typography>
                 <Typography size="md">3.25%</Typography>
               </Grid>
@@ -170,7 +162,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
               <Grid item sm={6}>
                 <div className={classes.pieChartLegendWrapper}>
                   {PieChartData.map(({ name, value, color }, index) => (
-                    <div className={classes.legendItemContainer}>
+                    <div key={color} className={classes.legendItemContainer}>
                       <Dot color={color} />
                       <Typography>&nbsp;{name}&nbsp;</Typography>
                       <Typography color="textSecondary">
@@ -343,6 +335,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
                   onChange={e => props.setMainChartState(e.target.value)}
                   input={
                     <OutlinedInput
+                      labelWidth={0}
                       classes={{ input: classes.mainChartSelect }}
                     />
                   }
@@ -378,7 +371,6 @@ const Dashboard = ({ classes, theme, ...props }) => {
                   type="natural"
                   dataKey="desktop"
                   fill={theme.palette.background.light}
-                  stroke={false}
                   activeDot={false}
                 />
                 <Line
@@ -405,7 +397,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
           </Widget>
         </Grid>
         {mock.bigStat.map(stat => (
-          <Grid item md={4} sm={6} xs={12}>
+          <Grid item md={4} sm={6} xs={12} key={stat.product}>
             <BigStat {...stat} />
           </Grid>
         ))}

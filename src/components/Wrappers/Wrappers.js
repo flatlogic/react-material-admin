@@ -65,10 +65,10 @@ const createStyled = (styles, options) => {
   return withStyles(styles, options)(Styled);
 };
 
-const BadgeExtended = ({ classes, theme, children, ...props }) => {
+const BadgeExtended = ({ classes, theme, children, colorBrightness, ...props }) => {
   const Styled = createStyled({
     badge: {
-      backgroundColor: getColor(props.color, theme, props.colorBrightness)
+      backgroundColor: getColor(props.color, theme, colorBrightness)
     }
   });
 
@@ -99,10 +99,10 @@ export const Badge = withStyles(
   { withTheme: true }
 )(BadgeExtended);
 
-const TypographyExtended = ({ theme, children, weight, size, ...props }) => (
+const TypographyExtended = ({ theme, children, weight, size, colorBrightness, ...props }) => (
   <TypographyBase
     style={{
-      color: getColor(props.color, theme, props.colorBrightness),
+      color: getColor(props.color, theme, colorBrightness),
       fontWeight: getFontWeight(weight),
       fontSize: getFontSize(size, props.variant, theme)
     }}

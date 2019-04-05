@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import { Grid, Select, MenuItem, Input, withStyles } from "@material-ui/core";
-import { grey, green, red } from "@material-ui/core/colors";
 import { ArrowForward as ArrowForwardIcon } from "@material-ui/icons";
 import { BarChart, Bar } from "recharts";
 import classnames from "classnames";
@@ -59,7 +58,7 @@ class BigStat extends PureComponent {
       >
         <div className={classes.totalValueContainer}>
           <div className={classes.totalValue}>
-            <Typography size="xxl" color="textSecondary-">
+            <Typography size="xxl" color="textSecondary">
               {total[value]}
             </Typography>
             <Typography color={total.percent.profit ? "success" : "secondary"}>

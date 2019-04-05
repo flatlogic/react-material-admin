@@ -27,14 +27,11 @@ const Maps = ({ classes }) => (
   </div>
 )
 
-const styles = theme => {
-  console.log(theme.mixins.toolbar);
-  return {
-    mapContainer: {
-      height: '100%',
-      margin: -theme.spacing.unit*3
-    }
+const styles = theme => ({
+  mapContainer: {
+    height: '100%',
+    margin: -theme.spacing.unit * 3
   }
-};
+});
 
 export default withStyles(styles, { withTheme: true })(Maps);

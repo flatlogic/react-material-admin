@@ -23,7 +23,6 @@ export default compose(
     componentWillMount() {
       window.addEventListener('resize', this.props.handleWindowWidthChange);
       this.props.handleWindowWidthChange();
-      console.log(this.props);
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.handleWindowWidthChange);

@@ -64,8 +64,8 @@ class SidebarLink extends Component {
       return (
         <ListItem
           button
-          component={Link}
-          to={!!link && link}
+          component={link && Link}
+          to={link}
           className={classes.link}
           classes={{
             root: classnames(classes.linkRoot, {
@@ -98,7 +98,7 @@ class SidebarLink extends Component {
       <React.Fragment>
         <ListItem
           button
-          component={Link}
+          component={link && Link}
           onClick={this.toggleCollapse}
           className={classes.link}
           to={link}

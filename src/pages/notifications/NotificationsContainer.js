@@ -1,6 +1,5 @@
 import React from "react";
 import { withStyles } from "@material-ui/core";
-import { green, purple, red } from "@material-ui/core/colors";
 import { compose, withState, withHandlers } from "recompose";
 import { toast } from "react-toastify";
 

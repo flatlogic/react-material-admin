@@ -1,4 +1,4 @@
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, withState } from 'recompose';
 
 import WidgetView from './WidgetView';
 

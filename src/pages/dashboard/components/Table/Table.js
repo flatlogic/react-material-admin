@@ -27,8 +27,8 @@ const TableComponent = ({ data }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {data.map(({ name, email, product, price, date, city, status }) => (
-          <TableRow>
+        {data.map(({ id, name, email, product, price, date, city, status }) => (
+          <TableRow key={id}>
             <TableCell className="pl-3 fw-normal">{name}</TableCell>
             <TableCell>{email}</TableCell>
             <TableCell>{product}</TableCell>

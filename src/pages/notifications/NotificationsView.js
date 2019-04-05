@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, withStyles } from '@material-ui/core';
-import { grey } from '@material-ui/core/colors';
 import { Close as CloseIcon } from '@material-ui/icons';
 import classnames from 'classnames';
 import { ToastContainer } from 'react-toastify';

@@ -2,13 +2,9 @@ import React from 'react';
 import {
   Drawer,
   IconButton,
-  Divider,
   List,
-  Typography,
   withStyles } from "@material-ui/core";
 import {
-  ChevronRight as ChevronRightIcon,
-  ChevronLeft as ChevronLeftIcon,
   Home as HomeIcon,
   NotificationsNone as NotificationsIcon,
   FormatSize as TypographyIcon,
@@ -25,11 +21,12 @@ import SidebarLink from './components/SidebarLink';
 import Dot from './components/Dot';
 
 const structure = [
-  { label: 'Dashboard', link: '/app/dashboard', icon: <HomeIcon /> },
-  { label: 'Typography', link: '/app/typography', icon: <TypographyIcon /> },
-  { label: 'Tables', link: '/app/tables', icon: <TableIcon /> },
-  { label: 'Notifications', link: '/app/notifications', icon: <NotificationsIcon />},
+  { id: 0, label: 'Dashboard', link: '/app/dashboard', icon: <HomeIcon /> },
+  { id: 1, label: 'Typography', link: '/app/typography', icon: <TypographyIcon /> },
+  { id: 2, label: 'Tables', link: '/app/tables', icon: <TableIcon /> },
+  { id: 3, label: 'Notifications', link: '/app/notifications', icon: <NotificationsIcon />},
   {
+    id: 4,
     label: 'UI Elements',
     link: '/app/ui',
     icon: <UIElementsIcon />,
@@ -39,16 +36,16 @@ const structure = [
       { label: 'Maps', link: '/app/ui/maps' },
     ],
   },
-  { type: 'divider' },
-  { type: 'title', label: 'HELP' },
-  { label: 'Library', link: '', icon: <LibraryIcon /> },
-  { label: 'Support', link: '', icon: <SupportIcon /> },
-  { label: 'FAQ', link: '', icon: <FAQIcon />},
-  { type: 'divider' },
-  { type: 'title', label: 'PROJECTS' },
-  { label: 'My recent', link: '', icon: <Dot size="large" color="warning" /> },
-  { label: 'Starred', link: '', icon: <Dot size="large" color="primary" /> },
-  { label: 'Background', link: '', icon: <Dot size="large" color="secondary" /> },
+  { id: 5, type: 'divider' },
+  { id: 6, type: 'title', label: 'HELP' },
+  { id: 7, label: 'Library', link: '', icon: <LibraryIcon /> },
+  { id: 8, label: 'Support', link: '', icon: <SupportIcon /> },
+  { id: 9, label: 'FAQ', link: '', icon: <FAQIcon />},
+  { id: 10, type: 'divider' },
+  { id: 11, type: 'title', label: 'PROJECTS' },
+  { id: 12, label: 'My recent', link: '', icon: <Dot size="large" color="warning" /> },
+  { id: 13, label: 'Starred', link: '', icon: <Dot size="large" color="primary" /> },
+  { id: 14, label: 'Background', link: '', icon: <Dot size="large" color="secondary" /> },
 ];
 
 const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermanent }) => {
@@ -70,14 +67,13 @@ const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermane
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
         <IconButton
-          color="textSecondary"
           onClick={toggleSidebar}
         >
           <ArrowBackIcon classes={{ root: classNames(classes.headerIcon, classes.headerIconCollapse) }} />
         </IconButton>
       </div>
       <List className={classes.sidebarList}>
-        {structure.map(link => <SidebarLink isSidebarOpened={isSidebarOpened} key={link && link.link || link.label} {...link} />)}
+        {structure.map(link => <SidebarLink key={link.id} isSidebarOpened={isSidebarOpened} {...link} />)}
       </List>
     </Drawer>
   );

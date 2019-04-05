@@ -3,7 +3,6 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Button,
   InputBase,
   Menu,
   MenuItem,
