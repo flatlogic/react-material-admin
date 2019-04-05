@@ -29,16 +29,14 @@ const datatableData = [
 const Tables = props => (
   <Grid container spacing={32}>
     <Grid item xs={12}>
-      <Widget title="Material Datatable" upperTitle noBodyPadding>
-        <MUIDataTable
-          title="Employee List"
-          data={datatableData}
-          columns={["Name", "Company", "City", "State"]}
-          options={{
-            filterType: 'checkbox',
-          }}
-        />
-      </Widget>
+      <MUIDataTable
+        title="Employee List"
+        data={datatableData}
+        columns={["Name", "Company", "City", "State"]}
+        options={{
+          filterType: 'checkbox',
+        }}
+      />
     </Grid>
     <Grid item xs={12}>
       <Widget title="Material-UI Table" upperTitle noBodyPadding>
