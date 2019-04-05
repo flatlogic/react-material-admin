@@ -1,6 +1,6 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
-import { blue } from '@material-ui/core/colors';
+import { withTheme } from "@material-ui/core";
 
 const generateData = (count, yrange) => {
   var i = 0;
@@ -19,16 +19,18 @@ const generateData = (count, yrange) => {
   return series;
 }
 
-var options = {
-  chart: {
-    toolbar: {
-      show: false,
+const themeOptions = (props) => {
+  return {
+    chart: {
+      toolbar: {
+        show: false,
+      },
     },
-  },
-  dataLabels: {
-    enabled: false
-  },
-  colors: [blue[500]],
+    dataLabels: {
+      enabled: false
+    },
+      colors: [props.theme.palette.primary.main],
+  };
 };
 
 const series = [{
@@ -96,8 +98,8 @@ const series = [{
   }
 ];
 
-const ApexLineChart = () => (
-  <ApexCharts options={options} series={series} type="heatmap" height={350} />
+const ApexLineChart = (props) => (
+  <ApexCharts options={themeOptions(props)} series={series} type="heatmap" height={350} />
 );
 
-export default ApexLineChart;
+export default withTheme()(ApexLineChart);
