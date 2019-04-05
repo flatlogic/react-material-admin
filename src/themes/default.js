@@ -17,7 +17,7 @@ export default {
         .lighten(lightenRate)
         .toHexString(),
       dark: tinycolor(primary)
-        .lighten(darkenRate)
+        .darken(darkenRate)
         .toHexString()
     },
     secondary: {
@@ -26,7 +26,7 @@ export default {
         .lighten(lightenRate)
         .toHexString(),
       dark: tinycolor(secondary)
-        .lighten(darkenRate)
+        .darken(darkenRate)
         .toHexString(),
       contrastText: "#FFFFFF"
     },
@@ -36,7 +36,7 @@ export default {
         .lighten(lightenRate)
         .toHexString(),
       dark: tinycolor(warning)
-        .lighten(darkenRate)
+        .darken(darkenRate)
         .toHexString()
     },
     success: {
@@ -45,7 +45,7 @@ export default {
         .lighten(lightenRate)
         .toHexString(),
       dark: tinycolor(success)
-        .lighten(darkenRate)
+        .darken(darkenRate)
         .toHexString()
     },
     info: {
@@ -54,7 +54,7 @@ export default {
         .lighten(lightenRate)
         .toHexString(),
       dark: tinycolor(info)
-        .lighten(darkenRate)
+        .darken(darkenRate)
         .toHexString()
     },
     text: {

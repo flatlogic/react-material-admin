@@ -2,5 +2,5 @@
   "name": "Dashboard",
   "version": "1.0.0",
   "private": true,
-  "main": "Dashboard.js"
+  "main": "DashboardContainer.js"
 }

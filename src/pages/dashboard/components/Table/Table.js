@@ -1,11 +1,17 @@
-import React from 'react';
-import { Table, TableRow, TableHead, TableBody, TableCell, Button } from '@material-ui/core';
-
+import React from "react";
+import {
+  Table,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+  Button
+} from "@material-ui/core";
 
 const states = {
-  sent: 'primary',
-  pending: 'default',
-  declined: 'secondary',
+  sent: "primary",
+  pending: "default",
+  declined: "secondary"
 };
 
 const TableComponent = ({ data }) => {
@@ -15,35 +21,35 @@ const TableComponent = ({ data }) => {
     <Table className="mb-0">
       <TableHead>
         <TableRow>
-          {keys.map((key) => <TableCell>{key}</TableCell>)}
+          {keys.map(key => (
+            <TableCell>{key}</TableCell>
+          ))}
         </TableRow>
       </TableHead>
       <TableBody>
-        {
-          data.map(({ name, email, product, price, date, city, status }) => (
-            <TableRow>
-              <TableCell className="pl-3 fw-normal">{name}</TableCell>
-              <TableCell>{email}</TableCell>
-              <TableCell>{product}</TableCell>
-              <TableCell>{price}</TableCell>
-              <TableCell>{date}</TableCell>
-              <TableCell>{city}</TableCell>
-              <TableCell>
-                <Button
-                  color={states[status.toLowerCase()]}
-                  size="small"
-                  className="px-2"
-                  variant="contained"
-                >
-                  {status}
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))
-        }
+        {data.map(({ name, email, product, price, date, city, status }) => (
+          <TableRow>
+            <TableCell className="pl-3 fw-normal">{name}</TableCell>
+            <TableCell>{email}</TableCell>
+            <TableCell>{product}</TableCell>
+            <TableCell>{price}</TableCell>
+            <TableCell>{date}</TableCell>
+            <TableCell>{city}</TableCell>
+            <TableCell>
+              <Button
+                color={states[status.toLowerCase()]}
+                size="small"
+                className="px-2"
+                variant="contained"
+              >
+                {status}
+              </Button>
+            </TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );
-}
+};
 
 export default TableComponent;
