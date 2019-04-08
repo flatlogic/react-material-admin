@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 
 import HeaderView from './HeaderView';
 import { signOut } from '../../pages/login/LoginState';
+import { toggleSidebar } from '../Layout/LayoutState';
 
 export default compose(
   connect(
-    null,
-    { signOut },
+    state => ({
+      isSidebarOpened: state.layout.isSidebarOpened,
+    }),
+    { signOut, toggleSidebar },
   ),
   withState('mailMenu', 'setMailMenu', null),
   withState('isMailsUnread', 'setIsMailsUnread', true),
