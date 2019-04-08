@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withStyles, CssBaseline } from '@material-ui/core';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import classnames from 'classnames';
