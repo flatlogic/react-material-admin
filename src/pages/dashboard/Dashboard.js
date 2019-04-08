@@ -339,7 +339,6 @@ const Dashboard = ({ classes, theme, ...props }) => {
                       classes={{ input: classes.mainChartSelect }}
                     />
                   }
-                  // classes={{ root: classes.mainChartSelect }}
                   autoWidth
                 >
                   <MenuItem value="daily">Daily</MenuItem>
@@ -354,7 +353,6 @@ const Dashboard = ({ classes, theme, ...props }) => {
                 margin={{ top: 0, right: -15, left: -15, bottom: 0 }}
                 data={mainChartData}
               >
-                {/* <CartesianGrid /> */}
                 <YAxis
                   ticks={[0, 2500, 5000, 7500]}
                   tick={{ fill: theme.palette.text.hint, fontSize: 14 }}

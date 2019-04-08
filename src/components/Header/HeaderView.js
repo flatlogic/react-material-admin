@@ -210,7 +210,6 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         ))}
         <Fab
           variant="extended"
-          // size="large"
           color="primary"
           aria-label="Add"
           className={classes.sendMessageButton}
