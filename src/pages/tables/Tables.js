@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import MUIDataTable from "mui-datatables";
 
+import PageTitle from '../../components/PageTitle';
 import Widget from '../../components/Widget';
 import Table from '../dashboard/components/Table/Table';
 import mock from '../dashboard/mock'; 
@@ -27,23 +28,26 @@ const datatableData = [
 ];
 
 const Tables = props => (
-  <Grid container spacing={32}>
-    <Grid item xs={12}>
-      <MUIDataTable
-        title="Employee List"
-        data={datatableData}
-        columns={["Name", "Company", "City", "State"]}
-        options={{
-          filterType: 'checkbox',
-        }}
-      />
+  <React.Fragment>
+    <PageTitle title="Tables" />
+    <Grid container spacing={32}>
+      <Grid item xs={12}>
+        <MUIDataTable
+          title="Employee List"
+          data={datatableData}
+          columns={["Name", "Company", "City", "State"]}
+          options={{
+            filterType: 'checkbox',
+          }}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Widget title="Material-UI Table" upperTitle noBodyPadding>
+          <Table data={mock.table} />
+        </Widget>
+      </Grid>
     </Grid>
-    <Grid item xs={12}>
-      <Widget title="Material-UI Table" upperTitle noBodyPadding>
-        <Table data={mock.table} />
-      </Widget>
-    </Grid>
-  </Grid>
+  </React.Fragment>
 );
 
 export default Tables;
