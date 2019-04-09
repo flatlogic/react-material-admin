@@ -1,5 +1,5 @@
 ## React Material Template — material admin dashboard template
-built with [React](https://facebook.github.io/react/), [Material-UI](https://material-ui.com), [React Router](https://reacttraining.com/react-router/), [Redux](http://redux.js.org/)
+Built with [React](https://facebook.github.io/react/), [Material-UI](https://material-ui.com), [React Router](https://reacttraining.com/react-router/), [Redux](http://redux.js.org/)
 
 [Demo](https://flatlogic.github.io/react-material-template/). Use any credentials to get in.
 
