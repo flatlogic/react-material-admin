@@ -1,12 +1,14 @@
 import { withTheme } from '@material-ui/core/styles';
 import { compose, withState, withHandlers, lifecycle }  from 'recompose';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 
 import { toggleSidebar } from '../Layout/LayoutState';
 
 import SidebarView from './SidebarView';
 
 export default compose(
+  withRouter,
   withTheme(),
   connect(
     state => ({

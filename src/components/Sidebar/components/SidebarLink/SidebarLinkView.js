@@ -12,7 +12,6 @@ import {
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import { Inbox as InboxIcon } from "@material-ui/icons";
-import { withRouter } from "react-router-dom";
 
 import Dot from "../Dot";
 
@@ -29,6 +28,7 @@ const SidebarLink = ({
   isOpen,
   toggleCollapse
 }) => {
+
   const isLinkActive =
     link &&
     (location.pathname === link || location.pathname.indexOf(link) !== -1);
@@ -192,4 +192,4 @@ const styles = theme => ({
   }
 });
 
-export default withRouter(withStyles(styles, { withTheme: true })(SidebarLink));
+export default withStyles(styles, { withTheme: true })(SidebarLink);

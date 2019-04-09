@@ -48,7 +48,7 @@ const structure = [
   { id: 14, label: 'Background', link: '', icon: <Dot size="large" color="secondary" /> },
 ];
 
-const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermanent }) => {
+const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermanent, location }) => {
   return (
     <Drawer
       variant={isPermanent ? 'permanent' : 'temporary'}
@@ -73,7 +73,7 @@ const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermane
         </IconButton>
       </div>
       <List className={classes.sidebarList}>
-        {structure.map(link => <SidebarLink key={link.id} isSidebarOpened={isSidebarOpened} {...link} />)}
+        {structure.map(link => <SidebarLink key={link.id} location={location} isSidebarOpened={isSidebarOpened} {...link} />)}
       </List>
     </Drawer>
   );
