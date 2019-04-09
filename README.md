@@ -2,7 +2,7 @@
 built with [React](https://facebook.github.io/react/), [Material-UI](https://material-ui.com), [React Router](https://reacttraining.com/react-router/)
 [Redux](http://redux.js.org/)
 
-Demo](https://flatlogic.com/admin-dashboards/react-dashboard/demo). Use following credentials: user/password.
+[Demo](https://flatlogic.com/admin-dashboards/react-dashboard/demo). Use following credentials: user/password.
 
 ![image](https://user-images.githubusercontent.com/24964748/55800639-df780300-5adc-11e9-84b7-7c2437088516.png)
 
@@ -19,6 +19,19 @@ Demo](https://flatlogic.com/admin-dashboards/react-dashboard/demo). Use followin
 * Stylish, clean, responsive layout
 * Authentication
 
+## Pages
+We have implemented some basic pages, so you can see our template in action.
+
+* Dashboard
+* Typography
+* Tables
+* Notifications
+* Charts
+* Icons
+* Maps
+* Login
+* Error
+
 ## Quick Start
 
 #### 1. Get the latest version
@@ -34,7 +47,7 @@ $ cd MyApp
 #### 2. Run `yarn install`
 
 This will install both run-time project dependencies and developer tools listed
-in [package.json](../package.json) file.
+in [package.json](package.json) file.
 
 #### 3. Run `yarn start`
 
@@ -62,6 +75,13 @@ For any additional information please refer to [Flatlogic homepage](https://flat
 - Follow [@flatlogic on Twitter](https://twitter.com/flatlogic).
 - Subscribe to Flatlogic newsletter at [flatlogic.com](https://flatlogic.com/)
 - Like our page on [Facebook](https://www.facebook.com/flatlogic/) :thumbsup:
+
+## More from Flatlogic
+- [Awesome Bootstrap Checkboxes & Radios](https://github.com/flatlogic/awesome-bootstrap-checkbox) - ✅ Pure css way to make inputs look prettier
+- [React Native Starter](https://github.com/flatlogic/react-native-starter) - 🚀 A powerful react native starter template that bootstraps development of your mobile application
+- [React Dashboard](https://github.com/flatlogic/react-dashboard) - 🔥 React Dashboard - isomorphic admin dashboard template with GraphQL
+- [Sing App](https://github.com/flatlogic/sing-app) - 💥 Free and open-source admin dashboard template built with Bootstrap 4
+- [Light Blue Dashboard](https://github.com/flatlogic/light-blue-dashboard) - 💦 Free and open-source admin dashboard template built with Bootstrap
 
 ## Premium themes
 Looking for premium themes and templates? Check out more [admin dashboard templates at flatlogic.com](https://flatlogic.com/admin-dashboards).
