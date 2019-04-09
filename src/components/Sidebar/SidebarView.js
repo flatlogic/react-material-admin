@@ -17,7 +17,7 @@ import {
 } from "@material-ui/icons";
 import classNames from 'classnames';
 
-import SidebarLink from './components/SidebarLink';
+import SidebarLink from './components/SidebarLink/SidebarLinkContainer';
 import Dot from './components/Dot';
 
 const structure = [
