@@ -319,15 +319,15 @@ const Dashboard = ({ classes, theme, ...props }) => {
                 <div className={classes.mainChartHeaderLabels}>
                   <div className={classes.mainChartHeaderLabel}>
                     <Dot color="warning" />
-                    <Typography>&nbsp;Tablet</Typography>
+                    <Typography className={classes.mainChartLegentElement}>Tablet</Typography>
                   </div>
                   <div className={classes.mainChartHeaderLabel}>
                     <Dot color="primary" />
-                    <Typography>&nbsp;Mobile</Typography>
+                    <Typography className={classes.mainChartLegentElement}>Mobile</Typography>
                   </div>
                   <div className={classes.mainChartHeaderLabel}>
                     <Dot color="primary" />
-                    <Typography>&nbsp;Desktop</Typography>
+                    <Typography className={classes.mainChartLegentElement}>Desktop</Typography>
                   </div>
                 </div>
                 <Select
@@ -471,7 +471,6 @@ const styles = theme => ({
   legendElement: {
     display: "flex",
     alignItems: "center",
-    marginRight: theme.spacing.unit * 2
   },
   legendElementText: {
     marginLeft: theme.spacing.unit
@@ -492,16 +491,26 @@ const styles = theme => ({
     width: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    [theme.breakpoints.only("xs")]: {
+      flexWrap: 'wrap',
+    }
   },
   mainChartHeaderLabels: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    [theme.breakpoints.only("xs")]: {
+      order: 3,
+      width: '100%',
+      justifyContent: 'center',
+      marginTop: theme.spacing.unit,
+      marginBottom: theme.spacing.unit,
+    }
   },
   mainChartHeaderLabel: {
     display: "flex",
     alignItems: "center",
-    marginLeft: theme.spacing.unit * 2
+    marginLeft: theme.spacing.unit * 3,
   },
   mainChartSelectRoot: {
     borderColor: theme.palette.text.hint + '80 !important',
@@ -509,6 +518,10 @@ const styles = theme => ({
   mainChartSelect: {
     padding: 10,
     paddingRight: 25
+  },
+  mainChartLegentElement: {
+    fontSize: '18px !important',
+    marginLeft: theme.spacing.unit,
   }
 });
 
