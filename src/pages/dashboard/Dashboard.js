@@ -82,7 +82,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
     <React.Fragment>
       <PageTitle title="Dashboard" button="Latest Reports" />
       <Grid container spacing={32}>
-        <Grid item md={3} sm={6} xs={12}>
+        <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget
             title="Visits Today"
             upperTitle
@@ -135,47 +135,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
             </Grid>
           </Widget>
         </Grid>
-        <Grid item md={3} sm={6} xs={12}>
-          <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
-            <Grid container spacing={16}>
-              <Grid item sm={6}>
-                <PieChart
-                  width={160}
-                  height={144}
-                  margin={{ left: theme.spacing.unit * 2 }}
-                >
-                  <Pie
-                    data={PieChartData}
-                    innerRadius={45}
-                    outerRadius={60}
-                    dataKey="value"
-                  >
-                    {PieChartData.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={theme.palette[entry.color].main}
-                      />
-                    ))}
-                  </Pie>
-                </PieChart>
-              </Grid>
-              <Grid item sm={6}>
-                <div className={classes.pieChartLegendWrapper}>
-                  {PieChartData.map(({ name, value, color }, index) => (
-                    <div key={color} className={classes.legendItemContainer}>
-                      <Dot color={color} />
-                      <Typography>&nbsp;{name}&nbsp;</Typography>
-                      <Typography color="textSecondary">
-                        &nbsp;{value}
-                      </Typography>
-                    </div>
-                  ))}
-                </div>
-              </Grid>
-            </Grid>
-          </Widget>
-        </Grid>
-        <Grid item md={3} sm={6} xs={12}>
+        <Grid item lg={3} md={8} sm={6} xs={12}>
           <Widget
             title="App Performance"
             upperTitle
@@ -234,7 +194,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
             </div>
           </Widget>
         </Grid>
-        <Grid item md={3} sm={6} xs={12}>
+        <Grid item lg={3} md={8} sm={6} xs={12}>
           <Widget
             title="Server Overview"
             upperTitle
@@ -307,6 +267,46 @@ const Dashboard = ({ classes, theme, ...props }) => {
                 </ResponsiveContainer>
               </div>
             </div>
+          </Widget>
+        </Grid>
+        <Grid item lg={3} md={4} sm={6} xs={12}>
+          <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
+            <Grid container spacing={16}>
+              <Grid item sm={6}>
+                <PieChart
+                  width={160}
+                  height={144}
+                  margin={{ left: theme.spacing.unit * 2 }}
+                >
+                  <Pie
+                    data={PieChartData}
+                    innerRadius={45}
+                    outerRadius={60}
+                    dataKey="value"
+                  >
+                    {PieChartData.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={theme.palette[entry.color].main}
+                      />
+                    ))}
+                  </Pie>
+                </PieChart>
+              </Grid>
+              <Grid item sm={6}>
+                <div className={classes.pieChartLegendWrapper}>
+                  {PieChartData.map(({ name, value, color }, index) => (
+                    <div key={color} className={classes.legendItemContainer}>
+                      <Dot color={color} />
+                      <Typography>&nbsp;{name}&nbsp;</Typography>
+                      <Typography color="textSecondary">
+                        &nbsp;{value}
+                      </Typography>
+                    </div>
+                  ))}
+                </div>
+              </Grid>
+            </Grid>
           </Widget>
         </Grid>
         <Grid item xs={12}>
@@ -471,6 +471,7 @@ const styles = theme => ({
   legendElement: {
     display: "flex",
     alignItems: "center",
+    marginRight: theme.spacing.unit * 2,
   },
   legendElementText: {
     marginLeft: theme.spacing.unit
