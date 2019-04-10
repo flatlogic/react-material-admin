@@ -91,6 +91,11 @@ export default {
       child: {
         backgroundColor: "white"
       }
+    },
+    MuiTableCell: {
+      root: {
+        borderBottom: '1px solid rgba(224, 224, 224, .5)',
+      }
     }
   }
 };
