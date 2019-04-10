@@ -92,9 +92,20 @@ export default {
         backgroundColor: "white"
       }
     },
+    MuiTableRow: {
+      root: {
+        height: 56,
+      }
+    },
     MuiTableCell: {
       root: {
         borderBottom: '1px solid rgba(224, 224, 224, .5)',
+      },
+      head: {
+        fontSize: '0.95rem',
+      },
+      body: {
+        fontSize: '0.95rem',
       }
     }
   }

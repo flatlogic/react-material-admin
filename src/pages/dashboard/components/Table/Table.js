@@ -5,12 +5,12 @@ import {
   TableHead,
   TableBody,
   TableCell,
-  Button
 } from "@material-ui/core";
+import { Button } from '../../../../components/Wrappers';
 
 const states = {
-  sent: "primary",
-  pending: "default",
+  sent: "success",
+  pending: "warning",
   declined: "secondary"
 };
 
