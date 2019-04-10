@@ -336,7 +336,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
                   input={
                     <OutlinedInput
                       labelWidth={0}
-                      classes={{ input: classes.mainChartSelect }}
+                      classes={{ notchedOutline: classes.mainChartSelectRoot, input: classes.mainChartSelect }}
                     />
                   }
                   autoWidth
@@ -502,6 +502,9 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     marginLeft: theme.spacing.unit * 2
+  },
+  mainChartSelectRoot: {
+    borderColor: theme.palette.text.hint + '80 !important',
   },
   mainChartSelect: {
     padding: 10,

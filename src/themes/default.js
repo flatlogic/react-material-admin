@@ -87,6 +87,24 @@ export default {
           "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
       }
     },
+    MuiSelect: {
+      icon: {
+        color: "#B9B9B9",
+      }
+    },
+    MuiListItem: {
+      button: {
+        '&:hover, &:focus': {
+          backgroundColor: '#F3F5FF',
+        },
+      },
+      selected: {
+        backgroundColor: '#F3F5FF !important',
+        '&:focus': {
+          backgroundColor: '#F3F5FF',
+        },
+      }
+    },
     MuiTouchRipple: {
       child: {
         backgroundColor: "white"
