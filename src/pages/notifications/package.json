@@ -1,6 +1,0 @@
-{
-  "name": "Notifications",
-  "version": "0.0.0",
-  "main": "NotificationsContainer.js",
-  "private": true
-}
