@@ -26,9 +26,9 @@ const IconsPage = ({ classes, ...props }) => (
         onChange={props.changeActiveTabId}
         className={classes.iconsBar}
       >
-        <Tab label="Material Icons" />
-        <Tab label="Font Awesome" />
-        <Tab label="Line Awesome" />
+        <Tab label="Material Icons" classes={{ root: classes.tab }} />
+        <Tab label="Font Awesome" classes={{ root: classes.tab }} />
+        <Tab label="Line Awesome" classes={{ root: classes.tab }} />
       </Tabs>
       {props.activeTabId === 0 && (
         <div>
@@ -14691,7 +14691,10 @@ const styles = theme => ({
   iconsBar: {
     marginBottom: theme.spacing.unit * 4,
     borderBottom: '1px solid',
-    borderBottomColor: theme.palette.text.hint,
+    borderBottomColor: theme.palette.text.hint + '80',
+  },
+  tab: {
+    color: theme.palette.primary.light + 'CC',
   },
   materailIcon: {
     display: "flex",
