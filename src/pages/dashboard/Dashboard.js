@@ -355,14 +355,14 @@ const Dashboard = ({ classes, theme, ...props }) => {
               >
                 <YAxis
                   ticks={[0, 2500, 5000, 7500]}
-                  tick={{ fill: theme.palette.text.hint, fontSize: 14 }}
-                  stroke={theme.palette.text.hint}
+                  tick={{ fill: theme.palette.text.hint + '80', fontSize: 14 }}
+                  stroke={theme.palette.text.hint  + '80'}
                   tickLine={false}
                 />
                 <XAxis
                   tickFormatter={i => i + 1}
-                  tick={{ fill: theme.palette.text.hint, fontSize: 14 }}
-                  stroke={theme.palette.text.hint}
+                  tick={{ fill: theme.palette.text.hint  + '80', fontSize: 14 }}
+                  stroke={theme.palette.text.hint  + '80'}
                   tickLine={false}
                 />
                 <Area
