@@ -1,13 +1,15 @@
-## React Material Template — material admin dashboard template
-Built with [React](https://facebook.github.io/react/), [Material-UI](https://material-ui.com), [React Router](https://reacttraining.com/react-router/), [Redux](http://redux.js.org/)
+# React Material Admin — Material-UI Dashboard Template
+Built with [React](https://facebook.github.io/react/), [Material-UI](https://material-ui.com), [React Router](https://reacttraining.com/react-router/), [Redux](http://redux.js.org/).
+**No jQuery and Bootstrap!**
 
-[Demo](https://flatlogic.github.io/react-material-template/). Use any credentials to get in.
+[Demo](https://flatlogic.com/admin-dashboards/react-material-admin/demo). Use any credentials to log in.
 
-![image](https://user-images.githubusercontent.com/24964748/55800639-df780300-5adc-11e9-84b7-7c2437088516.png)
+[![image](https://user-images.githubusercontent.com/24964748/55800639-df780300-5adc-11e9-84b7-7c2437088516.png)](https://flatlogic.com/admin-dashboards/react-material-admin/demo)
 
 
 ## Features
-* React
+* React (**16.8.2**)
+* **No jQuery and Bootstrap!**
 * Mobile friendly layout (responsive)
 * Create-react-app under the hood
 * React Router
@@ -39,7 +41,7 @@ You can start by cloning the latest version of React Dashboard on your
 local machine by running:
 
 ```shell
-$ git clone https://github.com/flatlogic/react-material-template.git MyApp
+$ git clone https://github.com/flatlogic/react-material-admin.git MyApp
 $ cd MyApp
 ```
 
@@ -76,10 +78,10 @@ For any additional information please refer to [Flatlogic homepage](https://flat
 - Like our page on [Facebook](https://www.facebook.com/flatlogic/) :thumbsup:
 
 ## More from Flatlogic
-- [Awesome Bootstrap Checkboxes & Radios](https://github.com/flatlogic/awesome-bootstrap-checkbox) - ✅ Pure css way to make inputs look prettier
 - [React Native Starter](https://github.com/flatlogic/react-native-starter) - 🚀 A powerful react native starter template that bootstraps development of your mobile application
-- [React Dashboard](https://github.com/flatlogic/react-dashboard) - 🔥 React Dashboard - isomorphic admin dashboard template with GraphQL
 - [Sing App](https://github.com/flatlogic/sing-app) - 💥 Free and open-source admin dashboard template built with Bootstrap 4
+- [Awesome Bootstrap Checkboxes & Radios](https://github.com/flatlogic/awesome-bootstrap-checkbox) - ✅ Pure css way to make inputs look prettier
+- [React Dashboard](https://github.com/flatlogic/react-dashboard) - 🔥 React Dashboard - isomorphic admin dashboard template with GraphQL
 - [Light Blue Dashboard](https://github.com/flatlogic/light-blue-dashboard) - 💦 Free and open-source admin dashboard template built with Bootstrap
 
 ## Premium themes

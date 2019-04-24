@@ -103,7 +103,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
           />
         )}
       </IconButton>
-      <Typography variant="h6" weight="medium" className={classes.logotype}>Material Dashboard</Typography>
+      <Typography variant="h6" weight="medium" className={classes.logotype}>React Material Admin</Typography>
       <div className={classes.grow} />
       <div
         className={classNames(classes.search, {
