@@ -98,7 +98,7 @@ export default {
           backgroundColor: '#F3F5FF',
         },
       },
-      selected: {
+      "&$selected": {
         backgroundColor: '#F3F5FF !important',
         '&:focus': {
           backgroundColor: '#F3F5FF',
