@@ -104,7 +104,7 @@ const styles = theme => ({
     boxShadow: 'none',
   },
   notificationIconContainer: {
-    width: 45,
+    minWidth: 45,
     height: 45,
     borderRadius: 45,
     display: 'flex',

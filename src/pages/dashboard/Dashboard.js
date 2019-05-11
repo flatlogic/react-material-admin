@@ -272,33 +272,33 @@ const Dashboard = ({ classes, theme, ...props }) => {
         <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
             <Grid container spacing={16}>
-              <Grid item sm={6}>
-                <PieChart
-                  width={160}
-                  height={144}
-                  margin={{ left: theme.spacing.unit * 2 }}
-                >
-                  <Pie
-                    data={PieChartData}
-                    innerRadius={45}
-                    outerRadius={60}
-                    dataKey="value"
+              <Grid item xs={6}>
+                <ResponsiveContainer width="100%" height={144}>
+                  <PieChart
+                    margin={{ left: theme.spacing.unit * 2 }}
                   >
-                    {PieChartData.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={theme.palette[entry.color].main}
-                      />
-                    ))}
-                  </Pie>
-                </PieChart>
+                    <Pie
+                      data={PieChartData}
+                      innerRadius={45}
+                      outerRadius={60}
+                      dataKey="value"
+                    >
+                      {PieChartData.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={theme.palette[entry.color].main}
+                        />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                  </ResponsiveContainer>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={6}>
                 <div className={classes.pieChartLegendWrapper}>
                   {PieChartData.map(({ name, value, color }, index) => (
                     <div key={color} className={classes.legendItemContainer}>
                       <Dot color={color} />
-                      <Typography>&nbsp;{name}&nbsp;</Typography>
+                      <Typography style={{ whiteSpace: 'nowrap' }}>&nbsp;{name}&nbsp;</Typography>
                       <Typography color="textSecondary">
                         &nbsp;{value}
                       </Typography>
@@ -311,6 +311,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
         </Grid>
         <Grid item xs={12}>
           <Widget
+            bodyClass={classes.mainChartBody}
             header={
               <div className={classes.mainChartHeader}>
                 <Typography variant="headline" color="textSecondary">
@@ -348,7 +349,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
               </div>
             }
           >
-            <ResponsiveContainer width="100%" height={350}>
+            <ResponsiveContainer width="100%" minWidth={500} height={350}>
               <ComposedChart
                 margin={{ top: 0, right: -15, left: -15, bottom: 0 }}
                 data={mainChartData}
@@ -488,6 +489,9 @@ const styles = theme => ({
   serverOverviewElementChartWrapper: {
     width: "100%"
   },
+  mainChartBody: {
+    overflowX: 'auto',
+  },
   mainChartHeader: {
     width: "100%",
     display: "flex",
@@ -504,8 +508,8 @@ const styles = theme => ({
       order: 3,
       width: '100%',
       justifyContent: 'center',
-      marginTop: theme.spacing.unit,
-      marginBottom: theme.spacing.unit,
+      marginTop: theme.spacing.unit * 3,
+      marginBottom: theme.spacing.unit * 2,
     }
   },
   mainChartHeaderLabel: {

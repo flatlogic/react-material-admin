@@ -351,8 +351,12 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 4
   },
   copyright: {
-    position: "absolute",
-    bottom: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 4,
+    whiteSpace: 'nowrap',
+    [theme.breakpoints.up("md")]: {
+      position: "absolute",
+      bottom: theme.spacing.unit * 2,
+    }
   }
 });
 

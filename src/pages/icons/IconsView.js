@@ -14701,7 +14701,8 @@ const styles = theme => ({
     paddingLeft: `${theme.spacing.unit * 4}px !important`,
     paddingRight: `${theme.spacing.unit * 4}px !important`,
     color: theme.palette.text.secondary,
-    fontSize: 24
+    fontSize: 24,
+    overflowX: 'hidden'
   },
   materialIconText: {
     marginLeft: theme.spacing.unit * 2,
