@@ -6,6 +6,7 @@ export default {
 
 export const overrides = {
   typography: {
+    useNextVariants: true,
     h1: {
       fontSize: '3rem',
     },
