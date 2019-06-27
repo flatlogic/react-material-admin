@@ -4,6 +4,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
+    "@types/googlemaps": "^3.36.5",
+    "@types/markerclustererplus": "^2.1.33",
     "apexcharts": "^3.6.3",
     "classnames": "^2.2.6",
     "font-awesome": "4.7.0",
@@ -23,7 +25,8 @@
     "recompose": "^0.30.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "tinycolor2": "^1.4.1"
+    "tinycolor2": "^1.4.1",
+    "typescript": "^3.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
