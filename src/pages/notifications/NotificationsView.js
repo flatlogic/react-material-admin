@@ -65,7 +65,7 @@ const NotificationsPage = ({ classes, ...props}) => (
   const Page = () => {
     <div>
       <ToastContainer />
-      <button onClick={() => toast('Toast Mesasge')}>
+      <button onClick={() => toast('Toast Message')}>
         show notification
       </button>
     </div>
