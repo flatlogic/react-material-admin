@@ -27,7 +27,7 @@ const Widget = ({
           props.header
         ) : (
           <React.Fragment>
-            <Typography variant="headline" color="textSecondary">
+            <Typography variant="h5" color="textSecondary">
               {title}
             </Typography>
             {!disableWidgetMenu && (

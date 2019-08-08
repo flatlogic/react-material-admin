@@ -47,9 +47,9 @@ const NotificationsPage = ({ classes, ...props}) => (
         <Widget title="Notifications Types" disableWidgetMenu>
           <Typography>Different types of notifications for lost of use cases. Custom classes are also supported.</Typography>
           <div className={classes.buttonsContainer}>
-            <Button variant="contained" color="primary" onClick={() => props.handleNotificationCall('info')} className={classnames(classes.notificationCallButton)}>Info Message</Button>
-            <Button variant="contained" color="secondary" onClick={() => props.handleNotificationCall('error')} className={classnames(classes.notificationCallButton)}>Error + Retry Message</Button>
-            <Button variant="contained" color="success" onClick={() => props.handleNotificationCall('success')} className={classnames(classes.notificationCallButton)}>Success Message</Button>
+            <Button variant="contained" colortheme="primary" onClick={() => props.handleNotificationCall('info')} className={classnames(classes.notificationCallButton)}>Info Message</Button>
+            <Button variant="contained" colortheme="warning" onClick={() => props.handleNotificationCall('error')} className={classnames(classes.notificationCallButton)}>Error + Retry Message</Button>
+            <Button variant="contained" colortheme="success" onClick={() => props.handleNotificationCall('success')} className={classnames(classes.notificationCallButton)}>Success Message</Button>
           </div>
         </Widget>
       </Grid>

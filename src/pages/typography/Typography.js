@@ -36,22 +36,22 @@ const TypographyPage = ({ classes }) => (
       <Grid item xs={12} md={6}>
         <Widget title="Typography Colors" disableWidgetMenu>
           <div className={classes.dashedBorder}>
-            <Typography variant="h1" color="primary" className={classes.text}>
+            <Typography variant="h1" colortheme="primary" className={classes.text}>
               h1. Heading
             </Typography>
-            <Typography variant="h2" color="success" className={classes.text}>
+            <Typography variant="h2" colortheme="success" className={classes.text}>
               h2. Heading
             </Typography>
-            <Typography variant="h3" color="secondary" className={classes.text}>
+            <Typography variant="h3" colortheme="secondary" className={classes.text}>
               h3. Heading
             </Typography>
-            <Typography variant="h4" color="warning" className={classes.text}>
+            <Typography variant="h4" colortheme="secondary" className={classes.text}>
               h4. Heading
             </Typography>
-            <Typography variant="h5" color="primary" colorBrightness="light" className={classes.text}>
+            <Typography variant="h5" colortheme="primary" colorBrightness="light" className={classes.text}>
               h5. Heading
             </Typography>
-            <Typography variant="h6" color="info">
+            <Typography variant="h6" colortheme="info">
               h6. Heading
             </Typography>
           </div>

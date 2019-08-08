@@ -7,7 +7,12 @@ import Layout from './Layout';
 import Error from '../pages/error';
 import Login from '../pages/login';
 
-const theme = createMuiTheme({...themes.default, ...overrides});
+const theme = createMuiTheme({
+    ...themes.default,
+    ...overrides,
+    typography: {
+        useNextVariants: true,
+    },});
 
 const PrivateRoute = ({ component, ...rest }) => {
   return (
@@ -16,7 +21,7 @@ const PrivateRoute = ({ component, ...rest }) => {
       localStorage.getItem('id_token') ? (
         React.createElement(component, props)
       ) : (
-        <Redirect
+          <Redirect
           to={{
             pathname: '/login',
             state: { from: props.location },

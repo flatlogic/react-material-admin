@@ -21,8 +21,8 @@ const TableComponent = ({ data }) => {
     <Table className="mb-0">
       <TableHead>
         <TableRow>
-          {keys.map(key => (
-            <TableCell>{key}</TableCell>
+          {keys.map((key, i) => (
+            <TableCell key={i}>{key}</TableCell>
           ))}
         </TableRow>
       </TableHead>
@@ -37,7 +37,7 @@ const TableComponent = ({ data }) => {
             <TableCell>{city}</TableCell>
             <TableCell>
               <Button
-                color={states[status.toLowerCase()]}
+                colortheme={states[status.toLowerCase()]}
                 size="small"
                 className="px-2"
                 variant="contained"

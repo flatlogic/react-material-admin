@@ -61,7 +61,7 @@ class BigStat extends PureComponent {
             <Typography size="xxl" color="textSecondary">
               {total[value]}
             </Typography>
-            <Typography color={total.percent.profit ? "success" : "secondary"}>
+            <Typography color={total.percent.profit ? "primary" : "secondary"}>
               &nbsp;{total.percent.profit ? "+" : "-"}
               {total.percent.value}%
             </Typography>

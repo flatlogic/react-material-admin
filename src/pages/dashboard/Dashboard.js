@@ -314,7 +314,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
             bodyClass={classes.mainChartBody}
             header={
               <div className={classes.mainChartHeader}>
-                <Typography variant="headline" color="textSecondary">
+                <Typography variant="h5" color="textSecondary">
                   Daily Line Chart
                 </Typography>
                 <div className={classes.mainChartHeaderLabels}>

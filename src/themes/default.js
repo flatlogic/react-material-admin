@@ -98,13 +98,15 @@ export default {
           backgroundColor: '#F3F5FF',
         },
       },
-      selected: {
-        backgroundColor: '#F3F5FF !important',
-        '&:focus': {
-          backgroundColor: '#F3F5FF',
-        },
-      }
-    },
+        "root": {
+          "&$selected" : {
+              backgroundColor: '#F3F5FF !important',
+            },
+            '&:focus': {
+              backgroundColor: '#F3F5FF',
+            },
+        }
+  },
     MuiTouchRipple: {
       child: {
         backgroundColor: "white"

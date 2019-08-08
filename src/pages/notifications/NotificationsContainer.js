@@ -17,7 +17,7 @@ const positions = [
 
 export default compose(
   withStyles(theme => ({
-    progress: {
+    /*progress: {
       visibility: "hidden"
     },
     notification: {
@@ -29,7 +29,7 @@ export default compose(
     },
     notificationComponent: {
       paddingRight: theme.spacing.unit * 4
-    }
+    }*/
   })),
   withState("notificationsPosition", "setNotificationPosition", 2),
   withState("errorToastId", "setErrorToastId", null),
