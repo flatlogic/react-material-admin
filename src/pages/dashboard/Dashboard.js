@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   LinearProgress,
   Select,
   OutlinedInput,
   MenuItem,
-  withStyles,
 } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -18,70 +18,40 @@ import {
   Pie,
   Cell,
   YAxis,
-  XAxis
+  XAxis,
 } from "recharts";
 
+// styles
+import useStyles from "./styles";
+
+// components
 import mock from "./mock";
 import Widget from "../../components/Widget";
 import PageTitle from "../../components/PageTitle";
 import { Typography } from "../../components/Wrappers";
 import Dot from "../../components/Sidebar/components/Dot";
-
 import Table from "./components/Table/Table";
 import BigStat from "./components/BigStat/BigStat";
 
-const getRandomData = (length, min, max, multiplier = 10, maxDiff = 10) => {
-  const array = new Array(length).fill();
-  let lastValue;
-
-  return array.map((item, index) => {
-    let randomValue = Math.floor(Math.random() * multiplier + 1);
-
-    while (
-      randomValue <= min ||
-      randomValue >= max ||
-      (lastValue && randomValue - lastValue > maxDiff)
-    ) {
-      randomValue = Math.floor(Math.random() * multiplier + 1);
-    }
-
-    lastValue = randomValue;
-
-    return { value: randomValue };
-  });
-};
-
-const getMainChartData = () => {
-  const resultArray = [];
-  const tablet = getRandomData(31, 3500, 6500, 7500, 1000);
-  const desktop = getRandomData(31, 1500, 7500, 7500, 1500);
-  const mobile = getRandomData(31, 1500, 7500, 7500, 1500);
-
-  for (let i = 0; i < tablet.length; i++) {
-    resultArray.push({
-      tablet: tablet[i].value,
-      desktop: desktop[i].value,
-      mobile: mobile[i].value
-    });
-  }
-
-  return resultArray;
-};
-
 const mainChartData = getMainChartData();
-
 const PieChartData = [
   { name: "Group A", value: 400, color: "primary" },
   { name: "Group B", value: 300, color: "secondary" },
   { name: "Group C", value: 300, color: "warning" },
-  { name: "Group D", value: 200, color: "success" }
+  { name: "Group D", value: 200, color: "success" },
 ];
 
-const Dashboard = ({ classes, theme, ...props }) => {
+export default function Dashboard(props) {
+  var classes = useStyles();
+  var theme = useTheme();
+
+  // local
+  var [mainChartState, setMainChartState] = useState("monthly");
+
   return (
-    <React.Fragment>
+    <>
       <PageTitle title="Dashboard" button="Latest Reports" />
-      <Grid container spacing={32}>
+      <Grid container spacing={4}>
         <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget
             title="Visits Today"
@@ -101,9 +71,9 @@ const Dashboard = ({ classes, theme, ...props }) => {
                   { value: 15 },
                   { value: 10 },
                   { value: 17 },
-                  { value: 18 }
+                  { value: 18 },
                 ]}
-                margin={{ left: theme.spacing.unit * 2 }}
+                margin={{ left: theme.spacing(2) }}
               >
                 <Line
                   type="natural"
@@ -121,15 +91,21 @@ const Dashboard = ({ classes, theme, ...props }) => {
               alignItems="center"
             >
               <Grid item>
-                <Typography color="textSecondary">Registrations</Typography>
+                <Typography color="text" colorBrightness="secondary">
+                  Registrations
+                </Typography>
                 <Typography size="md">860</Typography>
               </Grid>
               <Grid item>
-                <Typography color="textSecondary">Sign Out</Typography>
+                <Typography color="text" colorBrightness="secondary">
+                  Sign Out
+                </Typography>
                 <Typography size="md">32</Typography>
               </Grid>
               <Grid item>
-                <Typography color="textSecondary">Rate</Typography>
+                <Typography color="text" colorBrightness="secondary">
+                  Rate
+                </Typography>
                 <Typography size="md">3.25%</Typography>
               </Grid>
             </Grid>
@@ -146,7 +122,8 @@ const Dashboard = ({ classes, theme, ...props }) => {
               <div className={classes.legendElement}>
                 <Dot color="warning" />
                 <Typography
-                  color="textSecondary"
+                  color="text"
+                  colorBrightness="secondary"
                   className={classes.legendElementText}
                 >
                   Integration
@@ -155,7 +132,8 @@ const Dashboard = ({ classes, theme, ...props }) => {
               <div className={classes.legendElement}>
                 <Dot color="primary" />
                 <Typography
-                  color="textSecondary"
+                  color="text"
+                  colorBrightness="secondary"
                   className={classes.legendElementText}
                 >
                   SDK
@@ -165,7 +143,8 @@ const Dashboard = ({ classes, theme, ...props }) => {
             <div className={classes.progressSection}>
               <Typography
                 size="md"
-                color="textSecondary"
+                color="text"
+                colorBrightness="secondary"
                 className={classes.progressSectionTitle}
               >
                 Integration
@@ -180,7 +159,8 @@ const Dashboard = ({ classes, theme, ...props }) => {
             <div>
               <Typography
                 size="md"
-                color="textSecondary"
+                color="text"
+                colorBrightness="secondary"
                 className={classes.progressSectionTitle}
               >
                 SDK
@@ -203,7 +183,8 @@ const Dashboard = ({ classes, theme, ...props }) => {
           >
             <div className={classes.serverOverviewElement}>
               <Typography
-                color="textSecondary"
+                color="text"
+                colorBrightness="secondary"
                 className={classes.serverOverviewElementText}
               >
                 60% / 37°С / 3.3 Ghz
@@ -225,7 +206,8 @@ const Dashboard = ({ classes, theme, ...props }) => {
             </div>
             <div className={classes.serverOverviewElement}>
               <Typography
-                color="textSecondary"
+                color="text"
+                colorBrightness="secondary"
                 className={classes.serverOverviewElementText}
               >
                 54% / 31°С / 3.3 Ghz
@@ -247,7 +229,8 @@ const Dashboard = ({ classes, theme, ...props }) => {
             </div>
             <div className={classes.serverOverviewElement}>
               <Typography
-                color="textSecondary"
+                color="text"
+                colorBrightness="secondary"
                 className={classes.serverOverviewElementText}
               >
                 57% / 21°С / 3.3 Ghz
@@ -271,12 +254,10 @@ const Dashboard = ({ classes, theme, ...props }) => {
         </Grid>
         <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
-            <Grid container spacing={16}>
+            <Grid container spacing={2}>
               <Grid item xs={6}>
                 <ResponsiveContainer width="100%" height={144}>
-                  <PieChart
-                    margin={{ left: theme.spacing.unit * 2 }}
-                  >
+                  <PieChart margin={{ left: theme.spacing(2) }}>
                     <Pie
                       data={PieChartData}
                       innerRadius={45}
@@ -291,15 +272,17 @@ const Dashboard = ({ classes, theme, ...props }) => {
                       ))}
                     </Pie>
                   </PieChart>
-                  </ResponsiveContainer>
+                </ResponsiveContainer>
               </Grid>
               <Grid item xs={6}>
                 <div className={classes.pieChartLegendWrapper}>
                   {PieChartData.map(({ name, value, color }, index) => (
                     <div key={color} className={classes.legendItemContainer}>
                       <Dot color={color} />
-                      <Typography style={{ whiteSpace: 'nowrap' }}>&nbsp;{name}&nbsp;</Typography>
-                      <Typography color="textSecondary">
+                      <Typography style={{ whiteSpace: "nowrap" }}>
+                        &nbsp;{name}&nbsp;
+                      </Typography>
+                      <Typography color="text" colorBrightness="secondary">
                         &nbsp;{value}
                       </Typography>
                     </div>
@@ -314,30 +297,43 @@ const Dashboard = ({ classes, theme, ...props }) => {
             bodyClass={classes.mainChartBody}
             header={
               <div className={classes.mainChartHeader}>
-                <Typography variant="h5" color="textSecondary">
+                <Typography
+                  variant="h5"
+                  color="text"
+                  colorBrightness="secondary"
+                >
                   Daily Line Chart
                 </Typography>
                 <div className={classes.mainChartHeaderLabels}>
                   <div className={classes.mainChartHeaderLabel}>
                     <Dot color="warning" />
-                    <Typography className={classes.mainChartLegentElement}>Tablet</Typography>
+                    <Typography className={classes.mainChartLegentElement}>
+                      Tablet
+                    </Typography>
                   </div>
                   <div className={classes.mainChartHeaderLabel}>
                     <Dot color="primary" />
-                    <Typography className={classes.mainChartLegentElement}>Mobile</Typography>
+                    <Typography className={classes.mainChartLegentElement}>
+                      Mobile
+                    </Typography>
                   </div>
                   <div className={classes.mainChartHeaderLabel}>
                     <Dot color="primary" />
-                    <Typography className={classes.mainChartLegentElement}>Desktop</Typography>
+                    <Typography className={classes.mainChartLegentElement}>
+                      Desktop
+                    </Typography>
                   </div>
                 </div>
                 <Select
-                  value={props.mainChartState}
-                  onChange={e => props.setMainChartState(e.target.value)}
+                  value={mainChartState}
+                  onChange={e => setMainChartState(e.target.value)}
                   input={
                     <OutlinedInput
                       labelWidth={0}
-                      classes={{ notchedOutline: classes.mainChartSelectRoot, input: classes.mainChartSelect }}
+                      classes={{
+                        notchedOutline: classes.mainChartSelectRoot,
+                        input: classes.mainChartSelect,
+                      }}
                     />
                   }
                   autoWidth
@@ -356,14 +352,14 @@ const Dashboard = ({ classes, theme, ...props }) => {
               >
                 <YAxis
                   ticks={[0, 2500, 5000, 7500]}
-                  tick={{ fill: theme.palette.text.hint + '80', fontSize: 14 }}
-                  stroke={theme.palette.text.hint  + '80'}
+                  tick={{ fill: theme.palette.text.hint + "80", fontSize: 14 }}
+                  stroke={theme.palette.text.hint + "80"}
                   tickLine={false}
                 />
                 <XAxis
                   tickFormatter={i => i + 1}
-                  tick={{ fill: theme.palette.text.hint  + '80', fontSize: 14 }}
-                  stroke={theme.palette.text.hint  + '80'}
+                  tick={{ fill: theme.palette.text.hint + "80", fontSize: 14 }}
+                  stroke={theme.palette.text.hint + "80"}
                   tickLine={false}
                 />
                 <Area
@@ -389,7 +385,7 @@ const Dashboard = ({ classes, theme, ...props }) => {
                   dot={{
                     stroke: theme.palette.warning.dark,
                     strokeWidth: 2,
-                    fill: theme.palette.warning.main
+                    fill: theme.palette.warning.main,
                   }}
                 />
               </ComposedChart>
@@ -412,122 +408,45 @@ const Dashboard = ({ classes, theme, ...props }) => {
           </Widget>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </>
   );
-};
+}
 
-const styles = theme => ({
-  card: {
-    minHeight: "100%",
-    display: "flex",
-    flexDirection: "column"
-  },
-  visitsNumberContainer: {
-    display: "flex",
-    alignItems: "center",
-    flexGrow: 1,
-    paddingBottom: theme.spacing.unit
-  },
-  progressSection: {
-    marginBottom: theme.spacing.unit
-  },
-  progressTitle: {
-    marginBottom: theme.spacing.unit * 2
-  },
-  progress: {
-    marginBottom: theme.spacing.unit,
-    backgroundColor: theme.palette.primary.main
-  },
-  pieChartLegendWrapper: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "flex-end",
-    marginRight: theme.spacing.unit
-  },
-  legendItemContainer: {
-    display: "flex",
-    alignItems: "center",
-    marginBottom: theme.spacing.unit
-  },
-  fullHeightBody: {
-    display: "flex",
-    flexGrow: 1,
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  tableWidget: {
-    overflowX: "auto"
-  },
-  progressBar: {
-    backgroundColor: theme.palette.warning.main
-  },
-  performanceLegendWrapper: {
-    display: "flex",
-    flexGrow: 1,
-    alignItems: "center",
-    marginBottom: theme.spacing.unit
-  },
-  legendElement: {
-    display: "flex",
-    alignItems: "center",
-    marginRight: theme.spacing.unit * 2,
-  },
-  legendElementText: {
-    marginLeft: theme.spacing.unit
-  },
-  serverOverviewElement: {
-    display: "flex",
-    alignItems: "center",
-    maxWidth: "100%"
-  },
-  serverOverviewElementText: {
-    minWidth: 145,
-    paddingRight: theme.spacing.unit * 2
-  },
-  serverOverviewElementChartWrapper: {
-    width: "100%"
-  },
-  mainChartBody: {
-    overflowX: 'auto',
-  },
-  mainChartHeader: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    [theme.breakpoints.only("xs")]: {
-      flexWrap: 'wrap',
+// #######################################################################
+function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
+  var array = new Array(length).fill();
+  let lastValue;
+
+  return array.map((item, index) => {
+    let randomValue = Math.floor(Math.random() * multiplier + 1);
+
+    while (
+      randomValue <= min ||
+      randomValue >= max ||
+      (lastValue && randomValue - lastValue > maxDiff)
+    ) {
+      randomValue = Math.floor(Math.random() * multiplier + 1);
     }
-  },
-  mainChartHeaderLabels: {
-    display: "flex",
-    alignItems: "center",
-    [theme.breakpoints.only("xs")]: {
-      order: 3,
-      width: '100%',
-      justifyContent: 'center',
-      marginTop: theme.spacing.unit * 3,
-      marginBottom: theme.spacing.unit * 2,
-    }
-  },
-  mainChartHeaderLabel: {
-    display: "flex",
-    alignItems: "center",
-    marginLeft: theme.spacing.unit * 3,
-  },
-  mainChartSelectRoot: {
-    borderColor: theme.palette.text.hint + '80 !important',
-  },
-  mainChartSelect: {
-    padding: 10,
-    paddingRight: 25
-  },
-  mainChartLegentElement: {
-    fontSize: '18px !important',
-    marginLeft: theme.spacing.unit,
+
+    lastValue = randomValue;
+
+    return { value: randomValue };
+  });
+}
+
+function getMainChartData() {
+  var resultArray = [];
+  var tablet = getRandomData(31, 3500, 6500, 7500, 1000);
+  var desktop = getRandomData(31, 1500, 7500, 7500, 1500);
+  var mobile = getRandomData(31, 1500, 7500, 7500, 1500);
+
+  for (let i = 0; i < tablet.length; i++) {
+    resultArray.push({
+      tablet: tablet[i].value,
+      desktop: desktop[i].value,
+      mobile: mobile[i].value,
+    });
   }
-});
 
-export default withStyles(styles, { withTheme: true })(Dashboard);
+  return resultArray;
+}

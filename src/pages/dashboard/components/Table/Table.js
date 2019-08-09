@@ -6,23 +6,26 @@ import {
   TableBody,
   TableCell,
 } from "@material-ui/core";
-import { Button } from '../../../../components/Wrappers';
+
+// components
+import { Button } from "../../../../components/Wrappers";
 
 const states = {
   sent: "success",
   pending: "warning",
-  declined: "secondary"
+  declined: "secondary",
 };
 
-const TableComponent = ({ data }) => {
-  const keys = Object.keys(data[0]).map(i => i.toUpperCase());
+export default function TableComponent({ data }) {
+  var keys = Object.keys(data[0]).map(i => i.toUpperCase());
   keys.shift(); // delete "id" key
+
   return (
     <Table className="mb-0">
       <TableHead>
         <TableRow>
-          {keys.map((key, i) => (
-            <TableCell key={i}>{key}</TableCell>
+          {keys.map(key => (
+            <TableCell key={key}>{key}</TableCell>
           ))}
         </TableRow>
       </TableHead>
@@ -50,6 +53,4 @@ const TableComponent = ({ data }) => {
       </TableBody>
     </Table>
   );
-};
-
-export default TableComponent;
+}
