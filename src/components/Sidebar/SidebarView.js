@@ -57,14 +57,13 @@ const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermane
         [classes.drawerClose]: !isSidebarOpened,
       })}
       classes={{
-        paper: classNames({
+        paper: classNames(classes.drawer, {
           [classes.drawerOpen]: isSidebarOpened,
           [classes.drawerClose]: !isSidebarOpened,
         }),
       }}
       open={isSidebarOpened}
     >
-      <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
         <IconButton
           onClick={toggleSidebar}
@@ -93,6 +92,10 @@ const styles = theme => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
+    top: theme.spacing.unit * 8,
+    [theme.breakpoints.down("sm")]: {
+      top: 0,
+    }
   },
   drawerOpen: {
     width: drawerWidth,
@@ -121,9 +124,6 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-  },
-  sidebarList: {
-    marginTop: theme.spacing.unit * 6,
   },
   mobileBackButton: {
     marginTop: theme.spacing.unit * .5,
