@@ -1,6 +1,6 @@
 {
-  "name": "WidgetContainer",
+  "name": "Widget",
   "version": "0.0.0",
   "private": true,
-  "main": "WidgetContainer.js"
+  "main": "Widget.js"
 }

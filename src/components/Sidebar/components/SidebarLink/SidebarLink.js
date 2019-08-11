@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Collapse,
   Divider,
@@ -7,29 +7,32 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-  withStyles
 } from "@material-ui/core";
+import { Inbox as InboxIcon } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
-import { Inbox as InboxIcon } from "@material-ui/icons";
 
+// styles
+import useStyles from "./styles";
+
+// components
 import Dot from "../Dot";
 
-const SidebarLink = ({
+export default function SidebarLink({
   link,
   icon,
   label,
   children,
   location,
-  classes,
   isSidebarOpened,
   nested,
   type,
-  isOpen,
-  toggleCollapse
-}) => {
+}) {
+  var classes = useStyles();
 
-  const isLinkActive =
+  // local
+  var [isOpen, setIsOpen] = useState(false);
+  var isLinkActive =
     link &&
     (location.pathname === link || location.pathname.indexOf(link) !== -1);
 
@@ -37,7 +40,7 @@ const SidebarLink = ({
     return (
       <Typography
         className={classnames(classes.linkText, classes.sectionTitle, {
-          [classes.linkTextHidden]: !isSidebarOpened
+          [classes.linkTextHidden]: !isSidebarOpened,
         })}
       >
         {label}
@@ -56,14 +59,14 @@ const SidebarLink = ({
         classes={{
           root: classnames(classes.linkRoot, {
             [classes.linkActive]: isLinkActive && !nested,
-            [classes.linkNested]: nested
-          })
+            [classes.linkNested]: nested,
+          }),
         }}
         disableRipple
       >
         <ListItemIcon
           className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive
+            [classes.linkIconActive]: isLinkActive,
           })}
         >
           {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
@@ -72,8 +75,8 @@ const SidebarLink = ({
           classes={{
             primary: classnames(classes.linkText, {
               [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened
-            })
+              [classes.linkTextHidden]: !isSidebarOpened,
+            }),
           }}
           primary={label}
         />
@@ -81,7 +84,7 @@ const SidebarLink = ({
     );
 
   return (
-    <React.Fragment>
+    <>
       <ListItem
         button
         component={link && Link}
@@ -92,7 +95,7 @@ const SidebarLink = ({
       >
         <ListItemIcon
           className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive
+            [classes.linkIconActive]: isLinkActive,
           })}
         >
           {icon ? icon : <InboxIcon />}
@@ -101,8 +104,8 @@ const SidebarLink = ({
           classes={{
             primary: classnames(classes.linkText, {
               [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened
-            })
+              [classes.linkTextHidden]: !isSidebarOpened,
+            }),
           }}
           primary={label}
         />
@@ -128,68 +131,15 @@ const SidebarLink = ({
           </List>
         </Collapse>
       )}
-    </React.Fragment>
+    </>
   );
-};
 
-const styles = theme => ({
-  link: {
-    textDecoration: "none",
-    paddingLeft: theme.spacing.unit * 4.5,
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-    "&:hover, &:focus": {
-      backgroundColor: theme.palette.background.light
+  // ###########################################################
+
+  function toggleCollapse(e) {
+    if (isSidebarOpened) {
+      e.preventDefault();
+      setIsOpen(!isOpen);
     }
-  },
-  linkActive: {
-    backgroundColor: theme.palette.background.light
-  },
-  linkNested: {
-    paddingLeft: 0,
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    "&:hover, &:focus": {
-      backgroundColor: "#FFFFFF"
-    }
-  },
-  linkIcon: {
-    marginRight: theme.spacing.unit,
-    color: theme.palette.text.secondary + "99",
-    transition: theme.transitions.create("color"),
-    width: 24,
-    display: "flex",
-    justifyContent: "center"
-  },
-  linkIconActive: {
-    color: theme.palette.primary.main
-  },
-  linkText: {
-    padding: 0,
-    color: theme.palette.text.secondary + "CC",
-    transition: theme.transitions.create(["opacity", "color"]),
-    fontSize: 16
-  },
-  linkTextActive: {
-    color: theme.palette.text.primary
-  },
-  linkTextHidden: {
-    opacity: 0
-  },
-  nestedList: {
-    paddingLeft: theme.spacing.unit * 4.5 + 40
-  },
-  sectionTitle: {
-    marginLeft: theme.spacing.unit * 4.5,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
-  },
-  divider: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 4,
-    height: 1,
-    backgroundColor: "#D8D8D880"
   }
-});
-
-export default withStyles(styles, { withTheme: true })(SidebarLink);
+}

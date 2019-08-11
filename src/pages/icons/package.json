@@ -1,6 +1,6 @@
 {
   "name": "Icons",
   "version": "0.0.0",
-  "main": "IconsContainer.js",
+  "main": "Icons.js",
   "private": true
 }

@@ -2,5 +2,5 @@
   "name": "Charts",
   "version": "1.0.0",
   "private": true,
-  "main": "ChartsContainer.js"
+  "main": "Charts.js"
 }
