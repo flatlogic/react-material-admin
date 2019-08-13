@@ -40,7 +40,7 @@ export default function TableComponent({ data }) {
             <TableCell>{city}</TableCell>
             <TableCell>
               <Button
-                colortheme={states[status.toLowerCase()]}
+                color={states[status.toLowerCase()]}
                 size="small"
                 className="px-2"
                 variant="contained"
