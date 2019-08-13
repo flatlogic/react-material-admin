@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
-import { useTheme } from "@material-ui/styles";
 import { ToastContainer, toast } from "react-toastify";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -27,7 +26,6 @@ const positions = [
 ];
 
 export default function NotificationsPage(props) {
-  var theme = useTheme();
   var classes = useStyles();
 
   // local
@@ -124,7 +122,7 @@ export default function NotificationsPage(props) {
               </Button>
               <Button
                 variant="contained"
-                style={{ color: theme.palette.success.main }}
+                color="success"
                 onClick={() => handleNotificationCall("success")}
                 className={classnames(classes.notificationCallButton)}
               >
