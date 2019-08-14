@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  BrowserRouter,
   Route,
   Switch,
   Redirect,
@@ -35,7 +34,6 @@ function Layout(props) {
 
   return (
     <div className={classes.root}>
-      <BrowserRouter>
         <>
           <Header history={props.history} />
           <Sidebar />
@@ -61,7 +59,6 @@ function Layout(props) {
             </Switch>
           </div>
         </>
-      </BrowserRouter>
     </div>
   );
 }
