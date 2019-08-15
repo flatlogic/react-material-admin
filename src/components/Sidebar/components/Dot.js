@@ -15,6 +15,10 @@ var useStyles = makeStyles(theme => ({
     width: 8,
     height: 8,
   },
+  dotSuperLarge: {
+    width: 18,
+    height: 18,
+  }
 }));
 
 export default function Dot({ size, color }) {
@@ -26,6 +30,7 @@ export default function Dot({ size, color }) {
       className={classnames(classes.dotBase, {
         [classes.dotLarge]: size === "large",
         [classes.dotSmall]: size === "small",
+        [classes.dotSuperLarge]: size === "superlarge",
       })}
       style={{
         backgroundColor:
