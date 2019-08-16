@@ -41,18 +41,24 @@ function Layout(props) {
           <div className={classes.fakeToolbar} />
           <Switch>
             <Route path="/app/dashboard" component={Dashboard} />
-            <Route path="/app/typography" component={Typography} />
+            <Route path="/app/core/typography" component={Typography} />
             <Route path="/app/tables" component={Tables} />
-            <Route path="/app/notifications" component={Notifications} />
+            <Route path="/app/ui/notifications" component={Notifications} />
             <Route
               exact
               path="/app/ui"
               render={() => <Redirect to="/app/ui/icons" />}
             />
+            <Route
+              exact
+              path="/app/core"
+              render={() => <Redirect to="/app/core/typography" />}
+            />
             <Route path="/app/charts" component={Charts} />
             <Route path="/app/maps" component={Maps} />
-            <Route path="/app/colors" component={Colors} />
+            <Route path="/app/core/colors" component={Colors} />
             <Route path="/app/ui/icons" component={Icons} />
+
           </Switch>
         </div>
       </>

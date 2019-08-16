@@ -9,28 +9,29 @@ import {
 } from "@material-ui/core";
 import Dot from "../../components/Sidebar/components/Dot";
 import useStyles from "./styles";
-import Link from '@material-ui/core/Link';
+import Link from "@material-ui/core/Link";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-import { Typography } from "../../components/Wrappers";
+import { Typography, Button } from "../../components/Wrappers";
 
 export default function Colors() {
   const classes = useStyles();
   return (
     <>
-      <PageTitle title="Colors" />
-      <Grid container>
+      <PageTitle title="Colors"/>
+      <Grid container spacing={6}>
         <Grid item xs={12} md={12}>
-          <Widget title="Default colors" disableWidgetMenu>
+          <Widget title="States Colors" disableWidgetMenu>
             <Typography>
-              There is a couple of brand colors that we're using. But all the time you can start to use <Link href='https://material-ui.com/customization/color/#color'>Material UI native color palette</Link>
+              There is a couple of brand colors that we're using. But all the time you can start to use <Link
+              href='https://material-ui.com/customization/color/#color'>Material UI native color palette</Link>
             </Typography>
             <Table className="mb-0">
               <TableHead>
                 <TableRow>
-                  <TableCell align="left">State</TableCell>
+                  <TableCell>State</TableCell>
                   <TableCell>Preview</TableCell>
                   <TableCell>Usage Example</TableCell>
                   <TableCell>Hex Value</TableCell>
@@ -38,9 +39,9 @@ export default function Colors() {
               </TableHead>
               <TableBody>
                 <TableRow>
-                  <TableCell align="left">Primary</TableCell>
+                  <TableCell>Primary</TableCell>
                   <TableCell>
-                    <Dot color="primary" size="superlarge" />
+                    <Dot color="primary" size="superlarge"/>
                   </TableCell>
                   <TableCell>
                     <p
@@ -52,7 +53,7 @@ export default function Colors() {
                 <TableRow>
                   <TableCell align="left">Secondary</TableCell>
                   <TableCell>
-                    <Dot color="secondary" size="superlarge" />
+                    <Dot color="secondary" size="superlarge"/>
                   </TableCell>
                   <TableCell>
                     <p
@@ -64,7 +65,7 @@ export default function Colors() {
                 <TableRow>
                   <TableCell align="left">Warning</TableCell>
                   <TableCell>
-                    <Dot color="warning" size="superlarge" />
+                    <Dot color="warning" size="superlarge"/>
                   </TableCell>
                   <TableCell>
                     <p
@@ -76,7 +77,7 @@ export default function Colors() {
                 <TableRow>
                   <TableCell align="left">Success</TableCell>
                   <TableCell>
-                    <Dot color="success" size="superlarge" />
+                    <Dot color="success" size="superlarge"/>
                   </TableCell>
                   <TableCell>
                     <p
@@ -88,7 +89,7 @@ export default function Colors() {
                 <TableRow>
                   <TableCell align="left">Info</TableCell>
                   <TableCell align="right">
-                    <Dot color="info" size="superlarge" />
+                    <Dot color="info" size="superlarge"/>
                   </TableCell>
                   <TableCell>
                     <p
@@ -101,15 +102,48 @@ export default function Colors() {
             </Table>
           </Widget>
         </Grid>
+        <Grid item xs={12} md={6}>
+          <Widget title="Typography Colors" disableWidgetMenu>
+            <div className={classes.dashedBorder}>
+              <Typography variant="h1" color="primary" className={classes.text}>
+                h1. Heading
+              </Typography>
+              <Typography variant="h2" color="success" className={classes.text}>
+                h2. Heading
+              </Typography>
+              <Typography
+                variant="h3"
+                color="secondary"
+                className={classes.text}
+              >
+                h3. Heading
+              </Typography>
+              <Typography variant="h4" color="warning" className={classes.text}>
+                h4. Heading
+              </Typography>
+              <Typography
+                variant="h5"
+                color="primary"
+                colorBrightness="light"
+                className={classes.text}
+              >
+                h5. Heading
+              </Typography>
+              <Typography variant="h6" color="info">
+                h6. Heading
+              </Typography>
+            </div>
+          </Widget>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Widget title="Example buttons" disableWidgetMenu>
+            <Button color="primary" className={classes.button}>primary</Button>
+            <Button color="secondary" className={classes.button}>secondary</Button>
+            <Button color="warning" className={classes.button}>warning</Button>
+            <Button color="success" className={classes.button}>success</Button>
+            <Button color="info">info</Button>
+          </Widget>
+        </Grid>
       </Grid>
-    </>
-  );
+    </>);
 }
-
-/* 
-const primary = "#536DFE";
-const secondary = "#FF5C93";
-const warning = "#FFC260";
-const success = "#3CD4A0";
-const info = "#9013FE";
-*/

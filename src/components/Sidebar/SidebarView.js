@@ -2,8 +2,6 @@ import React from "react";
 import { Drawer, IconButton, List, withStyles } from "@material-ui/core";
 import {
   Home as HomeIcon,
-  NotificationsNone as NotificationsIcon,
-  FormatSize as TypographyIcon,
   FilterNone as UIElementsIcon,
   BorderAll as TableIcon,
   QuestionAnswer as SupportIcon,
@@ -12,7 +10,7 @@ import {
   ArrowBack as ArrowBackIcon,
   BarChart as ChartIcon,
   Map as MapIcon,
-  ColorLens as ColorsIcon,
+  Apps as CoreIcon,
 } from "@material-ui/icons";
 import classNames from "classnames";
 
@@ -20,71 +18,76 @@ import SidebarLink from "./components/SidebarLink/SidebarLinkContainer";
 import Dot from "./components/Dot";
 
 const structure = [
-  { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
-  { id: 1, label: "Charts", link: "/app/charts", icon: <ChartIcon /> },
-  { id: 2, label: "Maps", link: "/app/maps", icon: <MapIcon /> },
+  { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon/> },
+  { id: 1, label: "Charts", link: "/app/charts", icon: <ChartIcon/> },
+  { id: 2, label: "Maps", link: "/app/maps", icon: <MapIcon/> },
   { id: 3, type: "divider" },
   { id: 4, type: "title", label: "TEMPLATE" },
   {
     id: 5,
-    label: "Typography",
-    link: "/app/typography",
-    icon: <TypographyIcon />,
+    label: "Core",
+    link: "/app/core",
+    icon: <CoreIcon/>,
+    children: [{
+      label: "Typography",
+      link: "/app/core/typography",
+    },
+      {
+        label: "Colors",
+        link: "/app/core/colors",
+      },
+      {
+        label: "Grid",
+        link: "/app/core/grid",
+      },
+    ],
   },
-  {
-    id: 6,
-    link: "",
-    icon: <ColorsIcon />,
-  },
-  { id: 7, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
-  {
-    id: 8,
-    label: "Notifications",
-    link: "/app/notifications",
-    icon: <NotificationsIcon />,
-  },
+  { id: 7, label: "Tables", link: "/app/tables", icon: <TableIcon/> },
   {
     id: 9,
     label: "UI Elements",
     link: "/app/ui",
-    icon: <UIElementsIcon />,
-    children: [{ label: "Icons", link: "/app/ui/icons" }],
+    icon: <UIElementsIcon/>,
+    children: [{ label: "Icons", link: "/app/ui/icons" }, {
+      label: "Notifications",
+      link: "/app/ui/notifications",
+    }],
   },
   { id: 10, type: "divider" },
   { id: 11, type: "title", label: "HELP" },
-  { id: 12, label: "Library", link: "", icon: <LibraryIcon /> },
-  { id: 13, label: "Support", link: "", icon: <SupportIcon /> },
-  { id: 14, label: "FAQ", link: "", icon: <FAQIcon /> },
+  { id: 12, label: "Library", link: "", icon: <LibraryIcon/> },
+  { id: 13, label: "Support", link: "", icon: <SupportIcon/> },
+  { id: 14, label: "FAQ", link: "", icon: <FAQIcon/> },
   { id: 15, type: "divider" },
   { id: 16, type: "title", label: "PROJECTS" },
   {
     id: 17,
     label: "My recent",
     link: "",
-    icon: <Dot size="large" color="secondary" />,
+    icon: <Dot size="large" color="secondary"/>,
   },
   {
     id: 18,
     label: "Starred",
     link: "",
-    icon: <Dot size="large" color="primary" />,
+    icon: <Dot size="large" color="primary"/>,
   },
   {
     id: 19,
     label: "Background",
     link: "",
-    icon: <Dot size="large" color="secondary" />,
+    icon: <Dot size="large" color="secondary"/>,
   },
 ];
 
 const SidebarView = ({
-  classes,
-  theme,
-  toggleSidebar,
-  isSidebarOpened,
-  isPermanent,
-  location,
-}) => {
+                       classes,
+                       theme,
+                       toggleSidebar,
+                       isSidebarOpened,
+                       isPermanent,
+                       location,
+                     }) => {
   return (
     <Drawer
       variant={isPermanent ? "permanent" : "temporary"}
