@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Paper } from "@material-ui/core";
-import {} from "@material-ui/core";
 import useStyles from "./styles";
 import {
   Table,
@@ -80,26 +79,26 @@ export default function Colors() {
               <TableHead>
                 <TableRow>
                   <TableCell></TableCell>
-                  <TableCell>Extra small
+                  <TableCell><b>Extra small</b><br />
                     <small>&lt;576px</small>
                   </TableCell>
-                  <TableCell>Small
+                  <TableCell><b>Small</b><br />
                     <small>≥576px</small>
                   </TableCell>
-                  <TableCell>Medium
+                  <TableCell><b>Medium</b><br />
                     <small>≥768px</small>
                   </TableCell>
-                  <TableCell>Large
+                  <TableCell><b>Large</b><br />
                     <small>≥992px</small>
                   </TableCell>
-                  <TableCell>Extra large
+                  <TableCell><b>Extra large</b><br />
                     <small>≥1200px</small>
                   </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 <TableRow>
-                  <TableCell>Max container width</TableCell>
+                  <TableCell><b>Max container width</b></TableCell>
                   <TableCell>
                     None (auto)
                   </TableCell>
@@ -111,7 +110,7 @@ export default function Colors() {
                   <TableCell>1140px</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Component property</TableCell>
+                  <TableCell><b>Component property</b></TableCell>
                   <TableCell>
                     <Typography className={classes.codeBack}>{"<Grid item xs={}>"}</Typography>
                   </TableCell>
@@ -123,13 +122,13 @@ export default function Colors() {
                   <TableCell><Typography className={classes.codeBack}>{"<Grid item xl={}>"}</Typography></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell># of columns</TableCell>
+                  <TableCell><b># of columns</b></TableCell>
                   <TableCell>
                     12
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Spacing (output(spacing) = spacing * 8px, spacing = {'{from 2 to 10 inclusive}'})</TableCell>
+                  <TableCell><b>Spacing</b> (output(spacing) = spacing * 8px, spacing = {'{from 2 to 10 inclusive}'})</TableCell>
                   <TableCell>
                     <Typography className={classes.codeBack}>{"<Grid container spacing={2}>"}</Typography>
                   </TableCell>
@@ -138,13 +137,13 @@ export default function Colors() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Nestable</TableCell>
+                  <TableCell><b>Nestable</b></TableCell>
                   <TableCell>
                     Yes
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Column ordering</TableCell>
+                  <TableCell><b>Column ordering</b></TableCell>
                   <TableCell>
                     Yes
                   </TableCell>
