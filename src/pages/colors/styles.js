@@ -6,6 +6,7 @@ export default makeStyles(theme => ({
     padding: 2,
     backgroundColor: "#f3f3f3",
     color: "#e671b8",
+    borderRadius: '2px'
   },
   button: {
     marginRight: 5

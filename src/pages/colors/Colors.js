@@ -136,7 +136,7 @@ export default function Colors() {
           </Widget>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Widget title="Example buttons" disableWidgetMenu>
+          <Widget title="Example buttons" disableWidgetMenu inheritHeight>
             <Button color="primary" className={classes.button}>primary</Button>
             <Button color="secondary" className={classes.button}>secondary</Button>
             <Button color="warning" className={classes.button}>warning</Button>

@@ -11,5 +11,20 @@ export default makeStyles(theme => ({
     padding: 2,
     backgroundColor: "#f3f3f3",
     color: "#e671b8",
+    borderRadius: '2px'
   },
+  paperItem: {
+    backgroundColor: theme.palette.primary.light,
+    textAlign: 'center',
+    padding: theme.spacing(2),
+    color: '#f3f3f3',
+  },
+  paper: {
+    margin: theme.spacing(3),
+    padding: 10,
+    backgroundColor: '#f3f3f3',
+  },
+  headBold: {
+    fontWeight: 700
+  }
 }));

@@ -13,14 +13,15 @@ import classnames from "classnames";
 import useStyles from "./styles";
 
 export default function Widget({
-  children,
-  title,
-  noBodyPadding,
-  bodyClass,
-  disableWidgetMenu,
-  header,
-  ...props
-}) {
+                                 children,
+                                 title,
+                                 noBodyPadding,
+                                 bodyClass,
+                                 disableWidgetMenu,
+                                 header,
+                                 inheritHeight,
+                                 ...props
+                               }) {
   var classes = useStyles();
 
   // local
@@ -28,7 +29,7 @@ export default function Widget({
   var [isMoreMenuOpen, setMoreMenuOpen] = useState(false);
 
   return (
-    <div className={classes.widgetWrapper}>
+    <div className={inheritHeight ? classes.inheritHeight : classes.widgetWrapper}>
       <Paper className={classes.paper} classes={{ root: classes.widgetRoot }}>
         <div className={classes.widgetHeader}>
           {header ? (
@@ -47,7 +48,7 @@ export default function Widget({
                   onClick={() => setMoreMenuOpen(true)}
                   buttonRef={setMoreButtonRef}
                 >
-                  <MoreIcon />
+                  <MoreIcon/>
                 </IconButton>
               )}
             </React.Fragment>

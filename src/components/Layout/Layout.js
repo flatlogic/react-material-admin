@@ -18,6 +18,7 @@ import Tables from "../../pages/tables";
 import Icons from "../../pages/icons";
 import Charts from "../../pages/charts";
 import Colors from "../../pages/colors";
+import Grid from "../../pages/grid"
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -42,6 +43,7 @@ function Layout(props) {
           <Switch>
             <Route path="/app/dashboard" component={Dashboard} />
             <Route path="/app/core/typography" component={Typography} />
+            <Route path="/app/core/grid" component={Grid} />
             <Route path="/app/tables" component={Tables} />
             <Route path="/app/ui/notifications" component={Notifications} />
             <Route
