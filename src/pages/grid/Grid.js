@@ -264,7 +264,7 @@ export default function Colors() {
                       <code>{"<Grid container>"}</code>
                     </Typography>
                     <Typography color="info">
-                      <code>{'  <Box container display="flex">'}</code>
+                      <code>{'  <Box display="flex">'}</code>
                     </Typography>
                     <Typography color="warning">
                       <code>{'    <Box alignSelf="flex-start">'}</code>
@@ -422,7 +422,7 @@ export default function Colors() {
                     >
                       <code>
                         {
-                          '  <Box container display="flex" flexDirection="column">'
+                          '  <Box display="flex" flexDirection="column">'
                         }
                       </code>
                     </Typography>

@@ -17,12 +17,13 @@ var useStyles = makeStyles(theme => ({
   },
 }));
 
-function Badge({ children, colorBrightness, color, ...props }) {
+function Badge({ children, colorBrightness, color, fontColor, ...props }) {
   var classes = useStyles();
   var theme = useTheme();
   var Styled = createStyled({
     badge: {
       backgroundColor: getColor(color, theme, colorBrightness),
+      color: fontColor,
     },
   });
 
