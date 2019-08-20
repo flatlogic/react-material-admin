@@ -20,13 +20,16 @@ export default function Colors() {
   const classes = useStyles();
   return (
     <>
-      <PageTitle title="Colors"/>
+      <PageTitle title="Colors" />
       <Grid container spacing={6}>
         <Grid item xs={12} md={12}>
           <Widget title="States Colors" disableWidgetMenu>
             <Typography>
-              There is a couple of brand colors that we're using. But all the time you can start to use <Link
-              href='https://material-ui.com/customization/color/#color'>Material UI native color palette</Link>
+              There is a couple of brand colors that we're using. But all the
+              time you can start to use{" "}
+              <Link href="https://material-ui.com/customization/color/#color">
+                Material UI native color palette
+              </Link>
             </Typography>
             <Table className="mb-0">
               <TableHead>
@@ -41,62 +44,70 @@ export default function Colors() {
                 <TableRow>
                   <TableCell>Primary</TableCell>
                   <TableCell>
-                    <Dot color="primary" size="superlarge"/>
+                    <Dot color="primary" size="superlarge" />
                   </TableCell>
                   <TableCell>
                     <p
                       className={classes.codeBack}
                     >{`<Button color="primary">`}</p>
                   </TableCell>
-                  <TableCell><Typography color="primary">#536DFE</Typography></TableCell>
+                  <TableCell>
+                    <Typography color="primary">#536DFE</Typography>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left">Secondary</TableCell>
                   <TableCell>
-                    <Dot color="secondary" size="superlarge"/>
+                    <Dot color="secondary" size="superlarge" />
                   </TableCell>
                   <TableCell>
                     <p
                       className={classes.codeBack}
                     >{`<Dot color="secondary">`}</p>
                   </TableCell>
-                  <TableCell><Typography color="secondary">#FF5C93</Typography></TableCell>
+                  <TableCell>
+                    <Typography color="secondary">#FF5C93</Typography>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left">Warning</TableCell>
                   <TableCell>
-                    <Dot color="warning" size="superlarge"/>
+                    <Dot color="warning" size="superlarge" />
                   </TableCell>
                   <TableCell>
                     <p
                       className={classes.codeBack}
                     >{`<Typography color="warning">`}</p>
                   </TableCell>
-                  <TableCell><Typography color="warning">#FFC260</Typography></TableCell>
+                  <TableCell>
+                    <Typography color="warning">#FFC260</Typography>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left">Success</TableCell>
                   <TableCell>
-                    <Dot color="success" size="superlarge"/>
+                    <Dot color="success" size="superlarge" />
                   </TableCell>
                   <TableCell>
                     <p
                       className={classes.codeBack}
                     >{`<Notification color="success">`}</p>
                   </TableCell>
-                  <TableCell><Typography color="success">#3CD4A0</Typography></TableCell>
+                  <TableCell>
+                    <Typography color="success">#3CD4A0</Typography>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left">Info</TableCell>
                   <TableCell align="right">
-                    <Dot color="info" size="superlarge"/>
+                    <Dot color="info" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <p
-                      className={classes.codeBack}
-                    >{`<Icon color="info">`}</p>
+                    <p className={classes.codeBack}>{`<Icon color="info">`}</p>
                   </TableCell>
-                  <TableCell><Typography color="info">#9013FE</Typography></TableCell>
+                  <TableCell>
+                    <Typography color="info">#9013FE</Typography>
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -137,13 +148,22 @@ export default function Colors() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Widget title="Example buttons" disableWidgetMenu inheritHeight>
-            <Button color="primary" className={classes.button}>primary</Button>
-            <Button color="secondary" className={classes.button}>secondary</Button>
-            <Button color="warning" className={classes.button}>warning</Button>
-            <Button color="success" className={classes.button}>success</Button>
+            <Button color="primary" className={classes.button}>
+              primary
+            </Button>
+            <Button color="secondary" className={classes.button}>
+              secondary
+            </Button>
+            <Button color="warning" className={classes.button}>
+              warning
+            </Button>
+            <Button color="success" className={classes.button}>
+              success
+            </Button>
             <Button color="info">info</Button>
           </Widget>
         </Grid>
       </Grid>
-    </>);
+    </>
+  );
 }

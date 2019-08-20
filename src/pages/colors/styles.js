@@ -6,10 +6,10 @@ export default makeStyles(theme => ({
     padding: 2,
     backgroundColor: "#f3f3f3",
     color: "#e671b8",
-    borderRadius: '2px'
+    borderRadius: "2px",
   },
   button: {
-    marginRight: 5
+    marginRight: 5,
   },
   dashedBorder: {
     border: "1px dashed",
