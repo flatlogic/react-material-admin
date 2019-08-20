@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Grid, Paper } from "@material-ui/core";
 import useStyles from "./styles";
 import {
@@ -13,7 +13,7 @@ import {
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-import { Typography, Button } from "../../components/Wrappers";
+import { Typography } from "../../components/Wrappers";
 
 export default function Colors() {
   const classes = useStyles();
@@ -41,22 +41,34 @@ export default function Colors() {
                 <Grid item xs={4}>
                   <Paper className={classes.paperItem}>One of three</Paper>
                 </Grid>
-                <Grid item>
+                <Grid item xs zeroMinWidth>
                   <pre>
                     <Typography color="primary">
                       <code>{"<Grid container>"}</code>
                     </Typography>
-                    <Typography color="secondary">
+                    <Typography
+                      color="secondary"
+                      noWrap
+                      className={classes.wrapFix}
+                    >
                       <code>
                         {"   <Grid item xs={4}>One of three</Grid>\n"}
                       </code>
                     </Typography>
-                    <Typography color="secondary">
+                    <Typography
+                      color="secondary"
+                      noWrap
+                      className={classes.wrapFix}
+                    >
                       <code>
                         {"   <Grid item xs={4}>One of three</Grid>\n"}
                       </code>
                     </Typography>
-                    <Typography color="secondary">
+                    <Typography
+                      color="secondary"
+                      noWrap
+                      className={classes.wrapFix}
+                    >
                       <code>
                         {"   <Grid item xs={4}>One of three</Grid>\n"}
                       </code>
@@ -221,47 +233,252 @@ export default function Colors() {
             </Table>
           </Widget>
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <Widget title="Vertical Alignment" disableWidgetMenu>
             <Typography>
               Use flexbox alignment utilities to vertically and horizontally
               align columns.
             </Typography>
             <Paper className={classes.paper}>
-              <Grid
-                container
-                spacing={3}
-                direction="column"
-                style={{ height: 150 }}
-              >
-                <Grid item xs={4}>
-                  <Paper className={classes.paperItem}>Start</Paper>
-                </Grid>
-                <Grid item xs={4}>
-                  <Paper className={classes.paperItem}>Center</Paper>
-                </Grid>
-                <Grid item xs={4}>
-                  <Paper className={classes.paperItem}>End</Paper>
-                </Grid>
-                <Grid item>
+              <Grid container spacing={3}>
+                <Box display="flex" height={150} width={"100%"}>
+                  <Box alignSelf="flex-start" width={"100%"}>
+                    <Grid item xs={12}>
+                      <Paper className={classes.paperItem}>Start</Paper>
+                    </Grid>
+                  </Box>
+                  <Box alignSelf="center" width={"100%"}>
+                    <Grid item xs={12}>
+                      <Paper className={classes.paperItem}>Center</Paper>
+                    </Grid>
+                  </Box>
+                  <Box alignSelf="flex-end" width={"100%"}>
+                    <Grid item xs={12}>
+                      <Paper className={classes.paperItem}>End</Paper>
+                    </Grid>
+                  </Box>
+                </Box>
+                <Grid item xs zeroMinWidth>
                   <pre>
                     <Typography color="primary">
                       <code>{"<Grid container>"}</code>
                     </Typography>
-                    <Typography color="secondary">
+                    <Typography color="info">
+                      <code>{'  <Box container display="flex">'}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{'    <Box alignSelf="flex-start">'}</code>
+                    </Typography>
+                    <Typography
+                      color="secondary"
+                      noWrap
+                      className={classes.wrapFix}
+                    >
                       <code>
-                        {"   <Grid item xs={4}>One of three</Grid>\n"}
+                        {"       <Grid item xs={4}>One of three</Grid>\n"}
                       </code>
                     </Typography>
-                    <Typography color="secondary">
+                    <Typography color="warning">
+                      <code>{"    </Box>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{'    <Box alignSelf="center">'}</code>
+                    </Typography>
+                    <Typography
+                      color="secondary"
+                      noWrap
+                      className={classes.wrapFix}
+                    >
                       <code>
-                        {"   <Grid item xs={4}>One of three</Grid>\n"}
+                        {"       <Grid item xs={4}>One of three</Grid>\n"}
                       </code>
                     </Typography>
-                    <Typography color="secondary">
+                    <Typography color="warning">
+                      <code>{"    </Box>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{'    <Box alignSelf="flex-end">'}</code>
+                    </Typography>
+                    <Typography
+                      color="secondary"
+                      noWrap
+                      className={classes.wrapFix}
+                    >
                       <code>
-                        {"   <Grid item xs={4}>One of three</Grid>\n"}
+                        {"       <Grid item xs={4}>One of three</Grid>\n"}
                       </code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"    </Box>"}</code>
+                    </Typography>
+                    <Typography color="info">
+                      <code>{"  </Box>"}</code>
+                    </Typography>
+                    <Typography color="primary">
+                      <code>{"</Grid>"}</code>
+                    </Typography>
+                  </pre>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Widget>
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <Widget title="Vertical Alignment" disableWidgetMenu>
+            <Typography>
+              Use flexbox alignment utilities to vertically and horizontally
+              align columns.
+            </Typography>
+            <Paper className={classes.paper}>
+              <Grid container spacing={3}>
+                <Box display="flex" width={"100%"} flexDirection="column">
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="flex-end"
+                    width={"100%"}
+                  >
+                    <Grid item xs={3}>
+                      <Paper
+                        className={classes.paperItem}
+                        style={{ margin: "12px" }}
+                      >
+                        1
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Paper
+                        className={classes.paperItem}
+                        style={{ margin: "12px" }}
+                      >
+                        2
+                      </Paper>
+                    </Grid>
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-around"
+                    width={"100%"}
+                  >
+                    <Grid item xs={3}>
+                      <Paper
+                        className={classes.paperItem}
+                        style={{ margin: "12px" }}
+                      >
+                        1
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Paper
+                        className={classes.paperItem}
+                        style={{ margin: "12px" }}
+                      >
+                        2
+                      </Paper>
+                    </Grid>
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    width={"100%"}
+                  >
+                    <Grid item xs={3}>
+                      <Paper
+                        className={classes.paperItem}
+                        style={{ margin: "12px" }}
+                      >
+                        1
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Paper
+                        className={classes.paperItem}
+                        style={{ margin: "12px" }}
+                      >
+                        2
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Paper
+                        className={classes.paperItem}
+                        style={{ margin: "12px" }}
+                      >
+                        3
+                      </Paper>
+                    </Grid>
+                  </Box>
+                </Box>
+                <Grid item xs zeroMinWidth>
+                  <pre>
+                    <Typography color="primary">
+                      <code>{"<Grid container>"}</code>
+                    </Typography>
+                    <Typography
+                      color="secondary"
+                      noWrap
+                      className={classes.wrapFix}
+                    >
+                      <code>
+                        {
+                          '  <Box container display="flex" flexDirection="column">'
+                        }
+                      </code>
+                    </Typography>
+                    <Typography color="info" noWrap className={classes.wrapFix}>
+                      <code>
+                        {
+                          '    <Box display="flex" flexDirection="row" justifyContent="flex-end">'
+                        }
+                      </code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
+                    </Typography>
+                    <Typography color="info">
+                      <code>{"    </Box>"}</code>
+                    </Typography>
+                    <Typography color="info" noWrap className={classes.wrapFix}>
+                      <code>
+                        {
+                          '    <Box display="flex" flexDirection="row" justifyContent="flex-around">'
+                        }
+                      </code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
+                    </Typography>
+                    <Typography color="info">
+                      <code>{"    </Box>"}</code>
+                    </Typography>
+                    <Typography color="info" noWrap className={classes.wrapFix}>
+                      <code>
+                        {
+                          '    <Box display="flex" flexDirection="row" justifyContent="flex-between">'
+                        }
+                      </code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>3</Grid>"}</code>
+                    </Typography>
+                    <Typography color="info">
+                      <code>{"    </Box>"}</code>
+                    </Typography>
+                    <Typography color="secondary">
+                      <code>{"  </Box>"}</code>
                     </Typography>
                     <Typography color="primary">
                       <code>{"</Grid>"}</code>

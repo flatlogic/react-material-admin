@@ -27,4 +27,7 @@ export default makeStyles(theme => ({
   headBold: {
     fontWeight: 700,
   },
+  wrapFix: {
+    whiteSpace: 'pre'
+  }
 }));
