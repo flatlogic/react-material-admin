@@ -48,7 +48,7 @@ function Chip({ colorBrightness, color, ...props}) {
   {
     var theme = useTheme();
     var Styled = createStyled({
-      chip: {
+      root: {
         backgroundColor: getColor(color, theme, colorBrightness),
       },
     });
@@ -58,7 +58,7 @@ function Chip({ colorBrightness, color, ...props}) {
         {styledProps => (
           <ChipBase
           classes={{
-          chip: classnames(styledProps.classes.chip),
+          root: classnames(styledProps.classes.root),
         }}
           {...props}
           />
