@@ -166,7 +166,7 @@ function getFontSize(size, variant = "", theme) {
   var defaultSize =
     variant && theme.typography[variant]
       ? theme.typography[variant].fontSize
-      : theme.typography.fonstyltSize + "px";
+      : theme.typography.fontStyle + "px";
 
   return `calc(${defaultSize} * ${multiplier})`;
 }
