@@ -57,10 +57,10 @@ function Chip({ colorBrightness, color, ...props}) {
       <Styled>
         {styledProps => (
           <ChipBase
-            classes={{
-              chip: classnames(styledProps.classes.chip),
-            }}
-            {...props}
+          classes={{
+          chip: classnames(styledProps.classes.chip),
+        }}
+          {...props}
           />
         )}
       </Styled>
@@ -166,7 +166,7 @@ function getFontSize(size, variant = "", theme) {
   var defaultSize =
     variant && theme.typography[variant]
       ? theme.typography[variant].fontSize
-      : theme.typography.fontSize + "px";
+      : theme.typography.fonstyltSize + "px";
 
   return `calc(${defaultSize} * ${multiplier})`;
 }

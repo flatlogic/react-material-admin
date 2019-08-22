@@ -104,11 +104,11 @@ export default function Colors() {
           <Widget title="Chips" disableWidgetMenu>
             <Typography>Chips allow users to enter information, make selections, filter content, or trigger actions.</Typography>
             <Box>
-                <Chip color="primary" label={"1"}/>
-                <Chip color="secondary" label={"2"}/>
-                <Chip color="warning" label={"3"}/>
-                <Chip color="info" label={"4"}/>
-                <Chip color="success" label={"5"}/>
+                <Chip className={classes.badge} color="primary" label={"Primary"}/>
+                <Chip className={classes.badge} color="secondary" label={"Secondary"}/>
+                <Chip className={classes.badge} color="warning" label={"Warning"}/>
+                <Chip className={classes.badge} color="info" label={"Info"}/>
+                <Chip className={classes.badge} color="success" label={"Success"}/>
             </Box>
           </Widget>
         </Grid>
