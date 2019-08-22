@@ -421,9 +421,7 @@ export default function Colors() {
                       className={classes.wrapFix}
                     >
                       <code>
-                        {
-                          '  <Box display="flex" flexDirection="column">'
-                        }
+                        {'  <Box display="flex" flexDirection="column">'}
                       </code>
                     </Typography>
                     <Typography color="info" noWrap className={classes.wrapFix}>

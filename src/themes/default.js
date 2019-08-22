@@ -5,12 +5,16 @@ const secondary = "#FF5C93";
 const warning = "#FFC260";
 const success = "#3CD4A0";
 const info = "#9013FE";
+const danger = "rgb(244, 67, 54)";
 
 const lightenRate = 7.5;
 const darkenRate = 15;
 
 export default {
   palette: {
+    danger: {
+      main: danger
+    },
     primary: {
       main: primary,
       light: tinycolor(primary)
