@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Box } from "@material-ui/core";
-import Link from "@material-ui/core/Link";
 import {
   MDBCarousel,
   MDBCarouselInner,
@@ -27,13 +26,7 @@ export default function Colors() {
       <Grid container spacing={6}>
         <Grid item xs={12} md={12}>
           <Widget title="Default Carousel" disableWidgetMenu>
-            <Typography>
-              There is a couple of brand colors that we're using. But all the
-              time you can start to use{" "}
-            </Typography>
-            <Link href="https://material-ui.com/customization/color/#color">
-              Material UI native color palette
-            </Link>
+            <Typography>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.</Typography>
             <Box my={3}>
               <MDBContainer>
                 <MDBCarousel
