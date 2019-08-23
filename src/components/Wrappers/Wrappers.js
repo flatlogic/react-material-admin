@@ -4,7 +4,7 @@ import {
   Badge as BadgeBase,
   Typography as TypographyBase,
   Button as ButtonBase,
-  Chip as ChipBase
+  Chip as ChipBase,
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -44,29 +44,26 @@ function Badge({ children, colorBrightness, color, fontColor, ...props }) {
   );
 }
 
-function Chip({ colorBrightness, color, ...props}) {
-  {
-    var theme = useTheme();
-    var Styled = createStyled({
-      root: {
-        backgroundColor: getColor(color, theme, colorBrightness),
-      },
-    });
+function Chip({ colorBrightness, color, ...props }) {
+  var theme = useTheme();
+  var Styled = createStyled({
+    root: {
+      backgroundColor: getColor(color, theme, colorBrightness),
+    },
+  });
 
-    return (
-      <Styled>
-        {styledProps => (
-          <ChipBase
+  return (
+    <Styled>
+      {styledProps => (
+        <ChipBase
           classes={{
-          root: classnames(styledProps.classes.root),
-        }}
+            root: classnames(styledProps.classes.root),
+          }}
           {...props}
-          />
-        )}
-      </Styled>
-    );
-  }
-
+        />
+      )}
+    </Styled>
+  );
 }
 
 function Typography({

@@ -18,8 +18,9 @@ import Tables from "../../pages/tables";
 import Icons from "../../pages/icons";
 import Charts from "../../pages/charts";
 import Colors from "../../pages/colors";
-import Grid from "../../pages/grid"
-import Badge from "../../pages/badge"
+import Grid from "../../pages/grid";
+import Badge from "../../pages/badge";
+import Carousel from "../../pages/сarousel";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -48,6 +49,7 @@ function Layout(props) {
             <Route path="/app/tables" component={Tables} />
             <Route path="/app/ui/notifications" component={Notifications} />
             <Route path="/app/ui/badge" component={Badge} />
+            <Route path="/app/ui/сarousel" component={Carousel} />
             <Route
               exact
               path="/app/ui"
@@ -62,7 +64,6 @@ function Layout(props) {
             <Route path="/app/maps" component={Maps} />
             <Route path="/app/core/colors" component={Colors} />
             <Route path="/app/ui/icons" component={Icons} />
-
           </Switch>
         </div>
       </>

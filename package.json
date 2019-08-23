@@ -9,6 +9,7 @@
     "apexcharts": "^3.8.3",
     "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
+    "mdbreact": "^4.19.1",
     "mui-datatables": "^2.6.4",
     "react": "^16.8.6",
     "react-apexcharts": "^1.3.3",

@@ -55,7 +55,8 @@ const structure = [
         label: "Notifications",
         link: "/app/ui/notifications",
       },
-      { label: 'Badge', link: '/app/ui/badge'}
+      { label: "Badge", link: "/app/ui/badge" },
+      { label: "Carousel", link: "/app/ui/сarousel" },
     ],
   },
   { id: 10, type: "divider" },
