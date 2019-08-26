@@ -49,6 +49,7 @@ function Chip({ colorBrightness, color, ...props }) {
   var Styled = createStyled({
     root: {
       backgroundColor: getColor(color, theme, colorBrightness),
+      color: "white",
     },
   });
 
@@ -97,7 +98,7 @@ function Button({ children, color, ...props }) {
     button: {
       backgroundColor: getColor(color, theme),
       boxShadow: theme.customShadows.widget,
-      color: "white",
+      color: color === undefined ? theme.palette.text.primary : "white",
       "&:hover": {
         backgroundColor: getColor(color, theme, "light"),
         boxShadow: theme.customShadows.widgetWide,

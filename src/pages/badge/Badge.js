@@ -1,11 +1,11 @@
 import React from "react";
-import { Grid, Box, Button as NativeButton } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import useStyles from "./styles";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-import { Badge, Typography, Chip } from "../../components/Wrappers";
+import { Badge, Typography, Chip, Button } from "../../components/Wrappers";
 
 export default function Colors() {
   const classes = useStyles();
@@ -88,12 +88,9 @@ export default function Colors() {
               </Typography>
               <Box my={3}>
                 <Badge color="danger" badgeContent={"1"} fontColor={"white"}>
-                  <NativeButton
-                    variant="contained"
-                    className={classes.paddingTop}
-                  >
+                  <Button variant="contained" className={classes.paddingTop}>
                     Example heading
-                  </NativeButton>
+                  </Button>
                 </Badge>
               </Box>
             </Box>
@@ -102,13 +99,32 @@ export default function Colors() {
 
         <Grid item md={12}>
           <Widget title="Chips" disableWidgetMenu>
-            <Typography>Chips allow users to enter information, make selections, filter content, or trigger actions.</Typography>
+            <Typography>
+              Chips allow users to enter information, make selections, filter
+              content, or trigger actions.
+            </Typography>
             <Box>
-                <Chip className={classes.badge} color="primary" label={"Primary"}/>
-                <Chip className={classes.badge} color="secondary" label={"Secondary"}/>
-                <Chip className={classes.badge} color="warning" label={"Warning"}/>
-                <Chip className={classes.badge} color="info" label={"Info"}/>
-                <Chip className={classes.badge} color="success" label={"Success"}/>
+              <Chip
+                className={classes.badge}
+                color="primary"
+                label={"Primary"}
+              />
+              <Chip
+                className={classes.badge}
+                color="secondary"
+                label={"Secondary"}
+              />
+              <Chip
+                className={classes.badge}
+                color="warning"
+                label={"Warning"}
+              />
+              <Chip className={classes.badge} color="info" label={"Info"} />
+              <Chip
+                className={classes.badge}
+                color="success"
+                label={"Success"}
+              />
             </Box>
           </Widget>
         </Grid>

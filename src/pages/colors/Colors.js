@@ -148,19 +148,37 @@ export default function Colors() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Widget title="Example buttons" disableWidgetMenu inheritHeight>
-            <Button color="primary" className={classes.button}>
+            <Button
+              color="primary"
+              variant="contained"
+              className={classes.button}
+            >
               primary
             </Button>
-            <Button color="secondary" className={classes.button}>
+            <Button
+              color="secondary"
+              variant="contained"
+              className={classes.button}
+            >
               secondary
             </Button>
-            <Button color="warning" className={classes.button}>
+            <Button
+              color="warning"
+              variant="contained"
+              className={classes.button}
+            >
               warning
             </Button>
-            <Button color="success" className={classes.button}>
+            <Button
+              color="success"
+              variant="contained"
+              className={classes.button}
+            >
               success
             </Button>
-            <Button color="info">info</Button>
+            <Button variant="contained" color="info">
+              info
+            </Button>
           </Widget>
         </Grid>
       </Grid>

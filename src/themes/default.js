@@ -12,6 +12,7 @@ const darkenRate = 15;
 
 export default {
   palette: {
+
     danger: {
       main: danger
     },
