@@ -21,6 +21,7 @@ import Colors from "../../pages/colors";
 import Grid from "../../pages/grid";
 import Badge from "../../pages/badge";
 import Carousel from "../../pages/сarousel";
+import Modal from "../../pages/modal"
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -50,6 +51,7 @@ function Layout(props) {
             <Route path="/app/ui/notifications" component={Notifications} />
             <Route path="/app/ui/badge" component={Badge} />
             <Route path="/app/ui/сarousel" component={Carousel} />
+            <Route path="/app/ui/modal" component={Modal} />
             <Route
               exact
               path="/app/ui"

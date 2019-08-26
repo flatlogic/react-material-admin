@@ -26,7 +26,12 @@ export default function Colors() {
       <Grid container spacing={6}>
         <Grid item xs={12} md={12}>
           <Widget title="Default Carousel" disableWidgetMenu>
-            <Typography>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.</Typography>
+            <Typography>
+              The carousel is a slideshow for cycling through a series of
+              content, built with CSS 3D transforms and a bit of JavaScript. It
+              works with a series of images, text, or custom markup. It also
+              includes support for previous/next controls and indicators.{" "}
+            </Typography>
             <Box my={3}>
               <MDBContainer>
                 <MDBCarousel
