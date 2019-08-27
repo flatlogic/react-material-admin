@@ -20,11 +20,11 @@ export default function Colors() {
   const [openSmall, setOpenSmall] = React.useState(false);
   const [openGrid, setOpenGrid] = React.useState(false);
 
-  function handleClickOpen() {
+  function handleClickOpen(e) {
     setOpen(true);
   }
 
-  function handleClose() {
+  function handleClose(e) {
     setOpen(false);
   }
 
@@ -63,7 +63,7 @@ export default function Colors() {
   return (
     <div>
       <PageTitle title="Modal" />
-      <Grid container spacing={6}>
+      <Grid container spacing={6} alignItems={"flex-start"}>
         <Grid item md={6}>
           <Widget title="Live Demo" disableWidgetMenu>
             <Typography>
@@ -81,8 +81,8 @@ export default function Colors() {
               <Dialog
                 open={open}
                 onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
+                scroll={"body"}
+                aria-labelledby="scroll-dialog-title"
               >
                 <DialogTitle id="alert-dialog-title">
                   {"Use Google's location service?"}
@@ -136,22 +136,190 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
               </Dialog>
             </Box>
           </Widget>
+          <Box my={6}>
+            <Widget title="Optional Sizes" disableWidgetMenu>
+              <Typography>
+                To appoint modal's width size, equal maxWidth attribute to one
+                of values: xs, sm, md, lg, xl.
+              </Typography>
+              <Box my={2}>
+                <Button
+                  color={"primary"}
+                  className={classes.marginRight}
+                  onClick={handleClickOpenLarge}
+                >
+                  Large Modal
+                </Button>
+                <Dialog
+                  maxWidth={"xl"}
+                  open={openLarge}
+                  onClose={handleCloseLarge}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    {"Use Google's location service?"}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      Let Google help apps determine location. This means
+                      sending anonymous location data to Google, even when no
+                      apps are running.
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <ButtonNative onClick={handleCloseLarge} color="primary">
+                      Disagree
+                    </ButtonNative>
+                    <ButtonNative
+                      onClick={handleCloseLarge}
+                      color="primary"
+                      autoFocus
+                    >
+                      Agree
+                    </ButtonNative>
+                  </DialogActions>
+                </Dialog>
+                <Button
+                  color={"primary"}
+                  className={classes.marginRight}
+                  onClick={handleClickOpenSmall}
+                >
+                  Small modal
+                </Button>
+                <Dialog
+                  maxWidth={"sm"}
+                  open={openSmall}
+                  onClose={handleCloseSmall}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    {"Use Google's location service?"}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      Let Google help apps determine location. This means
+                      sending anonymous location data to Google, even when no
+                      apps are running.
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <ButtonNative onClick={handleCloseSmall} color="primary">
+                      Disagree
+                    </ButtonNative>
+                    <ButtonNative
+                      onClick={handleCloseSmall}
+                      color="primary"
+                      autoFocus
+                    >
+                      Agree
+                    </ButtonNative>
+                  </DialogActions>
+                </Dialog>
+              </Box>
+            </Widget>
+          </Box>
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <Widget title="Using Grid" disableWidgetMenu>
-            <Typography>
-              Utilize the Bootstrap grid system within a modal by nesting .
-              Then, use the normal grid system classes as you would anywhere
-              else.
-            </Typography>
-            <Button
-              color={"primary"}
-              className={classes.marginRight}
-              onClick={handleClickOpenGrid}
-            >
-              Demo
-            </Button>
+            <React.Fragment>
+              Utilize the Bootstrap grid system within a modal by nesting{" "}
+              <Typography
+                className={classes.codeBack}
+              >{`<Grid container>`}</Typography>{" "}
+              within the{" "}
+              <Typography className={classes.codeBack}>{`<Dialog>`}</Typography>
+              Typography>. Then, use the normal grid system classes as you would
+              anywhere else.
+            </React.Fragment>
+            <Box my={2}>
+              <Button
+                color={"primary"}
+                className={classes.marginRight}
+                onClick={handleClickOpenGrid}
+              >
+                Demo
+              </Button>
+              <Paper className={classes.paper}>
+                <Grid item xs zeroMinWidth>
+                  <pre>
+                    <Typography color="primary">
+                      <code>{"<Grid container>"}</code>
+                    </Typography>
+                    <Typography
+                      color="secondary"
+                      noWrap
+                      className={classes.wrapFix}
+                    >
+                      <code>
+                        {'  <Box display="flex" flexDirection="column">'}
+                      </code>
+                    </Typography>
+                    <Typography color="info" noWrap className={classes.wrapFix}>
+                      <code>
+                        {
+                          '    <Box display="flex" flexDirection="row" justifyContent="flex-end">'
+                        }
+                      </code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
+                    </Typography>
+                    <Typography color="info">
+                      <code>{"    </Box>"}</code>
+                    </Typography>
+                    <Typography color="info" noWrap className={classes.wrapFix}>
+                      <code>
+                        {
+                          '    <Box display="flex" flexDirection="row" justifyContent="flex-around">'
+                        }
+                      </code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
+                    </Typography>
+                    <Typography color="info">
+                      <code>{"    </Box>"}</code>
+                    </Typography>
+                    <Typography color="info" noWrap className={classes.wrapFix}>
+                      <code>
+                        {
+                          '    <Box display="flex" flexDirection="row" justifyContent="flex-between">'
+                        }
+                      </code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
+                    </Typography>
+                    <Typography color="warning">
+                      <code>{"      <Grid item xs={3}>3</Grid>"}</code>
+                    </Typography>
+                    <Typography color="info">
+                      <code>{"    </Box>"}</code>
+                    </Typography>
+                    <Typography color="secondary">
+                      <code>{"  </Box>"}</code>
+                    </Typography>
+                    <Typography color="primary">
+                      <code>{"</Grid>"}</code>
+                    </Typography>
+                  </pre>
+                </Grid>
+              </Paper>
+            </Box>
             <Dialog
+              fullWidth={true}
+              maxWidth={"lg"}
               open={openGrid}
               onClose={handleCloseGrid}
               aria-labelledby="alert-dialog-title"
@@ -159,7 +327,10 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
             >
               <DialogTitle id="alert-dialog-title">{"Grid system"}</DialogTitle>
               <DialogContent>
-                <DialogContentText id="alert-dialog-description" component={'div'}>
+                <DialogContentText
+                  id="alert-dialog-description"
+                  component={"div"}
+                >
                   <Box display="flex" width={"100%"} flexDirection="column">
                     <Box
                       display="flex"
@@ -254,90 +425,6 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                 </ButtonNative>
               </DialogActions>
             </Dialog>
-          </Widget>
-        </Grid>
-        <Grid item md={6}>
-          <Widget title="Optional Sizes" disableWidgetMenu>
-            <Typography>
-              To appoint modal's width size, equal maxWidth attribute to one of
-              values: xs, sm, md, lg, xl.
-            </Typography>
-            <Box my={2}>
-              <Button
-                color={"primary"}
-                className={classes.marginRight}
-                onClick={handleClickOpenLarge}
-              >
-                Large Modal
-              </Button>
-              <Dialog
-                maxWidth={"xl"}
-                open={openLarge}
-                onClose={handleCloseLarge}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-              >
-                <DialogTitle id="alert-dialog-title">
-                  {"Use Google's location service?"}
-                </DialogTitle>
-                <DialogContent>
-                  <DialogContentText id="alert-dialog-description">
-                    Let Google help apps determine location. This means sending
-                    anonymous location data to Google, even when no apps are
-                    running.
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <ButtonNative onClick={handleCloseLarge} color="primary">
-                    Disagree
-                  </ButtonNative>
-                  <ButtonNative
-                    onClick={handleCloseLarge}
-                    color="primary"
-                    autoFocus
-                  >
-                    Agree
-                  </ButtonNative>
-                </DialogActions>
-              </Dialog>
-              <Button
-                color={"primary"}
-                className={classes.marginRight}
-                onClick={handleClickOpenSmall}
-              >
-                Small modal
-              </Button>
-              <Dialog
-                maxWidth={"sm"}
-                open={openSmall}
-                onClose={handleCloseSmall}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-              >
-                <DialogTitle id="alert-dialog-title">
-                  {"Use Google's location service?"}
-                </DialogTitle>
-                <DialogContent>
-                  <DialogContentText id="alert-dialog-description">
-                    Let Google help apps determine location. This means sending
-                    anonymous location data to Google, even when no apps are
-                    running.
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <ButtonNative onClick={handleCloseSmall} color="primary">
-                    Disagree
-                  </ButtonNative>
-                  <ButtonNative
-                    onClick={handleCloseSmall}
-                    color="primary"
-                    autoFocus
-                  >
-                    Agree
-                  </ButtonNative>
-                </DialogActions>
-              </Dialog>
-            </Box>
           </Widget>
         </Grid>
       </Grid>
