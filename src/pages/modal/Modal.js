@@ -12,7 +12,7 @@ import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
 
-export default function Colors() {
+export default function ModalComp() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [openBody, setOpenBody] = React.useState(false);

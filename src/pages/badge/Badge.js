@@ -7,7 +7,7 @@ import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Badge, Typography, Chip, Button } from "../../components/Wrappers";
 
-export default function Colors() {
+export default function BadgeComp() {
   const classes = useStyles();
   return (
     <div>

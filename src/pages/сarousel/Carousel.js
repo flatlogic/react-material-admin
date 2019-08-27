@@ -19,7 +19,7 @@ import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography } from "../../components/Wrappers";
 
-export default function Colors() {
+export default function CarouselComp() {
   return (
     <>
       <PageTitle title="Carousel" />

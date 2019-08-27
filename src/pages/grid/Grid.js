@@ -15,7 +15,7 @@ import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography } from "../../components/Wrappers";
 
-export default function Colors() {
+export default function GridComp() {
   const classes = useStyles();
 
   return (
