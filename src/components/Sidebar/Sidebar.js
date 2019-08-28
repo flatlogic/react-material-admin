@@ -71,7 +71,7 @@ const structure = [
       { label: "Badge", link: "/app/ui/badge" },
       { label: "Carousel", link: "/app/ui/сarousel" },
       { label: "Modal", link: "/app/ui/modal" },
-      { label: "Nav", link: "/app/ui/nav" },
+      { label: "Navbar", link: "/app/ui/navbar" },
     ],
   },
   { id: 10, type: "divider" },

@@ -1,6 +1,6 @@
 {
-  "name": "Nav",
+  "name": "Navbar",
   "version": "1.0.0",
-  "main": "Nav.js",
+  "main": "Navbar.js",
   "license": "MIT"
 }
