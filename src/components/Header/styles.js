@@ -14,7 +14,7 @@ export default makeStyles(theme => ({
     },
   },
   appBar: {
-    width: "100vw",
+    width: "100%",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["margin"], {
       easing: theme.transitions.easing.sharp,

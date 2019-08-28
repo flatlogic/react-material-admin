@@ -148,6 +148,9 @@ export default function ColorsComp() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Widget title="Example buttons" disableWidgetMenu inheritHeight>
+            <Button variant="contained" className={classes.button}>
+              default
+            </Button>
             <Button
               color="primary"
               variant="contained"

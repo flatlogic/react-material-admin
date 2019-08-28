@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 
 // components
 import PageTitle from "../../components/PageTitle";
@@ -40,17 +40,21 @@ export default function NavComp() {
               states. Swap modifier classes to switch between each style.
             </Typography>
             <div className={classes.root}>
+              <Box my={3}>
               <AppBar position="static">
                 <Toolbar>
                   <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                     <MenuIcon />
                   </IconButton>
                   <Typography variant="h6" className={classes.title}>
-                    News
+                    Nav
                   </Typography>
-                  <Button color="inherit">Login</Button>
+                  <Button color="inherit">Link</Button>
+                  <Button color="inherit">Link2</Button>
+                  <Button color="inherit">Link3</Button>
                 </Toolbar>
               </AppBar>
+              </Box>
             </div>
           </Widget>
         </Grid>
