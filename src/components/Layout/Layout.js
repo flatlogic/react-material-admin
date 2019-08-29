@@ -23,6 +23,8 @@ import Badge from "../../pages/badge";
 import Carousel from "../../pages/сarousel";
 import Modal from "../../pages/modal"
 import Navbar from "../../pages/nav/Navbar"
+import Tooltips from "../../pages/tooltips"
+import Tabs from '../../pages/tabs'
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -54,6 +56,8 @@ function Layout(props) {
             <Route path="/app/ui/сarousel" component={Carousel} />
             <Route path="/app/ui/modal" component={Modal} />
             <Route path="/app/ui/navbar" component={Navbar} />
+            <Route path="/app/ui/tooltips" component={Tooltips} />
+            <Route path="/app/ui/tabs" component={Tabs} />
             <Route
               exact
               path="/app/ui"

@@ -5,12 +5,13 @@ import {
   Typography as TypographyBase,
   Button as ButtonBase,
   Chip as ChipBase,
+  Tooltip as TooltipBase,
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
 
 // styles
-var useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
   badge: {
     fontWeight: 600,
     height: 16,
@@ -19,9 +20,9 @@ var useStyles = makeStyles(theme => ({
 }));
 
 function Badge({ children, colorBrightness, color, fontColor, ...props }) {
-  var classes = useStyles();
-  var theme = useTheme();
-  var Styled = createStyled({
+  const classes = useStyles();
+  const theme = useTheme();
+  const Styled = createStyled({
     badge: {
       backgroundColor: getColor(color, theme, colorBrightness),
       color: fontColor,
@@ -45,8 +46,8 @@ function Badge({ children, colorBrightness, color, fontColor, ...props }) {
 }
 
 function Chip({ colorBrightness, color, ...props }) {
-  var theme = useTheme();
-  var Styled = createStyled({
+  const theme = useTheme();
+  const Styled = createStyled({
     root: {
       backgroundColor: getColor(color, theme, colorBrightness),
       color: "white",
@@ -75,7 +76,7 @@ function Typography({
   color,
   ...props
 }) {
-  var theme = useTheme();
+  const theme = useTheme();
 
   return (
     <TypographyBase
@@ -92,9 +93,9 @@ function Typography({
 }
 
 function Button({ children, color, ...props }) {
-  var theme = useTheme();
+  const theme = useTheme();
 
-  var Styled = createStyled({
+  const Styled = createStyled({
     button: {
       backgroundColor: getColor(color, theme),
       boxShadow: theme.customShadows.widget,
@@ -117,7 +118,28 @@ function Button({ children, color, ...props }) {
   );
 }
 
-export { Badge, Typography, Button, Chip };
+function Tooltip({ children, color, ...props }) {
+  const theme = useTheme();
+
+  const Styled = createStyled({
+    tooltip: {
+      backgroundColor: getColor(color, theme),
+      color: "white",
+    },
+  });
+
+  return (
+    <Styled>
+      {({ classes }) => (
+        <TooltipBase classes={{ tooltip: classes.tooltip }} {...props}>
+          {children}
+        </TooltipBase>
+      )}
+    </Styled>
+  );
+}
+
+export { Badge, Typography, Button, Chip, Tooltip };
 
 // ########################################################################
 
@@ -141,7 +163,7 @@ function getFontWeight(style) {
 }
 
 function getFontSize(size, variant = "", theme) {
-  var multiplier;
+  let multiplier;
 
   switch (size) {
     case "sm":
@@ -161,7 +183,7 @@ function getFontSize(size, variant = "", theme) {
       break;
   }
 
-  var defaultSize =
+  const defaultSize =
     variant && theme.typography[variant]
       ? theme.typography[variant].fontSize
       : theme.typography.fontStyle + "px";
@@ -170,7 +192,7 @@ function getFontSize(size, variant = "", theme) {
 }
 
 function createStyled(styles, options) {
-  var Styled = function(props) {
+  const Styled = function(props) {
     const { children, ...other } = props;
     return children(other);
   };

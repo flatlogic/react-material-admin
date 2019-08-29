@@ -7,7 +7,7 @@ import {
   Menu,
   MenuItem,
   Fab,
-  withStyles
+  withStyles,
 } from "@material-ui/core";
 import {
   Menu as MenuIcon,

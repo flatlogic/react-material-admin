@@ -71,6 +71,7 @@ const useStyles = makeStyles(theme => ({
       cursor: "pointer",
     },
   },
+
   searchIconOpened: {
     right: theme.spacing.unit * 1.25,
   },
@@ -91,13 +92,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function NavComp() {
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
-  function handleChange(event) {
-    setAuth(event.target.checked);
-  }
 
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
@@ -107,7 +103,7 @@ export default function NavComp() {
     setAnchorEl(null);
   }
 
-  var [isSearchOpen, setSearchOpen] = useState(false);
+  const [isSearchOpen, setSearchOpen] = useState(false);
 
   const classes = useStyles();
   return (

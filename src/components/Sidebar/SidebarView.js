@@ -59,6 +59,8 @@ const structure = [
       { label: "Carousel", link: "/app/ui/сarousel" },
       { label: "Modal", link: "/app/ui/modal" },
       { label: "Navbar", link: "/app/ui/navbar" },
+      { label: "Tooltips", link: "/app/ui/tooltips" },
+      { label: "Tabs", link: "/app/ui/tabs" },
     ],
   },
   { id: 10, type: "divider" },
