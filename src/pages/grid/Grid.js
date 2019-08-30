@@ -175,27 +175,27 @@ export default function GridComp() {
                   </TableCell>
                   <TableCell>
                     <Typography className={classes.codeBack}>
-                      {"<Grid item xs={}>"}
+                      {"<Grid item xs>"}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography className={classes.codeBack}>
-                      {"<Grid item sm={}>"}
+                      {"<Grid item sm>"}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography className={classes.codeBack}>
-                      {"<Grid item md={}>"}
+                      {"<Grid item md>"}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography className={classes.codeBack}>
-                      {"<Grid item lg={}>"}
+                      {"<Grid item lg>"}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography className={classes.codeBack}>
-                      {"<Grid item xl={}>"}
+                      {"<Grid item xl>"}
                     </Typography>
                   </TableCell>
                 </TableRow>

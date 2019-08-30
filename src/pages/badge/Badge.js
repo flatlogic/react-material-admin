@@ -73,8 +73,9 @@ export default function BadgeComp() {
               </Box>
               <Box my={3}>
                 <Badge
-                  color="danger"
-                  badgeContent={"Danger"}
+                  color="primary"
+                  colorBrightness="light"
+                  badgeContent={"Primary light"}
                   fontColor={"white"}
                 >
                   <Typography variant="h6" className={classes.paddingTop}>
@@ -87,7 +88,7 @@ export default function BadgeComp() {
                 counter.
               </Typography>
               <Box my={3}>
-                <Badge color="danger" badgeContent={"1"} fontColor={"white"}>
+                <Badge color="success" badgeContent={"1"} fontColor={"white"}>
                   <Button variant="contained" className={classes.paddingTop}>
                     Example heading
                   </Button>

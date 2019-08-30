@@ -150,7 +150,7 @@ const styles = theme => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: "nowrap",
-    top: theme.spacing.unit * 8,
+    top: theme.spacing(8),
     [theme.breakpoints.down("sm")]: {
       top: 0,
     },
@@ -168,7 +168,7 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: "hidden",
-    width: theme.spacing.unit * 7 + 40,
+    width: theme.spacing(7 + 40),
     [theme.breakpoints.down("sm")]: {
       width: drawerWidth,
     },
@@ -181,13 +181,13 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
   },
   mobileBackButton: {
-    marginTop: theme.spacing.unit * 0.5,
-    marginLeft: theme.spacing.unit * 3,
+    marginTop: theme.spacing(0.5),
+    marginLeft: theme.spacing(3),
     [theme.breakpoints.only("sm")]: {
-      marginTop: theme.spacing.unit * 0.625,
+      marginTop: theme.spacing(0.625),
     },
     [theme.breakpoints.up("md")]: {
       display: "none",

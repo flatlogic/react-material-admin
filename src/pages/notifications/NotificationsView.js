@@ -116,7 +116,7 @@ const styles = (theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
     border: '1px dashed',
     borderColor: theme.palette.primary.main,
     position: 'relative',
@@ -143,7 +143,7 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
   },
   notificationCallButton: {
     color: 'white',
@@ -153,21 +153,21 @@ const styles = (theme) => ({
   codeContainer: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
   },
   codeComponent: {
     flexGrow: 1,
   },
   notificationItem: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
   },
   notificationCloseButton: {
     position: 'absolute',
-    right: theme.spacing.unit * 2,
+    right: theme.spacing(2),
   },
   toastsContainer: {
     width: 400,
-    marginTop: theme.spacing.unit * 6,
+    marginTop: theme.spacing(6),
     right: 0,
   }
 });

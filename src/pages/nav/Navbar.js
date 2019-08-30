@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   search: {
     position: "relative",
     borderRadius: 25,
-    paddingLeft: theme.spacing.unit * 2.5,
+    paddingLeft: theme.spacing(2.5),
     width: 36,
     backgroundColor: fade(theme.palette.common.black, 0),
     transition: theme.transitions.create(["background-color", "width"]),
@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   searchIconOpened: {
-    right: theme.spacing.unit * 1.25,
+    right: theme.spacing(1.25),
   },
   headerIcon: {
     fontSize: 28,
@@ -86,7 +86,7 @@ const useStyles = makeStyles(theme => ({
   inputInput: {
     height: 36,
     padding: 0,
-    paddingRight: 36 + theme.spacing.unit * 1.25,
+    paddingRight: 36 + theme.spacing(1.25),
     width: "100%",
   },
 }));
@@ -259,7 +259,7 @@ export default function NavComp() {
             </Box>
           </Widget>
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <Widget title="Navbar Search" disableWidgetMenu inheritHeight>
             <Typography>
               Search icon makes UX more flexible. To start using search icon,
