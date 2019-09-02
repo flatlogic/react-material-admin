@@ -13,6 +13,9 @@ export default makeStyles(theme => ({
     marginRight: theme.spacing(1)
   },
   buttonMargin: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(0, 1)
+  },
+  typography: {
+    padding: theme.spacing(2)
   }
 }));

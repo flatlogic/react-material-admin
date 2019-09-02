@@ -1,13 +1,25 @@
 import React from "react";
-import { Grid, Box, Tabs, Tab } from "@material-ui/core";
+import {
+  Grid,
+  Box,
+  Tabs,
+  Tab,
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+  AppBar,
+} from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
+import {
+  Phone as PhoneIcon,
+  ExpandMore as ExpandMoreIcon,
+} from "@material-ui/icons";
+
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
-import PhoneIcon from '@material-ui/icons/Phone';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,7 +64,7 @@ export default function TabsComp() {
       <Grid container spacing={6}>
         <Grid item md={6}>
           <Widget title="Tabs Example" disableWidgetMenu inheritHeight>
-            <AppBar position="static" color="default" style={{marginTop: 10}}>
+            <AppBar position="static" color="default" style={{ marginTop: 10 }}>
               <Tabs
                 value={value}
                 onChange={handleChange}
@@ -117,7 +129,7 @@ export default function TabsComp() {
 
         <Grid item md={6}>
           <Widget title="Icons Tabs" disableWidgetMenu inheritHeight>
-            <AppBar position="static" color="default" style={{marginTop: 10}}>
+            <AppBar position="static" color="default" style={{ marginTop: 10 }}>
               <Tabs
                 value={value}
                 onChange={handleChange}
@@ -128,7 +140,11 @@ export default function TabsComp() {
               >
                 <Tab label="Item One" icon={<PhoneIcon />} {...a11yProps(0)} />
                 <Tab label="Item Two" icon={<PhoneIcon />} {...a11yProps(1)} />
-                <Tab label="Item Three" icon={<PhoneIcon />} {...a11yProps(2)} />
+                <Tab
+                  label="Item Three"
+                  icon={<PhoneIcon />}
+                  {...a11yProps(2)}
+                />
               </Tabs>
             </AppBar>
             <SwipeableViews
@@ -179,7 +195,55 @@ export default function TabsComp() {
             </SwipeableViews>
           </Widget>
         </Grid>
-
+        <Grid item md={6}>
+          <Widget
+            title="Expansion Panel Example"
+            disableWidgetMenu
+            inheritHeight
+          >
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>Expansion Panel 1</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <Typography>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                  eget.
+                </Typography>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel2a-content"
+                id="panel2a-header"
+              >
+                <Typography>Expansion Panel 2</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <Typography>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                  eget.
+                </Typography>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel disabled>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel3a-content"
+                id="panel3a-header"
+              >
+                <Typography>Disabled Expansion Panel</Typography>
+              </ExpansionPanelSummary>
+            </ExpansionPanel>
+          </Widget>
+        </Grid>
       </Grid>
     </div>
   );
