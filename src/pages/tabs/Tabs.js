@@ -20,6 +20,7 @@ import {
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
+import useStyles from './styles'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,7 +47,7 @@ function a11yProps(index) {
 }
 
 export default function TabsComp() {
-  // const classes = useStyles();
+  const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -218,6 +219,55 @@ export default function TabsComp() {
               </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel2a-content"
+                id="panel2a-header"
+              >
+                <Typography>Expansion Panel 2</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <Typography>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                  eget.
+                </Typography>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel disabled>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel3a-content"
+                id="panel3a-header"
+              >
+                <Typography>Disabled Expansion Panel</Typography>
+              </ExpansionPanelSummary>
+            </ExpansionPanel>
+          </Widget>
+        </Grid>
+        <Grid item md={6}>
+          <Widget
+            title="Customize Expansion Panel Example"
+            disableWidgetMenu
+            inheritHeight
+          >
+            <ExpansionPanel classes={{root: classes.expansion}}>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>Expansion Panel 1</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <Typography>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                  eget.
+                </Typography>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel classes={{root: classes.expansion}}>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
