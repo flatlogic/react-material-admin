@@ -431,22 +431,22 @@ export default function TooltipsComp() {
                     variant={"contained"}
                     className={classes.buttonMargin}
                     aria-describedby={
-                      state.togglePopover ? "simple-popover" : undefined
+                      state.toggleBottomPopover ? "simple-popover" : undefined
                     }
                     onClick={e =>
                       dispatch({
-                        type: "OPEN_POPOVER",
-                        setSibling: e.currentTarget,
+                        type: "OPEN_BOTTOM_POPOVER",
+                        setBottomPopoverSibling: e.currentTarget,
                       })
                     }
                   >
                     Popover on bottom
                   </ButtonNative>
                   <Popover
-                    id={state.togglePopover ? "simple-popover" : undefined}
-                    open={state.togglePopover}
-                    anchorEl={state.popoverSibling}
-                    onClose={() => dispatch({ type: "CLOSE_POPOVER" })}
+                    id={state.toggleBottomPopover ? "simple-popover" : undefined}
+                    open={state.toggleBottomPopover}
+                    anchorEl={state.bottomPopoverSibling}
+                    onClose={() => dispatch({ type: "CLOSE_BOTTOM_POPOVER" })}
                     anchorOrigin={{
                       vertical: "bottom",
                       horizontal: "center",
@@ -466,22 +466,22 @@ export default function TooltipsComp() {
                     variant={"contained"}
                     className={classes.buttonMargin}
                     aria-describedby={
-                      state.togglePopover ? "simple-popover" : undefined
+                      state.toggleLeftPopover ? "simple-popover" : undefined
                     }
                     onClick={e =>
                       dispatch({
-                        type: "OPEN_POPOVER",
-                        setSibling: e.currentTarget,
+                        type: "OPEN_LEFT_POPOVER",
+                        setLeftPopoverSibling: e.currentTarget,
                       })
                     }
                   >
                     Popover on left
                   </ButtonNative>
                   <Popover
-                    id={state.togglePopover ? "simple-popover" : undefined}
-                    open={state.togglePopover}
-                    anchorEl={state.popoverSibling}
-                    onClose={() => dispatch({ type: "CLOSE_POPOVER" })}
+                    id={state.toggleLeftPopover ? "simple-popover" : undefined}
+                    open={state.toggleLeftPopover}
+                    anchorEl={state.leftPopoverSibling}
+                    onClose={() => dispatch({ type: "CLOSE_LEFT_POPOVER" })}
                     anchorOrigin={{
                       vertical: "bottom",
                       horizontal: "center",
