@@ -4,7 +4,7 @@ export default makeStyles(theme => (
   {
     expansion: {
       backgroundColor: theme.palette.primary.light,
-      color: 'white'
+      color: 'white '
     }
   }
 ))

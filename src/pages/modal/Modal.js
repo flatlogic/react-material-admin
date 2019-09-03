@@ -12,9 +12,25 @@ import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "OPEN_MODAL":
+      return true;
+    case "CLOSE_MODAL":
+      return false;
+    case "OPEN_BODY":
+      return true;
+    case "CLOSE_BODY":
+      return false
+    default:
+      return null;
+  }
+};
+
 export default function ModalComp() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const setOpen = true;
+  const [state, dispatch] = React.useReducer(reducer, false);
   const [openBody, setOpenBody] = React.useState(false);
   const [openLarge, setOpenLarge] = React.useState(false);
   const [openSmall, setOpenSmall] = React.useState(false);
@@ -74,13 +90,13 @@ export default function ModalComp() {
               <Button
                 color={"primary"}
                 className={classes.marginRight}
-                onClick={handleClickOpen}
+                onClick={() => dispatch({type: 'OPEN_MODAL'})}
               >
                 Demo
               </Button>
               <Dialog
-                open={open}
-                onClose={handleClose}
+                open={state}
+                onClose={() => dispatch({type: 'CLOSE_MODAL'})}
                 scroll={"body"}
                 aria-labelledby="scroll-dialog-title"
               >
@@ -95,20 +111,20 @@ export default function ModalComp() {
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <ButtonNative onClick={handleClose} color="primary">
+                  <ButtonNative onClick={() => dispatch({type: 'CLOSE_MODAL'})} color="primary">
                     Disagree
                   </ButtonNative>
-                  <ButtonNative onClick={handleClose} color="primary" autoFocus>
+                  <ButtonNative onClick={() => dispatch({type: 'CLOSE_MODAL'})} color="primary" autoFocus>
                     Agree
                   </ButtonNative>
                 </DialogActions>
               </Dialog>
-              <Button color={"primary"} onClick={handleClickOpenBody}>
+              <Button color={"primary"} onClick={() => dispatch({type: 'OPEN_BODY'})}>
                 Scrolling long content
               </Button>
               <Dialog
-                open={openBody}
-                onClose={handleCloseBody}
+                open={state}
+                onClose={() => dispatch({type: 'CLOSE_BODY'})}
                 scroll={"body"}
                 aria-labelledby="scroll-dialog-title"
               >
@@ -126,7 +142,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <ButtonNative onClick={handleCloseBody} color="primary">
+                  <ButtonNative onClick={() => dispatch({type: 'OPEN_BODY'})} color="primary">
                     Cancel
                   </ButtonNative>
                   <ButtonNative onClick={handleCloseBody} color="primary">
