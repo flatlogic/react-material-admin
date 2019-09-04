@@ -4,16 +4,13 @@ export default makeStyles(theme => ({
   button: {
     boxShadow: theme.customShadows.widget,
     color: theme.palette.text.primary,
-    marginRight: theme.spacing(1),
+    margin: theme.spacing(1),
     "&:hover": {
       boxShadow: theme.customShadows.widgetWide,
     },
   },
-  marginRight: {
-    marginRight: theme.spacing(1)
-  },
-  buttonMargin: {
-    margin: theme.spacing(0, 1)
+  buttonWhite: {
+    color: 'white'
   },
   typography: {
     padding: theme.spacing(2)

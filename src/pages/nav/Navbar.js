@@ -8,88 +8,14 @@ import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography } from "../../components/Wrappers";
 
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import classNames from "classnames";
-import { fade } from "@material-ui/core/styles/colorManipulator";
 import { Search as SearchIcon } from "@material-ui/icons";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  wrapFix: {
-    whiteSpace: "pre",
-  },
-  paper: {
-    margin: theme.spacing(3),
-    padding: 10,
-    backgroundColor: "#f3f3f3",
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  search: {
-    position: "relative",
-    borderRadius: 25,
-    paddingLeft: theme.spacing(2.5),
-    width: 36,
-    backgroundColor: fade(theme.palette.common.black, 0),
-    transition: theme.transitions.create(["background-color", "width"]),
-    "&:hover": {
-      cursor: "pointer",
-      backgroundColor: fade(theme.palette.common.black, 0.08),
-    },
-  },
-  searchFocused: {
-    backgroundColor: fade(theme.palette.common.black, 0.08),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 250,
-    },
-  },
-  searchIcon: {
-    width: 36,
-    right: 0,
-    height: "100%",
-    position: "absolute",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    transition: theme.transitions.create("right"),
-    "&:hover": {
-      cursor: "pointer",
-    },
-  },
-
-  searchIconOpened: {
-    right: theme.spacing(1.25),
-  },
-  headerIcon: {
-    fontSize: 28,
-    color: "rgba(255, 255, 255, 0.35)",
-  },
-  inputRoot: {
-    color: "inherit",
-    width: "100%",
-  },
-  inputInput: {
-    height: 36,
-    padding: 0,
-    paddingRight: 36 + theme.spacing(1.25),
-    width: "100%",
-  },
-}));
+import useStyles from "./styles";
 
 export default function NavComp() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -178,22 +104,22 @@ export default function NavComp() {
                     <Typography color="warning">
                       <code>{"    </Typography> "}</code>
                     </Typography>
-                    <Typography color="danger">
+                    <Typography color="primary" brightness={"light"}>
                       <code>
-                        {'     <Button color="inherit">Link</Button> /> '}
+                        {'     <Button color="inherit">Link</Button>'}
                       </code>
                     </Typography>
-                    <Typography color="danger">
+                    <Typography color="primary" brightness={"light"}>
                       <code>
-                        {'     <Button color="inherit">Link2</Button> /> '}
+                        {'     <Button color="inherit">Link2</Button>'}
                       </code>
                     </Typography>
-                    <Typography color="danger">
+                    <Typography color="primary" brightness={"light"}>
                       <code>
                         {'     <Button color="inherit">Another Link</Button>'}
                       </code>
                     </Typography>
-                    <Typography color="danger">
+                    <Typography color="primary" brightness={"light"}>
                       <code>
                         {"     <Button disabled>Disabled Link</Button>"}
                       </code>

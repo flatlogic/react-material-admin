@@ -6,6 +6,7 @@ import {
   Button as ButtonNative,
   Popover,
 } from "@material-ui/core";
+import cn from 'classnames'
 
 // components
 import PageTitle from "../../components/PageTitle";
@@ -89,6 +90,54 @@ const reducer = (state, action) => {
         ...state,
         toggleLeftTooltip: false
       };
+      case 'OPEN_TOP_POPOVER':
+      return {
+        ...state,
+        toggleTopPopover: true,
+        topPopoverSibling: action.setTopPopoverSibling
+      };
+      case 'CLOSE_TOP_POPOVER':
+      return {
+        ...state,
+        toggleTopPopover: false,
+        topPopoverSibling: null
+      };
+      case 'OPEN_RIGHT_POPOVER':
+      return {
+        ...state,
+        toggleRightPopover: true,
+        rightPopoverSibling: action.setRightPopoverSibling
+      };
+      case 'CLOSE_RIGHT_POPOVER':
+      return {
+        ...state,
+        toggleRightPopover: false,
+        rightPopoverSibling: null
+      };
+      case 'OPEN_BOTTOM_POPOVER':
+      return {
+        ...state,
+        toggleBottomPopover: true,
+        bottomPopoverSibling: action.setBottomPopoverSibling
+      };
+      case 'CLOSE_BOTTOM_POPOVER':
+      return {
+        ...state,
+        toggleBottomPopover: false,
+        bottomPopoverSibling: null
+      };
+      case 'OPEN_LEFT_POPOVER':
+      return {
+        ...state,
+        toggleLeftPopover: true,
+        leftPopoverSibling: action.setLeftPopoverSibling
+      };
+      case 'CLOSE_LEFT_POPOVER':
+      return {
+        ...state,
+        toggleLeftPopover: false,
+        leftPopoverSibling: null
+      };
     default:
       return {};
   }
@@ -97,9 +146,6 @@ const reducer = (state, action) => {
 export default function TooltipsComp() {
   const classes = useStyles();
   const [state, dispatch] = React.useReducer(reducer, false);
-  const [openDirection, setOpenDirection] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [anchorElHover, setAnchorElHover] = React.useState(null);
 
   return (
     <div>
@@ -130,7 +176,7 @@ export default function TooltipsComp() {
                         variant={"contained"}
                         color={"primary"}
                         onClick={() => dispatch({ type: "OPEN_TOOLTIP" })}
-                        className={classes.marginRight}
+                        className={cn(classes.button, classes.buttonWhite)}
                       >
                         Click to toggle a tooltip
                       </ButtonNative>
@@ -147,7 +193,7 @@ export default function TooltipsComp() {
                   <ButtonNative
                     variant={"contained"}
                     color={"secondary"}
-                    className={classes.marginRight}
+                    className={cn(classes.button, classes.buttonWhite)}
                   >
                     Hover to toggle a tooltip
                   </ButtonNative>
@@ -165,7 +211,7 @@ export default function TooltipsComp() {
                 <Grid item>
                   <ButtonNative
                     variant={"contained"}
-                    className={classes.buttonMargin}
+                    className={classes.button}
                     aria-describedby={
                       state.togglePopover ? "simple-popover" : undefined
                     }
@@ -263,7 +309,7 @@ export default function TooltipsComp() {
                       variant={"contained"}
                       color={"primary"}
                       onClick={() => dispatch({type: 'OPEN_TOP_TOOLTIP'})}
-                      className={classes.marginRight}
+                      className={cn(classes.button, classes.buttonWhite)}
                     >
                       Tooltip on top
                     </ButtonNative>
@@ -289,7 +335,7 @@ export default function TooltipsComp() {
                       variant={"contained"}
                       color={"primary"}
                       onClick={() => dispatch({type: 'OPEN_RIGHT_TOOLTIP'})}
-                      className={classes.marginRight}
+                      className={cn(classes.button, classes.buttonWhite)}
                     >
                       Tooltip on right
                     </ButtonNative>
@@ -315,7 +361,7 @@ export default function TooltipsComp() {
                       variant={"contained"}
                       color={"primary"}
                       onClick={() => dispatch({type: 'OPEN_BOTTOM_TOOLTIP'})}
-                      className={classes.marginRight}
+                      className={cn(classes.button, classes.buttonWhite)}
                     >
                       Tooltip on bottom
                     </ButtonNative>
@@ -341,7 +387,7 @@ export default function TooltipsComp() {
                       variant={"contained"}
                       color={"primary"}
                       onClick={() => dispatch({type: 'OPEN_LEFT_TOOLTIP'})}
-                      className={classes.marginRight}
+                      className={cn(classes.button, classes.buttonWhite)}
                     >
                       Tooltip on left
                     </ButtonNative>
@@ -359,7 +405,7 @@ export default function TooltipsComp() {
                 <Grid item>
                   <ButtonNative
                     variant={"contained"}
-                    className={classes.buttonMargin}
+                    className={classes.button}
                     aria-describedby={
                       state.toggleTopPopover ? "simple-popover" : undefined
                     }
@@ -382,7 +428,7 @@ export default function TooltipsComp() {
                       horizontal: "center",
                     }}
                     transformOrigin={{
-                      vertical: "center",
+                      vertical: "bottom",
                       horizontal: "center",
                     }}
                   >
@@ -394,7 +440,7 @@ export default function TooltipsComp() {
                 <Grid item>
                   <ButtonNative
                     variant={"contained"}
-                    className={classes.buttonMargin}
+                    className={classes.button}
                     aria-describedby={
                       state.toggleRightPopover ? "simple-popover" : undefined
                     }
@@ -417,8 +463,8 @@ export default function TooltipsComp() {
                       horizontal: "right",
                     }}
                     transformOrigin={{
-                      vertical: "top",
-                      horizontal: "center",
+                      vertical: "center",
+                      horizontal: "left",
                     }}
                   >
                     <Typography className={classes.typography}>
@@ -429,7 +475,7 @@ export default function TooltipsComp() {
                 <Grid item>
                   <ButtonNative
                     variant={"contained"}
-                    className={classes.buttonMargin}
+                    className={classes.button}
                     aria-describedby={
                       state.toggleBottomPopover ? "simple-popover" : undefined
                     }
@@ -464,7 +510,7 @@ export default function TooltipsComp() {
                 <Grid item>
                   <ButtonNative
                     variant={"contained"}
-                    className={classes.buttonMargin}
+                    className={classes.button}
                     aria-describedby={
                       state.toggleLeftPopover ? "simple-popover" : undefined
                     }
@@ -483,12 +529,12 @@ export default function TooltipsComp() {
                     anchorEl={state.leftPopoverSibling}
                     onClose={() => dispatch({ type: "CLOSE_LEFT_POPOVER" })}
                     anchorOrigin={{
-                      vertical: "bottom",
-                      horizontal: "center",
+                      vertical: "center",
+                      horizontal: "left",
                     }}
                     transformOrigin={{
                       vertical: "center",
-                      horizontal: "left",
+                      horizontal: "right",
                     }}
                   >
                     <Typography className={classes.typography}>

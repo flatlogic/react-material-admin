@@ -29,53 +29,8 @@ const reducer = (state, action) => {
 
 export default function ModalComp() {
   const classes = useStyles();
-  const setOpen = true;
   const [state, dispatch] = React.useReducer(reducer, false);
-  const [openBody, setOpenBody] = React.useState(false);
-  const [openLarge, setOpenLarge] = React.useState(false);
-  const [openSmall, setOpenSmall] = React.useState(false);
-  const [openGrid, setOpenGrid] = React.useState(false);
-
-  function handleClickOpen(e) {
-    setOpen(true);
-  }
-
-  function handleClose(e) {
-    setOpen(false);
-  }
-
-  function handleClickOpenBody() {
-    setOpenBody(true);
-  }
-
-  function handleCloseBody() {
-    setOpenBody(false);
-  }
-
-  function handleClickOpenLarge() {
-    setOpenLarge(true);
-  }
-
-  function handleCloseLarge() {
-    setOpenLarge(false);
-  }
-
-  function handleClickOpenSmall() {
-    setOpenSmall(true);
-  }
-
-  function handleCloseSmall() {
-    setOpenSmall(false);
-  }
-
-  function handleClickOpenGrid() {
-    setOpenGrid(true);
-  }
-
-  function handleCloseGrid() {
-    setOpenGrid(false);
-  }
-
+  
   return (
     <div>
       <PageTitle title="Modal" />
@@ -142,10 +97,10 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <ButtonNative onClick={() => dispatch({type: 'OPEN_BODY'})} color="primary">
+                  <ButtonNative onClick={() => dispatch({type: 'CLOSE_BODY'})} color="primary">
                     Cancel
                   </ButtonNative>
-                  <ButtonNative onClick={handleCloseBody} color="primary">
+                  <ButtonNative onClick={() => dispatch({type: 'CLOSE_BODY'})} color="primary">
                     Subscribe
                   </ButtonNative>
                 </DialogActions>
@@ -162,14 +117,14 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                 <Button
                   color={"primary"}
                   className={classes.marginRight}
-                  onClick={handleClickOpenLarge}
+                  onClick={() => dispatch({type: 'OPEN_LARGE'})}
                 >
                   Large Modal
                 </Button>
                 <Dialog
                   maxWidth={"xl"}
-                  open={openLarge}
-                  onClose={handleCloseLarge}
+                  open={state}
+                  onClose={() => dispatch({type: 'CLOSE_LARGE'})}
                   aria-labelledby="alert-dialog-title"
                   aria-describedby="alert-dialog-description"
                 >
@@ -184,11 +139,11 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
-                    <ButtonNative onClick={handleCloseLarge} color="primary">
+                    <ButtonNative onClick={() => dispatch({type: 'CLOSE_LARGE'})} color="primary">
                       Disagree
                     </ButtonNative>
                     <ButtonNative
-                      onClick={handleCloseLarge}
+                      onClick={() => dispatch({type: 'CLOSE_LARGE'})}
                       color="primary"
                       autoFocus
                     >
@@ -199,14 +154,14 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                 <Button
                   color={"primary"}
                   className={classes.marginRight}
-                  onClick={handleClickOpenSmall}
+                  onClick={() => dispatch({type: 'OPEN_SMALL'})}
                 >
                   Small modal
                 </Button>
                 <Dialog
                   maxWidth={"sm"}
                   open={openSmall}
-                  onClose={handleCloseSmall}
+                  onClose={() => dispatch({type: 'CLOSE_SMALL'})}
                   aria-labelledby="alert-dialog-title"
                   aria-describedby="alert-dialog-description"
                 >
@@ -221,11 +176,11 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
-                    <ButtonNative onClick={handleCloseSmall} color="primary">
+                    <ButtonNative onClick={() => dispatch({type: 'CLOSE_SMALL'})} color="primary">
                       Disagree
                     </ButtonNative>
                     <ButtonNative
-                      onClick={handleCloseSmall}
+                      onClick={() => dispatch({type: 'CLOSE_SMALL'})}
                       color="primary"
                       autoFocus
                     >
@@ -253,7 +208,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
               <Button
                 color={"primary"}
                 className={classes.marginRight}
-                onClick={handleClickOpenGrid}
+                onClick={() => dispatch({type: 'CLOSE_GRID'})}
               >
                 Demo
               </Button>
@@ -336,8 +291,8 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
             <Dialog
               fullWidth={true}
               maxWidth={"lg"}
-              open={openGrid}
-              onClose={handleCloseGrid}
+              open={state}
+              onClose={() => dispatch({type: 'CLOSE_GRID'})}
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
@@ -429,11 +384,11 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <ButtonNative onClick={handleCloseGrid} color="primary">
+                <ButtonNative onClick={() => dispatch({type: 'CLOSE_GRID'})} color="primary">
                   Disagree
                 </ButtonNative>
                 <ButtonNative
-                  onClick={handleCloseGrid}
+                  onClick={() => dispatch({type: 'CLOSE_GRID'})}
                   color="primary"
                   autoFocus
                 >
