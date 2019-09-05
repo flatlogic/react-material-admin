@@ -11,6 +11,7 @@ import {
   BarChart as ChartIcon,
   Map as MapIcon,
   Apps as CoreIcon,
+  Description as DescriptionIcon
 } from "@material-ui/icons";
 import classNames from "classnames";
 
@@ -43,9 +44,9 @@ const structure = [
       },
     ],
   },
-  { id: 7, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
+  { id: 6, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
   {
-    id: 9,
+    id: 7,
     label: "UI Elements",
     link: "/app/ui",
     icon: <UIElementsIcon />,
@@ -63,27 +64,36 @@ const structure = [
       { label: "Tabs", link: "/app/ui/tabs" },
     ],
   },
-  { id: 10, type: "divider" },
-  { id: 11, type: "title", label: "HELP" },
-  { id: 12, label: "Library", link: "", icon: <LibraryIcon /> },
-  { id: 13, label: "Support", link: "", icon: <SupportIcon /> },
-  { id: 14, label: "FAQ", link: "", icon: <FAQIcon /> },
-  { id: 15, type: "divider" },
-  { id: 16, type: "title", label: "PROJECTS" },
   {
-    id: 17,
+    id: 8,
+    label: "Forms",
+    link: "/app/forms",
+    icon: <DescriptionIcon />,
+    children: [
+      { label: "Regular Forms", link: "/app/forms/elements" },
+    ],
+  },
+  { id: 9, type: "divider" },
+  { id: 10, type: "title", label: "HELP" },
+  { id: 11, label: "Library", link: "", icon: <LibraryIcon /> },
+  { id: 12, label: "Support", link: "", icon: <SupportIcon /> },
+  { id: 13, label: "FAQ", link: "", icon: <FAQIcon /> },
+  { id: 14, type: "divider" },
+  { id: 15, type: "title", label: "PROJECTS" },
+  {
+    id: 16,
     label: "My recent",
     link: "",
     icon: <Dot size="large" color="secondary" />,
   },
   {
-    id: 18,
+    id: 17,
     label: "Starred",
     link: "",
     icon: <Dot size="large" color="primary" />,
   },
   {
-    id: 19,
+    id: 18,
     label: "Background",
     link: "",
     icon: <Dot size="large" color="secondary" />,

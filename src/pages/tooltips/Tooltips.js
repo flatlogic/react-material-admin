@@ -6,7 +6,7 @@ import {
   Button as ButtonNative,
   Popover,
 } from "@material-ui/core";
-import cn from 'classnames'
+import cn from "classnames";
 
 // components
 import PageTitle from "../../components/PageTitle";
@@ -42,101 +42,101 @@ const reducer = (state, action) => {
       return {
         ...state,
         toggleHoverPopover: true,
-        hoverPopoverSibling: action.setHoverPopoverSibling
+        hoverPopoverSibling: action.setHoverPopoverSibling,
       };
     case "CLOSE_HOVER_POPOVER":
       return {
         ...state,
         toggleHoverPopover: false,
-        hoverPopoverSibling: null
+        hoverPopoverSibling: null,
       };
     case "OPEN_TOP_TOOLTIP":
       return {
         ...state,
-        toggleTopTooltip: true
+        toggleTopTooltip: true,
       };
     case "CLOSE_TOP_TOOLTIP":
       return {
         ...state,
-        toggleTopTooltip: false
+        toggleTopTooltip: false,
       };
     case "OPEN_RIGHT_TOOLTIP":
       return {
         ...state,
-        toggleRightTooltip: true
+        toggleRightTooltip: true,
       };
     case "CLOSE_RIGHT_TOOLTIP":
       return {
         ...state,
-        toggleRightTooltip: false
+        toggleRightTooltip: false,
       };
     case "OPEN_BOTTOM_TOOLTIP":
       return {
         ...state,
-        toggleBottomTooltip: true
+        toggleBottomTooltip: true,
       };
     case "CLOSE_BOTTOM_TOOLTIP":
       return {
         ...state,
-        toggleBottomTooltip: false
+        toggleBottomTooltip: false,
       };
     case "OPEN_LEFT_TOOLTIP":
       return {
         ...state,
-        toggleLeftTooltip: true
+        toggleLeftTooltip: true,
       };
     case "CLOSE_LEFT_TOOLTIP":
       return {
         ...state,
-        toggleLeftTooltip: false
+        toggleLeftTooltip: false,
       };
-      case 'OPEN_TOP_POPOVER':
+    case "OPEN_TOP_POPOVER":
       return {
         ...state,
         toggleTopPopover: true,
-        topPopoverSibling: action.setTopPopoverSibling
+        topPopoverSibling: action.setTopPopoverSibling,
       };
-      case 'CLOSE_TOP_POPOVER':
+    case "CLOSE_TOP_POPOVER":
       return {
         ...state,
         toggleTopPopover: false,
-        topPopoverSibling: null
+        topPopoverSibling: null,
       };
-      case 'OPEN_RIGHT_POPOVER':
+    case "OPEN_RIGHT_POPOVER":
       return {
         ...state,
         toggleRightPopover: true,
-        rightPopoverSibling: action.setRightPopoverSibling
+        rightPopoverSibling: action.setRightPopoverSibling,
       };
-      case 'CLOSE_RIGHT_POPOVER':
+    case "CLOSE_RIGHT_POPOVER":
       return {
         ...state,
         toggleRightPopover: false,
-        rightPopoverSibling: null
+        rightPopoverSibling: null,
       };
-      case 'OPEN_BOTTOM_POPOVER':
+    case "OPEN_BOTTOM_POPOVER":
       return {
         ...state,
         toggleBottomPopover: true,
-        bottomPopoverSibling: action.setBottomPopoverSibling
+        bottomPopoverSibling: action.setBottomPopoverSibling,
       };
-      case 'CLOSE_BOTTOM_POPOVER':
+    case "CLOSE_BOTTOM_POPOVER":
       return {
         ...state,
         toggleBottomPopover: false,
-        bottomPopoverSibling: null
+        bottomPopoverSibling: null,
       };
-      case 'OPEN_LEFT_POPOVER':
+    case "OPEN_LEFT_POPOVER":
       return {
         ...state,
         toggleLeftPopover: true,
-        leftPopoverSibling: action.setLeftPopoverSibling
+        leftPopoverSibling: action.setLeftPopoverSibling,
       };
-      case 'CLOSE_LEFT_POPOVER':
+    case "CLOSE_LEFT_POPOVER":
       return {
         ...state,
         toggleLeftPopover: false,
-        leftPopoverSibling: null
+        leftPopoverSibling: null,
       };
     default:
       return {};
@@ -166,7 +166,7 @@ export default function TooltipsComp() {
                         disablePortal: true,
                       }}
                       onClose={() => dispatch({ type: "CLOSE_TOOLTIP" })}
-                      open={state.tooltipOpened  || false}
+                      open={state.tooltipOpened || false}
                       disableFocusListener
                       disableHoverListener
                       disableTouchListener
@@ -265,7 +265,7 @@ export default function TooltipsComp() {
                   </Typography>
                   <Popover
                     id="mouse-over-popover"
-                    open={state.toggleHoverPopover  || false}
+                    open={state.toggleHoverPopover || false}
                     anchorEl={state.hoverPopoverSibling}
                     anchorOrigin={{
                       vertical: "bottom",
@@ -290,7 +290,9 @@ export default function TooltipsComp() {
         <Grid item md={6}>
           <Widget title="Tooltip Directions" disableWidgetMenu>
             <Box mt={2}>
-              <ClickAwayListener onClickAway={() => dispatch({type: 'CLOSE_TOP_TOOLTIP'})}>
+              <ClickAwayListener
+                onClickAway={() => dispatch({ type: "CLOSE_TOP_TOOLTIP" })}
+              >
                 <React.Fragment>
                   <Tooltip
                     placement="top"
@@ -298,8 +300,8 @@ export default function TooltipsComp() {
                     PopperProps={{
                       disablePortal: true,
                     }}
-                    onClose={() => dispatch({type: 'CLOSE_TOP_TOOLTIP'})}
-                    open={state.toggleTopTooltip  || false}
+                    onClose={() => dispatch({ type: "CLOSE_TOP_TOOLTIP" })}
+                    open={state.toggleTopTooltip || false}
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
@@ -308,7 +310,7 @@ export default function TooltipsComp() {
                     <ButtonNative
                       variant={"contained"}
                       color={"primary"}
-                      onClick={() => dispatch({type: 'OPEN_TOP_TOOLTIP'})}
+                      onClick={() => dispatch({ type: "OPEN_TOP_TOOLTIP" })}
                       className={cn(classes.button, classes.buttonWhite)}
                     >
                       Tooltip on top
@@ -316,7 +318,9 @@ export default function TooltipsComp() {
                   </Tooltip>
                 </React.Fragment>
               </ClickAwayListener>
-              <ClickAwayListener onClickAway={() => dispatch({type: 'CLOSE_RIGHT_TOOLTIP'})}>
+              <ClickAwayListener
+                onClickAway={() => dispatch({ type: "CLOSE_RIGHT_TOOLTIP" })}
+              >
                 <React.Fragment>
                   <Tooltip
                     placement="right"
@@ -324,8 +328,8 @@ export default function TooltipsComp() {
                     PopperProps={{
                       disablePortal: true,
                     }}
-                    onClose={() => dispatch({type: 'CLOSE_RIGHT_TOOLTIP'})}
-                    open={state.toggleRightTooltip  || false}
+                    onClose={() => dispatch({ type: "CLOSE_RIGHT_TOOLTIP" })}
+                    open={state.toggleRightTooltip || false}
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
@@ -334,7 +338,7 @@ export default function TooltipsComp() {
                     <ButtonNative
                       variant={"contained"}
                       color={"primary"}
-                      onClick={() => dispatch({type: 'OPEN_RIGHT_TOOLTIP'})}
+                      onClick={() => dispatch({ type: "OPEN_RIGHT_TOOLTIP" })}
                       className={cn(classes.button, classes.buttonWhite)}
                     >
                       Tooltip on right
@@ -342,7 +346,9 @@ export default function TooltipsComp() {
                   </Tooltip>
                 </React.Fragment>
               </ClickAwayListener>
-              <ClickAwayListener onClickAway={() => dispatch({type: 'CLOSE_BOTTOM_TOOLTIP'})}>
+              <ClickAwayListener
+                onClickAway={() => dispatch({ type: "CLOSE_BOTTOM_TOOLTIP" })}
+              >
                 <React.Fragment>
                   <Tooltip
                     placement="bottom"
@@ -350,8 +356,8 @@ export default function TooltipsComp() {
                     PopperProps={{
                       disablePortal: true,
                     }}
-                    onClose={() => dispatch({type: 'CLOSE_BOTTOM_TOOLTIP'})}
-                    open={state.toggleBottomTooltip  || false}
+                    onClose={() => dispatch({ type: "CLOSE_BOTTOM_TOOLTIP" })}
+                    open={state.toggleBottomTooltip || false}
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
@@ -360,7 +366,7 @@ export default function TooltipsComp() {
                     <ButtonNative
                       variant={"contained"}
                       color={"primary"}
-                      onClick={() => dispatch({type: 'OPEN_BOTTOM_TOOLTIP'})}
+                      onClick={() => dispatch({ type: "OPEN_BOTTOM_TOOLTIP" })}
                       className={cn(classes.button, classes.buttonWhite)}
                     >
                       Tooltip on bottom
@@ -368,7 +374,9 @@ export default function TooltipsComp() {
                   </Tooltip>
                 </React.Fragment>
               </ClickAwayListener>
-              <ClickAwayListener onClickAway={() => dispatch({type: 'CLOSE_LEFT_TOOLTIP'})}>
+              <ClickAwayListener
+                onClickAway={() => dispatch({ type: "CLOSE_LEFT_TOOLTIP" })}
+              >
                 <React.Fragment>
                   <Tooltip
                     placement="left"
@@ -376,8 +384,8 @@ export default function TooltipsComp() {
                     PopperProps={{
                       disablePortal: true,
                     }}
-                    onClose={() => dispatch({type: 'CLOSE_LEFT_TOOLTIP'})}
-                    open={state.toggleLeftTooltip  || false}
+                    onClose={() => dispatch({ type: "CLOSE_LEFT_TOOLTIP" })}
+                    open={state.toggleLeftTooltip || false}
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
@@ -386,7 +394,7 @@ export default function TooltipsComp() {
                     <ButtonNative
                       variant={"contained"}
                       color={"primary"}
-                      onClick={() => dispatch({type: 'OPEN_LEFT_TOOLTIP'})}
+                      onClick={() => dispatch({ type: "OPEN_LEFT_TOOLTIP" })}
                       className={cn(classes.button, classes.buttonWhite)}
                     >
                       Tooltip on left
@@ -420,9 +428,9 @@ export default function TooltipsComp() {
                   </ButtonNative>
                   <Popover
                     id={state.toggleTopPopover ? "simple-popover" : undefined}
-                    open={state.toggleTopPopover  || false}
+                    open={state.toggleTopPopover || false}
                     anchorEl={state.topPopoverSibling}
-                    onClose={() => dispatch({ type: "CLOSE_TOP_POPOVER", })}
+                    onClose={() => dispatch({ type: "CLOSE_TOP_POPOVER" })}
                     anchorOrigin={{
                       vertical: "top",
                       horizontal: "center",
@@ -455,7 +463,7 @@ export default function TooltipsComp() {
                   </ButtonNative>
                   <Popover
                     id={state.toggleRightPopover ? "simple-popover" : undefined}
-                    open={state.toggleRightPopover  || false}
+                    open={state.toggleRightPopover || false}
                     anchorEl={state.rightPopoverSibling}
                     onClose={() => dispatch({ type: "CLOSE_RIGHT_POPOVER" })}
                     anchorOrigin={{
@@ -489,8 +497,10 @@ export default function TooltipsComp() {
                     Popover on bottom
                   </ButtonNative>
                   <Popover
-                    id={state.toggleBottomPopover ? "simple-popover" : undefined}
-                    open={state.toggleBottomPopover  || false}
+                    id={
+                      state.toggleBottomPopover ? "simple-popover" : undefined
+                    }
+                    open={state.toggleBottomPopover || false}
                     anchorEl={state.bottomPopoverSibling}
                     onClose={() => dispatch({ type: "CLOSE_BOTTOM_POPOVER" })}
                     anchorOrigin={{
@@ -525,7 +535,7 @@ export default function TooltipsComp() {
                   </ButtonNative>
                   <Popover
                     id={state.toggleLeftPopover ? "simple-popover" : undefined}
-                    open={state.toggleLeftPopover  || false}
+                    open={state.toggleLeftPopover || false}
                     anchorEl={state.leftPopoverSibling}
                     onClose={() => dispatch({ type: "CLOSE_LEFT_POPOVER" })}
                     anchorOrigin={{

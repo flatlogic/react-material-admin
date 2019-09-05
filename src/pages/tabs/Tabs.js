@@ -20,7 +20,7 @@ import {
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
-import useStyles from './styles'
+import useStyles from "./styles";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,13 +50,22 @@ export default function TabsComp() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const [iconValue, setIconValue] = React.useState(0);
 
   function handleChange(event, newValue) {
     setValue(newValue);
   }
 
+  function handleChangeIconTab(event, newValue) {
+    setIconValue(newValue);
+  }
+
   function handleChangeIndex(index) {
     setValue(index);
+  }
+
+  function handleChangeIndexIconTab(index) {
+    setIconValue(index);
   }
 
   return (
@@ -132,8 +141,8 @@ export default function TabsComp() {
           <Widget title="Icons Tabs" disableWidgetMenu inheritHeight>
             <AppBar position="static" color="default" style={{ marginTop: 10 }}>
               <Tabs
-                value={value}
-                onChange={handleChange}
+                value={iconValue}
+                onChange={handleChangeIconTab}
                 indicatorColor="primary"
                 textColor="primary"
                 variant="fullWidth"
@@ -150,10 +159,10 @@ export default function TabsComp() {
             </AppBar>
             <SwipeableViews
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={value}
-              onChangeIndex={handleChangeIndex}
+              index={iconValue}
+              onChangeIndex={handleChangeIndexIconTab}
             >
-              <TabPanel value={value} index={0} dir={theme.direction}>
+              <TabPanel value={iconValue} index={0} dir={theme.direction}>
                 Tabs-enabled widget You will never know exactly how something
                 will go until you try it. You can think three hundred times and
                 still have no precise result. If you see attractive girl all you
@@ -179,13 +188,13 @@ export default function TabsComp() {
                   </Box>
                 </Box>
               </TabPanel>
-              <TabPanel value={value} index={1} dir={theme.direction}>
+              <TabPanel value={iconValue} index={1} dir={theme.direction}>
                 Why don't use Lore Ipsum? I think if some one says don't use
                 lore ipsum it's very controversial point. I think the opposite
                 actually. Everyone knows what is lore ipsum - it is easy to
                 understand if text is lore ipsum.
               </TabPanel>
-              <TabPanel value={value} index={2} dir={theme.direction}>
+              <TabPanel value={iconValue} index={2} dir={theme.direction}>
                 If you will think too much it will sink in the swamp of never
                 implemented plans and ideas or will just go away or will be
                 implemented by someone else. 5 months of doing everything to
@@ -251,7 +260,7 @@ export default function TabsComp() {
             disableWidgetMenu
             inheritHeight
           >
-            <ExpansionPanel classes={{root: classes.expansion}}>
+            <ExpansionPanel classes={{ root: classes.expansion }}>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -267,7 +276,7 @@ export default function TabsComp() {
                 </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
-            <ExpansionPanel classes={{root: classes.expansion}}>
+            <ExpansionPanel classes={{ root: classes.expansion }}>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"

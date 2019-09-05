@@ -21,10 +21,11 @@ import Colors from "../../pages/colors";
 import Grid from "../../pages/grid";
 import Badge from "../../pages/badge";
 import Carousel from "../../pages/сarousel";
-import Modal from "../../pages/modal"
-import Navbar from "../../pages/nav/Navbar"
-import Tooltips from "../../pages/tooltips"
-import Tabs from '../../pages/tabs'
+import Modal from "../../pages/modal";
+import Navbar from "../../pages/nav/Navbar";
+import Tooltips from "../../pages/tooltips";
+import Tabs from "../../pages/tabs";
+import FormsElements from "../../pages/forms/elements";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -52,6 +53,7 @@ function Layout(props) {
             <Route path="/app/core/grid" component={Grid} />
             <Route path="/app/tables" component={Tables} />
             <Route path="/app/ui/notifications" component={Notifications} />
+            <Route path="/app/forms/elements" component={FormsElements} />
             <Route path="/app/ui/badge" component={Badge} />
             <Route path="/app/ui/сarousel" component={Carousel} />
             <Route path="/app/ui/modal" component={Modal} />
@@ -67,6 +69,11 @@ function Layout(props) {
               exact
               path="/app/core"
               render={() => <Redirect to="/app/core/typography" />}
+            />
+            <Route
+              exact
+              path="/app/forms"
+              render={() => <Redirect to="/app/forms/elements" />}
             />
             <Route path="/app/charts" component={Charts} />
             <Route path="/app/maps" component={Maps} />
