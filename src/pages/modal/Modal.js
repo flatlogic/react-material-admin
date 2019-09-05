@@ -15,13 +15,55 @@ import { Typography, Button } from "../../components/Wrappers";
 const reducer = (state, action) => {
   switch (action.type) {
     case "OPEN_MODAL":
-      return true;
+      return {
+        ...state,
+        toggleModal: true,
+      };
     case "CLOSE_MODAL":
-      return false;
+      return {
+        ...state,
+        toggleModal: false,
+      };
     case "OPEN_BODY":
-      return true;
+      return {
+        ...state,
+        toggleBody: true,
+      };
     case "CLOSE_BODY":
-      return false
+      return {
+        ...state,
+        toggleBody: false,
+      };
+    case "OPEN_SMALL":
+      return {
+        ...state,
+        toggleSmall: true,
+      };
+    case "CLOSE_SMALL":
+      return {
+        ...state,
+        toggleSmall: false,
+      };
+    case "OPEN_LARGE":
+      return {
+        ...state,
+        toggleLarge: true,
+      };
+    case "CLOSE_LARGE":
+      return {
+        ...state,
+        toggleLarge: false,
+      };
+    case "OPEN_GRID":
+      return {
+        ...state,
+        toggleGrid: true,
+      };
+    case "CLOSE_GRID":
+      return {
+        ...state,
+        toggleGrid: false,
+      };
     default:
       return null;
   }
@@ -29,8 +71,8 @@ const reducer = (state, action) => {
 
 export default function ModalComp() {
   const classes = useStyles();
-  const [state, dispatch] = React.useReducer(reducer, false);
-  
+  const [state, dispatch] = React.useReducer(reducer, {toggleModal: false, toggleBody: false, toggleSmall: false, toggleGrid: false, toggleLarge: false});
+
   return (
     <div>
       <PageTitle title="Modal" />
@@ -45,13 +87,13 @@ export default function ModalComp() {
               <Button
                 color={"primary"}
                 className={classes.marginRight}
-                onClick={() => dispatch({type: 'OPEN_MODAL'})}
+                onClick={() => dispatch({ type: "OPEN_MODAL" })}
               >
                 Demo
               </Button>
               <Dialog
-                open={state}
-                onClose={() => dispatch({type: 'CLOSE_MODAL'})}
+                open={state.toggleModal}
+                onClose={() => dispatch({ type: "CLOSE_MODAL" })}
                 scroll={"body"}
                 aria-labelledby="scroll-dialog-title"
               >
@@ -66,20 +108,30 @@ export default function ModalComp() {
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <ButtonNative onClick={() => dispatch({type: 'CLOSE_MODAL'})} color="primary">
+                  <ButtonNative
+                    onClick={() => dispatch({ type: "CLOSE_MODAL" })}
+                    color="primary"
+                  >
                     Disagree
                   </ButtonNative>
-                  <ButtonNative onClick={() => dispatch({type: 'CLOSE_MODAL'})} color="primary" autoFocus>
+                  <ButtonNative
+                    onClick={() => dispatch({ type: "CLOSE_MODAL" })}
+                    color="primary"
+                    autoFocus
+                  >
                     Agree
                   </ButtonNative>
                 </DialogActions>
               </Dialog>
-              <Button color={"primary"} onClick={() => dispatch({type: 'OPEN_BODY'})}>
+              <Button
+                color={"primary"}
+                onClick={() => dispatch({ type: "OPEN_BODY" })}
+              >
                 Scrolling long content
               </Button>
               <Dialog
-                open={state}
-                onClose={() => dispatch({type: 'CLOSE_BODY'})}
+                open={state.toggleBody}
+                onClose={() => dispatch({ type: "CLOSE_BODY" })}
                 scroll={"body"}
                 aria-labelledby="scroll-dialog-title"
               >
@@ -97,10 +149,16 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <ButtonNative onClick={() => dispatch({type: 'CLOSE_BODY'})} color="primary">
+                  <ButtonNative
+                    onClick={() => dispatch({ type: "CLOSE_BODY" })}
+                    color="primary"
+                  >
                     Cancel
                   </ButtonNative>
-                  <ButtonNative onClick={() => dispatch({type: 'CLOSE_BODY'})} color="primary">
+                  <ButtonNative
+                    onClick={() => dispatch({ type: "CLOSE_BODY" })}
+                    color="primary"
+                  >
                     Subscribe
                   </ButtonNative>
                 </DialogActions>
@@ -117,14 +175,14 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                 <Button
                   color={"primary"}
                   className={classes.marginRight}
-                  onClick={() => dispatch({type: 'OPEN_LARGE'})}
+                  onClick={() => dispatch({ type: "OPEN_LARGE" })}
                 >
                   Large Modal
                 </Button>
                 <Dialog
                   maxWidth={"xl"}
-                  open={state}
-                  onClose={() => dispatch({type: 'CLOSE_LARGE'})}
+                  open={state.toggleLarge}
+                  onClose={() => dispatch({ type: "CLOSE_LARGE" })}
                   aria-labelledby="alert-dialog-title"
                   aria-describedby="alert-dialog-description"
                 >
@@ -139,11 +197,14 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
-                    <ButtonNative onClick={() => dispatch({type: 'CLOSE_LARGE'})} color="primary">
+                    <ButtonNative
+                      onClick={() => dispatch({ type: "CLOSE_LARGE" })}
+                      color="primary"
+                    >
                       Disagree
                     </ButtonNative>
                     <ButtonNative
-                      onClick={() => dispatch({type: 'CLOSE_LARGE'})}
+                      onClick={() => dispatch({ type: "CLOSE_LARGE" })}
                       color="primary"
                       autoFocus
                     >
@@ -154,14 +215,14 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                 <Button
                   color={"primary"}
                   className={classes.marginRight}
-                  onClick={() => dispatch({type: 'OPEN_SMALL'})}
+                  onClick={() => dispatch({ type: "OPEN_SMALL" })}
                 >
                   Small modal
                 </Button>
                 <Dialog
                   maxWidth={"sm"}
-                  open={openSmall}
-                  onClose={() => dispatch({type: 'CLOSE_SMALL'})}
+                  open={state.toggleSmall}
+                  onClose={() => dispatch({ type: "CLOSE_SMALL" })}
                   aria-labelledby="alert-dialog-title"
                   aria-describedby="alert-dialog-description"
                 >
@@ -176,11 +237,14 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
-                    <ButtonNative onClick={() => dispatch({type: 'CLOSE_SMALL'})} color="primary">
+                    <ButtonNative
+                      onClick={() => dispatch({ type: "CLOSE_SMALL" })}
+                      color="primary"
+                    >
                       Disagree
                     </ButtonNative>
                     <ButtonNative
-                      onClick={() => dispatch({type: 'CLOSE_SMALL'})}
+                      onClick={() => dispatch({ type: "CLOSE_SMALL" })}
                       color="primary"
                       autoFocus
                     >
@@ -208,9 +272,9 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
               <Button
                 color={"primary"}
                 className={classes.marginRight}
-                onClick={() => dispatch({type: 'CLOSE_GRID'})}
+                onClick={() => dispatch({ type: "OPEN_GRID" })}
               >
-                Demo
+                Grid
               </Button>
               <Paper className={classes.paper}>
                 <Grid item xs zeroMinWidth>
@@ -291,8 +355,8 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
             <Dialog
               fullWidth={true}
               maxWidth={"lg"}
-              open={state}
-              onClose={() => dispatch({type: 'CLOSE_GRID'})}
+              open={state.toggleGrid}
+              onClose={() => dispatch({ type: "CLOSE_GRID" })}
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
@@ -384,11 +448,14 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <ButtonNative onClick={() => dispatch({type: 'CLOSE_GRID'})} color="primary">
+                <ButtonNative
+                  onClick={() => dispatch({ type: "CLOSE_GRID" })}
+                  color="primary"
+                >
                   Disagree
                 </ButtonNative>
                 <ButtonNative
-                  onClick={() => dispatch({type: 'CLOSE_GRID'})}
+                  onClick={() => dispatch({ type: "CLOSE_GRID" })}
                   color="primary"
                   autoFocus
                 >
