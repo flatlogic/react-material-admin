@@ -119,7 +119,7 @@ export default function NotificationsPage(props) {
               >
                 Error + Retry Message
               </Button>
-              <Buttonco
+              <Button
                 variant="contained"
                 color="success"
                 onClick={() => handleNotificationCall("success")}
