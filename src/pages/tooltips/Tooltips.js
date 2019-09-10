@@ -151,7 +151,7 @@ export default function TooltipsComp() {
     <div>
       <PageTitle title="Tooltips" />
       <Grid container spacing={6}>
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <Widget title="Tooltip Example" disableWidgetMenu inheritHeight>
             <Grid container alignItems={"center"}>
               <Box mt={2}>
@@ -203,7 +203,7 @@ export default function TooltipsComp() {
           </Widget>
         </Grid>
 
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <Widget title="Popover Example" disableWidgetMenu>
             <Box mt={2} width="100%">
               {" "}
@@ -287,7 +287,7 @@ export default function TooltipsComp() {
             </Box>
           </Widget>
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <Widget title="Tooltip Directions" disableWidgetMenu>
             <Box mt={2}>
               <ClickAwayListener
@@ -405,7 +405,7 @@ export default function TooltipsComp() {
             </Box>
           </Widget>
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <Widget title="Popover Directions" disableWidgetMenu>
             <Box mt={2} width="100%">
               {" "}

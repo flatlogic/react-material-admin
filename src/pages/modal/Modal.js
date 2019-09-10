@@ -1,15 +1,21 @@
 import React from "react";
-import { Grid, Paper, Box, Button as ButtonNative } from "@material-ui/core";
+import {
+  Grid,
+  Paper,
+  Box,
+  Button as ButtonNative,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@material-ui/core";
 import useStyles from "./styles";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
+import Code from "../../components/Code";
 import { Typography, Button } from "../../components/Wrappers";
 
 const reducer = (state, action) => {
@@ -71,7 +77,13 @@ const reducer = (state, action) => {
 
 export default function ModalComp() {
   const classes = useStyles();
-  const [state, dispatch] = React.useReducer(reducer, {toggleModal: false, toggleBody: false, toggleSmall: false, toggleGrid: false, toggleLarge: false});
+  const [state, dispatch] = React.useReducer(reducer, {
+    toggleModal: false,
+    toggleBody: false,
+    toggleSmall: false,
+    toggleGrid: false,
+    toggleLarge: false,
+  });
 
   return (
     <div>
@@ -259,13 +271,9 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
         <Grid item md={6} xs={12}>
           <Widget title="Using Grid" disableWidgetMenu>
             <React.Fragment>
-              Utilize the Bootstrap grid system within a modal by nesting{" "}
-              <Typography
-                className={classes.codeBack}
-              >{`<Grid container>`}</Typography>{" "}
-              within the{" "}
-              <Typography className={classes.codeBack}>{`<Dialog>`}</Typography>
-              Typography>. Then, use the normal grid system classes as you would
+              Utilize the Material UI grid system within a modal by nesting{" "}
+              {`<Grid container>`} within the{" "}
+              {`<Dialog>`}. Then, use the normal grid system classes as you would
               anywhere else.
             </React.Fragment>
             <Box my={2}>
@@ -278,77 +286,25 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
               </Button>
               <Paper className={classes.paper}>
                 <Grid item xs zeroMinWidth>
-                  <pre>
-                    <Typography color="primary">
-                      <code>{"<Grid container>"}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {'  <Box display="flex" flexDirection="column">'}
-                      </code>
-                    </Typography>
-                    <Typography color="info" noWrap className={classes.wrapFix}>
-                      <code>
-                        {
-                          '    <Box display="flex" flexDirection="row" justifyContent="flex-end">'
-                        }
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="info" noWrap className={classes.wrapFix}>
-                      <code>
-                        {
-                          '    <Box display="flex" flexDirection="row" justifyContent="flex-around">'
-                        }
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="info" noWrap className={classes.wrapFix}>
-                      <code>
-                        {
-                          '    <Box display="flex" flexDirection="row" justifyContent="flex-between">'
-                        }
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>3</Grid>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="secondary">
-                      <code>{"  </Box>"}</code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</Grid>"}</code>
-                    </Typography>
-                  </pre>
+                  <Code>{`
+  <Grid container>
+    <Box display="flex" flexDirection="column">
+      <Box display="flex" flexDirection="row" justifyContent="flex-end">
+        <Grid item xs={3}>1</Grid>
+        <Grid item xs={3}>2</Grid>
+      </Box>
+      <Box display="flex" flexDirection="row" justifyContent="flex-around">
+        <Grid item xs={3}>1</Grid>
+        <Grid item xs={3}>2</Grid>
+      </Box>
+      <Box display="flex" flexDirection="row" justifyContent="flex-between">
+        <Grid item xs={3}>1</Grid>
+        <Grid item xs={3}>2</Grid>
+        <Grid item xs={3}>3</Grid>
+      </Box>
+    </Box>
+  </Grid>
+                  `}</Code>
                 </Grid>
               </Paper>
             </Box>

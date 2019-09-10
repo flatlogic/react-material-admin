@@ -8,13 +8,13 @@ import {
   TableCell,
   Box,
   Grid,
-  Paper
+  Paper,
 } from "@material-ui/core";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-import Code from '../../components/Code'
+import Code from "../../components/Code";
 import { Typography } from "../../components/Wrappers";
 
 export default function GridComp() {
@@ -51,41 +51,6 @@ export default function GridComp() {
     <Grid item xs={4}>One of three</Grid>
   </Grid>
                   `}</Code>
-                  {/* <pre>
-                    <Typography color="primary">
-                      <code>{"<Grid container>"}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"   <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"   <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"   <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</Grid>"}</code>
-                    </Typography>
-                  </pre> */}
                 </Grid>
               </Grid>
             </Paper>
@@ -108,7 +73,8 @@ export default function GridComp() {
                   <Paper className={classes.paperItem}>2 of 2</Paper>
                 </Grid>
                 <Grid item xs={12}>
-                  <Code>{`
+                  <Code>
+                    {`
   <Grid container>
     <Grid item xs>1 of 2</Grid>
     <Grid item xs>2 of 2</Grid>
@@ -116,20 +82,6 @@ export default function GridComp() {
   </Grid>
 `}
                   </Code>
-                  {/* <pre>
-                    <Typography color="primary">
-                      <code>{"<Grid container>"}</code>
-                    </Typography>
-                    <Typography color="secondary">
-                      <code>{"   <Grid item xs>1 of 2</Grid>\n"}</code>
-                    </Typography>
-                    <Typography color="secondary">
-                      <code>{"   <Grid item xs>2 of 2</Grid>\n"}</code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</Grid>"}</code>
-                    </Typography>
-                  </pre> */}
                 </Grid>
               </Grid>
             </Paper>
@@ -191,34 +143,19 @@ export default function GridComp() {
                     <b>Component property</b>
                   </TableCell>
                   <TableCell>
-                    <Code>{`<Grid item xs>`}</Code>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item xs>"}
-                    </Typography>
+                    <Code row={true}>{`<Grid item xs>`}</Code>
                   </TableCell>
                   <TableCell>
-                  <Code>{`<Grid item sm>`}</Code>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item sm>"}
-                    </Typography>
+                    <Code row={true}>{`<Grid item sm>`}</Code>
                   </TableCell>
                   <TableCell>
-                  <Code>{`<Grid item md>`}</Code>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item md>"}
-                    </Typography>
+                    <Code row={true}>{`<Grid item md>`}</Code>
                   </TableCell>
                   <TableCell>
-                  <Code>{`<Grid item lg>`}</Code>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item lg>"}
-                    </Typography>
+                    <Code row={true}>{`<Grid item lg>`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code>{`<Grid item xl>`}</Code>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item xl>"}
-                    </Typography>
+                    <Code row={true}>{`<Grid item xl>`}</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -229,13 +166,10 @@ export default function GridComp() {
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <b>Spacing</b> (output(spacing) = spacing * 8px, spacing ={" "}
+                    <b>Spacing</b> (output(spacing) = spacing * 8px)
                   </TableCell>
                   <TableCell>
-                  <Code>{`<Grid container spacing={2}>`}</Code>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid container spacing={2}>"}
-                    </Typography>
+                    <Code row={true}>{`<Grid container spacing={2}>`}</Code>
                   </TableCell>
                   <TableCell></TableCell>
                 </TableRow>
@@ -296,65 +230,6 @@ export default function GridComp() {
     </Box>
   </Grid>
                   `}</Code>
-                  {/* <pre>
-                    <Typography color="primary">
-                      <code>{"<Grid container>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{'  <Box display="flex">'}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{'    <Box alignSelf="flex-start">'}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"       <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{'    <Box alignSelf="center">'}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"       <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{'    <Box alignSelf="flex-end">'}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"       <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"  </Box>"}</code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</Grid>"}</code>
-                    </Typography>
-                  </pre> */}
                 </Grid>
               </Grid>
             </Paper>
@@ -464,78 +339,7 @@ export default function GridComp() {
       <Grid item xs={3}>3</Grid>
     </Box>
   </Box>
-                  `}</Code> 
-                  {/* <pre>
-                    <Typography color="primary">
-                      <code>{"<Grid container>"}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {'  <Box display="flex" flexDirection="column">'}
-                      </code>
-                    </Typography>
-                    <Typography color="info" noWrap className={classes.wrapFix}>
-                      <code>
-                        {
-                          '    <Box display="flex" flexDirection="row" justifyContent="flex-end">'
-                        }
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="info" noWrap className={classes.wrapFix}>
-                      <code>
-                        {
-                          '    <Box display="flex" flexDirection="row" justifyContent="flex-around">'
-                        }
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="info" noWrap className={classes.wrapFix}>
-                      <code>
-                        {
-                          '    <Box display="flex" flexDirection="row" justifyContent="flex-between">'
-                        }
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>3</Grid>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="secondary">
-                      <code>{"  </Box>"}</code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</Grid>"}</code>
-                    </Typography>
-                  </pre> */}
+                  `}</Code>
                 </Grid>
               </Grid>
             </Paper>

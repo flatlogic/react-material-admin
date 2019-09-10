@@ -1,20 +1,27 @@
 import React, { useState } from "react";
-import { Grid, Box, Menu, Paper, InputBase } from "@material-ui/core";
+import {
+  Grid,
+  Box,
+  Menu,
+  Paper,
+  InputBase,
+  MenuItem,
+  AppBar,
+  Toolbar,
+  Button,
+  IconButton,
+} from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MenuItem from "@material-ui/core/MenuItem";
+import MenuIcon from "@material-ui/icons/Menu";
+import { Search as SearchIcon } from "@material-ui/icons";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
+import Code from "../../components/Code";
 import { Typography } from "../../components/Wrappers";
 
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import classNames from "classnames";
-import { Search as SearchIcon } from "@material-ui/icons";
 import useStyles from "./styles";
 
 export default function NavComp() {
@@ -67,74 +74,22 @@ export default function NavComp() {
               </Box>
               <Paper className={classes.paper}>
                 <Grid item xs zeroMinWidth>
-                  <pre>
-                    <Typography color="primary">
-                      <code>{"<AppBar>"}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>{"   <Toolbar>"}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>{"     <IconButton>"}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>{"       <MenuIcon />"}</code>
-                    </Typography>
-                    <Typography color="secondary">
-                      <code>{"    </IconButton>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{'    <Typography variant="h6"> '}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"     Nav"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"    </Typography> "}</code>
-                    </Typography>
-                    <Typography color="primary" brightness={"light"}>
-                      <code>
-                        {'     <Button color="inherit">Link</Button>'}
-                      </code>
-                    </Typography>
-                    <Typography color="primary" brightness={"light"}>
-                      <code>
-                        {'     <Button color="inherit">Link2</Button>'}
-                      </code>
-                    </Typography>
-                    <Typography color="primary" brightness={"light"}>
-                      <code>
-                        {'     <Button color="inherit">Another Link</Button>'}
-                      </code>
-                    </Typography>
-                    <Typography color="primary" brightness={"light"}>
-                      <code>
-                        {"     <Button disabled>Disabled Link</Button>"}
-                      </code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>{"   </Toolbar>"}</code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</AppBar>"}</code>
-                    </Typography>
-                  </pre>
+                  <Code>{`
+  <AppBar>
+    <Toolbar>
+      <IconButton>
+        <MenuIcon />
+      </IconButton>
+      <Typography variant="h6">
+        Nav
+      </Typography>
+      <Button color="inherit">Link</Button>
+      <Button color="inherit">Link2</Button>
+      <Button color="inherit">Another Link</Button>
+      <Button disabled>Disabled Link</Button>
+    </Toolbar>
+  </AppBar>
+                  `}</Code>
                 </Grid>
               </Paper>
             </div>

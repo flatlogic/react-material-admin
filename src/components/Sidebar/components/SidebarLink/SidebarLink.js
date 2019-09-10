@@ -27,6 +27,7 @@ export default function SidebarLink({
   isSidebarOpened,
   nested,
   type,
+  toggleDrawler
 }) {
   var classes = useStyles();
 
@@ -52,6 +53,8 @@ export default function SidebarLink({
   if (!children)
     return (
       <ListItem
+        onClick={toggleDrawler}
+        onKeyPress={toggleDrawler}
         button
         component={link && Link}
         to={link}
@@ -78,6 +81,7 @@ export default function SidebarLink({
               [classes.linkTextHidden]: !isSidebarOpened,
             }),
           }}
+
           primary={label}
         />
       </ListItem>
@@ -117,7 +121,7 @@ export default function SidebarLink({
           unmountOnExit
           className={classes.nestedList}
         >
-          <List component="div" disablePadding>
+          <List component="div" disablePadding onClick={toggleDrawler} onKeyPress={toggleDrawler}>
             {children.map(childrenLink => (
               <SidebarLink
                 key={childrenLink && childrenLink.link}

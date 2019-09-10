@@ -113,9 +113,18 @@ const structure = [
   },
 ];
 
+
+
 function Sidebar({ location }) {
   var classes = useStyles();
   var theme = useTheme();
+
+  const toggleDrawer = (value) => event => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    if (value) toggleSidebar(layoutDispatch)
+  }
 
   // global
   var { isSidebarOpened } = useLayoutState();
@@ -157,13 +166,14 @@ function Sidebar({ location }) {
           />
         </IconButton>
       </div>
-      <List className={classes.sidebarList}>
+      <List className={classes.sidebarList} >
         {structure.map(link => (
           <SidebarLink
             key={link.id}
             location={location}
             isSidebarOpened={isSidebarOpened}
             {...link}
+            toggleDrawler={toggleDrawer(true)}
           />
         ))}
       </List>

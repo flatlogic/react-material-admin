@@ -6,13 +6,6 @@ export default makeStyles(theme => ({
     margin: theme.spacing(3, 0),
     padding: 10,
   },
-  codeBack: {
-    display: "inline",
-    padding: 2,
-    backgroundColor: "#f3f3f3",
-    color: "#e671b8",
-    borderRadius: "2px",
-  },
   paperItem: {
     backgroundColor: theme.palette.primary.light,
     textAlign: "center",

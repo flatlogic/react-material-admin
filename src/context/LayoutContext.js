@@ -13,6 +13,8 @@ function layoutReducer(state, action) {
   }
 }
 
+
+
 function LayoutProvider({ children }) {
   var [state, dispatch] = React.useReducer(layoutReducer, {
     isSidebarOpened: false,
@@ -35,18 +37,19 @@ function useLayoutState() {
 }
 
 function useLayoutDispatch() {
-var context = React.useContext(LayoutDispatchContext);
-if (context === undefined) {
-  throw new Error("useLayoutDispatch must be used within a LayoutProvider");
+  var context = React.useContext(LayoutDispatchContext);
+  if (context === undefined) {
+    throw new Error("useLayoutDispatch must be used within a LayoutProvider");
+  }
+  return context;
 }
-return context;
+
+const toggleSidebar = (dispatch) => {
+  dispatch({
+    type: "TOGGLE_SIDEBAR",
+  });
 }
 
 export { LayoutProvider, useLayoutState, useLayoutDispatch, toggleSidebar };
 
 // ###########################################################
-function toggleSidebar(dispatch) {
-  dispatch({
-    type: "TOGGLE_SIDEBAR",
-  });
-}
