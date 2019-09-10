@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
 import { ToastContainer, toast } from "react-toastify";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import classnames from "classnames";
 
 // styles
@@ -14,6 +12,7 @@ import useStyles from "./styles";
 import Widget from "../../components/Widget";
 import PageTitle from "../../components/PageTitle";
 import Notification from "../../components/Notification";
+import Code from '../../components/Code'
 import { Typography, Button } from "../../components/Wrappers";
 
 const positions = [
@@ -35,7 +34,7 @@ export default function NotificationsPage(props) {
   return (
     <>
       <PageTitle title="Notifications" />
-      <Grid container spacing={8}>
+      <Grid container spacing={3}>
         <ToastContainer
           className={classes.toastsContainer}
           closeButton={
@@ -120,7 +119,7 @@ export default function NotificationsPage(props) {
               >
                 Error + Retry Message
               </Button>
-              <Button
+              <Buttonco
                 variant="contained"
                 color="success"
                 onClick={() => handleNotificationCall("success")}
@@ -139,12 +138,7 @@ export default function NotificationsPage(props) {
                 react-toastify
               </a>
             </Typography>
-            <div className={classes.codeContainer}>
-              <SyntaxHighlighter
-                className={classes.codeComponent}
-                language="javascript"
-                style={docco}
-              >{`
+            <Code>{`
   // import needed components, functions and styles
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
@@ -157,11 +151,10 @@ export default function NotificationsPage(props) {
       </button>
     </div>
   };
-            `}</SyntaxHighlighter>
+            `}</Code>
               <Typography variant="caption">
                 For more API information refer to the library documentation
               </Typography>
-            </div>
           </Widget>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>

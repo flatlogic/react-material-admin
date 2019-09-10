@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid, Paper } from "@material-ui/core";
 import useStyles from "./styles";
 import {
   Table,
@@ -8,11 +7,14 @@ import {
   TableBody,
   TableCell,
   Box,
+  Grid,
+  Paper
 } from "@material-ui/core";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
+import Code from '../../components/Code'
 import { Typography } from "../../components/Wrappers";
 
 export default function GridComp() {
@@ -42,7 +44,14 @@ export default function GridComp() {
                   <Paper className={classes.paperItem}>One of three</Paper>
                 </Grid>
                 <Grid item xs zeroMinWidth>
-                  <pre>
+                  <Code>{`
+  <Grid container>
+    <Grid item xs={4}>One of three</Grid>
+    <Grid item xs={4}>One of three</Grid>
+    <Grid item xs={4}>One of three</Grid>
+  </Grid>
+                  `}</Code>
+                  {/* <pre>
                     <Typography color="primary">
                       <code>{"<Grid container>"}</code>
                     </Typography>
@@ -76,7 +85,7 @@ export default function GridComp() {
                     <Typography color="primary">
                       <code>{"</Grid>"}</code>
                     </Typography>
-                  </pre>
+                  </pre> */}
                 </Grid>
               </Grid>
             </Paper>
@@ -99,7 +108,15 @@ export default function GridComp() {
                   <Paper className={classes.paperItem}>2 of 2</Paper>
                 </Grid>
                 <Grid item xs={12}>
-                  <pre>
+                  <Code>{`
+  <Grid container>
+    <Grid item xs>1 of 2</Grid>
+    <Grid item xs>2 of 2</Grid>
+    <Grid item xs>2 of 2</Grid>
+  </Grid>
+`}
+                  </Code>
+                  {/* <pre>
                     <Typography color="primary">
                       <code>{"<Grid container>"}</code>
                     </Typography>
@@ -112,7 +129,7 @@ export default function GridComp() {
                     <Typography color="primary">
                       <code>{"</Grid>"}</code>
                     </Typography>
-                  </pre>
+                  </pre> */}
                 </Grid>
               </Grid>
             </Paper>
@@ -174,26 +191,31 @@ export default function GridComp() {
                     <b>Component property</b>
                   </TableCell>
                   <TableCell>
+                    <Code>{`<Grid item xs>`}</Code>
                     <Typography className={classes.codeBack}>
                       {"<Grid item xs>"}
                     </Typography>
                   </TableCell>
                   <TableCell>
+                  <Code>{`<Grid item sm>`}</Code>
                     <Typography className={classes.codeBack}>
                       {"<Grid item sm>"}
                     </Typography>
                   </TableCell>
                   <TableCell>
+                  <Code>{`<Grid item md>`}</Code>
                     <Typography className={classes.codeBack}>
                       {"<Grid item md>"}
                     </Typography>
                   </TableCell>
                   <TableCell>
+                  <Code>{`<Grid item lg>`}</Code>
                     <Typography className={classes.codeBack}>
                       {"<Grid item lg>"}
                     </Typography>
                   </TableCell>
                   <TableCell>
+                    <Code>{`<Grid item xl>`}</Code>
                     <Typography className={classes.codeBack}>
                       {"<Grid item xl>"}
                     </Typography>
@@ -208,9 +230,9 @@ export default function GridComp() {
                 <TableRow>
                   <TableCell>
                     <b>Spacing</b> (output(spacing) = spacing * 8px, spacing ={" "}
-                    {"{from 2 to 10 inclusive}"})
                   </TableCell>
                   <TableCell>
+                  <Code>{`<Grid container spacing={2}>`}</Code>
                     <Typography className={classes.codeBack}>
                       {"<Grid container spacing={2}>"}
                     </Typography>
@@ -259,7 +281,22 @@ export default function GridComp() {
                   </Box>
                 </Box>
                 <Grid item xs zeroMinWidth>
-                  <pre>
+                  <Code>{`
+  <Grid container>
+    <Box display="flex">
+      <Box alignSelf="flex-start">
+        <Grid item xs={4}>One of three</Grid>
+      </Box>
+      <Box alignSelf="center">
+        <Grid item xs={4}>One of three</Grid>
+      </Box>
+      <Box alignSelf="flex-end">
+        <Grid item xs={4}>One of three</Grid>
+      </Box>
+    </Box>
+  </Grid>
+                  `}</Code>
+                  {/* <pre>
                     <Typography color="primary">
                       <code>{"<Grid container>"}</code>
                     </Typography>
@@ -317,7 +354,7 @@ export default function GridComp() {
                     <Typography color="primary">
                       <code>{"</Grid>"}</code>
                     </Typography>
-                  </pre>
+                  </pre> */}
                 </Grid>
               </Grid>
             </Paper>
@@ -411,7 +448,24 @@ export default function GridComp() {
                   </Box>
                 </Box>
                 <Grid item xs zeroMinWidth>
-                  <pre>
+                  <Code>{`
+  <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="row" justifyContent="flex-end">
+      <Grid item xs={3}>1</Grid>
+      <Grid item xs={3}>2</Grid>
+    </Box>
+    <Box display="flex" flexDirection="row" justifyContent="flex-around">
+      <Grid item xs={3}>1</Grid>
+      <Grid item xs={3}>2</Grid>
+    </Box>
+    <Box display="flex" flexDirection="row" justifyContent="flex-between">
+      <Grid item xs={3}>1</Grid>
+      <Grid item xs={3}>2</Grid>
+      <Grid item xs={3}>3</Grid>
+    </Box>
+  </Box>
+                  `}</Code> 
+                  {/* <pre>
                     <Typography color="primary">
                       <code>{"<Grid container>"}</code>
                     </Typography>
@@ -481,7 +535,7 @@ export default function GridComp() {
                     <Typography color="primary">
                       <code>{"</Grid>"}</code>
                     </Typography>
-                  </pre>
+                  </pre> */}
                 </Grid>
               </Grid>
             </Paper>
