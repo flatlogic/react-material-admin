@@ -1,20 +1,21 @@
 import React from "react";
+import { Grid, Box, IconButton, Tab, Tabs, AppBar } from "@material-ui/core";
+import { withStyles } from "@material-ui/styles";
 import {
-  Grid,
-  Box,
-  IconButton,
-  Tab,
-  Tabs,
-  AppBar,
-  Avatar,
-} from "@material-ui/core";
-import { Mail as MailIcon } from "@material-ui/icons";
+  Mail as MailIcon,
+  ShoppingCart as ShoppingCartIcon,
+} from "@material-ui/icons";
 import useStyles from "./styles";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-import { Badge, Typography, Chip, Button } from "../../components/Wrappers";
+import {
+  Badge,
+  Typography,
+  Chip,
+  Button,
+} from "../../components/Wrappers";
 
 export default function BadgeComp() {
   const classes = useStyles();
@@ -125,7 +126,7 @@ export default function BadgeComp() {
                   </Badge>
                 </IconButton>
               </Box>
-              <Box my={3}>
+              <Box my={6}>
                 <AppBar position="static" color="default">
                   <Tabs
                     value={0}
@@ -151,17 +152,78 @@ export default function BadgeComp() {
                 </AppBar>
               </Box>
               <Typography>
-                Badges also can be customized by using <i>classes</i> property
+                You may to use dot badge via <i>variant="dot"</i>
               </Typography>
               <Box
-                my={3}
+                my={6}
                 justifyContent="center"
                 display="flex"
                 alignItems="center"
               >
-                <Avatar style={{ backgroundColor: "blue" }}>F</Avatar>
-                <Avatar style={{ backgroundColor: "blue" }}>F</Avatar>
-                <Avatar style={{ backgroundColor: "blue" }}>F</Avatar>
+                <Badge
+                  badgeContent={4}
+                  color={"primary"}
+                  className={classes.margin}
+                  variant={"dot"}
+                >
+                  <ShoppingCartIcon />
+                </Badge>
+                <Badge
+                  badgeContent={4}
+                  color="secondary"
+                  className={classes.margin}
+                  variant={"dot"}
+                >
+                  <MailIcon />
+                </Badge>
+                <Badge
+                  badgeContent={4}
+                  color="warning"
+                  className={classes.margin}
+                  variant={"dot"}
+                >
+                  <Typography>Typography</Typography>
+                </Badge>
+              </Box>
+              <Typography>
+                You can use the <i>horizontalAlignment</i> and{" "}
+                <i>verticalAlignment</i>
+                properties to move the badge to any corner of the wrapped
+                element.
+              </Typography>
+              <Box
+                my={6}
+                justifyContent="center"
+                display="flex"
+                alignItems="center"
+              >
+                <Badge
+                  badgeContent={4}
+                  color={"primary"}
+                  className={classes.margin}
+                  variant={"dot"}
+                >
+                  <ShoppingCartIcon />
+                </Badge>
+                <Badge
+                  badgeContent={4}
+                  color="secondary"
+                  className={classes.margin}
+                  variant={"dot"}
+                  anchorOrigin={{ vertical: 'bottom', horizontal: 'right',}}
+                >
+                  <MailIcon />
+                </Badge>
+                <Badge
+                  badgeContent={4}
+                  color="warning"
+                  className={classes.margin}
+                  variant={"dot"}
+                  anchorOrigin={{ vertical: 'top', horizontal: 'left',}}
+                  size={""}
+                >
+                  <Typography>Typography</Typography>
+                </Badge>
               </Box>
             </Box>
           </Widget>

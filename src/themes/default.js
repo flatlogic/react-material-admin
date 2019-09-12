@@ -120,6 +120,7 @@ export default {
     MuiTableCell: {
       root: {
         borderBottom: "1px solid rgba(224, 224, 224, .5)",
+        padding: "14px 40px 14px 24px",
       },
       head: {
         fontSize: "0.95rem",
@@ -127,6 +128,9 @@ export default {
       body: {
         fontSize: "0.95rem",
       },
+      paddingCheckbox: {
+        padding: '0 0 0 15px'
+      }
     },
   },
 };

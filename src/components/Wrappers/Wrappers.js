@@ -6,6 +6,7 @@ import {
   Button as ButtonBase,
   Chip as ChipBase,
   Tooltip as TooltipBase,
+  Avatar as AvatarBase,
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -14,18 +15,22 @@ import classnames from "classnames";
 const useStyles = makeStyles(theme => ({
   badge: {
     fontWeight: 600,
-    height: 16,
-    minWidth: 16,
+    height: props => {
+      if (!props.variant) return 16
+    },
+    minWidth: props => {
+      if (!props.variant) return 16
+    },
   },
 }));
 
 function Badge({ children, colorBrightness, color, ...props }) {
-  const classes = useStyles();
+  const classes = useStyles(props);
   const theme = useTheme();
   const Styled = createStyled({
     badge: {
       backgroundColor: getColor(color, theme, colorBrightness),
-      color: 'white',
+      color: "white",
     },
   });
 
@@ -118,6 +123,25 @@ function Button({ children, color, ...props }) {
   );
 }
 
+function Avatar({ children, color, colorBrightness, ...props }) {
+  const theme = useTheme();
+
+  const Styled = createStyled({
+    colorDefault: {
+      backgroundColor: getColor(color, theme, colorBrightness),
+  }});
+
+  return (
+    <Styled>
+      {({ classes }) => (
+        <AvatarBase classes={{ colorDefault: classes.colorDefault }} {...props}>
+          {children}
+        </AvatarBase>
+      )}
+    </Styled>
+  );
+}
+
 function Tooltip({ children, color, ...props }) {
   const theme = useTheme();
 
@@ -139,7 +163,7 @@ function Tooltip({ children, color, ...props }) {
   );
 }
 
-export { Badge, Typography, Button, Chip, Tooltip };
+export { Badge, Typography, Button, Chip, Tooltip, Avatar };
 
 // ########################################################################
 

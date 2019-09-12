@@ -136,7 +136,7 @@ export default function ModalComp() {
                 </DialogActions>
               </Dialog>
               <Button
-                color={"primary"}
+                color={"secondary"}
                 onClick={() => dispatch({ type: "OPEN_BODY" })}
               >
                 Scrolling long content
@@ -225,7 +225,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                   </DialogActions>
                 </Dialog>
                 <Button
-                  color={"primary"}
+                  color={"secondary"}
                   className={classes.marginRight}
                   onClick={() => dispatch({ type: "OPEN_SMALL" })}
                 >
@@ -272,9 +272,8 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
           <Widget title="Using Grid" disableWidgetMenu>
             <React.Fragment>
               Utilize the Material UI grid system within a modal by nesting{" "}
-              {`<Grid container>`} within the{" "}
-              {`<Dialog>`}. Then, use the normal grid system classes as you would
-              anywhere else.
+              {`<Grid container>`} within the {`<Dialog>`}. Then, use the normal
+              grid system classes as you would anywhere else.
             </React.Fragment>
             <Box my={2}>
               <Button

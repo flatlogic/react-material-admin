@@ -312,6 +312,7 @@ export default function TooltipsComp() {
                       color={"primary"}
                       onClick={() => dispatch({ type: "OPEN_TOP_TOOLTIP" })}
                       className={cn(classes.button, classes.buttonWhite)}
+
                     >
                       Tooltip on top
                     </ButtonNative>

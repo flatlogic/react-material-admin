@@ -22,7 +22,7 @@ export default function Widget({
                                  inheritHeight,
                                  ...props
                                }) {
-  var classes = useStyles();
+  var classes = useStyles(props);
 
   // local
   var [moreButtonRef, setMoreButtonRef] = useState(null);

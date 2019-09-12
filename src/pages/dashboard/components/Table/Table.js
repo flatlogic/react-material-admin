@@ -5,11 +5,12 @@ import {
   TableHead,
   TableBody,
   TableCell,
+  Box
 } from "@material-ui/core";
 
-// components
-import { Button } from "../../../../components/Wrappers";
+import { Button, Avatar } from "../../../../components/Wrappers";
 
+// components
 const states = {
   sent: "success",
   pending: "warning",
@@ -30,9 +31,13 @@ export default function TableComponent({ data }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {data.map(({ id, name, email, product, price, date, city, status }) => (
+        {data.map(({ id, name, email, product, price, date, city, status, color }) => (
           <TableRow key={id}>
-            <TableCell className="pl-3 fw-normal">{name}</TableCell>
+            <TableCell className="fw-normal">
+              <Box display={"flex"} alignItems={"center"}>
+                <Avatar style={{marginRight: 20}} color={color}>{name[0]}</Avatar> {name}
+              </Box>
+            </TableCell>
             <TableCell>{email}</TableCell>
             <TableCell>{product}</TableCell>
             <TableCell>{price}</TableCell>
