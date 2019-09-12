@@ -1,5 +1,14 @@
 import React from "react";
-import { Grid, Box } from "@material-ui/core";
+import {
+  Grid,
+  Box,
+  IconButton,
+  Tab,
+  Tabs,
+  AppBar,
+  Avatar,
+} from "@material-ui/core";
+import { Mail as MailIcon } from "@material-ui/icons";
 import useStyles from "./styles";
 
 // components
@@ -13,59 +22,42 @@ export default function BadgeComp() {
     <div>
       <PageTitle title="Badge" />
       <Grid container spacing={6}>
-        <Grid item md={12}>
+        <Grid item md={6} xs={12}>
           <Widget title="Badge Example" disableWidgetMenu>
             <Typography>
-              Badges scale to match the size of the immediate parent element by
-              using relative font sizing, em units and font color.
+              Badge generates a small badge to the top-right of its child(ren)
             </Typography>
             <Box>
               <Box my={3}>
-                <Badge
-                  color="primary"
-                  badgeContent={"Primary"}
-                  fontColor={"white"}
-                >
+                <Badge color="primary" badgeContent={"Primary"}>
                   <Typography variant="h1" className={classes.paddingTop}>
                     Example heading
                   </Typography>
                 </Badge>
               </Box>
               <Box my={3}>
-                <Badge
-                  color="secondary"
-                  badgeContent={"Secondary"}
-                  fontColor={"white"}
-                >
+                <Badge color="secondary" badgeContent={"Secondary"}>
                   <Typography variant="h2" className={classes.paddingTop}>
                     Example heading
                   </Typography>
                 </Badge>
               </Box>
               <Box my={3}>
-                <Badge
-                  color="warning"
-                  badgeContent={"Warning"}
-                  fontColor={"white"}
-                >
+                <Badge color="warning" badgeContent={"Warning"}>
                   <Typography variant="h3" className={classes.paddingTop}>
                     Example heading
                   </Typography>
                 </Badge>
               </Box>
               <Box my={3}>
-                <Badge color="info" badgeContent={"Info"} fontColor={"white"}>
+                <Badge color="info" badgeContent={"Info"}>
                   <Typography variant="h4" className={classes.paddingTop}>
                     Example heading
                   </Typography>
                 </Badge>
               </Box>
               <Box my={3}>
-                <Badge
-                  color="success"
-                  badgeContent={"Success"}
-                  fontColor={"white"}
-                >
+                <Badge color="success" badgeContent={"Success"}>
                   <Typography variant="h5" className={classes.paddingTop}>
                     Example heading
                   </Typography>
@@ -76,7 +68,6 @@ export default function BadgeComp() {
                   color="primary"
                   colorBrightness="light"
                   badgeContent={"Primary light"}
-                  fontColor={"white"}
                 >
                   <Typography variant="h6" className={classes.paddingTop}>
                     Example heading
@@ -88,11 +79,89 @@ export default function BadgeComp() {
                 counter.
               </Typography>
               <Box my={3}>
-                <Badge color="success" badgeContent={"1"} fontColor={"white"}>
+                <Badge color="success" badgeContent={"1"}>
                   <Button variant="contained" className={classes.paddingTop}>
                     Example heading
                   </Button>
                 </Badge>
+              </Box>
+            </Box>
+          </Widget>
+        </Grid>
+
+        <Grid item md={6} xs={12}>
+          <Widget title="Icon Badges" disableWidgetMenu>
+            <Typography>
+              Badge can also be used as a parent of a icon as well as a parent
+              of a clickable icon
+            </Typography>
+            <Box>
+              <Box
+                my={1}
+                justifyContent="center"
+                display="flex"
+                alignItems="center"
+              >
+                <Badge
+                  className={classes.badge}
+                  badgeContent={4}
+                  color="primary"
+                >
+                  <MailIcon />
+                </Badge>
+                <Badge
+                  className={classes.badge}
+                  badgeContent={10}
+                  color="secondary"
+                >
+                  <MailIcon />
+                </Badge>
+                <IconButton
+                  aria-label="4 pending messages"
+                  className={classes.badge}
+                >
+                  <Badge badgeContent={4} color="warning">
+                    <MailIcon />
+                  </Badge>
+                </IconButton>
+              </Box>
+              <Box my={3}>
+                <AppBar position="static" color="default">
+                  <Tabs
+                    value={0}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    variant="fullWidth"
+                    aria-label="full width tabs example"
+                  >
+                    <Tab
+                      label={
+                        <Badge
+                          className={classes.padding}
+                          color="secondary"
+                          badgeContent={4}
+                        >
+                          Item One
+                        </Badge>
+                      }
+                    />
+                    <Tab label="Item Two" />
+                    <Tab label="Item Three" />
+                  </Tabs>
+                </AppBar>
+              </Box>
+              <Typography>
+                Badges also can be customized by using <i>classes</i> property
+              </Typography>
+              <Box
+                my={3}
+                justifyContent="center"
+                display="flex"
+                alignItems="center"
+              >
+                <Avatar style={{ backgroundColor: "blue" }}>F</Avatar>
+                <Avatar style={{ backgroundColor: "blue" }}>F</Avatar>
+                <Avatar style={{ backgroundColor: "blue" }}>F</Avatar>
               </Box>
             </Box>
           </Widget>

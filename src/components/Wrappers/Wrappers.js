@@ -19,13 +19,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Badge({ children, colorBrightness, color, fontColor, ...props }) {
+function Badge({ children, colorBrightness, color, ...props }) {
   const classes = useStyles();
   const theme = useTheme();
   const Styled = createStyled({
     badge: {
       backgroundColor: getColor(color, theme, colorBrightness),
-      color: fontColor,
+      color: 'white',
     },
   });
 

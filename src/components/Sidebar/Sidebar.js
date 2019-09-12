@@ -11,7 +11,7 @@ import {
   BarChart as ChartIcon,
   Map as MapIcon,
   Apps as CoreIcon,
-  Description as DescriptionIcon
+  Description as DescriptionIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -82,9 +82,7 @@ const structure = [
     label: "Forms",
     link: "/app/forms",
     icon: <DescriptionIcon />,
-    children: [
-      { label: "Regular Forms", link: "/app/forms/elements" },
-    ],
+    children: [{ label: "Regular Forms", link: "/app/forms/elements" }],
   },
   { id: 9, type: "divider" },
   { id: 10, type: "title", label: "HELP" },
@@ -113,18 +111,19 @@ const structure = [
   },
 ];
 
-
-
 function Sidebar({ location }) {
   var classes = useStyles();
   var theme = useTheme();
 
-  const toggleDrawer = (value) => event => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+  const toggleDrawer = value => event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
-    if (value) toggleSidebar(layoutDispatch)
-  }
+    if (value && !isPermanent) toggleSidebar(layoutDispatch);
+  };
 
   // global
   var { isSidebarOpened } = useLayoutState();
@@ -166,7 +165,7 @@ function Sidebar({ location }) {
           />
         </IconButton>
       </div>
-      <List className={classes.sidebarList} >
+      <List className={classes.sidebarList}>
         {structure.map(link => (
           <SidebarLink
             key={link.id}
