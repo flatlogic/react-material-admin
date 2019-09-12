@@ -122,6 +122,7 @@ function Sidebar({ location }) {
     ) {
       return;
     }
+
     if (value && !isPermanent) toggleSidebar(layoutDispatch);
   };
 
@@ -154,6 +155,7 @@ function Sidebar({ location }) {
         }),
       }}
       open={isSidebarOpened}
+      onClose={toggleDrawer(true)}
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>

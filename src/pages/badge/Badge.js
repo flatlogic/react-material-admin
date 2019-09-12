@@ -10,12 +10,8 @@ import useStyles from "./styles";
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-import {
-  Badge,
-  Typography,
-  Chip,
-  Button,
-} from "../../components/Wrappers";
+import Code from "../../components/Code";
+import { Badge, Typography, Chip, Button } from "../../components/Wrappers";
 
 export default function BadgeComp() {
   const classes = useStyles();
@@ -186,7 +182,7 @@ export default function BadgeComp() {
                 </Badge>
               </Box>
               <Typography>
-                You can use the <i>horizontalAlignment</i> and{" "}
+                You can use the <Code row>{`horizontalAlignment`}</Code> and{" "}
                 <i>verticalAlignment</i>
                 properties to move the badge to any corner of the wrapped
                 element.
@@ -210,7 +206,7 @@ export default function BadgeComp() {
                   color="secondary"
                   className={classes.margin}
                   variant={"dot"}
-                  anchorOrigin={{ vertical: 'bottom', horizontal: 'right',}}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                 >
                   <MailIcon />
                 </Badge>
@@ -219,7 +215,7 @@ export default function BadgeComp() {
                   color="warning"
                   className={classes.margin}
                   variant={"dot"}
-                  anchorOrigin={{ vertical: 'top', horizontal: 'left',}}
+                  anchorOrigin={{ vertical: "top", horizontal: "left" }}
                   size={""}
                 >
                   <Typography>Typography</Typography>
