@@ -16,10 +16,10 @@ const useStyles = makeStyles(theme => ({
   badge: {
     fontWeight: 600,
     height: props => {
-      if (!props.variant) return 16
+      if (!props.variant) return 16;
     },
     minWidth: props => {
-      if (!props.variant) return 16
+      if (!props.variant) return 16;
     },
   },
 }));
@@ -79,6 +79,7 @@ function Typography({
   size,
   colorBrightness,
   color,
+  block,
   ...props
 }) {
   const theme = useTheme();
@@ -90,6 +91,7 @@ function Typography({
         fontWeight: getFontWeight(weight),
         fontSize: getFontSize(size, props.variant, theme),
       }}
+      component={block ? "div" : "p"}
       {...props}
     >
       {children}
@@ -129,7 +131,8 @@ function Avatar({ children, color, colorBrightness, ...props }) {
   const Styled = createStyled({
     colorDefault: {
       backgroundColor: getColor(color, theme, colorBrightness),
-  }});
+    },
+  });
 
   return (
     <Styled>

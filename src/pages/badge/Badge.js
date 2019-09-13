@@ -181,9 +181,9 @@ export default function BadgeComp() {
                   <Typography>Typography</Typography>
                 </Badge>
               </Box>
-              <Typography>
-                You can use the <Code row>{`horizontalAlignment`}</Code> and{" "}
-                <i>verticalAlignment</i>
+              <Typography block>
+                You can use the <Code row inline>{`horizontalAlignment`}</Code>{" "}
+                and <i>verticalAlignment</i>
                 properties to move the badge to any corner of the wrapped
                 element.
               </Typography>
