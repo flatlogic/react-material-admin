@@ -147,8 +147,9 @@ export default function BadgeComp() {
                   </Tabs>
                 </AppBar>
               </Box>
-              <Typography>
-                You may to use dot badge via <i>variant="dot"</i>
+              <Typography block>
+                You may to use dot badge via{" "}
+                <Code row inline>{`variant="dot"`}</Code>
               </Typography>
               <Box
                 my={6}
@@ -183,7 +184,7 @@ export default function BadgeComp() {
               </Box>
               <Typography block>
                 You can use the <Code row inline>{`horizontalAlignment`}</Code>{" "}
-                and <i>verticalAlignment</i>
+                and <Code row inline>{`verticalAlignment`}</Code>
                 properties to move the badge to any corner of the wrapped
                 element.
               </Typography>

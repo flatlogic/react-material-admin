@@ -44,7 +44,7 @@ export default function ColorsComp() {
                     <Dot color="primary" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Button color="primary">`}</Code>
+                    <Code row>{`<Button color="primary">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="primary">#536DFE</Typography>
@@ -56,7 +56,7 @@ export default function ColorsComp() {
                     <Dot color="secondary" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Dot color="secondary">`}</Code>
+                    <Code row>{`<Dot color="secondary">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="secondary">#FF5C93</Typography>
@@ -68,7 +68,7 @@ export default function ColorsComp() {
                     <Dot color="warning" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Typography color="warning">`}</Code>
+                    <Code row>{`<Typography color="warning">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="warning">#FFC260</Typography>
@@ -80,7 +80,7 @@ export default function ColorsComp() {
                     <Dot color="success" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Notification color="success">`}</Code>
+                    <Code row>{`<Notification color="success">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="success">#3CD4A0</Typography>
@@ -92,7 +92,7 @@ export default function ColorsComp() {
                     <Dot color="info" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Icon color="info">`}</Code>
+                    <Code row>{`<Icon color="info">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="info">#9013FE</Typography>

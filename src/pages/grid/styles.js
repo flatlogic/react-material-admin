@@ -7,7 +7,6 @@ export default makeStyles(theme => ({
     padding: 10,
   },
   paperItem: {
-    backgroundColor: theme.palette.primary.light,
     textAlign: "center",
     padding: theme.spacing(2),
     color: "#f3f3f3",
@@ -21,6 +20,9 @@ export default makeStyles(theme => ({
     fontWeight: 700,
   },
   wrapFix: {
-    whiteSpace: 'pre'
-  }
+    whiteSpace: "pre",
+  },
+  paperMargin: {
+    margin: 12,
+  },
 }));

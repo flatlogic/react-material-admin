@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Grid,
-  Paper,
   Box,
   Button as ButtonNative,
   Dialog,
@@ -10,13 +9,14 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@material-ui/core";
+import cn from "classnames";
 import useStyles from "./styles";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Code from "../../components/Code";
-import { Typography, Button } from "../../components/Wrappers";
+import { Typography, Button, Paper } from "../../components/Wrappers";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -179,9 +179,9 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
           </Widget>
           <Box my={6}>
             <Widget title="Optional Sizes" disableWidgetMenu>
-              <Typography>
+              <Typography block>
                 To appoint modal's width size, equal maxWidth attribute to one
-                of values: xs, sm, md, lg, xl.
+                of values: <Code row inline>{`xs, sm, md, lg, xl`}</Code>
               </Typography>
               <Box my={2}>
                 <Button
@@ -270,11 +270,12 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
         </Grid>
         <Grid item md={6} xs={12}>
           <Widget title="Using Grid" disableWidgetMenu>
-            <React.Fragment>
+            <Typography block>
               Utilize the Material UI grid system within a modal by nesting{" "}
-              {`<Grid container>`} within the {`<Dialog>`}. Then, use the normal
-              grid system classes as you would anywhere else.
-            </React.Fragment>
+              <Code row inline>{`<Grid container>`}</Code> within the{" "}
+              <Code row inline>{`<Dialog>`}</Code>. Then, use the normal grid
+              system classes as you would anywhere else.
+            </Typography>
             <Box my={2}>
               <Button
                 color={"primary"}
@@ -299,7 +300,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
       <Box display="flex" flexDirection="row" justifyContent="flex-between">
         <Grid item xs={3}>1</Grid>
         <Grid item xs={3}>2</Grid>
-        <Grid item xs={3}>3</Grid>
+        <Grid item xs={3}>3</Grid>Code
       </Box>
     </Box>
   </Grid>
@@ -330,16 +331,16 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                     >
                       <Grid item xs={3}>
                         <Paper
-                          className={classes.paperItem}
-                          style={{ margin: "12px" }}
+                          className={cn(classes.paperItem, classes.paperMargin)}
+                          color="primary"
                         >
                           1
                         </Paper>
                       </Grid>
                       <Grid item xs={3}>
                         <Paper
-                          className={classes.paperItem}
-                          style={{ margin: "12px" }}
+                          className={cn(classes.paperItem, classes.paperMargin)}
+                          color="secondary"
                         >
                           2
                         </Paper>
@@ -353,16 +354,16 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                     >
                       <Grid item xs={3}>
                         <Paper
-                          className={classes.paperItem}
-                          style={{ margin: "12px" }}
+                          className={cn(classes.paperItem, classes.paperMargin)}
+                          color="primary"
                         >
                           1
                         </Paper>
                       </Grid>
                       <Grid item xs={3}>
                         <Paper
-                          className={classes.paperItem}
-                          style={{ margin: "12px" }}
+                          className={cn(classes.paperItem, classes.paperMargin)}
+                          color="secondary"
                         >
                           2
                         </Paper>
@@ -376,24 +377,24 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                     >
                       <Grid item xs={3}>
                         <Paper
-                          className={classes.paperItem}
-                          style={{ margin: "12px" }}
+                          className={cn(classes.paperItem, classes.paperMargin)}
+                          color="primary"
                         >
                           1
                         </Paper>
                       </Grid>
                       <Grid item xs={3}>
                         <Paper
-                          className={classes.paperItem}
-                          style={{ margin: "12px" }}
+                          className={cn(classes.paperItem, classes.paperMargin)}
+                          color="secondary"
                         >
                           2
                         </Paper>
                       </Grid>
                       <Grid item xs={3}>
                         <Paper
-                          className={classes.paperItem}
-                          style={{ margin: "12px" }}
+                          className={cn(classes.paperItem, classes.paperMargin)}
+                          color="warning"
                         >
                           3
                         </Paper>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
 import { ToastContainer, toast } from "react-toastify";
 import classnames from "classnames";
@@ -12,7 +12,7 @@ import useStyles from "./styles";
 import Widget from "../../components/Widget";
 import PageTitle from "../../components/PageTitle";
 import Notification from "../../components/Notification";
-import Code from '../../components/Code'
+import Code from "../../components/Code";
 import { Typography, Button } from "../../components/Wrappers";
 
 const positions = [
@@ -152,9 +152,11 @@ export default function NotificationsPage(props) {
     </div>
   };
             `}</Code>
+            <Box py={1}>
               <Typography variant="caption">
                 For more API information refer to the library documentation
               </Typography>
+            </Box>
           </Widget>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>

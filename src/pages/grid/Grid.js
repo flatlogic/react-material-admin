@@ -8,14 +8,14 @@ import {
   TableCell,
   Box,
   Grid,
-  Paper,
 } from "@material-ui/core";
+import cn from "classnames";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Code from "../../components/Code";
-import { Typography } from "../../components/Wrappers";
+import { Typography, Paper } from "../../components/Wrappers";
 
 export default function GridComp() {
   const classes = useStyles();
@@ -35,13 +35,19 @@ export default function GridComp() {
             <Paper className={classes.paper}>
               <Grid container spacing={3}>
                 <Grid item xs={4}>
-                  <Paper className={classes.paperItem}>One of three</Paper>
+                  <Paper className={classes.paperItem} color="primary">
+                    One of three
+                  </Paper>
                 </Grid>
                 <Grid item xs={4}>
-                  <Paper className={classes.paperItem}>One of three</Paper>
+                  <Paper className={classes.paperItem} color="secondary">
+                    One of three
+                  </Paper>
                 </Grid>
                 <Grid item xs={4}>
-                  <Paper className={classes.paperItem}>One of three</Paper>
+                  <Paper className={classes.paperItem} color="warning">
+                    One of three
+                  </Paper>
                 </Grid>
                 <Grid item xs zeroMinWidth>
                   <Code>{`
@@ -67,10 +73,14 @@ export default function GridComp() {
             <Paper className={classes.paper}>
               <Grid container spacing={3}>
                 <Grid item xs>
-                  <Paper className={classes.paperItem}>1 of 2</Paper>
+                  <Paper className={classes.paperItem} color="primary">
+                    1 of 2
+                  </Paper>
                 </Grid>
                 <Grid item xs>
-                  <Paper className={classes.paperItem}>2 of 2</Paper>
+                  <Paper className={classes.paperItem} color="secondary">
+                    2 of 2
+                  </Paper>
                 </Grid>
                 <Grid item xs={12}>
                   <Code>
@@ -143,19 +153,19 @@ export default function GridComp() {
                     <b>Component property</b>
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Grid item xs>`}</Code>
+                    <Code row>{`<Grid item xs>`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Grid item sm>`}</Code>
+                    <Code row>{`<Grid item sm>`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Grid item md>`}</Code>
+                    <Code row>{`<Grid item md>`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Grid item lg>`}</Code>
+                    <Code row>{`<Grid item lg>`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Grid item xl>`}</Code>
+                    <Code row>{`<Grid item xl>`}</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -169,7 +179,7 @@ export default function GridComp() {
                     <b>Spacing</b> (output(spacing) = spacing * 8px)
                   </TableCell>
                   <TableCell>
-                    <Code row={true}>{`<Grid container spacing={2}>`}</Code>
+                    <Code row>{`<Grid container spacing={2}>`}</Code>
                   </TableCell>
                   <TableCell></TableCell>
                 </TableRow>
@@ -200,17 +210,32 @@ export default function GridComp() {
                 <Box display="flex" height={150} width={"100%"}>
                   <Box alignSelf="flex-start" width={"100%"}>
                     <Grid item xs={12}>
-                      <Paper className={classes.paperItem}>Start</Paper>
+                      <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
+                      >
+                        Start
+                      </Paper>
                     </Grid>
                   </Box>
                   <Box alignSelf="center" width={"100%"}>
                     <Grid item xs={12}>
-                      <Paper className={classes.paperItem}>Center</Paper>
+                      <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
+                      >
+                        Center
+                      </Paper>
                     </Grid>
                   </Box>
                   <Box alignSelf="flex-end" width={"100%"}>
                     <Grid item xs={12}>
-                      <Paper className={classes.paperItem}>End</Paper>
+                      <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="warning"
+                      >
+                        End
+                      </Paper>
                     </Grid>
                   </Box>
                 </Box>
@@ -252,16 +277,16 @@ export default function GridComp() {
                   >
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
                       >
                         1
                       </Paper>
                     </Grid>
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
                       >
                         2
                       </Paper>
@@ -275,16 +300,16 @@ export default function GridComp() {
                   >
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
                       >
                         1
                       </Paper>
                     </Grid>
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
                       >
                         2
                       </Paper>
@@ -298,24 +323,24 @@ export default function GridComp() {
                   >
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
                       >
                         1
                       </Paper>
                     </Grid>
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
                       >
                         2
                       </Paper>
                     </Grid>
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="warning"
                       >
                         3
                       </Paper>

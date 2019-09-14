@@ -14,7 +14,7 @@ const Code = ({ children, row, inline }) => {
         className={classes.codeComponent}
         language="javascript"
         style={duotoneLight}
-        customStyle={{ padding: "2px 6px", margin: "-0.5em 0" }}
+        customStyle={inline ? { padding: "2px 6px", margin: "-0.5em 0" } : {}}
       >
         {children}
       </SyntaxHighlighter>

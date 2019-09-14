@@ -20,5 +20,8 @@ export default makeStyles(theme => ({
   },
   wrapFix: {
     whiteSpace: 'pre'
-  }
+  },
+  paperMargin: {
+    margin: 12,
+  },
 }));

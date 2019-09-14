@@ -4,7 +4,6 @@ export default makeStyles(theme => ({
   codeContainer: {
     display: props => (props.inline ? "inline-block" : "flex"),
     flexDirection: props => (props.row ? "row" : "column"),
-    marginTop: theme.spacing(2),
   },
   codeComponent: {
     flexGrow: props => (props.row ? 0 : 1),

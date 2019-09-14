@@ -7,6 +7,7 @@ import {
   Chip as ChipBase,
   Tooltip as TooltipBase,
   Avatar as AvatarBase,
+  Paper as PaperBase
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -166,7 +167,27 @@ function Tooltip({ children, color, ...props }) {
   );
 }
 
-export { Badge, Typography, Button, Chip, Tooltip, Avatar };
+function Paper({ children, color, ...props }) {
+  const theme = useTheme();
+
+  const Styled = createStyled({
+    root: {
+      backgroundColor: getColor(color, theme),
+    },
+  });
+
+  return (
+    <Styled>
+      {({ classes }) => (
+        <PaperBase classes={{ root: classes.root }} {...props}>
+          {children}
+        </PaperBase>
+      )}
+    </Styled>
+  );
+}
+
+export { Badge, Typography, Button, Chip, Tooltip, Avatar, Paper };
 
 // ########################################################################
 
