@@ -8,6 +8,7 @@ import {
   MenuItem,
   Toolbar,
   Button,
+  AppBar as AppBarBase,
   IconButton,
 } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -29,6 +30,7 @@ export default function NavComp() {
 
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
+    console.log(event.currentTarget)
   }
 
   function handleClose() {

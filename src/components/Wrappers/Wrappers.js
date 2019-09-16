@@ -9,6 +9,7 @@ import {
   Avatar as AvatarBase,
   Paper as PaperBase,
   AppBar as AppBarBase,
+  Link as LinkBase,
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -31,7 +32,7 @@ function Badge({ children, colorBrightness, color, ...props }) {
   const theme = useTheme();
   const Styled = createStyled({
     badge: {
-      backgroundColor: getColor(color, theme, colorBrightness),
+      backgroundColor: getBackgroundColor(color, theme, colorBrightness),
       color: "white",
     },
   });
@@ -56,7 +57,7 @@ function Chip({ colorBrightness, color, ...props }) {
   const theme = useTheme();
   const Styled = createStyled({
     root: {
-      backgroundColor: getColor(color, theme, colorBrightness),
+      backgroundColor: getBackgroundColor(color, theme, colorBrightness),
       color: "white",
     },
   });
@@ -89,7 +90,7 @@ function Typography({
   return (
     <TypographyBase
       style={{
-        color: getColor(color, theme, colorBrightness),
+        color: getBackgroundColor(color, theme, colorBrightness),
         fontWeight: getFontWeight(weight),
         fontSize: getFontSize(size, props.variant, theme),
       }}
@@ -105,21 +106,35 @@ function Button({ children, color, ...props }) {
   const theme = useTheme();
 
   const Styled = createStyled({
-    button: {
-      backgroundColor: getColor(color, theme),
+    contained: {
+      backgroundColor: getBackgroundColor(color, theme),
       boxShadow: theme.customShadows.widget,
-      color: color === undefined ? theme.palette.text.primary : "white",
+      color: `${color ? "white" : theme.palette.text.primary} !important`,
       "&:hover": {
-        backgroundColor: getColor(color, theme, "light"),
+        backgroundColor: getBackgroundColor(color, theme, "light"),
         boxShadow: theme.customShadows.widgetWide,
       },
+    },
+    root: {
+      color: getBackgroundColor(color, theme),
+    },
+    outlined: {
+      color: getBackgroundColor(color, theme),
+      borderColor: getBackgroundColor(color, theme),
     },
   });
 
   return (
     <Styled>
       {({ classes }) => (
-        <ButtonBase classes={{ root: classes.button }} {...props}>
+        <ButtonBase
+          classes={{
+            contained: classes.contained,
+            root: classes.root,
+            outlined: classes.outlined,
+          }}
+          {...props}
+        >
           {children}
         </ButtonBase>
       )}
@@ -132,7 +147,7 @@ function Avatar({ children, color, colorBrightness, ...props }) {
 
   const Styled = createStyled({
     colorDefault: {
-      backgroundColor: getColor(color, theme, colorBrightness),
+      backgroundColor: getBackgroundColor(color, theme, colorBrightness),
     },
   });
 
@@ -152,7 +167,7 @@ function Tooltip({ children, color, ...props }) {
 
   const Styled = createStyled({
     tooltip: {
-      backgroundColor: getColor(color, theme),
+      backgroundColor: getBackgroundColor(color, theme),
       color: "white",
     },
   });
@@ -173,7 +188,7 @@ function Paper({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      backgroundColor: getColor(color, theme),
+      backgroundColor: getBackgroundColor(color, theme),
     },
   });
 
@@ -189,30 +204,59 @@ function Paper({ children, color, ...props }) {
 }
 
 function AppBar({ children, color, ...props }) {
+  const useStyles = makeStyles(theme => ({
+    root: {
+      backgroundColor: getBackgroundColor(color, theme),
+    },
+  }));
+
+  const classes = useStyles();
+
+  return (
+    <AppBarBase classes={{ root: classes.root }} {...props}>
+      {children}
+    </AppBarBase>
+  );
+}
+
+function Link({ children, color, ...props }) {
   const theme = useTheme();
 
   const Styled = createStyled({
     root: {
-      backgroundColor: getColor(color, theme),
+      color:
+        color === undefined
+          ? theme.palette.text.primary
+          : `${getBackgroundColor(color, theme)} !important`,
     },
   });
 
   return (
     <Styled>
       {({ classes }) => (
-        <AppBarBase classes={{ root: classes.root }} {...props}>
+        <LinkBase classes={{ root: classes.root }} {...props}>
           {children}
-        </AppBarBase>
+        </LinkBase>
       )}
     </Styled>
   );
 }
 
-export { Badge, Typography, Button, Chip, Tooltip, Avatar, Paper, AppBar };
+export {
+  Badge,
+  Typography,
+  Button,
+  Chip,
+  Tooltip,
+  Avatar,
+  Paper,
+  AppBar,
+  Link,
+};
 
 // ########################################################################
 
-function getColor(color, theme, brigtness = "main") {
+function getBackgroundColor(color, theme, brigtness = "main") {
   if (color && theme.palette[color] && theme.palette[color][brigtness]) {
     return theme.palette[color][brigtness];
   }
