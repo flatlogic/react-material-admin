@@ -6,7 +6,6 @@ import {
   Paper,
   InputBase,
   MenuItem,
-  AppBar,
   Toolbar,
   Button,
   IconButton,
@@ -19,7 +18,7 @@ import { Search as SearchIcon } from "@material-ui/icons";
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Code from "../../components/Code";
-import { Typography } from "../../components/Wrappers";
+import { Typography, AppBar } from "../../components/Wrappers";
 
 import classNames from "classnames";
 import useStyles from "./styles";
@@ -95,7 +94,7 @@ export default function NavComp() {
             </div>
             <Typography>With menu</Typography>
             <Box my={3}>
-              <AppBar position="static">
+              <AppBar position="static" color="secondary">
                 <Toolbar>
                   <IconButton
                     edge="start"
@@ -148,7 +147,7 @@ export default function NavComp() {
             </Typography>
             <div className={classes.root}>
               <Box mt={3}>
-                <AppBar position="static">
+                <AppBar position="static" color="warning">
                   <Toolbar>
                     <IconButton
                       edge="start"

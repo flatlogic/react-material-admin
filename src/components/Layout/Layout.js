@@ -26,6 +26,7 @@ import Navbar from "../../pages/nav/Navbar";
 import Tooltips from "../../pages/tooltips";
 import Tabs from "../../pages/tabs";
 import FormsElements from "../../pages/forms/elements";
+import Cards from '../../pages/cards'
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -60,6 +61,7 @@ function Layout(props) {
             <Route path="/app/ui/navbar" component={Navbar} />
             <Route path="/app/ui/tooltips" component={Tooltips} />
             <Route path="/app/ui/tabs" component={Tabs} />
+            <Route path="/app/ui/cards" component={Cards} />
             <Route
               exact
               path="/app/ui"

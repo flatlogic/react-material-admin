@@ -7,7 +7,8 @@ import {
   Chip as ChipBase,
   Tooltip as TooltipBase,
   Avatar as AvatarBase,
-  Paper as PaperBase
+  Paper as PaperBase,
+  AppBar as AppBarBase,
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -187,7 +188,27 @@ function Paper({ children, color, ...props }) {
   );
 }
 
-export { Badge, Typography, Button, Chip, Tooltip, Avatar, Paper };
+function AppBar({ children, color, ...props }) {
+  const theme = useTheme();
+
+  const Styled = createStyled({
+    root: {
+      backgroundColor: getColor(color, theme),
+    },
+  });
+
+  return (
+    <Styled>
+      {({ classes }) => (
+        <AppBarBase classes={{ root: classes.root }} {...props}>
+          {children}
+        </AppBarBase>
+      )}
+    </Styled>
+  );
+}
+
+export { Badge, Typography, Button, Chip, Tooltip, Avatar, Paper, AppBar };
 
 // ########################################################################
 

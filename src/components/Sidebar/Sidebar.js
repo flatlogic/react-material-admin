@@ -75,6 +75,7 @@ const structure = [
       { label: "Navbar", link: "/app/ui/navbar" },
       { label: "Tooltips", link: "/app/ui/tooltips" },
       { label: "Tabs", link: "/app/ui/tabs" },
+      { label: "Cards", link: "/app/ui/cards" },
     ],
   },
   {

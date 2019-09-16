@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Box, IconButton, Tab, Tabs, AppBar } from "@material-ui/core";
-import { withStyles } from "@material-ui/styles";
 import {
   Mail as MailIcon,
   ShoppingCart as ShoppingCartIcon,
