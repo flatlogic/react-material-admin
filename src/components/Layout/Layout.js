@@ -26,7 +26,8 @@ import Navbar from "../../pages/nav/Navbar";
 import Tooltips from "../../pages/tooltips";
 import Tabs from "../../pages/tabs";
 import FormsElements from "../../pages/forms/elements";
-import Cards from '../../pages/cards'
+import Cards from "../../pages/cards";
+import DynamicTables from '../../pages/tables/dynamic'
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -52,7 +53,6 @@ function Layout(props) {
             <Route path="/app/dashboard" component={Dashboard} />
             <Route path="/app/core/typography" component={Typography} />
             <Route path="/app/core/grid" component={Grid} />
-            <Route path="/app/tables" component={Tables} />
             <Route path="/app/ui/notifications" component={Notifications} />
             <Route path="/app/forms/elements" component={FormsElements} />
             <Route path="/app/ui/badge" component={Badge} />
@@ -62,6 +62,13 @@ function Layout(props) {
             <Route path="/app/ui/tooltips" component={Tooltips} />
             <Route path="/app/ui/tabs" component={Tabs} />
             <Route path="/app/ui/cards" component={Cards} />
+            <Route path="/app/tables/static" component={Tables} />
+            <Route path="/app/tables/dynamic" component={DynamicTables} />
+            <Route
+              exact
+              path="/app/tables"
+              render={() => <Redirect to={"/app/tables/static"} />}
+            />
             <Route
               exact
               path="/app/ui"

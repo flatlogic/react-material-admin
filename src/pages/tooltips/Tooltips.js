@@ -3,8 +3,8 @@ import {
   Grid,
   Box,
   ClickAwayListener,
-  Button as ButtonNative,
   Popover,
+  Button as ButtonNative,
 } from "@material-ui/core";
 import cn from "classnames";
 
@@ -154,11 +154,11 @@ export default function TooltipsComp() {
         <Grid item md={6} xs={12}>
           <Widget title="Tooltip Example" disableWidgetMenu inheritHeight>
             <Grid container alignItems={"center"}>
-              <Box mt={2}>
+              <Box mt={2} display={"flex"}>
                 <ClickAwayListener
                   onClickAway={() => dispatch({ type: "CLOSE_TOOLTIP" })}
                 >
-                  <React.Fragment>
+                  <div>
                     <Tooltip
                       placement="top"
                       color={"primary"}
@@ -181,7 +181,7 @@ export default function TooltipsComp() {
                         Click to toggle a tooltip
                       </ButtonNative>
                     </Tooltip>
-                  </React.Fragment>
+                  </div>
                 </ClickAwayListener>
                 <Tooltip
                   placement="top"
@@ -289,11 +289,11 @@ export default function TooltipsComp() {
         </Grid>
         <Grid item md={6} xs={12}>
           <Widget title="Tooltip Directions" disableWidgetMenu>
-            <Box mt={2}>
+            <Box mt={2} display={"flex"}>
               <ClickAwayListener
                 onClickAway={() => dispatch({ type: "CLOSE_TOP_TOOLTIP" })}
               >
-                <React.Fragment>
+                <div>
                   <Tooltip
                     placement="top"
                     color={"primary"}
@@ -312,17 +312,16 @@ export default function TooltipsComp() {
                       color={"primary"}
                       onClick={() => dispatch({ type: "OPEN_TOP_TOOLTIP" })}
                       className={cn(classes.button, classes.buttonWhite)}
-
                     >
                       Tooltip on top
                     </ButtonNative>
                   </Tooltip>
-                </React.Fragment>
+                </div>
               </ClickAwayListener>
               <ClickAwayListener
                 onClickAway={() => dispatch({ type: "CLOSE_RIGHT_TOOLTIP" })}
               >
-                <React.Fragment>
+                <div>
                   <Tooltip
                     placement="right"
                     color={"primary"}
@@ -345,12 +344,12 @@ export default function TooltipsComp() {
                       Tooltip on right
                     </ButtonNative>
                   </Tooltip>
-                </React.Fragment>
+                </div>
               </ClickAwayListener>
               <ClickAwayListener
                 onClickAway={() => dispatch({ type: "CLOSE_BOTTOM_TOOLTIP" })}
               >
-                <React.Fragment>
+                <div>
                   <Tooltip
                     placement="bottom"
                     color={"primary"}
@@ -373,12 +372,12 @@ export default function TooltipsComp() {
                       Tooltip on bottom
                     </ButtonNative>
                   </Tooltip>
-                </React.Fragment>
+                </div>
               </ClickAwayListener>
               <ClickAwayListener
                 onClickAway={() => dispatch({ type: "CLOSE_LEFT_TOOLTIP" })}
               >
-                <React.Fragment>
+                <div>
                   <Tooltip
                     placement="left"
                     color={"primary"}
@@ -401,7 +400,7 @@ export default function TooltipsComp() {
                       Tooltip on left
                     </ButtonNative>
                   </Tooltip>
-                </React.Fragment>
+                </div>
               </ClickAwayListener>
             </Box>
           </Widget>

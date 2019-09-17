@@ -57,7 +57,19 @@ const structure = [
       },
     ],
   },
-  { id: 6, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
+  {
+    id: 6,
+    label: "Tables",
+    link: "/app/tables",
+    icon: <TableIcon />,
+    children: [
+      { label: "Tables Basic", link: "/app/tables/static" },
+      {
+        label: "Tables Dynamic",
+        link: "/app/tables/dynamic",
+      },
+    ],
+  },
   {
     id: 7,
     label: "UI Elements",
