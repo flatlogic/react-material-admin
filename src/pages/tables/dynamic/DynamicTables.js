@@ -1,5 +1,5 @@
 import React from "react";
-import { lighten, makeStyles } from "@material-ui/core/styles";
+import { lighten, makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Table,
   TableBody,
@@ -12,16 +12,103 @@ import {
   Checkbox,
   IconButton,
   Grid,
+  TableFooter,
 } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
-import FilterListIcon from "@material-ui/icons/FilterList";
+import {Delete as DeleteIcon, FilterList as FilterListIcon, LastPage as LastPageIcon, FirstPage as FirstPageIcon, KeyboardArrowRight, KeyboardArrowLeft } from "@material-ui/icons";
 import cn from "classnames";
 
 //components
 import PageTitle from "../../../components/PageTitle";
 import Widget from "../../../components/Widget";
-import Code from '../../../components/Code'
+import Code from "../../../components/Code";
 import { Tooltip, Typography } from "../../../components/Wrappers";
+
+const useStyles1 = makeStyles(theme => ({
+  root: {
+    flexShrink: 0,
+    color: theme.palette.text.secondary,
+    marginLeft: theme.spacing(2.5),
+  },
+}));
+
+function TablePaginationActions(props) {
+  const classes = useStyles1();
+  const theme = useTheme();
+  const { count, page, rowsPerPage, onChangePage } = props;
+
+  function handleFirstPageButtonClick(event) {
+    onChangePage(event, 0);
+  }
+
+  function handleBackButtonClick(event) {
+    onChangePage(event, page - 1);
+  }
+
+  function handleNextButtonClick(event) {
+    onChangePage(event, page + 1);
+  }
+
+  function handleLastPageButtonClick(event) {
+    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+  }
+
+  return (
+    <div className={classes.root}>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="first page"
+      >
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="last page"
+      >
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
+    </div>
+  );
+}
+
+const rows2 = [
+  createData("Cupcake", 305, 3.7),
+  createData("Donut", 452, 25.0),
+  createData("Eclair", 262, 16.0),
+  createData("Frozen yoghurt", 159, 6.0),
+  createData("Gingerbread", 356, 16.0),
+  createData("Honeycomb", 408, 3.2),
+  createData("Ice cream sandwich", 237, 9.0),
+  createData("Jelly Bean", 375, 0.0),
+  createData("KitKat", 518, 26.0),
+  createData("Lollipop", 392, 0.2),
+  createData("Marshmallow", 318, 0),
+  createData("Nougat", 360, 19.0),
+  createData("Oreo", 437, 18.0),
+].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -156,6 +243,21 @@ const useToolbarStyles = makeStyles(theme => ({
   },
   title: {
     flex: "0 0 auto",
+    marginTop: theme.spacing(3),
+  },
+}));
+
+const useStyles2 = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    marginTop: theme.spacing(3),
+  },
+  table: {
+    minWidth: 500,
+  },
+  tableWrapper: {
+    overflowX: "auto",
+    marginTop: theme.spacing(3)
   },
 }));
 
@@ -229,6 +331,21 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function EnhancedTable() {
+  const classes2 = useStyles2();
+  const [page2, setPage2] = React.useState(0);
+  const [rowsPerPage2, setRowsPerPage2] = React.useState(5);
+
+  const emptyRows2 =
+    rowsPerPage2 - Math.min(rowsPerPage2, rows2.length - page2 * rowsPerPage2);
+
+  function handleChangePage2(event, newPage) {
+    setPage2(newPage);
+  }
+
+  function handleChangeRowsPerPage2(event) {
+    setRowsPerPage2(parseInt(event.target.value, 10));
+    setPage2(0);
+  }
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
@@ -292,8 +409,10 @@ export default function EnhancedTable() {
         <Grid item md={12}>
           <Widget title="Sorting & Selecting" disableWidgetMenu>
             <Typography block>
-              This example demonstrates the use of <Code inline row>{`Checkbox`}</Code> and clickable rows
-              for selection, with a custom <Code inline row>{`Toolbar`}</Code>. It uses the <Code inline row>{`TableSortLabel1`}</Code>
+              This example demonstrates the use of{" "}
+              <Code inline row>{`Checkbox`}</Code> and clickable rows for
+              selection, with a custom <Code inline row>{`Toolbar`}</Code>. It
+              uses the <Code inline row>{`TableSortLabel1`}</Code>
               component to help style column headings.
             </Typography>
             <EnhancedTableToolbar numSelected={selected.length} />
@@ -373,6 +492,107 @@ export default function EnhancedTable() {
               onChangePage={handleChangePage}
               onChangeRowsPerPage={handleChangeRowsPerPage}
             />
+          </Widget>
+        </Grid>
+        <Grid item md={12} xs={12}>
+          <Widget title="Custom Table Pagination Action" disableWidgetMenu>
+            <Typography block>
+              The <Code inline row>{`Action`}</Code> property of the{" "}
+              <Code inline row>{`TablePagination`}</Code> component allows the
+              implementation of custom actions.
+            </Typography>
+            <div className={classes2.tableWrapper}>
+              <Table className={classes2.table}>
+                <TableBody>
+                  {rows2
+                    .slice(
+                      page2 * rowsPerPage2,
+                      page2 * rowsPerPage2 + rowsPerPage2,
+                    )
+                    .map(row => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.calories}</TableCell>
+                        <TableCell align="right">{row.fat}</TableCell>
+                      </TableRow>
+                    ))}
+
+                  {emptyRows2 > 0 &&
+                    ((
+                      <div className={classes2.tableWrapper}>
+                        <Table className={classes.table}>
+                          <TableBody>
+                            {rows2
+                              .slice(
+                                page2 * rowsPerPage2,
+                                page2 * rowsPerPage2 + rowsPerPage2,
+                              )
+                              .map(row => (
+                                <TableRow key={row.name}>
+                                  <TableCell component="th" scope="row">
+                                    {row.name}
+                                  </TableCell>
+                                  <TableCell align="right">
+                                    {row.calories}
+                                  </TableCell>
+                                  <TableCell align="right">{row.fat}</TableCell>
+                                </TableRow>
+                              ))}
+
+                            {emptyRows2 > 0 && (
+                              <TableRow style={{ height: 48 * emptyRows2 }}>
+                                <TableCell colSpan={6} />
+                              </TableRow>
+                            )}
+                          </TableBody>
+                          <TableFooter>
+                            <TableRow>
+                              <TablePagination
+                                rowsPerPageOptions={[5, 10, 25]}
+                                colSpan={3}
+                                count={rows2.length}
+                                rowsPerPage={rowsPerPage2}
+                                page={page2}
+                                SelectProps={{
+                                  inputProps: { "aria-label": "rows per page" },
+                                  native: true,
+                                }}
+                                onChangePage={handleChangePage2}
+                                onChangeRowsPerPage={handleChangeRowsPerPage2}
+                                ActionsComponent={TablePaginationActions}
+                              />
+                            </TableRow>
+                          </TableFooter>
+                        </Table>
+                      </div>
+                    ) && (
+                      <TableRow style={{ height: 48 * emptyRows }}>
+                        <TableCell colSpan={6} />
+                      </TableRow>
+                    ))}
+                </TableBody>
+                <TableFooter>
+                  <TableRow>
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25]}
+                      colSpan={3}
+                      count={rows2.length}
+                      rowsPerPage={rowsPerPage2}
+                      page={page2}
+                      SelectProps={{
+                        inputProps: { "aria-label": "rows per page" },
+                        native: true,
+                      }}
+                      onChangePage={handleChangePage2}
+                      onChangeRowsPerPage={handleChangeRowsPerPage2}
+                      ActionsComponent={TablePaginationActions}
+                    />
+                  </TableRow>
+                </TableFooter>
+              </Table>
+            </div>
           </Widget>
         </Grid>
       </Grid>

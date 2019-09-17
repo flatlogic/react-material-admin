@@ -8,6 +8,8 @@ import useStyles from "./styles";
 // components
 import Header from "../Header";
 import Sidebar from "../Sidebar";
+import Footer from '../Footer'
+import { Link } from '../../components/Wrappers'
 
 // pages
 import Dashboard from "../../pages/dashboard";
@@ -89,6 +91,16 @@ function Layout(props) {
             <Route path="/app/core/colors" component={Colors} />
             <Route path="/app/ui/icons" component={Icons} />
           </Switch>
+        <Footer>
+          <>
+          <Link color={"primary"} href={"https://flatlogic.com/"} target={"_blank"} className={classes.link}>Flatlogic</Link>
+          <Link color={"primary"} href={"https://flatlogic.com/about"} target={"_blank"} className={classes.link}>About Us</Link>
+          <Link color={"primary"} href={"https://flatlogic.com/blog"} target={"_blank"} className={classes.link}>Blog</Link>
+            </>
+          <>
+
+            </>
+        </Footer>
         </div>
       </>
     </div>
