@@ -1,9 +1,15 @@
 import React from "react";
-import { Box } from '@material-ui/core'
+import { Box } from "@material-ui/core";
 
 const Footer = ({ children }) => {
   return (
-    <Box mt={6} width={"100%"} display={"flex"}>
+    <Box
+      mt={5}
+      width={"100%"}
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent="space-between"
+    >
       {children}
     </Box>
   );

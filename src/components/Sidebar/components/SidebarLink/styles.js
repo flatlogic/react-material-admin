@@ -20,7 +20,6 @@ export default makeStyles(theme => ({
     marginRight: theme.spacing(1),
     color: theme.palette.text.secondary + "99",
     transition: theme.transitions.create("color"),
-    width: 24,
     display: "flex",
     justifyContent: "center",
   },

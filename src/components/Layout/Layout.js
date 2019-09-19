@@ -1,6 +1,13 @@
 import React from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import classnames from "classnames";
+import IconButton from "@material-ui/core/IconButton";
+import Icon from "@mdi/react";
+import {
+  mdiFacebookBox as FacebookIcon,
+  mdiTwitterBox as TwitterIcon,
+  mdiGithubBox as GithubIcon,
+} from "@mdi/js";
 
 // styles
 import useStyles from "./styles";
@@ -8,8 +15,8 @@ import useStyles from "./styles";
 // components
 import Header from "../Header";
 import Sidebar from "../Sidebar";
-import Footer from '../Footer'
-import { Link } from '../../components/Wrappers'
+import Footer from "../Footer";
+import { Link } from "../../components/Wrappers";
 
 // pages
 import Dashboard from "../../pages/dashboard";
@@ -29,7 +36,7 @@ import Tooltips from "../../pages/tooltips";
 import Tabs from "../../pages/tabs";
 import FormsElements from "../../pages/forms/elements";
 import Cards from "../../pages/cards";
-import DynamicTables from '../../pages/tables/dynamic'
+import DynamicTables from "../../pages/tables/dynamic";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -91,16 +98,69 @@ function Layout(props) {
             <Route path="/app/core/colors" component={Colors} />
             <Route path="/app/ui/icons" component={Icons} />
           </Switch>
-        <Footer>
-          <>
-          <Link color={"primary"} href={"https://flatlogic.com/"} target={"_blank"} className={classes.link}>Flatlogic</Link>
-          <Link color={"primary"} href={"https://flatlogic.com/about"} target={"_blank"} className={classes.link}>About Us</Link>
-          <Link color={"primary"} href={"https://flatlogic.com/blog"} target={"_blank"} className={classes.link}>Blog</Link>
-            </>
-          <>
-
-            </>
-        </Footer>
+          <Footer>
+            <div>
+              <Link
+                color={"primary"}
+                href={"https://flatlogic.com/"}
+                target={"_blank"}
+                className={classes.link}
+              >
+                Flatlogic
+              </Link>
+              <Link
+                color={"primary"}
+                href={"https://flatlogic.com/about"}
+                target={"_blank"}
+                className={classes.link}
+              >
+                About Us
+              </Link>
+              <Link
+                color={"primary"}
+                href={"https://flatlogic.com/blog"}
+                target={"_blank"}
+                className={classes.link}
+              >
+                Blog
+              </Link>
+            </div>
+            <div>
+              <Link
+                href={"https://www.facebook.com/flatlogic"}
+                target={"_blank"}
+              >
+                <IconButton aria-label="facebook">
+                  <Icon
+                    path={FacebookIcon}
+                    title="User Profile"
+                    size={1}
+                    color="#6E6E6E99"
+                  />
+                </IconButton>
+              </Link>
+              <Link href={"https://twitter.com/flatlogic"} target={"_blank"}>
+                <IconButton aria-label="twitter">
+                  <Icon
+                    path={TwitterIcon}
+                    title="User Profile"
+                    size={1}
+                    color="#6E6E6E99"
+                  />
+                </IconButton>
+              </Link>
+              <Link href={"https://github.com/flatlogic"} target={"_blank"}>
+                <IconButton aria-label="github">
+                  <Icon
+                    path={GithubIcon}
+                    title="User Profile"
+                    size={1}
+                    color="#6E6E6E99"
+                  />
+                </IconButton>
+              </Link>
+            </div>
+          </Footer>
         </div>
       </>
     </div>

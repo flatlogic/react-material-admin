@@ -68,7 +68,12 @@ function Login(props) {
                 <Typography className={classes.formDividerWord}>or</Typography>
                 <div className={classes.formDivider} />
               </div>
-              <Fade in={error}>
+              <Fade
+                in={error}
+                style={
+                  !error ? { display: "none" } : { display: "inline-block" }
+                }
+              >
                 <Typography color="secondary" className={classes.errorMessage}>
                   Something is wrong with your login or password :(
                 </Typography>

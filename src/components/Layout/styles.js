@@ -23,6 +23,6 @@ export default makeStyles(theme => ({
     ...theme.mixins.toolbar,
   },
   link: {
-    marginRight: theme.spacing(2)
-  }
+    marginRight: theme.spacing(2),
+  },
 }));

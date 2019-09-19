@@ -27,7 +27,7 @@ export default function SidebarLink({
   isSidebarOpened,
   nested,
   type,
-  toggleDrawler
+  toggleDrawler,
 }) {
   var classes = useStyles();
 
@@ -72,7 +72,11 @@ export default function SidebarLink({
             [classes.linkIconActive]: isLinkActive,
           })}
         >
-          {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
+          {nested ? (
+            <Dot color={isLinkActive && "primary"} style={{ margin: -12 }} />
+          ) : (
+            icon
+          )}
         </ListItemIcon>
         <ListItemText
           classes={{
@@ -81,7 +85,6 @@ export default function SidebarLink({
               [classes.linkTextHidden]: !isSidebarOpened,
             }),
           }}
-
           primary={label}
         />
       </ListItem>
@@ -121,7 +124,12 @@ export default function SidebarLink({
           unmountOnExit
           className={classes.nestedList}
         >
-          <List component="div" disablePadding onClick={toggleDrawler} onKeyPress={toggleDrawler}>
+          <List
+            component="div"
+            disablePadding
+            onClick={toggleDrawler}
+            onKeyPress={toggleDrawler}
+          >
             {children.map(childrenLink => (
               <SidebarLink
                 key={childrenLink && childrenLink.link}

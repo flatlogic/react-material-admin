@@ -88,6 +88,7 @@ const structure = [
       { label: "Tooltips", link: "/app/ui/tooltips" },
       { label: "Tabs", link: "/app/ui/tabs" },
       { label: "Cards", link: "/app/ui/cards" },
+      { label: "Pagination", link: "/app/tables/dynamic" },
     ],
   },
   {
