@@ -176,7 +176,7 @@ export default function GridComp() {
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <b>Spacing</b> (output(spacing) = spacing * 8px)
+                    <b>Spacing</b> <Code row inline>output(spacing) = spacing * 8px</Code>
                   </TableCell>
                   <TableCell>
                     <Code row>{`<Grid container spacing={2}>`}</Code>

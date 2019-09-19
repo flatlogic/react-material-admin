@@ -224,10 +224,10 @@ function Link({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      color:
-        color === undefined
-          ? theme.palette.text.primary
-          : `${getBackgroundColor(color, theme)} !important`,
+      color: color
+        ? `${getBackgroundColor(color, theme)} !important`
+        : theme.palette.text.primary
+      ,
     },
   });
 

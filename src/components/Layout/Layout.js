@@ -26,6 +26,7 @@ import Maps from "../../pages/maps";
 import Tables from "../../pages/tables";
 import Icons from "../../pages/icons";
 import Charts from "../../pages/charts";
+import LineCharts from '../../pages/charts/LineCharts'
 import Colors from "../../pages/colors";
 import Grid from "../../pages/grid";
 import Badge from "../../pages/badge";
@@ -73,10 +74,17 @@ function Layout(props) {
             <Route path="/app/ui/cards" component={Cards} />
             <Route path="/app/tables/static" component={Tables} />
             <Route path="/app/tables/dynamic" component={DynamicTables} />
+            <Route path="/app/charts/overview" component={Charts} />
+            <Route path="/app/charts/line" component={LineCharts} />
             <Route
               exact
               path="/app/tables"
               render={() => <Redirect to={"/app/tables/static"} />}
+            />
+            <Route
+              exact
+              path="/app/charts"
+              render={() => <Redirect to={"/app/charts/overview"} />}
             />
             <Route
               exact
@@ -93,7 +101,6 @@ function Layout(props) {
               path="/app/forms"
               render={() => <Redirect to="/app/forms/elements" />}
             />
-            <Route path="/app/charts" component={Charts} />
             <Route path="/app/maps" component={Maps} />
             <Route path="/app/core/colors" component={Colors} />
             <Route path="/app/ui/icons" component={Icons} />

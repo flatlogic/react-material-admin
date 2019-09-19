@@ -71,9 +71,12 @@ export default function SidebarLink({
           className={classnames(classes.linkIcon, {
             [classes.linkIconActive]: isLinkActive,
           })}
+          style={{ margin: nested ? "-11px" : 'inherit' }}
         >
           {nested ? (
-            <Dot color={isLinkActive && "primary"} style={{ margin: -12 }} />
+            <Dot
+              color={isLinkActive && "primary"}
+            />
           ) : (
             icon
           )}

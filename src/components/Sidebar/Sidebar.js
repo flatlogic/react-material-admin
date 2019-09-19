@@ -33,12 +33,11 @@ import {
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
-  { id: 1, label: "Charts", link: "/app/charts", icon: <ChartIcon /> },
-  { id: 2, label: "Maps", link: "/app/maps", icon: <MapIcon /> },
-  { id: 3, type: "divider" },
-  { id: 4, type: "title", label: "TEMPLATE" },
+  { id: 1, label: "Maps", link: "/app/maps", icon: <MapIcon /> },
+  { id: 2, type: "divider" },
+  { id: 3, type: "title", label: "TEMPLATE" },
   {
-    id: 5,
+    id: 4,
     label: "Core",
     link: "/app/core",
     icon: <CoreIcon />,
@@ -58,7 +57,7 @@ const structure = [
     ],
   },
   {
-    id: 6,
+    id: 5,
     label: "Tables",
     link: "/app/tables",
     icon: <TableIcon />,
@@ -71,7 +70,7 @@ const structure = [
     ],
   },
   {
-    id: 7,
+    id: 6,
     label: "UI Elements",
     link: "/app/ui",
     icon: <UIElementsIcon />,
@@ -92,11 +91,18 @@ const structure = [
     ],
   },
   {
-    id: 8,
+    id: 7,
     label: "Forms",
     link: "/app/forms",
     icon: <DescriptionIcon />,
     children: [{ label: "Regular Forms", link: "/app/forms/elements" }],
+  },
+  {
+    id: 8,
+    label: "Charts",
+    link: "/app/charts",
+    icon: <ChartIcon />,
+    children: [ {label: 'Charts Overview', link: "/app/charts/overview"}, {label: "Line Charts", link: "/app/charts/line" }],
   },
   { id: 9, type: "divider" },
   { id: 10, type: "title", label: "HELP" },
