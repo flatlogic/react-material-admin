@@ -102,7 +102,7 @@ const structure = [
     label: "Charts",
     link: "/app/charts",
     icon: <ChartIcon />,
-    children: [ {label: 'Charts Overview', link: "/app/charts/overview"}, {label: "Line Charts", link: "/app/charts/line" }],
+    children: [ {label: 'Charts Overview', link: "/app/charts/overview"}, {label: "Line Charts", link: "/app/charts/line" }, {label: "Bar Charts", link: "/app/charts/bar" }],
   },
   { id: 9, type: "divider" },
   { id: 10, type: "title", label: "HELP" },

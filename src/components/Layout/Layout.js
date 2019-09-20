@@ -27,6 +27,7 @@ import Tables from "../../pages/tables";
 import Icons from "../../pages/icons";
 import Charts from "../../pages/charts";
 import LineCharts from '../../pages/charts/LineCharts'
+import BarCharts from '../../pages/charts/BarCharts'
 import Colors from "../../pages/colors";
 import Grid from "../../pages/grid";
 import Badge from "../../pages/badge";
@@ -76,6 +77,7 @@ function Layout(props) {
             <Route path="/app/tables/dynamic" component={DynamicTables} />
             <Route path="/app/charts/overview" component={Charts} />
             <Route path="/app/charts/line" component={LineCharts} />
+            <Route path="/app/charts/bar" component={BarCharts} />
             <Route
               exact
               path="/app/tables"
