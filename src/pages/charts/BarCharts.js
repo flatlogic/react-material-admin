@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import ReactApexChart from "react-apexcharts";
+import img from "../../images/2.jpg";
 
 // components
 import Widget from "../../components/Widget/Widget";
@@ -114,7 +115,13 @@ const themeOptions = theme => {
       fill: {
         opacity: 1,
       },
-
+      colors: [
+        theme.palette.primary.main,
+        theme.palette.secondary.main,
+        theme.palette.warning.main,
+        theme.palette.success.light,
+        theme.palette.info.main,
+      ],
       legend: {
         position: "top",
         horizontalAlign: "left",
@@ -124,14 +131,16 @@ const themeOptions = theme => {
     options3: {
       chart: {
         animations: {
-          enabled: false
-        }
+          enabled: false,
+        },
+        toolbar: {
+          show: false,
+        },
       },
       plotOptions: {
         bar: {
           horizontal: true,
-          barHeight: '100%',
-
+          barHeight: "100%",
         },
       },
       dataLabels: {
@@ -139,37 +148,34 @@ const themeOptions = theme => {
       },
       stroke: {
         colors: ["#fff"],
-        width: 0.2
+        width: 0.2,
       },
-      labels: Array.apply(null, {length: 39}).map(function(el, index){
+      labels: Array.apply(null, { length: 39 }).map(function(el, index) {
         return index + 1;
       }),
       yaxis: {
         axisBorder: {
-          show: false
+          show: false,
         },
         axisTicks: {
-          show: false
+          show: false,
         },
         labels: {
-          show: false
-        },
-        title: {
-          text: 'Weight',
+          show: false,
         },
       },
       grid: {
-        position: 'back'
+        position: "back",
       },
       fill: {
-        type: 'image',
+        type: "image",
         opacity: 0.87,
         image: {
-          src: [''],
+          src: [img],
           width: 466,
-          height: 406
-        }
-      }
+          height: 406,
+        },
+      },
     },
   };
 };
@@ -208,6 +214,45 @@ const values = {
     {
       name: "Reborn Kid",
       data: [25, 12, 19, 32, 25, 24, 10],
+    },
+  ],
+  series4: [
+    {
+      name: "coins",
+      data: [
+        2,
+        4,
+        3,
+        4,
+        3,
+        5,
+        5,
+        6.5,
+        6,
+        5,
+        4,
+        5,
+        8,
+        7,
+        7,
+        8,
+        8,
+        10,
+        9,
+        9,
+        12,
+        12,
+        11,
+        12,
+        13,
+        14,
+        16,
+        14,
+        15,
+        17,
+        19,
+        21,
+      ],
     },
   ],
 };
@@ -253,7 +298,7 @@ export default function Charts(props) {
           </Widget>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Widget title={"Stacked Basic"} upperTitle noBodyPadding>
+          <Widget title={"Bar with Images"} upperTitle noBodyPadding>
             <ReactApexChart
               options={themeOptions(theme).options3}
               series={state.series4}

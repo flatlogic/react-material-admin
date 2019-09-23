@@ -30,7 +30,7 @@ export default function Widget({
 
   return (
     <div className={inheritHeight ? classes.inheritHeight : classes.widgetWrapper}>
-      <Paper className={classes.paper} classes={{ root: classes.widgetRoot }}>
+      <Paper className={classnames(classes.paper, {[props.className]: props.className})} classes={{ root: classes.widgetRoot }}>
         <div className={classes.widgetHeader}>
           {header ? (
             header

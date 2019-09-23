@@ -88,6 +88,7 @@ const structure = [
       { label: "Tabs", link: "/app/ui/tabs" },
       { label: "Cards", link: "/app/ui/cards" },
       { label: "Pagination", link: "/app/tables/dynamic" },
+      { label: "Widget", link: "/app/ui/widget" },
     ],
   },
   {
@@ -102,7 +103,12 @@ const structure = [
     label: "Charts",
     link: "/app/charts",
     icon: <ChartIcon />,
-    children: [ {label: 'Charts Overview', link: "/app/charts/overview"}, {label: "Line Charts", link: "/app/charts/line" }, {label: "Bar Charts", link: "/app/charts/bar" }],
+    children: [
+      { label: "Charts Overview", link: "/app/charts/overview" },
+      { label: "Line Charts", link: "/app/charts/line" },
+      { label: "Bar Charts", link: "/app/charts/bar" },
+      { label: "Pie Charts", link: "/app/charts/pie" },
+    ],
   },
   { id: 9, type: "divider" },
   { id: 10, type: "title", label: "HELP" },

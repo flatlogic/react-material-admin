@@ -224,6 +224,7 @@ const useToolbarStyles = makeStyles(theme => ({
   root: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(1),
+    marginTop: theme.spacing(3),
   },
   highlight:
     theme.palette.type === "light"
@@ -243,7 +244,6 @@ const useToolbarStyles = makeStyles(theme => ({
   },
   title: {
     flex: "0 0 auto",
-    marginTop: theme.spacing(3),
   },
 }));
 
