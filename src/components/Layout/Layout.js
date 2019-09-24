@@ -49,9 +49,12 @@ import { useLayoutState } from "../../context/LayoutContext";
 function Layout(props) {
   var classes = useStyles();
   const [state, setState] = useState(false);
+  /* const x = setTimeout(() => {
+    setState(true);
+  }, 3000);
   useEffect(() => {
-    setTimeout(() => setState(true), 1000);
-  }, [props.history.location]);
+    clearTimeout(x)
+  }, [props.history.location]); */
   // global
   var layoutState = useLayoutState();
 
