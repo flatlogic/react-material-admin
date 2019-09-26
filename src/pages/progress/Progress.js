@@ -13,7 +13,24 @@ import {
 } from "../../components/Wrappers";
 
 export default function WidgetComp() {
+  const [completed, setCompleted] = React.useState(0);
   // const classes = useStyles();
+  React.useEffect(() => {
+    function progress() {
+      setCompleted(oldCompleted => {
+        if (oldCompleted === 100) {
+          return 0;
+        }
+        const diff = Math.random() * 10;
+        return Math.min(oldCompleted + diff, 100);
+      });
+    }
+
+    const timer = setInterval(progress, 1500);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
   return (
     <>
       <PageTitle title="Progress" />
@@ -62,6 +79,8 @@ export default function WidgetComp() {
               </Box>
               <Box mt={1} mr={2} width="100%">
                 <LinearProgress color="info" />
+                <br/>
+                <LinearProgress color="info" variant="determinate" value={completed}/>
               </Box>
             </Box>
           </Widget>

@@ -43,6 +43,7 @@ import Cards from "../../pages/cards";
 import DynamicTables from "../../pages/tables/dynamic";
 import Widget from "../../pages/widget";
 import Progress from "../../pages/progress";
+import Ecommerce from '../../pages/ecommerce'
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -96,6 +97,7 @@ function Layout(props) {
               <Route path="/app/charts/line" component={LineCharts} />
               <Route path="/app/charts/bar" component={BarCharts} />
               <Route path="/app/charts/pie" component={PieCharts} />
+              <Route path="/app/ecommerce/management" component={Ecommerce} />
               <Route
                 exact
                 path="/app/tables"
@@ -120,6 +122,11 @@ function Layout(props) {
                 exact
                 path="/app/forms"
                 render={() => <Redirect to="/app/forms/elements" />}
+              />
+              <Route
+                exact
+                path="/app/ecommerce"
+                render={() => <Redirect to="/app/ecommerce/management" />}
               />
               <Route path="/app/maps" component={Maps} />
               <Route path="/app/core/colors" component={Colors} />

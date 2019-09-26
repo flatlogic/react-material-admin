@@ -12,6 +12,7 @@ import {
   Map as MapIcon,
   Apps as CoreIcon,
   Description as DescriptionIcon,
+  ShoppingCart as ShoppingCartIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -33,11 +34,31 @@ import {
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
-  { id: 1, label: "Maps", link: "/app/maps", icon: <MapIcon /> },
-  { id: 2, type: "divider" },
-  { id: 3, type: "title", label: "TEMPLATE" },
   {
-    id: 4,
+    id: 1,
+    label: "E-commerce",
+    link: "/app/ecommerce",
+    icon: <ShoppingCartIcon />,
+    children: [
+      {
+        label: "Product Management",
+        link: "/app/ecommerce/management",
+      },
+      {
+        label: "Products Grid",
+        link: "/app/ecommerce/products",
+      },
+      {
+        label: "Products Page",
+        link: "/app/ecommerce/product",
+      },
+    ],
+  },
+  { id: 2, label: "Maps", link: "/app/maps", icon: <MapIcon /> },
+  { id: 3, type: "divider" },
+  { id: 4, type: "title", label: "TEMPLATE" },
+  {
+    id: 5,
     label: "Core",
     link: "/app/core",
     icon: <CoreIcon />,
@@ -57,7 +78,7 @@ const structure = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     label: "Tables",
     link: "/app/tables",
     icon: <TableIcon />,
@@ -70,7 +91,7 @@ const structure = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     label: "UI Elements",
     link: "/app/ui",
     icon: <UIElementsIcon />,
@@ -93,14 +114,14 @@ const structure = [
     ],
   },
   {
-    id: 7,
+    id: 8,
     label: "Forms",
     link: "/app/forms",
     icon: <DescriptionIcon />,
     children: [{ label: "Regular Forms", link: "/app/forms/elements" }],
   },
   {
-    id: 8,
+    id: 9,
     label: "Charts",
     link: "/app/charts",
     icon: <ChartIcon />,
@@ -111,27 +132,27 @@ const structure = [
       { label: "Pie Charts", link: "/app/charts/pie" },
     ],
   },
-  { id: 9, type: "divider" },
-  { id: 10, type: "title", label: "HELP" },
-  { id: 11, label: "Library", link: "", icon: <LibraryIcon /> },
-  { id: 12, label: "Support", link: "", icon: <SupportIcon /> },
-  { id: 13, label: "FAQ", link: "", icon: <FAQIcon /> },
-  { id: 14, type: "divider" },
-  { id: 15, type: "title", label: "PROJECTS" },
+  { id: 10, type: "divider" },
+  { id: 11, type: "title", label: "HELP" },
+  { id: 12, label: "Library", link: "", icon: <LibraryIcon /> },
+  { id: 13, label: "Support", link: "", icon: <SupportIcon /> },
+  { id: 14, label: "FAQ", link: "", icon: <FAQIcon /> },
+  { id: 15, type: "divider" },
+  { id: 16, type: "title", label: "PROJECTS" },
   {
-    id: 16,
+    id: 17,
     label: "My recent",
     link: "",
     icon: <Dot size="large" color="secondary" />,
   },
   {
-    id: 17,
+    id: 18,
     label: "Starred",
     link: "",
     icon: <Dot size="large" color="primary" />,
   },
   {
-    id: 18,
+    id: 19,
     label: "Background",
     link: "",
     icon: <Dot size="large" color="secondary" />,

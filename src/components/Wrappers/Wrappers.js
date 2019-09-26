@@ -12,6 +12,7 @@ import {
   Link as LinkBase,
   CircularProgress as CircularProgressBase,
   LinearProgress as LinearProgressBase,
+  TextField as TextFieldBase
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -269,14 +270,12 @@ function LinearProgress({ children, color, ...props }) {
   const theme = useTheme();
 
   const Styled = createStyled({
-    colorPrimary: {
-      backgroundColor: color
-        ? `${getBackgroundColor(color, theme)} !important`
-        : theme.palette.primary.main,
+    root: {
+      backgroundColor: getCustomBackgroundProgressColor(color)
     },
     bar: {
       backgroundColor: color
-        ? `${getBackgroundColor(color, theme)}`
+        ? `${getBackgroundColor(color, theme)} !important`
         : theme.palette.primary.main,
     },
   });
@@ -285,11 +284,39 @@ function LinearProgress({ children, color, ...props }) {
     <Styled>
       {({ classes }) => (
         <LinearProgressBase
-          classes={{ bar: classes.bar, colorPrimary: classes.colorPrimary }}
+          classes={{ root: classes.root, bar: classes.bar,}}
           {...props}
         >
           {children}
         </LinearProgressBase>
+      )}
+    </Styled>
+  );
+}
+
+function Input({ children, color, ...props }) {
+  const theme = useTheme();
+
+  const Styled = createStyled({
+    root: {
+      backgroundColor: getCustomBackgroundProgressColor(color)
+    },
+    bar: {
+      backgroundColor: color
+        ? `${getBackgroundColor(color, theme)} !important`
+        : theme.palette.primary.main,
+    },
+  });
+
+  return (
+    <Styled>
+      {({ classes }) => (
+        <TextFieldBase
+          classes={{ root: classes.root, bar: classes.bar,}}
+          {...props}
+        >
+          {children}
+        </TextFieldBase>
       )}
     </Styled>
   );
@@ -307,6 +334,7 @@ export {
   Link,
   CircularProgress,
   LinearProgress,
+  Input
 };
 
 // ########################################################################
@@ -314,6 +342,27 @@ export {
 function getBackgroundColor(color, theme, brigtness = "main") {
   if (color && theme.palette[color] && theme.palette[color][brigtness]) {
     return theme.palette[color][brigtness];
+  }
+}
+
+function getCustomBackgroundProgressColor(color) {
+  switch (color) {
+    case "primary":
+      return "#C4D4FE";
+      break;
+    case "secondary":
+      return "#FFC6D0";
+      break;
+    case "warning":
+      return "#FFDBC6";
+      break;
+    case "success":
+      return "#93D4B9";
+      break;
+    case "info":
+      return "#D6ACFE";
+    default:
+      return "#C4D4FE";
   }
 }
 
