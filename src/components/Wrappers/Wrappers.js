@@ -10,6 +10,8 @@ import {
   Paper as PaperBase,
   AppBar as AppBarBase,
   Link as LinkBase,
+  CircularProgress as CircularProgressBase,
+  LinearProgress as LinearProgressBase,
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -226,8 +228,7 @@ function Link({ children, color, ...props }) {
     root: {
       color: color
         ? `${getBackgroundColor(color, theme)} !important`
-        : theme.palette.text.primary
-      ,
+        : theme.palette.text.primary,
     },
   });
 
@@ -237,6 +238,58 @@ function Link({ children, color, ...props }) {
         <LinkBase classes={{ root: classes.root }} {...props}>
           {children}
         </LinkBase>
+      )}
+    </Styled>
+  );
+}
+
+function CircularProgress({ children, color, ...props }) {
+  const theme = useTheme();
+
+  const Styled = createStyled({
+    root: {
+      color: color
+        ? `${getBackgroundColor(color, theme)} !important`
+        : theme.palette.primary.main,
+    },
+  });
+
+  return (
+    <Styled>
+      {({ classes }) => (
+        <CircularProgressBase classes={{ root: classes.root }} {...props}>
+          {children}
+        </CircularProgressBase>
+      )}
+    </Styled>
+  );
+}
+
+function LinearProgress({ children, color, ...props }) {
+  const theme = useTheme();
+
+  const Styled = createStyled({
+    colorPrimary: {
+      backgroundColor: color
+        ? `${getBackgroundColor(color, theme)} !important`
+        : theme.palette.primary.main,
+    },
+    bar: {
+      backgroundColor: color
+        ? `${getBackgroundColor(color, theme)}`
+        : theme.palette.primary.main,
+    },
+  });
+
+  return (
+    <Styled>
+      {({ classes }) => (
+        <LinearProgressBase
+          classes={{ bar: classes.bar, colorPrimary: classes.colorPrimary }}
+          {...props}
+        >
+          {children}
+        </LinearProgressBase>
       )}
     </Styled>
   );
@@ -252,6 +305,8 @@ export {
   Paper,
   AppBar,
   Link,
+  CircularProgress,
+  LinearProgress,
 };
 
 // ########################################################################

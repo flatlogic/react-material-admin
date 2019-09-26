@@ -42,19 +42,24 @@ import FormsElements from "../../pages/forms/elements";
 import Cards from "../../pages/cards";
 import DynamicTables from "../../pages/tables/dynamic";
 import Widget from "../../pages/widget";
+import Progress from "../../pages/progress";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
+/* const useForceUpdate = () => {
+  const [state, setState] = useState(false);
+  return setState;
+}; */
+
 function Layout(props) {
   var classes = useStyles();
-  const [state, setState] = useState(false);
-  /* const x = setTimeout(() => {
-    setState(true);
-  }, 3000);
+  const [state, setState] = useState(true);
+  /* const forceUpdate = useForceUpdate();
+  console.log("rendering");
   useEffect(() => {
-    clearTimeout(x)
-  }, [props.history.location]); */
+    forceUpdate(true);
+  }, []); */
   // global
   var layoutState = useLayoutState();
 
@@ -84,6 +89,7 @@ function Layout(props) {
               <Route path="/app/ui/tabs" component={Tabs} />
               <Route path="/app/ui/cards" component={Cards} />
               <Route path="/app/ui/widget" component={Widget} />
+              <Route path="/app/ui/progress" component={Progress} />
               <Route path="/app/tables/static" component={Tables} />
               <Route path="/app/tables/dynamic" component={DynamicTables} />
               <Route path="/app/charts/overview" component={Charts} />

@@ -40,34 +40,31 @@ export default function WidgetComp() {
           </Widget>
         </Grid>
         <Grid item xs={12} md={6}>
-        <Widget title="Linear Indeterminate" disableWidgetMenu>
-          <Box
-            my={3}
-            display="flex"
-            flexWrap="wrap"
-            alignItems="center"
-            flexDirection="column"
-          >
-            <Box mt={1} mr={2} display="flex">
-              <LinearProgress />
+          <Widget title="Linear Indeterminate" disableWidgetMenu>
+            <Box
+              my={3}
+              display="flex"
+              flexWrap="wrap"
+              alignItems="center"
+              flexDirection="column"
+            >
+              <Box mt={1} mr={2} width="100%">
+                <LinearProgress />
+              </Box>
+              <Box mt={1} mr={2} width="100%">
+                <LinearProgress color="secondary" />
+              </Box>
+              <Box mt={1} mr={2} width="100%">
+                <LinearProgress color="warning" />
+              </Box>
+              <Box mt={1} mr={2} width="100%">
+                <LinearProgress color="success" />
+              </Box>
+              <Box mt={1} mr={2} width="100%">
+                <LinearProgress color="info" />
+              </Box>
             </Box>
-            <Box mt={1} mr={2}>
-              <LinearProgress color="primary" />
-            </Box>
-            <Box mt={1} mr={2}>
-              <LinearProgress color="secondary" />
-            </Box>
-            <Box mt={1} mr={2}>
-              <LinearProgress color="warning" />
-            </Box>
-            <Box mt={1} mr={2}>
-              <LinearProgress color="success" />
-            </Box>
-            <Box mt={1} mr={2}>
-              <LinearProgress color="info" />
-            </Box>
-          </Box>
-        </Widget>
+          </Widget>
         </Grid>
       </Grid>
     </>
