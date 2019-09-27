@@ -41,7 +41,7 @@ const structure = [
     icon: <ShoppingCartIcon />,
     children: [
       {
-        label: "Product Management",
+        label: "Product Manage",
         link: "/app/ecommerce/management",
       },
       {

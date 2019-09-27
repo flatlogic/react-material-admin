@@ -12,7 +12,7 @@ import {
   Link as LinkBase,
   CircularProgress as CircularProgressBase,
   LinearProgress as LinearProgressBase,
-  TextField as TextFieldBase
+  TextField as TextFieldBase,
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -109,21 +109,27 @@ function Button({ children, color, ...props }) {
   const theme = useTheme();
 
   const Styled = createStyled({
+    root: {
+      color: getBackgroundColor(color, theme),
+    },
     contained: {
       backgroundColor: getBackgroundColor(color, theme),
       boxShadow: theme.customShadows.widget,
-      color: `${color ? "white" : theme.palette.text.primary} !important`,
+      color: `${color ? "white" : theme.palette.text.primary}`,
       "&:hover": {
         backgroundColor: getBackgroundColor(color, theme, "light"),
         boxShadow: theme.customShadows.widgetWide,
       },
-    },
-    root: {
-      color: getBackgroundColor(color, theme),
+      "&:active": {
+        boxShadow: theme.customShadows.widgetWide,
+      },
     },
     outlined: {
       color: getBackgroundColor(color, theme),
       borderColor: getBackgroundColor(color, theme),
+      "&:hover": {
+        backgroundColor: getCustomBackgroundColor(color),
+      },
     },
   });
 
@@ -245,24 +251,20 @@ function Link({ children, color, ...props }) {
 }
 
 function CircularProgress({ children, color, ...props }) {
-  const theme = useTheme();
-
-  const Styled = createStyled({
+  const useStyles = makeStyles(theme => ({
     root: {
       color: color
         ? `${getBackgroundColor(color, theme)} !important`
         : theme.palette.primary.main,
     },
-  });
+  }));
+
+  const classes = useStyles();
 
   return (
-    <Styled>
-      {({ classes }) => (
-        <CircularProgressBase classes={{ root: classes.root }} {...props}>
-          {children}
-        </CircularProgressBase>
-      )}
-    </Styled>
+    <CircularProgressBase classes={{ root: classes.root }} {...props}>
+      {children}
+    </CircularProgressBase>
   );
 }
 
@@ -271,7 +273,7 @@ function LinearProgress({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      backgroundColor: getCustomBackgroundProgressColor(color)
+      backgroundColor: getCustomBackgroundColor(color),
     },
     bar: {
       backgroundColor: color
@@ -284,7 +286,7 @@ function LinearProgress({ children, color, ...props }) {
     <Styled>
       {({ classes }) => (
         <LinearProgressBase
-          classes={{ root: classes.root, bar: classes.bar,}}
+          classes={{ root: classes.root, bar: classes.bar }}
           {...props}
         >
           {children}
@@ -299,24 +301,30 @@ function Input({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      backgroundColor: getCustomBackgroundProgressColor(color)
-    },
-    bar: {
-      backgroundColor: color
-        ? `${getBackgroundColor(color, theme)} !important`
-        : theme.palette.primary.main,
+      "& label.Mui-focused": {
+        color: theme.palette.primary.main,
+      },
+      "& label.Mui-underline:hover": {
+        borderBottomColor: theme.palette.primary.light,
+      },
+      "& .MuiInput-underline:after": {
+        borderBottomColor: theme.palette.primary.main,
+      },
+      "& .MuiOutlinedInput-root": {
+        "&:hover fieldset": {
+          borderColor: theme.palette.primary.light,
+        },
+        "&.Mui-focused fieldset": {
+          borderColor: theme.palette.primary.main,
+        },
+      },
     },
   });
 
   return (
     <Styled>
       {({ classes }) => (
-        <TextFieldBase
-          classes={{ root: classes.root, bar: classes.bar,}}
-          {...props}
-        >
-          {children}
-        </TextFieldBase>
+        <TextFieldBase classes={{ root: classes.root }} {...props} />
       )}
     </Styled>
   );
@@ -334,7 +342,7 @@ export {
   Link,
   CircularProgress,
   LinearProgress,
-  Input
+  Input,
 };
 
 // ########################################################################
@@ -345,22 +353,18 @@ function getBackgroundColor(color, theme, brigtness = "main") {
   }
 }
 
-function getCustomBackgroundProgressColor(color) {
+function getCustomBackgroundColor(color) {
   switch (color) {
     case "primary":
-      return "#C4D4FE";
-      break;
+      return "rgba(83, 109, 254, .3)";
     case "secondary":
-      return "#FFC6D0";
-      break;
+      return "rgba(255, 198, 208, 0.3)";
     case "warning":
-      return "#FFDBC6";
-      break;
+      return "rgba(255, 219, 198, 0.3)";
     case "success":
-      return "#93D4B9";
-      break;
+      return "rgba(147, 212, 185, 0.3)";
     case "info":
-      return "#D6ACFE";
+      return "rgba(214, 172, 254, 0.3)";
     default:
       return "#C4D4FE";
   }
