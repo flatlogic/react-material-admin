@@ -1,18 +1,14 @@
 import React from "react";
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, LinearProgress } from "@material-ui/core";
 // import useStyles from "./styles";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Code from "../../components/Code";
-import {
-  Typography,
-  CircularProgress,
-  LinearProgress,
-} from "../../components/Wrappers";
+import { Typography, CircularProgress } from "../../components/Wrappers";
 
-export default function WidgetComp() {
+export default function ProgressComp() {
   const [completed, setCompleted] = React.useState(0);
   // const classes = useStyles();
   React.useEffect(() => {
@@ -25,7 +21,6 @@ export default function WidgetComp() {
         return Math.min(oldCompleted + diff, 100);
       });
     }
-
     const timer = setInterval(progress, 1500);
     return () => {
       clearInterval(timer);
@@ -79,8 +74,12 @@ export default function WidgetComp() {
               </Box>
               <Box mt={1} mr={2} width="100%">
                 <LinearProgress color="info" />
-                <br/>
-                <LinearProgress color="info" variant="determinate" value={completed}/>
+                <br />
+                <LinearProgress
+                  color="info"
+                  variant="determinate"
+                  value={completed}
+                />
               </Box>
             </Box>
           </Widget>

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import ReactApexChart from "react-apexcharts";
-import ApexCharts from 'apexcharts'
+import ApexCharts from "apexcharts";
 
 // components
 import Widget from "../../components/Widget/Widget";
 import PageTitle from "../../components/PageTitle/PageTitle";
 
-//Lifetime chart
+//Livetime chart
 var lastDate = 0;
 var data = [];
 var TICKINTERVAL = 86400000;
@@ -302,7 +302,7 @@ const values = {
 export default function Charts(props) {
   useEffect(() => {
     intervals();
-    return resetData
+    return resetData;
   });
   const theme = useTheme();
   const [state] = useState(values);
