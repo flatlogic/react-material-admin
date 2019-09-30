@@ -31,14 +31,15 @@ export default function Widget({
   return (
     <div className={inheritHeight ? classes.inheritHeight : classes.widgetWrapper}>
       <Paper className={classnames(classes.paper, {[props.className]: props.className})} classes={{ root: classes.widgetRoot }}>
+        { !title ? null : (
         <div className={classes.widgetHeader}>
           {header ? (
             header
           ) : (
             <React.Fragment>
-              <Typography variant="h5" color="textSecondary">
-                {title}
-              </Typography>
+                <Typography variant="h5" color="textSecondary">
+                  {title}
+                </Typography>
               {!disableWidgetMenu && (
                 <IconButton
                   color="primary"
@@ -54,6 +55,7 @@ export default function Widget({
             </React.Fragment>
           )}
         </div>
+          )}
         <div
           className={classnames(classes.widgetBody, {
             [classes.noPadding]: noBodyPadding,

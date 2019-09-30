@@ -100,6 +100,7 @@ function Layout(props) {
               <Route path="/app/charts/pie" component={PieCharts} />
               <Route path="/app/ecommerce/management" component={Ecommerce} />
               <Route path="/app/ecommerce/product/:id" component={Products} />
+              <Route path="/app/ecommerce/product" component={Products} />
               <Route
                 exact
                 path="/app/tables"

@@ -170,7 +170,7 @@ export default function EcommercePage() {
                           <TableCell>{row.subtitle}</TableCell>
                           <TableCell>{row.price}</TableCell>
                           <TableCell>
-                            {row.rating}{" "}
+                            <Typography style={{color: yellow[700]}} display={"inline"}>{row.rating}</Typography>{" "}
                             <StarIcon style={{ color: yellow[700] }} />
                           </TableCell>
                           <TableCell>
