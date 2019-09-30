@@ -16,11 +16,14 @@ import {
   KeyboardArrowLeft,
   KeyboardArrowRight,
   LastPage as LastPageIcon,
+  Star as StarIcon,
 } from "@material-ui/icons";
+import { yellow } from "@material-ui/core/colors";
 import { useTheme } from "@material-ui/styles";
 import PropTypes from "prop-types";
 import useStyles from "./styles";
-import {rows} from './Products'
+import { rows } from "./Products";
+import { Link } from "react-router-dom";
 
 // components
 import PageTitle from "../../components/PageTitle";
@@ -66,7 +69,6 @@ function TablePaginationActions(props) {
         ) : (
           <KeyboardArrowLeft />
         )}
-
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -102,7 +104,8 @@ export default function EcommercePage() {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const classes = useStyles();
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  const emptyRows =
+    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -132,27 +135,13 @@ export default function EcommercePage() {
                 <Table className={classes.table}>
                   <TableHead>
                     <TableRow className={classes.tableFooter}>
-                      <TableCell>
-                        ID
-                      </TableCell>
-                      <TableCell>
-                        IMG
-                      </TableCell>
-                      <TableCell>
-                        TITLE
-                      </TableCell>
-                      <TableCell>
-                        SUBTITLE
-                      </TableCell>
-                      <TableCell>
-                        PRICE
-                      </TableCell>
-                      <TableCell>
-                        RATING
-                      </TableCell>
-                      <TableCell>
-                        API
-                      </TableCell>
+                      <TableCell>ID</TableCell>
+                      <TableCell>IMG</TableCell>
+                      <TableCell>TITLE</TableCell>
+                      <TableCell>SUBTITLE</TableCell>
+                      <TableCell>PRICE</TableCell>
+                      <TableCell>RATING</TableCell>
+                      <TableCell>API</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -164,13 +153,43 @@ export default function EcommercePage() {
                       .map(row => (
                         <TableRow key={row.id}>
                           <TableCell component="th" scope="row">
-                            {row.title}
+                            {row.id}
                           </TableCell>
                           <TableCell component="th" scope="row">
-                            {row.img}
+                            <img
+                              src={row.img}
+                              alt={row.title}
+                              style={{ width: 100 }}
+                            />
                           </TableCell>
-                          <TableCell align="right">{row.subtitle}</TableCell>
-                          <TableCell align="right">{row.price}</TableCell>
+                          <TableCell>
+                            <Link to={`/app/ecommerce/product/${row.id}`}>
+                              {row.title}
+                            </Link>
+                          </TableCell>
+                          <TableCell>{row.subtitle}</TableCell>
+                          <TableCell>{row.price}</TableCell>
+                          <TableCell>
+                            {row.rating}{" "}
+                            <StarIcon style={{ color: yellow[700] }} />
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              color="success"
+                              size="small"
+                              className="mr-2"
+                              variant="contained"
+                            >
+                              Edit
+                            </Button>
+                            <Button
+                              color="secondary"
+                              size="small"
+                              variant="contained"
+                            >
+                              Delete
+                            </Button>
+                          </TableCell>
                         </TableRow>
                       ))}
 
@@ -184,7 +203,7 @@ export default function EcommercePage() {
                     <TableRow className={classes.tableFooter}>
                       <TablePagination
                         rowsPerPageOptions={[5, 10, 25]}
-                        colSpan={3}
+                        colSpan={7}
                         count={rows.length}
                         rowsPerPage={rowsPerPage}
                         page={page}

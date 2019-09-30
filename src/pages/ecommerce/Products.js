@@ -1,117 +1,140 @@
 import React from "react";
-import img1 from '../../images/img1.jpg'
-import img2 from '../../images/img2.jpg'
-import img3 from '../../images/img3.jpg'
-import img4 from '../../images/img4.jpg'
-import img5 from '../../images/img5.jpeg'
-import img6 from '../../images/img6.jpg'
+import { Grid } from "@material-ui/core";
 
+//components
+import PageTitle from "../../components/PageTitle";
+import Widget from "../../components/Widget";
+
+//images
+import img1 from "../../images/img1.jpg";
+import img2 from "../../images/img2.jpg";
+import img3 from "../../images/img3.jpg";
+import img4 from "../../images/img4.jpg";
+import img5 from "../../images/img5.jpeg";
+import img6 from "../../images/img6.jpg";
 
 export const rows = [
   {
-    id: 0,
-    img: img1,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
-    price: 76,
-    rating: 4.6,
-  },
-  {
     id: 1,
-    img: img2,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
+    img: img1,
+    title: "Trainers",
+    subtitle: "Trainers In White",
     price: 76,
     rating: 4.6,
   },
   {
     id: 2,
-    img: img3,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
-    price: 76,
+    img: img2,
+    title: "Boots",
+    subtitle: "Trainers In Blue",
+    price: 37,
     rating: 4.6,
   },
   {
     id: 3,
-    img: img4,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
-    price: 76,
+    img: img3,
+    title: "Flat sandals",
+    subtitle: "Trainers In White",
+    price: 70,
     rating: 4.6,
   },
   {
     id: 4,
-    img: img5,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
-    price: 76,
+    img: img4,
+    title: "Trainers",
+    subtitle: "Trainers In Blue",
+    price: 85,
     rating: 4.6,
   },
   {
     id: 5,
-    img: img6,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
-    price: 76,
+    img: img5,
+    title: "Flat sandals",
+    subtitle: "Trainers In White",
+    price: 12,
     rating: 4.6,
   },
   {
     id: 6,
-    img: img1,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
+    img: img6,
+    title: "Trainers",
+    subtitle: "Trainers In Blue",
     price: 76,
     rating: 4.6,
   },
   {
     id: 7,
-    img: img2,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
+    img: img1,
+    title: "Boots",
+    subtitle: "Trainers In White",
     price: 76,
     rating: 4.6,
   },
   {
     id: 8,
-    img: img3,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
+    img: img2,
+    title: "Flat sandals",
+    subtitle: "Trainers In White",
     price: 76,
     rating: 4.6,
   },
   {
     id: 9,
-    img: img4,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
+    img: img3,
+    title: "Trainers",
+    subtitle: "Trainers In White",
     price: 76,
     rating: 4.6,
   },
   {
     id: 10,
-    img: img5,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
+    img: img4,
+    title: "Boots",
+    subtitle: "Trainers In Blue",
     price: 76,
     rating: 4.6,
   },
   {
     id: 11,
+    img: img5,
+    title: "Trainers",
+    subtitle: "Trainers In White",
+    price: 71,
+    rating: 4.6,
+  },
+  {
+    id: 12,
     img: img6,
-    title: 'Trainers',
-    subtitle: 'Trainers In White',
+    title: "Flat sandals",
+    subtitle: "Trainers In Blue",
     price: 76,
     rating: 4.6,
-  }
-]
+  },
+];
 
-
-const Product = () => {
+const Product = props => {
   return (
-    <div>
-
-    </div>
+    <>
+      <PageTitle title="Product Detail" />
+      <Grid container spacing={4}>
+        <Grid item xs={12}>
+          <Widget disableWidgetMenu>
+            <Grid container>
+              <Grid item xs={8}>
+                <img
+                  src={rows[props.match.params.id - 1].img}
+                  alt={rows[props.match.params.id - 1].title}
+                  style={{ width: "100%" }}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                Lorem ipsum dolor sit amet.
+              </Grid>
+            </Grid>
+          </Widget>
+        </Grid>
+      </Grid>
+    </>
   );
 };
 

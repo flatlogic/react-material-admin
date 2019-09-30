@@ -43,7 +43,8 @@ import Cards from "../../pages/cards";
 import DynamicTables from "../../pages/tables/dynamic";
 import Widget from "../../pages/widget";
 import Progress from "../../pages/progress";
-import Ecommerce from '../../pages/ecommerce'
+import Ecommerce from "../../pages/ecommerce";
+import Products from "../../pages/ecommerce/Products";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -98,6 +99,7 @@ function Layout(props) {
               <Route path="/app/charts/bar" component={BarCharts} />
               <Route path="/app/charts/pie" component={PieCharts} />
               <Route path="/app/ecommerce/management" component={Ecommerce} />
+              <Route path="/app/ecommerce/product/:id" component={Products} />
               <Route
                 exact
                 path="/app/tables"
