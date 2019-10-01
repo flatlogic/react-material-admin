@@ -85,7 +85,9 @@ function Typography({
   size,
   colorBrightness,
   color,
+  textColor,
   block,
+  uppercase,
   ...props
 }) {
   const theme = useTheme();
@@ -93,9 +95,13 @@ function Typography({
   return (
     <TypographyBase
       style={{
-        color: getBackgroundColor(color, theme, colorBrightness),
+        color:
+          !color && textColor
+            ? getTextColor(textColor, theme)
+            : getBackgroundColor(color, theme, colorBrightness),
         fontWeight: getFontWeight(weight),
         fontSize: getFontSize(size, props.variant, theme),
+        textTransform: uppercase ? "uppercase" : "none",
       }}
       component={block ? "div" : "p"}
       {...props}
@@ -350,6 +356,14 @@ export {
 function getBackgroundColor(color, theme, brigtness = "main") {
   if (color && theme.palette[color] && theme.palette[color][brigtness]) {
     return theme.palette[color][brigtness];
+  } else if (color) {
+    return theme.palette.text[color];
+  }
+}
+
+function getTextColor(color, theme) {
+  if (color) {
+    return theme.palette.text[color];
   }
 }
 
