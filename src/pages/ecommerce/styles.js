@@ -15,6 +15,9 @@ export default makeStyles(theme => ({
     overflowX: "auto",
   },
   form: {
-    minWidth: 120,
+    flexGrow: 1,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
   },
 }));

@@ -236,23 +236,20 @@ function AppBar({ children, color, ...props }) {
 
 function Link({ children, color, ...props }) {
   const theme = useTheme();
-
-  const Styled = createStyled({
+  const useStyles = makeStyles(theme => ({
     root: {
       color: color
         ? `${getBackgroundColor(color, theme)} !important`
         : theme.palette.text.primary,
     },
-  });
+  }));
+
+  const classes = useStyles();
 
   return (
-    <Styled>
-      {({ classes }) => (
-        <LinkBase classes={{ root: classes.root }} {...props}>
-          {children}
-        </LinkBase>
-      )}
-    </Styled>
+    <LinkBase classes={{ root: classes.root }} {...props}>
+      {children}
+    </LinkBase>
   );
 }
 
