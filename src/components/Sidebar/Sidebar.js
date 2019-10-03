@@ -13,6 +13,7 @@ import {
   Apps as CoreIcon,
   Description as DescriptionIcon,
   ShoppingCart as ShoppingCartIcon,
+  StarBorder as ExtraIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -54,7 +55,6 @@ const structure = [
       },
     ],
   },
-  { id: 2, label: "Maps", link: "/app/maps", icon: <MapIcon /> },
   { id: 3, type: "divider" },
   { id: 4, type: "title", label: "TEMPLATE" },
   {
@@ -132,27 +132,46 @@ const structure = [
       { label: "Pie Charts", link: "/app/charts/pie" },
     ],
   },
-  { id: 10, type: "divider" },
-  { id: 11, type: "title", label: "HELP" },
-  { id: 12, label: "Library", link: "", icon: <LibraryIcon /> },
-  { id: 13, label: "Support", link: "", icon: <SupportIcon /> },
-  { id: 14, label: "FAQ", link: "", icon: <FAQIcon /> },
-  { id: 15, type: "divider" },
-  { id: 16, type: "title", label: "PROJECTS" },
   {
-    id: 17,
+    id: 10,
+    label: "Maps",
+    link: "/app/maps",
+    icon: <MapIcon />,
+    children: [
+      { label: "Google Maps", link: "/app/maps/google" },
+      { label: "Vector Map", link: "/app/maps/vector" },
+    ],
+  },
+  {
+    id: 11,
+    label: "Extra",
+    link: "/app/extra",
+    icon: <ExtraIcon />,
+    children: [
+      { label: "Timeline", link: "/app/extra/timeline" },
+    ],
+  },
+  { id: 12, type: "divider" },
+  { id: 13, type: "title", label: "HELP" },
+  { id: 14, label: "Library", link: "", icon: <LibraryIcon /> },
+  { id: 15, label: "Support", link: "", icon: <SupportIcon /> },
+  { id: 16, label: "FAQ", link: "", icon: <FAQIcon /> },
+  { id: 17, type: "divider" },
+  { id: 18, type: "title", label: "PROJECTS" },
+  {
+    id: 19,
     label: "My recent",
     link: "",
     icon: <Dot size="large" color="secondary" />,
   },
   {
-    id: 18,
+    id: 20,
     label: "Starred",
     link: "",
     icon: <Dot size="large" color="primary" />,
   },
   {
-    id: 19,
+    id: 21,
     label: "Background",
     link: "",
     icon: <Dot size="large" color="secondary" />,

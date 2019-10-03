@@ -16,7 +16,7 @@ import {
 import Icon from "@mdi/react";
 import {
   Star as StarIcon,
-  StarOutlined as StarOutlinedIcon,
+  StarBorder as StarOutlinedIcon,
   ShoppingCart as ShoppingCartIcon,
 } from "@material-ui/icons";
 import {
@@ -39,10 +39,10 @@ import img3 from "../../images/img3.jpg";
 import img4 from "../../images/img4.jpg";
 import img5 from "../../images/img5.jpeg";
 import img6 from "../../images/img6.jpg";
-import payment1 from "../../images/mastercard.39748d61.svg";
-import payment2 from "../../images/paypal.7c552892.svg";
-import payment3 from "../../images/visa.868e1896.svg";
-import payment4 from "../../images/aexpress.2f7bff60.svg";
+import payment1 from "../../images/mastercard.svg";
+import payment2 from "../../images/paypal.svg";
+import payment3 from "../../images/visa.svg";
+import payment4 from "../../images/aexpress.svg";
 
 export const rows = [
   {
@@ -344,10 +344,10 @@ const Product = props => {
                   flexWrap="wrap"
                 >
                   <Box
-                    style={{ maxWidth: "33%" }}
+                    style={{ maxWidth: 500 }}
                     display="flex"
                     flexDirection="column"
-                    justifyContent="space-between"
+                    flexGrow={1}
                   >
                     <Typography variant="h5" style={{ marginBottom: 16 }}>
                       PRODUCT DESCRIPTION
@@ -469,18 +469,18 @@ const Product = props => {
                 <CardMedia
                   className={classes.media}
                   image={img1}
-                  title={rows[props.match.params.id].title || rows[0].title}
+                  title={rows[0].title}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    {rows[props.match.params.id].title || rows[0].title}
+                    {rows[0].title}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    {rows[props.match.params.id].subtitle || rows[0].subtitle}
+                    {rows[0].subtitle}
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -488,7 +488,7 @@ const Product = props => {
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
                 <Typography variant="body2" color="textSecondary" component="p">
-                  ${rows[props.match.params.id].price}
+                  ${rows[0].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
                   {rows[0].rating}
@@ -503,18 +503,18 @@ const Product = props => {
                 <CardMedia
                   className={classes.media}
                   image={img2}
-                  title={rows[props.match.params.id].img || rows[1].img}
+                  title={rows[1].img}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    {rows[props.match.params.id].title || rows[1].title}
+                    {rows[1].title}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    {rows[props.match.params.id].subtitle || rows[0].subtitle}
+                    {rows[1].subtitle}
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -522,7 +522,7 @@ const Product = props => {
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
                 <Typography variant="body2" color="textSecondary" component="p">
-                  ${rows[props.match.params.id].price}
+                  ${rows[1].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
                   {rows[1].rating}
@@ -537,18 +537,18 @@ const Product = props => {
                 <CardMedia
                   className={classes.media}
                   image={img3}
-                  title={rows[props.match.params.id].img || rows[0].img}
+                  title={rows[2].img}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    {rows[props.match.params.id].title || rows[2].title}
+                    {rows[2].title}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    {rows[props.match.params.id].subtitle || rows[2].subtitle}
+                    {rows[2].subtitle}
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -556,7 +556,7 @@ const Product = props => {
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
                 <Typography variant="body2" color="textSecondary" component="p">
-                  ${rows[props.match.params.id].price}
+                  ${rows[2].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
                   {rows[2].rating}
@@ -571,18 +571,18 @@ const Product = props => {
                 <CardMedia
                   className={classes.media}
                   image={img4}
-                  title={rows[props.match.params.id].img || rows[0].img}
+                  title={rows[3].img}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    {rows[props.match.params.id].title || rows[3].title}
+                    {rows[3].title}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    {rows[props.match.params.id].subtitle || rows[3].subtitle}
+                    {rows[3].subtitle}
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -590,7 +590,7 @@ const Product = props => {
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
                 <Typography variant="body2" color="textSecondary" component="p">
-                  ${rows[props.match.params.id].price}
+                  ${rows[3].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
                   {rows[3].rating}

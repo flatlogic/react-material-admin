@@ -23,7 +23,6 @@ import { Link } from "../../components/Wrappers";
 import Dashboard from "../../pages/dashboard";
 import Typography from "../../pages/typography";
 import Notifications from "../../pages/notifications";
-import Maps from "../../pages/maps";
 import Tables from "../../pages/tables";
 import Icons from "../../pages/icons";
 import Charts from "../../pages/charts";
@@ -45,6 +44,9 @@ import Widget from "../../pages/widget";
 import Progress from "../../pages/progress";
 import Ecommerce from "../../pages/ecommerce";
 import Products from "../../pages/ecommerce/Products";
+import MapsGoogle from '../../pages/maps'
+import VectorMaps from '../../pages/maps/VectorMap'
+import Timeline from '../../pages/timeline'
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -131,8 +133,16 @@ function Layout(props) {
                 path="/app/ecommerce"
                 render={() => <Redirect to="/app/ecommerce/management" />}
               />
-              <Route path="/app/maps" component={Maps} />
+              <Route
+                exact
+                path="/app/extra"
+                render={() => <Redirect to="/app/extra/timeline" />}
+              />
+              <Route exact path="/app/maps" render={() => <Redirect to ="/app/maps/google" />} />
+              <Route path="/app/extra/timeline" component={Timeline} />
               <Route path="/app/core/colors" component={Colors} />
+              <Route path="/app/maps/google" component={MapsGoogle} />
+              <Route path="/app/maps/vector" component={VectorMaps} />
               <Route path="/app/ui/icons" component={Icons} />
             </Switch>
             <Footer>
