@@ -168,32 +168,17 @@ function Layout(props) {
                   target={"_blank"}
                 >
                   <IconButton aria-label="facebook">
-                    <Icon
-                      path={FacebookIcon}
-                      title="User Profile"
-                      size={1}
-                      color="#6E6E6E99"
-                    />
+                    <Icon path={FacebookIcon} size={1} color="#6E6E6E99" />
                   </IconButton>
                 </Link>
                 <Link href={"https://twitter.com/flatlogic"} target={"_blank"}>
                   <IconButton aria-label="twitter">
-                    <Icon
-                      path={TwitterIcon}
-                      title="User Profile"
-                      size={1}
-                      color="#6E6E6E99"
-                    />
+                    <Icon path={TwitterIcon} size={1} color="#6E6E6E99" />
                   </IconButton>
                 </Link>
                 <Link href={"https://github.com/flatlogic"} target={"_blank"}>
                   <IconButton aria-label="github">
-                    <Icon
-                      path={GithubIcon}
-                      title="User Profile"
-                      size={1}
-                      color="#6E6E6E99"
-                    />
+                    <Icon path={GithubIcon} size={1} color="#6E6E6E99" />
                   </IconButton>
                 </Link>
               </div>

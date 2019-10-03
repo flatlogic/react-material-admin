@@ -20,4 +20,10 @@ export default makeStyles(theme => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
 }));

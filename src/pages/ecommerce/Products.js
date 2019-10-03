@@ -6,12 +6,24 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  IconButton,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
 } from "@material-ui/core";
+import Icon from "@mdi/react";
 import {
   Star as StarIcon,
   StarOutlined as StarOutlinedIcon,
   ShoppingCart as ShoppingCartIcon,
 } from "@material-ui/icons";
+import {
+  mdiFacebook as FacebookIcon,
+  mdiInstagram as InstagramIcon,
+  mdiTwitter as TwitterIcon,
+} from "@mdi/js";
 import useStyles from "./styles";
 import { yellow } from "@material-ui/core/colors/index";
 
@@ -323,11 +335,20 @@ const Product = props => {
           </Widget>
         </Grid>
         <Grid item xs={12}>
-          <Widget disableWidgetMenu title="Product Description">
+          <Widget disableWidgetMenu title="Product Info">
             <Grid container>
               <Grid item xs={12}>
-                <Box display="flex">
-                  <Box className={classes.form}>
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  flexWrap="wrap"
+                >
+                  <Box
+                    style={{ maxWidth: "33%" }}
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="space-between"
+                  >
                     <Typography variant="h5" style={{ marginBottom: 16 }}>
                       PRODUCT DESCRIPTION
                     </Typography>
@@ -346,7 +367,11 @@ const Product = props => {
                       </li>
                     </ul>
                   </Box>
-                  <Box className={classes.form}>
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="space-between"
+                  >
                     <Box>
                       <Typography variant="h5" style={{ marginBottom: 16 }}>
                         PRODUCT CODE
@@ -364,22 +389,69 @@ const Product = props => {
                       </ul>
                     </Box>
                   </Box>
-                  <Box className={classes.form}>
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="space-between"
+                  >
                     <Box>
                       <Typography variant="h5" style={{ marginBottom: 16 }}>
-                        PRODUCT CODE
+                        SHARE
                       </Typography>
-                      <p>135234</p>
+                      <p>
+                        Share photo with a tag{" "}
+                        <Link to="#" color="primary">
+                          #whitetrainers
+                        </Link>
+                      </p>
+                      <Box mb={1}>
+                        <IconButton aria-label="facebook">
+                          <Icon
+                            path={FacebookIcon}
+                            size={1}
+                            color="#6E6E6E99"
+                          />
+                        </IconButton>
+                        <IconButton aria-label="instagram">
+                          <Icon
+                            path={InstagramIcon}
+                            size={1}
+                            color="#6E6E6E99"
+                          />
+                        </IconButton>
+                        <IconButton aria-label="twitter">
+                          <Icon path={TwitterIcon} size={1} color="#6E6E6E99" />
+                        </IconButton>
+                      </Box>
                     </Box>
                     <Box>
                       <Typography variant="h5" style={{ marginBottom: 16 }}>
-                        TECHNOLOGY
+                        RATING & REVIEWS
                       </Typography>
-                      <ul>
-                        <li>Ollie patch</li>
-                        <li>Cup soles</li>
-                        <li>Vulcanized rubber soles</li>
-                      </ul>
+                      {!props.match.params.id ? (
+                        <div style={{ fontSize: "1.5rem", color: yellow[700] }}>
+                          {rows[0].rating}
+                          <StarIcon
+                            style={{ color: yellow[700], marginTop: -5 }}
+                          />
+                        </div>
+                      ) : (
+                        <>
+                          <Typography
+                            style={{ color: yellow[700] }}
+                            display={"inline"}
+                          >
+                            {rows[props.match.params.id - 1].rating}
+                          </Typography>
+                          <StarIcon
+                            style={{ color: yellow[700], marginTop: -5 }}
+                          />
+                        </>
+                      )}
+                      <p>32 Reviews</p>
+                      <Link to="#" color="primary">
+                        Read all
+                      </Link>
                     </Box>
                   </Box>
                 </Box>
@@ -387,6 +459,147 @@ const Product = props => {
             </Grid>
           </Widget>
         </Grid>
+      </Grid>
+      <PageTitle title="You may also like" />
+      <Grid item xs={12}>
+        <Box display="flex" flexWrap="wrap">
+          <Box flexGrow={1} mr={3} mb={3}>
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={img1}
+                  title={rows[props.match.params.id].title || rows[0].title}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {rows[props.match.params.id].title || rows[0].title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {rows[props.match.params.id].subtitle || rows[0].subtitle}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="body2" color="textSecondary" component="p">
+                  ${rows[props.match.params.id].price}
+                </Typography>
+                <div style={{ color: yellow[700] }}>
+                  {rows[0].rating}
+                  <StarIcon style={{ color: yellow[700], marginTop: -5 }} />
+                </div>
+              </CardActions>
+            </Card>
+          </Box>
+          <Box flexGrow={1} mr={3} mb={3}>
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={img2}
+                  title={rows[props.match.params.id].img || rows[1].img}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {rows[props.match.params.id].title || rows[1].title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {rows[props.match.params.id].subtitle || rows[0].subtitle}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="body2" color="textSecondary" component="p">
+                  ${rows[props.match.params.id].price}
+                </Typography>
+                <div style={{ color: yellow[700] }}>
+                  {rows[1].rating}
+                  <StarIcon style={{ color: yellow[700], marginTop: -5 }} />
+                </div>
+              </CardActions>
+            </Card>
+          </Box>
+          <Box flexGrow={1} mr={3} mb={3}>
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={img3}
+                  title={rows[props.match.params.id].img || rows[0].img}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {rows[props.match.params.id].title || rows[2].title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {rows[props.match.params.id].subtitle || rows[2].subtitle}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="body2" color="textSecondary" component="p">
+                  ${rows[props.match.params.id].price}
+                </Typography>
+                <div style={{ color: yellow[700] }}>
+                  {rows[2].rating}
+                  <StarIcon style={{ color: yellow[700], marginTop: -5 }} />
+                </div>
+              </CardActions>
+            </Card>
+          </Box>
+          <Box flexGrow={1} mb={3}>
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={img4}
+                  title={rows[props.match.params.id].img || rows[0].img}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {rows[props.match.params.id].title || rows[3].title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {rows[props.match.params.id].subtitle || rows[3].subtitle}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="body2" color="textSecondary" component="p">
+                  ${rows[props.match.params.id].price}
+                </Typography>
+                <div style={{ color: yellow[700] }}>
+                  {rows[3].rating}
+                  <StarIcon style={{ color: yellow[700], marginTop: -5 }} />
+                </div>
+              </CardActions>
+            </Card>
+          </Box>
+        </Box>
       </Grid>
     </>
   );
