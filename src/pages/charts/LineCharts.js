@@ -8,7 +8,7 @@ import ApexCharts from "apexcharts";
 import Widget from "../../components/Widget/Widget";
 import PageTitle from "../../components/PageTitle/PageTitle";
 
-//Livetime chart
+//Realtime chart
 var lastDate = 0;
 var data = [];
 var TICKINTERVAL = 86400000;
