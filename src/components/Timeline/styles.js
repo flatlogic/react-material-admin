@@ -2,15 +2,14 @@ import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles(theme => ({
   border: {
-    position: 'relative',
-    '&:before': {
-      position: 'absolute',
-      display: 'block',
+    position: "relative",
+    "&:before": {
       content: "''",
+      position: 'absolute',
       border: '1px solid #bdbdbd',
+      left: `calc(50% - ${theme.spacing(3)}px)`,
       height: '100%',
-      margin: 'auto',
-      left:'50%'
-  }
-  }
-}))
+      width: 1
+    },
+  },
+}));
