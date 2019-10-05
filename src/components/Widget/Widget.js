@@ -13,15 +13,15 @@ import classnames from "classnames";
 import useStyles from "./styles";
 
 export default function Widget({
-                                 children,
-                                 title,
-                                 noBodyPadding,
-                                 bodyClass,
-                                 disableWidgetMenu,
-                                 header,
-                                 inheritHeight,
-                                 ...props
-                               }) {
+  children,
+  title,
+  noBodyPadding,
+  bodyClass,
+  disableWidgetMenu,
+  header,
+  inheritHeight,
+  ...props
+}) {
   var classes = useStyles(props);
 
   // local
@@ -29,36 +29,44 @@ export default function Widget({
   var [isMoreMenuOpen, setMoreMenuOpen] = useState(false);
 
   return (
-    <div className={inheritHeight ? classes.inheritHeight : classes.widgetWrapper}>
-      <Paper className={classnames(classes.paper, {[props.className]: props.className})} classes={{ root: classes.widgetRoot }}>
-        { !title ? null : (
-        <div className={classes.widgetHeader}>
-          {header ? (
-            header
-          ) : (
-            <React.Fragment>
+    <div
+      className={inheritHeight ? classes.inheritHeight : classes.widgetWrapper}
+    >
+      <Paper
+        className={classnames(classes.paper, {
+          [props.className]: props.className,
+        })}
+        classes={{ root: classes.widgetRoot }}
+      >
+        {!title ? null : (
+          <div className={classes.widgetHeader}>
+            {header ? (
+              header
+            ) : (
+              <React.Fragment>
                 <Typography variant="h5" color="textSecondary">
                   {title}
                 </Typography>
-              {!disableWidgetMenu && (
-                <IconButton
-                  color="primary"
-                  classes={{ root: classes.moreButton }}
-                  aria-owns="widget-menu"
-                  aria-haspopup="true"
-                  onClick={() => setMoreMenuOpen(true)}
-                  buttonRef={setMoreButtonRef}
-                >
-                  <MoreIcon/>
-                </IconButton>
-              )}
-            </React.Fragment>
-          )}
-        </div>
-          )}
+                {!disableWidgetMenu && (
+                  <IconButton
+                    color="primary"
+                    classes={{ root: classes.moreButton }}
+                    aria-owns="widget-menu"
+                    aria-haspopup="true"
+                    onClick={() => setMoreMenuOpen(true)}
+                    buttonRef={setMoreButtonRef}
+                  >
+                    <MoreIcon />
+                  </IconButton>
+                )}
+              </React.Fragment>
+            )}
+          </div>
+        )}
         <div
           className={classnames(classes.widgetBody, {
             [classes.noPadding]: noBodyPadding,
+            [classes.paddingTop]: !title,
             [bodyClass]: bodyClass,
           })}
         >

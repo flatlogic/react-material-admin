@@ -41,4 +41,7 @@ export default makeStyles(theme => ({
       color: "rgba(255, 255, 255, 0.35)",
     },
   },
+  paddingTop: {
+    paddingTop: theme.spacing(3)
+  }
 }));

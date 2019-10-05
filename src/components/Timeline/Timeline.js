@@ -6,34 +6,33 @@ import useStyles from "./styles";
 import { Typography, Avatar } from "../Wrappers";
 
 const Timestep = props => {
-  const classes = useStyles();
   return (
-    <Box style={{width: '45%'}}>
-      <Typography>{props.day}</Typography>
-      <Typography>{props.timestep}</Typography>
+    <Box width={"45%"}>
+      <time>
+        <Typography>{props.day}</Typography>
+        <Typography weight={"medium"}>{props.timestep}</Typography>
+      </time>
     </Box>
   );
 };
 
 const Circle = ({ children, ...props }) => {
-  return <Avatar {...props}>{children ? children : null}</Avatar>;
+  const classes = useStyles();
+  return <Avatar {...props} className={classes.circle}>{children ? children : null}</Avatar>;
 };
 
 const Annotation = props => {
   const classes = useStyles();
   return (
     <>
-      <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
-        <Box
-          display={"flex"}
-          flexDirection={"row"}
-          width={"100%"}
-          style={{ minHeight: 400 }}
-          justifyContent={"center"}
-          className={classes.border}
-        >
-          {props.children}
-        </Box>
+      <Box
+        display={"flex"}
+        flexDirection={"row"}
+        justifyContent={"space-between"}
+        style={{ width: "100%" }}
+        className={classes.border}
+      >
+        {props.children}
       </Box>
     </>
   );
