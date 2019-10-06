@@ -7,7 +7,7 @@ import { Typography, Avatar } from "../Wrappers";
 
 const Timestep = props => {
   return (
-    <Box width={"45%"}>
+    <Box width={"45%"} align={props.right && "right"}>
       <time>
         <Typography>{props.day}</Typography>
         <Typography weight={"medium"}>{props.timestep}</Typography>
@@ -18,7 +18,11 @@ const Timestep = props => {
 
 const Circle = ({ children, ...props }) => {
   const classes = useStyles();
-  return <Avatar {...props} className={classes.circle}>{children ? children : null}</Avatar>;
+  return (
+    <Avatar {...props} className={classes.circle}>
+      {children ? children : null}
+    </Avatar>
+  );
 };
 
 const Annotation = props => {

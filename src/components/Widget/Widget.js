@@ -66,7 +66,7 @@ export default function Widget({
         <div
           className={classnames(classes.widgetBody, {
             [classes.noPadding]: noBodyPadding,
-            [classes.paddingTop]: !title,
+            [classes.paddingTop]: !title && !noBodyPadding,
             [bodyClass]: bodyClass,
           })}
         >
