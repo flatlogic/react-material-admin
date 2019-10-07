@@ -44,9 +44,10 @@ import Widget from "../../pages/widget";
 import Progress from "../../pages/progress";
 import Ecommerce from "../../pages/ecommerce";
 import Products from "../../pages/ecommerce/Products";
-import MapsGoogle from '../../pages/maps'
-import VectorMaps from '../../pages/maps/VectorMap'
-import Timeline from '../../pages/timeline'
+import MapsGoogle from "../../pages/maps";
+import VectorMaps from "../../pages/maps/VectorMap";
+import Timeline from "../../pages/timeline";
+import Search from "../../pages/search";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -138,8 +139,13 @@ function Layout(props) {
                 path="/app/extra"
                 render={() => <Redirect to="/app/extra/timeline" />}
               />
-              <Route exact path="/app/maps" render={() => <Redirect to ="/app/maps/google" />} />
+              <Route
+                exact
+                path="/app/maps"
+                render={() => <Redirect to="/app/maps/google" />}
+              />
               <Route path="/app/extra/timeline" component={Timeline} />
+              <Route path="/app/extra/search" component={Search} />
               <Route path="/app/core/colors" component={Colors} />
               <Route path="/app/maps/google" component={MapsGoogle} />
               <Route path="/app/maps/vector" component={VectorMaps} />

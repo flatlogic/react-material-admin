@@ -17,6 +17,6 @@ export default makeStyles(theme => ({
     },
   },
   circle: {
-    border: 'rgba(255,255,255,.2) 5px solid'
-  }
+    border: 'rgba(255,255,255,.2) 5px solid',
+  },
 }));

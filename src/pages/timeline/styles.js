@@ -1,5 +1,7 @@
-import makeStyles from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles'
 
-export default makeStyles(teme => ({
-
+export default makeStyles(theme => ({
+  icon: {
+    fontSize: theme.spacing(2)
+  }
 }))

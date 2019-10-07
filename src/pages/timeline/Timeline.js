@@ -12,6 +12,8 @@ import {
   Chat as CommentsIcon,
   ChatBubble as ChatIcon,
 } from "@material-ui/icons";
+import useStyles from './styles'
+
 //images
 import img1 from "../../images/a2.jpg";
 import img2 from "../../images/a4.jpg";
@@ -20,7 +22,6 @@ import img3 from "../../images/profile.jpg";
 //components
 import {
   Typography,
-  Button,
   Avatar,
   Link,
   Input,
@@ -44,6 +45,7 @@ const BasicMap = withScriptjs(
 );
 
 export default function TimelineComp() {
+  const classes = useStyles()
   return (
     <>
       <PageTitle title="Timeline" />
@@ -163,14 +165,14 @@ export default function TimelineComp() {
                 </Widget>
               </Box>
               <Circle color={"primary"}>
-                <Navigation />
+                <Navigation className={classes.icon}/>
               </Circle>
               <Timestep day={"yesterday"} timestep={"8:03 pm"} />
             </Annotation>
             <Annotation>
               <Timestep day={"yesterday"} timestep={"9:03 am"} right />
               <Circle color={"primary"}>
-                <ChatIcon />
+                <ChatIcon className={classes.icon}/>
               </Circle>
               <Box width={"45%"}>
                 <Widget disableWidgetMenu inheritHeight>
