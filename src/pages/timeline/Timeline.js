@@ -64,7 +64,7 @@ export default function TimelineComp() {
                       <Avatar src={img1} style={{ marginRight: 8 }} />
                       <Typography block>
                         <Box fontWeight={"fontWeightBold"}>
-                          <Link to="#" color="primary">
+                          <Link color="primary">
                             Jessica Nilson
                           </Link>{" "}
                           @jess

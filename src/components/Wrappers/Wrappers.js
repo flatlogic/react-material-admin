@@ -137,6 +137,12 @@ function Button({ children, color, ...props }) {
         backgroundColor: getCustomBackgroundColor(color),
       },
     },
+    select: {
+      backgroundColor: theme.palette.text.hint,
+      '&:hover': {
+        backgroundColor: theme.palette.text.hint
+      }
+    }
   });
 
   return (
@@ -149,6 +155,7 @@ function Button({ children, color, ...props }) {
             outlined: classes.outlined,
           }}
           {...props}
+          className={classnames({[classes.select]: props.select})}
         >
           {children}
         </ButtonBase>

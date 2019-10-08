@@ -1,9 +1,18 @@
 import React from "react";
 import { Grid, Box, Select, FormControl, MenuItem } from "@material-ui/core";
+import {
+  BorderAll as GridIcon,
+  FormatAlignJustify as RowIcon,
+} from "@material-ui/icons";
 import useStyles from "./styles";
 
+//images
+import img1 from "../../images/1.jpg";
+import img2 from "../../images/2.jpg";
+import img3 from "../../images/3.jpg";
+
 //components
-import { Typography, Avatar, Link, Input } from "../../components/Wrappers";
+import { Typography, Button, Link } from "../../components/Wrappers";
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 
@@ -21,7 +30,7 @@ export default function SearchComp() {
     <>
       <PageTitle title="Search" />
       <Grid container spacing={6}>
-        <Grid item md={12} xs={12}>
+        <Grid item md={8} xs={12}>
           <FormControl
             variant={"outlined"}
             className={classes.filter}
@@ -43,10 +52,79 @@ export default function SearchComp() {
               <MenuItem value={"Latest"}>Latest</MenuItem>
             </Select>
           </FormControl>
-          <Box my={1}>
-            <Typography variant={"subtitle2"}>About 94 700 000 (0.39 sec.) results</Typography>
+          <Box my={2}>
+            <Typography variant={"subtitle2"}>
+              About 94 700 000 (0.39 sec.) results
+            </Typography>
           </Box>
+          <Widget disableWidgetMenu noBodyPadding inheritHeight>
+            <Grid container>
+              <Grid item md={2} xs={12}>
+                <img
+                  src={img1}
+                  alt="admin templates"
+                  style={{ width: '100%', height: "100%" }}
+                />
+              </Grid>
+              <Grid item md={8} xs={12}>
+                <Box display={"flex"} flexDirection={"column"} m={3}>
+                  <Typography block>
+                    <Box fontWeight={"fontWeightBold"} fontSize="h4.fontSize">
+                      <Link color="primary">
+                        Next generation admin template
+                      </Link>{" "}
+                    </Box>
+                    <Box fontSize={".875rem"} mb={1}>
+                      New York, NY 2018
+                    </Box>
+                    <Box>
+                      Not just usual Metro. But something bigger. Not just usual
+                      widgets, but real widgets. Not just yet another admin
+                      template, but next generation admin template.
+                    </Box>
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item md={2} xs={12}>
+                <Box
+                  m={3}
+                  display="flex"
+                  height={"calc(100% - 48px)"}
+                  flexDirection={"column"}
+                  alignItems="center"
+                  justifyContent={"space-between"}
+                >
+                  <Typography weight={"bold"}>$10300</Typography>
+                  <Typography variant={"caption"} uppercase>
+                    per week
+                  </Typography>
+                  <Button variant={"contained"} color={"primary"}>
+                    Learn More
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+          </Widget>
         </Grid>
+          <Grid item xs={12} md={4}>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+            >
+              <Box style={{ display: "inline-flex" }}>
+                <Button
+                  variant={"contained"}
+                  select={"true"}
+                  style={{ marginRight: 8 }}
+                >
+                  <RowIcon />
+                </Button>
+                <Button variant={"contained"}>
+                  <GridIcon />
+                </Button>
+              </Box>
+            </Box>
+          </Grid>
       </Grid>
     </>
   );
