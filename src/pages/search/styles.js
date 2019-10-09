@@ -1,20 +1,15 @@
-import {makeStyles} from '@material-ui/styles'
+import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles(theme => ({
   filter: {
-    width: 130
+    width: 130,
   },
-  flexbox: {
-    [theme.breakpoints.down('sm')]: {
-      alignItems: 'flex-start',
-    },
-    [theme.breakpoints.up('sm')]: {
-      alignItems: 'flex-end',
-    },
+  adjustRightBorderRadius: {
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
   },
-  test: {
-    [theme.breakpoints.down('md')]: {
-      order: 1
-    },
-  }
-}))
+  adjustLeftBorderRadius: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
+}));
