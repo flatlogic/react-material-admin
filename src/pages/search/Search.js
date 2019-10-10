@@ -9,13 +9,10 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Divider,
 } from "@material-ui/core";
 import {
   BorderAll as GridIcon,
   FormatAlignJustify as RowIcon,
-  Inbox as InboxIcon,
-  Drafts as DraftsIcon,
 } from "@material-ui/icons";
 import useStyles from "./styles";
 
@@ -25,13 +22,9 @@ import img2 from "../../images/2.jpg";
 import img3 from "../../images/3.jpg";
 
 //components
-import { Typography, Button, Link } from "../../components/Wrappers";
+import { Typography, Button, Link, Chip } from "../../components/Wrappers";
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
 
 export default function SearchComp() {
   const [popularField, setValues] = React.useState("Popular");
@@ -95,42 +88,183 @@ export default function SearchComp() {
         <Grid item container xs={12} direction="row-reverse" spacing={3}>
           <Grid item xs={12} md={4}>
             <Box display={"flex"} flexDirection={"column"}>
-              <Typography block>
+              <Typography block variant="h5">
                 Results{" "}
-                <Typography weight="medium" display="inline">
+                <Typography weight="medium" variant="h5" display="inline">
                   Filtering
                 </Typography>
-                <Box fontSize={".8rem"}>
+                <Box fontSize={".875rem"}>
                   Listed content is categorized by the following groups:
                 </Box>
                 <List component="nav" aria-label="main mailbox folders">
                   <ListItem button>
+                    <ListItemText primary="Hot Ideas" />
                     <ListItemIcon>
-                      <InboxIcon />
+                      <Chip label="34" color="primary" />
                     </ListItemIcon>
-                    <ListItemText primary="Inbox" />
                   </ListItem>
                   <ListItem button>
+                    <ListItemText primary="Latest Pictures" />
                     <ListItemIcon>
-                      <DraftsIcon />
+                      <Chip label="9" color="secondary" />
                     </ListItemIcon>
-                    <ListItemText primary="Drafts" />
                   </ListItem>
-                </List>
-                <Divider />
-                <List component="nav" aria-label="secondary mailbox folders">
                   <ListItem button>
-                    <ListItemText primary="Trash" />
+                    <ListItemText primary="Labels of Day" />
                   </ListItem>
-                  <ListItemLink href="#simple-list">
-                    <ListItemText primary="Spam" />
-                  </ListItemLink>
+                  <ListItem button>
+                    <ListItemText primary="Recent Movies" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemText primary="Globals" />
+                    <ListItemIcon>
+                      <Chip label="18" color="warning" />
+                    </ListItemIcon>
+                  </ListItem>
                 </List>
               </Typography>
             </Box>
           </Grid>
           <Grid item md={8} xs={12}>
             <Widget disableWidgetMenu noBodyPadding inheritHeight>
+              <Grid container>
+                <Grid item md={2} xs={12}>
+                  <img
+                    src={img1}
+                    alt="admin templates"
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </Grid>
+                <Grid item md={8} xs={12}>
+                  <Box display={"flex"} flexDirection={"column"} m={3}>
+                    <Typography block>
+                      <Box fontWeight={"fontWeightBold"} fontSize="h4.fontSize">
+                        <Link color="primary">
+                          Next generation admin template
+                        </Link>{" "}
+                      </Box>
+                      <Box fontSize={".875rem"} mb={1}>
+                        New York, NY 2018
+                      </Box>
+                      <Box>
+                        Not just usual Metro. But something bigger. Not just
+                        usual widgets, but real widgets. Not just yet another
+                        admin template, but next generation admin template.
+                      </Box>
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item md={2} xs={12}>
+                  <Box
+                    m={3}
+                    display="flex"
+                    height={"calc(100% - 48px)"}
+                    flexDirection={"column"}
+                    alignItems="center"
+                    justifyContent={"space-between"}
+                  >
+                    <Typography weight={"bold"}>$10300</Typography>
+                    <Typography variant={"caption"} uppercase>
+                      per week
+                    </Typography>
+                    <Button variant={"contained"} color={"primary"}>
+                      Learn More
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+              <Grid container>
+                <Grid item md={2} xs={12}>
+                  <img
+                    src={img1}
+                    alt="admin templates"
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </Grid>
+                <Grid item md={8} xs={12}>
+                  <Box display={"flex"} flexDirection={"column"} m={3}>
+                    <Typography block>
+                      <Box fontWeight={"fontWeightBold"} fontSize="h4.fontSize">
+                        <Link color="primary">
+                          Next generation admin template
+                        </Link>{" "}
+                      </Box>
+                      <Box fontSize={".875rem"} mb={1}>
+                        New York, NY 2018
+                      </Box>
+                      <Box>
+                        Not just usual Metro. But something bigger. Not just
+                        usual widgets, but real widgets. Not just yet another
+                        admin template, but next generation admin template.
+                      </Box>
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item md={2} xs={12}>
+                  <Box
+                    m={3}
+                    display="flex"
+                    height={"calc(100% - 48px)"}
+                    flexDirection={"column"}
+                    alignItems="center"
+                    justifyContent={"space-between"}
+                  >
+                    <Typography weight={"bold"}>$10300</Typography>
+                    <Typography variant={"caption"} uppercase>
+                      per week
+                    </Typography>
+                    <Button variant={"contained"} color={"primary"}>
+                      Learn More
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+              <Grid container>
+                <Grid item md={2} xs={12}>
+                  <img
+                    src={img1}
+                    alt="admin templates"
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </Grid>
+                <Grid item md={8} xs={12}>
+                  <Box display={"flex"} flexDirection={"column"} m={3}>
+                    <Typography block>
+                      <Box fontWeight={"fontWeightBold"} fontSize="h4.fontSize">
+                        <Link color="primary">
+                          Next generation admin template
+                        </Link>{" "}
+                      </Box>
+                      <Box fontSize={".875rem"} mb={1}>
+                        New York, NY 2018
+                      </Box>
+                      <Box>
+                        Not just usual Metro. But something bigger. Not just
+                        usual widgets, but real widgets. Not just yet another
+                        admin template, but next generation admin template.
+                      </Box>
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item md={2} xs={12}>
+                  <Box
+                    m={3}
+                    display="flex"
+                    height={"calc(100% - 48px)"}
+                    flexDirection={"column"}
+                    alignItems="center"
+                    justifyContent={"space-between"}
+                  >
+                    <Typography weight={"bold"}>$10300</Typography>
+                    <Typography variant={"caption"} uppercase>
+                      per week
+                    </Typography>
+                    <Button variant={"contained"} color={"primary"}>
+                      Learn More
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
               <Grid container>
                 <Grid item md={2} xs={12}>
                   <img
