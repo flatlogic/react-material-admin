@@ -3,5 +3,8 @@ import { makeStyles } from '@material-ui/styles'
 export default makeStyles(theme => ({
   icon: {
     fontSize: theme.spacing(2)
+  },
+  divider: {
+    margin: `0px -${theme.spacing(3)}px`
   }
 }))

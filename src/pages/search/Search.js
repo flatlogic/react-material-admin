@@ -17,16 +17,26 @@ import {
 import useStyles from "./styles";
 
 //images
-import img1 from "../../images/1.jpg";
-import img2 from "../../images/2.jpg";
-import img3 from "../../images/3.jpg";
+import img1 from "../../images/img1.jpg";
+import img2 from "../../images/img2.jpg";
+import img3 from "../../images/img3.jpg";
+import img4 from "../../images/img4.jpg";
 
 //components
-import { Typography, Button, Link, Chip } from "../../components/Wrappers";
+import {
+  Typography,
+  Button,
+  Link,
+  Chip,
+} from "../../components/Wrappers";
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 
 export default function SearchComp() {
+  const [select, setSelect] = React.useState({
+    row: true,
+    grid: false,
+  });
   const [popularField, setValues] = React.useState("Popular");
   const [timeField, setTimeField] = React.useState("All Time");
   const handleChange = event => {
@@ -34,6 +44,12 @@ export default function SearchComp() {
   };
   const handleChangeTimeField = event => {
     setTimeField(event.target.value);
+  };
+  const toggleSelect = () => {
+    setSelect(prevState => ({
+      row: !prevState.row,
+      grid: !prevState.grid,
+    }));
   };
   const classes = useStyles();
   return (
@@ -66,13 +82,16 @@ export default function SearchComp() {
             <Box style={{ display: "inline-flex", marginLeft: "auto" }}>
               <Button
                 variant={"contained"}
-                select={"true"}
+                select={select.row ? 1 : 0}
+                onClick={() => toggleSelect()}
                 className={classes.adjustRightBorderRadius}
               >
                 <RowIcon />
               </Button>
               <Button
                 variant={"contained"}
+                select={select.grid ? 1 : 0}
+                onClick={() => toggleSelect()}
                 className={classes.adjustLeftBorderRadius}
               >
                 <GridIcon />
@@ -125,193 +144,224 @@ export default function SearchComp() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={8} xs={12}>
-            <Widget disableWidgetMenu noBodyPadding inheritHeight>
-              <Grid container>
-                <Grid item md={2} xs={12}>
-                  <img
-                    src={img1}
-                    alt="admin templates"
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                </Grid>
-                <Grid item md={8} xs={12}>
-                  <Box display={"flex"} flexDirection={"column"} m={3}>
-                    <Typography block>
-                      <Box fontWeight={"fontWeightBold"} fontSize="h4.fontSize">
-                        <Link color="primary">
-                          Next generation admin template
-                        </Link>{" "}
+          <Grid item container spacing={3} md={8} xs={12}>
+            <Grid item>
+              <Widget disableWidgetMenu noBodyPadding inheritHeight>
+                <Grid container>
+                    <Grid item md={2} xs={12}>
+                      <img
+                        src={img1}
+                        alt="admin templates"
+                        style={{ width: "100%", height: "100%" }}
+                      />
+                    </Grid>
+                    <Grid item md={8} xs={12}>
+                      <Box display={"flex"} flexDirection={"column"} m={3}>
+                        <Typography block>
+                          <Box
+                            fontWeight={"fontWeightBold"}
+                            fontSize="h4.fontSize"
+                          >
+                            <Link color="primary">
+                              Next generation admin template
+                            </Link>{" "}
+
+                          </Box>
+                          <Box fontSize={".875rem"} mb={1}>
+                            New York, NY 2018
+                          </Box>
+                          <Box>
+                            Not just usual Metro. But something bigger. Not just
+                            usual widgets, but real widgets. Not just yet
+                            another admin template, but next generation admin
+                            template.
+                          </Box>
+                        </Typography>
                       </Box>
-                      <Box fontSize={".875rem"} mb={1}>
-                        New York, NY 2018
-                      </Box>
-                      <Box>
-                        Not just usual Metro. But something bigger. Not just
-                        usual widgets, but real widgets. Not just yet another
-                        admin template, but next generation admin template.
-                      </Box>
-                    </Typography>
-                  </Box>
+                    </Grid>
+                  <Grid item md={2} xs={12}>
+                    <Box
+                      m={3}
+                      display="flex"
+                      height={"calc(100% - 48px)"}
+                      flexDirection={"column"}
+                      alignItems="center"
+                      justifyContent={"space-between"}
+                    >
+                      <Typography weight={"bold"}>$9700</Typography>
+                      <Typography variant={"caption"} uppercase>
+                        per week
+                      </Typography>
+                      <Button variant={"contained"} color={"primary"}>
+                        Learn More
+                      </Button>
+                    </Box>
+                  </Grid>
                 </Grid>
-                <Grid item md={2} xs={12}>
-                  <Box
-                    m={3}
-                    display="flex"
-                    height={"calc(100% - 48px)"}
-                    flexDirection={"column"}
-                    alignItems="center"
-                    justifyContent={"space-between"}
-                  >
-                    <Typography weight={"bold"}>$10300</Typography>
-                    <Typography variant={"caption"} uppercase>
-                      per week
-                    </Typography>
-                    <Button variant={"contained"} color={"primary"}>
-                      Learn More
-                    </Button>
-                  </Box>
+              </Widget>
+            </Grid>
+            <Grid item>
+              <Widget disableWidgetMenu noBodyPadding inheritHeight>
+                <Grid container>
+                  <Grid item md={2} xs={12}>
+                    <img
+                      src={img2}
+                      alt="admin templates"
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </Grid>
+                  <Grid item md={8} xs={12}>
+                    <Box display={"flex"} flexDirection={"column"} m={3}>
+                      <Typography block>
+                        <Box
+                          fontWeight={"fontWeightBold"}
+                          fontSize="h4.fontSize"
+                          display={"flex"}
+                        >
+                          <Link color="primary">Try. Posted by Okendoken</Link>{" "}
+                          <Chip
+                            label="Best Deal!"
+                            color={"secondary"}
+                            style={{marginLeft: 'auto'}}
+                          />
+                        </Box>
+                        <Box fontSize={".875rem"} mb={1}>
+                          Los Angeles, NY 20188
+                        </Box>
+                        <Box>
+                          You will never know exactly how something will go
+                          until you try it. You can think three hundred times
+                          and still have no precise result.
+                        </Box>
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item md={2} xs={12}>
+                    <Box
+                      m={3}
+                      display="flex"
+                      height={"calc(100% - 48px)"}
+                      flexDirection={"column"}
+                      alignItems="center"
+                      justifyContent={"space-between"}
+                    >
+                      <Typography weight={"bold"}>$10300</Typography>
+                      <Typography variant={"caption"} uppercase>
+                        per week
+                      </Typography>
+                      <Button variant={"contained"} color={"secondary"}>
+                        Learn More
+                      </Button>
+                    </Box>
+                  </Grid>
                 </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item md={2} xs={12}>
-                  <img
-                    src={img1}
-                    alt="admin templates"
-                    style={{ width: "100%", height: "100%" }}
-                  />
+              </Widget>
+            </Grid>
+            <Grid item>
+              <Widget disableWidgetMenu noBodyPadding inheritHeight>
+                <Grid container>
+                  <Grid item md={2} xs={12}>
+                    <img
+                      src={img3}
+                      alt="admin templates"
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </Grid>
+                  <Grid item md={8} xs={12}>
+                    <Box display={"flex"} flexDirection={"column"} m={3}>
+                      <Typography block>
+                        <Box
+                          fontWeight={"fontWeightBold"}
+                          fontSize="h4.fontSize"
+                        >
+                          <Link color="primary">Vitaut the Great</Link>{" "}
+                        </Box>
+                        <Box fontSize={".875rem"} mb={1}>
+                          New York, NY 20188
+                        </Box>
+                        <Box>
+                          The Great Prince of the Grand Duchy of Lithuania he
+                          had stopped the invasion to Europe of Timur (Tamerlan)
+                          from Asia heading a big Army of Belarusians,
+                          Lithuanians.
+                        </Box>
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item md={2} xs={12}>
+                    <Box
+                      m={3}
+                      display="flex"
+                      height={"calc(100% - 48px)"}
+                      flexDirection={"column"}
+                      alignItems="center"
+                      justifyContent={"space-between"}
+                    >
+                      <Typography weight={"bold"}>$3200</Typography>
+                      <Typography variant={"caption"} uppercase>
+                        per week
+                      </Typography>
+                      <Button variant={"contained"} color={"warning"}>
+                        Learn More
+                      </Button>
+                    </Box>
+                  </Grid>
                 </Grid>
-                <Grid item md={8} xs={12}>
-                  <Box display={"flex"} flexDirection={"column"} m={3}>
-                    <Typography block>
-                      <Box fontWeight={"fontWeightBold"} fontSize="h4.fontSize">
-                        <Link color="primary">
-                          Next generation admin template
-                        </Link>{" "}
-                      </Box>
-                      <Box fontSize={".875rem"} mb={1}>
-                        New York, NY 2018
-                      </Box>
-                      <Box>
-                        Not just usual Metro. But something bigger. Not just
-                        usual widgets, but real widgets. Not just yet another
-                        admin template, but next generation admin template.
-                      </Box>
-                    </Typography>
-                  </Box>
+              </Widget>
+            </Grid>
+            <Grid item>
+              <Widget disableWidgetMenu noBodyPadding inheritHeight>
+                <Grid container>
+                  <Grid item md={2} xs={12}>
+                    <img
+                      src={img4}
+                      alt="admin templates"
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </Grid>
+                  <Grid item md={8} xs={12}>
+                    <Box display={"flex"} flexDirection={"column"} m={3}>
+                      <Typography block>
+                        <Box
+                          fontWeight={"fontWeightBold"}
+                          fontSize="h4.fontSize"
+                        >
+                          <Link color="primary">
+                            Can I use CSS3 Radial-Gradient?
+                          </Link>{" "}
+                        </Box>
+                        <Box fontSize={".875rem"} mb={1}>
+                          Minsk, NY 20188
+                        </Box>
+                        <Box>
+                          Yes you can! Further more, you should! It let's you
+                          create really beautiful images either for elements or
+                          for the entire background.
+                        </Box>
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item md={2} xs={12}>
+                    <Box
+                      m={3}
+                      display="flex"
+                      height={"calc(100% - 48px)"}
+                      flexDirection={"column"}
+                      alignItems="center"
+                      justifyContent={"space-between"}
+                    >
+                      <Typography weight={"bold"}>$2400</Typography>
+                      <Typography variant={"caption"} uppercase>
+                        per week
+                      </Typography>
+                      <Button variant={"contained"} color={"success"}>
+                        Learn More
+                      </Button>
+                    </Box>
+                  </Grid>
                 </Grid>
-                <Grid item md={2} xs={12}>
-                  <Box
-                    m={3}
-                    display="flex"
-                    height={"calc(100% - 48px)"}
-                    flexDirection={"column"}
-                    alignItems="center"
-                    justifyContent={"space-between"}
-                  >
-                    <Typography weight={"bold"}>$10300</Typography>
-                    <Typography variant={"caption"} uppercase>
-                      per week
-                    </Typography>
-                    <Button variant={"contained"} color={"primary"}>
-                      Learn More
-                    </Button>
-                  </Box>
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item md={2} xs={12}>
-                  <img
-                    src={img1}
-                    alt="admin templates"
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                </Grid>
-                <Grid item md={8} xs={12}>
-                  <Box display={"flex"} flexDirection={"column"} m={3}>
-                    <Typography block>
-                      <Box fontWeight={"fontWeightBold"} fontSize="h4.fontSize">
-                        <Link color="primary">
-                          Next generation admin template
-                        </Link>{" "}
-                      </Box>
-                      <Box fontSize={".875rem"} mb={1}>
-                        New York, NY 2018
-                      </Box>
-                      <Box>
-                        Not just usual Metro. But something bigger. Not just
-                        usual widgets, but real widgets. Not just yet another
-                        admin template, but next generation admin template.
-                      </Box>
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid item md={2} xs={12}>
-                  <Box
-                    m={3}
-                    display="flex"
-                    height={"calc(100% - 48px)"}
-                    flexDirection={"column"}
-                    alignItems="center"
-                    justifyContent={"space-between"}
-                  >
-                    <Typography weight={"bold"}>$10300</Typography>
-                    <Typography variant={"caption"} uppercase>
-                      per week
-                    </Typography>
-                    <Button variant={"contained"} color={"primary"}>
-                      Learn More
-                    </Button>
-                  </Box>
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item md={2} xs={12}>
-                  <img
-                    src={img1}
-                    alt="admin templates"
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                </Grid>
-                <Grid item md={8} xs={12}>
-                  <Box display={"flex"} flexDirection={"column"} m={3}>
-                    <Typography block>
-                      <Box fontWeight={"fontWeightBold"} fontSize="h4.fontSize">
-                        <Link color="primary">
-                          Next generation admin template
-                        </Link>{" "}
-                      </Box>
-                      <Box fontSize={".875rem"} mb={1}>
-                        New York, NY 2018
-                      </Box>
-                      <Box>
-                        Not just usual Metro. But something bigger. Not just
-                        usual widgets, but real widgets. Not just yet another
-                        admin template, but next generation admin template.
-                      </Box>
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid item md={2} xs={12}>
-                  <Box
-                    m={3}
-                    display="flex"
-                    height={"calc(100% - 48px)"}
-                    flexDirection={"column"}
-                    alignItems="center"
-                    justifyContent={"space-between"}
-                  >
-                    <Typography weight={"bold"}>$10300</Typography>
-                    <Typography variant={"caption"} uppercase>
-                      per week
-                    </Typography>
-                    <Button variant={"contained"} color={"primary"}>
-                      Learn More
-                    </Button>
-                  </Box>
-                </Grid>
-              </Grid>
-            </Widget>
+              </Widget>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

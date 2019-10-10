@@ -148,8 +148,9 @@ const structure = [
     link: "/app/extra",
     icon: <ExtraIcon />,
     children: [
-      { label: "Timeline", link: "/app/extra/timeline" },
+      { label: "Gallery", link: "/app/extra/gallery" },
       { label: "Search Result", link: "/app/extra/search" },
+      { label: "Timeline", link: "/app/extra/timeline" },
     ],
   },
   { id: 12, type: "divider" },

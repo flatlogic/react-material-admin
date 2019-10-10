@@ -245,7 +245,6 @@ function AppBar({ children, color, ...props }) {
 }
 
 function Link({ children, color, ...props }) {
-  const theme = useTheme();
   const useStyles = makeStyles(theme => ({
     root: {
       color: color

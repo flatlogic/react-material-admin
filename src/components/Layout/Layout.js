@@ -48,6 +48,7 @@ import MapsGoogle from "../../pages/maps";
 import VectorMaps from "../../pages/maps/VectorMap";
 import Timeline from "../../pages/timeline";
 import Search from "../../pages/search";
+import Gallery from '../../pages/gallery'
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -146,6 +147,7 @@ function Layout(props) {
               />
               <Route path="/app/extra/timeline" component={Timeline} />
               <Route path="/app/extra/search" component={Search} />
+              <Route path="/app/extra/gallery" component={Gallery} />
               <Route path="/app/core/colors" component={Colors} />
               <Route path="/app/maps/google" component={MapsGoogle} />
               <Route path="/app/maps/vector" component={VectorMaps} />
