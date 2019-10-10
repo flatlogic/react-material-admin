@@ -16,6 +16,7 @@ export default makeStyles(theme => ({
     boxShadow: theme.customShadows.widget,
   },
   widgetBody: {
+    height: props => props.fullHeight ? '100%' : 'inherit',
     paddingBottom: theme.spacing(3),
     paddingRight: theme.spacing(3),
     paddingLeft: theme.spacing(3),
@@ -40,4 +41,7 @@ export default makeStyles(theme => ({
       color: "rgba(255, 255, 255, 0.35)",
     },
   },
+  paddingTop: {
+    paddingTop: theme.spacing(3)
+  }
 }));

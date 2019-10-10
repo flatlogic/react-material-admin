@@ -131,52 +131,57 @@ export default {
     {
       id: 0,
       name: "Mark Otto",
-      email: "ottoto@wxample.com",
+      email: "ottoto@example.com",
       product: "ON the Road",
       price: "$25 224.2",
       date: "11 May 2017",
       city: "Otsego",
-      status: "Sent"
+      status: "Sent",
+      color: "primary"
     },
     {
       id: 1,
       name: "Jacob Thornton",
-      email: "thornton@wxample.com",
+      email: "thornton@example.com",
       product: "HP Core i7",
       price: "$1 254.2",
       date: "4 Jun 2017",
       city: "Fivepointville",
-      status: "Sent"
+      status: "Sent",
+      color: "secondary"
     },
     {
       id: 2,
       name: "Larry the Bird",
-      email: "bird@wxample.com",
+      email: "bird@example.com",
       product: "Air Pro",
       price: "$1 570.0",
       date: "27 Aug 2017",
       city: "Leadville North",
-      status: "Pending"
+      status: "Pending",
+      color: "warning"
     },
     {
       id: 3,
       name: "Joseph May",
-      email: "josephmay@wxample.com",
+      email: "josephmay@example.com",
       product: "Version Control",
       price: "$5 224.5",
       date: "19 Feb 2018",
       city: "Seaforth",
-      status: "Declined"
+      status: "Declined",
+      color: "success"
     },
     {
       id: 4,
       name: "Peter Horadnia",
-      email: "horadnia@wxample.com",
+      email: "horadnia@example.com",
       product: "Let's Dance",
       price: "$43 594.7",
       date: "1 Mar 2018",
       city: "Hanoverton",
-      status: "Sent"
+      status: "Sent",
+      color: "info"
     }
   ]
 };

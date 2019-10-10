@@ -22,6 +22,19 @@ import google from "../../images/google.svg";
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
 
+const getGreeting = () => {
+  const d = new Date();
+  if (d.getHours() >= 4 && d.getHours() <= 12) {
+    return "Good Morning";
+  } else if (d.getHours() >= 13 && d.getHours() <= 16) {
+    return "Good Day";
+  } else if (d.getHours() >= 17 && d.getHours() <= 23) {
+    return "Good Evening";
+  } else {
+    return "Good Night";
+  }
+};
+
 function Login(props) {
   var classes = useStyles();
 
@@ -33,8 +46,8 @@ function Login(props) {
   var [error, setError] = useState(null);
   var [activeTabId, setActiveTabId] = useState(0);
   var [nameValue, setNameValue] = useState("");
-  var [loginValue, setLoginValue] = useState("");
-  var [passwordValue, setPasswordValue] = useState("");
+  var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
+  var [passwordValue, setPasswordValue] = useState("12345678");
 
   return (
     <Grid container className={classes.container}>
@@ -57,7 +70,7 @@ function Login(props) {
           {activeTabId === 0 && (
             <React.Fragment>
               <Typography variant="h1" className={classes.greeting}>
-                Good Morning, User
+                {getGreeting()}, User
               </Typography>
               <Button size="large" className={classes.googleButton}>
                 <img src={google} alt="google" className={classes.googleIcon} />
@@ -68,7 +81,12 @@ function Login(props) {
                 <Typography className={classes.formDividerWord}>or</Typography>
                 <div className={classes.formDivider} />
               </div>
-              <Fade in={error}>
+              <Fade
+                in={error}
+                style={
+                  !error ? { display: "none" } : { display: "inline-block" }
+                }
+              >
                 <Typography color="secondary" className={classes.errorMessage}>
                   Something is wrong with your login or password :(
                 </Typography>

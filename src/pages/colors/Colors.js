@@ -1,22 +1,23 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
 import {
   Table,
   TableRow,
   TableHead,
   TableBody,
   TableCell,
+  Grid,
+  Box,
 } from "@material-ui/core";
-import Dot from "../../components/Sidebar/components/Dot";
 import useStyles from "./styles";
-import Link from "@material-ui/core/Link";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
+import Dot from "../../components/Sidebar/components/Dot";
+import Code from "../../components/Code";
 import { Typography, Button } from "../../components/Wrappers";
 
-export default function Colors() {
+export default function ColorsComp() {
   const classes = useStyles();
   return (
     <>
@@ -25,11 +26,7 @@ export default function Colors() {
         <Grid item xs={12} md={12}>
           <Widget title="States Colors" disableWidgetMenu>
             <Typography>
-              There is a couple of brand colors that we're using. But all the
-              time you can start to use{" "}
-              <Link href="https://material-ui.com/customization/color/#color">
-                Material UI native color palette
-              </Link>
+              There is a couple of brand colors that we're using.
             </Typography>
             <Table className="mb-0">
               <TableHead>
@@ -47,9 +44,7 @@ export default function Colors() {
                     <Dot color="primary" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <p
-                      className={classes.codeBack}
-                    >{`<Button color="primary">`}</p>
+                    <Code row>{`<Button color="primary">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="primary">#536DFE</Typography>
@@ -61,9 +56,7 @@ export default function Colors() {
                     <Dot color="secondary" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <p
-                      className={classes.codeBack}
-                    >{`<Dot color="secondary">`}</p>
+                    <Code row>{`<Dot color="secondary">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="secondary">#FF5C93</Typography>
@@ -75,9 +68,7 @@ export default function Colors() {
                     <Dot color="warning" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <p
-                      className={classes.codeBack}
-                    >{`<Typography color="warning">`}</p>
+                    <Code row>{`<Typography color="warning">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="warning">#FFC260</Typography>
@@ -89,9 +80,7 @@ export default function Colors() {
                     <Dot color="success" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <p
-                      className={classes.codeBack}
-                    >{`<Notification color="success">`}</p>
+                    <Code row>{`<Notification color="success">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="success">#3CD4A0</Typography>
@@ -103,7 +92,7 @@ export default function Colors() {
                     <Dot color="info" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <p className={classes.codeBack}>{`<Icon color="info">`}</p>
+                    <Code row>{`<Icon color="info">`}</Code>
                   </TableCell>
                   <TableCell>
                     <Typography color="info">#9013FE</Typography>
@@ -148,19 +137,52 @@ export default function Colors() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Widget title="Example buttons" disableWidgetMenu inheritHeight>
-            <Button color="primary" className={classes.button}>
-              primary
-            </Button>
-            <Button color="secondary" className={classes.button}>
-              secondary
-            </Button>
-            <Button color="warning" className={classes.button}>
-              warning
-            </Button>
-            <Button color="success" className={classes.button}>
-              success
-            </Button>
-            <Button color="info">info</Button>
+            <Box display={"flex"} flexWrap="wrap">
+              <Box mt={1} mr={1}>
+                <Button variant="contained">default</Button>
+              </Box>
+              <Box mt={1} mr={1}>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  className={classes.button}
+                >
+                  primary
+                </Button>
+              </Box>
+              <Box mt={1} mr={1}>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  className={classes.button}
+                >
+                  secondary
+                </Button>
+              </Box>
+              <Box mt={1} mr={1}>
+                <Button
+                  color="warning"
+                  variant="contained"
+                  className={classes.button}
+                >
+                  warning
+                </Button>
+              </Box>
+              <Box mt={1} mr={1}>
+                <Button
+                  color="success"
+                  variant="contained"
+                  className={classes.button}
+                >
+                  success
+                </Button>
+              </Box>
+              <Box mt={1} mr={1}>
+                <Button variant="contained" color="info">
+                  info
+                </Button>
+              </Box>
+            </Box>
           </Widget>
         </Grid>
       </Grid>

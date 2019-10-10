@@ -22,4 +22,7 @@ export default makeStyles(theme => ({
   fakeToolbar: {
     ...theme.mixins.toolbar,
   },
+  link: {
+    marginRight: theme.spacing(2),
+  },
 }));

@@ -5,16 +5,12 @@ const secondary = "#FF5C93";
 const warning = "#FFC260";
 const success = "#3CD4A0";
 const info = "#9013FE";
-const danger = "rgb(244, 67, 54)";
 
 const lightenRate = 7.5;
 const darkenRate = 15;
 
 export default {
   palette: {
-    danger: {
-      main: danger
-    },
     primary: {
       main: primary,
       light: tinycolor(primary)
@@ -59,6 +55,15 @@ export default {
         .toHexString(),
       dark: tinycolor(info)
         .darken(darkenRate)
+        .toHexString(),
+    },
+    inherit: {
+      main: "inherit",
+      light: tinycolor("inherit")
+        .lighten("inherit")
+        .toHexString(),
+      dark: tinycolor("inherit")
+        .darken("inherit")
         .toHexString(),
     },
     text: {
@@ -124,12 +129,16 @@ export default {
     MuiTableCell: {
       root: {
         borderBottom: "1px solid rgba(224, 224, 224, .5)",
+        padding: "14px 40px 14px 24px",
       },
       head: {
         fontSize: "0.95rem",
       },
       body: {
         fontSize: "0.95rem",
+      },
+      paddingCheckbox: {
+        padding: "0 0 0 15px",
       },
     },
   },

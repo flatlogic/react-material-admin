@@ -87,7 +87,7 @@ const styles = theme => ({
     minHeight: "none",
   },
   widgetHeader: {
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     paddingBottom: theme.spacing.unit,
     display: "flex",
     justifyContent: "space-between",
@@ -97,9 +97,9 @@ const styles = theme => ({
     boxShadow: theme.customShadows.widget,
   },
   widgetBody: {
-    paddingBottom: theme.spacing.unit * 3,
-    paddingRight: theme.spacing.unit * 3,
-    paddingLeft: theme.spacing.unit * 3,
+    paddingBottom: theme.spacing(3),
+    paddingRight: theme.spacing(3),
+    paddingLeft: theme.spacing(3),
   },
   noPadding: {
     padding: 0,

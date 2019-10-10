@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 export default makeStyles(theme => ({
   container: {
     height: "100vh",
-    width: "100vw",
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -141,7 +141,6 @@ export default makeStyles(theme => ({
     marginTop: theme.spacing(4),
     whiteSpace: "nowrap",
     [theme.breakpoints.up("md")]: {
-      position: "absolute",
       bottom: theme.spacing(2),
     },
   },

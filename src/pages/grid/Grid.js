@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid, Paper } from "@material-ui/core";
 import useStyles from "./styles";
 import {
   Table,
@@ -8,14 +7,17 @@ import {
   TableBody,
   TableCell,
   Box,
+  Grid,
 } from "@material-ui/core";
+import cn from "classnames";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-import { Typography } from "../../components/Wrappers";
+import Code from "../../components/Code";
+import { Typography, Paper } from "../../components/Wrappers";
 
-export default function Colors() {
+export default function GridComp() {
   const classes = useStyles();
 
   return (
@@ -33,50 +35,28 @@ export default function Colors() {
             <Paper className={classes.paper}>
               <Grid container spacing={3}>
                 <Grid item xs={4}>
-                  <Paper className={classes.paperItem}>One of three</Paper>
+                  <Paper className={classes.paperItem} color="primary">
+                    One of three
+                  </Paper>
                 </Grid>
                 <Grid item xs={4}>
-                  <Paper className={classes.paperItem}>One of three</Paper>
+                  <Paper className={classes.paperItem} color="secondary">
+                    One of three
+                  </Paper>
                 </Grid>
                 <Grid item xs={4}>
-                  <Paper className={classes.paperItem}>One of three</Paper>
+                  <Paper className={classes.paperItem} color="warning">
+                    One of three
+                  </Paper>
                 </Grid>
                 <Grid item xs zeroMinWidth>
-                  <pre>
-                    <Typography color="primary">
-                      <code>{"<Grid container>"}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"   <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"   <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"   <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</Grid>"}</code>
-                    </Typography>
-                  </pre>
+                  <Code>{`
+  <Grid container>
+    <Grid item xs={4}>One of three</Grid>
+    <Grid item xs={4}>One of three</Grid>
+    <Grid item xs={4}>One of three</Grid>
+  </Grid>
+                  `}</Code>
                 </Grid>
               </Grid>
             </Paper>
@@ -93,26 +73,25 @@ export default function Colors() {
             <Paper className={classes.paper}>
               <Grid container spacing={3}>
                 <Grid item xs>
-                  <Paper className={classes.paperItem}>1 of 2</Paper>
+                  <Paper className={classes.paperItem} color="primary">
+                    1 of 2
+                  </Paper>
                 </Grid>
                 <Grid item xs>
-                  <Paper className={classes.paperItem}>2 of 2</Paper>
+                  <Paper className={classes.paperItem} color="secondary">
+                    2 of 2
+                  </Paper>
                 </Grid>
                 <Grid item xs={12}>
-                  <pre>
-                    <Typography color="primary">
-                      <code>{"<Grid container>"}</code>
-                    </Typography>
-                    <Typography color="secondary">
-                      <code>{"   <Grid item xs>1 of 2</Grid>\n"}</code>
-                    </Typography>
-                    <Typography color="secondary">
-                      <code>{"   <Grid item xs>2 of 2</Grid>\n"}</code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</Grid>"}</code>
-                    </Typography>
-                  </pre>
+                  <Code>
+                    {`
+  <Grid container>
+    <Grid item xs>1 of 2</Grid>
+    <Grid item xs>2 of 2</Grid>
+    <Grid item xs>2 of 2</Grid>
+  </Grid>
+`}
+                  </Code>
                 </Grid>
               </Grid>
             </Paper>
@@ -174,29 +153,19 @@ export default function Colors() {
                     <b>Component property</b>
                   </TableCell>
                   <TableCell>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item xs={}>"}
-                    </Typography>
+                    <Code row>{`<Grid item xs>`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item sm={}>"}
-                    </Typography>
+                    <Code row>{`<Grid item sm>`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item md={}>"}
-                    </Typography>
+                    <Code row>{`<Grid item md>`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item lg={}>"}
-                    </Typography>
+                    <Code row>{`<Grid item lg>`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid item xl={}>"}
-                    </Typography>
+                    <Code row>{`<Grid item xl>`}</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -207,13 +176,10 @@ export default function Colors() {
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <b>Spacing</b> (output(spacing) = spacing * 8px, spacing ={" "}
-                    {"{from 2 to 10 inclusive}"})
+                    <b>Spacing</b> <Code row inline>output(spacing) = spacing * 8px</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography className={classes.codeBack}>
-                      {"<Grid container spacing={2}>"}
-                    </Typography>
+                    <Code row>{`<Grid container spacing={2}>`}</Code>
                   </TableCell>
                   <TableCell></TableCell>
                 </TableRow>
@@ -244,80 +210,51 @@ export default function Colors() {
                 <Box display="flex" height={150} width={"100%"}>
                   <Box alignSelf="flex-start" width={"100%"}>
                     <Grid item xs={12}>
-                      <Paper className={classes.paperItem}>Start</Paper>
+                      <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
+                      >
+                        Start
+                      </Paper>
                     </Grid>
                   </Box>
                   <Box alignSelf="center" width={"100%"}>
                     <Grid item xs={12}>
-                      <Paper className={classes.paperItem}>Center</Paper>
+                      <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
+                      >
+                        Center
+                      </Paper>
                     </Grid>
                   </Box>
                   <Box alignSelf="flex-end" width={"100%"}>
                     <Grid item xs={12}>
-                      <Paper className={classes.paperItem}>End</Paper>
+                      <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="warning"
+                      >
+                        End
+                      </Paper>
                     </Grid>
                   </Box>
                 </Box>
                 <Grid item xs zeroMinWidth>
-                  <pre>
-                    <Typography color="primary">
-                      <code>{"<Grid container>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{'  <Box display="flex">'}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{'    <Box alignSelf="flex-start">'}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"       <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{'    <Box alignSelf="center">'}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"       <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{'    <Box alignSelf="flex-end">'}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {"       <Grid item xs={4}>One of three</Grid>\n"}
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"  </Box>"}</code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</Grid>"}</code>
-                    </Typography>
-                  </pre>
+                  <Code>{`
+  <Grid container>
+    <Box display="flex">
+      <Box alignSelf="flex-start">
+        <Grid item xs={4}>One of three</Grid>
+      </Box>
+      <Box alignSelf="center">
+        <Grid item xs={4}>One of three</Grid>
+      </Box>
+      <Box alignSelf="flex-end">
+        <Grid item xs={4}>One of three</Grid>
+      </Box>
+    </Box>
+  </Grid>
+                  `}</Code>
                 </Grid>
               </Grid>
             </Paper>
@@ -340,16 +277,16 @@ export default function Colors() {
                   >
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
                       >
                         1
                       </Paper>
                     </Grid>
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
                       >
                         2
                       </Paper>
@@ -363,16 +300,16 @@ export default function Colors() {
                   >
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
                       >
                         1
                       </Paper>
                     </Grid>
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
                       >
                         2
                       </Paper>
@@ -386,24 +323,24 @@ export default function Colors() {
                   >
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
                       >
                         1
                       </Paper>
                     </Grid>
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
                       >
                         2
                       </Paper>
                     </Grid>
                     <Grid item xs={3}>
                       <Paper
-                        className={classes.paperItem}
-                        style={{ margin: "12px" }}
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="warning"
                       >
                         3
                       </Paper>
@@ -411,77 +348,23 @@ export default function Colors() {
                   </Box>
                 </Box>
                 <Grid item xs zeroMinWidth>
-                  <pre>
-                    <Typography color="primary">
-                      <code>{"<Grid container>"}</code>
-                    </Typography>
-                    <Typography
-                      color="secondary"
-                      noWrap
-                      className={classes.wrapFix}
-                    >
-                      <code>
-                        {'  <Box display="flex" flexDirection="column">'}
-                      </code>
-                    </Typography>
-                    <Typography color="info" noWrap className={classes.wrapFix}>
-                      <code>
-                        {
-                          '    <Box display="flex" flexDirection="row" justifyContent="flex-end">'
-                        }
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="info" noWrap className={classes.wrapFix}>
-                      <code>
-                        {
-                          '    <Box display="flex" flexDirection="row" justifyContent="flex-around">'
-                        }
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="info" noWrap className={classes.wrapFix}>
-                      <code>
-                        {
-                          '    <Box display="flex" flexDirection="row" justifyContent="flex-between">'
-                        }
-                      </code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>1</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>2</Grid>"}</code>
-                    </Typography>
-                    <Typography color="warning">
-                      <code>{"      <Grid item xs={3}>3</Grid>"}</code>
-                    </Typography>
-                    <Typography color="info">
-                      <code>{"    </Box>"}</code>
-                    </Typography>
-                    <Typography color="secondary">
-                      <code>{"  </Box>"}</code>
-                    </Typography>
-                    <Typography color="primary">
-                      <code>{"</Grid>"}</code>
-                    </Typography>
-                  </pre>
+                  <Code>{`
+  <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="row" justifyContent="flex-end">
+      <Grid item xs={3}>1</Grid>
+      <Grid item xs={3}>2</Grid>
+    </Box>
+    <Box display="flex" flexDirection="row" justifyContent="flex-around">
+      <Grid item xs={3}>1</Grid>
+      <Grid item xs={3}>2</Grid>
+    </Box>
+    <Box display="flex" flexDirection="row" justifyContent="flex-between">
+      <Grid item xs={3}>1</Grid>
+      <Grid item xs={3}>2</Grid>
+      <Grid item xs={3}>3</Grid>
+    </Box>
+  </Box>
+                  `}</Code>
                 </Grid>
               </Grid>
             </Paper>

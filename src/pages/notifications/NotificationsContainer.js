@@ -28,7 +28,7 @@ export default compose(
       overflow: "visible"
     },
     notificationComponent: {
-      paddingRight: theme.spacing.unit * 4
+      paddingRight: theme.spacing(4)
     }*/
   })),
   withState("notificationsPosition", "setNotificationPosition", 2),

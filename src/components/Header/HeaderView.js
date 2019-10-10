@@ -7,7 +7,7 @@ import {
   Menu,
   MenuItem,
   Fab,
-  withStyles
+  withStyles,
 } from "@material-ui/core";
 import {
   Menu as MenuIcon,
@@ -299,8 +299,8 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
 const styles = theme => ({
   logotype: {
     color: "white",
-    marginLeft: theme.spacing.unit * 2.5,
-    marginRight: theme.spacing.unit * 2.5,
+    marginLeft: theme.spacing(2.5),
+    marginRight: theme.spacing(2.5),
     fontWeight: 500,
     fontSize: 18,
     whiteSpace: "nowrap",
@@ -317,8 +317,8 @@ const styles = theme => ({
     })
   },
   toolbar: {
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2)
   },
   hide: {
     display: "none"
@@ -329,7 +329,7 @@ const styles = theme => ({
   search: {
     position: "relative",
     borderRadius: 25,
-    paddingLeft: theme.spacing.unit * 2.5,
+    paddingLeft: theme.spacing(2.5),
     width: 36,
     backgroundColor: fade(theme.palette.common.black, 0),
     transition: theme.transitions.create(["background-color", "width"]),
@@ -359,7 +359,7 @@ const styles = theme => ({
     }
   },
   searchIconOpened: {
-    right: theme.spacing.unit * 1.25
+    right: theme.spacing(1.25)
   },
   inputRoot: {
     color: "inherit",
@@ -368,7 +368,7 @@ const styles = theme => ({
   inputInput: {
     height: 36,
     padding: 0,
-    paddingRight: 36 + theme.spacing.unit * 1.25,
+    paddingRight: 36 + theme.spacing(1.25),
     width: "100%"
   },
   messageContent: {
@@ -376,7 +376,7 @@ const styles = theme => ({
     flexDirection: "column"
   },
   headerMenu: {
-    marginTop: theme.spacing.unit * 7
+    marginTop: theme.spacing(7)
   },
   headerMenuList: {
     display: "flex",
@@ -389,11 +389,11 @@ const styles = theme => ({
     }
   },
   headerMenuButton: {
-    marginLeft: theme.spacing.unit * 2,
+    marginLeft: theme.spacing(2),
     padding: theme.spacing.unit / 2
   },
   headerMenuButtonCollapse: {
-    marginRight: theme.spacing.unit * 2
+    marginRight: theme.spacing(2)
   },
   headerIcon: {
     fontSize: 28,
@@ -408,13 +408,13 @@ const styles = theme => ({
   profileMenuUser: {
     display: "flex",
     flexDirection: "column",
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing(2)
   },
   profileMenuItem: {
     color: theme.palette.text.hint
   },
   profileMenuIcon: {
-    marginRight: theme.spacing.unit * 2,
+    marginRight: theme.spacing(2),
     color: theme.palette.text.hint
   },
   profileMenuLink: {
@@ -436,20 +436,20 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginRight: theme.spacing.unit * 2
+    marginRight: theme.spacing(2)
   },
   messageNotificationBodySide: {
     alignItems: "flex-start",
     marginRight: 0
   },
   sendMessageButton: {
-    margin: theme.spacing.unit * 4,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
+    margin: theme.spacing(4),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     textTransform: "none"
   },
   sendButtonIcon: {
-    marginLeft: theme.spacing.unit * 2
+    marginLeft: theme.spacing(2)
   }
 });
 

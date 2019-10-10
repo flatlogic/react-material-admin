@@ -1,10 +1,13 @@
 import React from "react";
-import { Grid, Paper, Typography, Button } from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 
 // styles
 import useStyles from "./styles";
+
+//components
+import {Button} from '../../components/Wrappers'
 
 // logo
 import logo from "./logo.svg";

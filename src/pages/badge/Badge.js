@@ -1,71 +1,59 @@
 import React from "react";
-import { Grid, Box, Button as NativeButton } from "@material-ui/core";
+import { Grid, Box, IconButton, Tab, Tabs, AppBar } from "@material-ui/core";
+import {
+  Mail as MailIcon,
+  ShoppingCart as ShoppingCartIcon,
+} from "@material-ui/icons";
 import useStyles from "./styles";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-import { Badge, Typography, Chip } from "../../components/Wrappers";
+import Code from "../../components/Code";
+import { Badge, Typography, Chip, Button } from "../../components/Wrappers";
 
-export default function Colors() {
+export default function BadgeComp() {
   const classes = useStyles();
   return (
     <div>
       <PageTitle title="Badge" />
       <Grid container spacing={6}>
-        <Grid item md={12}>
+        <Grid item md={6} xs={12}>
           <Widget title="Badge Example" disableWidgetMenu>
             <Typography>
-              Badges scale to match the size of the immediate parent element by
-              using relative font sizing, em units and font color.
+              Badge generates a small badge to the top-right of its child(ren)
             </Typography>
             <Box>
               <Box my={3}>
-                <Badge
-                  color="primary"
-                  badgeContent={"Primary"}
-                  fontColor={"white"}
-                >
+                <Badge color="primary" badgeContent={"Primary"}>
                   <Typography variant="h1" className={classes.paddingTop}>
                     Example heading
                   </Typography>
                 </Badge>
               </Box>
               <Box my={3}>
-                <Badge
-                  color="secondary"
-                  badgeContent={"Secondary"}
-                  fontColor={"white"}
-                >
+                <Badge color="secondary" badgeContent={"Secondary"}>
                   <Typography variant="h2" className={classes.paddingTop}>
                     Example heading
                   </Typography>
                 </Badge>
               </Box>
               <Box my={3}>
-                <Badge
-                  color="warning"
-                  badgeContent={"Warning"}
-                  fontColor={"white"}
-                >
+                <Badge color="warning" badgeContent={"Warning"}>
                   <Typography variant="h3" className={classes.paddingTop}>
                     Example heading
                   </Typography>
                 </Badge>
               </Box>
               <Box my={3}>
-                <Badge color="info" badgeContent={"Info"} fontColor={"white"}>
+                <Badge color="info" badgeContent={"Info"}>
                   <Typography variant="h4" className={classes.paddingTop}>
                     Example heading
                   </Typography>
                 </Badge>
               </Box>
               <Box my={3}>
-                <Badge
-                  color="success"
-                  badgeContent={"Success"}
-                  fontColor={"white"}
-                >
+                <Badge color="success" badgeContent={"Success"}>
                   <Typography variant="h5" className={classes.paddingTop}>
                     Example heading
                   </Typography>
@@ -73,9 +61,9 @@ export default function Colors() {
               </Box>
               <Box my={3}>
                 <Badge
-                  color="danger"
-                  badgeContent={"Danger"}
-                  fontColor={"white"}
+                  color="primary"
+                  colorBrightness="light"
+                  badgeContent={"Primary light"}
                 >
                   <Typography variant="h6" className={classes.paddingTop}>
                     Example heading
@@ -87,13 +75,150 @@ export default function Colors() {
                 counter.
               </Typography>
               <Box my={3}>
-                <Badge color="danger" badgeContent={"1"} fontColor={"white"}>
-                  <NativeButton
-                    variant="contained"
-                    className={classes.paddingTop}
-                  >
+                <Badge color="success" badgeContent={"1"}>
+                  <Button variant="contained" className={classes.paddingTop}>
                     Example heading
-                  </NativeButton>
+                  </Button>
+                </Badge>
+              </Box>
+            </Box>
+          </Widget>
+        </Grid>
+
+        <Grid item md={6} xs={12}>
+          <Widget title="Icon Badges" disableWidgetMenu>
+            <Typography>
+              Badge can also be used as a parent of a icon as well as a parent
+              of a clickable icon
+            </Typography>
+            <Box>
+              <Box
+                my={1}
+                justifyContent="center"
+                display="flex"
+                alignItems="center"
+              >
+                <Badge
+                  className={classes.badge}
+                  badgeContent={4}
+                  color="primary"
+                >
+                  <MailIcon />
+                </Badge>
+                <Badge
+                  className={classes.badge}
+                  badgeContent={10}
+                  color="secondary"
+                >
+                  <MailIcon />
+                </Badge>
+                <IconButton
+                  aria-label="4 pending messages"
+                  className={classes.badge}
+                >
+                  <Badge badgeContent={4} color="warning">
+                    <MailIcon />
+                  </Badge>
+                </IconButton>
+              </Box>
+              <Box my={6}>
+                <AppBar position="static" color="default">
+                  <Tabs
+                    value={0}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    variant="fullWidth"
+                    aria-label="full width tabs example"
+                  >
+                    <Tab
+                      label={
+                        <Badge
+                          className={classes.padding}
+                          color="secondary"
+                          badgeContent={4}
+                        >
+                          Item One
+                        </Badge>
+                      }
+                    />
+                    <Tab label="Item Two" />
+                    <Tab label="Item Three" />
+                  </Tabs>
+                </AppBar>
+              </Box>
+              <Typography block>
+                You may to use dot badge via{" "}
+                <Code row inline>{`variant="dot"`}</Code>
+              </Typography>
+              <Box
+                my={6}
+                justifyContent="center"
+                display="flex"
+                alignItems="center"
+              >
+                <Badge
+                  badgeContent={4}
+                  color={"primary"}
+                  className={classes.margin}
+                  variant={"dot"}
+                >
+                  <ShoppingCartIcon />
+                </Badge>
+                <Badge
+                  badgeContent={4}
+                  color="secondary"
+                  className={classes.margin}
+                  variant={"dot"}
+                >
+                  <MailIcon />
+                </Badge>
+                <Badge
+                  badgeContent={4}
+                  color="warning"
+                  className={classes.margin}
+                  variant={"dot"}
+                >
+                  <Typography>Typography</Typography>
+                </Badge>
+              </Box>
+              <Typography block>
+                You can use the <Code row inline>{`horizontalAlignment`}</Code>{" "}
+                and <Code row inline>{`verticalAlignment`}</Code>
+                properties to move the badge to any corner of the wrapped
+                element.
+              </Typography>
+              <Box
+                my={6}
+                justifyContent="center"
+                display="flex"
+                alignItems="center"
+              >
+                <Badge
+                  badgeContent={4}
+                  color={"primary"}
+                  className={classes.margin}
+                  variant={"dot"}
+                >
+                  <ShoppingCartIcon />
+                </Badge>
+                <Badge
+                  badgeContent={4}
+                  color="secondary"
+                  className={classes.margin}
+                  variant={"dot"}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                >
+                  <MailIcon />
+                </Badge>
+                <Badge
+                  badgeContent={4}
+                  color="warning"
+                  className={classes.margin}
+                  variant={"dot"}
+                  anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                  size={""}
+                >
+                  <Typography>Typography</Typography>
                 </Badge>
               </Box>
             </Box>
@@ -102,13 +227,32 @@ export default function Colors() {
 
         <Grid item md={12}>
           <Widget title="Chips" disableWidgetMenu>
-            <Typography>Chips allow users to enter information, make selections, filter content, or trigger actions.</Typography>
+            <Typography>
+              Chips allow users to enter information, make selections, filter
+              content, or trigger actions.
+            </Typography>
             <Box>
-                <Chip color="primary" label={"1"}/>
-                <Chip color="secondary" label={"2"}/>
-                <Chip color="warning" label={"3"}/>
-                <Chip color="info" label={"4"}/>
-                <Chip color="success" label={"5"}/>
+              <Chip
+                className={classes.badge}
+                color="primary"
+                label={"Primary"}
+              />
+              <Chip
+                className={classes.badge}
+                color="secondary"
+                label={"Secondary"}
+              />
+              <Chip
+                className={classes.badge}
+                color="warning"
+                label={"Warning"}
+              />
+              <Chip className={classes.badge} color="info" label={"Info"} />
+              <Chip
+                className={classes.badge}
+                color="success"
+                label={"Success"}
+              />
             </Box>
           </Widget>
         </Grid>
