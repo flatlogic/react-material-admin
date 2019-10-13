@@ -13,6 +13,8 @@ import {
 import {
   BorderAll as GridIcon,
   FormatAlignJustify as RowIcon,
+  KeyboardArrowLeft as KeyLeftIcon,
+  KeyboardArrowRight as KeyRightIcon,
 } from "@material-ui/icons";
 import useStyles from "./styles";
 
@@ -29,6 +31,7 @@ import Widget from "../../components/Widget";
 import Pagination from "../../components/Pagination";
 
 export default function SearchComp() {
+  console.log(`&{3+5}`)
   const [select, setSelect] = React.useState({
     row: true,
     grid: false,
@@ -359,7 +362,7 @@ export default function SearchComp() {
               </Widget>
               <Pagination
                 pageCount={10}
-                previousLabel={"PREV"}
+                previousLabel={`&{KeyLeftIcon}`}
                 nextLabel={"NEXT"}
                 initialPage={1}
               />

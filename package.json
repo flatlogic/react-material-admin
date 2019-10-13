@@ -18,7 +18,7 @@
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
     "react-paginate": "^6.3.0",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1",
     "react-simple-maps": "^0.12.1",
     "react-swipeable-views": "^0.13.3",

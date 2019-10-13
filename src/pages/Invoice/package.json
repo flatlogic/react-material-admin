@@ -1,0 +1,6 @@
+{
+  "name": "Invoice",
+  "version": "1.0.0",
+  "main": "Invoice.js",
+  "license": "MIT"
+}

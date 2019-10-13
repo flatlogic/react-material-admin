@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { Favorite as LikeIcon, Chat as CommentsIcon } from "@material-ui/icons";
 
+
 //images
 import img1 from "../../images/gallery1.jpg";
 import img2 from "../../images/gallery2.jpg";

@@ -151,6 +151,7 @@ const structure = [
       { label: "Gallery", link: "/app/extra/gallery" },
       { label: "Search Result", link: "/app/extra/search" },
       { label: "Timeline", link: "/app/extra/timeline" },
+      { label: "Invoice", link: "/app/extra/invoice" },
     ],
   },
   { id: 12, type: "divider" },
