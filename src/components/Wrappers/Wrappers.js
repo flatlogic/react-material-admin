@@ -84,8 +84,8 @@ function Typography({
   weight,
   size,
   colorBrightness,
+  defaultColor,
   color,
-  textColor,
   block,
   uppercase,
   ...props
@@ -96,9 +96,9 @@ function Typography({
     <TypographyBase
       style={{
         color:
-          !color && textColor
-            ? getTextColor(textColor, theme)
-            : getBackgroundColor(color, theme, colorBrightness),
+          !defaultColor && color
+            ? getTextColor(color, theme)
+            : getBackgroundColor(defaultColor, theme, colorBrightness),
         fontWeight: getFontWeight(weight),
         fontSize: getFontSize(size, props.variant, theme),
         textTransform: uppercase ? "uppercase" : "none",
@@ -112,16 +112,15 @@ function Typography({
 }
 
 function Button({ children, color, ...props }) {
-  const theme = useTheme();
-
-  const Styled = createStyled({
+  
+  const useStyles = makeStyles(theme => ({
     root: {
       color: getBackgroundColor(color, theme),
     },
     contained: {
       backgroundColor: getBackgroundColor(color, theme),
       boxShadow: theme.customShadows.widget,
-      color: `${color ? "white" : theme.palette.text.primary}`,
+      color: `${color ? "white" : theme.palette.text.primary} !important`,
       "&:hover": {
         backgroundColor: getBackgroundColor(color, theme, "light"),
         boxShadow: theme.customShadows.widgetWide,
@@ -143,27 +142,24 @@ function Button({ children, color, ...props }) {
         backgroundColor: theme.palette.text.hint,
       },
     },
-  });
-
+  }));
+  const classes = useStyles();
+  
   return (
-    <Styled>
-      {({ classes }) => (
-        <ButtonBase
-          classes={{
-            contained: classes.contained,
-            root: classes.root,
-            outlined: classes.outlined,
-          }}
-          {...props}
-          className={classnames({
-            [classes.select]: props.select,
-            [props.className]: true,
-          })}
-        >
-          {children}
-        </ButtonBase>
-      )}
-    </Styled>
+    <ButtonBase
+      classes={{
+        contained: classes.contained,
+        root: classes.root,
+        outlined: classes.outlined,
+      }}
+      {...props}
+      className={classnames({
+        [classes.select]: props.select,
+        [props.className]: true,
+      })}
+    >
+      {children}
+    </ButtonBase>
   );
 }
 

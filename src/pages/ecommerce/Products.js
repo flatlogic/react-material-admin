@@ -216,7 +216,7 @@ const Product = props => {
                         <Typography variant="h3" uppercase>
                           {rows[0].title}
                         </Typography>
-                        <Typography textColor="secondary">
+                        <Typography>
                           {rows[0].subtitle}
                         </Typography>
                       </>
@@ -225,7 +225,7 @@ const Product = props => {
                         <Typography variant="h3" uppercase>
                           {rows[props.match.params.id - 1].title}
                         </Typography>
-                        <Typography textColor="secondary">
+                        <Typography>
                           {rows[props.match.params.id].subtitle}
                         </Typography>
                       </>
@@ -247,7 +247,7 @@ const Product = props => {
                     )}{" "}
                   </Box>
                   <Box>
-                    <Link href="#">Size Guide</Link>
+                    <Link>Size Guide</Link>
                   </Box>
                   <Box display="flex">
                     <FormControl
@@ -326,7 +326,7 @@ const Product = props => {
                       style={{ width: 40 }}
                     />
                   </Box>
-                  <Typography textColor="hint">
+                  <Typography color="hint">
                     FREE Delivery & Returns
                   </Typography>
                 </Box>
@@ -477,7 +477,6 @@ const Product = props => {
                   </Typography>
                   <Typography
                     variant="body2"
-                    color="textSecondary"
                     component="p"
                   >
                     {rows[0].subtitle}
@@ -487,7 +486,7 @@ const Product = props => {
               <CardActions
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" component="p">
                   ${rows[0].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
@@ -511,7 +510,6 @@ const Product = props => {
                   </Typography>
                   <Typography
                     variant="body2"
-                    color="textSecondary"
                     component="p"
                   >
                     {rows[1].subtitle}
@@ -521,7 +519,7 @@ const Product = props => {
               <CardActions
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" component="p">
                   ${rows[1].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
@@ -545,7 +543,6 @@ const Product = props => {
                   </Typography>
                   <Typography
                     variant="body2"
-                    color="textSecondary"
                     component="p"
                   >
                     {rows[2].subtitle}
@@ -555,7 +552,7 @@ const Product = props => {
               <CardActions
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" component="p">
                   ${rows[2].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
@@ -579,7 +576,6 @@ const Product = props => {
                   </Typography>
                   <Typography
                     variant="body2"
-                    color="textSecondary"
                     component="p"
                   >
                     {rows[3].subtitle}
@@ -589,7 +585,7 @@ const Product = props => {
               <CardActions
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" component="p">
                   ${rows[3].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>

@@ -50,7 +50,7 @@ const structure = [
         link: "/app/ecommerce/products",
       },
       {
-        label: "Products Page",
+        label: "Product Page",
         link: "/app/ecommerce/product",
       },
     ],
@@ -148,10 +148,13 @@ const structure = [
     link: "/app/extra",
     icon: <ExtraIcon />,
     children: [
+      { label: "Calendar", link: "/app/extra/calendar" },
+      { label: "Invoice", link: "/app/extra/invoice" },
+      { label: "Login Page", link: "/app/login" },
+      { label: "Error Page", link: "/404" },
       { label: "Gallery", link: "/app/extra/gallery" },
       { label: "Search Result", link: "/app/extra/search" },
       { label: "Timeline", link: "/app/extra/timeline" },
-      { label: "Invoice", link: "/app/extra/invoice" },
     ],
   },
   { id: 12, type: "divider" },
@@ -184,6 +187,7 @@ const structure = [
 function Sidebar({ location }) {
   var classes = useStyles();
   var theme = useTheme();
+  console.log(location.pathname)
 
   const toggleDrawer = value => event => {
     if (

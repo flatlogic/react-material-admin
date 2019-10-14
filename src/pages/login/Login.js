@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  CircularProgress,
-  Typography,
-  Button,
-  Tabs,
-  Tab,
-  TextField,
-  Fade,
-} from "@material-ui/core";
+import { Grid, CircularProgress, Tabs, Tab, Fade } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import classnames from "classnames";
 
@@ -21,6 +12,9 @@ import google from "../../images/google.svg";
 
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
+
+//components
+import { Button, Typography, Input } from "../../components/Wrappers";
 
 const getGreeting = () => {
   const d = new Date();
@@ -91,12 +85,12 @@ function Login(props) {
                   Something is wrong with your login or password :(
                 </Typography>
               </Fade>
-              <TextField
+              <Input
                 id="email"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
+                    underline: classes.InputUnderline,
+                    input: classes.Input,
                   },
                 }}
                 value={loginValue}
@@ -106,12 +100,12 @@ function Login(props) {
                 type="email"
                 fullWidth
               />
-              <TextField
+              <Input
                 id="password"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
+                    underline: classes.InputUnderline,
+                    input: classes.Input,
                   },
                 }}
                 value={passwordValue}
@@ -169,12 +163,12 @@ function Login(props) {
                   Something is wrong with your login or password :(
                 </Typography>
               </Fade>
-              <TextField
+              <Input
                 id="name"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
+                    underline: classes.InputUnderline,
+                    input: classes.Input,
                   },
                 }}
                 value={nameValue}
@@ -184,12 +178,12 @@ function Login(props) {
                 type="email"
                 fullWidth
               />
-              <TextField
+              <Input
                 id="email"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
+                    underline: classes.InputUnderline,
+                    input: classes.Input,
                   },
                 }}
                 value={loginValue}
@@ -199,12 +193,12 @@ function Login(props) {
                 type="email"
                 fullWidth
               />
-              <TextField
+              <Input
                 id="password"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
+                    underline: classes.InputUnderline,
+                    input: classes.Input,
                   },
                 }}
                 value={passwordValue}
@@ -262,7 +256,7 @@ function Login(props) {
             </React.Fragment>
           )}
         </div>
-        <Typography color="primary" className={classes.copyright}>
+        <Typography defaultColor="primary" className={classes.copyright}>
           © 2014-2019 Flatlogic, LLC. All rights reserved.
         </Typography>
       </div>

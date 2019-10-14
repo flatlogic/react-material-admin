@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Grid, Paper} from "@material-ui/core";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 
@@ -7,7 +7,7 @@ import classnames from "classnames";
 import useStyles from "./styles";
 
 //components
-import {Button} from '../../components/Wrappers'
+import {Button, Typography} from '../../components/Wrappers'
 
 // logo
 import logo from "./logo.svg";
@@ -26,7 +26,7 @@ export default function Error() {
       <Paper classes={{ root: classes.paperRoot }}>
         <Typography
           variant="h1"
-          color="primary"
+          defaultColor="primary"
           className={classnames(classes.textRow, classes.errorCode)}
         >
           404
@@ -36,7 +36,7 @@ export default function Error() {
         </Typography>
         <Typography
           variant="h6"
-          color="text"
+          color="hint"
           colorBrightness="secondary"
           className={classnames(classes.textRow, classes.safetyText)}
         >

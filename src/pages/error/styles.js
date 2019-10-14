@@ -54,7 +54,6 @@ export default makeStyles(theme => ({
     color: theme.palette.text.hint,
   },
   backButton: {
-    boxShadow: theme.customShadows.widget,
     textTransform: "none",
     fontSize: 22,
   },

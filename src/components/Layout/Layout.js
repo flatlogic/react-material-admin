@@ -44,12 +44,13 @@ import Widget from "../../pages/widget";
 import Progress from "../../pages/progress";
 import Ecommerce from "../../pages/ecommerce";
 import Products from "../../pages/ecommerce/Products";
+import ProductsGrid from "../../pages/ecommerce/ProductsGrid";
 import MapsGoogle from "../../pages/maps";
 import VectorMaps from "../../pages/maps/VectorMap";
 import Timeline from "../../pages/timeline";
 import Search from "../../pages/search";
-import Gallery from '../../pages/gallery'
-import Invoice from '../../pages/Invoice'
+import Gallery from "../../pages/gallery";
+import Invoice from "../../pages/invoice";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -106,6 +107,7 @@ function Layout(props) {
               <Route path="/app/ecommerce/management" component={Ecommerce} />
               <Route path="/app/ecommerce/product/:id" component={Products} />
               <Route path="/app/ecommerce/product" component={Products} />
+              <Route path="/app/ecommerce/products" component={ProductsGrid} />
               <Route
                 exact
                 path="/app/tables"
