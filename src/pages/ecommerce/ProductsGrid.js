@@ -18,8 +18,7 @@ import useStyles from "./styles";
 
 //components
 import PageTitle from "../../components/PageTitle";
-import Widget from "../../components/Widget";
-import { Typography, Link, Button } from "../../components/Wrappers";
+import { Typography, Chip } from "../../components/Wrappers";
 
 //images
 import img1 from "../../images/img1.jpg";
@@ -359,7 +358,9 @@ const Product = props => {
                         className={classes.media}
                         image={c.img}
                         title={c.title}
-                      />
+                      >
+                        { c.id % 2 ? <Chip label={"New"} color={"success"} /> : <Chip label={"Sale"} color={"secondary"} /> }
+                      </CardMedia>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           {c.title}
@@ -369,13 +370,16 @@ const Product = props => {
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    <CardActions style={{padding: 16}}>
-                      <Box display={"flex"} justifyContent={"space-between"} alignItems="center" width={"100%"}>
+                    <CardActions style={{ padding: 16 }}>
+                      <Box
+                        display={"flex"}
+                        justifyContent={"space-between"}
+                        alignItems="center"
+                        width={"100%"}
+                      >
                         <Typography weight={"bold"}>${c.price}</Typography>
                         <Typography block>
-                          <div
-                            style={{ color: yellow[700] }}
-                          >
+                          <div style={{ color: yellow[700] }}>
                             {rows[0].rating}
                             <StarIcon
                               style={{ color: yellow[700], marginTop: -5 }}

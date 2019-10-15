@@ -24,6 +24,7 @@ export default makeStyles(theme => ({
     width: "100%",
   },
   media: {
-    height: 140,
+    height: 320,
+    padding: theme.spacing(2)
   },
 }));
