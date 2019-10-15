@@ -6,7 +6,14 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Card,
+  CardActions,
+  CardContent,
+  CardActionArea,
+  CardMedia,
 } from "@material-ui/core";
+import { Star as StarIcon } from "@material-ui/icons";
+import { yellow } from "@material-ui/core/colors/index";
 import useStyles from "./styles";
 
 //components
@@ -21,10 +28,6 @@ import img3 from "../../images/img3.jpg";
 import img4 from "../../images/img4.jpg";
 import img5 from "../../images/img5.jpeg";
 import img6 from "../../images/img6.jpg";
-import payment1 from "../../images/mastercard.svg";
-import payment2 from "../../images/paypal.svg";
-import payment3 from "../../images/visa.svg";
-import payment4 from "../../images/aexpress.svg";
 
 export const rows = [
   {
@@ -134,52 +137,52 @@ const Product = props => {
   const classes = useStyles();
 
   const reducer = (state, action) => {
-    switch(action.type) {
+    switch (action.type) {
       case "SELECT_TYPE":
         return {
           ...state,
-          valueType: action.valueType
-        }
-        case "SELECT_BRANDS": 
+          valueType: action.valueType,
+        };
+      case "SELECT_BRANDS":
         return {
           ...state,
-          valueBrands: action.valueBrands
-        }
-        case "SELECT_SIZE": 
+          valueBrands: action.valueBrands,
+        };
+      case "SELECT_SIZE":
         return {
           ...state,
-          valueSize: action.valueSize
-        }
-        case "SELECT_COLOUR": 
+          valueSize: action.valueSize,
+        };
+      case "SELECT_COLOUR":
         return {
           ...state,
-          valueColor: action.valueColor
-        }
-        case "SELECT_RANGE": 
+          valueColor: action.valueColor,
+        };
+      case "SELECT_RANGE":
         return {
           ...state,
-          valueRange: action.valueRange
-        }
-        case "SELECT_SORT": 
+          valueRange: action.valueRange,
+        };
+      case "SELECT_SORT":
         return {
           ...state,
-          valueSort: action.valueSort
-        }
-        default: 
+          valueSort: action.valueSort,
+        };
+      default:
         return {
-          ...state
-        }
+          ...state,
+        };
     }
-  }
+  };
 
   const [state, dispatch] = React.useReducer(reducer, {
-    valueType: 'Shoes',
-    valueBrands: 'All',
+    valueType: "Shoes",
+    valueBrands: "All",
     valueSize: 7,
-    valueColour: 'All',
-    valueRange: 'All',
-    valueSort: 'Favorite'
-  })
+    valueColour: "All",
+    valueRange: "All",
+    valueSort: "Favorite",
+  });
   return (
     <>
       <PageTitle title="Products Grid" />
@@ -196,7 +199,9 @@ const Product = props => {
               </InputLabel>
               <Select
                 value={state.valueType}
-                onChange={(e) => dispatch({type: 'SELECT_TYPE', valueType: e.target.value})}
+                onChange={e =>
+                  dispatch({ type: "SELECT_TYPE", valueType: e.target.value })
+                }
                 labelWidth={labelWidth}
                 inputProps={{
                   name: "type",
@@ -218,7 +223,12 @@ const Product = props => {
               </InputLabel>
               <Select
                 value={state.valueBrands}
-                onChange={(e) => dispatch({type: 'SELECT_BRAND', valueBrands: e.target.value})}
+                onChange={e =>
+                  dispatch({
+                    type: "SELECT_BRAND",
+                    valueBrands: e.target.value,
+                  })
+                }
                 labelWidth={labelWidth}
                 inputProps={{
                   name: "brands",
@@ -240,7 +250,9 @@ const Product = props => {
               </InputLabel>
               <Select
                 value={state.valueSize}
-                onChange={(e) => dispatch({type: 'SELECT_SIZE', valueSize: e.target.value})}
+                onChange={e =>
+                  dispatch({ type: "SELECT_SIZE", valueSize: e.target.value })
+                }
                 labelWidth={labelWidth}
                 inputProps={{
                   name: "size",
@@ -257,7 +269,6 @@ const Product = props => {
                 <MenuItem value={12}>12</MenuItem>
                 <MenuItem value={12.5}>12.5</MenuItem>
                 <MenuItem value={13}>13</MenuItem>
-
               </Select>
             </FormControl>
             <FormControl
@@ -270,7 +281,12 @@ const Product = props => {
               </InputLabel>
               <Select
                 value={state.valueColour}
-                onChange={(e) => dispatch({type: 'SELECT_COLOUR', valueColor: e.target.value})}
+                onChange={e =>
+                  dispatch({
+                    type: "SELECT_COLOUR",
+                    valueColor: e.target.value,
+                  })
+                }
                 labelWidth={labelWidth}
                 inputProps={{
                   name: "colour",
@@ -292,7 +308,9 @@ const Product = props => {
               </InputLabel>
               <Select
                 value={state.valueRange}
-                onChange={(e) => dispatch({type: 'SELECT_RANGE', valueRange: e.target.value})}
+                onChange={e =>
+                  dispatch({ type: "SELECT_RANGE", valueRange: e.target.value })
+                }
                 labelWidth={labelWidth}
                 inputProps={{
                   name: "range",
@@ -314,7 +332,9 @@ const Product = props => {
               </InputLabel>
               <Select
                 value={state.valueSort}
-                onChange={(e) => dispatch({type: 'SELECT_SORT', valueSort: e.target.value})}
+                onChange={e =>
+                  dispatch({ type: "SELECT_SORT", valueSort: e.target.value })
+                }
                 labelWidth={labelWidth}
                 inputProps={{
                   name: "sort",
@@ -326,6 +346,48 @@ const Product = props => {
                 <MenuItem value={"Popular"}>Popular</MenuItem>
               </Select>
             </FormControl>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <Box display={"flex"} flexWrap={"wrap"}>
+            <Grid container item spacing={4}>
+              {rows.map(c => (
+                <Grid item xs={12} md={3} key={c.id}>
+                  <Card className={classes.card}>
+                    <CardActionArea>
+                      <CardMedia
+                        className={classes.media}
+                        image={c.img}
+                        title={c.title}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {c.title}
+                        </Typography>
+                        <Typography variant="body2" color="hint" component="p">
+                          {c.subtitle}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                    <CardActions style={{padding: 16}}>
+                      <Box display={"flex"} justifyContent={"space-between"} alignItems="center" width={"100%"}>
+                        <Typography weight={"bold"}>${c.price}</Typography>
+                        <Typography block>
+                          <div
+                            style={{ color: yellow[700] }}
+                          >
+                            {rows[0].rating}
+                            <StarIcon
+                              style={{ color: yellow[700], marginTop: -5 }}
+                            />
+                          </div>
+                        </Typography>
+                      </Box>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </Grid>
       </Grid>

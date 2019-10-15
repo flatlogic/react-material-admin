@@ -21,7 +21,7 @@ export default makeStyles(theme => ({
     marginTop: theme.spacing(2),
   },
   card: {
-    maxWidth: 345,
+    width: "100%",
   },
   media: {
     height: 140,

@@ -52,6 +52,7 @@ import Search from "../../pages/search";
 import Gallery from "../../pages/gallery";
 import Invoice from "../../pages/invoice";
 
+
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
