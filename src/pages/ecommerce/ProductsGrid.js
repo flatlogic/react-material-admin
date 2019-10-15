@@ -6,26 +6,8 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  IconButton,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
 } from "@material-ui/core";
-import Icon from "@mdi/react";
-import {
-  Star as StarIcon,
-  StarBorder as StarOutlinedIcon,
-  ShoppingCart as ShoppingCartIcon,
-} from "@material-ui/icons";
-import {
-  mdiFacebook as FacebookIcon,
-  mdiInstagram as InstagramIcon,
-  mdiTwitter as TwitterIcon,
-} from "@mdi/js";
 import useStyles from "./styles";
-import { yellow } from "@material-ui/core/colors/index";
 
 //components
 import PageTitle from "../../components/PageTitle";
@@ -209,7 +191,7 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="size-simple" ref={inputLabel}>
+              <InputLabel htmlFor="type_select" ref={inputLabel}>
                 Type
               </InputLabel>
               <Select
@@ -231,12 +213,12 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="size-simple" ref={inputLabel}>
+              <InputLabel htmlFor="brands_select" ref={inputLabel}>
                 Brands
               </InputLabel>
               <Select
                 value={state.valueBrands}
-                onChange={(e) => dispatch({'SELECT_BRAND', valueBrands: e.target.value}}
+                onChange={(e) => dispatch({type: 'SELECT_BRAND', valueBrands: e.target.value})}
                 labelWidth={labelWidth}
                 inputProps={{
                   name: "brands",
@@ -253,7 +235,7 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="size-simple" ref={inputLabel}>
+              <InputLabel htmlFor="size_select" ref={inputLabel}>
                 Size
               </InputLabel>
               <Select
@@ -283,23 +265,21 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="size-simple" ref={inputLabel}>
-                Select size
+              <InputLabel htmlFor="colour_select" ref={inputLabel}>
+                Colour
               </InputLabel>
               <Select
-                value={size}
-                onChange={handleChange}
+                value={state.valueColour}
+                onChange={(e) => dispatch({type: 'SELECT_COLOUR', valueColor: e.target.value})}
                 labelWidth={labelWidth}
                 inputProps={{
-                  name: "size",
-                  id: "size-simple",
+                  name: "colour",
+                  id: "colour_select",
                 }}
               >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
+                <MenuItem value={"All"}>All</MenuItem>
+                <MenuItem value={"White"}>White</MenuItem>
+                <MenuItem value={"Black"}>Black</MenuItem>
               </Select>
             </FormControl>
             <FormControl
@@ -307,23 +287,21 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="size-simple" ref={inputLabel}>
+              <InputLabel htmlFor="range_select" ref={inputLabel}>
                 Select size
               </InputLabel>
               <Select
-                value={size}
-                onChange={handleChange}
+                value={state.valueRange}
+                onChange={(e) => dispatch({type: 'SELECT_RANGE', valueRange: e.target.value})}
                 labelWidth={labelWidth}
                 inputProps={{
-                  name: "size",
-                  id: "size-simple",
+                  name: "range",
+                  id: "range_select",
                 }}
               >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
+                <MenuItem value={"All"}>All</MenuItem>
+                <MenuItem value={"-"}>-</MenuItem>
+                <MenuItem value={"None"}>None</MenuItem>
               </Select>
             </FormControl>
             <FormControl
@@ -331,23 +309,21 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="size-simple" ref={inputLabel}>
-                Select size
+              <InputLabel htmlFor="sort_select" ref={inputLabel}>
+                Sort
               </InputLabel>
               <Select
-                value={size}
-                onChange={handleChange}
+                value={state.valueSort}
+                onChange={(e) => dispatch({type: 'SELECT_SORT', valueSort: e.target.value})}
                 labelWidth={labelWidth}
                 inputProps={{
-                  name: "size",
-                  id: "size-simple",
+                  name: "sort",
+                  id: "sort_select",
                 }}
               >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
+                <MenuItem value={"Favorite"}>Favorite</MenuItem>
+                <MenuItem value={"Price"}>Price</MenuItem>
+                <MenuItem value={"Popular"}>Popular</MenuItem>
               </Select>
             </FormControl>
           </Box>
