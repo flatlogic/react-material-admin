@@ -10,6 +10,7 @@ import {
   TableRow,
   TableHead,
   IconButton,
+  TextField as Input
 } from "@material-ui/core";
 import {
   FirstPage as FirstPageIcon,
@@ -28,7 +29,7 @@ import { Link } from "react-router-dom";
 // components
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
-import { Typography, Button, Input } from "../../components/Wrappers";
+import { Typography, Button } from "../../components/Wrappers";
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -123,13 +124,11 @@ export default function EcommercePage() {
         <Grid item xs={12}>
           <Widget title="List of Products" disableWidgetMenu>
             <Box display={"flex"} flexDirection="column">
-              <Box display={"flex"} flexDirection={"column"} my={1}>
-                <Button variant={"contained"} color={"success"}>
+              <Box display={"flex"} my={1}>
+                <Button variant={"contained"} color={"success"} style={{flexGrow: 1, marginRight: 8}}>
                   Create Product
                 </Button>
-              </Box>
-              <Box display={"flex"} flexDirection="column" my={1}>
-                <Input label="Search query" variant="outlined" />
+                <Input label="Search query" variant="outlined" style={{flexGrow: 1}}/>
               </Box>
               <div className={classes.tableWrapper}>
                 <Table className={classes.table}>

@@ -25,4 +25,13 @@ export default makeStyles(theme => ({
   link: {
     marginRight: theme.spacing(2),
   },
+  fab: {
+    position: 'fixed',
+    bottom : 0, right: 0,
+    margin: theme.spacing(3),
+    zIndex: 100
+  },
+  noneMargin: {
+    margin: 0
+  }
 }));

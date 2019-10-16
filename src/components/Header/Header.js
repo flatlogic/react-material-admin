@@ -105,7 +105,7 @@ export default function Header(props) {
   var [isSearchOpen, setSearchOpen] = useState(false);
 
   return (
-    <AppBar position="fixed" className={classes.appBar}>
+    <AppBar position="fixed" className={classes.appBar} color={props.color}>
       <Toolbar className={classes.toolbar}>
         <IconButton
           color="inherit"

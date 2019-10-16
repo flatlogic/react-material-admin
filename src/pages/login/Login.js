@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, CircularProgress, Tabs, Tab, Fade } from "@material-ui/core";
+import { Grid, CircularProgress, Tabs, Tab, Fade, TextField as Input } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import classnames from "classnames";
 
@@ -14,7 +14,7 @@ import google from "../../images/google.svg";
 import { useUserDispatch, loginUser } from "../../context/UserContext";
 
 //components
-import { Button, Typography, Input } from "../../components/Wrappers";
+import { Button, Typography } from "../../components/Wrappers";
 
 const getGreeting = () => {
   const d = new Date();

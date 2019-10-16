@@ -18,7 +18,7 @@ import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import Widget from "../../../components/Widget/Widget";
-import { Button, Typography } from "../../../components/Wrappers/Wrappers";
+import { Button, Typography } from "../../../components/Wrappers/";
 
 const GreenCheckbox = withStyles({
   root: {
@@ -191,7 +191,7 @@ export default function TooltipsComp() {
                   variant="outlined"
                   fullWidth={true}
                 />
-              </Grid>
+              </Grid> 
               <Grid item>
                 <Input
                   label="Password"

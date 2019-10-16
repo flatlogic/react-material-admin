@@ -12,7 +12,8 @@ import {
   Link as LinkBase,
   CircularProgress as CircularProgressBase,
   LinearProgress as LinearProgressBase,
-  TextField as TextFieldBase,
+  Radio as RadioBase,
+  InputBase,
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -112,7 +113,6 @@ function Typography({
 }
 
 function Button({ children, color, ...props }) {
-  
   const useStyles = makeStyles(theme => ({
     root: {
       color: getBackgroundColor(color, theme),
@@ -144,7 +144,7 @@ function Button({ children, color, ...props }) {
     },
   }));
   const classes = useStyles();
-  
+
   return (
     <ButtonBase
       classes={{
@@ -304,35 +304,36 @@ function LinearProgress({ children, color, ...props }) {
   );
 }
 
-function Input({ children, color, ...props }) {
+function Radio({ children, color, ...props }) {
   const theme = useTheme();
 
   const Styled = createStyled({
     root: {
-      "& label.Mui-focused": {
-        color: theme.palette.primary.main,
-      },
-      "& label.Mui-underline:hover": {
-        borderBottomColor: theme.palette.primary.light,
-      },
-      "& .MuiInput-underline:after": {
-        borderBottomColor: theme.palette.primary.main,
-      },
-      "& .MuiOutlinedInput-root": {
-        "&:hover fieldset": {
-          borderColor: theme.palette.primary.light,
-        },
-        "&.Mui-focused fieldset": {
-          borderColor: theme.palette.primary.main,
-        },
+      color: 'green',
+      '&$checked': {
+        color: 'green',
       },
     },
+    checked: {},
+    // '&.Mui-checked': {
+    // color: theme.palette[color].main
+    // },
+    // '&:hover': {
+    //   backgroundColor: `${theme.palette[color].main} !important`,
+    //   opacity: .1
+    // }
   });
 
   return (
     <Styled>
       {({ classes }) => (
-        <TextFieldBase classes={{ root: classes.root }} {...props} />
+        <RadioBase
+          classes={{
+            root: classes.root,
+            checked: classes.checked,
+          }}
+          {...props}
+        />
       )}
     </Styled>
   );
@@ -350,7 +351,7 @@ export {
   Link,
   CircularProgress,
   LinearProgress,
-  Input,
+  Radio,
 };
 
 // ########################################################################

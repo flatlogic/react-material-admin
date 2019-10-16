@@ -6,6 +6,7 @@ import {
   Divider,
   Collapse,
   CardContent,
+  TextField as Input
 } from "@material-ui/core";
 import { Navigation as NavigationIcon } from "@material-ui/icons";
 import {
@@ -35,7 +36,6 @@ import {
   Typography,
   Avatar,
   Link,
-  Input,
   Button,
 } from "../../components/Wrappers";
 import { Annotation, Timestep, Circle } from "../../components/Timeline";

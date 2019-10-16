@@ -1,14 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import classnames from "classnames";
-import IconButton from "@material-ui/core/IconButton";
 import Icon from "@mdi/react";
 import {
+  mdiSettings as SettingsIcon,
   mdiFacebookBox as FacebookIcon,
   mdiTwitterBox as TwitterIcon,
   mdiGithubBox as GithubIcon,
 } from "@mdi/js";
-import { Grow } from "@material-ui/core";
+import {
+  Grow,
+  Fab,
+  IconButton,
+  Popover,
+  FormControlLabel,
+  RadioGroup,
+  Box,
+  Divider,
+  Radio
+} from "@material-ui/core";
+import {withStyles} from '@material-ui/styles'
+import { green } from '@material-ui/core/colors';
 
 // styles
 import useStyles from "./styles";
@@ -52,9 +64,8 @@ import Search from "../../pages/search";
 import Gallery from "../../pages/gallery";
 import Invoice from "../../pages/invoice";
 
-
 // context
-import { useLayoutState } from "../../context/LayoutContext";
+import { useLayoutState, useLayoutDispatch } from "../../context/LayoutContext";
 
 /* const useForceUpdate = () => {
   const [state, setState] = useState(false);
@@ -64,6 +75,22 @@ import { useLayoutState } from "../../context/LayoutContext";
 function Layout(props) {
   var classes = useStyles();
   const [state, setState] = useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [value, setValue] = React.useState("primary");
+  const handleChange = e => {
+    setValue(e.target.value);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+  const handleClick = event => {
+    console.log(event.currentTarget.value)
+    // appBarColorChange({type: 'COLOR_TOGGLE_APPBAR', color: event.currentTarget.value})
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   /* const forceUpdate = useForceUpdate();
   console.log("rendering");
   useEffect(() => {
@@ -71,11 +98,12 @@ function Layout(props) {
   }, []); */
   // global
   var layoutState = useLayoutState();
+  var appBarColorChange = useLayoutDispatch();
 
   return (
     <div className={classes.root}>
       <>
-        <Header history={props.history} />
+        <Header history={props.history} color={layoutState.appBarColor}/>
         <Sidebar />
         <Grow in={state} style={{ transformOrigin: "0 0 0" }}>
           <div
@@ -158,6 +186,57 @@ function Layout(props) {
               <Route path="/app/maps/vector" component={VectorMaps} />
               <Route path="/app/ui/icons" component={Icons} />
             </Switch>
+            <Fab
+              color="primary"
+              aria-label="settings"
+              className={classes.fab}
+              onClick={e => handleClick(e)}
+            >
+              <Icon path={SettingsIcon} size={1} color="#fff" />
+            </Fab>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+            >
+              <Box
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
+                alignItems="center"
+                m={3}
+              >
+                <h4>APPBAR FILTERS</h4>
+                <RadioGroup
+                  aria-label="theme"
+                  value={value}
+                  onChange={(e) => handleChange(e)}
+                >
+                  <Box display="flex" justifyContent="space-between">
+                    <FormControlLabel
+                      className={classes.noneMargin}
+                      value="primary"
+                      control={<Radio color="primary" />}
+                    />
+                    <FormControlLabel
+                      className={classes.noneMargin}
+                      value="secondary"
+                      control={<Radio color="secondary" />}
+                    />
+                  </Box>
+                </RadioGroup>
+                <Divider />
+              </Box>
+            </Popover>
             <Footer>
               <div>
                 <Link

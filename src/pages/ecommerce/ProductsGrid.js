@@ -128,14 +128,71 @@ export const rows = [
 ];
 
 const Product = props => {
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
+  const typeRef = React.useRef(null);
+  const brandsRef = React.useRef(null);
+  const sizeRef = React.useRef(null);
+  const colourRef = React.useRef(null);
+  const rangeRef = React.useRef(null);
+  const sortRef = React.useRef(null);
+
+  const widthReducer = (state, action) => {
+    switch (action.type) {
+      case "TYPE":
+        return {
+          ...state,
+          type: action.typeWidth,
+        };
+      case "BRANDS":
+        return {
+          ...state,
+          brands: action.brandsWidth,
+        };
+      case "SIZE":
+        return {
+          ...state,
+          size: action.sizeWidth,
+        };
+      case "COLOUR":
+        return {
+          ...state,
+          colour: action.colourWidth,
+        };
+      case "RANGE":
+        return {
+          ...state,
+          range: action.rangeWidth,
+        };
+      case "SORT":
+        return {
+          ...state,
+          sort: action.sortWidth,
+        };
+      default:
+        return {
+          ...state,
+        };
+    }
+  };
+
+  const [width, setWidth] = React.useReducer(widthReducer, {
+    type: 0,
+    brands: 0,
+    size: 0,
+    colour: 0,
+    range: 0,
+    sort: 0,
+  });
   React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
+    setWidth({type: "TYPE", typeWidth: typeRef.current.offsetWidth})
+    setWidth({type: "BRANDS", brandsWidth: brandsRef.current.offsetWidth})
+    setWidth({type: "SIZE", sizeWidth: sizeRef.current.offsetWidth})
+    setWidth({type: "COLOUR", colourWidth: colourRef.current.offsetWidth})
+    setWidth({type: "RANGE", rangeWidth: rangeRef.current.offsetWidth})
+    setWidth({type: "SORT", sortWidth: sortRef.current.offsetWidth})
   }, []);
   const classes = useStyles();
 
-  const reducer = (state, action) => {
+  const selectReducer = (state, action) => {
     switch (action.type) {
       case "SELECT_TYPE":
         return {
@@ -174,7 +231,7 @@ const Product = props => {
     }
   };
 
-  const [state, dispatch] = React.useReducer(reducer, {
+  const [state, dispatch] = React.useReducer(selectReducer, {
     valueType: "Shoes",
     valueBrands: "All",
     valueSize: 7,
@@ -193,7 +250,7 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="type_select" ref={inputLabel}>
+              <InputLabel htmlFor="type_select" ref={typeRef}>
                 Type
               </InputLabel>
               <Select
@@ -201,7 +258,7 @@ const Product = props => {
                 onChange={e =>
                   dispatch({ type: "SELECT_TYPE", valueType: e.target.value })
                 }
-                labelWidth={labelWidth}
+                labelWidth={width.type}
                 inputProps={{
                   name: "type",
                   id: "type_select",
@@ -217,7 +274,7 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="brands_select" ref={inputLabel}>
+              <InputLabel htmlFor="brands_select" ref={brandsRef}>
                 Brands
               </InputLabel>
               <Select
@@ -228,7 +285,7 @@ const Product = props => {
                     valueBrands: e.target.value,
                   })
                 }
-                labelWidth={labelWidth}
+                labelWidth={width.brands}
                 inputProps={{
                   name: "brands",
                   id: "brands_select",
@@ -244,7 +301,7 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="size_select" ref={inputLabel}>
+              <InputLabel htmlFor="size_select" ref={sizeRef}>
                 Size
               </InputLabel>
               <Select
@@ -252,7 +309,7 @@ const Product = props => {
                 onChange={e =>
                   dispatch({ type: "SELECT_SIZE", valueSize: e.target.value })
                 }
-                labelWidth={labelWidth}
+                labelWidth={width.size}
                 inputProps={{
                   name: "size",
                   id: "size_select",
@@ -275,7 +332,7 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="colour_select" ref={inputLabel}>
+              <InputLabel htmlFor="colour_select" ref={colourRef}>
                 Colour
               </InputLabel>
               <Select
@@ -286,7 +343,7 @@ const Product = props => {
                     valueColor: e.target.value,
                   })
                 }
-                labelWidth={labelWidth}
+                labelWidth={width.colour}
                 inputProps={{
                   name: "colour",
                   id: "colour_select",
@@ -302,15 +359,15 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="range_select" ref={inputLabel}>
-                Select size
+              <InputLabel htmlFor="range_select" ref={rangeRef}>
+                Range
               </InputLabel>
               <Select
                 value={state.valueRange}
                 onChange={e =>
                   dispatch({ type: "SELECT_RANGE", valueRange: e.target.value })
                 }
-                labelWidth={labelWidth}
+                labelWidth={width.range}
                 inputProps={{
                   name: "range",
                   id: "range_select",
@@ -326,7 +383,7 @@ const Product = props => {
               className={classes.form}
               style={{ marginRight: 15 }}
             >
-              <InputLabel htmlFor="sort_select" ref={inputLabel}>
+              <InputLabel htmlFor="sort_select" ref={sortRef}>
                 Sort
               </InputLabel>
               <Select
@@ -334,7 +391,7 @@ const Product = props => {
                 onChange={e =>
                   dispatch({ type: "SELECT_SORT", valueSort: e.target.value })
                 }
-                labelWidth={labelWidth}
+                labelWidth={width.sort}
                 inputProps={{
                   name: "sort",
                   id: "sort_select",
@@ -359,7 +416,11 @@ const Product = props => {
                         image={c.img}
                         title={c.title}
                       >
-                        { c.id % 2 ? <Chip label={"New"} color={"success"} /> : <Chip label={"Sale"} color={"secondary"} /> }
+                        {c.id % 2 ? (
+                          <Chip label={"New"} color={"success"} />
+                        ) : (
+                          <Chip label={"Sale"} color={"secondary"} />
+                        )}
                       </CardMedia>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
