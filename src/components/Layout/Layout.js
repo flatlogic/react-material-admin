@@ -53,7 +53,7 @@ import DynamicTables from "../../pages/tables/dynamic";
 import Widget from "../../pages/widget";
 import Progress from "../../pages/progress";
 import Ecommerce from "../../pages/ecommerce";
-import Products from "../../pages/ecommerce/Products";
+import Product from "../../pages/ecommerce/Products";
 import ProductsGrid from "../../pages/ecommerce/ProductsGrid";
 import MapsGoogle from "../../pages/maps";
 import VectorMaps from "../../pages/maps/VectorMap";
@@ -141,8 +141,8 @@ function Layout(props) {
               <Route path="/app/charts/bar" component={BarCharts} />
               <Route path="/app/charts/pie" component={PieCharts} />
               <Route path="/app/ecommerce/management" component={Ecommerce} />
-              <Route path="/app/ecommerce/product/:id" component={Products} />
-              <Route path="/app/ecommerce/product" component={Products} />
+              <Route path="/app/ecommerce/product/:id" component={Product} />
+              <Route path="/app/ecommerce/product" component={Product} />
               <Route path="/app/ecommerce/products" component={ProductsGrid} />
               <Route
                 exact

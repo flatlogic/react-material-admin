@@ -31,7 +31,6 @@ export default function SidebarLink({
   toggleDrawler,
   ...props
 }) {
-  console.log(props.linkColor)
   const layoutProps = {
     linkActiveColor: props.linkColor
   }
@@ -41,7 +40,7 @@ export default function SidebarLink({
   var [isOpen, setIsOpen] = useState(false);
   var isLinkActive =
     link &&
-    (location.pathname === link || location.pathname.indexOf(link) !== -1);
+    (location.pathname === link);
 
   if (type === "title")
     return (
@@ -81,7 +80,7 @@ export default function SidebarLink({
         >
           {nested ? (
             <Dot
-              color={isLinkActive}
+              color={isLinkActive && "primary"}
             />
           ) : (
             icon

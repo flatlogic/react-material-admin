@@ -187,7 +187,7 @@ const structure = [
 function Sidebar({ location, ...props }) {
   var classes = useStyles();
   var theme = useTheme();
-  console.log(location.pathname)
+
 
   const toggleDrawer = value => event => {
     if (
