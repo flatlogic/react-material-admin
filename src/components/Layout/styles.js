@@ -33,5 +33,10 @@ export default makeStyles(theme => ({
   },
   noneMargin: {
     margin: 0
+  },
+  divider: {
+    margin: `0 ${-theme.spacing(3)}px`,
+    width: `calc(100% + ${theme.spacing(6)}px)`,
+    marginBottom: theme.spacing(1)
   }
 }));

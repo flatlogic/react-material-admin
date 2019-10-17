@@ -12,6 +12,11 @@ function layoutReducer(state, action) {
         ...state,
         appBarColor: action.color,
       };
+      case "COLOR_TOGGLE_SIDEBAR": 
+    return {
+      ...state,
+      linkActiveColor: action.linkColor
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -19,10 +24,18 @@ function layoutReducer(state, action) {
 }
 
 function LayoutProvider({ children }) {
+  let i = 0;
   var [state, dispatch] = React.useReducer(layoutReducer, {
     isSidebarOpened: false,
     appBarColor: "primary",
+    linkActiveColor: "primary",
   });
+  localStorage.setItem('state', JSON.stringify(state))
+  for (let key in state) {
+    if (i === 0) continue 
+    localStorage.setItem(key, state[key])
+    i++
+  }
   return (
     <LayoutStateContext.Provider value={state}>
       <LayoutDispatchContext.Provider value={dispatch}>
@@ -55,4 +68,3 @@ const toggleSidebar = dispatch => {
 };
 
 export { LayoutProvider, useLayoutState, useLayoutDispatch, toggleSidebar };
-

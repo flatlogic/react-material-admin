@@ -12,6 +12,7 @@ import { Inbox as InboxIcon } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 
+
 // styles
 import useStyles from "./styles";
 
@@ -28,8 +29,13 @@ export default function SidebarLink({
   nested,
   type,
   toggleDrawler,
+  ...props
 }) {
-  var classes = useStyles();
+  console.log(props.linkColor)
+  const layoutProps = {
+    linkActiveColor: props.linkColor
+  }
+  var classes = useStyles(layoutProps);
 
   // local
   var [isOpen, setIsOpen] = useState(false);
@@ -75,7 +81,7 @@ export default function SidebarLink({
         >
           {nested ? (
             <Dot
-              color={isLinkActive && "primary"}
+              color={isLinkActive}
             />
           ) : (
             icon

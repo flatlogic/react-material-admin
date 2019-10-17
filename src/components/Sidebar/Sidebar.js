@@ -184,7 +184,7 @@ const structure = [
   },
 ];
 
-function Sidebar({ location }) {
+function Sidebar({ location, ...props }) {
   var classes = useStyles();
   var theme = useTheme();
   console.log(location.pathname)
@@ -249,6 +249,7 @@ function Sidebar({ location }) {
             isSidebarOpened={isSidebarOpened}
             {...link}
             toggleDrawler={toggleDrawer(true)}
+            linkColor={props.linkActiveColor}
           />
         ))}
       </List>

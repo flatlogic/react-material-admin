@@ -17,10 +17,8 @@ import {
   RadioGroup,
   Box,
   Divider,
-  Radio
+  Radio,
 } from "@material-ui/core";
-import {withStyles} from '@material-ui/styles'
-import { green } from '@material-ui/core/colors';
 
 // styles
 import useStyles from "./styles";
@@ -29,11 +27,11 @@ import useStyles from "./styles";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
 import Footer from "../Footer";
-import { Link } from "../../components/Wrappers";
+import { Link, Typography } from "../../components/Wrappers";
 
 // pages
 import Dashboard from "../../pages/dashboard";
-import Typography from "../../pages/typography";
+import TypographyPage from "../../pages/typography";
 import Notifications from "../../pages/notifications";
 import Tables from "../../pages/tables";
 import Icons from "../../pages/icons";
@@ -77,14 +75,22 @@ function Layout(props) {
   const [state, setState] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [value, setValue] = React.useState("primary");
+  const [linkColorValue, setLinkColorValue] = React.useState("primary");
+
   const handleChange = e => {
+    appBarColorDispatch({
+      type: "COLOR_TOGGLE_APPBAR",
+      color: e.currentTarget.value,
+    });
     setValue(e.target.value);
+  };
+  const handleChangeLinkColorValue = e => {
+    linkColorDispatch({ type: "COLOR_TOGGLE_SIDEBAR",  linkColor: e.currentTarget.value });
+    setLinkColorValue(e.target.value);
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   const handleClick = event => {
-    console.log(event.currentTarget.value)
-    // appBarColorChange({type: 'COLOR_TOGGLE_APPBAR', color: event.currentTarget.value})
     setAnchorEl(event.currentTarget);
   };
 
@@ -98,13 +104,14 @@ function Layout(props) {
   }, []); */
   // global
   var layoutState = useLayoutState();
-  var appBarColorChange = useLayoutDispatch();
+  var appBarColorDispatch = useLayoutDispatch();
+  var linkColorDispatch = useLayoutDispatch();
 
   return (
     <div className={classes.root}>
       <>
-        <Header history={props.history} color={layoutState.appBarColor}/>
-        <Sidebar />
+        <Header history={props.history} color={layoutState.appBarColor} />
+        <Sidebar linkActiveColor={layoutState.linkActiveColor}/>
         <Grow in={state} style={{ transformOrigin: "0 0 0" }}>
           <div
             className={classnames(classes.content, {
@@ -114,7 +121,7 @@ function Layout(props) {
             <div className={classes.fakeToolbar} />
             <Switch>
               <Route path="/app/dashboard" component={Dashboard} />
-              <Route path="/app/core/typography" component={Typography} />
+              <Route path="/app/core/typography" component={TypographyPage} />
               <Route path="/app/core/grid" component={Grid} />
               <Route path="/app/ui/notifications" component={Notifications} />
               <Route path="/app/forms/elements" component={FormsElements} />
@@ -215,11 +222,13 @@ function Layout(props) {
                 alignItems="center"
                 m={3}
               >
-                <h4>APPBAR FILTERS</h4>
+                <Typography variant="body2" weight={"bold"}>
+                  APPBAR FILTERS
+                </Typography>
                 <RadioGroup
                   aria-label="theme"
                   value={value}
-                  onChange={(e) => handleChange(e)}
+                  onChange={e => handleChange(e)}
                 >
                   <Box display="flex" justifyContent="space-between">
                     <FormControlLabel
@@ -234,7 +243,28 @@ function Layout(props) {
                     />
                   </Box>
                 </RadioGroup>
-                <Divider />
+                <Divider className={classes.divider} />
+                <Typography variant="body2" weight={"bold"}>
+                  SIDEBAR FILTERS
+                </Typography>
+                <RadioGroup
+                  aria-label="theme"
+                  value={linkColorValue}
+                  onChange={e => handleChangeLinkColorValue(e)}
+                >
+                  <Box display="flex" justifyContent="space-between">
+                    <FormControlLabel
+                      className={classes.noneMargin}
+                      value="primary"
+                      control={<Radio color="primary" />}
+                    />
+                    <FormControlLabel
+                      className={classes.noneMargin}
+                      value="secondary"
+                      control={<Radio color="secondary" />}
+                    />
+                  </Box>
+                </RadioGroup>
               </Box>
             </Popover>
             <Footer>
