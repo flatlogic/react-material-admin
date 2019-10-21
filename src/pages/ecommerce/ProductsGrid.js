@@ -429,6 +429,8 @@ const Product = props => {
                         <Typography variant="body2" color="hint" component="p">
                           {c.subtitle}
                         </Typography>
+
+
                       </CardContent>
                     </CardActionArea>
                     <CardActions style={{ padding: 16 }}>
@@ -438,6 +440,7 @@ const Product = props => {
                         alignItems="center"
                         width={"100%"}
                       >
+                        color={"primary"}
                         <Typography weight={"bold"}>${c.price}</Typography>
                         <Typography block>
                           <div style={{ color: yellow[700] }}>
@@ -461,3 +464,4 @@ const Product = props => {
 };
 
 export default Product;
+

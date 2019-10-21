@@ -248,7 +248,7 @@ function Sidebar({ location, ...props }) {
             location={location}
             isSidebarOpened={isSidebarOpened}
             {...link}
-            toggleDrawler={toggleDrawer(true)}
+            toggleDrawer={toggleDrawer(true)}
             linkColor={props.linkActiveColor}
           />
         ))}

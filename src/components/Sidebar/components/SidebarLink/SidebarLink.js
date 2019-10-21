@@ -19,7 +19,7 @@ import useStyles from "./styles";
 // components
 import Dot from "../Dot";
 
-export default function SidebarLink({
+export default function  SidebarLink({
   link,
   icon,
   label,
@@ -28,19 +28,19 @@ export default function SidebarLink({
   isSidebarOpened,
   nested,
   type,
-  toggleDrawler,
+  toggleDrawer,
   ...props
 }) {
   const layoutProps = {
     linkActiveColor: props.linkColor
   }
   var classes = useStyles(layoutProps);
-
   // local
   var [isOpen, setIsOpen] = useState(false);
   var isLinkActive =
     link &&
-    (location.pathname === link);
+    (location.pathname === link || location.pathname.includes(link));
+
 
   if (type === "title")
     return (
@@ -58,8 +58,8 @@ export default function SidebarLink({
   if (!children)
     return (
       <ListItem
-        onClick={toggleDrawler}
-        onKeyPress={toggleDrawler}
+        onClick={toggleDrawer}
+        onKeyPress={toggleDrawer}
         button
         component={link && Link}
         to={link}
@@ -135,8 +135,8 @@ export default function SidebarLink({
           <List
             component="div"
             disablePadding
-            onClick={toggleDrawler}
-            onKeyPress={toggleDrawler}
+            onClick={toggleDrawer}
+            onKeyPress={toggleDrawer}
           >
             {children.map(childrenLink => (
               <SidebarLink

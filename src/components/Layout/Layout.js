@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import classnames from "classnames";
 import Icon from "@mdi/react";
@@ -61,6 +61,7 @@ import Timeline from "../../pages/timeline";
 import Search from "../../pages/search";
 import Gallery from "../../pages/gallery";
 import Invoice from "../../pages/invoice";
+import CreateProduct from '../../pages/ecommerce/CreateProduct'
 
 // context
 import { useLayoutState, useLayoutDispatch } from "../../context/LayoutContext";
@@ -72,6 +73,7 @@ import { useLayoutState, useLayoutDispatch } from "../../context/LayoutContext";
 
 function Layout(props) {
   var classes = useStyles();
+  const ref = useRef(null);
   const [state, setState] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [value, setValue] = React.useState("primary");
@@ -79,13 +81,16 @@ function Layout(props) {
 
   const handleChange = e => {
     appBarColorDispatch({
-      type: "COLOR_TOGGLE_APPBAR",
-      color: e.currentTarget.value,
+      type: "TOGGLE_COLOR_THEME",
+      colorTheme: e.currentTarget.value,
     });
     setValue(e.target.value);
   };
   const handleChangeLinkColorValue = e => {
-    linkColorDispatch({ type: "COLOR_TOGGLE_SIDEBAR",  linkColor: e.currentTarget.value });
+    linkColorDispatch({
+      type: "COLOR_TOGGLE_SIDEBAR",
+      linkColor: e.currentTarget.value,
+    });
     setLinkColorValue(e.target.value);
   };
   const open = Boolean(anchorEl);
@@ -111,7 +116,7 @@ function Layout(props) {
     <div className={classes.root}>
       <>
         <Header history={props.history} color={layoutState.appBarColor} />
-        <Sidebar linkActiveColor={layoutState.linkActiveColor}/>
+        <Sidebar linkActiveColor={layoutState.linkActiveColor} />
         <Grow in={state} style={{ transformOrigin: "0 0 0" }}>
           <div
             className={classnames(classes.content, {
@@ -140,7 +145,8 @@ function Layout(props) {
               <Route path="/app/charts/line" component={LineCharts} />
               <Route path="/app/charts/bar" component={BarCharts} />
               <Route path="/app/charts/pie" component={PieCharts} />
-              <Route path="/app/ecommerce/management" component={Ecommerce} />
+              <Route exact path="/app/ecommerce/management" component={Ecommerce} />
+              <Route path="/app/ecommerce/management/create" component={CreateProduct} />
               <Route path="/app/ecommerce/product/:id" component={Product} />
               <Route path="/app/ecommerce/product" component={Product} />
               <Route path="/app/ecommerce/products" component={ProductsGrid} />
@@ -223,34 +229,12 @@ function Layout(props) {
                 m={3}
               >
                 <Typography variant="body2" weight={"bold"}>
-                  APPBAR FILTERS
+                  COLOR THEME
                 </Typography>
                 <RadioGroup
                   aria-label="theme"
                   value={value}
                   onChange={e => handleChange(e)}
-                >
-                  <Box display="flex" justifyContent="space-between">
-                    <FormControlLabel
-                      className={classes.noneMargin}
-                      value="primary"
-                      control={<Radio color="primary" />}
-                    />
-                    <FormControlLabel
-                      className={classes.noneMargin}
-                      value="secondary"
-                      control={<Radio color="secondary" />}
-                    />
-                  </Box>
-                </RadioGroup>
-                <Divider className={classes.divider} />
-                <Typography variant="body2" weight={"bold"}>
-                  SIDEBAR FILTERS
-                </Typography>
-                <RadioGroup
-                  aria-label="theme"
-                  value={linkColorValue}
-                  onChange={e => handleChangeLinkColorValue(e)}
                 >
                   <Box display="flex" justifyContent="space-between">
                     <FormControlLabel

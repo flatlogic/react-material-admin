@@ -125,7 +125,7 @@ export default function EcommercePage() {
           <Widget title="List of Products" disableWidgetMenu>
             <Box display={"flex"} flexDirection="column">
               <Box display={"flex"} my={1}>
-                <Button variant={"contained"} color={"success"} style={{flexGrow: 1, marginRight: 8}}>
+                <Button variant={"contained"} component={Link} to={"/app/ecommerce/management/create"} color={"success"} style={{flexGrow: 1, marginRight: 8}}>
                   Create Product
                 </Button>
                 <Input label="Search query" variant="outlined" style={{flexGrow: 1}}/>

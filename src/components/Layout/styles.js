@@ -26,17 +26,18 @@ export default makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   fab: {
-    position: 'fixed',
-    bottom : 0, right: 0,
+    position: "fixed",
+    bottom: 0,
+    right: 0,
     margin: theme.spacing(3),
-    zIndex: 100
+    zIndex: 100,
   },
   noneMargin: {
-    margin: 0
+    margin: 0,
   },
   divider: {
     margin: `0 ${-theme.spacing(3)}px`,
     width: `calc(100% + ${theme.spacing(6)}px)`,
-    marginBottom: theme.spacing(1)
-  }
+    marginBottom: theme.spacing(1),
+  },
 }));
