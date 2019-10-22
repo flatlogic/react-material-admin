@@ -16,9 +16,11 @@ import {
   FormControlLabel,
   RadioGroup,
   Box,
-  Divider,
   Radio,
 } from "@material-ui/core";
+import { Pop } from "./LayoutView";
+
+import Themes from "../../themes";
 
 // styles
 import useStyles from "./styles";
@@ -61,7 +63,7 @@ import Timeline from "../../pages/timeline";
 import Search from "../../pages/search";
 import Gallery from "../../pages/gallery";
 import Invoice from "../../pages/invoice";
-import CreateProduct from '../../pages/ecommerce/CreateProduct'
+import CreateProduct from "../../pages/ecommerce/CreateProduct";
 
 // context
 import { useLayoutState, useLayoutDispatch } from "../../context/LayoutContext";
@@ -80,18 +82,8 @@ function Layout(props) {
   const [linkColorValue, setLinkColorValue] = React.useState("primary");
 
   const handleChange = e => {
-    appBarColorDispatch({
-      type: "TOGGLE_COLOR_THEME",
-      colorTheme: e.currentTarget.value,
-    });
+    changeTheme({ type: "TOGGLE_COLOR_THEME", theme: Themes.secondary });
     setValue(e.target.value);
-  };
-  const handleChangeLinkColorValue = e => {
-    linkColorDispatch({
-      type: "COLOR_TOGGLE_SIDEBAR",
-      linkColor: e.currentTarget.value,
-    });
-    setLinkColorValue(e.target.value);
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -109,8 +101,7 @@ function Layout(props) {
   }, []); */
   // global
   var layoutState = useLayoutState();
-  var appBarColorDispatch = useLayoutDispatch();
-  var linkColorDispatch = useLayoutDispatch();
+  var changeTheme = useLayoutDispatch();
 
   return (
     <div className={classes.root}>
@@ -145,8 +136,15 @@ function Layout(props) {
               <Route path="/app/charts/line" component={LineCharts} />
               <Route path="/app/charts/bar" component={BarCharts} />
               <Route path="/app/charts/pie" component={PieCharts} />
-              <Route exact path="/app/ecommerce/management" component={Ecommerce} />
-              <Route path="/app/ecommerce/management/create" component={CreateProduct} />
+              <Route
+                exact
+                path="/app/ecommerce/management"
+                component={Ecommerce}
+              />
+              <Route
+                path="/app/ecommerce/management/create"
+                component={CreateProduct}
+              />
               <Route path="/app/ecommerce/product/:id" component={Product} />
               <Route path="/app/ecommerce/product" component={Product} />
               <Route path="/app/ecommerce/products" component={ProductsGrid} />
@@ -199,14 +197,15 @@ function Layout(props) {
               <Route path="/app/maps/vector" component={VectorMaps} />
               <Route path="/app/ui/icons" component={Icons} />
             </Switch>
-            <Fab
-              color="primary"
-              aria-label="settings"
-              className={classes.fab}
-              onClick={e => handleClick(e)}
-            >
-              <Icon path={SettingsIcon} size={1} color="#fff" />
-            </Fab>
+            <Pop>
+              <Fab
+                color="primary"
+                aria-label="settings"
+                onClick={e => handleClick(e)}
+              >
+                <Icon path={SettingsIcon} size={1} color="#fff" />
+              </Fab>
+            </Pop>
             <Popover
               id={id}
               open={open}
@@ -240,12 +239,12 @@ function Layout(props) {
                     <FormControlLabel
                       className={classes.noneMargin}
                       value="primary"
-                      control={<Radio color="primary" />}
+                      control={<Radio className={classes.primaryRadio} />}
                     />
                     <FormControlLabel
                       className={classes.noneMargin}
                       value="secondary"
-                      control={<Radio color="secondary" />}
+                      control={<Radio className={classes.secondaryRadio} />}
                     />
                   </Box>
                 </RadioGroup>
