@@ -13,7 +13,6 @@ import {
   CircularProgress as CircularProgressBase,
   LinearProgress as LinearProgressBase,
   Radio as RadioBase,
-  InputBase,
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -309,9 +308,9 @@ function Radio({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      color: 'green',
-      '&$checked': {
-        color: 'green',
+      color: "green",
+      "&$checked": {
+        color: "green",
       },
     },
     checked: {},
