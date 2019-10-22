@@ -47,7 +47,7 @@ export default function ColorsComp() {
                     <Code row>{`<Button color="primary">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography color="primary">#536DFE</Typography>
+                    <Code row>#536DFE</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -59,7 +59,7 @@ export default function ColorsComp() {
                     <Code row>{`<Dot color="secondary">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography color="secondary">#FF5C93</Typography>
+                    <Code row>#FF5C93</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -68,10 +68,10 @@ export default function ColorsComp() {
                     <Dot color="warning" size="superlarge" />
                   </TableCell>
                   <TableCell>
-                    <Code row>{`<Typography color="warning">`}</Code>
+                    <Code row>{`<Typography defaultColor="warning">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography color="warning">#FFC260</Typography>
+                    <Code row>#FFC260</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -83,7 +83,7 @@ export default function ColorsComp() {
                     <Code row>{`<Notification color="success">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography color="success">#3CD4A0</Typography>
+                    <Code row>#3CD4A0</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -95,7 +95,7 @@ export default function ColorsComp() {
                     <Code row>{`<Icon color="info">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Typography color="info">#9013FE</Typography>
+                    <Code row>#9013FE</Code>
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -105,31 +105,31 @@ export default function ColorsComp() {
         <Grid item xs={12} md={6}>
           <Widget title="Typography Colors" disableWidgetMenu>
             <div className={classes.dashedBorder}>
-              <Typography variant="h1" color="primary" className={classes.text}>
+                <Typography variant="h1" defaultColor="primary" className={classes.text}>
                 h1. Heading
               </Typography>
-              <Typography variant="h2" color="success" className={classes.text}>
+              <Typography variant="h2" defaultColor="success" className={classes.text}>
                 h2. Heading
               </Typography>
               <Typography
                 variant="h3"
-                color="secondary"
+                defaultColor="secondary"
                 className={classes.text}
               >
                 h3. Heading
               </Typography>
-              <Typography variant="h4" color="warning" className={classes.text}>
+              <Typography variant="h4" defaultColor="warning" className={classes.text}>
                 h4. Heading
               </Typography>
               <Typography
                 variant="h5"
-                color="primary"
+                defaultColor="primary"
                 colorBrightness="light"
                 className={classes.text}
               >
                 h5. Heading
               </Typography>
-              <Typography variant="h6" color="info">
+              <Typography variant="h6" defaultColor="info">
                 h6. Heading
               </Typography>
             </div>

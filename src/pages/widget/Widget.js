@@ -57,7 +57,7 @@ export default function WidgetComp() {
           </Widget>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Widget title="Page Title" disableWidgetMenu>
+          <Widget title="Page Title" disableWidgetMenu inheritHeight>
             <Typography block>
               It appears in the top of the page container. It have to be the
               first component after <Code row inline>{`return`}</Code>{" "}

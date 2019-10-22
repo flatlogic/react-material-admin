@@ -1,5 +1,12 @@
 import React from "react";
-import { Grid, Box } from "@material-ui/core";
+import {
+  Grid,
+  Box,
+  InputLabel,
+  FormControl,
+  FormHelperText,
+  InputAdornment,
+} from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import useStyles from "./styles";
 import cn from "classnames";
@@ -14,6 +21,7 @@ import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
+import { AccountCircle, VpnKey as PasswordIcon, AccountBalanceWallet as WalletIcon } from "@material-ui/icons";
 
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
@@ -27,7 +35,6 @@ const GreenCheckbox = withStyles({
       color: "green",
     },
   },
-  checked: {},
 })(props => <Checkbox color="default" {...props} />);
 
 const GreenRadio = withStyles({
@@ -37,7 +44,6 @@ const GreenRadio = withStyles({
       color: "green",
     },
   },
-  checked: {},
 })(props => <Radio color="default" {...props} />);
 
 const SuccessInput = withStyles(theme => ({
@@ -85,44 +91,126 @@ export default function TooltipsComp() {
       <PageTitle title="Forms" />
       <Grid container spacing={6}>
         <Grid item md={6} xs={12}>
-          <Widget title="Default Form" disableWidgetMenu inheritHeight>
-            <Grid container direction={"column"}>
-              <Grid item>
+          <Widget title="Inputs" disableWidgetMenu inheritHeight>
+            <Grid container direction={"column"} spacing={3}>
+              <Grid item container alignItems={"center"}>
+                <Grid md={2} xs={6}>
+                  <Typography variant={"body1"}>Normal field</Typography>
+                </Grid>
+                <Grid>
+                  <Input
+                    id="component-helper"
+                    placeholder={"May have placeholder"}
+                  />
+                </Grid>
+              </Grid>
+              <Grid item container alignItems={"center"}>
+                <Grid md={2} xs={6}>
+                  <Typography variant={"body1"}>Label hint</Typography>
+                </Grid>
+                <Grid>
+                  <Input
+                    id="component-helper"
+                    aria-describedby="component-helper-text"
+                  />
+                  <FormHelperText id="component-helper-text">
+                    Some important helper text
+                  </FormHelperText>
+                </Grid>
+              </Grid>
+              <Grid item container alignItems={"center"}>
+                <Grid md={2} xs={6}>
+                  <Typography variant={"body1"}>Disabled input</Typography>
+                </Grid>
+                <Grid>
+                  <Input
+                    disabled
+                    defaultValue={"Default value"}
+                    id="component-helper"
+                  />
+                </Grid>
+              </Grid>
+              <Grid item container alignItems={"center"}>
+                <Grid md={2} xs={6}>
+                  <Typography variant={"body1"}>Max length</Typography>
+                </Grid>
+                <Grid>
+                  <Input id="component-helper" inputProps={{ maxLength: 3 }} />
+                </Grid>
+              </Grid>
+              <Grid item container alignItems={"center"}>
+                <Grid md={2} xs={6}>
+                  <Typography variant={"body1"}>Prepended input</Typography>
+                </Grid>
+                <Grid>
+                  <Input
+                    id="component-helper"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <AccountCircle />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <Grid item container alignItems={"center"}>
+              <Grid md={2} xs={6}>
+                <Typography variant={"body1"}>Password</Typography>
+              </Grid>
+              <Grid>
                 <Input
-                  label="Email"
-                  placeholder={"Enter email"}
-                  margin="normal"
-                  variant="outlined"
-                  fullWidth={true}
+                  id="component-helper"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <PasswordIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </Grid>
-              <Grid item>
-                <Input
-                  label="Password"
-                  placeholder={"Enter password"}
-                  margin="normal"
-                  variant="outlined"
-                  fullWidth={true}
-                />
+            </Grid>
+              <Grid item container alignItems={"center"}>
+                <Grid md={2} xs={6}>
+                  <Typography variant={"body1"}>Appended input</Typography>
+                </Grid>
+                <Grid>
+                  <Input
+                    id="component-helper"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="start">
+                          .00
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
               </Grid>
-              <FormGroup row>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      defaultChecked={isChecked.default}
-                      onChange={e =>
-                        setChecked({ [e.target.value]: !isChecked.default })
-                      }
-                      color="primary"
-                      inputProps={{
-                        "aria-label": "primary checkbox",
-                      }}
-                    />
-                  }
-                  label={"Remember me"}
-                  value={"default"}
-                />
-              </FormGroup>
+              <Grid item container alignItems={"center"}>
+                <Grid md={2} xs={6}>
+                  <Typography variant={"body1"}>Combined input</Typography>
+                </Grid>
+                <Grid>
+                  <Input
+                    id="component-helper"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <WalletIcon/>
+                        </InputAdornment>
+                      ),
+                      endAdornment: (
+                        <InputAdornment position="start">
+                          .00
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
+              </Grid>
               <Grid item>
                 <Button variant={"contained"} color={"primary"}>
                   Submit
@@ -132,17 +220,17 @@ export default function TooltipsComp() {
           </Widget>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Widget title="Default Form" disableWidgetMenu inheritHeight>
-            <Grid container direction={"column"} alignItems={"center"}>
-              <Grid item>
-                <Input
-                  label="Email"
-                  placeholder={"Enter email"}
-                  margin="normal"
-                  variant="outlined"
-                  fullWidth={true}
-                />
-              </Grid>
+          <Widget title="Inputs" disableWidgetMenu inheritHeight>
+            <Grid container direction={"column"}>
+              <Input
+                id="component-helper"
+                defaultValue={"Value"}
+                aria-describedby="component-helper-text"
+                label="Success input"
+              />
+              <FormHelperText id="component-helper-text">
+                Some important helper text
+              </FormHelperText>
               <Grid item>
                 <Input
                   label="Password"
@@ -191,9 +279,9 @@ export default function TooltipsComp() {
                   variant="outlined"
                   fullWidth={true}
                 />
-              </Grid> 
+              </Grid>
               <Grid item>
-              <Input
+                <Input
                   label="Password"
                   defaultValue={"flatlogic"}
                   margin="normal"

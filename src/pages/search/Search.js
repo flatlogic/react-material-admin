@@ -362,7 +362,7 @@ export default function SearchComp() {
               </Widget>
               <Pagination
                 pageCount={10}
-                previousLabel={`&{KeyLeftIcon}`}
+                previousLabel={`PREV`}
                 nextLabel={"NEXT"}
                 initialPage={1}
               />

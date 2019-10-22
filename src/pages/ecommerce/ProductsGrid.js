@@ -183,12 +183,12 @@ const Product = props => {
     sort: 0,
   });
   React.useEffect(() => {
-    setWidth({type: "TYPE", typeWidth: typeRef.current.offsetWidth})
-    setWidth({type: "BRANDS", brandsWidth: brandsRef.current.offsetWidth})
-    setWidth({type: "SIZE", sizeWidth: sizeRef.current.offsetWidth})
-    setWidth({type: "COLOUR", colourWidth: colourRef.current.offsetWidth})
-    setWidth({type: "RANGE", rangeWidth: rangeRef.current.offsetWidth})
-    setWidth({type: "SORT", sortWidth: sortRef.current.offsetWidth})
+    setWidth({ type: "TYPE", typeWidth: typeRef.current.offsetWidth });
+    setWidth({ type: "BRANDS", brandsWidth: brandsRef.current.offsetWidth });
+    setWidth({ type: "SIZE", sizeWidth: sizeRef.current.offsetWidth });
+    setWidth({ type: "COLOUR", colourWidth: colourRef.current.offsetWidth });
+    setWidth({ type: "RANGE", rangeWidth: rangeRef.current.offsetWidth });
+    setWidth({ type: "SORT", sortWidth: sortRef.current.offsetWidth });
   }, []);
   const classes = useStyles();
 
@@ -429,8 +429,6 @@ const Product = props => {
                         <Typography variant="body2" color="hint" component="p">
                           {c.subtitle}
                         </Typography>
-
-
                       </CardContent>
                     </CardActionArea>
                     <CardActions style={{ padding: 16 }}>
@@ -440,7 +438,6 @@ const Product = props => {
                         alignItems="center"
                         width={"100%"}
                       >
-                        color={"primary"}
                         <Typography weight={"bold"}>${c.price}</Typography>
                         <Typography block>
                           <div style={{ color: yellow[700] }}>
@@ -464,4 +461,3 @@ const Product = props => {
 };
 
 export default Product;
-
