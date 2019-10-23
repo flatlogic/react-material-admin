@@ -18,9 +18,6 @@ import {
   Box,
   Radio,
 } from "@material-ui/core";
-import { Pop } from "./LayoutView";
-
-import Themes from "../../themes";
 
 // styles
 import useStyles from "./styles";
@@ -30,6 +27,7 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 import Footer from "../Footer";
 import { Link, Typography } from "../../components/Wrappers";
+import { Pop } from "./LayoutView";
 
 // pages
 import Dashboard from "../../pages/dashboard";
@@ -78,12 +76,11 @@ function Layout(props) {
   const ref = useRef(null);
   const [state, setState] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [value, setValue] = React.useState("primary");
-  const [linkColorValue, setLinkColorValue] = React.useState("primary");
+  const [value, setValue] = React.useState("default");
 
   const handleChange = e => {
-    changeTheme({ type: "TOGGLE_COLOR_THEME", theme: Themes.secondary });
-    setValue(e.target.value);
+    localStorage.setItem("theme", e.target.value);
+    changeTheme({ type: "TOGGLE_COLOR_THEME", theme: e.target.value });
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -192,6 +189,10 @@ function Layout(props) {
               <Route path="/app/extra/search" component={Search} />
               <Route path="/app/extra/gallery" component={Gallery} />
               <Route path="/app/extra/invoice" component={Invoice} />
+              <Route
+                path="/app/extra/login"
+                children={() => localStorage.removeItem("id_token")}
+              />
               <Route path="/app/core/colors" component={Colors} />
               <Route path="/app/maps/google" component={MapsGoogle} />
               <Route path="/app/maps/vector" component={VectorMaps} />
@@ -232,13 +233,13 @@ function Layout(props) {
                 </Typography>
                 <RadioGroup
                   aria-label="theme"
-                  value={value}
+                  value={localStorage.getItem("theme") || "default"}
                   onChange={e => handleChange(e)}
                 >
                   <Box display="flex" justifyContent="space-between">
                     <FormControlLabel
                       className={classes.noneMargin}
-                      value="primary"
+                      value="default"
                       control={<Radio className={classes.primaryRadio} />}
                     />
                     <FormControlLabel

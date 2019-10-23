@@ -29,13 +29,15 @@ export default makeStyles(theme => ({
     margin: 0,
   },
   primaryRadio: {
+    color: "#536DFE",
     "&.MuiRadio-colorSecondary.Mui-checked": {
       color: "#536DFE",
     },
   },
   secondaryRadio: {
+    color: "#FF5C93",
     "&.MuiRadio-colorSecondary.Mui-checked": {
-      backgroundColor: "#FF5C93",
+      color: "#FF5C93",
     },
   },
 }));

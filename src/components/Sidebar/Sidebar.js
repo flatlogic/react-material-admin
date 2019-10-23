@@ -150,7 +150,7 @@ const structure = [
     children: [
       { label: "Calendar", link: "/app/extra/calendar" },
       { label: "Invoice", link: "/app/extra/invoice" },
-      { label: "Login Page", link: "/app/login" },
+      { label: "Login Page", link: "/app/extra/login" },
       { label: "Error Page", link: "/404" },
       { label: "Gallery", link: "/app/extra/gallery" },
       { label: "Search Result", link: "/app/extra/search" },
@@ -187,7 +187,6 @@ const structure = [
 function Sidebar({ location, ...props }) {
   var classes = useStyles();
   var theme = useTheme();
-
 
   const toggleDrawer = value => event => {
     if (

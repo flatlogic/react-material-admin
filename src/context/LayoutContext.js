@@ -11,7 +11,7 @@ function layoutReducer(state, action) {
     case "TOGGLE_COLOR_THEME":
       return {
         ...state,
-        theme: action.theme,
+        theme: Themes[action.theme],
       };
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -22,9 +22,8 @@ function layoutReducer(state, action) {
 function LayoutProvider({ children }) {
   var [state, dispatch] = React.useReducer(layoutReducer, {
     isSidebarOpened: false,
-    theme: Themes.default,
+    theme: Themes[localStorage.getItem("theme")] || Themes.default,
   });
-  localStorage.setItem("theme", JSON.stringify(state.theme));
   return (
     <LayoutStateContext.Provider value={state}>
       <LayoutDispatchContext.Provider value={dispatch}>
