@@ -52,4 +52,11 @@ export default makeStyles(theme => ({
     height: 1,
     backgroundColor: "#D8D8D880",
   },
+  expand: {
+    transform: "rotate(180deg)",
+  },
+  expandWrapper: {
+    color: theme.palette.text.secondary + "99",
+    transition: theme.transitions.create("transform"),
+  },
 }));

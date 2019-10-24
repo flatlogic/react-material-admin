@@ -47,7 +47,7 @@ const structure = [
       },
       {
         label: "Products Grid",
-        link: "/app/ecommerce/products",
+        link: "/app/ecommerce/gridproducts",
       },
       {
         label: "Product Page",
@@ -248,7 +248,6 @@ function Sidebar({ location, ...props }) {
             isSidebarOpened={isSidebarOpened}
             {...link}
             toggleDrawer={toggleDrawer(true)}
-            linkColor={props.linkActiveColor}
           />
         ))}
       </List>

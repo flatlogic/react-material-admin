@@ -21,7 +21,11 @@ import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import { AccountCircle, VpnKey as PasswordIcon, AccountBalanceWallet as WalletIcon } from "@material-ui/icons";
+import {
+  AccountCircle,
+  VpnKey as PasswordIcon,
+  AccountBalanceWallet as WalletIcon,
+} from "@material-ui/icons";
 
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
@@ -156,22 +160,22 @@ export default function TooltipsComp() {
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
-              <Grid md={2} xs={6}>
-                <Typography variant={"body1"}>Password</Typography>
+                <Grid md={2} xs={6}>
+                  <Typography variant={"body1"}>Password</Typography>
+                </Grid>
+                <Grid>
+                  <Input
+                    id="component-helper"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <PasswordIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
               </Grid>
-              <Grid>
-                <Input
-                  id="component-helper"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <PasswordIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Grid>
-            </Grid>
               <Grid item container alignItems={"center"}>
                 <Grid md={2} xs={6}>
                   <Typography variant={"body1"}>Appended input</Typography>
@@ -181,9 +185,7 @@ export default function TooltipsComp() {
                     id="component-helper"
                     InputProps={{
                       endAdornment: (
-                        <InputAdornment position="start">
-                          .00
-                        </InputAdornment>
+                        <InputAdornment position="start">.00</InputAdornment>
                       ),
                     }}
                   />
@@ -199,13 +201,11 @@ export default function TooltipsComp() {
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <WalletIcon/>
+                          <WalletIcon />
                         </InputAdornment>
                       ),
                       endAdornment: (
-                        <InputAdornment position="start">
-                          .00
-                        </InputAdornment>
+                        <InputAdornment position="start">.00</InputAdornment>
                       ),
                     }}
                   />
@@ -213,7 +213,12 @@ export default function TooltipsComp() {
               </Grid>
               <Grid item>
                 <Button variant={"contained"} color={"primary"}>
-                  Submit
+                  Save changes
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button variant={"contained"} color={"secondary"}>
+                  Cancel
                 </Button>
               </Grid>
             </Grid>

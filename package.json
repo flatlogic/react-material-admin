@@ -8,6 +8,7 @@
     "@material-ui/styles": "^4.3.0",
     "@mdi/js": "^4.4.95",
     "@mdi/react": "^1.2.1",
+    "@webassemblyjs/wasm-edit": "1.8.5",
     "apexcharts": "^3.8.3",
     "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",

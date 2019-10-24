@@ -137,7 +137,6 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
           badgeContent={
             props.isNotificationsUnread ? notifications.length : null
           }
-          colortheme="warning"
         >
           <NotificationsIcon classes={{ root: classes.headerIcon }} />
         </Badge>

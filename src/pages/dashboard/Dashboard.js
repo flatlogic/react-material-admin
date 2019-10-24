@@ -257,7 +257,7 @@ export default function Dashboard(props) {
             <Grid container spacing={2}>
               <Grid item xs={6}>
                 <ResponsiveContainer width="100%" height={144}>
-                  <PieChart margin={{ left: theme.spacing(2) }}>
+                  <PieChart>
                     <Pie
                       data={PieChartData}
                       innerRadius={45}

@@ -8,10 +8,12 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
-import { Inbox as InboxIcon } from "@material-ui/icons";
+import {
+  Inbox as InboxIcon,
+  ExpandMore as ExpandIcon,
+} from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
-
 
 // styles
 import useStyles from "./styles";
@@ -19,7 +21,7 @@ import useStyles from "./styles";
 // components
 import Dot from "../Dot";
 
-export default function  SidebarLink({
+export default function SidebarLink({
   link,
   icon,
   label,
@@ -31,16 +33,12 @@ export default function  SidebarLink({
   toggleDrawer,
   ...props
 }) {
-  const layoutProps = {
-    linkActiveColor: props.linkColor
-  }
-  var classes = useStyles(layoutProps);
+  var classes = useStyles();
   // local
+  const [expand, setExpand] = useState(false);
   var [isOpen, setIsOpen] = useState(false);
   var isLinkActive =
-    link &&
-    (location.pathname === link || location.pathname.includes(link));
-
+    link && (location.pathname === link || location.pathname.includes(link));
 
   if (type === "title")
     return (
@@ -76,15 +74,9 @@ export default function  SidebarLink({
           className={classnames(classes.linkIcon, {
             [classes.linkIconActive]: isLinkActive,
           })}
-          style={{ margin: nested && '-11px' }}
+          style={{ margin: nested && "-11px" }}
         >
-          {nested ? (
-            <Dot
-              color={isLinkActive && "primary"}
-            />
-          ) : (
-            icon
-          )}
+          {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
         </ListItemIcon>
         <ListItemText
           classes={{
@@ -124,6 +116,15 @@ export default function  SidebarLink({
           }}
           primary={label}
         />
+        <ExpandIcon
+          className={classnames(
+            {
+              [classes.expand]: expand,
+              [classes.linkTextHidden]: !isSidebarOpened,
+            },
+            classes.expandWrapper,
+          )}
+        />
       </ListItem>
       {children && (
         <Collapse
@@ -161,5 +162,6 @@ export default function  SidebarLink({
       e.preventDefault();
       setIsOpen(!isOpen);
     }
+    setExpand(prev => !prev);
   }
 }

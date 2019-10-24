@@ -73,14 +73,12 @@ import { useLayoutState, useLayoutDispatch } from "../../context/LayoutContext";
 
 function Layout(props) {
   var classes = useStyles();
-  const ref = useRef(null);
   const [state, setState] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [value, setValue] = React.useState("default");
 
   const handleChange = e => {
     localStorage.setItem("theme", e.target.value);
-    changeTheme({ type: "TOGGLE_COLOR_THEME", theme: e.target.value });
+    layoutDispatch({ type: "TOGGLE_COLOR_THEME", theme: e.target.value });
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -98,13 +96,13 @@ function Layout(props) {
   }, []); */
   // global
   var layoutState = useLayoutState();
-  var changeTheme = useLayoutDispatch();
+  var layoutDispatch = useLayoutDispatch();
 
   return (
     <div className={classes.root}>
       <>
-        <Header history={props.history} color={layoutState.appBarColor} />
-        <Sidebar linkActiveColor={layoutState.linkActiveColor} />
+        <Header history={props.history} />
+        <Sidebar />
         <Grow in={state} style={{ transformOrigin: "0 0 0" }}>
           <div
             className={classnames(classes.content, {
@@ -144,7 +142,10 @@ function Layout(props) {
               />
               <Route path="/app/ecommerce/product/:id" component={Product} />
               <Route path="/app/ecommerce/product" component={Product} />
-              <Route path="/app/ecommerce/products" component={ProductsGrid} />
+              <Route
+                path="/app/ecommerce/gridproducts"
+                component={ProductsGrid}
+              />
               <Route
                 exact
                 path="/app/tables"
