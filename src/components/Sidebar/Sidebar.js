@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Drawer, IconButton, List } from "@material-ui/core";
+import { Drawer, IconButton, List, Fab } from "@material-ui/core";
 import {
   Home as HomeIcon,
   FilterNone as UIElementsIcon,
@@ -14,6 +14,7 @@ import {
   Description as DescriptionIcon,
   ShoppingCart as ShoppingCartIcon,
   StarBorder as ExtraIcon,
+  Add as AddIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -181,6 +182,17 @@ const structure = [
     label: "Background",
     link: "",
     icon: <Dot size="large" color="secondary" />,
+  },
+  { id: 22, type: "divider" },
+  {
+    id: 21,
+    label: "Background",
+    link: "",
+    icon: (
+      <Fab color="primary" aria-label="add">
+        <AddIcon />
+      </Fab>
+    ),
   },
 ];
 

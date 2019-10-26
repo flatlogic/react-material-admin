@@ -33,10 +33,9 @@ export default function SidebarLink({
   toggleDrawer,
   ...props
 }) {
-  var classes = useStyles();
   // local
-  const [expand, setExpand] = useState(false);
   var [isOpen, setIsOpen] = useState(false);
+  var classes = useStyles(isOpen);
   var isLinkActive =
     link && (location.pathname === link || location.pathname.includes(link));
 
@@ -74,7 +73,7 @@ export default function SidebarLink({
           className={classnames(classes.linkIcon, {
             [classes.linkIconActive]: isLinkActive,
           })}
-          style={{ margin: nested && "-11px" }}
+          style={{ margin: nested && -11 }}
         >
           {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
         </ListItemIcon>
@@ -119,7 +118,7 @@ export default function SidebarLink({
         <ExpandIcon
           className={classnames(
             {
-              [classes.expand]: expand,
+              [classes.expand]: isOpen,
               [classes.linkTextHidden]: !isSidebarOpened,
             },
             classes.expandWrapper,
@@ -162,6 +161,5 @@ export default function SidebarLink({
       e.preventDefault();
       setIsOpen(!isOpen);
     }
-    setExpand(prev => !prev);
   }
 }

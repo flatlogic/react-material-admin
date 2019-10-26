@@ -241,12 +241,17 @@ function Layout(props) {
                     <FormControlLabel
                       className={classes.noneMargin}
                       value="default"
-                      control={<Radio className={classes.primaryRadio} />}
+                      control={<Radio className={classes.defaultRadio} />}
                     />
                     <FormControlLabel
                       className={classes.noneMargin}
-                      value="secondary"
-                      control={<Radio className={classes.secondaryRadio} />}
+                      value="orange"
+                      control={<Radio className={classes.orangeRadio} />}
+                    />
+                    <FormControlLabel
+                      className={classes.noneMargin}
+                      value="darkBlue"
+                      control={<Radio className={classes.darkBlueRadio} />}
                     />
                   </Box>
                 </RadioGroup>
@@ -294,7 +299,10 @@ function Layout(props) {
                   </IconButton>
                 </Link>
                 <Link href={"https://github.com/flatlogic"} target={"_blank"}>
-                  <IconButton aria-label="github" style={{padding: '12px 0 12px 12px'}}>
+                  <IconButton
+                    aria-label="github"
+                    style={{ padding: "12px 0 12px 12px" }}
+                  >
                     <Icon path={GithubIcon} size={1} color="#6E6E6E99" />
                   </IconButton>
                 </Link>

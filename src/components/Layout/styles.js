@@ -28,16 +28,22 @@ export default makeStyles(theme => ({
   noneMargin: {
     margin: 0,
   },
-  primaryRadio: {
+  defaultRadio: {
     color: "#536DFE",
     "&.MuiRadio-colorSecondary.Mui-checked": {
       color: "#536DFE",
     },
   },
-  secondaryRadio: {
-    color: "#FF5C93",
+  darkBlueRadio: {
+    color: "#3F51B5",
     "&.MuiRadio-colorSecondary.Mui-checked": {
-      color: "#FF5C93",
+      color: "#3F51B5",
+    },
+  },
+  orangeRadio: {
+    color: "#eb5052",
+    "&.MuiRadio-colorSecondary.Mui-checked": {
+      color: "#eb5052",
     },
   },
 }));

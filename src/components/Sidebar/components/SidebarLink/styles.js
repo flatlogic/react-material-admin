@@ -5,6 +5,9 @@ export default makeStyles(theme => ({
     textDecoration: "none",
     "&:hover, &:focus": {
       backgroundColor: theme.palette.background.light,
+      "& > .MuiSvgIcon-root": {
+        display: "inline-block",
+      },
     },
   },
   linkActive: {
@@ -24,7 +27,7 @@ export default makeStyles(theme => ({
     justifyContent: "center",
   },
   linkIconActive: {
-    color: props => theme.palette.primary.main,
+    color: theme.palette.primary.main,
   },
   linkText: {
     padding: 0,
@@ -58,5 +61,6 @@ export default makeStyles(theme => ({
   expandWrapper: {
     color: theme.palette.text.secondary + "99",
     transition: theme.transitions.create("transform"),
+    display: props => (props ? "inline-block" : "none"),
   },
 }));
