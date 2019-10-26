@@ -294,7 +294,7 @@ function Layout(props) {
                   </IconButton>
                 </Link>
                 <Link href={"https://github.com/flatlogic"} target={"_blank"}>
-                  <IconButton aria-label="github">
+                  <IconButton aria-label="github" style={{padding: '12px 0 12px 12px'}}>
                     <Icon path={GithubIcon} size={1} color="#6E6E6E99" />
                   </IconButton>
                 </Link>

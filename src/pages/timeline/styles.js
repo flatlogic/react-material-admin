@@ -6,5 +6,11 @@ export default makeStyles(theme => ({
   },
   divider: {
     margin: `0px -${theme.spacing(3)}px`
+  },
+  wrapper: {
+    "& > *": { paddingTop: theme.spacing(5) },
+    "& > :first-child": {
+      paddingTop: 0,
+    },
   }
 }))

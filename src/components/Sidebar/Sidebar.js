@@ -154,7 +154,7 @@ const structure = [
       { label: "Error Page", link: "/404" },
       { label: "Gallery", link: "/app/extra/gallery" },
       { label: "Search Result", link: "/app/extra/search" },
-      { label: "Timeline", link: "/app/extra/timeline" },
+      { label: "Time Line", link: "/app/extra/timeline" },
     ],
   },
   { id: 12, type: "divider" },

@@ -65,13 +65,14 @@ export default function TimelineComp() {
   };
   return (
     <>
-      <PageTitle title="Timeline" />
+      <PageTitle title="Time Line" />
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <Box
             display={"flex"}
             flexDirection={"column"}
             justifyContent={"center"}
+            className={classes.wrapper}
           >
             <Annotation>
               <Box width={"45%"}>
