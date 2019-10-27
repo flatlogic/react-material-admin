@@ -56,4 +56,11 @@ export default makeStyles(theme => ({
       display: "none",
     },
   },
+  popover: {
+    backgroundColor: theme.palette.primary.main,
+  },
+  fab: {
+    width: 34,
+    height: 34,
+  },
 }));

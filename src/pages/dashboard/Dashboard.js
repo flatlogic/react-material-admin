@@ -260,8 +260,8 @@ export default function Dashboard(props) {
                   <PieChart>
                     <Pie
                       data={PieChartData}
-                      innerRadius={35}
-                      outerRadius={50}
+                      innerRadius={25}
+                      outerRadius={40}
                       dataKey="value"
                     >
                       {PieChartData.map((entry, index) => (

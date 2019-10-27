@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Drawer, IconButton, List, Fab } from "@material-ui/core";
+import { Drawer, IconButton, List, Fab, Box, Popover } from "@material-ui/core";
 import {
   Home as HomeIcon,
   FilterNone as UIElementsIcon,
@@ -185,16 +185,56 @@ const structure = [
   },
   { id: 22, type: "divider" },
   {
-    id: 21,
-    label: "Background",
+    id: 23,
+    label: "Add section",
     link: "",
-    icon: (
-      <Fab color="primary" aria-label="add">
-        <AddIcon />
-      </Fab>
-    ),
+    icon: <AddSection />,
   },
 ];
+
+function AddSection() {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
+    <>
+      <Fab
+        color="primary"
+        aria-label="add"
+        className={classes.fab}
+        onClick={e => handleClick(e)}
+      >
+        <AddIcon />
+      </Fab>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        classes={{ paper: classes.popover }}
+      >
+        Lorem ipsum dolor sit amet.
+      </Popover>
+    </>
+  );
+}
 
 function Sidebar({ location, ...props }) {
   var classes = useStyles();
