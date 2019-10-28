@@ -1,34 +1,34 @@
 import defaultTheme from "./default";
-import darkBlueTheme from "./darkBlue";
-import orangeTheme from "./orange";
+import successTheme from "./success";
+import secondaryTheme from "./secondary";
 
 import { createMuiTheme } from "@material-ui/core";
 
 const overrides = {
   typography: {
     h1: {
-      fontSize: "3rem",
+      fontSize: "3rem"
     },
     h2: {
-      fontSize: "2rem",
+      fontSize: "2rem"
     },
     h3: {
-      fontSize: "1.64rem",
+      fontSize: "1.64rem"
     },
     h4: {
-      fontSize: "1.5rem",
+      fontSize: "1.5rem"
     },
     h5: {
-      fontSize: "1.285rem",
+      fontSize: "1.285rem"
     },
     h6: {
-      fontSize: "1.142rem",
-    },
-  },
+      fontSize: "1.142rem"
+    }
+  }
 };
 
 export default {
   default: createMuiTheme({ ...defaultTheme, ...overrides }),
-  darkBlue: createMuiTheme({ ...darkBlueTheme, ...overrides }),
-  orange: createMuiTheme({ ...orangeTheme, ...overrides }),
+  secondary: createMuiTheme({ ...secondaryTheme, ...overrides }),
+  success: createMuiTheme({ ...successTheme, ...overrides })
 };
