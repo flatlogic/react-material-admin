@@ -1,0 +1,9 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "main": "Calendar.js",
+  "license": "MIT",
+  "dependencies": {
+    "reactstrap": "^8.1.1"
+  }
+}

@@ -46,12 +46,12 @@ export default makeStyles(theme => ({
   },
   sectionTitle: {
     marginLeft: theme.spacing(4.5),
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(4),
     marginBottom: theme.spacing(2),
   },
   divider: {
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(2),
     height: 1,
     backgroundColor: "#D8D8D880",
   },

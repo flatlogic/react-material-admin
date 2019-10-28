@@ -2,23 +2,36 @@ import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles(theme => ({
   wrapper: {
-    textAlign: 'center',
-    margin: theme.spacing(3)
+    textAlign: "center",
+    margin: theme.spacing(3),
   },
   container: {
-    display: 'inline-flex',
-    '& li': {
-      listStyle: 'none'
+    display: "inline-flex",
+    "& li": {
+      listStyle: "none",
+      "& a": {
+        outline: 0,
+      },
     },
-    alignItems: 'center'
+    alignItems: "center",
   },
   element: {
-    padding: theme.spacing(1),
+    padding: `4px ${theme.spacing(1)}px`,
     margin: theme.spacing(1),
-    borderRadius: 2,
-    backgroundColor: theme.palette.primary.main
   },
   link: {
-    color: '#fff'
-  }
-}))
+    color: theme.palette.text.primary,
+  },
+  activeLink: {
+    color: theme.palette.primary.main,
+  },
+  activeElement: {
+    border: `1px solid ${theme.palette.primary.main}`,
+  },
+  prev: {
+    "&:before": {
+      fontFamily: "Material Icons",
+      content: "&#e5c4",
+    },
+  },
+}));

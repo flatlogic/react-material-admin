@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Drawer, IconButton, List, Fab, Box, Popover } from "@material-ui/core";
+import {
+  Drawer,
+  IconButton,
+  List,
+  Fab,
+  Box,
+  Popover,
+  TextField as Input,
+} from "@material-ui/core";
 import {
   Home as HomeIcon,
   FilterNone as UIElementsIcon,
@@ -24,6 +32,7 @@ import classNames from "classnames";
 import useStyles from "./styles";
 
 // components
+import { Typography, Button } from "../../components/Wrappers";
 import SidebarLink from "./components/SidebarLink/SidebarLink";
 import Dot from "./components/Dot";
 
@@ -190,6 +199,7 @@ const structure = [
     link: "",
     icon: <AddSection />,
   },
+  { id: 24, type: "divider" },
 ];
 
 function AddSection() {
@@ -230,7 +240,25 @@ function AddSection() {
         }}
         classes={{ paper: classes.popover }}
       >
-        Lorem ipsum dolor sit amet.
+        <Box m={3} display="flex" flexDirection="column">
+          <Typography>Add section</Typography>
+          <Input placeholder="Section Name" classes={{ root: classes.input }} />
+          <Box display="flex" justifyContent="flex-end" mt={2}>
+            <Button
+              color="secondary"
+              variant="contained"
+              className={classes.noBoxShadow}
+            >
+              Add
+            </Button>
+            <Button
+              classes={{ label: classes.buttonLabel }}
+              onClick={() => handleClose()}
+            >
+              Cancel
+            </Button>
+          </Box>
+        </Box>
       </Popover>
     </>
   );

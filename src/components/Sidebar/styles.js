@@ -58,9 +58,25 @@ export default makeStyles(theme => ({
   },
   popover: {
     backgroundColor: theme.palette.primary.main,
+    color: "#fff",
   },
   fab: {
     width: 34,
     height: 34,
+  },
+  noBoxShadow: {
+    boxShadow: "none !important",
+    marginRight: theme.spacing(1),
+  },
+  buttonLabel: {
+    color: "#fff",
+  },
+  input: {
+    "& .MuiInputBase-input": {
+      color: "#fff",
+    },
+    "& .MuiInput-underline:before": {
+      borderBottom: "1px solid rgba(255, 255, 255, .45)",
+    },
   },
 }));
