@@ -34,16 +34,16 @@ export default makeStyles(theme => ({
       color: "#536DFE",
     },
   },
-  darkBlueRadio: {
-    color: "#3F51B5",
+  successRadio: {
+    color: "#81D4FA",
     "&.MuiRadio-colorSecondary.Mui-checked": {
-      color: "#3F51B5",
+      color: "#81D4FA",
     },
   },
-  orangeRadio: {
-    color: "#eb5052",
+  secondaryRadio: {
+    color: "#FF5C93",
     "&.MuiRadio-colorSecondary.Mui-checked": {
-      color: "#eb5052",
+      color: "#FF5C93",
     },
   },
 }));

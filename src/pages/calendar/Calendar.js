@@ -1,8 +1,16 @@
 import React from "react";
-import { Grid, Box, IconButton } from "@material-ui/core";
+import {
+  Grid,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  TextField as Input,
+  Box
+} from "@material-ui/core";
 import {
   KeyboardArrowLeft as LeftArrowIcon,
   KeyboardArrowRight as RightArrowIcon,
+  CalendarToday as CalendarIcon
 } from "@material-ui/icons";
 
 import FullCalendar from "@fullcalendar/react";
@@ -10,11 +18,14 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin, { Draggable } from "@fullcalendar/interaction";
 
+import s from "./Calendar.module.scss";
+
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
-// import "@fullcalendar/timegrid/main.css";
+import "@fullcalendar/timegrid/main.css";
 
 import moment from "moment/moment";
+import cn from "classnames";
 
 //components
 import Widget from "../../components/Widget";
@@ -40,7 +51,7 @@ class Calendar extends React.Component {
         header: {
           left: "",
           center: "",
-          right: "",
+          right: ""
         },
         events: [
           {
@@ -48,14 +59,14 @@ class Calendar extends React.Component {
             start: new Date(y, m, 1),
             backgroundColor: "#79A5F0",
             textColor: "#fff",
-            description: "Will be busy throughout the whole day",
+            description: "Will be busy throughout the whole day"
           },
           {
             title: "Long Event",
             start: new Date(y, m, d + 5),
             end: new Date(y, m, d + 7),
             textColor: "#333",
-            description: "This conference should be worse visiting",
+            description: "This conference should be worse visiting"
           },
           {
             id: 999,
@@ -63,7 +74,7 @@ class Calendar extends React.Component {
             start: new Date(y, m, d - 3, 16, 0),
             allDay: false,
             textColor: "#333",
-            description: "Agree with this guy on arrival time",
+            description: "Agree with this guy on arrival time"
           },
           {
             id: 1000,
@@ -72,7 +83,7 @@ class Calendar extends React.Component {
             allDay: false,
             backgroundColor: "#555",
             textColor: "#fff",
-            description: "Make sure everything is consistent first",
+            description: "Make sure everything is consistent first"
           },
           {
             title: "Got to school",
@@ -80,7 +91,7 @@ class Calendar extends React.Component {
             end: new Date(y, m, d + 16, 13, 0),
             backgroundColor: "#64bd63",
             textColor: "#fff",
-            description: "Time to go back",
+            description: "Time to go back"
           },
           {
             title: "Study some Node",
@@ -95,7 +106,7 @@ class Calendar extends React.Component {
               " Node.js uses an event-driven, non-blocking" +
               " I/O model that makes it lightweight and" +
               " efficient, perfect for data-intensive real-time" +
-              " applications that run across distributed devices.",
+              " applications that run across distributed devices."
           },
           {
             title: "Click for Flatlogic",
@@ -104,22 +115,22 @@ class Calendar extends React.Component {
             url: "http://flatlogic.com/",
             backgroundColor: "#e5603b",
             textColor: "#fff",
-            description: "Creative solutions",
-          },
+            description: "Creative solutions"
+          }
         ],
         selectable: true,
         selectHelper: true,
         editable: true,
-        droppable: true,
+        droppable: true
       },
       calendarPlugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-      dragOptions: { zIndex: 999, revert: true, revertDuration: 0 },
+      dragOptions: { zIndex: 999, revert: true, revertDuration: 0 }
     };
   }
 
   componentDidMount() {
     new Draggable(this.externalEvents, {
-      itemSelector: ".external-event",
+      itemSelector: ".external-event"
     });
   }
 
@@ -143,8 +154,8 @@ class Calendar extends React.Component {
         allDay,
         backgroundColor: "#64bd63",
         textColor: "#fff",
-        editable: true,
-      },
+        editable: true
+      }
     });
     this.toggleModal();
   };
@@ -163,6 +174,9 @@ class Calendar extends React.Component {
   };
   changeView = view => {
     this.fullCalendar.getApi().changeView(view);
+    this.setState({
+      calendarView: view
+    });
   };
   getFormattedDate = date => {
     return moment(date).format("YYYY-MM-DD");
@@ -177,18 +191,18 @@ class Calendar extends React.Component {
   render() {
     const {
       event,
-      currentMonth,
-      currentDay,
       calendarOptions,
       modal,
-      modalEvent,
+      modalEvent
     } = this.state;
     return (
       <>
         <PageTitle title="Calendar" />
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
-            <Typography variant="h3">Draggable Events</Typography>
+            <Typography variant="h3" style={{ marginBottom: 8 }}>
+              Draggable Events
+            </Typography>
             <Typography variant="body2">
               Just drap and drop events from there directly into the calendar.
             </Typography>
@@ -196,41 +210,52 @@ class Calendar extends React.Component {
               ref={node => {
                 this.externalEvents = node;
               }}
-              className="calendar-external-events mb-lg"
             >
-              <Widget disableWidgetMenu>
-                <div
-                  data-event='{ "classNames": ["bg-success", "text-white"], "title": "Make a tea" }'
-                  className="d-flex align-items-center external-event draggable"
-                >
-                  <Dot color="success" size="superlarge" />
-                  <Typography variant="body2" style={{ marginLeft: 8 }}>
-                    Make a tea
-                  </Typography>
-                </div>
-              </Widget>
-              <Widget disableWidgetMenu>
-                <div
-                  data-event='{ "classNames": ["bg-warning", "text-white"], "title": "Open windows" }'
-                  className="d-flex align-items-center external-event draggable"
-                >
-                  <Dot color="warning" size="superlarge" />
-                  <Typography variant="body2" style={{ marginLeft: 8 }}>
-                    Open windows
-                  </Typography>
-                </div>
-              </Widget>
-              <Widget disableWidgetMenu>
-                <div
-                  data-event='{ "classNames": ["bg-purple", "text-white"], "title": "Some stuff" }'
-                  className="d-flex align-items-center external-event draggable"
-                >
-                  <Dot color="info" size="superlarge" />
-                  <Typography variant="body2" style={{ marginLeft: 8 }}>
-                    Some stuff
-                  </Typography>
-                </div>
-              </Widget>
+              <div
+                data-event='{ "classNames": ["bg-success", "text-white"], "title": "Make a tea" }'
+                className={cn(
+                  "d-flex",
+                  "align-items-center",
+                  "draggable",
+                  "external-event",
+                  s.widget
+                )}
+              >
+                <Dot color="success" size="superlarge" />
+                <Typography variant="body2" style={{ marginLeft: 8 }}>
+                  Make a tea
+                </Typography>
+              </div>
+              <div
+                data-event='{ "classNames": ["bg-warning", "text-white"], "title": "Open windows" }'
+                className={cn(
+                  "d-flex",
+                  "align-items-center",
+                  "draggable",
+                  "external-event",
+                  s.widget
+                )}
+              >
+                <Dot color="warning" size="superlarge" />
+                <Typography variant="body2" style={{ marginLeft: 8 }}>
+                  Open windows
+                </Typography>
+              </div>
+              <div
+                data-event='{ "classNames": ["bg-purple", "text-white"], "title": "Some stuff" }'
+                className={cn(
+                  "d-flex",
+                  "align-items-center",
+                  "draggable",
+                  "external-event",
+                  s.widget
+                )}
+              >
+                <Dot color="info" size="superlarge" />
+                <Typography variant="body2" style={{ marginLeft: 8 }}>
+                  Some stuff
+                </Typography>
+              </div>
             </div>
           </Grid>
           <Grid item xs={12} md={8}>
@@ -259,6 +284,11 @@ class Calendar extends React.Component {
                         ? "primary"
                         : "none"
                     }
+                    variant={
+                      this.state.calendarView === "dayGridMonth"
+                        ? "contained"
+                        : "text"
+                    }
                   >
                     Month
                   </Button>
@@ -269,6 +299,12 @@ class Calendar extends React.Component {
                         ? "primary"
                         : "none"
                     }
+                    variant={
+                      this.state.calendarView === "timeGridWeek"
+                        ? "contained"
+                        : "text"
+                    }
+                    style={{ marginLeft: 8 }}
                   >
                     Week
                   </Button>
@@ -279,6 +315,12 @@ class Calendar extends React.Component {
                         ? "primary"
                         : "none"
                     }
+                    variant={
+                      this.state.calendarView === "timeGridDay"
+                        ? "contained"
+                        : "text"
+                    }
+                    style={{ marginLeft: 8 }}
                   >
                     Day
                   </Button>
@@ -299,67 +341,69 @@ class Calendar extends React.Component {
           </Grid>
         </Grid>
 
-        {/* <Modal isOpen={modal} toggle={this.toggleModal} id="news-close-modal">
-          <ModalHeader toggle={this.toggleModal} id="news-close-modal-label">
+        <Dialog open={modal} onClose={this.toggleModal} id="news-close-modal">
+          <DialogTitle id="news-close-modal-label">
             Create New Event
-          </ModalHeader>
-          <ModalBody className="bg-white">
-            Just enter event name to create a new one
+          </DialogTitle>
+          <Box m={3} flexDirection="column">
+            <Typography variant="body2" style={{ marginBottom: 16 }}>
+              Just enter event name to create a new one
+            </Typography>
             <Input
               onChange={this.handleChange}
               className={s.calendarModalInput}
               value={event.title}
-              type="text"
               name="title"
               placeholder="Title"
             />
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              color="default"
-              onClick={this.toggleModal}
-              data-dismiss="modal"
-            >
-              Close
-            </Button>{" "}
-            <Button
-              color="success"
-              onClick={this.createEvent}
-              id="news-widget-remove"
-            >
-              Create
-            </Button>
-          </ModalFooter>
-        </Modal>
+            <Box mt={2}>
+              <Button
+                onClick={this.toggleModal}
+                data-dismiss="modal"
+                style={{ marginRight: 8 }}
+              >
+                Close
+              </Button>{" "}
+              <Button
+                color="success"
+                variant="contained"
+                onClick={this.createEvent}
+                id="news-widget-remove"
+              >
+                Create
+              </Button>
+            </Box>
+          </Box>
+        </Dialog>
 
-        <Modal
-          isOpen={modalEvent}
-          toggle={this.toggleModalEvent}
+        <Dialog
+          open={modalEvent}
+          onClose={this.toggleModalEvent}
           id="news-close-modal"
         >
-          <ModalHeader
-            toggle={this.toggleModalEvent}
+          <DialogTitle
             id="news-close-modal-label"
           >
             {event.title}
-          </ModalHeader>
-          <ModalBody className="bg-white">
-            <p class="text-muted">
-              <i class="la la-calendar"></i>
+          </DialogTitle>
+          <Box m={3}>
+            <Typography style={{ marginBottom: 16 }}>
+              <CalendarIcon style={{ marginRight: 8 }} />
               {this.getFormattedDate(event.start)}
-            </p>
-            <p>{event.extendedProps && event.extendedProps.description}</p>
-          </ModalBody>
-          <ModalFooter>
+            </Typography>
+            <Typography variant="body2" style={{ marginBottom: 16 }}>
+              {event.extendedProps && event.extendedProps.description}
+            </Typography>
             <Button
-              color="default"
+              color="primary"
+              variant="contained"
               onClick={this.toggleModalEvent}
               data-dismiss="modal"
             >
               OK
             </Button>
-          </ModalFooter>
-        </Modal> */}
+          </Box>
+        </Dialog>
       </>
     );
   }

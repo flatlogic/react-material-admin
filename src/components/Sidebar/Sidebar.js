@@ -6,7 +6,7 @@ import {
   Fab,
   Box,
   Popover,
-  TextField as Input,
+  TextField as Input
 } from "@material-ui/core";
 import {
   Home as HomeIcon,
@@ -23,6 +23,7 @@ import {
   ShoppingCart as ShoppingCartIcon,
   StarBorder as ExtraIcon,
   Add as AddIcon,
+  Chat as ChatIcon
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -40,7 +41,7 @@ import Dot from "./components/Dot";
 import {
   useLayoutState,
   useLayoutDispatch,
-  toggleSidebar,
+  toggleSidebar
 } from "../../context/LayoutContext";
 
 const structure = [
@@ -53,17 +54,17 @@ const structure = [
     children: [
       {
         label: "Product Manage",
-        link: "/app/ecommerce/management",
+        link: "/app/ecommerce/management"
       },
       {
         label: "Products Grid",
-        link: "/app/ecommerce/gridproducts",
+        link: "/app/ecommerce/gridproducts"
       },
       {
         label: "Product Page",
-        link: "/app/ecommerce/product",
-      },
-    ],
+        link: "/app/ecommerce/product"
+      }
+    ]
   },
   { id: 3, type: "divider" },
   { id: 4, type: "title", label: "TEMPLATE" },
@@ -75,17 +76,17 @@ const structure = [
     children: [
       {
         label: "Typography",
-        link: "/app/core/typography",
+        link: "/app/core/typography"
       },
       {
         label: "Colors",
-        link: "/app/core/colors",
+        link: "/app/core/colors"
       },
       {
         label: "Grid",
-        link: "/app/core/grid",
-      },
-    ],
+        link: "/app/core/grid"
+      }
+    ]
   },
   {
     id: 6,
@@ -96,9 +97,9 @@ const structure = [
       { label: "Tables Basic", link: "/app/tables/static" },
       {
         label: "Tables Dynamic",
-        link: "/app/tables/dynamic",
-      },
-    ],
+        link: "/app/tables/dynamic"
+      }
+    ]
   },
   {
     id: 7,
@@ -113,22 +114,22 @@ const structure = [
       { label: "Modal", link: "/app/ui/modal" },
       {
         label: "Notifications",
-        link: "/app/ui/notifications",
+        link: "/app/ui/notifications"
       },
       { label: "Navbar", link: "/app/ui/navbar" },
       { label: "Tooltips", link: "/app/ui/tooltips" },
       { label: "Tabs", link: "/app/ui/tabs" },
       { label: "Pagination", link: "/app/tables/dynamic" },
       { label: "Progress", link: "/app/ui/progress" },
-      { label: "Widget", link: "/app/ui/widget" },
-    ],
+      { label: "Widget", link: "/app/ui/widget" }
+    ]
   },
   {
     id: 8,
     label: "Forms",
     link: "/app/forms",
     icon: <DescriptionIcon />,
-    children: [{ label: "Form Elements", link: "/app/forms/elements" }],
+    children: [{ label: "Form Elements", link: "/app/forms/elements" }]
   },
   {
     id: 9,
@@ -139,8 +140,8 @@ const structure = [
       { label: "Charts Overview", link: "/app/charts/overview" },
       { label: "Line Charts", link: "/app/charts/line" },
       { label: "Bar Charts", link: "/app/charts/bar" },
-      { label: "Pie Charts", link: "/app/charts/pie" },
-    ],
+      { label: "Pie Charts", link: "/app/charts/pie" }
+    ]
   },
   {
     id: 10,
@@ -149,8 +150,8 @@ const structure = [
     icon: <MapIcon />,
     children: [
       { label: "Google Maps", link: "/app/maps/google" },
-      { label: "Vector Map", link: "/app/maps/vector" },
-    ],
+      { label: "Vector Map", link: "/app/maps/vector" }
+    ]
   },
   {
     id: 11,
@@ -164,8 +165,8 @@ const structure = [
       { label: "Error Page", link: "/404" },
       { label: "Gallery", link: "/app/extra/gallery" },
       { label: "Search Result", link: "/app/extra/search" },
-      { label: "Time Line", link: "/app/extra/timeline" },
-    ],
+      { label: "Time Line", link: "/app/extra/timeline" }
+    ]
   },
   { id: 12, type: "divider" },
   { id: 13, type: "title", label: "HELP" },
@@ -178,29 +179,62 @@ const structure = [
     id: 19,
     label: "My recent",
     link: "",
-    icon: <Dot size="large" color="secondary" />,
+    icon: <Dot size="large" color="secondary" />
   },
   {
     id: 20,
     label: "Starred",
     link: "",
-    icon: <Dot size="large" color="primary" />,
+    icon: <Dot size="large" color="primary" />
   },
   {
     id: 21,
     label: "Background",
     link: "",
-    icon: <Dot size="large" color="secondary" />,
+    icon: <Dot size="large" color="secondary" />
   },
   { id: 22, type: "divider" },
   {
     id: 23,
     label: "Add section",
     link: "",
-    icon: <AddSection />,
+    icon: <AddSection />
   },
   { id: 24, type: "divider" },
+  {
+    id: 25,
+    label: "Chat",
+    link: "",
+    icon: <Chat />
+  }
 ];
+
+function Chat() {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
+    <>
+      <Fab
+        color="secondary"
+        aria-label="chat"
+        onClick={e => handleClick(e)}
+        className={classes.chat}
+      >
+        <ChatIcon />
+      </Fab>
+    </>
+  );
+}
 
 function AddSection() {
   const classes = useStyles();
@@ -232,11 +266,11 @@ function AddSection() {
         onClose={handleClose}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "left",
+          horizontal: "left"
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "left",
+          horizontal: "left"
         }}
         classes={{ paper: classes.popover }}
       >
@@ -299,13 +333,13 @@ function Sidebar({ location, ...props }) {
       variant={isPermanent ? "permanent" : "temporary"}
       className={classNames(classes.drawer, {
         [classes.drawerOpen]: isSidebarOpened,
-        [classes.drawerClose]: !isSidebarOpened,
+        [classes.drawerClose]: !isSidebarOpened
       })}
       classes={{
         paper: classNames({
           [classes.drawerOpen]: isSidebarOpened,
-          [classes.drawerClose]: !isSidebarOpened,
-        }),
+          [classes.drawerClose]: !isSidebarOpened
+        })
       }}
       open={isSidebarOpened}
       onClose={toggleDrawer(true)}
@@ -315,7 +349,7 @@ function Sidebar({ location, ...props }) {
         <IconButton onClick={() => toggleSidebar(layoutDispatch)}>
           <ArrowBackIcon
             classes={{
-              root: classNames(classes.headerIcon, classes.headerIconCollapse),
+              root: classNames(classes.headerIcon, classes.headerIconCollapse)
             }}
           />
         </IconButton>

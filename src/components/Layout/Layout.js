@@ -250,13 +250,13 @@ function Layout(props) {
                     />
                     <FormControlLabel
                       className={classes.noneMargin}
-                      value="orange"
-                      control={<Radio className={classes.orangeRadio} />}
+                      value="secondary"
+                      control={<Radio className={classes.secondaryRadio} />}
                     />
                     <FormControlLabel
                       className={classes.noneMargin}
-                      value="darkBlue"
-                      control={<Radio className={classes.darkBlueRadio} />}
+                      value="success"
+                      control={<Radio className={classes.successRadio} />}
                     />
                   </Box>
                 </RadioGroup>

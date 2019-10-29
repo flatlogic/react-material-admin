@@ -1,0 +1,6 @@
+{
+  "name": "Chat",
+  "version": "1.0.0",
+  "main": "Chat.js",
+  "license": "MIT"
+}

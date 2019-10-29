@@ -36,8 +36,7 @@
     "recharts": "^1.6.2",
     "style-loader": "^1.0.0",
     "styled-components": "^4.4.0",
-    "tinycolor2": "^1.4.1",
-    "webpack": "^4.41.2"
+    "tinycolor2": "^1.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
