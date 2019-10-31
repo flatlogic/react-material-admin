@@ -80,6 +80,10 @@ export default makeStyles(theme => ({
     }
   },
   chat: {
-    marginRight: 10
+    width: 45,
+    height: 45
+  },
+  noPadding: {
+    padding: 0
   }
 }));

@@ -6,11 +6,11 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import {
   Inbox as InboxIcon,
-  ExpandMore as ExpandIcon,
+  ExpandMore as ExpandIcon
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
@@ -43,7 +43,7 @@ export default function SidebarLink({
     return (
       <Typography
         className={classnames(classes.linkText, classes.sectionTitle, {
-          [classes.linkTextHidden]: !isSidebarOpened,
+          [classes.linkTextHidden]: !isSidebarOpened
         })}
       >
         {label}
@@ -60,18 +60,20 @@ export default function SidebarLink({
         button
         component={link && Link}
         to={link}
-        className={classes.link}
+        className={classnames(classes.link, {
+          [classes.bottomFixed]: type === "bottom_fixed"
+        })}
         classes={{
           root: classnames(classes.linkRoot, {
             [classes.linkActive]: isLinkActive && !nested,
-            [classes.linkNested]: nested,
-          }),
+            [classes.linkNested]: nested
+          })
         }}
         disableRipple
       >
         <ListItemIcon
           className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive,
+            [classes.linkIconActive]: isLinkActive
           })}
           style={{ margin: nested && -11 }}
         >
@@ -81,8 +83,8 @@ export default function SidebarLink({
           classes={{
             primary: classnames(classes.linkText, {
               [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened,
-            }),
+              [classes.linkTextHidden]: !isSidebarOpened
+            })
           }}
           primary={label}
         />
@@ -101,7 +103,7 @@ export default function SidebarLink({
       >
         <ListItemIcon
           className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive,
+            [classes.linkIconActive]: isLinkActive
           })}
         >
           {icon ? icon : <InboxIcon />}
@@ -110,8 +112,8 @@ export default function SidebarLink({
           classes={{
             primary: classnames(classes.linkText, {
               [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened,
-            }),
+              [classes.linkTextHidden]: !isSidebarOpened
+            })
           }}
           primary={label}
         />
@@ -119,9 +121,9 @@ export default function SidebarLink({
           className={classnames(
             {
               [classes.expand]: isOpen,
-              [classes.linkTextHidden]: !isSidebarOpened,
+              [classes.linkTextHidden]: !isSidebarOpened
             },
-            classes.expandWrapper,
+            classes.expandWrapper
           )}
         />
       </ListItem>

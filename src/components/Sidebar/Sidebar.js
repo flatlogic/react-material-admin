@@ -197,14 +197,13 @@ const structure = [
   {
     id: 23,
     label: "Add section",
-    link: "",
     icon: <AddSection />
   },
   { id: 24, type: "divider" },
   {
     id: 25,
     label: "Chat",
-    link: "",
+    type: "bottom_fixed",
     icon: <Chat />
   }
 ];
@@ -332,16 +331,20 @@ function Sidebar({ location, ...props }) {
     <Drawer
       variant={isPermanent ? "permanent" : "temporary"}
       className={classNames(classes.drawer, {
-        [classes.drawerOpen]: isSidebarOpened,
-        [classes.drawerClose]: !isSidebarOpened
+        [classes.drawerOpen]: !isPermanent ? !isSidebarOpened : isSidebarOpened,
+        [classes.drawerClose]: !isPermanent ? isSidebarOpened : !isSidebarOpened
       })}
       classes={{
         paper: classNames({
-          [classes.drawerOpen]: isSidebarOpened,
-          [classes.drawerClose]: !isSidebarOpened
+          [classes.drawerOpen]: !isPermanent
+            ? !isSidebarOpened
+            : isSidebarOpened,
+          [classes.drawerClose]: !isPermanent
+            ? isSidebarOpened
+            : !isSidebarOpened
         })
       }}
-      open={isSidebarOpened}
+      open={!isPermanent ? !isSidebarOpened : isSidebarOpened}
       onClose={toggleDrawer(true)}
     >
       <div className={classes.toolbar} />
@@ -354,12 +357,15 @@ function Sidebar({ location, ...props }) {
           />
         </IconButton>
       </div>
-      <List className={classes.sidebarList}>
+      <List
+        className={classes.sidebarList}
+        classes={{ padding: classes.noPadding }}
+      >
         {structure.map(link => (
           <SidebarLink
             key={link.id}
             location={location}
-            isSidebarOpened={isSidebarOpened}
+            isSidebarOpened={!isPermanent ? !isSidebarOpened : isSidebarOpened}
             {...link}
             toggleDrawer={toggleDrawer(true)}
           />

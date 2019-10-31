@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -8,6 +8,7 @@ import {
   MenuItem,
   Fab
 } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
 import {
   Menu as MenuIcon,
   MailOutline as MailIcon,
@@ -90,6 +91,7 @@ const notifications = [
 
 export default function Header(props) {
   var classes = useStyles();
+  var theme = useTheme();
 
   // global
   var layoutState = useLayoutState();
@@ -103,6 +105,22 @@ export default function Header(props) {
   var [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
   var [profileMenu, setProfileMenu] = useState(null);
   var [isSearchOpen, setSearchOpen] = useState(false);
+  const [isSmall, setSmall] = useState(false);
+
+  useEffect(function() {
+    window.addEventListener("resize", handleWindowWidthChange);
+    handleWindowWidthChange();
+    return function cleanup() {
+      window.removeEventListener("resize", handleWindowWidthChange);
+    };
+  });
+
+  function handleWindowWidthChange() {
+    var windowWidth = window.innerWidth;
+    var breakpointWidth = theme.breakpoints.values.md;
+    var isSmallScreen = windowWidth < breakpointWidth;
+    setSmall(isSmallScreen);
+  }
 
   return (
     <AppBar position="fixed" className={classes.appBar} color={props.color}>
@@ -115,7 +133,8 @@ export default function Header(props) {
             classes.headerMenuButtonCollapse
           )}
         >
-          {layoutState.isSidebarOpened ? (
+          {(!layoutState.isSidebarOpened && isSmall) ||
+          (layoutState.isSidebarOpened && !isSmall) ? (
             <ArrowBackIcon
               classes={{
                 root: classNames(classes.headerIcon, classes.headerIconCollapse)
