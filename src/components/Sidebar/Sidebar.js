@@ -204,9 +204,13 @@ const structure = [
     id: 25,
     label: "Chat",
     type: "bottom_fixed",
-    icon: <Chat />
+    icon: <Chat />,
   }
 ];
+
+function handleClick() {
+  alert('13')
+}
 
 function Chat() {
   const classes = useStyles();
@@ -345,7 +349,7 @@ function Sidebar({ location, ...props }) {
         })
       }}
       open={!isPermanent ? !isSidebarOpened : isSidebarOpened}
-      onClose={toggleDrawer(true)}
+      onClose={toggleDrawer}
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
@@ -367,7 +371,7 @@ function Sidebar({ location, ...props }) {
             location={location}
             isSidebarOpened={!isPermanent ? !isSidebarOpened : isSidebarOpened}
             {...link}
-            toggleDrawer={toggleDrawer(true)}
+            toggleDrawer={toggleDrawer}
           />
         ))}
       </List>

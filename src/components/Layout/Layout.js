@@ -65,7 +65,8 @@ import CreateProduct from "../../pages/ecommerce/CreateProduct";
 import Calendar from "../../pages/calendar";
 
 // context
-import { useLayoutState, useLayoutDispatch } from "../../context/LayoutContext";
+import {useLayoutState} from '../../context/LayoutContext'
+import { useThemeDispatch } from "../../context/ThemeContext";
 
 /* const useForceUpdate = () => {
   const [state, setState] = useState(false);
@@ -79,7 +80,7 @@ function Layout(props) {
 
   const handleChange = e => {
     localStorage.setItem("theme", e.target.value);
-    layoutDispatch({ type: "TOGGLE_COLOR_THEME", theme: e.target.value });
+    themeDispatch({ type: "TOGGLE_COLOR_THEME", theme: e.target.value });
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -97,7 +98,7 @@ function Layout(props) {
   }, []); */
   // global
   var layoutState = useLayoutState();
-  var layoutDispatch = useLayoutDispatch();
+  var themeDispatch = useThemeDispatch();
 
   return (
     <div className={classes.root}>
