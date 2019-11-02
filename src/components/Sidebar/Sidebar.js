@@ -205,6 +205,7 @@ const structure = [
     label: "Chat",
     type: "bottom_fixed",
     icon: <Chat />,
+    click: handleClick
   }
 ];
 

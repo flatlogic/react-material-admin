@@ -1,5 +1,4 @@
 import React from "react";
-import Themes from "../themes";
 
 var LayoutStateContext = React.createContext();
 var LayoutDispatchContext = React.createContext();
@@ -8,11 +7,6 @@ function layoutReducer(state, action) {
   switch (action.type) {
     case "TOGGLE_SIDEBAR":
       return { ...state, isSidebarOpened: !state.isSidebarOpened };
-    case "TOGGLE_COLOR_THEME":
-      return {
-        ...state,
-        theme: Themes[action.theme]
-      };
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -22,7 +16,6 @@ function layoutReducer(state, action) {
 function LayoutProvider({ children }) {
   var [state, dispatch] = React.useReducer(layoutReducer, {
     isSidebarOpened: true,
-    theme: Themes[localStorage.getItem("theme")] || Themes.default
   });
   return (
     <LayoutStateContext.Provider value={state}>

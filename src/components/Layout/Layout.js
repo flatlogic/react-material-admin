@@ -240,7 +240,7 @@ function Layout(props) {
                 </Typography>
                 <RadioGroup
                   aria-label="theme"
-                  value={localStorage.getItem("theme") || "default"}
+                  value={localStorage.getItem("theme")}
                   onChange={e => handleChange(e)}
                 >
                   <Box display="flex" justifyContent="space-between">

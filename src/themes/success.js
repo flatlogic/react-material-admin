@@ -1,13 +1,16 @@
 import tinycolor from "tinycolor2";
 
-const primary = "#81D4FA";
+const lightenRate = 7.5;
+const darkenRate = 15;
+
+const primary = tinycolor("3CD4A0")
+  .darken(darkenRate)
+  .toHexString();
 const secondary = "#FF5C93";
 const warning = "#FFC260";
 const success = "#3CD4A0";
 const info = "#9013FE";
 
-const lightenRate = 7.5;
-const darkenRate = 15;
 
 export default {
   palette: {
@@ -140,18 +143,6 @@ export default {
       },
       paddingCheckbox: {
         padding: "0 0 0 15px"
-      }
-    },
-    MuiCard: {
-      root: {
-        boxShadow:
-          "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
-      }
-    },
-    MuiPaper: {
-      root: {
-        boxShadow:
-          "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A !important"
       }
     },
     MuiFab: {

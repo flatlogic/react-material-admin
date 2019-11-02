@@ -35,9 +35,9 @@ export default makeStyles(theme => ({
     },
   },
   successRadio: {
-    color: "#81D4FA",
+    color: "#23a075",
     "&.MuiRadio-colorSecondary.Mui-checked": {
-      color: "#81D4FA",
+      color: "#23a075",
     },
   },
   secondaryRadio: {

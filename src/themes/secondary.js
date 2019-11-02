@@ -142,22 +142,6 @@ export default {
         padding: "0 0 0 15px"
       }
     },
-    MuiCard: {
-      root: {
-        boxShadow:
-          "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
-      }
-    },
-    MuiPaper: {
-      root: {
-        boxShadow:
-          "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A !important"
-      }
-    },
-    MuiFab: {
-      primary: {
-        color: "#fff"
-      }
-    }
+
   }
 };

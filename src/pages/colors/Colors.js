@@ -17,6 +17,9 @@ import Dot from "../../components/Sidebar/components/Dot";
 import Code from "../../components/Code";
 import { Typography, Button } from "../../components/Wrappers";
 
+//Theme
+import Theme from '../../themes/index'
+
 export default function ColorsComp() {
   const classes = useStyles();
   return (
@@ -47,7 +50,7 @@ export default function ColorsComp() {
                     <Code row>{`<Button color="primary">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>#536DFE</Code>
+                    <Code row>{Theme[localStorage.getItem('theme')].palette.primary.main}</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -59,7 +62,7 @@ export default function ColorsComp() {
                     <Code row>{`<Dot color="secondary">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>#FF5C93</Code>
+                    <Code row>{Theme[localStorage.getItem('theme')].palette.secondary.main}</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -71,7 +74,7 @@ export default function ColorsComp() {
                     <Code row>{`<Typography defaultColor="warning">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>#FFC260</Code>
+                    <Code row>{Theme[localStorage.getItem('theme')].palette.warning.main}</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -83,7 +86,7 @@ export default function ColorsComp() {
                     <Code row>{`<Notification color="success">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>#3CD4A0</Code>
+                    <Code row>{Theme[localStorage.getItem('theme')].palette.success.main}</Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -95,7 +98,7 @@ export default function ColorsComp() {
                     <Code row>{`<Icon color="info">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>#9013FE</Code>
+                    <Code row>{Theme[localStorage.getItem('theme')].palette.info.main}</Code>
                   </TableCell>
                 </TableRow>
               </TableBody>

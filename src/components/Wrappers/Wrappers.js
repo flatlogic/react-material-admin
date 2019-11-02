@@ -12,7 +12,7 @@ import {
   Link as LinkBase,
   CircularProgress as CircularProgressBase,
   LinearProgress as LinearProgressBase,
-  Radio as RadioBase,
+  Radio as RadioBase
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import classnames from "classnames";
@@ -26,8 +26,8 @@ const useStyles = makeStyles(theme => ({
     },
     minWidth: props => {
       if (!props.variant) return 16;
-    },
-  },
+    }
+  }
 }));
 
 function Badge({ children, colorBrightness, color, ...props }) {
@@ -36,8 +36,8 @@ function Badge({ children, colorBrightness, color, ...props }) {
   const Styled = createStyled({
     badge: {
       backgroundColor: getBackgroundColor(color, theme, colorBrightness),
-      color: "white",
-    },
+      color: "white"
+    }
   });
 
   return (
@@ -45,7 +45,7 @@ function Badge({ children, colorBrightness, color, ...props }) {
       {styledProps => (
         <BadgeBase
           classes={{
-            badge: classnames(classes.badge, styledProps.classes.badge),
+            badge: classnames(classes.badge, styledProps.classes.badge)
           }}
           {...props}
         >
@@ -61,8 +61,8 @@ function Chip({ colorBrightness, color, ...props }) {
   const Styled = createStyled({
     root: {
       backgroundColor: getBackgroundColor(color, theme, colorBrightness),
-      color: "white",
-    },
+      color: "white"
+    }
   });
 
   return (
@@ -70,7 +70,7 @@ function Chip({ colorBrightness, color, ...props }) {
       {styledProps => (
         <ChipBase
           classes={{
-            root: classnames(styledProps.classes.root),
+            root: classnames(styledProps.classes.root)
           }}
           {...props}
         />
@@ -95,13 +95,10 @@ function Typography({
   return (
     <TypographyBase
       style={{
-        color:
-          !defaultColor && color
-            ? getTextColor(color, theme)
-            : getBackgroundColor(defaultColor, theme, colorBrightness),
+        color: getBackgroundColor(color, theme, colorBrightness),
         fontWeight: getFontWeight(weight),
         fontSize: getFontSize(size, props.variant, theme),
-        textTransform: uppercase ? "uppercase" : "none",
+        textTransform: uppercase ? "uppercase" : "none"
       }}
       component={block ? "div" : "p"}
       {...props}
@@ -114,7 +111,7 @@ function Typography({
 function Button({ children, color, ...props }) {
   const useStyles = makeStyles(theme => ({
     root: {
-      color: getBackgroundColor(color, theme),
+      color: getBackgroundColor(color, theme)
     },
     contained: {
       backgroundColor: getBackgroundColor(color, theme),
@@ -122,25 +119,25 @@ function Button({ children, color, ...props }) {
       color: `${color ? "white" : theme.palette.text.primary} !important`,
       "&:hover": {
         backgroundColor: getBackgroundColor(color, theme, "light"),
-        boxShadow: theme.customShadows.widgetWide,
+        boxShadow: theme.customShadows.widgetWide
       },
       "&:active": {
-        boxShadow: theme.customShadows.widgetWide,
-      },
+        boxShadow: theme.customShadows.widgetWide
+      }
     },
     outlined: {
       color: getBackgroundColor(color, theme),
       borderColor: getBackgroundColor(color, theme),
       "&:hover": {
-        backgroundColor: getCustomBackgroundColor(color),
-      },
+        backgroundColor: getCustomBackgroundColor(color)
+      }
     },
     select: {
       backgroundColor: theme.palette.text.hint,
       "&:hover": {
-        backgroundColor: theme.palette.text.hint,
-      },
-    },
+        backgroundColor: theme.palette.text.hint
+      }
+    }
   }));
   const classes = useStyles();
 
@@ -149,12 +146,12 @@ function Button({ children, color, ...props }) {
       classes={{
         contained: classes.contained,
         root: classes.root,
-        outlined: classes.outlined,
+        outlined: classes.outlined
       }}
       {...props}
       className={classnames({
         [classes.select]: props.select,
-        [props.className]: true,
+        [props.className]: true
       })}
     >
       {children}
@@ -167,8 +164,8 @@ function Avatar({ children, color, colorBrightness, ...props }) {
 
   const Styled = createStyled({
     colorDefault: {
-      backgroundColor: getBackgroundColor(color, theme, colorBrightness),
-    },
+      backgroundColor: getBackgroundColor(color, theme, colorBrightness)
+    }
   });
 
   return (
@@ -188,8 +185,8 @@ function Tooltip({ children, color, ...props }) {
   const Styled = createStyled({
     tooltip: {
       backgroundColor: getBackgroundColor(color, theme),
-      color: "white",
-    },
+      color: "white"
+    }
   });
 
   return (
@@ -208,8 +205,8 @@ function Paper({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      backgroundColor: getBackgroundColor(color, theme),
-    },
+      backgroundColor: getBackgroundColor(color, theme)
+    }
   });
 
   return (
@@ -226,8 +223,8 @@ function Paper({ children, color, ...props }) {
 function AppBar({ children, color, ...props }) {
   const useStyles = makeStyles(theme => ({
     root: {
-      backgroundColor: getBackgroundColor(color, theme),
-    },
+      backgroundColor: getBackgroundColor(color, theme)
+    }
   }));
 
   const classes = useStyles();
@@ -244,8 +241,8 @@ function Link({ children, color, ...props }) {
     root: {
       color: color
         ? `${getBackgroundColor(color, theme)} !important`
-        : theme.palette.text.primary,
-    },
+        : theme.palette.text.primary
+    }
   }));
 
   const classes = useStyles();
@@ -262,8 +259,8 @@ function CircularProgress({ children, color, ...props }) {
     root: {
       color: color
         ? `${getBackgroundColor(color, theme)} !important`
-        : theme.palette.primary.main,
-    },
+        : theme.palette.primary.main
+    }
   }));
 
   const classes = useStyles();
@@ -280,13 +277,13 @@ function LinearProgress({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      backgroundColor: getCustomBackgroundColor(color),
+      backgroundColor: getCustomBackgroundColor(color)
     },
     bar: {
       backgroundColor: color
         ? `${getBackgroundColor(color, theme)} !important`
-        : theme.palette.primary.main,
-    },
+        : theme.palette.primary.main
+    }
   });
 
   return (
@@ -310,10 +307,10 @@ function Radio({ children, color, ...props }) {
     root: {
       color: "green",
       "&$checked": {
-        color: "green",
-      },
+        color: "green"
+      }
     },
-    checked: {},
+    checked: {}
     // '&.Mui-checked': {
     // color: theme.palette[color].main
     // },
@@ -329,7 +326,7 @@ function Radio({ children, color, ...props }) {
         <RadioBase
           classes={{
             root: classes.root,
-            checked: classes.checked,
+            checked: classes.checked
           }}
           {...props}
         />
@@ -350,7 +347,7 @@ export {
   Link,
   CircularProgress,
   LinearProgress,
-  Radio,
+  Radio
 };
 
 // ########################################################################

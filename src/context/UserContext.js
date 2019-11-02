@@ -17,7 +17,7 @@ function userReducer(state, action) {
 
 function UserProvider({ children }) {
   var [state, dispatch] = React.useReducer(userReducer, {
-    isAuthenticated: !!localStorage.getItem("id_token"),
+    isAuthenticated: !!localStorage.getItem("id_token")
   });
 
   return (
@@ -56,6 +56,8 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
   if (!!login && !!password) {
     setTimeout(() => {
       localStorage.setItem("id_token", "1");
+      // Setting up a default theme
+      localStorage.setItem("theme", "default");
       dispatch({ type: "LOGIN_SUCCESS" });
       setError(null);
       setIsLoading(false);
