@@ -26,7 +26,7 @@ export default function Error() {
       <Paper classes={{ root: classes.paperRoot }}>
         <Typography
           variant="h1"
-          defaultColor="primary"
+          color="primary"
           className={classnames(classes.textRow, classes.errorCode)}
         >
           404

@@ -256,7 +256,7 @@ function Login(props) {
             </React.Fragment>
           )}
         </div>
-        <Typography defaultColor="primary" className={classes.copyright}>
+        <Typography color="primary" className={classes.copyright}>
           © 2014-2019 Flatlogic, LLC. All rights reserved.
         </Typography>
       </div>

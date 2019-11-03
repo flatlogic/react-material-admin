@@ -11,7 +11,6 @@ const warning = "#FFC260";
 const success = "#3CD4A0";
 const info = "#9013FE";
 
-
 export default {
   palette: {
     primary: {
@@ -143,11 +142,6 @@ export default {
       },
       paddingCheckbox: {
         padding: "0 0 0 15px"
-      }
-    },
-    MuiFab: {
-      primary: {
-        color: "#fff"
       }
     }
   }

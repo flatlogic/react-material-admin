@@ -13,6 +13,7 @@ const Pagination = ({ ...props }) => {
         pageLinkClassName={classes.link}
         activeLinkClassName={classes.activeLink}
         previousClassName={classes.prev}
+        nextClassName={classes.next}
         {...props}
       />
     </div>

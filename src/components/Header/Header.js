@@ -233,7 +233,7 @@ export default function Header(props) {
             <Typography
               className={classes.profileMenuLink}
               component="a"
-              defaultColor="secondary"
+              color="secondary"
             >
               {messages.length} New Messages
             </Typography>

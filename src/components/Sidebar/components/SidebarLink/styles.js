@@ -62,9 +62,5 @@ export default makeStyles(theme => ({
     color: theme.palette.text.secondary + "99",
     transition: theme.transitions.create("transform"),
     display: props => (props ? "inline-block" : "none")
-  },
-  bottomFixed: {
-    marginTop: theme.spacing(50),
-    borderTop: "1px solid #D8D8D880"
   }
 }));

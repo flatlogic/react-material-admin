@@ -3,7 +3,6 @@ import {
   Drawer,
   IconButton,
   List,
-  Fab,
   Box,
   Popover,
   TextField as Input
@@ -22,10 +21,10 @@ import {
   Description as DescriptionIcon,
   ShoppingCart as ShoppingCartIcon,
   StarBorder as ExtraIcon,
-  Add as AddIcon,
-  Chat as ChatIcon
+  Chat as ChatIcon,
+  AddCircle as AddSectionIcon
 } from "@material-ui/icons";
-import { useTheme } from "@material-ui/styles";
+import { useTheme, makeStyles } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
 import classNames from "classnames";
 
@@ -200,21 +199,22 @@ const structure = [
     icon: <AddSection />
   },
   { id: 24, type: "divider" },
+  { id: 25, type: "margin" },
+  { id: 26, type: "divider" },
   {
-    id: 25,
+    id: 27,
     label: "Chat",
-    type: "bottom_fixed",
     icon: <Chat />,
-    click: handleClick
+    click: AddASection
   }
 ];
 
 function handleClick() {
-  alert('13')
+  alert("13");
 }
 
 function Chat() {
-  const classes = useStyles();
+  const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const open = Boolean(anchorEl);
@@ -226,21 +226,41 @@ function Chat() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const useStyles = makeStyles(theme => ({
+    root: {
+      backgroundColor: theme.palette.primary.main,
+      borderRadius: "50%",
+      height: 50,
+      width: 50,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      color: "#fff"
+    }
+  }));
+
+  const classes = useStyles();
+
   return (
     <>
-      <Fab
-        color="secondary"
-        aria-label="chat"
-        onClick={e => handleClick(e)}
-        className={classes.chat}
-      >
+      <section className={classes.root}>
         <ChatIcon />
-      </Fab>
+      </section>
     </>
   );
 }
 
 function AddSection() {
+  const theme = useTheme();
+  return (
+    <AddSectionIcon
+      style={{ color: theme.palette.secondary.main, fontSize: 45 }}
+    />
+  );
+}
+
+function AddASection(e) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -255,14 +275,6 @@ function AddSection() {
   };
   return (
     <>
-      <Fab
-        color="primary"
-        aria-label="add"
-        className={classes.fab}
-        onClick={e => handleClick(e)}
-      >
-        <AddIcon />
-      </Fab>
       <Popover
         id={id}
         open={open}
@@ -350,7 +362,7 @@ function Sidebar({ location, ...props }) {
         })
       }}
       open={!isPermanent ? !isSidebarOpened : isSidebarOpened}
-      onClose={toggleDrawer}
+      onClose={toggleDrawer(true)}
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
@@ -364,7 +376,7 @@ function Sidebar({ location, ...props }) {
       </div>
       <List
         className={classes.sidebarList}
-        classes={{ padding: classes.noPadding }}
+        classes={{ padding: classes.padding }}
       >
         {structure.map(link => (
           <SidebarLink
@@ -372,7 +384,7 @@ function Sidebar({ location, ...props }) {
             location={location}
             isSidebarOpened={!isPermanent ? !isSidebarOpened : isSidebarOpened}
             {...link}
-            toggleDrawer={toggleDrawer}
+            toggleDrawer={toggleDrawer(true)}
           />
         ))}
       </List>

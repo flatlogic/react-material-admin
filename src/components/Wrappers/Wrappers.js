@@ -84,7 +84,6 @@ function Typography({
   weight,
   size,
   colorBrightness,
-  defaultColor,
   color,
   block,
   uppercase,

@@ -31,6 +31,7 @@ export default function SidebarLink({
   nested,
   type,
   toggleDrawer,
+  click,
   ...props
 }) {
   // local
@@ -52,6 +53,7 @@ export default function SidebarLink({
 
   if (type === "divider") return <Divider className={classes.divider} />;
 
+  if (type === "margin") return <section style={{ marginTop: 240 }}></section>;
 
   if (!children)
     return (
@@ -61,9 +63,7 @@ export default function SidebarLink({
         button
         component={link && Link}
         to={link}
-        className={classnames(classes.link, {
-          [classes.bottomFixed]: type === "bottom_fixed"
-        })}
+        className={classes.link}
         classes={{
           root: classnames(classes.linkRoot, {
             [classes.linkActive]: isLinkActive && !nested,
@@ -91,8 +91,6 @@ export default function SidebarLink({
         />
       </ListItem>
     );
-
-
 
   return (
     <>
@@ -140,7 +138,7 @@ export default function SidebarLink({
           <List
             component="div"
             disablePadding
-            onClick={toggleDrawer}
+            onClick={click || toggleDrawer}
             onKeyPress={toggleDrawer}
           >
             {children.map(childrenLink => (

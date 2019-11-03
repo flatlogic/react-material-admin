@@ -8,11 +8,11 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
+  ListItemText
 } from "@material-ui/core";
 import {
   BorderAll as GridIcon,
-  FormatAlignJustify as RowIcon,
+  FormatAlignJustify as RowIcon
 } from "@material-ui/icons";
 import useStyles from "./styles";
 
@@ -29,10 +29,9 @@ import Widget from "../../components/Widget";
 import Pagination from "../../components/Pagination";
 
 export default function SearchComp() {
-  console.log(`&{3+5}`);
   const [select, setSelect] = React.useState({
     row: true,
-    grid: false,
+    grid: false
   });
   const [popularField, setValues] = React.useState("Popular");
   const [timeField, setTimeField] = React.useState("All Time");
@@ -45,7 +44,7 @@ export default function SearchComp() {
   const toggleSelect = () => {
     setSelect(prevState => ({
       row: !prevState.row,
-      grid: !prevState.grid,
+      grid: !prevState.grid
     }));
   };
   const classes = useStyles();
@@ -360,7 +359,7 @@ export default function SearchComp() {
               </Widget>
               <Pagination
                 pageCount={10}
-                previousLabel={`<`}
+                previousLabel={"<"}
                 nextLabel={">"}
                 initialPage={1}
               />

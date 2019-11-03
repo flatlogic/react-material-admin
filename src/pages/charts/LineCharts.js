@@ -68,11 +68,6 @@ function getNewSeries(baseval, yrange) {
   });
 }
 
-function resetData() {
-  // Alternatively, you can also reset the data at certain intervals to prevent creating a huge series
-  data = data.slice(data.length - 10, data.length);
-}
-
 //Zoomable Timeseries
 var ts2 = 1484418600000;
 var dates = [];
@@ -300,9 +295,15 @@ const values = {
 };
 
 export default function Charts(props) {
+  const [_isMounted, setMounted] = React.useState(true)
   useEffect(() => {
+    if(_isMounted) {
     intervals();
-    return resetData;
+    }
+    return function cleanup() {
+      data = data.slice(data.length - 10, data.length);
+      setMounted(false)
+    };
   });
   const theme = useTheme();
   const [state] = useState(values);

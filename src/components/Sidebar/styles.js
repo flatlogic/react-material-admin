@@ -83,7 +83,7 @@ export default makeStyles(theme => ({
     width: 45,
     height: 45
   },
-  noPadding: {
-    padding: 0
+  padding: {
+    paddingBottom: theme.spacing(2)
   }
 }));

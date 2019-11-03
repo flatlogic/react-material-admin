@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 const rotate = keyframes`
   from {
-    transform: scale(.5);
+    transform: scale(.7);
   }
   to {
     transform: scale(1);

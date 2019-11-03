@@ -50,7 +50,7 @@ export default function BigStat(props) {
           <Typography size="xxl" color="text" colorBrightness="secondary">
             {total[value]}
           </Typography>
-          <Typography defaultColor={total.percent.profit ? "success" : "error"}>
+          <Typography color={total.percent.profit ? "success" : "error"}>
             &nbsp;{total.percent.profit ? "+" : "-"}
             {total.percent.value}%
           </Typography>
