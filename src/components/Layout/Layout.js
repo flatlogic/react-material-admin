@@ -6,7 +6,7 @@ import {
   mdiSettings as SettingsIcon,
   mdiFacebookBox as FacebookIcon,
   mdiTwitterBox as TwitterIcon,
-  mdiGithubBox as GithubIcon,
+  mdiGithubBox as GithubIcon
 } from "@mdi/js";
 import {
   Grow,
@@ -17,7 +17,15 @@ import {
   RadioGroup,
   Box,
   Radio,
+  Grid,
+  Breadcrumbs,
+  Tabs,
+  Tab
 } from "@material-ui/core";
+import {
+  NavigateNext as NavigateNextIcon,
+  CalendarToday as CalendarIcon
+} from "@material-ui/icons";
 
 // styles
 import useStyles from "./styles";
@@ -26,8 +34,10 @@ import useStyles from "./styles";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
 import Footer from "../Footer";
-import { Link, Typography } from "../../components/Wrappers";
+import Widget from "../Widget";
+import { Link, Typography, Button } from "../../components/Wrappers";
 import { Pop } from "./LayoutView";
+import SidebarStructure from "../Sidebar/SidebarStructure";
 
 // pages
 import Dashboard from "../../pages/dashboard";
@@ -40,17 +50,17 @@ import LineCharts from "../../pages/charts/LineCharts";
 import BarCharts from "../../pages/charts/BarCharts";
 import PieCharts from "../../pages/charts/PieCharts";
 import Colors from "../../pages/colors";
-import Grid from "../../pages/grid";
+import GridPage from "../../pages/grid";
 import Badge from "../../pages/badge";
 import Carousel from "../../pages/сarousel";
 import Modal from "../../pages/modal";
 import Navbar from "../../pages/nav/Navbar";
 import Tooltips from "../../pages/tooltips";
-import Tabs from "../../pages/tabs";
+import TabsPage from "../../pages/tabs";
 import FormsElements from "../../pages/forms/elements";
 import Cards from "../../pages/cards";
 import DynamicTables from "../../pages/tables/dynamic";
-import Widget from "../../pages/widget";
+import WidgetPage from "../../pages/widget";
 import Progress from "../../pages/progress";
 import Ecommerce from "../../pages/ecommerce";
 import Product from "../../pages/ecommerce/Products";
@@ -65,7 +75,7 @@ import CreateProduct from "../../pages/ecommerce/CreateProduct";
 import Calendar from "../../pages/calendar";
 
 // context
-import {useLayoutState} from '../../context/LayoutContext'
+import { useLayoutState } from "../../context/LayoutContext";
 import { useThemeDispatch } from "../../context/ThemeContext";
 
 /* const useForceUpdate = () => {
@@ -75,6 +85,7 @@ import { useThemeDispatch } from "../../context/ThemeContext";
 
 function Layout(props) {
   var classes = useStyles();
+  const [value, setValue] = React.useState(0);
   const [state, setState] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -100,6 +111,10 @@ function Layout(props) {
   var layoutState = useLayoutState();
   var themeDispatch = useThemeDispatch();
 
+  const handleChangeValue = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div className={classes.root}>
       <>
@@ -108,14 +123,88 @@ function Layout(props) {
         <Grow in={state} style={{ transformOrigin: "0 0 0" }}>
           <div
             className={classnames(classes.content, {
-              [classes.contentShift]: layoutState.isSidebarOpened,
+              [classes.contentShift]: layoutState.isSidebarOpened
             })}
           >
             <div className={classes.fakeToolbar} />
+            <Widget disableWidgetMenu inheritHeight>
+              <Grid
+                container
+                direction="row"
+                justify="space-between"
+                alignItems="center"
+              >
+                {SidebarStructure.map(c => {
+                  if (
+                    !c.children &&
+                    window.location.hash.includes(c.link) &&
+                    c.link
+                  ) {
+                    return (
+                      <Box display="flex" alignItems="center" key={c.id}>
+                        <Breadcrumbs
+                          separator=" "
+                          aria-label="breadcrumb"
+                        >
+                          <Typography variant="h5">{c.label}</Typography>
+                        </Breadcrumbs>
+                        {window.location.hash.includes("/app/dashboard") && (
+                          <Tabs
+                            value={value}
+                            indicatorColor="primary"
+                            textColor="primary"
+                            onChange={handleChangeValue}
+                            aria-label="Dashboard"
+                            style={{marginLeft: 38}}
+                          >
+                            <Tab label="Today" className={classes.tab} />
+                            <Tab label="This week" className={classes.tab} />
+                            <Tab label="This month" className={classes.tab} />
+                            <Tab label="This year" className={classes.tab} />
+                          </Tabs>
+                        )}
+                      </Box>
+                    );
+                  } else if (c.children) {
+                    return c.children.map(currentInner => {
+                      if (window.location.hash.includes(currentInner.link)) {
+                        return (
+                          <Breadcrumbs
+                            separator={<NavigateNextIcon fontSize="small" />}
+                            aria-label="breadcrumb"
+                            key={c.id}
+                          >
+                            <Typography>{c.label}</Typography>
+                            <Typography color="primary">
+                              {currentInner.label}
+                            </Typography>
+                          </Breadcrumbs>
+                        );
+                      }
+                    });
+                  }
+                })}
+                {window.location.hash.includes("/app/dashboard") && (
+                  <Box display="flex">
+                    <Box display="flex" alignItems="center">
+                      <CalendarIcon style={{marginRight: 14}}/>
+                      <Typography style={{marginRight: 38}}>29 Oct 2019, Tuesday</Typography>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        className={classes.button}
+                      >
+                        Latest Reports
+                      </Button>
+                    </Box>
+                  </Box>
+                )}
+              </Grid>
+            </Widget>
             <Switch>
               <Route path="/app/dashboard" component={Dashboard} />
               <Route path="/app/core/typography" component={TypographyPage} />
-              <Route path="/app/core/grid" component={Grid} />
+              <Route path="/app/core/grid" component={GridPage} />
               <Route path="/app/ui/notifications" component={Notifications} />
               <Route path="/app/forms/elements" component={FormsElements} />
               <Route path="/app/ui/badge" component={Badge} />
@@ -123,9 +212,9 @@ function Layout(props) {
               <Route path="/app/ui/modal" component={Modal} />
               <Route path="/app/ui/navbar" component={Navbar} />
               <Route path="/app/ui/tooltips" component={Tooltips} />
-              <Route path="/app/ui/tabs" component={Tabs} />
+              <Route path="/app/ui/tabs" component={TabsPage} />
               <Route path="/app/ui/cards" component={Cards} />
-              <Route path="/app/ui/widget" component={Widget} />
+              <Route path="/app/ui/widget" component={WidgetPage} />
               <Route path="/app/ui/progress" component={Progress} />
               <Route path="/app/tables/static" component={Tables} />
               <Route path="/app/tables/dynamic" component={DynamicTables} />
@@ -221,11 +310,11 @@ function Layout(props) {
               onClose={handleClose}
               anchorOrigin={{
                 vertical: "bottom",
-                horizontal: "center",
+                horizontal: "center"
               }}
               transformOrigin={{
                 vertical: "top",
-                horizontal: "center",
+                horizontal: "center"
               }}
             >
               <Box

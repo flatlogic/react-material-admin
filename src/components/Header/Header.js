@@ -6,7 +6,7 @@ import {
   InputBase,
   Menu,
   MenuItem,
-  Fab
+  Fab,
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import {
@@ -20,11 +20,14 @@ import {
 } from "@material-ui/icons";
 import classNames from "classnames";
 
+//images
+import profile from "../../images/main-profile.png";
+
 // styles
 import useStyles from "./styles";
 
 // components
-import { Badge, Typography } from "../Wrappers/Wrappers";
+import { Badge, Typography, Avatar } from "../Wrappers/Wrappers";
 import Notification from "../Notification/Notification";
 import UserAvatar from "../UserAvatar/UserAvatar";
 
@@ -207,15 +210,22 @@ export default function Header(props) {
             <MailIcon classes={{ root: classes.headerIcon }} />
           </Badge>
         </IconButton>
-        <IconButton
-          aria-haspopup="true"
-          color="inherit"
-          className={classes.headerMenuButton}
-          aria-controls="profile-menu"
-          onClick={e => setProfileMenu(e.currentTarget)}
-        >
-          <AccountIcon classes={{ root: classes.headerIcon }} />
-        </IconButton>
+          <IconButton
+            aria-haspopup="true"
+            color="inherit"
+            className={classes.headerMenuButton}
+            aria-controls="profile-menu"
+            onClick={e => setProfileMenu(e.currentTarget)}
+          >
+            <Avatar
+              alt="Robert Cotton"
+              src={profile}
+              classes={{ root: classes.headerIcon }}
+            />
+          </IconButton>
+          <Typography block variant="body2" style={{display: 'flex', alignItems: 'center', marginLeft: 8}}>
+            Hi, <Typography variant="body2" style={{marginLeft: 4, fontWeight: 600}}>Robert Cotton</Typography>
+          </Typography>
         <Menu
           id="mail-menu"
           open={Boolean(mailMenu)}
@@ -300,7 +310,7 @@ export default function Header(props) {
         >
           <div className={classes.profileMenuUser}>
             <Typography variant="h4" weight="medium">
-              John Smith
+              Robert Cotton
             </Typography>
             <Typography
               className={classes.profileMenuLink}

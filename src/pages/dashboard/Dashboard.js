@@ -5,6 +5,7 @@ import {
   Select,
   OutlinedInput,
   MenuItem,
+  Box
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import {
@@ -18,7 +19,7 @@ import {
   Pie,
   Cell,
   YAxis,
-  XAxis,
+  XAxis
 } from "recharts";
 
 // styles
@@ -38,7 +39,30 @@ const PieChartData = [
   { name: "Group A", value: 400, color: "primary" },
   { name: "Group B", value: 300, color: "secondary" },
   { name: "Group C", value: 300, color: "warning" },
-  { name: "Group D", value: 200, color: "success" },
+  { name: "Group D", value: 200, color: "success" }
+];
+
+const TicketChartData = [
+  { name: "Cliend 1", value: 2, color: "primary" },
+  { name: "Cliend 2", value: 2, color: "primary" },
+  { name: "Cliend 3", value: 2, color: "primary" },
+  { name: "Cliend 4", value: 2, color: "primary" },
+  { name: "Cliend 5", value: 2, color: "primary" },
+  { name: "Cliend 6", value: 2, color: "primary" },
+  { name: "Cliend 7", value: 2, color: "primary" },
+  { name: "Cliend 8", value: 2, color: "primary" },
+  { name: "Cliend 9", value: 2, color: "primary" },
+  { name: "Cliend 10", value: 2, color: "primary" },
+  { name: "Cliend 11", value: 2, color: "primary" },
+  { name: "Cliend 12", value: 2, color: "primary" },
+  { name: "Cliend 13", value: 2, color: "primary" },
+  { name: "Cliend 14", value: 2, color: "primary" },
+  { name: "Cliend 15", value: 2, color: "primary" },
+  { name: "Cliend 16", value: 2, color: "primary" },
+  { name: "Cliend 17", value: 2, color: "primary" },
+  { name: "Cliend 18", value: 2, color: "primary" },
+  { name: "Cliend 19", value: 2, color: "primary" },
+  { name: "Cliend 20", value: 2, color: "primary" }
 ];
 
 export default function Dashboard(props) {
@@ -50,39 +74,42 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <PageTitle title="Dashboard" button="Latest Reports" />
+      <PageTitle title="Dashboard"/>
       <Grid container spacing={4}>
         <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget
-            title="Visits Today"
+            title="Support Tracker"
             upperTitle
             bodyClass={classes.fullHeightBody}
             className={classes.card}
           >
             <div className={classes.visitsNumberContainer}>
-              <Typography size="xl" weight="medium">
-                12, 678
+              <Typography variant="h4" weight="medium">
+                543
               </Typography>
-              <LineChart
-                width={55}
-                height={30}
-                data={[
-                  { value: 10 },
-                  { value: 15 },
-                  { value: 10 },
-                  { value: 17 },
-                  { value: 18 },
-                ]}
-                margin={{ left: theme.spacing(2) }}
-              >
-                <Line
-                  type="natural"
-                  dataKey="value"
-                  stroke={theme.palette.success.main}
-                  strokeWidth={2}
-                  dot={false}
-                />
-              </LineChart>
+              <Typography variant="caption" style={{marginLeft: 8, marginTop: 6}}>
+                Tickets
+              </Typography>
+              <ResponsiveContainer width="100%" height={80}>
+                  <PieChart>
+                    <Pie
+                      data={TicketChartData}
+                      innerRadius={25}
+                      outerRadius={40}
+                      startAngle={270}
+                      endAngle={0}
+                      paddingAngle={5}
+                      dataKey="value"
+                    >
+                      {TicketChartData.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={theme.palette[entry.color].main}
+                        />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
             </div>
             <Grid
               container
@@ -91,22 +118,71 @@ export default function Dashboard(props) {
               alignItems="center"
             >
               <Grid item>
-                <Typography color="text" colorBrightness="secondary">
-                  Registrations
+                <Typography color="hint">
+                  New Tickets
                 </Typography>
-                <Typography size="md">860</Typography>
+                <Box display="flex" alignItems="center">
+                <Typography size="md" style={{marginRight: 8}}>45</Typography>
+                <Dot color="success" />
+                </Box>
               </Grid>
               <Grid item>
-                <Typography color="text" colorBrightness="secondary">
-                  Sign Out
+                <Typography color="hint">
+                  Open
                 </Typography>
-                <Typography size="md">32</Typography>
+                <Box display="flex" alignItems="center">
+                <Typography size="md" style={{marginRight: 8}}>147</Typography>
+                <Dot color="warning" />
+                </Box>
               </Grid>
               <Grid item>
-                <Typography color="text" colorBrightness="secondary">
-                  Rate
+                <Typography color="hint">
+                  Completed
                 </Typography>
-                <Typography size="md">3.25%</Typography>
+                <Box display="flex" alignItems="center">
+                <Typography size="md" style={{marginRight: 8}}>351</Typography>
+                <Dot color="primary" />
+                </Box>
+              </Grid>
+            </Grid>
+          </Widget>
+        </Grid>
+        <Grid item lg={3} md={4} sm={6} xs={12}>
+          <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <ResponsiveContainer width="100%" height={144}>
+                  <PieChart>
+                    <Pie
+                      data={PieChartData}
+                      innerRadius={25}
+                      outerRadius={40}
+                      dataKey="value"
+                    >
+                      {PieChartData.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={theme.palette[entry.color].main}
+                        />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
+              </Grid>
+              <Grid item xs={6}>
+                <div className={classes.pieChartLegendWrapper}>
+                  {PieChartData.map(({ name, value, color }, index) => (
+                    <div key={color} className={classes.legendItemContainer}>
+                      <Dot color={color} />
+                      <Typography style={{ whiteSpace: "nowrap" }}>
+                        &nbsp;{name}&nbsp;
+                      </Typography>
+                      <Typography color="text" colorBrightness="secondary">
+                        &nbsp;{value}
+                      </Typography>
+                    </div>
+                  ))}
+                </div>
               </Grid>
             </Grid>
           </Widget>
@@ -252,46 +328,6 @@ export default function Dashboard(props) {
             </div>
           </Widget>
         </Grid>
-        <Grid item lg={3} md={4} sm={6} xs={12}>
-          <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-                <ResponsiveContainer width="100%" height={144}>
-                  <PieChart>
-                    <Pie
-                      data={PieChartData}
-                      innerRadius={25}
-                      outerRadius={40}
-                      dataKey="value"
-                    >
-                      {PieChartData.map((entry, index) => (
-                        <Cell
-                          key={`cell-${index}`}
-                          fill={theme.palette[entry.color].main}
-                        />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
-              </Grid>
-              <Grid item xs={6}>
-                <div className={classes.pieChartLegendWrapper}>
-                  {PieChartData.map(({ name, value, color }, index) => (
-                    <div key={color} className={classes.legendItemContainer}>
-                      <Dot color={color} />
-                      <Typography style={{ whiteSpace: "nowrap" }}>
-                        &nbsp;{name}&nbsp;
-                      </Typography>
-                      <Typography color="text" colorBrightness="secondary">
-                        &nbsp;{value}
-                      </Typography>
-                    </div>
-                  ))}
-                </div>
-              </Grid>
-            </Grid>
-          </Widget>
-        </Grid>
         <Grid item xs={12}>
           <Widget
             bodyClass={classes.mainChartBody}
@@ -332,7 +368,7 @@ export default function Dashboard(props) {
                       labelWidth={0}
                       classes={{
                         notchedOutline: classes.mainChartSelectRoot,
-                        input: classes.mainChartSelect,
+                        input: classes.mainChartSelect
                       }}
                     />
                   }
@@ -385,7 +421,7 @@ export default function Dashboard(props) {
                   dot={{
                     stroke: theme.palette.warning.dark,
                     strokeWidth: 2,
-                    fill: theme.palette.warning.main,
+                    fill: theme.palette.warning.main
                   }}
                 />
               </ComposedChart>
@@ -444,7 +480,7 @@ function getMainChartData() {
     resultArray.push({
       tablet: tablet[i].value,
       desktop: desktop[i].value,
-      mobile: mobile[i].value,
+      mobile: mobile[i].value
     });
   }
 
