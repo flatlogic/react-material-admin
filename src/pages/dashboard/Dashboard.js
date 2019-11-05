@@ -83,13 +83,18 @@ export default function Dashboard(props) {
             bodyClass={classes.fullHeightBody}
             className={classes.card}
           >
-            <div className={classes.visitsNumberContainer}>
+            <Grid container spacing={2} alignItems="center">
+              <Grid item xs={6}>
+              <Box display="flex">
               <Typography variant="h4" weight="medium">
                 543
               </Typography>
-              <Typography variant="caption" style={{marginLeft: 8, marginTop: 6}}>
+              <Typography variant="caption" style={{marginLeft: 8, marginTop: 8}}>
                 Tickets
               </Typography>
+              </Box>
+              </Grid>
+              <Grid item xs={6}>
               <ResponsiveContainer width="100%" height={80}>
                   <PieChart>
                     <Pie
@@ -99,6 +104,8 @@ export default function Dashboard(props) {
                       startAngle={270}
                       endAngle={0}
                       paddingAngle={5}
+                      innerRadius={15}
+                      outerRadius={25}
                       dataKey="value"
                     >
                       {TicketChartData.map((entry, index) => (
@@ -110,7 +117,8 @@ export default function Dashboard(props) {
                     </Pie>
                   </PieChart>
                 </ResponsiveContainer>
-            </div>
+                </Grid>
+                </Grid>
             <Grid
               container
               direction="row"
@@ -122,7 +130,7 @@ export default function Dashboard(props) {
                   New Tickets
                 </Typography>
                 <Box display="flex" alignItems="center">
-                <Typography size="md" style={{marginRight: 8}}>45</Typography>
+                <Typography size="md" style={{marginRight: 8, fontWeight: 500}}>45</Typography>
                 <Dot color="success" />
                 </Box>
               </Grid>
@@ -131,7 +139,7 @@ export default function Dashboard(props) {
                   Open
                 </Typography>
                 <Box display="flex" alignItems="center">
-                <Typography size="md" style={{marginRight: 8}}>147</Typography>
+                <Typography size="md" style={{marginRight: 8, fontWeight: 500}}>147</Typography>
                 <Dot color="warning" />
                 </Box>
               </Grid>
@@ -140,7 +148,7 @@ export default function Dashboard(props) {
                   Completed
                 </Typography>
                 <Box display="flex" alignItems="center">
-                <Typography size="md" style={{marginRight: 8}}>351</Typography>
+                <Typography size="md" style={{marginRight: 8, fontWeight: 500}}>351</Typography>
                 <Dot color="primary" />
                 </Box>
               </Grid>
@@ -155,7 +163,7 @@ export default function Dashboard(props) {
                   <PieChart>
                     <Pie
                       data={PieChartData}
-                      innerRadius={25}
+                      innerRadius={30}
                       outerRadius={40}
                       dataKey="value"
                     >
@@ -173,11 +181,11 @@ export default function Dashboard(props) {
                 <div className={classes.pieChartLegendWrapper}>
                   {PieChartData.map(({ name, value, color }, index) => (
                     <div key={color} className={classes.legendItemContainer}>
-                      <Dot color={color} />
-                      <Typography style={{ whiteSpace: "nowrap" }}>
+                      <Dot color={color}/>
+                      <Typography color="hint" noWrap>
                         &nbsp;{name}&nbsp;
                       </Typography>
-                      <Typography color="text" colorBrightness="secondary">
+                      <Typography color="text" colorBrightness="secondary" style={{fontWeight: 500}}>
                         &nbsp;{value}
                       </Typography>
                     </div>
@@ -198,7 +206,7 @@ export default function Dashboard(props) {
               <div className={classes.legendElement}>
                 <Dot color="warning" />
                 <Typography
-                  color="text"
+                  color="hint"
                   colorBrightness="secondary"
                   className={classes.legendElementText}
                 >
@@ -208,7 +216,7 @@ export default function Dashboard(props) {
               <div className={classes.legendElement}>
                 <Dot color="primary" />
                 <Typography
-                  color="text"
+                  color="hint"
                   colorBrightness="secondary"
                   className={classes.legendElementText}
                 >

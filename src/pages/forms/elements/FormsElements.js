@@ -95,27 +95,29 @@ export default function TooltipsComp() {
       <PageTitle title="Forms" />
       <Grid container spacing={6}>
         <Grid item md={6} xs={12}>
-          <Widget title="Inputs" disableWidgetMenu inheritHeight>
+          <Widget title="Horizontal form" disableWidgetMenu inheritHeight>
             <Grid container direction={"column"} spacing={3}>
               <Grid item container alignItems={"center"}>
-                <Grid md={2} xs={6}>
+                <Grid item xs={6}>
                   <Typography variant={"body1"}>Normal field</Typography>
                 </Grid>
-                <Grid>
+                <Grid xs={6} item>
                   <Input
                     id="component-helper"
                     placeholder={"May have placeholder"}
+                    style={{width: '100%'}}
                   />
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
-                <Grid md={2} xs={6}>
+                <Grid item xs={6}>
                   <Typography variant={"body1"}>Label hint</Typography>
                 </Grid>
-                <Grid>
+                <Grid xs={6} item>
                   <Input
                     id="component-helper"
                     aria-describedby="component-helper-text"
+                    style={{width: '100%'}}
                   />
                   <FormHelperText id="component-helper-text">
                     Some important helper text
@@ -123,30 +125,31 @@ export default function TooltipsComp() {
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
-                <Grid md={2} xs={6}>
+                <Grid item xs={6}>
                   <Typography variant={"body1"}>Disabled input</Typography>
                 </Grid>
-                <Grid>
+                <Grid item xs={6}>
                   <Input
                     disabled
                     defaultValue={"Default value"}
                     id="component-helper"
+                    style={{width: '100%'}}
                   />
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
-                <Grid md={2} xs={6}>
+                <Grid item xs={6}>
                   <Typography variant={"body1"}>Max length</Typography>
                 </Grid>
-                <Grid>
-                  <Input id="component-helper" inputProps={{ maxLength: 3 }} />
+                <Grid item xs={6}>
+                  <Input id="component-helper" inputProps={{ maxLength: 3 }} style={{width:'100%'}}/>
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
-                <Grid md={2} xs={6}>
+                <Grid item xs={6}>
                   <Typography variant={"body1"}>Prepended input</Typography>
                 </Grid>
-                <Grid>
+                <Grid item xs={6}>
                   <Input
                     id="component-helper"
                     InputProps={{
@@ -156,14 +159,15 @@ export default function TooltipsComp() {
                         </InputAdornment>
                       ),
                     }}
+                    style={{width: '100%'}}
                   />
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
-                <Grid md={2} xs={6}>
+                <Grid item xs={6}>
                   <Typography variant={"body1"}>Password</Typography>
                 </Grid>
-                <Grid>
+                <Grid item xs={6}>
                   <Input
                     id="component-helper"
                     InputProps={{
@@ -173,14 +177,15 @@ export default function TooltipsComp() {
                         </InputAdornment>
                       ),
                     }}
+                    style={{width: '100%'}}
                   />
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
-                <Grid md={2} xs={6}>
+                <Grid item xs={6}>
                   <Typography variant={"body1"}>Appended input</Typography>
                 </Grid>
-                <Grid>
+                <Grid item xs={6}>
                   <Input
                     id="component-helper"
                     InputProps={{
@@ -188,14 +193,15 @@ export default function TooltipsComp() {
                         <InputAdornment position="start">.00</InputAdornment>
                       ),
                     }}
+                    style={{width: '100%'}}
                   />
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
-                <Grid md={2} xs={6}>
+                <Grid item xs={6}>
                   <Typography variant={"body1"}>Combined input</Typography>
                 </Grid>
-                <Grid>
+                <Grid item xs={6}>
                   <Input
                     id="component-helper"
                     InputProps={{
@@ -208,6 +214,7 @@ export default function TooltipsComp() {
                         <InputAdornment position="start">.00</InputAdornment>
                       ),
                     }}
+                    style={{width:'100%'}}
                   />
                 </Grid>
               </Grid>
@@ -225,17 +232,17 @@ export default function TooltipsComp() {
           </Widget>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Widget title="Inputs" disableWidgetMenu inheritHeight>
+          <Widget title="Input Form" disableWidgetMenu inheritHeight>
             <Grid container direction={"column"}>
-              <Input
-                id="component-helper"
-                defaultValue={"Value"}
-                aria-describedby="component-helper-text"
-                label="Success input"
-              />
-              <FormHelperText id="component-helper-text">
-                Some important helper text
-              </FormHelperText>
+              <Grid item>
+                <Input
+                  label="Email"
+                  placeholder={"Enter email"}
+                  margin="normal"
+                  variant="outlined"
+                  fullWidth={true}
+                />
+              </Grid>
               <Grid item>
                 <Input
                   label="Password"

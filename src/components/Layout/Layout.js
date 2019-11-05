@@ -24,7 +24,10 @@ import {
 } from "@material-ui/core";
 import {
   NavigateNext as NavigateNextIcon,
-  CalendarToday as CalendarIcon
+  CalendarToday as CalendarIcon,
+  ChatBubbleOutline as ChatIcon,
+  AddShoppingCart as AddIcon,
+  StarBorder as StarIcon
 } from "@material-ui/icons";
 
 // styles
@@ -58,6 +61,7 @@ import Navbar from "../../pages/nav/Navbar";
 import Tooltips from "../../pages/tooltips";
 import TabsPage from "../../pages/tabs";
 import FormsElements from "../../pages/forms/elements";
+import FormValidation from "../../pages/forms/validation";
 import Cards from "../../pages/cards";
 import DynamicTables from "../../pages/tables/dynamic";
 import WidgetPage from "../../pages/widget";
@@ -199,6 +203,13 @@ function Layout(props) {
                     </Box>
                   </Box>
                 )}
+                {window.location.hash.includes("/app/ecommerce") && (
+                  <Box display="flex" alignItems="center">
+                  <Box><IconButton aria-label="chat"><ChatIcon className={classes.ecommerceIcon}/></IconButton></Box>
+                  <Box><IconButton aria-label="add_to_cart"><AddIcon className={classes.ecommerceIcon}/></IconButton></Box>
+                  <Box><IconButton aria-label="rate"><StarIcon className={classes.ecommerceIcon}/></IconButton></Box>
+                  </Box>
+                  )}
               </Grid>
             </Widget>
             <Switch>
@@ -207,6 +218,7 @@ function Layout(props) {
               <Route path="/app/core/grid" component={GridPage} />
               <Route path="/app/ui/notifications" component={Notifications} />
               <Route path="/app/forms/elements" component={FormsElements} />
+              <Route path="/app/forms/validation" component={FormValidation} />
               <Route path="/app/ui/badge" component={Badge} />
               <Route path="/app/ui/сarousel" component={Carousel} />
               <Route path="/app/ui/modal" component={Modal} />

@@ -110,7 +110,7 @@ const structure = [
     label: "Forms",
     link: "/app/forms",
     icon: <DescriptionIcon />,
-    children: [{ label: "Form Elements", link: "/app/forms/elements" }]
+    children: [{ label: "Form Elements", link: "/app/forms/elements"}, { label: "Form Validation", link: "/app/forms/validation" }]
   },
   {
     id: 9,

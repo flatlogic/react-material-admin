@@ -6,12 +6,6 @@ export default makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
   },
-  visitsNumberContainer: {
-    display: "flex",
-    alignItems: "center",
-    flexGrow: 1,
-    paddingBottom: theme.spacing(1),
-  },
   progressSection: {
     marginBottom: theme.spacing(1),
   },
@@ -69,6 +63,7 @@ export default makeStyles(theme => ({
   serverOverviewElementText: {
     minWidth: 145,
     paddingRight: theme.spacing(2),
+    fontWeight: '500 !important'
   },
   serverOverviewElementChartWrapper: {
     width: "100%",

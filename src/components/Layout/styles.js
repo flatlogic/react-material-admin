@@ -55,5 +55,8 @@ export default makeStyles(theme => ({
     "&:active": {
       boxShadow: theme.customShadows.widgetWide
     }
+  },
+  ecommerceIcon:{
+    color: '#6E6E6E'
   }
 }));

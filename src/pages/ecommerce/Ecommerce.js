@@ -119,17 +119,13 @@ export default function EcommercePage() {
 
   return (
     <>
-      <PageTitle title="Typography" />
+      <PageTitle title="Product Manage" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <Widget title="List of Products" disableWidgetMenu>
-            <Box display={"flex"} flexDirection="column">
-              <Box display={"flex"} my={1}>
-                <Button variant={"contained"} component={Link} to={"/app/ecommerce/management/create"} color={"success"} style={{flexGrow: 1, marginRight: 8}}>
+          <Widget title="List of Products" disableWidgetMenu searchField>
+          <Button variant={"contained"} component={Link} to={"/app/ecommerce/management/create"} color={"success"}>
                   Create Product
                 </Button>
-                <Input label="Search query" variant="outlined" style={{flexGrow: 1}}/>
-              </Box>
               <div className={classes.tableWrapper}>
                 <Table className={classes.table}>
                   <TableHead>
@@ -167,7 +163,7 @@ export default function EcommercePage() {
                             </Link>
                           </TableCell>
                           <TableCell>{row.subtitle}</TableCell>
-                          <TableCell>{row.price}</TableCell>
+                          <TableCell>${row.price}</TableCell>
                           <TableCell>
                             <Typography
                               style={{ color: yellow[700] }}
@@ -225,7 +221,6 @@ export default function EcommercePage() {
                   </TableFooter>
                 </Table>
               </div>
-            </Box>
           </Widget>
         </Grid>
       </Grid>

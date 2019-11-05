@@ -43,5 +43,8 @@ export default makeStyles(theme => ({
   },
   paddingTop: {
     paddingTop: theme.spacing(3)
+  },
+  searchIcon: {
+    color: 'rgba(0, 0, 0, 0.23)'
   }
 }));

@@ -5,8 +5,10 @@ import {
   Menu,
   MenuItem,
   Typography,
+  TextField as Input,
+  InputAdornment
 } from "@material-ui/core";
-import { MoreVert as MoreIcon } from "@material-ui/icons";
+import { MoreVert as MoreIcon, Search as SearchIcon } from "@material-ui/icons";
 import classnames from "classnames";
 
 // styles
@@ -20,6 +22,7 @@ export default function Widget({
   disableWidgetMenu,
   header,
   inheritHeight,
+  searchField,
   ...props
 }) {
   var classes = useStyles(props);
@@ -47,6 +50,21 @@ export default function Widget({
                 <Typography variant="h5" color="textSecondary">
                   {title}
                 </Typography>
+                {searchField && (
+                   <Input id="search-field"
+          className={classes.textField}
+          label="Search"
+          margin="dense"
+          variant="outlined"
+          InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon className={classes.searchIcon}/>
+            </InputAdornment>
+          ),
+        }}
+           />
+                 )}
                 {!disableWidgetMenu && (
                   <IconButton
                     color="primary"
