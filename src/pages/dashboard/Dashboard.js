@@ -99,8 +99,6 @@ export default function Dashboard(props) {
                   <PieChart>
                     <Pie
                       data={TicketChartData}
-                      innerRadius={25}
-                      outerRadius={40}
                       startAngle={270}
                       endAngle={0}
                       paddingAngle={5}

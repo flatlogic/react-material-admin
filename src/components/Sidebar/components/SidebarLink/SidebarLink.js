@@ -58,7 +58,7 @@ export default function SidebarLink({
   if (!children)
     return (
       <ListItem
-        onClick={toggleDrawer}
+        onClick={click || toggleDrawer}
         onKeyPress={toggleDrawer}
         button
         component={link && Link}

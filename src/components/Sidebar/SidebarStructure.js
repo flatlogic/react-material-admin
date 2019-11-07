@@ -90,7 +90,7 @@ const structure = [
     children: [
       { label: "Icons", link: "/app/ui/icons" },
       { label: "Badge", link: "/app/ui/badge" },
-      { label: "Carousel", link: "/app/ui/сarousel" },
+      { label: "Carousel", link: "/app/ui/carousel" },
       { label: "Cards", link: "/app/ui/cards" },
       { label: "Modal", link: "/app/ui/modal" },
       {
@@ -191,44 +191,6 @@ const structure = [
   }
 ];
 
-function Chat() {
-  const theme = useTheme();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const useStyles = makeStyles(theme => ({
-    root: {
-      backgroundColor: theme.palette.primary.main,
-      borderRadius: "50%",
-      height: 50,
-      width: 50,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "#fff"
-    }
-  }));
-
-  const classes = useStyles();
-
-  return (
-    <>
-      <section className={classes.root}>
-        <ChatIcon />
-      </section>
-    </>
-  );
-}
-
 function AddSection() {
   const theme = useTheme();
   return (
@@ -247,6 +209,7 @@ function AddASection(e) {
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
+
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -291,5 +254,44 @@ function AddASection(e) {
     </>
   );
 }
+
+function Chat() {
+  const theme = useTheme();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const useStyles = makeStyles(theme => ({
+    root: {
+      backgroundColor: theme.palette.primary.main,
+      borderRadius: "50%",
+      height: 50,
+      width: 50,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      color: "#fff"
+    }
+  }));
+
+  const classes = useStyles();
+
+  return (
+    <>
+      <section className={classes.root}>
+        <ChatIcon />
+      </section>
+    </>
+  );
+}
+
 
 export default structure;

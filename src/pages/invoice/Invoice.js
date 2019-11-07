@@ -57,6 +57,10 @@ const rows = [
   },
 ];
 
+const windowPrint = () => {
+  window.print()
+}
+
 const Invoice = () => {
   const classes = useStyles();
   return (
@@ -68,7 +72,7 @@ const Invoice = () => {
             <Box display="flex" justifyContent="space-between" mb={3}>
               <img
                 src={logo}
-                alt="Flatlogic"
+                alt="Flatlogic"тВфыр
                 style={{ maxHeight: 100, borderRadius: 10, marginRight: 24 }}
               />
               <Box>
@@ -207,6 +211,7 @@ const Invoice = () => {
                   variant="contained"
                   style={{ marginRight: 8 }}
                   aria-label="Print"
+                  onClick={windowPrint}
                 >
                   <PrintIcon className={classes.iconButton}/>
                   Print

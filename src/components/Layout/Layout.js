@@ -146,10 +146,7 @@ function Layout(props) {
                   ) {
                     return (
                       <Box display="flex" alignItems="center" key={c.id}>
-                        <Breadcrumbs
-                          separator=" "
-                          aria-label="breadcrumb"
-                        >
+                        <Breadcrumbs separator=" " aria-label="breadcrumb">
                           <Typography variant="h5">{c.label}</Typography>
                         </Breadcrumbs>
                         {window.location.hash.includes("/app/dashboard") && (
@@ -159,7 +156,7 @@ function Layout(props) {
                             textColor="primary"
                             onChange={handleChangeValue}
                             aria-label="Dashboard"
-                            style={{marginLeft: 38}}
+                            style={{ marginLeft: 38 }}
                           >
                             <Tab label="Today" className={classes.tab} />
                             <Tab label="This week" className={classes.tab} />
@@ -191,8 +188,10 @@ function Layout(props) {
                 {window.location.hash.includes("/app/dashboard") && (
                   <Box display="flex">
                     <Box display="flex" alignItems="center">
-                      <CalendarIcon style={{marginRight: 14}}/>
-                      <Typography style={{marginRight: 38}}>29 Oct 2019, Tuesday</Typography>
+                      <CalendarIcon style={{ marginRight: 14 }} />
+                      <Typography style={{ marginRight: 38 }}>
+                        29 Oct 2019, Tuesday
+                      </Typography>
                       <Button
                         variant="contained"
                         color="secondary"
@@ -205,11 +204,23 @@ function Layout(props) {
                 )}
                 {window.location.hash.includes("/app/ecommerce") && (
                   <Box display="flex" alignItems="center">
-                  <Box><IconButton aria-label="chat"><ChatIcon className={classes.ecommerceIcon}/></IconButton></Box>
-                  <Box><IconButton aria-label="add_to_cart"><AddIcon className={classes.ecommerceIcon}/></IconButton></Box>
-                  <Box><IconButton aria-label="rate"><StarIcon className={classes.ecommerceIcon}/></IconButton></Box>
+                    <Box>
+                      <IconButton aria-label="chat">
+                        <ChatIcon className={classes.ecommerceIcon} />
+                      </IconButton>
+                    </Box>
+                    <Box>
+                      <IconButton aria-label="add_to_cart">
+                        <AddIcon className={classes.ecommerceIcon} />
+                      </IconButton>
+                    </Box>
+                    <Box>
+                      <IconButton aria-label="rate">
+                        <StarIcon className={classes.ecommerceIcon} />
+                      </IconButton>
+                    </Box>
                   </Box>
-                  )}
+                )}
               </Grid>
             </Widget>
             <Switch>
@@ -220,7 +231,7 @@ function Layout(props) {
               <Route path="/app/forms/elements" component={FormsElements} />
               <Route path="/app/forms/validation" component={FormValidation} />
               <Route path="/app/ui/badge" component={Badge} />
-              <Route path="/app/ui/сarousel" component={Carousel} />
+              <Route path="/app/ui/carousel" component={Carousel} />
               <Route path="/app/ui/modal" component={Modal} />
               <Route path="/app/ui/navbar" component={Navbar} />
               <Route path="/app/ui/tooltips" component={Tooltips} />

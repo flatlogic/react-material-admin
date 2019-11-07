@@ -103,7 +103,7 @@ export default function TooltipsComp() {
                 </Grid>
                 <Grid xs={6} item>
                   <Input
-                    id="component-helper"
+                    id="component-helper1"
                     placeholder={"May have placeholder"}
                     style={{width: '100%'}}
                   />
@@ -115,7 +115,7 @@ export default function TooltipsComp() {
                 </Grid>
                 <Grid xs={6} item>
                   <Input
-                    id="component-helper"
+                    id="component-helper2"
                     aria-describedby="component-helper-text"
                     style={{width: '100%'}}
                   />
@@ -132,7 +132,7 @@ export default function TooltipsComp() {
                   <Input
                     disabled
                     defaultValue={"Default value"}
-                    id="component-helper"
+                    id="component-helper3"
                     style={{width: '100%'}}
                   />
                 </Grid>
@@ -142,7 +142,7 @@ export default function TooltipsComp() {
                   <Typography variant={"body1"}>Max length</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Input id="component-helper" inputProps={{ maxLength: 3 }} style={{width:'100%'}}/>
+                  <Input id="component-helper4" inputProps={{ maxLength: 3 }} style={{width:'100%'}}/>
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
@@ -151,7 +151,7 @@ export default function TooltipsComp() {
                 </Grid>
                 <Grid item xs={6}>
                   <Input
-                    id="component-helper"
+                    id="component-helper5"
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -169,7 +169,7 @@ export default function TooltipsComp() {
                 </Grid>
                 <Grid item xs={6}>
                   <Input
-                    id="component-helper"
+                    id="component-helper6"
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -187,7 +187,7 @@ export default function TooltipsComp() {
                 </Grid>
                 <Grid item xs={6}>
                   <Input
-                    id="component-helper"
+                    id="component-helper7"
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="start">.00</InputAdornment>
@@ -203,7 +203,7 @@ export default function TooltipsComp() {
                 </Grid>
                 <Grid item xs={6}>
                   <Input
-                    id="component-helper"
+                    id="component-helper8"
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">

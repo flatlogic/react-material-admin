@@ -32,7 +32,7 @@ export default () => (
                 </Grid>
                 <Grid xs={6} item>
                   <Input
-                    id="component-helper"
+                    id="component-helper9"
                     style={{width: '100%'}}
                   />
                 </Grid>
@@ -44,7 +44,7 @@ export default () => (
                 </Grid>
                 <Grid xs={6} item>
                   <Input
-                    id="component-helper"
+                    id="component-helper10"
                     style={{width: '100%'}}
                   />
                 </Grid>
