@@ -8,7 +8,8 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  ButtonGroup
 } from "@material-ui/core";
 import {
   BorderAll as GridIcon,
@@ -76,22 +77,26 @@ export default function SearchComp() {
               </Select>
             </FormControl>
             <Box style={{ display: "inline-flex", marginLeft: "auto" }}>
-              <Button
-                variant={"contained"}
-                select={select.row ? 1 : 0}
-                onClick={() => toggleSelect()}
-                className={classes.adjustRightBorderRadius}
+              <ButtonGroup
+                color="primary"
+                size="large"
+                aria-label="large contained secondary button group"
               >
-                <RowIcon />
-              </Button>
-              <Button
-                variant={"contained"}
-                select={select.grid ? 1 : 0}
-                onClick={() => toggleSelect()}
-                className={classes.adjustLeftBorderRadius}
-              >
-                <GridIcon />
-              </Button>
+                <Button
+                  select={select.row ? 1 : 0}
+                  onClick={() => toggleSelect()}
+                  className={classes.adjustRightBorderRadius}
+                >
+                  <RowIcon />
+                </Button>
+                <Button
+                  select={select.grid ? 1 : 0}
+                  onClick={() => toggleSelect()}
+                  className={classes.adjustLeftBorderRadius}
+                >
+                  <GridIcon />
+                </Button>
+              </ButtonGroup>
             </Box>
           </Box>
           <Box my={2}>

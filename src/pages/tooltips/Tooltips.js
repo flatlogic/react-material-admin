@@ -4,7 +4,7 @@ import {
   Box,
   ClickAwayListener,
   Popover,
-  Button as ButtonNative,
+  Button as ButtonNative
 } from "@material-ui/core";
 import cn from "classnames";
 
@@ -19,124 +19,124 @@ const reducer = (state, action) => {
     case "OPEN_TOOLTIP":
       return {
         ...state,
-        tooltipOpened: true,
+        tooltipOpened: true
       };
     case "CLOSE_TOOLTIP":
       return {
         ...state,
-        tooltipOpened: false,
+        tooltipOpened: false
       };
     case "OPEN_POPOVER":
       return {
         ...state,
         togglePopover: true,
-        popoverSibling: action.setSibling,
+        popoverSibling: action.setSibling
       };
     case "CLOSE_POPOVER":
       return {
         ...state,
         togglePopover: false,
-        popoverSibling: null,
+        popoverSibling: null
       };
     case "OPEN_HOVER_POPOVER":
       return {
         ...state,
         toggleHoverPopover: true,
-        hoverPopoverSibling: action.setHoverPopoverSibling,
+        hoverPopoverSibling: action.setHoverPopoverSibling
       };
     case "CLOSE_HOVER_POPOVER":
       return {
         ...state,
         toggleHoverPopover: false,
-        hoverPopoverSibling: null,
+        hoverPopoverSibling: null
       };
     case "OPEN_TOP_TOOLTIP":
       return {
         ...state,
-        toggleTopTooltip: true,
+        toggleTopTooltip: true
       };
     case "CLOSE_TOP_TOOLTIP":
       return {
         ...state,
-        toggleTopTooltip: false,
+        toggleTopTooltip: false
       };
     case "OPEN_RIGHT_TOOLTIP":
       return {
         ...state,
-        toggleRightTooltip: true,
+        toggleRightTooltip: true
       };
     case "CLOSE_RIGHT_TOOLTIP":
       return {
         ...state,
-        toggleRightTooltip: false,
+        toggleRightTooltip: false
       };
     case "OPEN_BOTTOM_TOOLTIP":
       return {
         ...state,
-        toggleBottomTooltip: true,
+        toggleBottomTooltip: true
       };
     case "CLOSE_BOTTOM_TOOLTIP":
       return {
         ...state,
-        toggleBottomTooltip: false,
+        toggleBottomTooltip: false
       };
     case "OPEN_LEFT_TOOLTIP":
       return {
         ...state,
-        toggleLeftTooltip: true,
+        toggleLeftTooltip: true
       };
     case "CLOSE_LEFT_TOOLTIP":
       return {
         ...state,
-        toggleLeftTooltip: false,
+        toggleLeftTooltip: false
       };
     case "OPEN_TOP_POPOVER":
       return {
         ...state,
         toggleTopPopover: true,
-        topPopoverSibling: action.setTopPopoverSibling,
+        topPopoverSibling: action.setTopPopoverSibling
       };
     case "CLOSE_TOP_POPOVER":
       return {
         ...state,
         toggleTopPopover: false,
-        topPopoverSibling: null,
+        topPopoverSibling: null
       };
     case "OPEN_RIGHT_POPOVER":
       return {
         ...state,
         toggleRightPopover: true,
-        rightPopoverSibling: action.setRightPopoverSibling,
+        rightPopoverSibling: action.setRightPopoverSibling
       };
     case "CLOSE_RIGHT_POPOVER":
       return {
         ...state,
         toggleRightPopover: false,
-        rightPopoverSibling: null,
+        rightPopoverSibling: null
       };
     case "OPEN_BOTTOM_POPOVER":
       return {
         ...state,
         toggleBottomPopover: true,
-        bottomPopoverSibling: action.setBottomPopoverSibling,
+        bottomPopoverSibling: action.setBottomPopoverSibling
       };
     case "CLOSE_BOTTOM_POPOVER":
       return {
         ...state,
         toggleBottomPopover: false,
-        bottomPopoverSibling: null,
+        bottomPopoverSibling: null
       };
     case "OPEN_LEFT_POPOVER":
       return {
         ...state,
         toggleLeftPopover: true,
-        leftPopoverSibling: action.setLeftPopoverSibling,
+        leftPopoverSibling: action.setLeftPopoverSibling
       };
     case "CLOSE_LEFT_POPOVER":
       return {
         ...state,
         toggleLeftPopover: false,
-        leftPopoverSibling: null,
+        leftPopoverSibling: null
       };
     default:
       return {};
@@ -163,7 +163,7 @@ export default function TooltipsComp() {
                       placement="top"
                       color={"primary"}
                       PopperProps={{
-                        disablePortal: true,
+                        disablePortal: true
                       }}
                       onClose={() => dispatch({ type: "CLOSE_TOOLTIP" })}
                       open={state.tooltipOpened || false}
@@ -218,7 +218,7 @@ export default function TooltipsComp() {
                     onClick={e =>
                       dispatch({
                         type: "OPEN_POPOVER",
-                        setSibling: e.currentTarget,
+                        setSibling: e.currentTarget
                       })
                     }
                   >
@@ -231,11 +231,11 @@ export default function TooltipsComp() {
                     onClose={() => dispatch({ type: "CLOSE_POPOVER" })}
                     anchorOrigin={{
                       vertical: "bottom",
-                      horizontal: "center",
+                      horizontal: "center"
                     }}
                     transformOrigin={{
                       vertical: "top",
-                      horizontal: "center",
+                      horizontal: "center"
                     }}
                   >
                     <Typography className={classes.typography}>
@@ -254,7 +254,7 @@ export default function TooltipsComp() {
                     onMouseEnter={e =>
                       dispatch({
                         type: "OPEN_HOVER_POPOVER",
-                        setHoverPopoverSibling: e.currentTarget,
+                        setHoverPopoverSibling: e.currentTarget
                       })
                     }
                     onMouseLeave={() =>
@@ -269,11 +269,11 @@ export default function TooltipsComp() {
                     anchorEl={state.hoverPopoverSibling}
                     anchorOrigin={{
                       vertical: "bottom",
-                      horizontal: "left",
+                      horizontal: "left"
                     }}
                     transformOrigin={{
                       vertical: "top",
-                      horizontal: "left",
+                      horizontal: "left"
                     }}
                     onClose={() => dispatch({ type: "CLOSE_HOVER_POPOVER" })}
                     disableRestoreFocus
@@ -298,7 +298,7 @@ export default function TooltipsComp() {
                     placement="top"
                     color={"primary"}
                     PopperProps={{
-                      disablePortal: true,
+                      disablePortal: true
                     }}
                     onClose={() => dispatch({ type: "CLOSE_TOP_TOOLTIP" })}
                     open={state.toggleTopTooltip || false}
@@ -326,7 +326,7 @@ export default function TooltipsComp() {
                     placement="right"
                     color={"primary"}
                     PopperProps={{
-                      disablePortal: true,
+                      disablePortal: true
                     }}
                     onClose={() => dispatch({ type: "CLOSE_RIGHT_TOOLTIP" })}
                     open={state.toggleRightTooltip || false}
@@ -354,7 +354,7 @@ export default function TooltipsComp() {
                     placement="bottom"
                     color={"primary"}
                     PopperProps={{
-                      disablePortal: true,
+                      disablePortal: true
                     }}
                     onClose={() => dispatch({ type: "CLOSE_BOTTOM_TOOLTIP" })}
                     open={state.toggleBottomTooltip || false}
@@ -382,7 +382,7 @@ export default function TooltipsComp() {
                     placement="left"
                     color={"primary"}
                     PopperProps={{
-                      disablePortal: true,
+                      disablePortal: true
                     }}
                     onClose={() => dispatch({ type: "CLOSE_LEFT_TOOLTIP" })}
                     open={state.toggleLeftTooltip || false}
@@ -420,7 +420,7 @@ export default function TooltipsComp() {
                     onClick={e =>
                       dispatch({
                         type: "OPEN_TOP_POPOVER",
-                        setTopPopoverSibling: e.currentTarget,
+                        setTopPopoverSibling: e.currentTarget
                       })
                     }
                   >
@@ -433,11 +433,11 @@ export default function TooltipsComp() {
                     onClose={() => dispatch({ type: "CLOSE_TOP_POPOVER" })}
                     anchorOrigin={{
                       vertical: "top",
-                      horizontal: "center",
+                      horizontal: "center"
                     }}
                     transformOrigin={{
                       vertical: "bottom",
-                      horizontal: "center",
+                      horizontal: "center"
                     }}
                   >
                     <Typography className={classes.typography}>
@@ -455,7 +455,7 @@ export default function TooltipsComp() {
                     onClick={e =>
                       dispatch({
                         type: "OPEN_RIGHT_POPOVER",
-                        setRightPopoverSibling: e.currentTarget,
+                        setRightPopoverSibling: e.currentTarget
                       })
                     }
                   >
@@ -468,11 +468,11 @@ export default function TooltipsComp() {
                     onClose={() => dispatch({ type: "CLOSE_RIGHT_POPOVER" })}
                     anchorOrigin={{
                       vertical: "center",
-                      horizontal: "right",
+                      horizontal: "right"
                     }}
                     transformOrigin={{
                       vertical: "center",
-                      horizontal: "left",
+                      horizontal: "left"
                     }}
                   >
                     <Typography className={classes.typography}>
@@ -490,7 +490,7 @@ export default function TooltipsComp() {
                     onClick={e =>
                       dispatch({
                         type: "OPEN_BOTTOM_POPOVER",
-                        setBottomPopoverSibling: e.currentTarget,
+                        setBottomPopoverSibling: e.currentTarget
                       })
                     }
                   >
@@ -505,11 +505,11 @@ export default function TooltipsComp() {
                     onClose={() => dispatch({ type: "CLOSE_BOTTOM_POPOVER" })}
                     anchorOrigin={{
                       vertical: "bottom",
-                      horizontal: "center",
+                      horizontal: "center"
                     }}
                     transformOrigin={{
                       vertical: "top",
-                      horizontal: "center",
+                      horizontal: "center"
                     }}
                   >
                     <Typography className={classes.typography}>
@@ -527,7 +527,7 @@ export default function TooltipsComp() {
                     onClick={e =>
                       dispatch({
                         type: "OPEN_LEFT_POPOVER",
-                        setLeftPopoverSibling: e.currentTarget,
+                        setLeftPopoverSibling: e.currentTarget
                       })
                     }
                   >
@@ -540,11 +540,11 @@ export default function TooltipsComp() {
                     onClose={() => dispatch({ type: "CLOSE_LEFT_POPOVER" })}
                     anchorOrigin={{
                       vertical: "center",
-                      horizontal: "left",
+                      horizontal: "left"
                     }}
                     transformOrigin={{
                       vertical: "center",
-                      horizontal: "right",
+                      horizontal: "right"
                     }}
                   >
                     <Typography className={classes.typography}>

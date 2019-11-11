@@ -10,7 +10,7 @@ import {
   CardActions,
   CardContent,
   CardActionArea,
-  CardMedia,
+  CardMedia
 } from "@material-ui/core";
 import { Star as StarIcon } from "@material-ui/icons";
 import { yellow } from "@material-ui/core/colors/index";
@@ -35,7 +35,7 @@ export const rows = [
     title: "Trainers",
     subtitle: "Trainers In White",
     price: 76,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ export const rows = [
     title: "Boots",
     subtitle: "Trainers In Blue",
     price: 37,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ export const rows = [
     title: "Flat sandals",
     subtitle: "Trainers In White",
     price: 70,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ export const rows = [
     title: "Trainers",
     subtitle: "Trainers In Blue",
     price: 85,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ export const rows = [
     title: "Flat sandals",
     subtitle: "Trainers In White",
     price: 12,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 6,
@@ -75,7 +75,7 @@ export const rows = [
     title: "Trainers",
     subtitle: "Trainers In Blue",
     price: 76,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 7,
@@ -83,7 +83,7 @@ export const rows = [
     title: "Boots",
     subtitle: "Trainers In White",
     price: 76,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 8,
@@ -91,7 +91,7 @@ export const rows = [
     title: "Flat sandals",
     subtitle: "Trainers In White",
     price: 76,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 9,
@@ -99,7 +99,7 @@ export const rows = [
     title: "Trainers",
     subtitle: "Trainers In White",
     price: 76,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 10,
@@ -107,7 +107,7 @@ export const rows = [
     title: "Boots",
     subtitle: "Trainers In Blue",
     price: 76,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 11,
@@ -115,7 +115,7 @@ export const rows = [
     title: "Trainers",
     subtitle: "Trainers In White",
     price: 71,
-    rating: 4.6,
+    rating: 4.6
   },
   {
     id: 12,
@@ -123,8 +123,8 @@ export const rows = [
     title: "Flat sandals",
     subtitle: "Trainers In Blue",
     price: 76,
-    rating: 4.6,
-  },
+    rating: 4.6
+  }
 ];
 
 const Product = props => {
@@ -140,36 +140,36 @@ const Product = props => {
       case "TYPE":
         return {
           ...state,
-          type: action.typeWidth,
+          type: action.typeWidth
         };
       case "BRANDS":
         return {
           ...state,
-          brands: action.brandsWidth,
+          brands: action.brandsWidth
         };
       case "SIZE":
         return {
           ...state,
-          size: action.sizeWidth,
+          size: action.sizeWidth
         };
       case "COLOUR":
         return {
           ...state,
-          colour: action.colourWidth,
+          colour: action.colourWidth
         };
       case "RANGE":
         return {
           ...state,
-          range: action.rangeWidth,
+          range: action.rangeWidth
         };
       case "SORT":
         return {
           ...state,
-          sort: action.sortWidth,
+          sort: action.sortWidth
         };
       default:
         return {
-          ...state,
+          ...state
         };
     }
   };
@@ -180,7 +180,7 @@ const Product = props => {
     size: 0,
     colour: 0,
     range: 0,
-    sort: 0,
+    sort: 0
   });
   React.useEffect(() => {
     setWidth({ type: "TYPE", typeWidth: typeRef.current.offsetWidth });
@@ -197,36 +197,36 @@ const Product = props => {
       case "SELECT_TYPE":
         return {
           ...state,
-          valueType: action.valueType,
+          valueType: action.valueType
         };
       case "SELECT_BRANDS":
         return {
           ...state,
-          valueBrands: action.valueBrands,
+          valueBrands: action.valueBrands
         };
       case "SELECT_SIZE":
         return {
           ...state,
-          valueSize: action.valueSize,
+          valueSize: action.valueSize
         };
       case "SELECT_COLOUR":
         return {
           ...state,
-          valueColor: action.valueColor,
+          valueColor: action.valueColor
         };
       case "SELECT_RANGE":
         return {
           ...state,
-          valueRange: action.valueRange,
+          valueRange: action.valueRange
         };
       case "SELECT_SORT":
         return {
           ...state,
-          valueSort: action.valueSort,
+          valueSort: action.valueSort
         };
       default:
         return {
-          ...state,
+          ...state
         };
     }
   };
@@ -237,7 +237,7 @@ const Product = props => {
     valueSize: 7,
     valueColour: "All",
     valueRange: "All",
-    valueSort: "Favorite",
+    valueSort: "Favorite"
   });
   return (
     <>
@@ -261,7 +261,7 @@ const Product = props => {
                 labelWidth={width.type}
                 inputProps={{
                   name: "type",
-                  id: "type_select",
+                  id: "type_select"
                 }}
               >
                 <MenuItem value={"Shoes"}>Shoes</MenuItem>
@@ -282,13 +282,13 @@ const Product = props => {
                 onChange={e =>
                   dispatch({
                     type: "SELECT_BRAND",
-                    valueBrands: e.target.value,
+                    valueBrands: e.target.value
                   })
                 }
                 labelWidth={width.brands}
                 inputProps={{
                   name: "brands",
-                  id: "brands_select",
+                  id: "brands_select"
                 }}
               >
                 <MenuItem value={"All"}>All</MenuItem>
@@ -312,7 +312,7 @@ const Product = props => {
                 labelWidth={width.size}
                 inputProps={{
                   name: "size",
-                  id: "size_select",
+                  id: "size_select"
                 }}
               >
                 <MenuItem value={7}>7</MenuItem>
@@ -340,13 +340,13 @@ const Product = props => {
                 onChange={e =>
                   dispatch({
                     type: "SELECT_COLOUR",
-                    valueColor: e.target.value,
+                    valueColor: e.target.value
                   })
                 }
                 labelWidth={width.colour}
                 inputProps={{
                   name: "colour",
-                  id: "colour_select",
+                  id: "colour_select"
                 }}
               >
                 <MenuItem value={"All"}>All</MenuItem>
@@ -370,7 +370,7 @@ const Product = props => {
                 labelWidth={width.range}
                 inputProps={{
                   name: "range",
-                  id: "range_select",
+                  id: "range_select"
                 }}
               >
                 <MenuItem value={"All"}>All</MenuItem>
@@ -394,7 +394,7 @@ const Product = props => {
                 labelWidth={width.sort}
                 inputProps={{
                   name: "sort",
-                  id: "sort_select",
+                  id: "sort_select"
                 }}
               >
                 <MenuItem value={"Favorite"}>Favorite</MenuItem>

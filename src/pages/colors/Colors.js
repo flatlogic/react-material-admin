@@ -6,7 +6,7 @@ import {
   TableBody,
   TableCell,
   Grid,
-  Box,
+  Box
 } from "@material-ui/core";
 import useStyles from "./styles";
 
@@ -18,7 +18,7 @@ import Code from "../../components/Code";
 import { Typography, Button } from "../../components/Wrappers";
 
 //Theme
-import Theme from '../../themes/index'
+import Theme from "../../themes/index";
 
 export default function ColorsComp() {
   const classes = useStyles();
@@ -44,61 +44,83 @@ export default function ColorsComp() {
                 <TableRow>
                   <TableCell>Primary</TableCell>
                   <TableCell>
-                    <Dot color="primary" size="superlarge" />
+                    <Dot color="primary" size="large" />
                   </TableCell>
                   <TableCell>
                     <Code row>{`<Button color="primary">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>{Theme[localStorage.getItem('theme')].palette.primary.main}</Code>
+                    <Code row>
+                      {
+                        Theme[localStorage.getItem("theme")].palette.primary
+                          .main
+                      }
+                    </Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left">Secondary</TableCell>
                   <TableCell>
-                    <Dot color="secondary" size="superlarge" />
+                    <Dot color="secondary" size="large" />
                   </TableCell>
                   <TableCell>
                     <Code row>{`<Dot color="secondary">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>{Theme[localStorage.getItem('theme')].palette.secondary.main}</Code>
+                    <Code row>
+                      {
+                        Theme[localStorage.getItem("theme")].palette.secondary
+                          .main
+                      }
+                    </Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left">Warning</TableCell>
                   <TableCell>
-                    <Dot color="warning" size="superlarge" />
+                    <Dot color="warning" size="large" />
                   </TableCell>
                   <TableCell>
                     <Code row>{`<Typography color="warning">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>{Theme[localStorage.getItem('theme')].palette.warning.main}</Code>
+                    <Code row>
+                      {
+                        Theme[localStorage.getItem("theme")].palette.warning
+                          .main
+                      }
+                    </Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left">Success</TableCell>
                   <TableCell>
-                    <Dot color="success" size="superlarge" />
+                    <Dot color="success" size="large" />
                   </TableCell>
                   <TableCell>
                     <Code row>{`<Notification color="success">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>{Theme[localStorage.getItem('theme')].palette.success.main}</Code>
+                    <Code row>
+                      {
+                        Theme[localStorage.getItem("theme")].palette.success
+                          .main
+                      }
+                    </Code>
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left">Info</TableCell>
                   <TableCell align="right">
-                    <Dot color="info" size="superlarge" />
+                    <Dot color="info" size="large" />
                   </TableCell>
                   <TableCell>
                     <Code row>{`<Icon color="info">`}</Code>
                   </TableCell>
                   <TableCell>
-                    <Code row>{Theme[localStorage.getItem('theme')].palette.info.main}</Code>
+                    <Code row>
+                      {Theme[localStorage.getItem("theme")].palette.info.main}
+                    </Code>
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -108,7 +130,7 @@ export default function ColorsComp() {
         <Grid item xs={12} md={6}>
           <Widget title="Typography Colors" disableWidgetMenu>
             <div className={classes.dashedBorder}>
-                <Typography variant="h1" color="primary" className={classes.text}>
+              <Typography variant="h1" color="primary" className={classes.text}>
                 h1. Heading
               </Typography>
               <Typography variant="h2" color="success" className={classes.text}>

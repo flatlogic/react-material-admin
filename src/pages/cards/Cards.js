@@ -8,13 +8,13 @@ import {
   CardActionArea,
   CardMedia,
   CardHeader,
-  IconButton,
+  IconButton
 } from "@material-ui/core";
 import {
   Star as StarIcon,
   MoreVert as MoreVertIcon,
   Favorite as FavoriteIcon,
-  Share as ShareIcon,
+  Share as ShareIcon
 } from "@material-ui/icons";
 import useStyles from "./styles";
 
@@ -30,7 +30,7 @@ import { Typography, Button, Link, Avatar } from "../../components/Wrappers";
 
 export default function BadgeComp() {
   const props = {
-    card: backImg,
+    card: backImg
   };
   const classes = useStyles(props);
   return (
@@ -113,11 +113,7 @@ export default function BadgeComp() {
                     </Box>
                     <Box style={{ marginLeft: "auto" }}>342 REVIEWS</Box>
                   </Box>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    block
-                  >
+                  <Typography variant="body2" color="textSecondary" block>
                     <Typography color={"success"} variant={"h5"}>
                       69%
                     </Typography>

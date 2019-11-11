@@ -21,7 +21,7 @@ const positions = [
   toast.POSITION.TOP_RIGHT,
   toast.POSITION.BOTTOM_LEFT,
   toast.POSITION.BOTTOM_CENTER,
-  toast.POSITION.BOTTOM_RIGHT,
+  toast.POSITION.BOTTOM_RIGHT
 ];
 
 export default function NotificationsPage(props) {
@@ -54,19 +54,19 @@ export default function NotificationsPage(props) {
                 <button
                   onClick={() => changeNotificationPosition(0)}
                   className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 0,
+                    [classes.layoutButtonActive]: notificationsPosition === 0
                   })}
                 />
                 <button
                   onClick={() => changeNotificationPosition(1)}
                   className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 1,
+                    [classes.layoutButtonActive]: notificationsPosition === 1
                   })}
                 />
                 <button
                   onClick={() => changeNotificationPosition(2)}
                   className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 2,
+                    [classes.layoutButtonActive]: notificationsPosition === 2
                   })}
                 />
               </div>
@@ -77,19 +77,19 @@ export default function NotificationsPage(props) {
                 <button
                   onClick={() => changeNotificationPosition(3)}
                   className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 3,
+                    [classes.layoutButtonActive]: notificationsPosition === 3
                   })}
                 />
                 <button
                   onClick={() => changeNotificationPosition(4)}
                   className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 4,
+                    [classes.layoutButtonActive]: notificationsPosition === 4
                   })}
                 />
                 <button
                   onClick={() => changeNotificationPosition(5)}
                   className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 5,
+                    [classes.layoutButtonActive]: notificationsPosition === 5
                   })}
                 />
               </div>
@@ -308,7 +308,7 @@ export default function NotificationsPage(props) {
         {...componentProps}
         className={classes.notificationComponent}
       />,
-      options,
+      options
     );
   }
 
@@ -317,11 +317,11 @@ export default function NotificationsPage(props) {
       type: "message",
       message: "Message was sent successfully!",
       variant: "contained",
-      color: "success",
+      color: "success"
     };
     toast.update(errorToastId, {
       render: <Notification {...componentProps} />,
-      type: "success",
+      type: "success"
     });
     setErrorToastId(null);
   }
@@ -337,7 +337,7 @@ export default function NotificationsPage(props) {
           type: "feedback",
           message: "New user feedback received",
           variant: "contained",
-          color: "primary",
+          color: "primary"
         };
         break;
       case "error":
@@ -347,7 +347,7 @@ export default function NotificationsPage(props) {
           variant: "contained",
           color: "secondary",
           extraButton: "Resend",
-          extraButtonClick: retryErrorNotification,
+          extraButtonClick: retryErrorNotification
         };
         break;
       default:
@@ -355,7 +355,7 @@ export default function NotificationsPage(props) {
           type: "shipped",
           message: "The item was shipped",
           variant: "contained",
-          color: "success",
+          color: "success"
         };
     }
 
@@ -364,7 +364,7 @@ export default function NotificationsPage(props) {
       position: positions[notificationsPosition],
       progressClassName: classes.progress,
       onClose: notificationType === "error" && (() => setErrorToastId(null)),
-      className: classes.notification,
+      className: classes.notification
     });
 
     if (notificationType === "error") setErrorToastId(toastId);

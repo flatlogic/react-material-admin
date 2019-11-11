@@ -189,12 +189,7 @@ class Calendar extends React.Component {
   };
 
   render() {
-    const {
-      event,
-      calendarOptions,
-      modal,
-      modalEvent
-    } = this.state;
+    const { event, calendarOptions, modal, modalEvent } = this.state;
     return (
       <>
         <PageTitle title="Calendar" />
@@ -221,7 +216,7 @@ class Calendar extends React.Component {
                   s.widget
                 )}
               >
-                <Dot color="success" size="superlarge" />
+                <Dot color="success" size="large" />
                 <Typography variant="body2" style={{ marginLeft: 8 }}>
                   Make a tea
                 </Typography>
@@ -236,7 +231,7 @@ class Calendar extends React.Component {
                   s.widget
                 )}
               >
-                <Dot color="warning" size="superlarge" />
+                <Dot color="warning" size="large" />
                 <Typography variant="body2" style={{ marginLeft: 8 }}>
                   Open windows
                 </Typography>
@@ -251,7 +246,7 @@ class Calendar extends React.Component {
                   s.widget
                 )}
               >
-                <Dot color="info" size="superlarge" />
+                <Dot color="info" size="large" />
                 <Typography variant="body2" style={{ marginLeft: 8 }}>
                   Some stuff
                 </Typography>
@@ -381,11 +376,7 @@ class Calendar extends React.Component {
           onClose={this.toggleModalEvent}
           id="news-close-modal"
         >
-          <DialogTitle
-            id="news-close-modal-label"
-          >
-            {event.title}
-          </DialogTitle>
+          <DialogTitle id="news-close-modal-label">{event.title}</DialogTitle>
           <Box m={3}>
             <Typography style={{ marginBottom: 16 }}>
               <CalendarIcon style={{ marginRight: 8 }} />

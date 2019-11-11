@@ -37,6 +37,68 @@ const overrides = {
         boxShadow:
           "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
       }
+    },
+    MUIDataTable: {
+      paper: {
+        boxShadow:
+          "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
+      }
+    },
+    MuiBackdrop: {
+      root: {
+        backgroundColor: "#4A4A4A1A"
+      }
+    },
+    MuiMenu: {
+      paper: {
+        boxShadow:
+          "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
+      }
+    },
+    MuiSelect: {
+      icon: {
+        color: "#B9B9B9"
+      }
+    },
+    MuiListItem: {
+      root: {
+        "&$selected": {
+          backgroundColor: "#F3F5FF !important",
+          "&:focus": {
+            backgroundColor: "#F3F5FF"
+          }
+        }
+      },
+      button: {
+        "&:hover, &:focus": {
+          backgroundColor: "#F3F5FF"
+        }
+      }
+    },
+    MuiTouchRipple: {
+      child: {
+        backgroundColor: "white"
+      }
+    },
+    MuiTableRow: {
+      root: {
+        height: 56
+      }
+    },
+    MuiTableCell: {
+      root: {
+        borderBottom: "1px solid rgba(224, 224, 224, .5)",
+        padding: "14px 40px 14px 24px"
+      },
+      head: {
+        fontSize: "0.95rem"
+      },
+      body: {
+        fontSize: "0.95rem"
+      },
+      paddingCheckbox: {
+        padding: "0 0 0 15px"
+      }
     }
   }
 };

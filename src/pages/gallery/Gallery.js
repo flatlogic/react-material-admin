@@ -9,7 +9,6 @@ import {
 } from "@material-ui/core";
 import { Favorite as LikeIcon, Chat as CommentsIcon } from "@material-ui/icons";
 
-
 //images
 import img1 from "../../images/gallery1.jpg";
 import img2 from "../../images/gallery2.jpg";
@@ -30,52 +29,52 @@ import PageTitle from "../../components/PageTitle";
 const gallery = [
   {
     img: img1,
-    id: 1,
+    id: 1
   },
   {
     img: img2,
-    id: 2,
+    id: 2
   },
   {
     img: img3,
-    id: 3,
+    id: 3
   },
   {
     img: img4,
-    id: 4,
+    id: 4
   },
   {
     img: img5,
-    id: 5,
+    id: 5
   },
   {
     img: img6,
-    id: 6,
+    id: 6
   },
   {
     img: img7,
-    id: 7,
+    id: 7
   },
   {
     img: img8,
-    id: 8,
+    id: 8
   },
   {
     img: img9,
-    id: 9,
+    id: 9
   },
   {
     img: img10,
-    id: 10,
+    id: 10
   },
   {
     img: img11,
-    id: 11,
+    id: 11
   },
   {
     img: img12,
-    id: 12,
-  },
+    id: 12
+  }
 ];
 
 const Gallery = () => {

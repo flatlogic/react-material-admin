@@ -43,26 +43,26 @@ const PieChartData = [
 ];
 
 const TicketChartData = [
-  { name: "Cliend 1", value: 2, color: "primary" },
-  { name: "Cliend 2", value: 2, color: "primary" },
-  { name: "Cliend 3", value: 2, color: "primary" },
-  { name: "Cliend 4", value: 2, color: "primary" },
-  { name: "Cliend 5", value: 2, color: "primary" },
-  { name: "Cliend 6", value: 2, color: "primary" },
-  { name: "Cliend 7", value: 2, color: "primary" },
-  { name: "Cliend 8", value: 2, color: "primary" },
-  { name: "Cliend 9", value: 2, color: "primary" },
-  { name: "Cliend 10", value: 2, color: "primary" },
-  { name: "Cliend 11", value: 2, color: "primary" },
-  { name: "Cliend 12", value: 2, color: "primary" },
-  { name: "Cliend 13", value: 2, color: "primary" },
-  { name: "Cliend 14", value: 2, color: "primary" },
-  { name: "Cliend 15", value: 2, color: "primary" },
-  { name: "Cliend 16", value: 2, color: "primary" },
-  { name: "Cliend 17", value: 2, color: "primary" },
-  { name: "Cliend 18", value: 2, color: "primary" },
-  { name: "Cliend 19", value: 2, color: "primary" },
-  { name: "Cliend 20", value: 2, color: "primary" }
+  { name: "Client 1", value: 2, color: "primary" },
+  { name: "Client 2", value: 2, color: "primary" },
+  { name: "Client 3", value: 2, color: "primary" },
+  { name: "Client 4", value: 2, color: "primary" },
+  { name: "Client 5", value: 2, color: "primary" },
+  { name: "Client 6", value: 2, color: "primary" },
+  { name: "Client 7", value: 2, color: "primary" },
+  { name: "Client 8", value: 2, color: "primary" },
+  { name: "Client 9", value: 2, color: "primary" },
+  { name: "Client 10", value: 2, color: "primary" },
+  { name: "Client 11", value: 2, color: "primary" },
+  { name: "Client 12", value: 2, color: "primary" },
+  { name: "Client 13", value: 2, color: "primary" },
+  { name: "Client 14", value: 2, color: "primary" },
+  { name: "Client 15", value: 2, color: "primary" },
+  { name: "Client 16", value: 2, color: "primary" },
+  { name: "Client 17", value: 2, color: "primary" },
+  { name: "Client 18", value: 2, color: "primary" },
+  { name: "Client 19", value: 2, color: "primary" },
+  { name: "Client 20", value: 2, color: "primary" }
 ];
 
 export default function Dashboard(props) {
@@ -74,7 +74,7 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <PageTitle title="Dashboard"/>
+      <PageTitle title="Dashboard" />
       <Grid container spacing={4}>
         <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget
@@ -85,17 +85,20 @@ export default function Dashboard(props) {
           >
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={6}>
-              <Box display="flex">
-              <Typography variant="h4" weight="medium">
-                543
-              </Typography>
-              <Typography variant="caption" style={{marginLeft: 8, marginTop: 8}}>
-                Tickets
-              </Typography>
-              </Box>
+                <Box display="flex">
+                  <Typography variant="h4" weight="medium">
+                    543
+                  </Typography>
+                  <Typography
+                    variant="caption"
+                    style={{ marginLeft: 8, marginTop: 8 }}
+                  >
+                    Tickets
+                  </Typography>
+                </Box>
               </Grid>
               <Grid item xs={6}>
-              <ResponsiveContainer width="100%" height={80}>
+                <ResponsiveContainer width="100%" height={80}>
                   <PieChart>
                     <Pie
                       data={TicketChartData}
@@ -115,8 +118,8 @@ export default function Dashboard(props) {
                     </Pie>
                   </PieChart>
                 </ResponsiveContainer>
-                </Grid>
-                </Grid>
+              </Grid>
+            </Grid>
             <Grid
               container
               direction="row"
@@ -124,30 +127,39 @@ export default function Dashboard(props) {
               alignItems="center"
             >
               <Grid item>
-                <Typography color="hint">
-                  New Tickets
-                </Typography>
+                <Typography color="hint">New Tickets</Typography>
                 <Box display="flex" alignItems="center">
-                <Typography size="md" style={{marginRight: 8, fontWeight: 500}}>45</Typography>
-                <Dot color="success" />
+                  <Typography
+                    size="md"
+                    style={{ marginRight: 8, fontWeight: 500 }}
+                  >
+                    45
+                  </Typography>
+                  <Dot color="success" />
                 </Box>
               </Grid>
               <Grid item>
-                <Typography color="hint">
-                  Open
-                </Typography>
+                <Typography color="hint">Open</Typography>
                 <Box display="flex" alignItems="center">
-                <Typography size="md" style={{marginRight: 8, fontWeight: 500}}>147</Typography>
-                <Dot color="warning" />
+                  <Typography
+                    size="md"
+                    style={{ marginRight: 8, fontWeight: 500 }}
+                  >
+                    147
+                  </Typography>
+                  <Dot color="warning" />
                 </Box>
               </Grid>
               <Grid item>
-                <Typography color="hint">
-                  Completed
-                </Typography>
+                <Typography color="hint">Completed</Typography>
                 <Box display="flex" alignItems="center">
-                <Typography size="md" style={{marginRight: 8, fontWeight: 500}}>351</Typography>
-                <Dot color="primary" />
+                  <Typography
+                    size="md"
+                    style={{ marginRight: 8, fontWeight: 500 }}
+                  >
+                    351
+                  </Typography>
+                  <Dot color="primary" />
                 </Box>
               </Grid>
             </Grid>
@@ -179,11 +191,15 @@ export default function Dashboard(props) {
                 <div className={classes.pieChartLegendWrapper}>
                   {PieChartData.map(({ name, value, color }, index) => (
                     <div key={color} className={classes.legendItemContainer}>
-                      <Dot color={color}/>
+                      <Dot color={color} />
                       <Typography color="hint" noWrap>
                         &nbsp;{name}&nbsp;
                       </Typography>
-                      <Typography color="text" colorBrightness="secondary" style={{fontWeight: 500}}>
+                      <Typography
+                        color="text"
+                        colorBrightness="secondary"
+                        style={{ fontWeight: 500 }}
+                      >
                         &nbsp;{value}
                       </Typography>
                     </div>
@@ -394,13 +410,19 @@ export default function Dashboard(props) {
               >
                 <YAxis
                   ticks={[0, 2500, 5000, 7500]}
-                  tick={{ fill: theme.palette.text.hint + "80", fontSize: 14 }}
+                  tick={{
+                    fill: theme.palette.text.hint + "80",
+                    fontSize: 14
+                  }}
                   stroke={theme.palette.text.hint + "80"}
                   tickLine={false}
                 />
                 <XAxis
                   tickFormatter={i => i + 1}
-                  tick={{ fill: theme.palette.text.hint + "80", fontSize: 14 }}
+                  tick={{
+                    fill: theme.palette.text.hint + "80",
+                    fontSize: 14
+                  }}
                   stroke={theme.palette.text.hint + "80"}
                   tickLine={false}
                 />

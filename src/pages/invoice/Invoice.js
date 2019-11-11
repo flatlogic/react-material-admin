@@ -6,11 +6,11 @@ import {
   TableBody,
   TableCell,
   TableHead,
-  TableRow,
+  TableRow
 } from "@material-ui/core";
 import {
   Print as PrintIcon,
-  ArrowForward as RightArrowIcon,
+  ArrowForward as RightArrowIcon
 } from "@material-ui/icons";
 import useStyles from "./styles";
 
@@ -29,7 +29,7 @@ const rows = [
     desc: "2,560x1,440-pixel (WQHD) resolution supported!",
     quantity: 2,
     price: 700,
-    total: 1400.0,
+    total: 1400.0
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const rows = [
     desc: "6-month registration",
     quantity: 1,
     price: 10.99,
-    total: 21.88,
+    total: 21.88
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ const rows = [
     desc: "Novel by Ayn Rand, first published in 1957 in the United States",
     quantity: 5,
     price: 35,
-    total: 175.0,
+    total: 175.0
   },
   {
     id: 4,
@@ -53,13 +53,13 @@ const rows = [
     desc: "Lyrics: praesent blandit augue non sapien ornare imperdiet",
     quantity: 1,
     price: 2,
-    total: 2.0,
-  },
+    total: 2.0
+  }
 ];
 
 const windowPrint = () => {
-  window.print()
-}
+  window.print();
+};
 
 const Invoice = () => {
   const classes = useStyles();
@@ -72,7 +72,8 @@ const Invoice = () => {
             <Box display="flex" justifyContent="space-between" mb={3}>
               <img
                 src={logo}
-                alt="Flatlogic"тВфыр
+                alt="Flatlogic"
+                тВфыр
                 style={{ maxHeight: 100, borderRadius: 10, marginRight: 24 }}
               />
               <Box>
@@ -201,7 +202,12 @@ const Invoice = () => {
                 </Box>
               </Box>
             </Box>
-            <Box display="flex" flexDirection="column" alignItems="flex-end" mt={3}>
+            <Box
+              display="flex"
+              flexDirection="column"
+              alignItems="flex-end"
+              mt={3}
+            >
               <Typography block style={{ marginBottom: 16 }}>
                 Marketing Consultant
                 <Typography weight="bold">Bob Smith</Typography>{" "}
@@ -213,7 +219,7 @@ const Invoice = () => {
                   aria-label="Print"
                   onClick={windowPrint}
                 >
-                  <PrintIcon className={classes.iconButton}/>
+                  <PrintIcon className={classes.iconButton} />
                   Print
                 </Button>
                 <Button
@@ -221,7 +227,7 @@ const Invoice = () => {
                   color="success"
                   aria-label="Proceed"
                 >
-                  <RightArrowIcon className={classes.iconButton}/>
+                  <RightArrowIcon className={classes.iconButton} />
                   Proceed with Payment
                 </Button>
               </Box>

@@ -6,11 +6,11 @@ export default makeStyles(theme => ({
     color: theme.palette.text.primary,
     margin: theme.spacing(1),
     "&:hover": {
-      boxShadow: theme.customShadows.widgetWide,
-    },
+      boxShadow: theme.customShadows.widgetWide
+    }
   },
   buttonWhite: {
-    color: 'white'
+    color: "white"
   },
   typography: {
     padding: theme.spacing(2)

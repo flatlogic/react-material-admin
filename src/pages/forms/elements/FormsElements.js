@@ -5,7 +5,7 @@ import {
   InputLabel,
   FormControl,
   FormHelperText,
-  InputAdornment,
+  InputAdornment
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import useStyles from "./styles";
@@ -24,7 +24,7 @@ import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
 import {
   AccountCircle,
   VpnKey as PasswordIcon,
-  AccountBalanceWallet as WalletIcon,
+  AccountBalanceWallet as WalletIcon
 } from "@material-ui/icons";
 
 // components
@@ -36,44 +36,44 @@ const GreenCheckbox = withStyles({
   root: {
     color: "green",
     "&$checked": {
-      color: "green",
-    },
-  },
+      color: "green"
+    }
+  }
 })(props => <Checkbox color="default" {...props} />);
 
 const GreenRadio = withStyles({
   root: {
     color: "green",
     "&$checked": {
-      color: "green",
-    },
-  },
+      color: "green"
+    }
+  }
 })(props => <Radio color="default" {...props} />);
 
 const SuccessInput = withStyles(theme => ({
   root: {
     "& .MuiInputLabel-root": {
-      color: "green",
+      color: "green"
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "green",
+        borderColor: "green"
       },
       "&:hover fieldset": {
-        borderColor: "green",
+        borderColor: "green"
       },
       "&.Mui-focused fieldset": {
         borderColor: "green",
-        borderWidth: 2,
-      },
-    },
-  },
+        borderWidth: 2
+      }
+    }
+  }
 }))(props => <Input {...props} />);
 
 export default function TooltipsComp() {
   const [isChecked, setChecked] = React.useState({
     default: false,
-    horizontal: false,
+    horizontal: false
   });
 
   const classes = useStyles();
@@ -105,7 +105,7 @@ export default function TooltipsComp() {
                   <Input
                     id="component-helper1"
                     placeholder={"May have placeholder"}
-                    style={{width: '100%'}}
+                    style={{ width: "100%" }}
                   />
                 </Grid>
               </Grid>
@@ -117,7 +117,7 @@ export default function TooltipsComp() {
                   <Input
                     id="component-helper2"
                     aria-describedby="component-helper-text"
-                    style={{width: '100%'}}
+                    style={{ width: "100%" }}
                   />
                   <FormHelperText id="component-helper-text">
                     Some important helper text
@@ -133,7 +133,7 @@ export default function TooltipsComp() {
                     disabled
                     defaultValue={"Default value"}
                     id="component-helper3"
-                    style={{width: '100%'}}
+                    style={{ width: "100%" }}
                   />
                 </Grid>
               </Grid>
@@ -142,7 +142,11 @@ export default function TooltipsComp() {
                   <Typography variant={"body1"}>Max length</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Input id="component-helper4" inputProps={{ maxLength: 3 }} style={{width:'100%'}}/>
+                  <Input
+                    id="component-helper4"
+                    inputProps={{ maxLength: 3 }}
+                    style={{ width: "100%" }}
+                  />
                 </Grid>
               </Grid>
               <Grid item container alignItems={"center"}>
@@ -157,9 +161,9 @@ export default function TooltipsComp() {
                         <InputAdornment position="start">
                           <AccountCircle />
                         </InputAdornment>
-                      ),
+                      )
                     }}
-                    style={{width: '100%'}}
+                    style={{ width: "100%" }}
                   />
                 </Grid>
               </Grid>
@@ -175,9 +179,9 @@ export default function TooltipsComp() {
                         <InputAdornment position="start">
                           <PasswordIcon />
                         </InputAdornment>
-                      ),
+                      )
                     }}
-                    style={{width: '100%'}}
+                    style={{ width: "100%" }}
                   />
                 </Grid>
               </Grid>
@@ -191,9 +195,9 @@ export default function TooltipsComp() {
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="start">.00</InputAdornment>
-                      ),
+                      )
                     }}
-                    style={{width: '100%'}}
+                    style={{ width: "100%" }}
                   />
                 </Grid>
               </Grid>
@@ -212,9 +216,9 @@ export default function TooltipsComp() {
                       ),
                       endAdornment: (
                         <InputAdornment position="start">.00</InputAdornment>
-                      ),
+                      )
                     }}
-                    style={{width:'100%'}}
+                    style={{ width: "100%" }}
                   />
                 </Grid>
               </Grid>
@@ -262,7 +266,7 @@ export default function TooltipsComp() {
                       }
                       color="primary"
                       inputProps={{
-                        "aria-label": "primary checkbox",
+                        "aria-label": "primary checkbox"
                       }}
                       value={"horizontal"}
                     />
@@ -354,7 +358,7 @@ export default function TooltipsComp() {
                           }
                           color="primary"
                           inputProps={{
-                            "aria-label": "primary checkbox",
+                            "aria-label": "primary checkbox"
                           }}
                         />
                       }
@@ -370,7 +374,7 @@ export default function TooltipsComp() {
                           }
                           color="primary"
                           inputProps={{
-                            "aria-label": "primary checkbox",
+                            "aria-label": "primary checkbox"
                           }}
                         />
                       }

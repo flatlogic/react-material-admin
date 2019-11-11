@@ -7,7 +7,7 @@ import {
   Menu,
   MenuItem,
   Fab,
-  withStyles,
+  withStyles
 } from "@material-ui/core";
 import {
   Menu as MenuIcon,
@@ -103,7 +103,9 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
           />
         )}
       </IconButton>
-      <Typography variant="h6" weight="medium" className={classes.logotype}>React Material Admin</Typography>
+      <Typography variant="h6" weight="medium" className={classes.logotype}>
+        React Material Admin
+      </Typography>
       <div className={classes.grow} />
       <div
         className={classNames(classes.search, {

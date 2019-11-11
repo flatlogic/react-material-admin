@@ -4,12 +4,15 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Typography,
   TextField as Input,
-  InputAdornment
+  InputAdornment,
+  Box
 } from "@material-ui/core";
 import { MoreVert as MoreIcon, Search as SearchIcon } from "@material-ui/icons";
 import classnames from "classnames";
+
+//components
+import { Typography } from "../../components/Wrappers";
 
 // styles
 import useStyles from "./styles";
@@ -17,6 +20,7 @@ import useStyles from "./styles";
 export default function Widget({
   children,
   title,
+  subtitle,
   noBodyPadding,
   bodyClass,
   disableWidgetMenu,
@@ -37,7 +41,7 @@ export default function Widget({
     >
       <Paper
         className={classnames(classes.paper, {
-          [props.className]: props.className,
+          [props.className]: props.className
         })}
         classes={{ root: classes.widgetRoot }}
       >
@@ -47,24 +51,40 @@ export default function Widget({
               header
             ) : (
               <React.Fragment>
-                <Typography variant="h5" color="textSecondary">
-                  {title}
-                </Typography>
+                <Box display={"flex"}>
+                  <Typography
+                    variant="h5"
+                    color="text"
+                    colorBrightness={"secondary"}
+                  >
+                    {title}
+                  </Typography>
+                  <Box alignSelf={"flex-end"} ml={1}>
+                    <Typography
+                      color="text"
+                      colorBrightness={"hint"}
+                      variant={"caption"}
+                    >
+                      {subtitle}
+                    </Typography>
+                  </Box>
+                </Box>
                 {searchField && (
-                   <Input id="search-field"
-          className={classes.textField}
-          label="Search"
-          margin="dense"
-          variant="outlined"
-          InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon className={classes.searchIcon}/>
-            </InputAdornment>
-          ),
-        }}
-           />
-                 )}
+                  <Input
+                    id="search-field"
+                    className={classes.textField}
+                    label="Search"
+                    margin="dense"
+                    variant="outlined"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <SearchIcon className={classes.searchIcon} />
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                )}
                 {!disableWidgetMenu && (
                   <IconButton
                     color="primary"
@@ -85,7 +105,7 @@ export default function Widget({
           className={classnames(classes.widgetBody, {
             [classes.noPadding]: noBodyPadding,
             [classes.paddingTop]: !title && !noBodyPadding,
-            [bodyClass]: bodyClass,
+            [bodyClass]: bodyClass
           })}
         >
           {children}

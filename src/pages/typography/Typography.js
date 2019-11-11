@@ -125,4 +125,4 @@ export default function TypographyPage() {
   );
 }
 
-export { useStyles }
+export { useStyles };

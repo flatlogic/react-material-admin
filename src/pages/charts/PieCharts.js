@@ -17,20 +17,20 @@ const themeOptions = theme => {
         breakpoint: 480,
         options: {
           chart: {
-            width: 200,
+            width: 200
           },
           legend: {
-            position: "bottom",
-          },
-        },
-      },
+            position: "bottom"
+          }
+        }
+      }
     ],
     colors: [
       theme.palette.primary.main,
       theme.palette.secondary.main,
       theme.palette.warning.main,
       theme.palette.success.light,
-      theme.palette.info.main,
+      theme.palette.info.main
     ],
     options: {
       responsive: [
@@ -38,25 +38,25 @@ const themeOptions = theme => {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200,
+              width: 200
             },
             legend: {
-              position: "bottom",
-            },
-          },
-        },
+              position: "bottom"
+            }
+          }
+        }
       ],
       colors: [
         theme.palette.primary.main,
         theme.palette.secondary.main,
         theme.palette.warning.main,
         theme.palette.success.light,
-        theme.palette.info.main,
-      ],
+        theme.palette.info.main
+      ]
     },
     options2: {
       dataLabels: {
-        enabled: false,
+        enabled: false
       },
 
       responsive: [
@@ -64,26 +64,26 @@ const themeOptions = theme => {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200,
+              width: 200
             },
             legend: {
-              show: false,
-            },
-          },
-        },
+              show: false
+            }
+          }
+        }
       ],
       legend: {
         position: "right",
         offsetY: 0,
-        height: 230,
+        height: 230
       },
       colors: [
         theme.palette.primary.main,
         theme.palette.secondary.main,
         theme.palette.warning.main,
         theme.palette.success.light,
-        theme.palette.info.main,
-      ],
+        theme.palette.info.main
+      ]
     },
     options3: {
       labels: [
@@ -92,34 +92,34 @@ const themeOptions = theme => {
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday",
+        "Saturday"
       ],
       theme: {
         monochrome: {
-          enabled: true,
-        },
+          enabled: true
+        }
       },
       colors: [
         theme.palette.primary.main,
         theme.palette.secondary.main,
         theme.palette.warning.main,
         theme.palette.success.light,
-        theme.palette.info.main,
+        theme.palette.info.main
       ],
       responsive: [
         {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200,
+              width: 200
             },
             legend: {
-              position: "bottom",
-            },
-          },
-        },
-      ],
-    },
+              position: "bottom"
+            }
+          }
+        }
+      ]
+    }
   };
 };
 
@@ -127,7 +127,7 @@ const values = {
   series: [44, 55, 13, 43, 22],
   series2: [44, 55, 41, 17, 15],
   series3: [44, 55, 13, 33],
-  series4: [25, 15, 44, 55, 41, 17],
+  series4: [25, 15, 44, 55, 41, 17]
 };
 
 export default function Charts(props) {
@@ -139,7 +139,7 @@ export default function Charts(props) {
 
     setState({
       ...state,
-      series3: arr,
+      series3: arr
     });
   };
 
@@ -151,7 +151,7 @@ export default function Charts(props) {
 
     setState({
       ...state,
-      series3: arr,
+      series3: arr
     });
   };
 
@@ -160,14 +160,14 @@ export default function Charts(props) {
       ...state,
       series3: state.series3.map(() => {
         return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-      }),
+      })
     });
   };
 
   const reset = () => {
     setState({
       ...state,
-      series3: [44, 55, 13, 33],
+      series3: [44, 55, 13, 33]
     });
   };
 

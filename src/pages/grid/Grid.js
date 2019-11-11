@@ -7,7 +7,7 @@ import {
   TableBody,
   TableCell,
   Box,
-  Grid,
+  Grid
 } from "@material-ui/core";
 import cn from "classnames";
 
@@ -176,7 +176,10 @@ export default function GridComp() {
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <b>Spacing</b> <Code row inline>output(spacing) = spacing * 8px</Code>
+                    <b>Spacing</b>{" "}
+                    <Code row inline>
+                      output(spacing) = spacing * 8px
+                    </Code>
                   </TableCell>
                   <TableCell>
                     <Code row>{`<Grid container spacing={2}>`}</Code>

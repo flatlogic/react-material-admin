@@ -35,7 +35,7 @@ function Badge({ children, colorBrightness, color, ...props }) {
   const theme = useTheme();
   const Styled = createStyled({
     badge: {
-      backgroundColor: getBackgroundColor(color, theme, colorBrightness),
+      backgroundColor: getColor(color, theme, colorBrightness),
       color: "white"
     }
   });
@@ -60,7 +60,7 @@ function Chip({ colorBrightness, color, ...props }) {
   const theme = useTheme();
   const Styled = createStyled({
     root: {
-      backgroundColor: getBackgroundColor(color, theme, colorBrightness),
+      backgroundColor: getColor(color, theme, colorBrightness),
       color: "white"
     }
   });
@@ -94,7 +94,7 @@ function Typography({
   return (
     <TypographyBase
       style={{
-        color: getBackgroundColor(color, theme, colorBrightness),
+        color: getColor(color, theme, colorBrightness),
         fontWeight: getFontWeight(weight),
         fontSize: getFontSize(size, props.variant, theme),
         textTransform: uppercase ? "uppercase" : "none"
@@ -107,17 +107,17 @@ function Typography({
   );
 }
 
-function Button({ children, color, ...props }) {
+function Button({ children, color, className, ...props }) {
   const useStyles = makeStyles(theme => ({
     root: {
-      color: getBackgroundColor(color, theme)
+      color: getColor(color, theme)
     },
     contained: {
-      backgroundColor: getBackgroundColor(color, theme),
+      backgroundColor: getColor(color, theme),
       boxShadow: theme.customShadows.widget,
       color: `${color ? "white" : theme.palette.text.primary} !important`,
       "&:hover": {
-        backgroundColor: getBackgroundColor(color, theme, "light"),
+        backgroundColor: getColor(color, theme, "light"),
         boxShadow: theme.customShadows.widgetWide
       },
       "&:active": {
@@ -125,17 +125,12 @@ function Button({ children, color, ...props }) {
       }
     },
     outlined: {
-      color: getBackgroundColor(color, theme),
-      borderColor: getBackgroundColor(color, theme),
-      "&:hover": {
-        backgroundColor: getCustomBackgroundColor(color)
-      }
+      color: getColor(color, theme),
+      borderColor: getColor(color, theme)
     },
     select: {
-      backgroundColor: theme.palette.text.hint,
-      "&:hover": {
-        backgroundColor: theme.palette.text.hint
-      }
+      backgroundColor: theme.palette.primary.main,
+      color: "#fff"
     }
   }));
   const classes = useStyles();
@@ -148,10 +143,12 @@ function Button({ children, color, ...props }) {
         outlined: classes.outlined
       }}
       {...props}
-      className={classnames({
-        [classes.select]: props.select,
-        [props.className]: true
-      })}
+      className={classnames(
+        {
+          [classes.select]: props.select
+        },
+        className
+      )}
     >
       {children}
     </ButtonBase>
@@ -163,7 +160,7 @@ function Avatar({ children, color, colorBrightness, ...props }) {
 
   const Styled = createStyled({
     colorDefault: {
-      backgroundColor: getBackgroundColor(color, theme, colorBrightness)
+      backgroundColor: getColor(color, theme, colorBrightness)
     }
   });
 
@@ -183,7 +180,7 @@ function Tooltip({ children, color, ...props }) {
 
   const Styled = createStyled({
     tooltip: {
-      backgroundColor: getBackgroundColor(color, theme),
+      backgroundColor: getColor(color, theme),
       color: "white"
     }
   });
@@ -204,7 +201,7 @@ function Paper({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      backgroundColor: getBackgroundColor(color, theme)
+      backgroundColor: getColor(color, theme)
     }
   });
 
@@ -222,7 +219,7 @@ function Paper({ children, color, ...props }) {
 function AppBar({ children, color, ...props }) {
   const useStyles = makeStyles(theme => ({
     root: {
-      backgroundColor: getBackgroundColor(color, theme)
+      backgroundColor: getColor(color, theme)
     }
   }));
 
@@ -239,7 +236,7 @@ function Link({ children, color, ...props }) {
   const useStyles = makeStyles(theme => ({
     root: {
       color: color
-        ? `${getBackgroundColor(color, theme)} !important`
+        ? `${getColor(color, theme)} !important`
         : theme.palette.text.primary
     }
   }));
@@ -257,7 +254,7 @@ function CircularProgress({ children, color, ...props }) {
   const useStyles = makeStyles(theme => ({
     root: {
       color: color
-        ? `${getBackgroundColor(color, theme)} !important`
+        ? `${getColor(color, theme)} !important`
         : theme.palette.primary.main
     }
   }));
@@ -280,7 +277,7 @@ function LinearProgress({ children, color, ...props }) {
     },
     bar: {
       backgroundColor: color
-        ? `${getBackgroundColor(color, theme)} !important`
+        ? `${getColor(color, theme)} !important`
         : theme.palette.primary.main
     }
   });
@@ -351,16 +348,10 @@ export {
 
 // ########################################################################
 
-function getBackgroundColor(color, theme, brigtness = "main") {
-  if (color && theme.palette[color] && theme.palette[color][brigtness]) {
-    return theme.palette[color][brigtness];
+function getColor(color, theme, brightness = "main") {
+  if (color && theme.palette[color] && theme.palette[color][brightness]) {
+    return theme.palette[color][brightness];
   } else if (color) {
-    return theme.palette.text[color];
-  }
-}
-
-function getTextColor(color, theme) {
-  if (color) {
     return theme.palette.text[color];
   }
 }

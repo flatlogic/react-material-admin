@@ -50,7 +50,7 @@ export default compose(
         type: "message",
         message: "Message was sent successfully!",
         variant: "contained",
-        color: "success",
+        color: "success"
       };
 
       toast.update(props.errorToastId, {

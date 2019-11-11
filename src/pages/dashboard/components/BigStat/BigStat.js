@@ -70,7 +70,7 @@ export default function BigStat(props) {
             <Typography variant="h6">{registrations[value].value}</Typography>
             <ArrowForwardIcon
               className={classnames(classes.profitArrow, {
-                [!registrations[value].profit]: classes.profitArrowDanger,
+                [!registrations[value].profit]: classes.profitArrowDanger
               })}
             />
           </Grid>
@@ -83,7 +83,7 @@ export default function BigStat(props) {
             <Typography variant="h6">{bounce[value].value}%</Typography>
             <ArrowForwardIcon
               className={classnames(classes.profitArrow, {
-                [!registrations[value].profit]: classes.profitArrowDanger,
+                [!registrations[value].profit]: classes.profitArrowDanger
               })}
             />
           </Grid>
@@ -98,7 +98,7 @@ export default function BigStat(props) {
             </Typography>
             <ArrowForwardIcon
               className={classnames(classes.profitArrow, {
-                [classes.profitArrowDanger]: !registrations[value].profit,
+                [classes.profitArrowDanger]: !registrations[value].profit
               })}
             />
           </Grid>

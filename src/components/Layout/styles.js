@@ -47,7 +47,7 @@ export default makeStyles(theme => ({
     }
   },
   tab: {
-    minWidth: 72
+    minWidth: 52
   },
   button: {
     boxShadow: theme.customShadows.widget,
@@ -58,5 +58,9 @@ export default makeStyles(theme => ({
   },
   ecommerceIcon:{
     color: '#6E6E6E'
+  },
+  calendarIcon: {
+    color: theme.palette.primary.main,
+    marginRight: 14
   }
 }));

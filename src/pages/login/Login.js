@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Grid, CircularProgress, Tabs, Tab, Fade, TextField as Input } from "@material-ui/core";
+import {
+  Grid,
+  CircularProgress,
+  Tabs,
+  Tab,
+  Fade,
+  TextField as Input
+} from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import classnames from "classnames";
 
@@ -90,8 +97,8 @@ function Login(props) {
                 InputProps={{
                   classes: {
                     underline: classes.InputUnderline,
-                    input: classes.Input,
-                  },
+                    input: classes.Input
+                  }
                 }}
                 value={loginValue}
                 onChange={e => setLoginValue(e.target.value)}
@@ -105,8 +112,8 @@ function Login(props) {
                 InputProps={{
                   classes: {
                     underline: classes.InputUnderline,
-                    input: classes.Input,
-                  },
+                    input: classes.Input
+                  }
                 }}
                 value={passwordValue}
                 onChange={e => setPasswordValue(e.target.value)}
@@ -130,7 +137,7 @@ function Login(props) {
                         passwordValue,
                         props.history,
                         setIsLoading,
-                        setError,
+                        setError
                       )
                     }
                     variant="contained"
@@ -168,8 +175,8 @@ function Login(props) {
                 InputProps={{
                   classes: {
                     underline: classes.InputUnderline,
-                    input: classes.Input,
-                  },
+                    input: classes.Input
+                  }
                 }}
                 value={nameValue}
                 onChange={e => setNameValue(e.target.value)}
@@ -183,8 +190,8 @@ function Login(props) {
                 InputProps={{
                   classes: {
                     underline: classes.InputUnderline,
-                    input: classes.Input,
-                  },
+                    input: classes.Input
+                  }
                 }}
                 value={loginValue}
                 onChange={e => setLoginValue(e.target.value)}
@@ -198,8 +205,8 @@ function Login(props) {
                 InputProps={{
                   classes: {
                     underline: classes.InputUnderline,
-                    input: classes.Input,
-                  },
+                    input: classes.Input
+                  }
                 }}
                 value={passwordValue}
                 onChange={e => setPasswordValue(e.target.value)}
@@ -220,7 +227,7 @@ function Login(props) {
                         passwordValue,
                         props.history,
                         setIsLoading,
-                        setError,
+                        setError
                       )
                     }
                     disabled={
@@ -247,7 +254,7 @@ function Login(props) {
                 size="large"
                 className={classnames(
                   classes.googleButton,
-                  classes.googleButtonCreating,
+                  classes.googleButtonCreating
                 )}
               >
                 <img src={google} alt="google" className={classes.googleIcon} />

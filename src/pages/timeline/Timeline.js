@@ -13,13 +13,13 @@ import {
   withGoogleMap,
   withScriptjs,
   GoogleMap,
-  Marker,
+  Marker
 } from "react-google-maps";
 import {
   Favorite as LikeIcon,
   Chat as CommentsIcon,
   ChatBubble as ChatIcon,
-  FreeBreakfast as BreakfastIcon,
+  FreeBreakfast as BreakfastIcon
 } from "@material-ui/icons";
 import useStyles from "./styles";
 
@@ -32,12 +32,7 @@ import img5 from "../../images/a1.jpg";
 import mountains from "../../images/mountains.jpeg";
 
 //components
-import {
-  Typography,
-  Avatar,
-  Link,
-  Button,
-} from "../../components/Wrappers";
+import { Typography, Avatar, Link, Button } from "../../components/Wrappers";
 import { Annotation, Timestep, Circle } from "../../components/Timeline";
 import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
@@ -48,12 +43,12 @@ const BasicMap = withScriptjs(
       defaultZoom={12}
       defaultCenter={{
         lat: parseFloat(-37.813179),
-        lng: parseFloat(144.950259),
+        lng: parseFloat(144.950259)
       }}
     >
       <Marker position={{ lat: -37.813179, lng: 144.950259 }} />
     </GoogleMap>
-  )),
+  ))
 );
 
 export default function TimelineComp() {
@@ -101,7 +96,7 @@ export default function TimelineComp() {
                           <div
                             style={{
                               height: "100%",
-                              width: "calc(100% + 48px)",
+                              width: "calc(100% + 48px)"
                             }}
                           />
                         }

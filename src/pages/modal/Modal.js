@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField,
+  TextField
 } from "@material-ui/core";
 import cn from "classnames";
 import useStyles from "./styles";
@@ -23,62 +23,62 @@ const reducer = (state, action) => {
     case "OPEN_MODAL":
       return {
         ...state,
-        toggleModal: true,
+        toggleModal: true
       };
     case "CLOSE_MODAL":
       return {
         ...state,
-        toggleModal: false,
+        toggleModal: false
       };
     case "OPEN_BODY":
       return {
         ...state,
-        toggleBody: true,
+        toggleBody: true
       };
     case "CLOSE_BODY":
       return {
         ...state,
-        toggleBody: false,
+        toggleBody: false
       };
     case "OPEN_SMALL":
       return {
         ...state,
-        toggleSmall: true,
+        toggleSmall: true
       };
     case "CLOSE_SMALL":
       return {
         ...state,
-        toggleSmall: false,
+        toggleSmall: false
       };
     case "OPEN_LARGE":
       return {
         ...state,
-        toggleLarge: true,
+        toggleLarge: true
       };
     case "CLOSE_LARGE":
       return {
         ...state,
-        toggleLarge: false,
+        toggleLarge: false
       };
     case "OPEN_GRID":
       return {
         ...state,
-        toggleGrid: true,
+        toggleGrid: true
       };
     case "CLOSE_GRID":
       return {
         ...state,
-        toggleGrid: false,
+        toggleGrid: false
       };
     case "OPEN_INPUT_MODAL":
       return {
         ...state,
-        toggleInputModal: true,
+        toggleInputModal: true
       };
     case "CLOSE_INPUT_MODAL":
       return {
         ...state,
-        toggleInputModal: false,
+        toggleInputModal: false
       };
     default:
       return null;
@@ -93,7 +93,7 @@ export default function ModalComp() {
     toggleSmall: false,
     toggleGrid: false,
     toggleLarge: false,
-    toggleInputModal: false,
+    toggleInputModal: false
   });
 
   return (
@@ -172,7 +172,7 @@ export default function ModalComp() {
                             () => `Cras mattis consectetur purus sit amet fermentum.
 Cras justo odio, dapibus ac facilisis in, egestas eget quam.
 Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                           )
                           .join("\n")}
                       </DialogContentText>
@@ -324,10 +324,16 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                       />
                     </DialogContent>
                     <DialogActions>
-                      <Button color="primary" onClick={() => dispatch({ type: "CLOSE_INPUT_MODAL" })}>
+                      <Button
+                        color="primary"
+                        onClick={() => dispatch({ type: "CLOSE_INPUT_MODAL" })}
+                      >
                         Cancel
                       </Button>
-                      <Button color="primary" onClick={() => dispatch({ type: "CLOSE_INPUT_MODAL" })}>
+                      <Button
+                        color="primary"
+                        onClick={() => dispatch({ type: "CLOSE_INPUT_MODAL" })}
+                      >
                         Subscribe
                       </Button>
                     </DialogActions>

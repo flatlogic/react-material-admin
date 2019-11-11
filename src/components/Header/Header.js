@@ -6,7 +6,7 @@ import {
   InputBase,
   Menu,
   MenuItem,
-  Fab,
+  Fab
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import {
@@ -210,22 +210,32 @@ export default function Header(props) {
             <MailIcon classes={{ root: classes.headerIcon }} />
           </Badge>
         </IconButton>
-          <IconButton
-            aria-haspopup="true"
-            color="inherit"
-            className={classes.headerMenuButton}
-            aria-controls="profile-menu"
-            onClick={e => setProfileMenu(e.currentTarget)}
+        <IconButton
+          aria-haspopup="true"
+          color="inherit"
+          className={classes.headerMenuButton}
+          aria-controls="profile-menu"
+          onClick={e => setProfileMenu(e.currentTarget)}
+        >
+          <Avatar
+            alt="Robert Cotton"
+            src={profile}
+            classes={{ root: classes.headerIcon }}
+          />
+        </IconButton>
+        <Typography
+          block
+          variant="body2"
+          style={{ display: "flex", alignItems: "center", marginLeft: 8 }}
+        >
+          Hi,{" "}
+          <Typography
+            variant="body2"
+            style={{ marginLeft: 4, fontWeight: 600 }}
           >
-            <Avatar
-              alt="Robert Cotton"
-              src={profile}
-              classes={{ root: classes.headerIcon }}
-            />
-          </IconButton>
-          <Typography block variant="body2" style={{display: 'flex', alignItems: 'center', marginLeft: 8}}>
-            Hi, <Typography variant="body2" style={{marginLeft: 4, fontWeight: 600}}>Robert Cotton</Typography>
+            Robert Cotton
           </Typography>
+        </Typography>
         <Menu
           id="mail-menu"
           open={Boolean(mailMenu)}

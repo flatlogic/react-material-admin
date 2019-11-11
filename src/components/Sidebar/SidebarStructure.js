@@ -110,7 +110,10 @@ const structure = [
     label: "Forms",
     link: "/app/forms",
     icon: <DescriptionIcon />,
-    children: [{ label: "Form Elements", link: "/app/forms/elements"}, { label: "Form Validation", link: "/app/forms/validation" }]
+    children: [
+      { label: "Form Elements", link: "/app/forms/elements" },
+      { label: "Form Validation", link: "/app/forms/validation" }
+    ]
   },
   {
     id: 9,
@@ -160,19 +163,19 @@ const structure = [
     id: 19,
     label: "My recent",
     link: "",
-    icon: <Dot size="large" color="secondary" />
+    icon: <Dot size="medium" color="secondary" />
   },
   {
     id: 20,
     label: "Starred",
     link: "",
-    icon: <Dot size="large" color="primary" />
+    icon: <Dot size="medium" color="primary" />
   },
   {
     id: 21,
     label: "Background",
     link: "",
-    icon: <Dot size="large" color="secondary" />
+    icon: <Dot size="medium" color="secondary" />
   },
   { id: 22, type: "divider" },
   {
@@ -209,7 +212,6 @@ function AddASection(e) {
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
-
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -292,6 +294,5 @@ function Chat() {
     </>
   );
 }
-
 
 export default structure;
