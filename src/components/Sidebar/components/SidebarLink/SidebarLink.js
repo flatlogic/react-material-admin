@@ -46,6 +46,8 @@ export default function SidebarLink({
   const [anchorEl, setAnchorEl] = React.useState(null);
   // Chat Modal state
   const [isChat, setChat] = useState(false);
+  const [anchorElChat, setAnchorElChat] = React.useState(null);
+
   var classes = useStyles(isOpen);
   const classes2 = useStyles2();
   var isLinkActive =
@@ -69,7 +71,8 @@ export default function SidebarLink({
   // Add Section Popover
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? "add-section-popover" : undefined;
+
   const addSectionClick = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -78,7 +81,7 @@ export default function SidebarLink({
     setAnchorEl(null);
   };
 
-  // Chat Popover
+  // Chat Popper
 
   const chatSetOpen = () => {
     setChat(true);
@@ -90,43 +93,46 @@ export default function SidebarLink({
 
   if (!children)
     return (
-      <ListItem
-        onClick={e => {
-          if (click) {
-            return click(e, addSectionClick, chatSetOpen);
-          }
-          return toggleDrawer(e);
-        }}
-        onKeyPress={toggleDrawer}
-        button
-        component={link && Link}
-        to={link}
-        className={classes.link}
-        classes={{
-          root: classnames(classes.linkRoot, {
-            [classes.linkActive]: isLinkActive && !nested,
-            [classes.linkNested]: nested
-          })
-        }}
-        disableRipple
-      >
-        <ListItemIcon
-          className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive
-          })}
-          style={{ margin: nested && -11 }}
-        >
-          {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
-        </ListItemIcon>
-        <ListItemText
+      <>
+        <ListItem
+          onClick={e => {
+            if (click) {
+              return click(e, addSectionClick, chatSetOpen);
+            }
+            return toggleDrawer(e);
+          }}
+          onKeyPress={toggleDrawer}
+          button
+          component={link && Link}
+          to={link}
+          className={classes.link}
           classes={{
-            primary: classnames(classes.linkText, {
-              [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened
+            root: classnames(classes.linkRoot, {
+              [classes.linkActive]: isLinkActive && !nested,
+              [classes.linkNested]: nested
             })
           }}
-          primary={label}
-        />
+          disableRipple
+        >
+          <ListItemIcon
+            className={classnames(classes.linkIcon, {
+              [classes.linkIconActive]: isLinkActive
+            })}
+            style={{ margin: nested && -11 }}
+          >
+            {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
+          </ListItemIcon>
+          <ListItemText
+            classes={{
+              primary: classnames(classes.linkText, {
+                [classes.linkTextActive]: isLinkActive,
+                [classes.linkTextHidden]: !isSidebarOpened
+              })
+            }}
+            primary={label}
+          />
+        </ListItem>
+        <Chat open={isChat} onClose={chatSetClose} />
         <Popover
           id={id}
           open={open}
@@ -165,8 +171,7 @@ export default function SidebarLink({
             </Box>
           </Box>
         </Popover>
-        <Chat open={isChat} chatClose={chatSetClose} kek={"kek"} />
-      </ListItem>
+      </>
     );
 
   return (
@@ -175,7 +180,9 @@ export default function SidebarLink({
         button
         component={link && Link}
         onClick={toggleCollapse}
-        className={classes.link}
+        className={classnames(classes.link, {
+          [classes.linkActive]: isLinkActive
+        })}
         to={link}
         disableRipple
       >

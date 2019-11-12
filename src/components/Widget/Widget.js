@@ -45,60 +45,62 @@ export default function Widget({
         })}
         classes={{ root: classes.widgetRoot }}
       >
-        {!title ? null : (
-          <div className={classes.widgetHeader}>
+        {!title ? (
+          <>
             {header ? (
-              header
-            ) : (
-              <React.Fragment>
-                <Box display={"flex"}>
+              <div className={classes.widgetHeader}>{header}</div>
+            ) : null}
+          </>
+        ) : (
+          <div className={classes.widgetHeader}>
+            <React.Fragment>
+              <Box display={"flex"}>
+                <Typography
+                  variant="h5"
+                  color="text"
+                  colorBrightness={"secondary"}
+                >
+                  {title}
+                </Typography>
+                <Box alignSelf={"flex-end"} ml={1}>
                   <Typography
-                    variant="h5"
                     color="text"
-                    colorBrightness={"secondary"}
+                    colorBrightness={"hint"}
+                    variant={"caption"}
                   >
-                    {title}
+                    {subtitle}
                   </Typography>
-                  <Box alignSelf={"flex-end"} ml={1}>
-                    <Typography
-                      color="text"
-                      colorBrightness={"hint"}
-                      variant={"caption"}
-                    >
-                      {subtitle}
-                    </Typography>
-                  </Box>
                 </Box>
-                {searchField && (
-                  <Input
-                    id="search-field"
-                    className={classes.textField}
-                    label="Search"
-                    margin="dense"
-                    variant="outlined"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <SearchIcon className={classes.searchIcon} />
-                        </InputAdornment>
-                      )
-                    }}
-                  />
-                )}
-                {!disableWidgetMenu && (
-                  <IconButton
-                    color="primary"
-                    classes={{ root: classes.moreButton }}
-                    aria-owns="widget-menu"
-                    aria-haspopup="true"
-                    onClick={() => setMoreMenuOpen(true)}
-                    buttonRef={setMoreButtonRef}
-                  >
-                    <MoreIcon />
-                  </IconButton>
-                )}
-              </React.Fragment>
-            )}
+              </Box>
+              {searchField && (
+                <Input
+                  id="search-field"
+                  className={classes.textField}
+                  label="Search"
+                  margin="dense"
+                  variant="outlined"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon className={classes.searchIcon} />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              )}
+              {!disableWidgetMenu && (
+                <IconButton
+                  color="primary"
+                  classes={{ root: classes.moreButton }}
+                  aria-owns="widget-menu"
+                  aria-haspopup="true"
+                  onClick={() => setMoreMenuOpen(true)}
+                  buttonRef={setMoreButtonRef}
+                >
+                  <MoreIcon />
+                </IconButton>
+              )}
+            </React.Fragment>
           </div>
         )}
         <div

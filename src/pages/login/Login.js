@@ -152,7 +152,7 @@ function Login(props) {
                   size="large"
                   className={classes.forgetButton}
                 >
-                  Forget Password
+                  Forgot Password?
                 </Button>
               </div>
             </React.Fragment>

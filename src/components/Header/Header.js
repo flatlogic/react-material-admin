@@ -126,7 +126,7 @@ export default function Header(props) {
   }
 
   return (
-    <AppBar position="fixed" className={classes.appBar} color={props.color}>
+    <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <IconButton
           color="inherit"
@@ -228,11 +228,8 @@ export default function Header(props) {
           variant="body2"
           style={{ display: "flex", alignItems: "center", marginLeft: 8 }}
         >
-          Hi,{" "}
-          <Typography
-            variant="body2"
-            style={{ marginLeft: 4, fontWeight: 600 }}
-          >
+          Hi,&nbsp;
+          <Typography variant="body2" weight={"bold"}>
             Robert Cotton
           </Typography>
         </Typography>

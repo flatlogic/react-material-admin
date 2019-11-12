@@ -21,8 +21,8 @@ import { Typography, Button } from "../../../Wrappers";
 const Header = () => {
   const classes = useStyles();
   return (
-    <AppBar position="static">
-      <Toolbar>
+    <AppBar position="fixed" className={classes.appBar}>
+      <Toolbar className={classes.toolbar}>
         <IconButton
           edge="start"
           color="inherit"

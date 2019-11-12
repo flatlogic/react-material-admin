@@ -28,6 +28,7 @@ import {
   AddShoppingCart as AddIcon,
   StarBorder as StarIcon
 } from "@material-ui/icons";
+import { withStyles } from "@material-ui/styles";
 
 // styles
 import useStyles from "./styles";
@@ -84,6 +85,14 @@ import { useThemeDispatch } from "../../context/ThemeContext";
 //Sidebar structure
 import structure from "../Sidebar/SidebarStructure";
 
+// Tab styling
+
+const CustomTab = withStyles(theme => ({
+  root: {
+    minWidth: 72
+  }
+}))(props => <Tab {...props} />);
+
 function Layout(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(2);
@@ -94,7 +103,7 @@ function Layout(props) {
     themeDispatch({ type: "TOGGLE_COLOR_THEME", theme: e.target.value });
   };
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? "add-section-popover" : undefined;
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -153,26 +162,10 @@ function Layout(props) {
                         aria-label="simple tabs example"
                         style={{ marginLeft: 38 }}
                       >
-                        <Tab
-                          label="Today"
-                          {...a11yProps(0)}
-                          className={classes.tab}
-                        />
-                        <Tab
-                          label="This week"
-                          {...a11yProps(1)}
-                          className={classes.tab}
-                        />
-                        <Tab
-                          label="This month"
-                          {...a11yProps(2)}
-                          className={classes.tab}
-                        />
-                        <Tab
-                          label="This year"
-                          {...a11yProps(3)}
-                          className={classes.tab}
-                        />
+                        <CustomTab label="Today" {...a11yProps(0)} />
+                        <CustomTab label="This week" {...a11yProps(1)} />
+                        <CustomTab label="This month" {...a11yProps(2)} />
+                        <CustomTab label="This year" {...a11yProps(3)} />
                       </Tabs>
                     )}
                   </Box>
@@ -359,17 +352,17 @@ function Layout(props) {
             >
               <Box display="flex" justifyContent="space-between">
                 <FormControlLabel
-                  className={classes.noneMargin}
+                  className={classes.noMargin}
                   value="default"
                   control={<Radio className={classes.defaultRadio} />}
                 />
                 <FormControlLabel
-                  className={classes.noneMargin}
+                  className={classes.noMargin}
                   value="secondary"
                   control={<Radio className={classes.secondaryRadio} />}
                 />
                 <FormControlLabel
-                  className={classes.noneMargin}
+                  className={classes.noMargin}
                   value="success"
                   control={<Radio className={classes.successRadio} />}
                 />

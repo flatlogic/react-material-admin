@@ -25,7 +25,7 @@ export default makeStyles(theme => ({
   link: {
     marginRight: theme.spacing(2)
   },
-  noneMargin: {
+  noMargin: {
     margin: 0
   },
   defaultRadio: {
@@ -46,9 +46,6 @@ export default makeStyles(theme => ({
       color: "#FF5C93"
     }
   },
-  tab: {
-    minWidth: 52
-  },
   button: {
     boxShadow: theme.customShadows.widget,
     textTransform: "none",
@@ -56,8 +53,8 @@ export default makeStyles(theme => ({
       boxShadow: theme.customShadows.widgetWide
     }
   },
-  ecommerceIcon:{
-    color: '#6E6E6E'
+  ecommerceIcon: {
+    color: "#6E6E6E"
   },
   calendarIcon: {
     color: theme.palette.primary.main,

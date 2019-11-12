@@ -8,6 +8,9 @@ export default makeStyles(theme => ({
       "& > .MuiSvgIcon-root": {
         display: "inline-block"
       }
+    },
+    "&.Mui-focusVisible": {
+      backgroundColor: "transparent"
     }
   },
   linkActive: {

@@ -73,7 +73,6 @@ const Invoice = () => {
               <img
                 src={logo}
                 alt="Flatlogic"
-                тВфыр
                 style={{ maxHeight: 100, borderRadius: 10, marginRight: 24 }}
               />
               <Box>

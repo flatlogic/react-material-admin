@@ -1,8 +1,14 @@
 import React from "react";
-import { Switch, Route, Redirect, useRouteMatch } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  Redirect,
+  useRouteMatch,
+  withRouter
+} from "react-router-dom";
 
 //styles
-import useStyles from "../../components/Sidebar/styles";
+import useStyles from "./styles";
 
 //pages
 import Overview from "./pages/overview";
@@ -16,7 +22,8 @@ import classnames from "classnames";
 //context
 import { useLayoutState } from "../../context/LayoutContext";
 
-const Documentation = () => {
+const Documentation = props => {
+  // global
   var layoutState = useLayoutState();
   const classes = useStyles();
   const { path } = useRouteMatch();
@@ -43,4 +50,4 @@ const Documentation = () => {
   );
 };
 
-export default Documentation;
+export default withRouter(Documentation);
