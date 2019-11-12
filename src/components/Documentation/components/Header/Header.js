@@ -7,7 +7,13 @@ import { AppBar, Toolbar, IconButton, Box } from "@material-ui/core";
 
 // Material Icons
 import { Menu as MenuIcon, Twitter as TwitterIcon } from "@material-ui/icons";
-import { mdiDribbble as DribbbleIcon } from "@mdi/js";
+import {
+  mdiDribbble as DribbbleIcon,
+  mdiFacebook as FacebookIcon,
+  mdiInstagram as InstagramIcon,
+  mdiLinkedin as LinkedinIcon,
+  mdiGithubCircle as GithubIcon
+} from "@mdi/js";
 
 // Components
 import { Typography, Button } from "../../../Wrappers";
@@ -34,12 +40,26 @@ const Header = () => {
           <Typography variant={"h5"}>&nbsp; Documentation</Typography>
         </Typography>
         <Box display={"flex"} alignItems={"center"}>
-          <IconButton>
-            <TwitterIcon />
-          </IconButton>
-          <IconButton>
-            <Icon path={DribbbleIcon} size={1} color={"#fff"} />
-          </IconButton>
+          <Box display={"flex"} className={classes.icons}>
+            <IconButton>
+              <TwitterIcon style={{ color: "#fff" }} />
+            </IconButton>
+            <IconButton>
+              <Icon path={DribbbleIcon} size={1} color={"#fff"} />
+            </IconButton>
+            <IconButton>
+              <Icon path={FacebookIcon} size={1} color={"#fff"} />
+            </IconButton>
+            <IconButton>
+              <Icon path={InstagramIcon} size={1} color={"#fff"} />
+            </IconButton>
+            <IconButton>
+              <Icon path={LinkedinIcon} size={1} color={"#fff"} />
+            </IconButton>
+            <IconButton>
+              <Icon path={GithubIcon} size={1} color={"#fff"} />
+            </IconButton>
+          </Box>
           <Button color={"inherit"} style={{ marginRight: 16 }}>
             Live Preview
           </Button>

@@ -11,19 +11,12 @@ import {
   Apps as CoreIcon,
   Description as DescriptionIcon,
   ShoppingCart as ShoppingCartIcon,
-  StarBorder as ExtraIcon,
-  Chat as ChatIcon,
-  AddCircle as AddSectionIcon
+  StarBorder as ExtraIcon
 } from "@material-ui/icons";
-import { Box, Popover, TextField as Input } from "@material-ui/core";
-import { useTheme, makeStyles } from "@material-ui/styles";
-
-// styles
-import useStyles from "./styles";
 
 // components
-import { Typography, Button } from "../Wrappers/Wrappers";
-import Dot from "./components/Dot";
+import { Typography, Button } from "../../../Wrappers";
+import Dot from "../../../Sidebar/components/Dot";
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
@@ -176,86 +169,7 @@ const structure = [
     label: "Background",
     link: "",
     icon: <Dot size="medium" color="secondary" />
-  },
-  { id: 22, type: "divider" },
-  {
-    id: 23,
-    label: "Add section",
-    icon: <AddSection />,
-    click: function(event, ...rest) {
-      const name = "addSectionClick";
-      rest.forEach(c => {
-        if (c.name === name) {
-          return c(event);
-        }
-        return false;
-      });
-    }
-  },
-  { id: 24, type: "divider" },
-  { id: 25, type: "margin" },
-  { id: 26, type: "divider" },
-  {
-    id: 27,
-    label: "Chat",
-    icon: <Chat />,
-    click: function(event, ...rest) {
-      const name = "chatSetOpen";
-      rest.forEach(c => {
-        if (c.name === name) {
-          return c(event);
-        }
-        return false;
-      });
-    }
   }
 ];
-
-function AddSection() {
-  const theme = useTheme();
-  return (
-    <AddSectionIcon
-      style={{ color: theme.palette.secondary.main, fontSize: 45 }}
-    />
-  );
-}
-
-function Chat() {
-  const theme = useTheme();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const useStyles = makeStyles(theme => ({
-    root: {
-      backgroundColor: theme.palette.primary.main,
-      borderRadius: "50%",
-      height: 50,
-      width: 50,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "#fff"
-    }
-  }));
-
-  const classes = useStyles();
-
-  return (
-    <>
-      <section className={classes.root}>
-        <ChatIcon />
-      </section>
-    </>
-  );
-}
 
 export default structure;

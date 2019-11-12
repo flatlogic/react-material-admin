@@ -5,9 +5,6 @@ import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
 import classNames from "classnames";
 
-//Sidebar structure
-import structure from "./SidebarStructure";
-
 // styles
 import useStyles from "./styles";
 
@@ -21,7 +18,7 @@ import {
   toggleSidebar
 } from "../../context/LayoutContext";
 
-function Sidebar({ location, ...props }) {
+function Sidebar({ location, structure, ...props }) {
   var classes = useStyles();
   var theme = useTheme();
 

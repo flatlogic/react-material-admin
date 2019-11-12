@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import {
+  Box,
   Collapse,
   Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
+  Popover,
+  TextField as Input,
   Typography
 } from "@material-ui/core";
 import {
@@ -17,9 +20,12 @@ import classnames from "classnames";
 
 // styles
 import useStyles from "./styles";
+import useStyles2 from "../../styles";
 
 // components
 import Dot from "../Dot";
+import { Button } from "../../../Wrappers";
+import Chat from "../../../Chat";
 
 export default function SidebarLink({
   link,
@@ -36,7 +42,12 @@ export default function SidebarLink({
 }) {
   // local
   var [isOpen, setIsOpen] = useState(false);
+  // Add Section Popover state
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  // Chat Modal state
+  const [isChat, setChat] = useState(false);
   var classes = useStyles(isOpen);
+  const classes2 = useStyles2();
   var isLinkActive =
     link && (location.pathname === link || location.pathname.includes(link));
 
@@ -53,12 +64,39 @@ export default function SidebarLink({
 
   if (type === "divider") return <Divider className={classes.divider} />;
 
-  if (type === "margin") return <section style={{ marginTop: 240 }}></section>;
+  if (type === "margin") return <section style={{ marginTop: 240 }} />;
+
+  // Add Section Popover
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+  const addSectionClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const addSectionClose = () => {
+    setAnchorEl(null);
+  };
+
+  // Chat Popover
+
+  const chatSetOpen = () => {
+    setChat(true);
+  };
+
+  const chatSetClose = () => {
+    setChat(false);
+  };
 
   if (!children)
     return (
       <ListItem
-        onClick={click || toggleDrawer}
+        onClick={e => {
+          if (click) {
+            return click(e, addSectionClick, chatSetOpen);
+          }
+          return toggleDrawer(e);
+        }}
         onKeyPress={toggleDrawer}
         button
         component={link && Link}
@@ -89,6 +127,45 @@ export default function SidebarLink({
           }}
           primary={label}
         />
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={addSectionClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left"
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "left"
+          }}
+          classes={{ paper: classes2.popover }}
+        >
+          <Box m={3} display="flex" flexDirection="column">
+            <Typography>Add section</Typography>
+            <Input
+              placeholder="Section Name"
+              classes={{ root: classes2.input }}
+            />
+            <Box display="flex" justifyContent="flex-end" mt={2}>
+              <Button
+                color="secondary"
+                variant="contained"
+                className={classes2.noBoxShadow}
+              >
+                Add
+              </Button>
+              <Button
+                classes={{ label: classes2.buttonLabel }}
+                onClick={addSectionClose}
+              >
+                Cancel
+              </Button>
+            </Box>
+          </Box>
+        </Popover>
+        <Chat open={isChat} chatClose={chatSetClose} kek={"kek"} />
       </ListItem>
     );
 
@@ -135,18 +212,14 @@ export default function SidebarLink({
           unmountOnExit
           className={classes.nestedList}
         >
-          <List
-            component="div"
-            disablePadding
-            onClick={click || toggleDrawer}
-            onKeyPress={toggleDrawer}
-          >
+          <List component="div" disablePadding>
             {children.map(childrenLink => (
               <SidebarLink
                 key={childrenLink && childrenLink.link}
                 location={location}
                 isSidebarOpened={isSidebarOpened}
                 classes={classes}
+                toggleDrawer={toggleDrawer}
                 nested
                 {...childrenLink}
               />
