@@ -24,7 +24,9 @@ export default function BigStat(props) {
     <Widget
       header={
         <div className={classes.title}>
-          <Typography variant="h5">{product}</Typography>
+          <Typography variant="h5" color="text" colorBrightness={"secondary"}>
+            {product}
+          </Typography>
 
           <Select
             value={value}

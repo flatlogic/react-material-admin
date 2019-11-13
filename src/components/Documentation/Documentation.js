@@ -17,10 +17,16 @@ import Overview from "./pages/overview";
 import Header from "./components/Header";
 import Sidebar from "../../components/Sidebar";
 import structure from "./components/Sidebar/SidebarStructure";
+import Widget from "../Widget";
+
+import { Button, Typography } from "../Wrappers";
 import classnames from "classnames";
 
 //context
 import { useLayoutState } from "../../context/LayoutContext";
+import { Box, Breadcrumbs, Grid, IconButton } from "@material-ui/core";
+
+import { NavigateNext as NavigateNextIcon } from "@material-ui/icons";
 
 const Documentation = props => {
   // global
@@ -37,6 +43,47 @@ const Documentation = props => {
         })}
       >
         <div className={classes.fakeToolbar} />
+        <Widget disableWidgetMenu inheritHeight>
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            {structure.map(c => {
+              if (
+                !c.children &&
+                window.location.hash.includes(c.link) &&
+                c.link
+              ) {
+                return (
+                  <Box display="flex" alignItems="center" key={c.id}>
+                    <Breadcrumbs aria-label="breadcrumb">
+                      <Typography variant="h5">{c.label}</Typography>
+                    </Breadcrumbs>
+                  </Box>
+                );
+              } else if (c.children) {
+                return c.children.map(currentInner => {
+                  if (window.location.hash.includes(currentInner.link)) {
+                    return (
+                      <Breadcrumbs
+                        separator={<NavigateNextIcon fontSize="small" />}
+                        aria-label="breadcrumb"
+                        key={c.id}
+                      >
+                        <Typography>{c.label}</Typography>
+                        <Typography color="primary">
+                          {currentInner.label}
+                        </Typography>
+                      </Breadcrumbs>
+                    );
+                  }
+                });
+              }
+            })}
+          </Grid>
+        </Widget>
         <Switch>
           <Route path={path} exact>
             <Redirect to={`${path}/getting-started/overview`} />

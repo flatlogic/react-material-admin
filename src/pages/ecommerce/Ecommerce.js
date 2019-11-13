@@ -26,7 +26,6 @@ import { yellow } from "@material-ui/core/colors";
 import { lighten, makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import useStyles from "./styles";
-import { rows } from "./Products";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 
@@ -35,6 +34,7 @@ import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Dot from "../../components/Sidebar/components/Dot";
 import { Typography, Button } from "../../components/Wrappers";
+import { rows } from "./Products";
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -207,7 +207,7 @@ EnhancedTableToolbar.propTypes = {
 export default function EcommercePage() {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("calories");
+  const [orderBy, setOrderBy] = React.useState("price");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);

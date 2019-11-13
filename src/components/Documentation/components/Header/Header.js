@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useStyles from "./styles";
 import Icon from "@mdi/react";
 
 // Material-UI core components
 import { AppBar, Toolbar, IconButton, Box } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
 
 // Material Icons
-import { Menu as MenuIcon, Twitter as TwitterIcon } from "@material-ui/icons";
+import {
+  ArrowBack as ArrowBackIcon,
+  Menu as MenuIcon,
+  Twitter as TwitterIcon
+} from "@material-ui/icons";
 import {
   mdiDribbble as DribbbleIcon,
   mdiFacebook as FacebookIcon,
@@ -17,19 +22,60 @@ import {
 
 // Components
 import { Typography, Button } from "../../../Wrappers";
+import {
+  toggleSidebar,
+  useLayoutDispatch,
+  useLayoutState
+} from "../../../../context/LayoutContext";
+import classNames from "classnames";
 
 const Header = () => {
+  const theme = useTheme();
   const classes = useStyles();
+  var layoutState = useLayoutState();
+  var layoutDispatch = useLayoutDispatch();
+  const [isSmall, setSmall] = useState(false);
+
+  useEffect(function() {
+    window.addEventListener("resize", handleWindowWidthChange);
+    handleWindowWidthChange();
+    return function cleanup() {
+      window.removeEventListener("resize", handleWindowWidthChange);
+    };
+  });
+
+  function handleWindowWidthChange() {
+    var windowWidth = window.innerWidth;
+    var breakpointWidth = theme.breakpoints.values.md;
+    var isSmallScreen = windowWidth < breakpointWidth;
+    setSmall(isSmallScreen);
+  }
+
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <IconButton
-          edge="start"
           color="inherit"
-          aria-label="menu"
-          className={classes.menuIcon}
+          onClick={() => toggleSidebar(layoutDispatch)}
+          className={classNames(
+            classes.headerMenuButton,
+            classes.headerMenuButtonCollapse
+          )}
         >
-          <MenuIcon />
+          {(!layoutState.isSidebarOpened && isSmall) ||
+          (layoutState.isSidebarOpened && !isSmall) ? (
+            <ArrowBackIcon
+              classes={{
+                root: classNames(classes.headerIcon, classes.headerIconCollapse)
+              }}
+            />
+          ) : (
+            <MenuIcon
+              classes={{
+                root: classNames(classes.headerIcon, classes.headerIconCollapse)
+              }}
+            />
+          )}
         </IconButton>
         <Typography
           variant="h6"

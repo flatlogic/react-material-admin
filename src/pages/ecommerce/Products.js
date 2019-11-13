@@ -194,6 +194,7 @@ const Product = props => {
   const handleChangeAddSize = event => {
     setAddSize(event.target.value);
   };
+
   return (
     <>
       <PageTitle title="Product Detail" />
