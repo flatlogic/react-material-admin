@@ -302,16 +302,16 @@ const EnhancedTableToolbar = props => {
           {numSelected} selected
         </Typography>
       ) : (
-        <Box display={"flex"}>
+        <Box display={"flex"} className={classes.title}>
           <Typography
             variant="h5"
             color="text"
             colorBrightness={"secondary"}
-            className={classes.title}
             id="tableTitle"
+            style={{ display: "flex" }}
           >
             Recent Orders
-            <Box alignSelf={"flex-end"} ml={1}>
+            <Box display="flex" alignSelf={"flex-end"} ml={1}>
               <Typography
                 color="text"
                 colorBrightness={"hint"}
