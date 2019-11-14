@@ -160,6 +160,8 @@ function Layout(props) {
                         value={value}
                         onChange={handleChange}
                         aria-label="simple tabs example"
+                        variant="scrollable"
+                        scrollButtons="auto"
                         style={{ marginLeft: 38 }}
                       >
                         <CustomTab label="Today" {...a11yProps(0)} />
@@ -300,13 +302,12 @@ function Layout(props) {
           <Route path="/app/extra/gallery" component={Gallery} />
           <Route path="/app/extra/invoice" component={Invoice} />
           <Route path="/app/extra/calendar" component={Calendar} />
-          {/*<Route*/}
-          {/*  path="/app/extra/login"*/}
-          {/*  render={() => {*/}
-          {/*    localStorage.removeItem("id_token");*/}
-          {/*    window.location.reload();*/}
-          {/*  }}*/}
-          {/*/>*/}
+          <Route
+            path="/app/extra/login"
+            render={e => {
+              e.preventDefault();
+            }}
+          />
           <Route path="/app/core/colors" component={Colors} />
           <Route path="/app/maps/google" component={MapsGoogle} />
           <Route path="/app/maps/vector" component={VectorMaps} />

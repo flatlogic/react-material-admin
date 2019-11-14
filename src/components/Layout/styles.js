@@ -59,5 +59,10 @@ export default makeStyles(theme => ({
   calendarIcon: {
     color: theme.palette.primary.main,
     marginRight: 14
+  },
+  tabs: {
+    "@media(max-width: 1200px)": {
+      flexDirection: "column"
+    }
   }
 }));

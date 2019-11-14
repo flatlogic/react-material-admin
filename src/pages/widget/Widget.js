@@ -35,25 +35,6 @@ export default function WidgetComp() {
               `}
               </Code>
             </Widget>
-            <Typography block>
-              To make <Code inline row>{`WidgetMenu`}</Code> visible, don't
-              append <Code inline row>{`disableWidgetMenu`}</Code> to{" "}
-              <Code inline row>{`Widget`}</Code> component.
-            </Typography>
-            <Widget className={classes.paper} disableWidgetMenu>
-              <Widget title="Simple Widget">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. A,
-                rem?
-              </Widget>
-              <Code>
-                {`
-  <Widget title="Simple Widget">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. A,
-    rem?
-  </Widget>
-              `}
-              </Code>
-            </Widget>
           </Widget>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -63,11 +44,13 @@ export default function WidgetComp() {
               first component after <Code row inline>{`return`}</Code>{" "}
               statement.
             </Typography>
-            <Code>
-              {`
+            <Box mt={1}>
+              <Code>
+                {`
               <PageTitle title="Widget" />
               `}
-            </Code>
+              </Code>
+            </Box>
           </Widget>
         </Grid>
       </Grid>

@@ -19,7 +19,7 @@ const structure = [
         link: "/documentation/getting-started/licences"
       },
       {
-        label: "Quick Start",
+        label: "Quick start",
         link: "/documentation/getting-started/quick-start"
       }
     ]

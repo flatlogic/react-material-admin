@@ -65,7 +65,7 @@ function getSorting(order, orderBy) {
 const headCells = [
   {
     id: "id",
-    numeric: false,
+    numeric: true,
     disablePadding: true,
     label: "ID"
   },

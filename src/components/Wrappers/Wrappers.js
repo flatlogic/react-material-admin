@@ -297,8 +297,6 @@ function LinearProgress({ children, color, ...props }) {
 }
 
 function Radio({ children, color, ...props }) {
-  const theme = useTheme();
-
   const Styled = createStyled({
     root: {
       color: "green",

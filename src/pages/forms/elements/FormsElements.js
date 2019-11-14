@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  Box,
-  InputLabel,
-  FormControl,
-  FormHelperText,
-  InputAdornment
-} from "@material-ui/core";
+import { Grid, Box, FormHelperText, InputAdornment } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import useStyles from "./styles";
 import cn from "classnames";

@@ -14,17 +14,15 @@ import {
   TablePagination,
   TableHead,
   TableSortLabel,
-  makeStyles,
   Toolbar,
   Tooltip,
   IconButton
 } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
+import { useTheme, makeStyles } from "@material-ui/styles";
 import {
   ResponsiveContainer,
   ComposedChart,
   AreaChart,
-  LineChart,
   Line,
   Area,
   PieChart,
@@ -178,7 +176,7 @@ function getSorting(order, orderBy) {
 const headCells = [
   {
     id: "id",
-    numeric: false,
+    numeric: true,
     disablePadding: true,
     label: "Order ID"
   },
@@ -309,6 +307,7 @@ const EnhancedTableToolbar = props => {
             colorBrightness={"secondary"}
             id="tableTitle"
             style={{ display: "flex" }}
+            block
           >
             Recent Orders
             <Box display="flex" alignSelf={"flex-end"} ml={1}>
@@ -413,7 +412,7 @@ export default function Dashboard(props) {
     <>
       <PageTitle title="Dashboard" />
       <Grid container spacing={4}>
-        <Grid item lg={3} md={4} sm={6} xs={12}>
+        <Grid item lg={3} sm={6} xs={12}>
           <Widget
             title="Support Tracker"
             upperTitle
@@ -502,7 +501,7 @@ export default function Dashboard(props) {
             </Grid>
           </Widget>
         </Grid>
-        <Grid item lg={3} md={4} sm={6} xs={12}>
+        <Grid item lg={3} sm={6} xs={12}>
           <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
             <Grid container spacing={2}>
               <Grid item xs={6}>
@@ -546,7 +545,7 @@ export default function Dashboard(props) {
             </Grid>
           </Widget>
         </Grid>
-        <Grid item lg={3} md={8} sm={6} xs={12}>
+        <Grid item lg={3} sm={6} xs={12}>
           <Widget
             title="App Performance"
             upperTitle
@@ -609,7 +608,7 @@ export default function Dashboard(props) {
             </div>
           </Widget>
         </Grid>
-        <Grid item lg={3} md={8} sm={6} xs={12}>
+        <Grid item lg={3} sm={6} xs={12}>
           <Widget
             title="Server Overview"
             upperTitle

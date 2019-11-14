@@ -65,5 +65,11 @@ export default makeStyles(theme => ({
     color: theme.palette.text.secondary + "99",
     transition: theme.transitions.create("transform"),
     display: props => (props ? "inline-block" : "none")
+  },
+  nestedMenu: {
+    paddingLeft: 0
+  },
+  nestedMenuItem: {
+    paddingLeft: 0
   }
 }));

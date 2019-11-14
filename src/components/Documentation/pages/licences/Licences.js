@@ -1,34 +1,106 @@
 import React from "react";
 import {
   Grid,
-  Box,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TableHead,
+  Box
 } from "@material-ui/core";
-import { Done as DoneIcon } from "@material-ui/icons";
+import { Add as PlusIcon, Remove as MinusIcon } from "@material-ui/icons";
 
 //components
 import PageTitle from "../../../PageTitle";
 import Widget from "../../../Widget";
 import { Typography } from "../../../Wrappers";
 
-const Overview = () => {
+// structure
+const rows = [
+  {
+    advantage: "Hundreds unique components",
+    single: <PlusIcon />,
+    extended: <PlusIcon />
+  },
+  {
+    advantage: "All pages",
+    single: <PlusIcon />,
+    extended: <PlusIcon />
+  },
+  {
+    advantage: "Free Updates",
+    single: "3 months",
+    extended: "6 months"
+  },
+  {
+    advantage: "Paying users allowed",
+    single: <MinusIcon />,
+    extended: <PlusIcon />
+  }
+];
+
+const Licences = () => {
   return (
     <>
-      <PageTitle title="Overview" />
+      <PageTitle title="Licences" />
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <Widget disableWidgetMenu>
             <Typography variant={"h6"}>
-              React Material Admin Full is an admin dashboard template built
-              with React 16.8.6. Sing App goes beyond usual admin templates and
-              provides you entire intuitive programming framework. You can use
-              React Material Admin Full to build any type of web applications
-              like SAAS, CMS, financial dashboards, project management tools,
-              etc.
+              A license grants you a non-exclusive and non-transferable right to
+              use and incorporate the item in your personal or commercial
+              projects. If your end product including an item is going to be
+              free to the end user then a Single License is what you need. An
+              Extended License is required if the end user must pay to use the
+              end product.
             </Typography>
+            <Table aria-label="licences table" style={{ marginTop: 48 }}>
+              <TableHead>
+                <TableRow>
+                  <TableCell />
+                  <TableCell>Single</TableCell>
+                  <TableCell>Extended</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map(row => (
+                  <TableRow key={row.advantage}>
+                    <TableCell component="th" scope="row">
+                      {row.advantage}
+                    </TableCell>
+                    <TableCell>{row.single}</TableCell>
+                    <TableCell>{row.extended}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            <Box mt={6}>
+              <Typography variant={"h6"} block>
+                <Typography weight={"medium"} variant={"h6"}>
+                  Single Application License
+                </Typography>
+                Your use of the item is restricted to a single application. You
+                may use the item in work which you are creating for your own
+                purposes or for your client. You must not incorporate the item
+                in a work which is created for redistribution or resale by you
+                or your client. The item may not be redistributed or resold. You
+                may not charge users for using your application.
+              </Typography>
+            </Box>
+            <Box mt={6}>
+              <Typography variant={"h6"} block>
+                <Typography weight={"medium"} variant={"h6"}>
+                  Extended Application License
+                </Typography>
+                Your use of the item is restricted to a single application. You
+                may use the item in work which you are creating for your own
+                purposes or for your clients. You are licensed to use the Item
+                to create one single End Product for yourself or for one client
+                (a “single application”), and the End Product may be Sold and
+                users may be charged for using it (e.g. you are building SAAS
+                application).
+              </Typography>
+            </Box>
           </Widget>
         </Grid>
       </Grid>
@@ -36,4 +108,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default Licences;

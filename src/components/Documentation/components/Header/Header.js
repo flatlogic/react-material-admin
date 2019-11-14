@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useStyles from "./styles";
 import Icon from "@mdi/react";
+import { withRouter } from "react-router-dom";
 
 // Material-UI core components
-import { AppBar, Toolbar, IconButton, Box } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Box, Link } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 
 // Material Icons
@@ -29,7 +30,7 @@ import {
 } from "../../../../context/LayoutContext";
 import classNames from "classnames";
 
-const Header = () => {
+const Header = props => {
   const theme = useTheme();
   const classes = useStyles();
   var layoutState = useLayoutState();
@@ -107,7 +108,11 @@ const Header = () => {
             </IconButton>
           </Box>
           <Box className={classes.headerButtons}>
-            <Button color={"inherit"} style={{ marginRight: 16 }}>
+            <Button
+              color={"inherit"}
+              style={{ marginRight: 16 }}
+              onClick={() => props.history.push("/app")}
+            >
               Live Preview
             </Button>
             <Button variant="outlined" color="secondary">
@@ -120,4 +125,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);

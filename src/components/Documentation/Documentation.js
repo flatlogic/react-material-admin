@@ -13,6 +13,7 @@ import useStyles from "./styles";
 //pages
 import Overview from "./pages/overview";
 import Licences from "./pages/licences";
+import Start from "./pages/start";
 
 //components
 import Header from "./components/Header";
@@ -94,6 +95,9 @@ const Documentation = props => {
           </Route>
           <Route path={`${path}/getting-started/licences`}>
             <Licences />
+          </Route>
+          <Route path={`${path}/getting-started/quick-start`}>
+            <Start />
           </Route>
         </Switch>
       </div>

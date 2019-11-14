@@ -13,16 +13,13 @@ import {
   ShoppingCart as ShoppingCartIcon,
   StarBorder as ExtraIcon,
   Chat as ChatIcon,
-  AddCircle as AddSectionIcon
+  AddCircle as AddSectionIcon,
+  FolderOpen as FolderIcon
 } from "@material-ui/icons";
-import { Box, Popover, TextField as Input } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 
-// styles
-import useStyles from "./styles";
-
 // components
-import { Typography, Button } from "../Wrappers/Wrappers";
+import { Typography } from "../Wrappers/Wrappers";
 import Dot from "./components/Dot";
 
 const structure = [
@@ -47,10 +44,10 @@ const structure = [
       }
     ]
   },
-  { id: 3, type: "divider" },
-  { id: 4, type: "title", label: "TEMPLATE" },
+  { id: 2, type: "divider" },
+  { id: 3, type: "title", label: "TEMPLATE" },
   {
-    id: 5,
+    id: 4,
     label: "Core",
     link: "/app/core",
     icon: <CoreIcon />,
@@ -70,7 +67,7 @@ const structure = [
     ]
   },
   {
-    id: 6,
+    id: 5,
     label: "Tables",
     link: "/app/tables",
     icon: <TableIcon />,
@@ -83,7 +80,7 @@ const structure = [
     ]
   },
   {
-    id: 7,
+    id: 6,
     label: "UI Elements",
     link: "/app/ui",
     icon: <UIElementsIcon />,
@@ -106,7 +103,7 @@ const structure = [
     ]
   },
   {
-    id: 8,
+    id: 7,
     label: "Forms",
     link: "/app/forms",
     icon: <DescriptionIcon />,
@@ -116,7 +113,7 @@ const structure = [
     ]
   },
   {
-    id: 9,
+    id: 8,
     label: "Charts",
     link: "/app/charts",
     icon: <ChartIcon />,
@@ -128,7 +125,7 @@ const structure = [
     ]
   },
   {
-    id: 10,
+    id: 9,
     label: "Maps",
     link: "/app/maps",
     icon: <MapIcon />,
@@ -138,7 +135,7 @@ const structure = [
     ]
   },
   {
-    id: 11,
+    id: 10,
     label: "Extra",
     link: "/app/extra",
     icon: <ExtraIcon />,
@@ -162,6 +159,29 @@ const structure = [
       { label: "Gallery", link: "/app/extra/gallery" },
       { label: "Search Result", link: "/app/extra/search" },
       { label: "Time Line", link: "/app/extra/timeline" }
+    ]
+  },
+  {
+    id: 11,
+    label: "Menu Levels",
+    icon: <FolderIcon />,
+    children: [
+      { label: "Level 1.1" },
+      {
+        label: "Level 1.2",
+        type: "nested",
+        children: [
+          { label: "Level 2.1" },
+          {
+            label: "Level 2.2",
+            children: [
+              {
+                label: "Level 3.1"
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   { id: 12, type: "divider" },
@@ -233,19 +253,6 @@ function AddSection() {
 }
 
 function Chat() {
-  const theme = useTheme();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   const useStyles = makeStyles(theme => ({
     root: {
       backgroundColor: theme.palette.primary.main,

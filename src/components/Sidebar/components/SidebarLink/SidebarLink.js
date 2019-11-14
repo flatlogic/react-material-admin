@@ -185,7 +185,8 @@ export default function SidebarLink({
         component={link && Link}
         onClick={toggleCollapse}
         className={classnames(classes.link, {
-          [classes.linkActive]: isLinkActive
+          [classes.linkActive]: isLinkActive,
+          [classes.nestedMenu]: type === "nested"
         })}
         to={link}
         disableRipple
@@ -221,12 +222,14 @@ export default function SidebarLink({
           in={isOpen && isSidebarOpened}
           timeout="auto"
           unmountOnExit
-          className={classes.nestedList}
+          className={classnames(classes.nestedList, {
+            [classes.nestedMenuItem]: type === "nested"
+          })}
         >
           <List component="div" disablePadding>
             {children.map(childrenLink => (
               <SidebarLink
-                key={childrenLink && childrenLink.link}
+                key={(childrenLink && childrenLink.link) || childrenLink.label}
                 location={location}
                 isSidebarOpened={isSidebarOpened}
                 classes={classes}

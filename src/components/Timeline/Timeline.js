@@ -28,7 +28,6 @@ const Circle = ({ children, ...props }) => {
 };
 
 const Annotation = props => {
-  const classes = useStyles();
   return (
     <>
       <Box
