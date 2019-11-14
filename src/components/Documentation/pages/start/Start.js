@@ -9,7 +9,7 @@ import { Typography } from "../../../Wrappers";
 const Start = () => {
   return (
     <>
-      <PageTitle title="Overview" />
+      <PageTitle title="Quick Start" />
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <Widget disableWidgetMenu>
