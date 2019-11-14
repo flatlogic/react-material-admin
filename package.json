@@ -2,6 +2,7 @@
   "name": "flatlogic-material-full",
   "version": "1.0.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
