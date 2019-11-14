@@ -56,7 +56,8 @@ export default function Widget({
             <React.Fragment>
               <Box display={"flex"}>
                 <Typography
-                  variant="h5"
+                  variant="h6"
+                  size={"sm"}
                   color="text"
                   colorBrightness={"secondary"}
                 >

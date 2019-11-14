@@ -422,15 +422,18 @@ export default function Dashboard(props) {
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={6}>
                 <Box display="flex">
-                  <Typography variant="h4" weight="medium">
+                  <Typography variant="h2" weight="medium">
                     543
                   </Typography>
-                  <Typography
-                    variant="caption"
-                    style={{ marginLeft: 8, marginTop: 8 }}
-                  >
-                    Tickets
-                  </Typography>
+                  <Box alignSelf={"flex-end"} ml={1}>
+                    <Typography
+                        color="text"
+                        colorBrightness={"hint"}
+                        variant={"caption"}
+                    >
+                      Tickets
+                    </Typography>
+                  </Box>
                 </Box>
               </Grid>
               <Grid

@@ -153,7 +153,7 @@ function Layout(props) {
                 return (
                   <Box display="flex" alignItems="center" key={c.id}>
                     <Breadcrumbs aria-label="breadcrumb">
-                      <Typography variant="h5">{c.label}</Typography>
+                      <Typography variant="h4">{c.label}</Typography>
                     </Breadcrumbs>
                     {window.location.hash.includes("/app/dashboard") && (
                       <Tabs
@@ -181,8 +181,8 @@ function Layout(props) {
                         aria-label="breadcrumb"
                         key={c.id}
                       >
-                        <Typography>{c.label}</Typography>
-                        <Typography color="primary">
+                        <Typography variant={"h6"}>{c.label}</Typography>
+                        <Typography variant={"h6"} color="primary">
                           {currentInner.label}
                         </Typography>
                       </Breadcrumbs>
