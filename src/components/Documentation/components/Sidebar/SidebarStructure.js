@@ -1,8 +1,8 @@
 import React from "react";
-
-// components
-import { Typography, Button } from "../../../Wrappers";
-import Dot from "../../../Sidebar/components/Dot";
+import {
+  LibraryBooks as PagesIcon,
+  LocalLibrary as LibsIcon
+} from "@material-ui/icons";
 
 const structure = [
   {
@@ -27,7 +27,8 @@ const structure = [
   {
     id: 1,
     label: "Pages",
-    link: "/documentation/pages"
+    link: "/documentation/pages",
+    icon: <PagesIcon />
   },
   {
     id: 2,
@@ -43,7 +44,8 @@ const structure = [
   {
     id: 3,
     label: "Libs",
-    link: "/documentation/libs"
+    link: "/documentation/libs",
+    icon: <LibsIcon />
   }
 ];
 

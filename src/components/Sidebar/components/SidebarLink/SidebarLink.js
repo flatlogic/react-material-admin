@@ -47,7 +47,11 @@ export default function SidebarLink({
   // Chat Modal state
   const [isChat, setChat] = useState(false);
   const [anchorElChat, setAnchorElChat] = React.useState(null);
-
+  // Login page onClick
+  const onLogin = () => {
+    localStorage.removeItem("id_token");
+    window.location.reload();
+  };
   var classes = useStyles(isOpen);
   const classes2 = useStyles2();
   var isLinkActive =
@@ -97,7 +101,7 @@ export default function SidebarLink({
         <ListItem
           onClick={e => {
             if (click) {
-              return click(e, addSectionClick, chatSetOpen);
+              return click(e, addSectionClick, chatSetOpen, onLogin);
             }
             return toggleDrawer(e);
           }}

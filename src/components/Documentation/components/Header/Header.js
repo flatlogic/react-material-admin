@@ -77,15 +77,15 @@ const Header = () => {
             />
           )}
         </IconButton>
-        <Typography
-          variant="h6"
-          block
-          style={{ flexGrow: 1, display: "flex", alignItems: "center" }}
-        >
+        <Typography variant="h6" block className={classes.logo}>
           React Material Admin Full{" "}
           <Typography variant={"h5"}>&nbsp; Documentation</Typography>
         </Typography>
-        <Box display={"flex"} alignItems={"center"}>
+        <Box
+          display={"flex"}
+          alignItems={"center"}
+          className={classes.fullWidthXs}
+        >
           <Box display={"flex"} className={classes.icons}>
             <IconButton>
               <TwitterIcon style={{ color: "#fff" }} />
@@ -106,12 +106,14 @@ const Header = () => {
               <Icon path={GithubIcon} size={1} color={"#fff"} />
             </IconButton>
           </Box>
-          <Button color={"inherit"} style={{ marginRight: 16 }}>
-            Live Preview
-          </Button>
-          <Button variant="outlined" color="secondary">
-            Buy
-          </Button>
+          <Box className={classes.headerButtons}>
+            <Button color={"inherit"} style={{ marginRight: 16 }}>
+              Live Preview
+            </Button>
+            <Button variant="outlined" color="secondary">
+              Buy
+            </Button>
+          </Box>
         </Box>
       </Toolbar>
     </AppBar>

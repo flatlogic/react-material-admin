@@ -300,13 +300,13 @@ function Layout(props) {
           <Route path="/app/extra/gallery" component={Gallery} />
           <Route path="/app/extra/invoice" component={Invoice} />
           <Route path="/app/extra/calendar" component={Calendar} />
-          <Route
-            path="/app/extra/login"
-            render={() => {
-              localStorage.removeItem("id_token");
-              window.location.reload();
-            }}
-          />
+          {/*<Route*/}
+          {/*  path="/app/extra/login"*/}
+          {/*  render={() => {*/}
+          {/*    localStorage.removeItem("id_token");*/}
+          {/*    window.location.reload();*/}
+          {/*  }}*/}
+          {/*/>*/}
           <Route path="/app/core/colors" component={Colors} />
           <Route path="/app/maps/google" component={MapsGoogle} />
           <Route path="/app/maps/vector" component={VectorMaps} />

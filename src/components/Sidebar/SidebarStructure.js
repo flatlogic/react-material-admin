@@ -145,7 +145,19 @@ const structure = [
     children: [
       { label: "Calendar", link: "/app/extra/calendar" },
       { label: "Invoice", link: "/app/extra/invoice" },
-      { label: "Login Page", link: "/app/extra/login" },
+      {
+        label: "Login Page",
+        link: "/app/extra/login",
+        click: function(...rest) {
+          const name = "onLogin";
+          rest.forEach(c => {
+            if (c.name === name) {
+              return c();
+            }
+            return false;
+          });
+        }
+      },
       { label: "Error Page", link: "/404" },
       { label: "Gallery", link: "/app/extra/gallery" },
       { label: "Search Result", link: "/app/extra/search" },
