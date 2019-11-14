@@ -442,7 +442,10 @@ export default function Dashboard(props) {
                   display: "flex"
                 }}
               >
-                <Typography variant="caption" style={{ position: "absolute" }}>
+                <Typography
+                  variant="caption"
+                  style={{ position: "absolute", fontWeight: 500 }}
+                >
                   64%
                 </Typography>
                 <ResponsiveContainer width="100%" height={80}>
@@ -526,7 +529,7 @@ export default function Dashboard(props) {
               >
                 <Typography
                   variant={"caption"}
-                  style={{ position: "absolute" }}
+                  style={{ position: "absolute", fontWeight: 500 }}
                 >
                   1700
                 </Typography>
