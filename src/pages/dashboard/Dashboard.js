@@ -433,7 +433,21 @@ export default function Dashboard(props) {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={6}>
+              <Grid
+                item
+                xs={6}
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  display: "flex"
+                }}
+              >
+                <Typography
+                  variant="caption"
+                  style={{ position: "absolute", fontWeight: 500 }}
+                >
+                  64%
+                </Typography>
                 <ResponsiveContainer width="100%" height={80}>
                   <PieChart>
                     <Pie
@@ -441,7 +455,7 @@ export default function Dashboard(props) {
                       startAngle={270}
                       endAngle={0}
                       paddingAngle={5}
-                      innerRadius={15}
+                      innerRadius={20}
                       outerRadius={25}
                       dataKey="value"
                     >
@@ -504,7 +518,21 @@ export default function Dashboard(props) {
         <Grid item lg={3} sm={6} xs={12}>
           <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid
+                item
+                xs={6}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <Typography
+                  variant={"caption"}
+                  style={{ position: "absolute", fontWeight: 500 }}
+                >
+                  1700
+                </Typography>
                 <ResponsiveContainer width="100%" height={144}>
                   <PieChart>
                     <Pie
