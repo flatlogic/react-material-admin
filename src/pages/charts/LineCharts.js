@@ -13,6 +13,7 @@ var lastDate = 0;
 var data = [];
 var TICKINTERVAL = 86400000;
 let XAXISRANGE = 777600000;
+let _isMounted;
 function getDayWiseTimeSeries(baseval, count, yrange) {
   var i = 0;
   while (i < count) {
@@ -22,7 +23,7 @@ function getDayWiseTimeSeries(baseval, count, yrange) {
 
     data.push({
       x,
-      y,
+      y
     });
     lastDate = baseval;
     baseval += TICKINTERVAL;
@@ -31,23 +32,25 @@ function getDayWiseTimeSeries(baseval, count, yrange) {
 }
 
 function intervals() {
-  window.setInterval(() => {
-    getNewSeries(lastDate, {
-      min: 10,
-      max: 90,
-    });
+  if (_isMounted) {
+    window.setInterval(() => {
+      getNewSeries(lastDate, {
+        min: 10,
+        max: 90
+      });
 
-    ApexCharts.exec("realtime", "updateSeries", [
-      {
-        data: data,
-      },
-    ]);
-  }, 1000);
+      ApexCharts.exec("realtime", "updateSeries", [
+        {
+          data: data
+        }
+      ]);
+    }, 1000);
+  }
 }
 
 getDayWiseTimeSeries(new Date("11 Feb 2019 GMT").getTime(), 10, {
   min: 10,
-  max: 90,
+  max: 90
 });
 
 function getNewSeries(baseval, yrange) {
@@ -64,13 +67,8 @@ function getNewSeries(baseval, yrange) {
 
   data.push({
     x: newDate,
-    y: Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min,
+    y: Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
   });
-}
-
-function resetData() {
-  // Alternatively, you can also reset the data at certain intervals to prevent creating a huge series
-  data = data.slice(data.length - 10, data.length);
 }
 
 //Zoomable Timeseries
@@ -88,8 +86,8 @@ const themeOptions = theme => {
     grid: {
       row: {
         colors: [theme.palette.primary.light, "transparent"], // takes an array which will be repeated on columns
-        opacity: 0.1,
-      },
+        opacity: 0.1
+      }
     },
     colors: [theme.palette.primary.main],
     xaxis: {
@@ -102,30 +100,30 @@ const themeOptions = theme => {
         "Jun",
         "Jul",
         "Aug",
-        "Sep",
-      ],
+        "Sep"
+      ]
     },
     dataLabels: {
-      enabled: false,
+      enabled: false
     },
     stroke: {
-      curve: "smooth",
+      curve: "smooth"
     },
     chart: {
       toolbar: {
-        show: false,
-      },
+        show: false
+      }
     },
     legend: {
-      show: false,
+      show: false
     },
     // second container chart
     options: {
       dataLabels: {
-        enabled: false,
+        enabled: false
       },
       stroke: {
-        curve: "smooth",
+        curve: "smooth"
       },
       chart: {
         shadow: {
@@ -134,74 +132,74 @@ const themeOptions = theme => {
           top: 18,
           left: 7,
           blur: 10,
-          opacity: 1,
+          opacity: 1
         },
         toolbar: {
-          show: false,
-        },
+          show: false
+        }
       },
       colors: [theme.palette.primary.main, theme.palette.success.main],
       grid: {
         borderColor: "#e7e7e7",
         row: {
           colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-          opacity: 0.5,
-        },
+          opacity: 0.5
+        }
       },
       markers: {
-        size: 6,
+        size: 6
       },
       xaxis: {
         categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
         title: {
-          text: "Month",
-        },
+          text: "Month"
+        }
       },
       yaxis: {
         title: {
-          text: "Temperature",
+          text: "Temperature"
         },
         min: 5,
-        max: 40,
+        max: 40
       },
       legend: {
         position: "top",
         horizontalAlign: "right",
         floating: true,
         offsetY: -25,
-        offsetX: -5,
-      },
+        offsetX: -5
+      }
     },
     // third container chart
     options2: {
       stroke: {
-        curve: "smooth",
+        curve: "smooth"
       },
       legend: {
-        show: false,
+        show: false
       },
       chart: {
         stacked: false,
         zoom: {
           type: "x",
           enabled: true,
-          autoScaleYaxis: true,
+          autoScaleYaxis: true
         },
         toolbar: {
-          show: false,
-        },
+          show: false
+        }
       },
       plotOptions: {
         line: {
-          curve: "smooth",
-        },
+          curve: "smooth"
+        }
       },
       dataLabels: {
-        enabled: false,
+        enabled: false
       },
       markers: {
         size: 0,
-        style: "full",
+        style: "full"
       },
       colors: [theme.palette.success.light],
       fill: {
@@ -211,11 +209,11 @@ const themeOptions = theme => {
           inverseColors: false,
           opacityFrom: 0.5,
           opacityTo: 0,
-          stops: [0, 90, 100],
-        },
+          stops: [0, 90, 100]
+        }
       },
       xaxis: {
-        type: "datetime",
+        type: "datetime"
       },
 
       tooltip: {
@@ -223,9 +221,9 @@ const themeOptions = theme => {
         y: {
           formatter: function(val) {
             return val;
-          },
-        },
-      },
+          }
+        }
+      }
     },
     // fourth chart container
     options3: {
@@ -236,36 +234,36 @@ const themeOptions = theme => {
           enabled: true,
           easing: "linear",
           dynamicAnimation: {
-            speed: 1000,
-          },
+            speed: 1000
+          }
         },
         toolbar: {
-          show: false,
+          show: false
         },
         zoom: {
-          enabled: false,
-        },
+          enabled: false
+        }
       },
       dataLabels: {
-        enabled: false,
+        enabled: false
       },
       stroke: {
-        curve: "smooth",
+        curve: "smooth"
       },
       markers: {
-        size: 0,
+        size: 0
       },
       xaxis: {
         type: "datetime",
-        range: XAXISRANGE,
+        range: XAXISRANGE
       },
       yaxis: {
-        max: 100,
+        max: 100
       },
       legend: {
-        show: false,
-      },
-    },
+        show: false
+      }
+    }
   };
 };
 
@@ -273,36 +271,39 @@ const values = {
   series: [
     {
       name: "Desktops",
-      data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-    },
+      data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+    }
   ],
   series2: [
     {
       name: "High - 2019",
-      data: [28, 29, 33, 36, 32, 32, 33],
+      data: [28, 29, 33, 36, 32, 32, 33]
     },
     {
       name: "Low - 2019",
-      data: [12, 11, 14, 18, 17, 13, 13],
-    },
+      data: [12, 11, 14, 18, 17, 13, 13]
+    }
   ],
   series3: [
     {
       name: "Flatlogic LLC",
-      data: dates,
-    },
+      data: dates
+    }
   ],
   series4: [
     {
-      data: data.slice(),
-    },
-  ],
+      data: data.slice()
+    }
+  ]
 };
 
 export default function Charts(props) {
   useEffect(() => {
     intervals();
-    return resetData;
+    return function cleanup() {
+      _isMounted = false;
+      data = data.slice(data.length - 10, data.length);
+    };
   });
   const theme = useTheme();
   const [state] = useState(values);

@@ -4,10 +4,15 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Typography,
+  TextField as Input,
+  InputAdornment,
+  Box
 } from "@material-ui/core";
-import { MoreVert as MoreIcon } from "@material-ui/icons";
+import { MoreVert as MoreIcon, Search as SearchIcon } from "@material-ui/icons";
 import classnames from "classnames";
+
+//components
+import { Typography } from "../../components/Wrappers";
 
 // styles
 import useStyles from "./styles";
@@ -15,11 +20,13 @@ import useStyles from "./styles";
 export default function Widget({
   children,
   title,
+  subtitle,
   noBodyPadding,
   bodyClass,
   disableWidgetMenu,
   header,
   inheritHeight,
+  searchField,
   ...props
 }) {
   var classes = useStyles(props);
@@ -34,40 +41,73 @@ export default function Widget({
     >
       <Paper
         className={classnames(classes.paper, {
-          [props.className]: props.className,
+          [props.className]: props.className
         })}
         classes={{ root: classes.widgetRoot }}
       >
-        {!title ? null : (
-          <div className={classes.widgetHeader}>
+        {!title ? (
+          <>
             {header ? (
-              header
-            ) : (
-              <React.Fragment>
-                <Typography variant="h5" color="textSecondary">
+              <div className={classes.widgetHeader}>{header}</div>
+            ) : null}
+          </>
+        ) : (
+          <div className={classes.widgetHeader}>
+            <React.Fragment>
+              <Box display={"flex"}>
+                <Typography
+                  variant="h5"
+                  color="text"
+                  colorBrightness={"secondary"}
+                >
                   {title}
                 </Typography>
-                {!disableWidgetMenu && (
-                  <IconButton
-                    color="primary"
-                    classes={{ root: classes.moreButton }}
-                    aria-owns="widget-menu"
-                    aria-haspopup="true"
-                    onClick={() => setMoreMenuOpen(true)}
-                    buttonRef={setMoreButtonRef}
+                <Box alignSelf={"flex-end"} ml={1}>
+                  <Typography
+                    color="text"
+                    colorBrightness={"hint"}
+                    variant={"caption"}
                   >
-                    <MoreIcon />
-                  </IconButton>
-                )}
-              </React.Fragment>
-            )}
+                    {subtitle}
+                  </Typography>
+                </Box>
+              </Box>
+              {searchField && (
+                <Input
+                  id="search-field"
+                  className={classes.textField}
+                  label="Search"
+                  margin="dense"
+                  variant="outlined"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon className={classes.searchIcon} />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              )}
+              {!disableWidgetMenu && (
+                <IconButton
+                  color="primary"
+                  classes={{ root: classes.moreButton }}
+                  aria-owns="widget-menu"
+                  aria-haspopup="true"
+                  onClick={() => setMoreMenuOpen(true)}
+                  buttonRef={setMoreButtonRef}
+                >
+                  <MoreIcon />
+                </IconButton>
+              )}
+            </React.Fragment>
           </div>
         )}
         <div
           className={classnames(classes.widgetBody, {
             [classes.noPadding]: noBodyPadding,
             [classes.paddingTop]: !title && !noBodyPadding,
-            [bodyClass]: bodyClass,
+            [bodyClass]: bodyClass
           })}
         >
           {children}

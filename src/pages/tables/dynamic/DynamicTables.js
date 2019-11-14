@@ -12,9 +12,16 @@ import {
   Checkbox,
   IconButton,
   Grid,
-  TableFooter,
+  TableFooter
 } from "@material-ui/core";
-import {Delete as DeleteIcon, FilterList as FilterListIcon, LastPage as LastPageIcon, FirstPage as FirstPageIcon, KeyboardArrowRight, KeyboardArrowLeft } from "@material-ui/icons";
+import {
+  Delete as DeleteIcon,
+  FilterList as FilterListIcon,
+  LastPage as LastPageIcon,
+  FirstPage as FirstPageIcon,
+  KeyboardArrowRight,
+  KeyboardArrowLeft
+} from "@material-ui/icons";
 import cn from "classnames";
 
 //components
@@ -27,8 +34,8 @@ const useStyles1 = makeStyles(theme => ({
   root: {
     flexShrink: 0,
     color: theme.palette.text.secondary,
-    marginLeft: theme.spacing(2.5),
-  },
+    marginLeft: theme.spacing(2.5)
+  }
 }));
 
 function TablePaginationActions(props) {
@@ -107,7 +114,7 @@ const rows2 = [
   createData("Lollipop", 392, 0.2),
   createData("Marshmallow", 318, 0),
   createData("Nougat", 360, 19.0),
-  createData("Oreo", 437, 18.0),
+  createData("Oreo", 437, 18.0)
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 function createData(name, calories, fat, carbs, protein) {
@@ -127,7 +134,7 @@ const rows = [
   createData("Lollipop", 392, 0.2, 98, 0.0),
   createData("Marshmallow", 318, 0, 81, 2.0),
   createData("Nougat", 360, 19.0, 9, 37.0),
-  createData("Oreo", 437, 18.0, 63, 4.0),
+  createData("Oreo", 437, 18.0, 63, 4.0)
 ];
 
 function desc(a, b, orderBy) {
@@ -161,12 +168,12 @@ const headCells = [
     id: "name",
     numeric: false,
     disablePadding: true,
-    label: "Dessert (100g serving)",
+    label: "Dessert (100g serving)"
   },
   { id: "calories", numeric: true, disablePadding: false, label: "Calories" },
   { id: "fat", numeric: true, disablePadding: false, label: "Fat (g)" },
   { id: "carbs", numeric: true, disablePadding: false, label: "Carbs (g)" },
-  { id: "protein", numeric: true, disablePadding: false, label: "Protein (g)" },
+  { id: "protein", numeric: true, disablePadding: false, label: "Protein (g)" }
 ];
 
 function EnhancedTableHead(props) {
@@ -177,7 +184,7 @@ function EnhancedTableHead(props) {
     orderBy,
     numSelected,
     rowCount,
-    onRequestSort,
+    onRequestSort
   } = props;
   const createSortHandler = property => event => {
     onRequestSort(event, property);
@@ -224,41 +231,41 @@ const useToolbarStyles = makeStyles(theme => ({
   root: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(1),
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
   highlight:
     theme.palette.type === "light"
       ? {
           color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+          backgroundColor: lighten(theme.palette.secondary.light, 0.85)
         }
       : {
           color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
+          backgroundColor: theme.palette.secondary.dark
         },
   spacer: {
-    flex: "1 1 100%",
+    flex: "1 1 100%"
   },
   actions: {
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary
   },
   title: {
-    flex: "0 0 auto",
-  },
+    flex: "0 0 auto"
+  }
 }));
 
 const useStyles2 = makeStyles(theme => ({
   root: {
     width: "100%",
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
   table: {
-    minWidth: 500,
+    minWidth: 500
   },
   tableWrapper: {
     overflowX: "auto",
     marginTop: theme.spacing(3)
-  },
+  }
 }));
 
 const EnhancedTableToolbar = props => {
@@ -268,7 +275,7 @@ const EnhancedTableToolbar = props => {
   return (
     <Toolbar
       className={cn(classes.root, {
-        [classes.highlight]: numSelected > 0,
+        [classes.highlight]: numSelected > 0
       })}
     >
       <div className={classes.title}>
@@ -305,17 +312,17 @@ const EnhancedTableToolbar = props => {
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
   paper: {
     width: "100%",
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   },
   table: {
-    minWidth: 750,
+    minWidth: 750
   },
   tableWrapper: {
-    overflowX: "auto",
+    overflowX: "auto"
   },
   visuallyHidden: {
     border: 0,
@@ -326,8 +333,8 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     position: "absolute",
     top: 20,
-    width: 1,
-  },
+    width: 1
+  }
 }));
 
 export default function EnhancedTable() {
@@ -381,7 +388,7 @@ export default function EnhancedTable() {
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
+        selected.slice(selectedIndex + 1)
       );
     }
 
@@ -484,10 +491,10 @@ export default function EnhancedTable() {
               rowsPerPage={rowsPerPage}
               page={page}
               backIconButtonProps={{
-                "aria-label": "previous page",
+                "aria-label": "previous page"
               }}
               nextIconButtonProps={{
-                "aria-label": "next page",
+                "aria-label": "next page"
               }}
               onChangePage={handleChangePage}
               onChangeRowsPerPage={handleChangeRowsPerPage}
@@ -507,7 +514,7 @@ export default function EnhancedTable() {
                   {rows2
                     .slice(
                       page2 * rowsPerPage2,
-                      page2 * rowsPerPage2 + rowsPerPage2,
+                      page2 * rowsPerPage2 + rowsPerPage2
                     )
                     .map(row => (
                       <TableRow key={row.name}>
@@ -527,7 +534,7 @@ export default function EnhancedTable() {
                             {rows2
                               .slice(
                                 page2 * rowsPerPage2,
-                                page2 * rowsPerPage2 + rowsPerPage2,
+                                page2 * rowsPerPage2 + rowsPerPage2
                               )
                               .map(row => (
                                 <TableRow key={row.name}>
@@ -557,7 +564,7 @@ export default function EnhancedTable() {
                                 page={page2}
                                 SelectProps={{
                                   inputProps: { "aria-label": "rows per page" },
-                                  native: true,
+                                  native: true
                                 }}
                                 onChangePage={handleChangePage2}
                                 onChangeRowsPerPage={handleChangeRowsPerPage2}
@@ -583,7 +590,7 @@ export default function EnhancedTable() {
                       page={page2}
                       SelectProps={{
                         inputProps: { "aria-label": "rows per page" },
-                        native: true,
+                        native: true
                       }}
                       onChangePage={handleChangePage2}
                       onChangeRowsPerPage={handleChangeRowsPerPage2}

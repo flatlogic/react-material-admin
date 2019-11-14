@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   ComposableMap,
   ZoomableGroup,
   Geographies,
   Geography,
   Markers,
-  Marker,
+  Marker
 } from "react-simple-maps";
 import useStyles from "./styles";
 import map from "../../images/map.json";
@@ -14,8 +14,8 @@ const markers = [
   {
     markerOffset: -25,
     name: "Buenos Aires",
-    coordinates: [-58.3816, -34.6037],
-  },
+    coordinates: [-58.3816, -34.6037]
+  }
 ];
 
 function VectorMap() {
@@ -25,14 +25,14 @@ function VectorMap() {
       <ComposableMap
         projectionConfig={{
           scale: 205,
-          rotation: [-11, 0, 0],
+          rotation: [-11, 0, 0]
         }}
         width={980}
         height={551}
         style={{
           width: "100%",
           height: "auto",
-          overflow: "auto",
+          overflow: "auto"
         }}
       >
         <ZoomableGroup center={[0, 20]} disablePanning>
@@ -50,23 +50,23 @@ function VectorMap() {
                           fill: "#ECEFF1",
                           stroke: "#607D8B",
                           strokeWidth: 0.75,
-                          outline: "none",
+                          outline: "none"
                         },
                         hover: {
                           fill: "#607D8B",
                           stroke: "#607D8B",
                           strokeWidth: 0.75,
-                          outline: "none",
+                          outline: "none"
                         },
                         pressed: {
                           fill: "#536DFE",
                           stroke: "#607D8B",
                           strokeWidth: 0.75,
-                          outline: "none",
-                        },
+                          outline: "none"
+                        }
                       }}
                     />
-                  ),
+                  )
               )
             }
           </Geographies>
@@ -78,7 +78,7 @@ function VectorMap() {
                 style={{
                   default: { fill: "#536DFE" },
                   hover: { fill: "#FFFFFF" },
-                  pressed: { fill: "#536DFE" },
+                  pressed: { fill: "#536DFE" }
                 }}
               >
                 <circle
@@ -88,7 +88,7 @@ function VectorMap() {
                   style={{
                     stroke: "#536DFE",
                     strokeWidth: 3,
-                    opacity: 0.9,
+                    opacity: 0.9
                   }}
                 />
                 <text
@@ -96,7 +96,7 @@ function VectorMap() {
                   y={marker.markerOffset}
                   style={{
                     fontFamily: "Roboto, sans-serif",
-                    fill: "#607D8B",
+                    fill: "#607D8B"
                   }}
                 >
                   {marker.name}

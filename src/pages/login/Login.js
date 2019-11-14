@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import {
   Grid,
   CircularProgress,
-  Typography,
-  Button,
   Tabs,
   Tab,
-  TextField,
   Fade,
+  TextField as Input
 } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import classnames from "classnames";
@@ -21,6 +19,9 @@ import google from "../../images/google.svg";
 
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
+
+//components
+import { Button, Typography } from "../../components/Wrappers";
 
 const getGreeting = () => {
   const d = new Date();
@@ -91,13 +92,13 @@ function Login(props) {
                   Something is wrong with your login or password :(
                 </Typography>
               </Fade>
-              <TextField
+              <Input
                 id="email"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
+                    underline: classes.InputUnderline,
+                    input: classes.Input
+                  }
                 }}
                 value={loginValue}
                 onChange={e => setLoginValue(e.target.value)}
@@ -106,13 +107,13 @@ function Login(props) {
                 type="email"
                 fullWidth
               />
-              <TextField
+              <Input
                 id="password"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
+                    underline: classes.InputUnderline,
+                    input: classes.Input
+                  }
                 }}
                 value={passwordValue}
                 onChange={e => setPasswordValue(e.target.value)}
@@ -136,7 +137,7 @@ function Login(props) {
                         passwordValue,
                         props.history,
                         setIsLoading,
-                        setError,
+                        setError
                       )
                     }
                     variant="contained"
@@ -151,7 +152,7 @@ function Login(props) {
                   size="large"
                   className={classes.forgetButton}
                 >
-                  Forget Password
+                  Forgot Password?
                 </Button>
               </div>
             </React.Fragment>
@@ -169,13 +170,13 @@ function Login(props) {
                   Something is wrong with your login or password :(
                 </Typography>
               </Fade>
-              <TextField
+              <Input
                 id="name"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
+                    underline: classes.InputUnderline,
+                    input: classes.Input
+                  }
                 }}
                 value={nameValue}
                 onChange={e => setNameValue(e.target.value)}
@@ -184,13 +185,13 @@ function Login(props) {
                 type="email"
                 fullWidth
               />
-              <TextField
+              <Input
                 id="email"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
+                    underline: classes.InputUnderline,
+                    input: classes.Input
+                  }
                 }}
                 value={loginValue}
                 onChange={e => setLoginValue(e.target.value)}
@@ -199,13 +200,13 @@ function Login(props) {
                 type="email"
                 fullWidth
               />
-              <TextField
+              <Input
                 id="password"
                 InputProps={{
                   classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
+                    underline: classes.InputUnderline,
+                    input: classes.Input
+                  }
                 }}
                 value={passwordValue}
                 onChange={e => setPasswordValue(e.target.value)}
@@ -226,7 +227,7 @@ function Login(props) {
                         passwordValue,
                         props.history,
                         setIsLoading,
-                        setError,
+                        setError
                       )
                     }
                     disabled={
@@ -253,7 +254,7 @@ function Login(props) {
                 size="large"
                 className={classnames(
                   classes.googleButton,
-                  classes.googleButtonCreating,
+                  classes.googleButtonCreating
                 )}
               >
                 <img src={google} alt="google" className={classes.googleIcon} />

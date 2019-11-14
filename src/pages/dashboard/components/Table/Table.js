@@ -5,7 +5,7 @@ import {
   TableHead,
   TableBody,
   TableCell,
-  Box,
+  Box
 } from "@material-ui/core";
 
 import { Button, Avatar } from "../../../../components/Wrappers";
@@ -14,9 +14,8 @@ import { Button, Avatar } from "../../../../components/Wrappers";
 const states = {
   sent: "success",
   pending: "warning",
-  declined: "secondary",
+  declined: "secondary"
 };
-
 export default function TableComponent({ data }) {
   var keys = Object.keys(data[0]).map(i => i.toUpperCase());
   keys.shift();
@@ -59,7 +58,7 @@ export default function TableComponent({ data }) {
                 </Button>
               </TableCell>
             </TableRow>
-          ),
+          )
         )}
       </TableBody>
     </Table>

@@ -19,22 +19,21 @@ const Timestep = props => {
 const Circle = ({ children, ...props }) => {
   const classes = useStyles();
   return (
-    <Avatar {...props} className={classes.circle}>
-      {children ? children : null}
-    </Avatar>
+    <Box className={classes.border} display={"flex"}>
+      <Avatar {...props} className={classes.circle}>
+        {children ? children : null}
+      </Avatar>
+    </Box>
   );
 };
 
 const Annotation = props => {
-  const classes = useStyles();
   return (
     <>
       <Box
         display={"flex"}
         flexDirection={"row"}
         justifyContent={"space-between"}
-        style={{ width: "100%" }}
-        className={classes.border}
       >
         {props.children}
       </Box>

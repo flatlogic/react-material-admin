@@ -2,8 +2,8 @@ import React from "react";
 
 // styles
 import useStyles from "./styles";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { duotoneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const Code = ({ children, row, inline }) => {
   const props = { row, inline };
@@ -13,7 +13,7 @@ const Code = ({ children, row, inline }) => {
       <SyntaxHighlighter
         className={classes.codeComponent}
         language="javascript"
-        style={duotoneLight}
+        style={docco}
         customStyle={inline ? { padding: "2px 6px", margin: "-0.5em 0" } : {}}
       >
         {children}

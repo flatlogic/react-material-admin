@@ -3,6 +3,7 @@ import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // components
 import Layout from "./Layout";
+import Documentation from "./Documentation";
 
 // pages
 import Error from "../pages/error";
@@ -14,7 +15,6 @@ import { useUserState } from "../context/UserContext";
 export default function App() {
   // global
   var { isAuthenticated } = useUserState();
-
   return (
     <HashRouter>
       <Switch>
@@ -24,6 +24,7 @@ export default function App() {
           path="/app"
           render={() => <Redirect to="/app/dashboard" />}
         />
+        <Route path="/documentation" component={Documentation} />
         <PrivateRoute path="/app" component={Layout} />
         <PublicRoute path="/login" component={Login} />
         <Route component={Error} />
@@ -45,8 +46,8 @@ export default function App() {
               to={{
                 pathname: "/login",
                 state: {
-                  from: props.location,
-                },
+                  from: props.location
+                }
               }}
             />
           )
@@ -63,7 +64,7 @@ export default function App() {
           isAuthenticated ? (
             <Redirect
               to={{
-                pathname: "/",
+                pathname: "/"
               }}
             />
           ) : (

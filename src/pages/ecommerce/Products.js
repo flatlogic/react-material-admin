@@ -11,18 +11,18 @@ import {
   CardActionArea,
   CardActions,
   CardContent,
-  CardMedia,
+  CardMedia
 } from "@material-ui/core";
 import Icon from "@mdi/react";
 import {
   Star as StarIcon,
   StarBorder as StarOutlinedIcon,
-  ShoppingCart as ShoppingCartIcon,
+  ShoppingCart as ShoppingCartIcon
 } from "@material-ui/icons";
 import {
   mdiFacebook as FacebookIcon,
   mdiInstagram as InstagramIcon,
-  mdiTwitter as TwitterIcon,
+  mdiTwitter as TwitterIcon
 } from "@mdi/js";
 import useStyles from "./styles";
 import { yellow } from "@material-ui/core/colors/index";
@@ -52,6 +52,9 @@ export const rows = [
     subtitle: "Trainers In White",
     price: 76,
     rating: 4.6,
+    color: "primary",
+    status: "Shipped",
+    process: "64%"
   },
   {
     id: 2,
@@ -60,6 +63,9 @@ export const rows = [
     subtitle: "Trainers In Blue",
     price: 37,
     rating: 4.6,
+    color: "success",
+    status: "Delivered",
+    process: "100%"
   },
   {
     id: 3,
@@ -68,6 +74,9 @@ export const rows = [
     subtitle: "Trainers In White",
     price: 70,
     rating: 4.6,
+    color: "secondary",
+    status: "Canceled",
+    process: "0%"
   },
   {
     id: 4,
@@ -76,6 +85,9 @@ export const rows = [
     subtitle: "Trainers In Blue",
     price: 85,
     rating: 4.6,
+    color: "primary",
+    status: "Shipped",
+    process: "64%"
   },
   {
     id: 5,
@@ -84,6 +96,9 @@ export const rows = [
     subtitle: "Trainers In White",
     price: 12,
     rating: 4.6,
+    color: "success",
+    status: "Delivered",
+    process: "100%"
   },
   {
     id: 6,
@@ -92,6 +107,9 @@ export const rows = [
     subtitle: "Trainers In Blue",
     price: 76,
     rating: 4.6,
+    color: "secondary",
+    status: "Canceled",
+    process: "0%"
   },
   {
     id: 7,
@@ -100,6 +118,9 @@ export const rows = [
     subtitle: "Trainers In White",
     price: 76,
     rating: 4.6,
+    color: "primary",
+    status: "Shipped",
+    process: "64%"
   },
   {
     id: 8,
@@ -108,6 +129,9 @@ export const rows = [
     subtitle: "Trainers In White",
     price: 76,
     rating: 4.6,
+    color: "success",
+    status: "Delivered",
+    process: "100%"
   },
   {
     id: 9,
@@ -116,6 +140,9 @@ export const rows = [
     subtitle: "Trainers In White",
     price: 76,
     rating: 4.6,
+    color: "secondary",
+    status: "Canceled",
+    process: "0%"
   },
   {
     id: 10,
@@ -124,6 +151,9 @@ export const rows = [
     subtitle: "Trainers In Blue",
     price: 76,
     rating: 4.6,
+    color: "primary",
+    status: "Shipped",
+    process: "64%"
   },
   {
     id: 11,
@@ -132,6 +162,9 @@ export const rows = [
     subtitle: "Trainers In White",
     price: 71,
     rating: 4.6,
+    color: "success",
+    status: "Delivered",
+    process: "100%"
   },
   {
     id: 12,
@@ -140,7 +173,10 @@ export const rows = [
     subtitle: "Trainers In Blue",
     price: 76,
     rating: 4.6,
-  },
+    color: "secondary",
+    status: "Canceled",
+    process: "0%"
+  }
 ];
 
 const Product = props => {
@@ -158,6 +194,7 @@ const Product = props => {
   const handleChangeAddSize = event => {
     setAddSize(event.target.value);
   };
+
   return (
     <>
       <PageTitle title="Product Detail" />
@@ -216,16 +253,14 @@ const Product = props => {
                         <Typography variant="h3" uppercase>
                           {rows[0].title}
                         </Typography>
-                        <Typography textColor="secondary">
-                          {rows[0].subtitle}
-                        </Typography>
+                        <Typography>{rows[0].subtitle}</Typography>
                       </>
                     ) : (
                       <>
                         <Typography variant="h3" uppercase>
                           {rows[props.match.params.id - 1].title}
                         </Typography>
-                        <Typography textColor="secondary">
+                        <Typography>
                           {rows[props.match.params.id].subtitle}
                         </Typography>
                       </>
@@ -247,7 +282,7 @@ const Product = props => {
                     )}{" "}
                   </Box>
                   <Box>
-                    <Link href="#">Size Guide</Link>
+                    <Link>Size Guide</Link>
                   </Box>
                   <Box display="flex">
                     <FormControl
@@ -264,7 +299,7 @@ const Product = props => {
                         labelWidth={labelWidth}
                         inputProps={{
                           name: "size",
-                          id: "size-simple",
+                          id: "size-simple"
                         }}
                       >
                         <MenuItem value={1}>1</MenuItem>
@@ -326,9 +361,7 @@ const Product = props => {
                       style={{ width: 40 }}
                     />
                   </Box>
-                  <Typography textColor="hint">
-                    FREE Delivery & Returns
-                  </Typography>
+                  <Typography color="hint">FREE Delivery & Returns</Typography>
                 </Box>
               </Grid>
             </Grid>
@@ -475,11 +508,7 @@ const Product = props => {
                   <Typography gutterBottom variant="h5" component="h2">
                     {rows[0].title}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
+                  <Typography variant="body2" component="p">
                     {rows[0].subtitle}
                   </Typography>
                 </CardContent>
@@ -487,7 +516,7 @@ const Product = props => {
               <CardActions
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" component="p">
                   ${rows[0].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
@@ -509,11 +538,7 @@ const Product = props => {
                   <Typography gutterBottom variant="h5" component="h2">
                     {rows[1].title}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
+                  <Typography variant="body2" component="p">
                     {rows[1].subtitle}
                   </Typography>
                 </CardContent>
@@ -521,7 +546,7 @@ const Product = props => {
               <CardActions
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" component="p">
                   ${rows[1].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
@@ -543,11 +568,7 @@ const Product = props => {
                   <Typography gutterBottom variant="h5" component="h2">
                     {rows[2].title}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
+                  <Typography variant="body2" component="p">
                     {rows[2].subtitle}
                   </Typography>
                 </CardContent>
@@ -555,7 +576,7 @@ const Product = props => {
               <CardActions
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" component="p">
                   ${rows[2].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>
@@ -577,11 +598,7 @@ const Product = props => {
                   <Typography gutterBottom variant="h5" component="h2">
                     {rows[3].title}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
+                  <Typography variant="body2" component="p">
                     {rows[3].subtitle}
                   </Typography>
                 </CardContent>
@@ -589,7 +606,7 @@ const Product = props => {
               <CardActions
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" component="p">
                   ${rows[3].price}
                 </Typography>
                 <div style={{ color: yellow[700] }}>

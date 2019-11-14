@@ -8,7 +8,7 @@ import {
   MenuItem,
   Toolbar,
   Button,
-  IconButton,
+  IconButton
 } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -121,12 +121,12 @@ export default function NavComp() {
                     anchorEl={anchorEl}
                     anchorOrigin={{
                       vertical: "top",
-                      horizontal: "right",
+                      horizontal: "right"
                     }}
                     keepMounted
                     transformOrigin={{
                       vertical: "top",
-                      horizontal: "right",
+                      horizontal: "right"
                     }}
                     open={open}
                     onClose={handleClose}
@@ -163,12 +163,12 @@ export default function NavComp() {
                     <div className={classes.grow} />
                     <div
                       className={classNames(classes.search, {
-                        [classes.searchFocused]: isSearchOpen,
+                        [classes.searchFocused]: isSearchOpen
                       })}
                     >
                       <div
                         className={classNames(classes.searchIcon, {
-                          [classes.searchIconOpened]: isSearchOpen,
+                          [classes.searchIconOpened]: isSearchOpen
                         })}
                         onClick={() => setSearchOpen(!isSearchOpen)}
                       >
@@ -178,7 +178,7 @@ export default function NavComp() {
                         placeholder="Search"
                         classes={{
                           root: classes.inputRoot,
-                          input: classes.inputInput,
+                          input: classes.inputInput
                         }}
                       />
                     </div>

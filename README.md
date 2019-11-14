@@ -1,4 +1,4 @@
-# React Material Admin — Material-UI Dashboard Template
+# React Material Admin Full — Material-UI Dashboard Template
 
 Built with [React](https://facebook.github.io/react/), [Material-UI](https://material-ui.com), [React Router](https://reacttraining.com/react-router/).
 **No jQuery and Bootstrap!**
@@ -21,6 +21,7 @@ Built with [React](https://facebook.github.io/react/), [Material-UI](https://mat
 - Material-UI v4
 - Modular Architecture
 - CSS-in-JS styles
+- Styled Components
 - Webpack build
 - Stylish, clean, responsive layout
 - Authentication
@@ -30,8 +31,10 @@ Built with [React](https://facebook.github.io/react/), [Material-UI](https://mat
 We have implemented some basic pages, so you can see our template in action.
 
 - Dashboard
+- E-commerce (Product Management, Products Grid, Product Page)
 - Typography
-- Tables
+- Tables (Static, dynamic)
+- Forms
 - Notifications
 - Charts
 - Icons

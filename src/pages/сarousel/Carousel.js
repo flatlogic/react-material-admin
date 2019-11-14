@@ -5,7 +5,7 @@ import {
   MDBCarouselInner,
   MDBCarouselItem,
   MDBView,
-  MDBContainer,
+  MDBContainer
 } from "mdbreact";
 import img1 from "../../images/1.jpg";
 import img2 from "../../images/2.jpg";

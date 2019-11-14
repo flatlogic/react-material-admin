@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Box, LinearProgress } from "@material-ui/core";
-// import useStyles from "./styles";
 
 // components
 import PageTitle from "../../components/PageTitle";
@@ -10,7 +9,6 @@ import { Typography, CircularProgress } from "../../components/Wrappers";
 
 export default function ProgressComp() {
   const [completed, setCompleted] = React.useState(0);
-  // const classes = useStyles();
   React.useEffect(() => {
     function progress() {
       setCompleted(oldCompleted => {

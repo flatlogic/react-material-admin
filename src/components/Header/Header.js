@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -6,8 +6,9 @@ import {
   InputBase,
   Menu,
   MenuItem,
-  Fab,
+  Fab
 } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
 import {
   Menu as MenuIcon,
   MailOutline as MailIcon,
@@ -15,15 +16,18 @@ import {
   Person as AccountIcon,
   Search as SearchIcon,
   Send as SendIcon,
-  ArrowBack as ArrowBackIcon,
+  ArrowBack as ArrowBackIcon
 } from "@material-ui/icons";
 import classNames from "classnames";
+
+//images
+import profile from "../../images/main-profile.png";
 
 // styles
 import useStyles from "./styles";
 
 // components
-import { Badge, Typography } from "../Wrappers/Wrappers";
+import { Badge, Typography, Avatar } from "../Wrappers/Wrappers";
 import Notification from "../Notification/Notification";
 import UserAvatar from "../UserAvatar/UserAvatar";
 
@@ -31,7 +35,7 @@ import UserAvatar from "../UserAvatar/UserAvatar";
 import {
   useLayoutState,
   useLayoutDispatch,
-  toggleSidebar,
+  toggleSidebar
 } from "../../context/LayoutContext";
 import { useUserDispatch, signOut } from "../../context/UserContext";
 
@@ -41,29 +45,29 @@ const messages = [
     variant: "warning",
     name: "Jane Hew",
     message: "Hey! How is it going?",
-    time: "9:32",
+    time: "9:32"
   },
   {
     id: 1,
     variant: "success",
     name: "Lloyd Brown",
     message: "Check out my new Dashboard",
-    time: "9:18",
+    time: "9:18"
   },
   {
     id: 2,
     variant: "primary",
     name: "Mark Winstein",
     message: "I want rearrange the appointment",
-    time: "9:15",
+    time: "9:15"
   },
   {
     id: 3,
     variant: "secondary",
     name: "Liana Dutti",
     message: "Good news from sale department",
-    time: "9:09",
-  },
+    time: "9:09"
+  }
 ];
 
 const notifications = [
@@ -72,24 +76,25 @@ const notifications = [
     id: 1,
     color: "success",
     type: "info",
-    message: "What is the best way to get ...",
+    message: "What is the best way to get ..."
   },
   {
     id: 2,
     color: "secondary",
     type: "notification",
-    message: "This is just a simple notification",
+    message: "This is just a simple notification"
   },
   {
     id: 3,
     color: "primary",
     type: "e-commerce",
-    message: "12 new orders has arrived today",
-  },
+    message: "12 new orders has arrived today"
+  }
 ];
 
 export default function Header(props) {
   var classes = useStyles();
+  var theme = useTheme();
 
   // global
   var layoutState = useLayoutState();
@@ -103,6 +108,22 @@ export default function Header(props) {
   var [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
   var [profileMenu, setProfileMenu] = useState(null);
   var [isSearchOpen, setSearchOpen] = useState(false);
+  const [isSmall, setSmall] = useState(false);
+
+  useEffect(function() {
+    window.addEventListener("resize", handleWindowWidthChange);
+    handleWindowWidthChange();
+    return function cleanup() {
+      window.removeEventListener("resize", handleWindowWidthChange);
+    };
+  });
+
+  function handleWindowWidthChange() {
+    var windowWidth = window.innerWidth;
+    var breakpointWidth = theme.breakpoints.values.md;
+    var isSmallScreen = windowWidth < breakpointWidth;
+    setSmall(isSmallScreen);
+  }
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
@@ -112,41 +133,36 @@ export default function Header(props) {
           onClick={() => toggleSidebar(layoutDispatch)}
           className={classNames(
             classes.headerMenuButton,
-            classes.headerMenuButtonCollapse,
+            classes.headerMenuButtonCollapse
           )}
         >
-          {layoutState.isSidebarOpened ? (
+          {(!layoutState.isSidebarOpened && isSmall) ||
+          (layoutState.isSidebarOpened && !isSmall) ? (
             <ArrowBackIcon
               classes={{
-                root: classNames(
-                  classes.headerIcon,
-                  classes.headerIconCollapse,
-                ),
+                root: classNames(classes.headerIcon, classes.headerIconCollapse)
               }}
             />
           ) : (
             <MenuIcon
               classes={{
-                root: classNames(
-                  classes.headerIcon,
-                  classes.headerIconCollapse,
-                ),
+                root: classNames(classes.headerIcon, classes.headerIconCollapse)
               }}
             />
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          React Material Admin
+          React Material Admin Full
         </Typography>
         <div className={classes.grow} />
         <div
           className={classNames(classes.search, {
-            [classes.searchFocused]: isSearchOpen,
+            [classes.searchFocused]: isSearchOpen
           })}
         >
           <div
             className={classNames(classes.searchIcon, {
-              [classes.searchIconOpened]: isSearchOpen,
+              [classes.searchIconOpened]: isSearchOpen
             })}
             onClick={() => setSearchOpen(!isSearchOpen)}
           >
@@ -156,7 +172,7 @@ export default function Header(props) {
             placeholder="Search…"
             classes={{
               root: classes.inputRoot,
-              input: classes.inputInput,
+              input: classes.inputInput
             }}
           />
         </div>
@@ -201,8 +217,22 @@ export default function Header(props) {
           aria-controls="profile-menu"
           onClick={e => setProfileMenu(e.currentTarget)}
         >
-          <AccountIcon classes={{ root: classes.headerIcon }} />
+          <Avatar
+            alt="Robert Cotton"
+            src={profile}
+            classes={{ root: classes.headerIcon }}
+          />
         </IconButton>
+        <Typography
+          block
+          variant="body2"
+          style={{ display: "flex", alignItems: "center", marginLeft: 8 }}
+        >
+          Hi,&nbsp;
+          <Typography variant="body2" weight={"bold"}>
+            Robert Cotton
+          </Typography>
+        </Typography>
         <Menu
           id="mail-menu"
           open={Boolean(mailMenu)}
@@ -236,7 +266,7 @@ export default function Header(props) {
               <div
                 className={classNames(
                   classes.messageNotificationSide,
-                  classes.messageNotificationBodySide,
+                  classes.messageNotificationBodySide
                 )}
               >
                 <Typography weight="medium" gutterBottom>
@@ -287,7 +317,7 @@ export default function Header(props) {
         >
           <div className={classes.profileMenuUser}>
             <Typography variant="h4" weight="medium">
-              John Smith
+              Robert Cotton
             </Typography>
             <Typography
               className={classes.profileMenuLink}
@@ -301,7 +331,7 @@ export default function Header(props) {
           <MenuItem
             className={classNames(
               classes.profileMenuItem,
-              classes.headerMenuItem,
+              classes.headerMenuItem
             )}
           >
             <AccountIcon className={classes.profileMenuIcon} /> Profile
@@ -309,7 +339,7 @@ export default function Header(props) {
           <MenuItem
             className={classNames(
               classes.profileMenuItem,
-              classes.headerMenuItem,
+              classes.headerMenuItem
             )}
           >
             <AccountIcon className={classes.profileMenuIcon} /> Tasks
@@ -317,7 +347,7 @@ export default function Header(props) {
           <MenuItem
             className={classNames(
               classes.profileMenuItem,
-              classes.headerMenuItem,
+              classes.headerMenuItem
             )}
           >
             <AccountIcon className={classes.profileMenuIcon} /> Messages

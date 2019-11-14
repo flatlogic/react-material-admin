@@ -27,7 +27,7 @@ const datatableData = [
   ["Anna Siranush", "Example Inc.", "Yonkers", "NY"],
   ["Avram Sylva", "Example Inc.", "Hartford", "CT"],
   ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
-  ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
+  ["Gaston Festus", "Example Inc.", "Tampa", "FL"]
 ];
 
 export default function Tables() {
@@ -41,7 +41,7 @@ export default function Tables() {
             data={datatableData}
             columns={["Name", "Company", "City", "State"]}
             options={{
-              filterType: "checkbox",
+              filterType: "checkbox"
             }}
           />
         </Grid>

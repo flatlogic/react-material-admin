@@ -7,13 +7,13 @@ import {
   ExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails,
-  AppBar,
+  AppBar
 } from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@material-ui/core/styles";
 import {
   Phone as PhoneIcon,
-  ExpandMore as ExpandMoreIcon,
+  ExpandMore as ExpandMoreIcon
 } from "@material-ui/icons";
 
 // components
@@ -42,7 +42,7 @@ function TabPanel(props) {
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    "aria-controls": `full-width-tabpanel-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`
   };
 }
 
