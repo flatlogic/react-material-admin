@@ -187,8 +187,12 @@ function Layout(props) {
                         </Typography>
                       </Breadcrumbs>
                     );
+                  } else {
+                    return null;
                   }
                 });
+              } else {
+                return null;
               }
             })}
             {window.location.hash.includes("/app/dashboard") && (

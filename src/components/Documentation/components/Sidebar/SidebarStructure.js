@@ -40,8 +40,12 @@ const structure = [
         link: "/documentation/components/typography"
       },
       {
+        label: "Header",
+        link: "/documentation/components/header"
+      },
+      {
         label: "Sidebar",
-        link: "/documentation/components/typography"
+        link: "/documentation/components/sidebar"
       },
       {
         label: "Buttons",
@@ -50,7 +54,7 @@ const structure = [
       {
         label: "Progress",
         link: "/documentation/components/progress"
-      }
+      },
     ]
   },
   {

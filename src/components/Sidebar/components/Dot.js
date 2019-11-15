@@ -21,7 +21,7 @@ var useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Dot({ size = "small", color }) {
+export default function Dot({ size = "small", color, style }) {
   var classes = useStyles();
   var theme = useTheme();
 
@@ -34,7 +34,8 @@ export default function Dot({ size = "small", color }) {
       })}
       style={{
         backgroundColor:
-          color && theme.palette[color] && theme.palette[color].main
+          color && theme.palette[color] && theme.palette[color].main,
+        ...style
       }}
     />
   );

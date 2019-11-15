@@ -64,7 +64,7 @@ export default function Widget({
               <Box display={"flex"}>
                 <Typography
                   variant="h6"
-                  color="text"
+                  color="hint"
                   colorBrightness={"secondary"}
                 >
                   {title}
@@ -114,7 +114,7 @@ export default function Widget({
           className={classnames(classes.widgetBody, {
             [classes.noPadding]: noBodyPadding,
             [classes.paddingTop]: !title && !noBodyPadding,
-            bodyClass
+            [bodyClass]: bodyClass
           })}
         >
           {children}

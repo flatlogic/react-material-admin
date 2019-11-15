@@ -87,6 +87,7 @@ function Typography({
   color,
   block,
   uppercase,
+  style,
   ...props
 }) {
   const theme = useTheme();
@@ -97,7 +98,8 @@ function Typography({
         color: getColor(color, theme, colorBrightness),
         fontWeight: getFontWeight(weight),
         fontSize: getFontSize(size, props.variant, theme),
-        textTransform: uppercase ? "uppercase" : "none"
+        textTransform: uppercase ? "uppercase" : "none",
+        ...style
       }}
       component={block ? "div" : "p"}
       {...props}

@@ -15,6 +15,7 @@ import Overview from "./pages/overview";
 import Licences from "./pages/licences";
 import Start from "./pages/start";
 import Pages from "./pages/pages";
+import TypographyPage from "./pages/typography";
 
 //components
 import Header from "./components/Header";
@@ -102,6 +103,9 @@ const Documentation = props => {
           </Route>
           <Route path={`${path}/pages`}>
             <Pages />
+          </Route>
+          <Route path={`${path}/components/typography`}>
+            <TypographyPage />
           </Route>
         </Switch>
       </div>

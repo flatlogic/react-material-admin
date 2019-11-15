@@ -421,9 +421,9 @@ export default function Dashboard(props) {
                   </Typography>
                   <Box alignSelf={"flex-end"} ml={1}>
                     <Typography
-                        color="text"
-                        colorBrightness={"hint"}
-                        variant={"caption"}
+                      color="text"
+                      colorBrightness={"hint"}
+                      variant={"caption"}
                     >
                       Tickets
                     </Typography>
@@ -553,8 +553,14 @@ export default function Dashboard(props) {
                 <div className={classes.pieChartLegendWrapper}>
                   {PieChartData.map(({ name, value, color }, index) => (
                     <div key={color} className={classes.legendItemContainer}>
-                      <Dot color={color} />
-                      <Typography color="hint">
+                      <Dot color={color} style={{ marginRight: 8 }} />
+                      <Typography
+                        color="hint"
+                        colorBrightness={"secondary"}
+                        noWrap
+                        style={{ marginRight: 10 }}
+                        className={classes.responsiveTypography}
+                      >
                         &nbsp;{name}&nbsp;
                       </Typography>
                       <Typography
@@ -574,7 +580,6 @@ export default function Dashboard(props) {
         <Grid item lg={3} sm={6} xs={12}>
           <Widget
             title="App Performance"
-            upperTitle
             className={classes.card}
             bodyClass={classes.fullHeightBody}
           >

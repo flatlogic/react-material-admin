@@ -524,8 +524,7 @@ export default function EnhancedTable() {
                       </TableRow>
                     ))}
 
-                  {emptyRows2 > 0 &&
-                    ((
+                  {emptyRows2 > 0 && (
                       <div className={classes2.tableWrapper}>
                         <Table className={classes.table}>
                           <TableBody>
@@ -576,7 +575,7 @@ export default function EnhancedTable() {
                       <TableRow style={{ height: 48 * emptyRows }}>
                         <TableCell colSpan={6} />
                       </TableRow>
-                    ))}
+                    )}
                 </TableBody>
                 <TableFooter>
                   <TableRow>
