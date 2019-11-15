@@ -25,7 +25,6 @@ import img4 from "../../images/img4.jpg";
 
 //components
 import { Typography, Button, Link, Chip } from "../../components/Wrappers";
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Pagination from "../../components/Pagination";
 

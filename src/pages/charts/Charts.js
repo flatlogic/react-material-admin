@@ -21,7 +21,6 @@ import ApexLineChart from "./components/ApexLineChart";
 import ApexHeatmap from "./components/ApexHeatmap";
 import ApexRadarChart from "./components/ApexRadarChart";
 import ApexBarChart from "./components/ApexBarChart";
-import PageTitle from "../../components/PageTitle/PageTitle";
 
 const lineChartData = [
   {

@@ -28,8 +28,8 @@ import useStyles from "./styles";
 import { yellow } from "@material-ui/core/colors/index";
 
 //components
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
+import PageTitle from '../../components/PageTitle'
 import { Typography, Link, Button } from "../../components/Wrappers";
 
 //images

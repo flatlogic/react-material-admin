@@ -9,7 +9,6 @@ import tinycolor from "tinycolor2";
 import "react-toastify/dist/ReactToastify.css";
 
 import Widget from "../../components/Widget";
-import PageTitle from "../../components/PageTitle";
 import NotificationCustomComponent from "../../components/Notification";
 import { Typography, Button } from "../../components/Wrappers";
 

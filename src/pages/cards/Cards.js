@@ -25,7 +25,6 @@ import mountainsImg from "../../images/mountains.jpeg";
 import rnsImg from "../../images/rns.png";
 
 // components
-import PageTitle from "../../components/PageTitle";
 import { Typography, Button, Link, Avatar } from "../../components/Wrappers";
 
 export default function BadgeComp() {

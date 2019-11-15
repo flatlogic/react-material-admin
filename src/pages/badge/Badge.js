@@ -7,7 +7,6 @@ import {
 import useStyles from "./styles";
 
 // components
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Code from "../../components/Code";
 import { Badge, Typography, Chip, Button } from "../../components/Wrappers";

@@ -6,7 +6,6 @@ import ApexCharts from "apexcharts";
 
 // components
 import Widget from "../../components/Widget/Widget";
-import PageTitle from "../../components/PageTitle/PageTitle";
 
 //Realtime chart
 var lastDate = 0;

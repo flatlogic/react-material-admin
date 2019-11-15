@@ -6,7 +6,6 @@ import { Box } from "@material-ui/core";
 
 // components
 import Widget from "../../components/Widget/Widget";
-import PageTitle from "../../components/PageTitle/PageTitle";
 import { Button } from "../../components/Wrappers";
 
 const themeOptions = theme => {

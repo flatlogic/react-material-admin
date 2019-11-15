@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Box, LinearProgress } from "@material-ui/core";
 
 // components
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Code from "../../components/Code";
 import { Typography, CircularProgress } from "../../components/Wrappers";

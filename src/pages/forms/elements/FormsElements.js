@@ -21,7 +21,6 @@ import {
 } from "@material-ui/icons";
 
 // components
-import PageTitle from "../../../components/PageTitle/PageTitle";
 import Widget from "../../../components/Widget/Widget";
 import { Button, Typography } from "../../../components/Wrappers/";
 

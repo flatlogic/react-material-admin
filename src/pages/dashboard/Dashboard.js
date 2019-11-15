@@ -38,7 +38,6 @@ import useStyles from "./styles";
 // components
 import mock from "./mock";
 import Widget from "../../components/Widget";
-import PageTitle from "../../components/PageTitle";
 import { Chip, Typography } from "../../components/Wrappers";
 import Dot from "../../components/Sidebar/components/Dot";
 import BigStat from "./components/BigStat/BigStat";
@@ -522,7 +521,8 @@ export default function Dashboard(props) {
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center"
+                  alignItems: "center",
+                  padding: 6
                 }}
               >
                 <Typography
@@ -554,7 +554,7 @@ export default function Dashboard(props) {
                   {PieChartData.map(({ name, value, color }, index) => (
                     <div key={color} className={classes.legendItemContainer}>
                       <Dot color={color} />
-                      <Typography color="hint" noWrap>
+                      <Typography color="hint">
                         &nbsp;{name}&nbsp;
                       </Typography>
                       <Typography

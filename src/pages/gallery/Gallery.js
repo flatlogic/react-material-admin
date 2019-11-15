@@ -23,8 +23,6 @@ import img10 from "../../images/gallery10.jpg";
 import img11 from "../../images/gallery11.jpg";
 import img12 from "../../images/gallery12.jpg";
 
-//components
-import PageTitle from "../../components/PageTitle";
 
 const gallery = [
   {

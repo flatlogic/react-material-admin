@@ -11,7 +11,6 @@ import {
 import { Add as PlusIcon, Remove as MinusIcon } from "@material-ui/icons";
 
 //components
-import PageTitle from "../../../PageTitle";
 import Widget from "../../../Widget";
 import { Typography } from "../../../Wrappers";
 

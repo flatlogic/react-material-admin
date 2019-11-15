@@ -36,8 +36,20 @@ const structure = [
     link: "/documentation/components",
     children: [
       {
-        label: "Alerts",
-        link: "/documentation/components/alerts"
+        label: "Typography",
+        link: "/documentation/components/typography"
+      },
+      {
+        label: "Sidebar",
+        link: "/documentation/components/typography"
+      },
+      {
+        label: "Buttons",
+        link: "/documentation/components/buttons"
+      },
+      {
+        label: "Progress",
+        link: "/documentation/components/progress"
       }
     ]
   },

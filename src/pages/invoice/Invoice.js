@@ -18,7 +18,6 @@ import useStyles from "./styles";
 import logo from "../../images/flatlogic.jpeg";
 
 //components
-import PageTitle from "../../components/PageTitle";
 import { Typography, Link, Button } from "../../components/Wrappers";
 import Widget from "../../components/Widget";
 

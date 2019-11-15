@@ -29,7 +29,6 @@ import cn from "classnames";
 
 //components
 import Widget from "../../components/Widget";
-import PageTitle from "../../components/PageTitle";
 import Dot from "../../components/Sidebar/components/Dot";
 import { Button, Typography } from "../../components/Wrappers";
 

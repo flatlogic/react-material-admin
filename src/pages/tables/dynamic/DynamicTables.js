@@ -25,7 +25,6 @@ import {
 import cn from "classnames";
 
 //components
-import PageTitle from "../../../components/PageTitle";
 import Widget from "../../../components/Widget";
 import Code from "../../../components/Code";
 import { Tooltip, Typography } from "../../../components/Wrappers";

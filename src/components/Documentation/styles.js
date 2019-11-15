@@ -21,5 +21,8 @@ export default makeStyles(theme => ({
   },
   fakeToolbar: {
     ...theme.mixins.toolbar
+  },
+  margin: {
+    marginBottom: 24
   }
 }));

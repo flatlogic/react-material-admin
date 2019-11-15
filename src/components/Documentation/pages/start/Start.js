@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, List, ListItem, ListItemText } from "@material-ui/core";
 
 //components
-import PageTitle from "../../../PageTitle";
 import Widget from "../../../Widget";
 import { Typography } from "../../../Wrappers";
 

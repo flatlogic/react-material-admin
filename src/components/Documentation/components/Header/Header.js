@@ -4,7 +4,7 @@ import Icon from "@mdi/react";
 import { withRouter } from "react-router-dom";
 
 // Material-UI core components
-import { AppBar, Toolbar, IconButton, Box, Link } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Box } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 
 // Material Icons
@@ -22,7 +22,7 @@ import {
 } from "@mdi/js";
 
 // Components
-import { Typography, Button } from "../../../Wrappers";
+import { Typography, Button, Link } from "../../../Wrappers";
 import {
   toggleSidebar,
   useLayoutDispatch,
@@ -88,24 +88,36 @@ const Header = props => {
           className={classes.fullWidthXs}
         >
           <Box display={"flex"} className={classes.icons}>
-            <IconButton>
-              <TwitterIcon style={{ color: "#fff" }} />
-            </IconButton>
-            <IconButton>
-              <Icon path={DribbbleIcon} size={1} color={"#fff"} />
-            </IconButton>
-            <IconButton>
-              <Icon path={FacebookIcon} size={1} color={"#fff"} />
-            </IconButton>
-            <IconButton>
-              <Icon path={InstagramIcon} size={1} color={"#fff"} />
-            </IconButton>
-            <IconButton>
-              <Icon path={LinkedinIcon} size={1} color={"#fff"} />
-            </IconButton>
-            <IconButton>
-              <Icon path={GithubIcon} size={1} color={"#fff"} />
-            </IconButton>
+            <Link href={"https://twitter.com/flatlogic"}>
+              <IconButton>
+                <TwitterIcon style={{ color: "#fff" }} />
+              </IconButton>
+            </Link>
+            <Link href={"https://dribbble.com/flatlogic"}>
+              <IconButton>
+                <Icon path={DribbbleIcon} size={1} color={"#fff"} />
+              </IconButton>
+            </Link>
+            <Link href={"https://www.facebook.com/flatlogic"}>
+              <IconButton>
+                <Icon path={FacebookIcon} size={1} color={"#fff"} />
+              </IconButton>
+            </Link>
+            <Link href={"https://instagram.com/flatlogiccom/"}>
+              <IconButton>
+                <Icon path={InstagramIcon} size={1} color={"#fff"} />
+              </IconButton>
+            </Link>
+            <Link href={"https://www.linkedin.com/company/flatlogic/"}>
+              <IconButton>
+                <Icon path={LinkedinIcon} size={1} color={"#fff"} />
+              </IconButton>
+            </Link>
+            <Link href={"https://github.com/flatlogic"}>
+              <IconButton>
+                <Icon path={GithubIcon} size={1} color={"#fff"} />
+              </IconButton>
+            </Link>
           </Box>
           <Box className={classes.headerButtons}>
             <Button

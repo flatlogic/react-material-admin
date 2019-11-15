@@ -9,7 +9,6 @@ import {
 import cn from "classnames";
 
 // components
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Tooltip, Typography } from "../../components/Wrappers";
 import useStyles from "./styles";

@@ -5,7 +5,6 @@ import { Grid } from "@material-ui/core";
 import useStyles from "./styles";
 
 // components
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography } from "../../components/Wrappers";
 

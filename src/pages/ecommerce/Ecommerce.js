@@ -30,7 +30,6 @@ import { Link } from "react-router-dom";
 import cn from "classnames";
 
 // components
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Dot from "../../components/Sidebar/components/Dot";
 import { Typography, Button } from "../../components/Wrappers";

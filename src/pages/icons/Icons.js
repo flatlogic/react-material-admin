@@ -5,9 +5,6 @@ import * as Icons from "@material-ui/icons";
 // styles
 import useStyles from "./styles";
 
-// components
-import PageTitle from "../../components/PageTitle/PageTitle";
-
 // icons sets
 import "font-awesome/css/font-awesome.min.css";
 

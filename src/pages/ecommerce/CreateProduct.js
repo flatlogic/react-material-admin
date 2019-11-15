@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Grid, TextField as Input } from "@material-ui/core";
 
 //components
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
 

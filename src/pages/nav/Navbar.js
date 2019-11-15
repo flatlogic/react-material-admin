@@ -15,7 +15,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Search as SearchIcon } from "@material-ui/icons";
 
 // components
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Code from "../../components/Code";
 import { Typography, AppBar } from "../../components/Wrappers";

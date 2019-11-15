@@ -6,7 +6,6 @@ import img from "../../images/2.jpg";
 
 // components
 import Widget from "../../components/Widget/Widget";
-import PageTitle from "../../components/PageTitle/PageTitle";
 
 const themeOptions = theme => {
   return {

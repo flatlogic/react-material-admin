@@ -10,7 +10,6 @@ import useStyles from "./styles";
 
 // components
 import Widget from "../../components/Widget";
-import PageTitle from "../../components/PageTitle";
 import Notification from "../../components/Notification";
 import Code from "../../components/Code";
 import { Typography, Button } from "../../components/Wrappers";

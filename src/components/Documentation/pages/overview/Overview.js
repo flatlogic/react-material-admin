@@ -10,7 +10,6 @@ import {
 import { Done as DoneIcon } from "@material-ui/icons";
 
 //components
-import PageTitle from "../../../PageTitle";
 import Widget from "../../../Widget";
 import { Typography } from "../../../Wrappers";
 

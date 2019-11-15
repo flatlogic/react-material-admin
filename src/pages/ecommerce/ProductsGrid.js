@@ -17,7 +17,6 @@ import { yellow } from "@material-ui/core/colors/index";
 import useStyles from "./styles";
 
 //components
-import PageTitle from "../../components/PageTitle";
 import { Typography, Chip } from "../../components/Wrappers";
 
 //images

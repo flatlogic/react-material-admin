@@ -3,7 +3,6 @@ import { Grid, Box } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 
 //components
-import PageTitle from "../../../PageTitle";
 import Widget from "../../../Widget";
 import { Typography, Button } from "../../../Wrappers";
 import Code from "../../../Code";

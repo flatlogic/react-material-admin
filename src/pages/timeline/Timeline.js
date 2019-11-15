@@ -34,7 +34,6 @@ import mountains from "../../images/mountains.jpeg";
 //components
 import { Typography, Avatar, Link, Button } from "../../components/Wrappers";
 import { Annotation, Timestep, Circle } from "../../components/Timeline";
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 
 const BasicMap = withScriptjs(

@@ -46,7 +46,7 @@ const Documentation = props => {
         })}
       >
         <div className={classes.fakeToolbar} />
-        <Widget disableWidgetMenu inheritHeight>
+        <Widget disableWidgetMenu inheritHeight className={classes.margin}>
           <Grid
             container
             direction="row"
@@ -62,7 +62,7 @@ const Documentation = props => {
                 return (
                   <Box display="flex" alignItems="center" key={c.id}>
                     <Breadcrumbs aria-label="breadcrumb">
-                      <Typography variant="h5">{c.label}</Typography>
+                      <Typography variant="h4">{c.label}</Typography>
                     </Breadcrumbs>
                   </Box>
                 );
@@ -75,8 +75,8 @@ const Documentation = props => {
                         aria-label="breadcrumb"
                         key={c.id}
                       >
-                        <Typography>{c.label}</Typography>
-                        <Typography color="primary">
+                        <Typography variant={"h6"}>{c.label}</Typography>
+                        <Typography color="primary" variant={"h6"}>
                           {currentInner.label}
                         </Typography>
                       </Breadcrumbs>

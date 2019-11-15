@@ -3,7 +3,6 @@ import { Grid, Box } from "@material-ui/core";
 import Input from "@material-ui/core/TextField";
 
 // components
-import PageTitle from "../../components/PageTitle/PageTitle";
 import Widget from "../../components/Widget/Widget";
 import { Button, Typography } from "../../components/Wrappers/";
 
