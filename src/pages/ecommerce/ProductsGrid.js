@@ -241,8 +241,7 @@ const Product = props => {
   });
   return (
     <>
-      <PageTitle title="Products Grid" />
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box display="flex">
             <FormControl
@@ -406,7 +405,7 @@ const Product = props => {
         </Grid>
         <Grid item xs={12}>
           <Box display={"flex"} flexWrap={"wrap"}>
-            <Grid container item spacing={4}>
+            <Grid container item spacing={3}>
               {rows.map(c => (
                 <Grid item xs={12} md={3} key={c.id}>
                   <Card className={classes.card}>

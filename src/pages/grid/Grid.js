@@ -22,7 +22,6 @@ export default function GridComp() {
 
   return (
     <div>
-      <PageTitle title="Grid System" />
       <Grid container spacing={6}>
         <Grid item md={6}>
           <Widget title="How it works" disableWidgetMenu>

@@ -35,7 +35,6 @@ export default function BadgeComp() {
   const classes = useStyles(props);
   return (
     <div>
-      <PageTitle title="Cards" />
       <Grid container spacing={6}>
         <Grid item md={12} xs={12}>
           <Card className={classes.card}>

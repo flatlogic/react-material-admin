@@ -16,7 +16,6 @@ export default function BadgeComp() {
   const classes = useStyles();
   return (
     <div>
-      <PageTitle title="Badge" />
       <Grid container spacing={6}>
         <Grid item md={6} xs={12}>
           <Widget title="Badge Example" disableWidgetMenu>

@@ -14,8 +14,7 @@ export default function TypographyPage() {
 
   return (
     <>
-      <PageTitle title="Typography" />
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Widget title="Headings" disableWidgetMenu>
             <div className={classes.dashedBorder}>

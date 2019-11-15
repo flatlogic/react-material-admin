@@ -70,7 +70,6 @@ export default function TabsComp() {
 
   return (
     <div>
-      <PageTitle title="Tabs" />
       <Grid container spacing={6}>
         <Grid item md={6}>
           <Widget title="Tabs Example" disableWidgetMenu inheritHeight>

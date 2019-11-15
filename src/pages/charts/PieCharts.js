@@ -175,7 +175,6 @@ export default function Charts(props) {
 
   return (
     <>
-      <PageTitle title="Pie Charts" button="Latest Reports" />
       <Grid container spacing={4}>
         <Grid item md={6} xs={12}>
           <Widget title={"Simple Pie"} upperTitle noBodyPadding>

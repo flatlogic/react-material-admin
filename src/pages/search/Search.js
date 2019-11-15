@@ -51,7 +51,6 @@ export default function SearchComp() {
   const classes = useStyles();
   return (
     <>
-      <PageTitle title="Search" />
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <Box display="flex" alignItems="center">

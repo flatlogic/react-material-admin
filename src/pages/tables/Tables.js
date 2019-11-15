@@ -33,7 +33,6 @@ const datatableData = [
 export default function Tables() {
   return (
     <>
-      <PageTitle title="Tables" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <MUIDataTable

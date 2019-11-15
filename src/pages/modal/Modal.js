@@ -98,7 +98,6 @@ export default function ModalComp() {
 
   return (
     <div>
-      <PageTitle title="Modal" />
       <Grid container spacing={6} alignItems={"flex-start"}>
         <Grid container item md={6} xs={12}>
           <Box display={"flex"} flexDirection={"column"} width={"100%"}>

@@ -19,7 +19,6 @@ export default function IconsPage() {
 
   return (
     <>
-      <PageTitle title="Icons" button="Action" />
       <Paper className={classes.iconsContainer}>
         <Tabs
           indicatorColor="primary"

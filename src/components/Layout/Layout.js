@@ -137,7 +137,7 @@ function Layout(props) {
         })}
       >
         <div className={classes.fakeToolbar} />
-        <Widget disableWidgetMenu inheritHeight>
+        <Widget disableWidgetMenu inheritHeight className={classes.margin}>
           <Grid
             container
             direction="row"

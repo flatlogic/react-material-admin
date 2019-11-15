@@ -85,7 +85,6 @@ export default function TooltipsComp() {
   }
   return (
     <div>
-      <PageTitle title="Forms" />
       <Grid container spacing={6}>
         <Grid item md={6} xs={12}>
           <Widget title="Horizontal form" disableWidgetMenu inheritHeight>

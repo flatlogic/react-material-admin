@@ -9,8 +9,7 @@ import { Typography, Button } from "../../components/Wrappers";
 const MyComponent = () => {
   return (
     <>
-      <PageTitle title="Create Product" />
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         <Grid item xs={12}>
           <Widget title="New product" disableWidgetMenu>
             <Box display={"flex"} flexDirection="column">

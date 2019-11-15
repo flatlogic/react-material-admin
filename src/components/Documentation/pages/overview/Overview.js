@@ -20,7 +20,6 @@ import overview from "../../../../images/overview.png";
 const Overview = () => {
   return (
     <>
-      <PageTitle title="Overview" />
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <Widget disableWidgetMenu>

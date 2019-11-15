@@ -42,7 +42,6 @@ const rows = [
 const Licences = () => {
   return (
     <>
-      <PageTitle title="Licences" />
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <Widget disableWidgetMenu>

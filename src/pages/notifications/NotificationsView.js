@@ -19,8 +19,7 @@ const CloseButton = ({ closeToast, className }) => (
 
 const NotificationsPage = ({ classes, ...props }) => (
   <React.Fragment>
-    <PageTitle title="Notifications" />
-    <Grid container spacing={32}>
+    <Grid container spacing={3}>
       <ToastContainer
         className={classes.toastsContainer}
         closeButton={

@@ -40,7 +40,6 @@ export default function NavComp() {
   const classes = useStyles();
   return (
     <div>
-      <PageTitle title="Navbar" />
       <Grid container spacing={6}>
         <Grid item md={6}>
           <Widget title="Navbar Example" disableWidgetMenu>

@@ -26,8 +26,7 @@ export default function ProgressComp() {
   }, []);
   return (
     <>
-      <PageTitle title="Progress" />
-      <Grid container spacing={6}>
+      <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Widget title="Circular Indeterminate" disableWidgetMenu>
             <Box my={3} display="flex" flexWrap="wrap" justifyContent="center">

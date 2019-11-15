@@ -262,10 +262,6 @@ EnhancedTableHead.propTypes = {
 };
 
 const useToolbarStyles = makeStyles(theme => ({
-  root: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1)
-  },
   highlight:
     theme.palette.type === "light"
       ? {
@@ -302,7 +298,7 @@ const EnhancedTableToolbar = props => {
       ) : (
         <Box display={"flex"} className={classes.title}>
           <Typography
-            variant="h5"
+            variant="h6"
             color="text"
             colorBrightness={"secondary"}
             id="tableTitle"
@@ -410,8 +406,7 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <PageTitle title="Dashboard" />
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         <Grid item lg={3} sm={6} xs={12}>
           <Widget
             title="Support Tracker"
@@ -419,7 +414,7 @@ export default function Dashboard(props) {
             bodyClass={classes.fullHeightBody}
             className={classes.card}
           >
-            <Grid container spacing={2} alignItems="center">
+            <Grid container spacing={3} alignItems="center">
               <Grid item xs={6}>
                 <Box display="flex">
                   <Typography variant="h2" weight="medium">
@@ -520,7 +515,7 @@ export default function Dashboard(props) {
         </Grid>
         <Grid item lg={3} sm={6} xs={12}>
           <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
-            <Grid container spacing={2}>
+            <Grid container spacing={3}>
               <Grid
                 item
                 xs={6}
@@ -723,8 +718,9 @@ export default function Dashboard(props) {
             header={
               <div className={classes.mainChartHeader}>
                 <Typography
-                  variant="h5"
+                  variant="h6"
                   color="text"
+                  weight={"medium"}
                   colorBrightness="secondary"
                 >
                   Daily Line Chart
@@ -835,7 +831,7 @@ export default function Dashboard(props) {
               <Table
                 className={classes.table}
                 aria-labelledby="tableTitle"
-                aria-label="enhanced table"
+                aria-label="recent orders"
               >
                 <EnhancedTableHead
                   classes={classes}
@@ -851,7 +847,7 @@ export default function Dashboard(props) {
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row, index) => {
                       const isItemSelected = isSelected(row.id);
-                      const labelId = `enhanced-table-checkbox-${index}`;
+                      const labelId = `orders-table-checkbox-${index}`;
 
                       return (
                         <TableRow

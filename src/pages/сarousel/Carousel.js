@@ -22,8 +22,7 @@ import { Typography } from "../../components/Wrappers";
 export default function CarouselComp() {
   return (
     <>
-      <PageTitle title="Carousel" />
-      <Grid container spacing={6}>
+      <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
           <Widget title="Default Carousel" disableWidgetMenu>
             <Typography>

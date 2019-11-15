@@ -27,6 +27,7 @@ export default function Widget({
   header,
   inheritHeight,
   searchField,
+  className,
   ...props
 }) {
   var classes = useStyles(props);
@@ -37,7 +38,13 @@ export default function Widget({
 
   return (
     <div
-      className={inheritHeight ? classes.inheritHeight : classes.widgetWrapper}
+      className={classnames(
+        {
+          [classes.inheritHeight]: inheritHeight,
+          [classes.widgetWrapper]: !inheritHeight
+        },
+        className
+      )}
     >
       <Paper
         className={classnames(classes.paper, {
@@ -57,7 +64,6 @@ export default function Widget({
               <Box display={"flex"}>
                 <Typography
                   variant="h6"
-                  size={"sm"}
                   color="text"
                   colorBrightness={"secondary"}
                 >
@@ -108,7 +114,7 @@ export default function Widget({
           className={classnames(classes.widgetBody, {
             [classes.noPadding]: noBodyPadding,
             [classes.paddingTop]: !title && !noBodyPadding,
-            [bodyClass]: bodyClass
+            bodyClass
           })}
         >
           {children}

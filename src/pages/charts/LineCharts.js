@@ -312,7 +312,6 @@ export default function Charts(props) {
 
   return (
     <>
-      <PageTitle title="Line Charts" button="Latest Reports" />
       <Grid container spacing={4}>
         <Grid item md={6} xs={12}>
           <Widget title={"Line Basic"} upperTitle noBodyPadding>

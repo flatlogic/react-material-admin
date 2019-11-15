@@ -9,8 +9,7 @@ import { Typography } from "../../../Wrappers";
 const Start = () => {
   return (
     <>
-      <PageTitle title="Quick Start" />
-      <Grid container spacing={6}>
+      <Grid container spacing={3}>
         <Grid item xs={12}>
           <Widget disableWidgetMenu>
             <Typography variant={"h5"} weight={"medium"}>

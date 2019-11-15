@@ -265,7 +265,6 @@ export default function Charts(props) {
 
   return (
     <>
-      <PageTitle title="Bar Charts" button="Latest Reports" />
       <Grid container spacing={4}>
         <Grid item md={6} xs={12}>
           <Widget title={"Bar Basic"} upperTitle noBodyPadding>

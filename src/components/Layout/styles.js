@@ -8,7 +8,7 @@ export default makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: 38,
     width: `calc(100vw - 240px)`,
     minHeight: "100vh"
   },
@@ -60,9 +60,7 @@ export default makeStyles(theme => ({
     color: theme.palette.primary.main,
     marginRight: 14
   },
-  tabs: {
-    "@media(max-width: 1200px)": {
-      flexDirection: "column"
-    }
+  margin: {
+    marginBottom: 24
   }
 }));

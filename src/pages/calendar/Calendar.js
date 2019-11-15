@@ -192,7 +192,6 @@ class Calendar extends React.Component {
     const { event, calendarOptions, modal, modalEvent } = this.state;
     return (
       <>
-        <PageTitle title="Calendar" />
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
             <Typography variant="h3" style={{ marginBottom: 8 }}>

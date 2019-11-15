@@ -104,7 +104,7 @@ export default makeStyles(theme => ({
     paddingRight: 25
   },
   mainChartLegentElement: {
-    fontSize: "18px !important",
+    fontSize: "14px !important",
     marginLeft: theme.spacing(1)
   },
   table: {

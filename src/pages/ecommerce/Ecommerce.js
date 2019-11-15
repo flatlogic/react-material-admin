@@ -263,8 +263,7 @@ export default function EcommercePage() {
 
   return (
     <>
-      <PageTitle title="Product Manage" />
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         <Grid item xs={12}>
           <Widget
             title="List of Products"

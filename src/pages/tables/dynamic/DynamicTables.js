@@ -411,7 +411,6 @@ export default function EnhancedTable() {
 
   return (
     <>
-      <PageTitle title="Dynamic Tables" />
       <Grid container spacing={6}>
         <Grid item md={12}>
           <Widget title="Sorting & Selecting" disableWidgetMenu>

@@ -80,7 +80,6 @@ const gallery = [
 const Gallery = () => {
   return (
     <>
-      <PageTitle title="Gallery" />
       <Grid container spacing={6}>
         {gallery.map((c, n) => (
           <Grid item md={3} xs={12} key={c.id}>

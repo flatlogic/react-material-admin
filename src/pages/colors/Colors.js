@@ -24,7 +24,6 @@ export default function ColorsComp() {
   const classes = useStyles();
   return (
     <>
-      <PageTitle title="Colors" />
       <Grid container spacing={6}>
         <Grid item xs={12} md={12}>
           <Widget title="States Colors" disableWidgetMenu>

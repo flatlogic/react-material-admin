@@ -12,7 +12,6 @@ export default function WidgetComp() {
   const classes = useStyles();
   return (
     <>
-      <PageTitle title="Widget" />
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
           <Widget title="Simple Widget" disableWidgetMenu>

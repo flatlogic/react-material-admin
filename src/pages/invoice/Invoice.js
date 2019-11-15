@@ -65,7 +65,6 @@ const Invoice = () => {
   const classes = useStyles();
   return (
     <>
-      <PageTitle title="Invoice" />
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <Widget disableWidgetMenu>

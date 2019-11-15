@@ -197,8 +197,7 @@ const Product = props => {
 
   return (
     <>
-      <PageTitle title="Product Detail" />
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         <Grid item xs={12}>
           <Widget disableWidgetMenu noBodyPadding>
             <Grid container>
