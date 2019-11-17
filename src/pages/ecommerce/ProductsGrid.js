@@ -424,7 +424,12 @@ const Product = props => {
                         <Typography gutterBottom variant="h5" component="h2">
                           {c.title}
                         </Typography>
-                        <Typography variant="body2" color="hint" component="p">
+                        <Typography
+                          variant="body2"
+                          color="text"
+                          colorBrightness={"secondary"}
+                          component="p"
+                        >
                           {c.subtitle}
                         </Typography>
                       </CardContent>

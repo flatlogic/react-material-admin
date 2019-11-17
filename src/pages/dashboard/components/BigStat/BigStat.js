@@ -45,11 +45,10 @@ export default function BigStat(props) {
           </Select>
         </div>
       }
-      upperTitle
     >
       <div className={classes.totalValueContainer}>
         <div className={classes.totalValue}>
-          <Typography size="xxl" color="text" colorBrightness="secondary">
+          <Typography variant={"h2"} weight={"medium"}>
             {total[value]}
           </Typography>
           <Typography color={total.percent.profit ? "success" : "error"}>
@@ -69,33 +68,49 @@ export default function BigStat(props) {
       <div className={classes.bottomStatsContainer}>
         <div className={classnames(classes.statCell, classes.borderRight)}>
           <Grid container alignItems="center">
-            <Typography variant="h6">{registrations[value].value}</Typography>
+            <Typography
+              color={"text"}
+              weight="bold"
+              colorBrightness={"secondary"}
+            >
+              {registrations[value].value}
+            </Typography>
             <ArrowForwardIcon
               className={classnames(classes.profitArrow, {
                 [!registrations[value].profit]: classes.profitArrowDanger
               })}
             />
           </Grid>
-          <Typography size="sm" color="text" colorBrightness="secondary">
+          <Typography color="text" variant="caption" colorBrightness="hint">
             Registrations
           </Typography>
         </div>
         <div className={classes.statCell}>
           <Grid container alignItems="center">
-            <Typography variant="h6">{bounce[value].value}%</Typography>
+            <Typography
+              color={"text"}
+              weight="bold"
+              colorBrightness={"secondary"}
+            >
+              {bounce[value].value}%
+            </Typography>
             <ArrowForwardIcon
               className={classnames(classes.profitArrow, {
                 [!registrations[value].profit]: classes.profitArrowDanger
               })}
             />
           </Grid>
-          <Typography size="sm" color="text" colorBrightness="secondary">
+          <Typography color="text" variant="caption" colorBrightness="hint">
             Bounce Rate
           </Typography>
         </div>
         <div className={classnames(classes.statCell, classes.borderRight)}>
           <Grid container alignItems="center">
-            <Typography variant="h6">
+            <Typography
+              color={"text"}
+              weight="bold"
+              colorBrightness={"secondary"}
+            >
               {registrations[value].value * 10}
             </Typography>
             <ArrowForwardIcon
@@ -104,7 +119,7 @@ export default function BigStat(props) {
               })}
             />
           </Grid>
-          <Typography size="sm" color="text" colorBrightness="secondary">
+          <Typography color="text" variant="caption" colorBrightness="hint">
             Views
           </Typography>
         </div>

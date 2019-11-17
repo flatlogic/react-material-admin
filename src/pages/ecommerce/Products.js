@@ -360,7 +360,9 @@ const Product = props => {
                       style={{ width: 40 }}
                     />
                   </Box>
-                  <Typography color="hint">FREE Delivery & Returns</Typography>
+                  <Typography color="text" colorBrightness={"secondary"}>
+                    FREE Delivery & Returns
+                  </Typography>
                 </Box>
               </Grid>
             </Grid>

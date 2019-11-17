@@ -420,11 +420,7 @@ export default function Dashboard(props) {
                     543
                   </Typography>
                   <Box alignSelf={"flex-end"} ml={1}>
-                    <Typography
-                      color="text"
-                      colorBrightness={"hint"}
-                      variant={"caption"}
-                    >
+                    <Typography color="text" variant={"caption"}>
                       Tickets
                     </Typography>
                   </Box>
@@ -441,7 +437,8 @@ export default function Dashboard(props) {
               >
                 <Typography
                   variant="caption"
-                  style={{ position: "absolute", fontWeight: 500 }}
+                  weight={"medium"}
+                  style={{ position: "absolute" }}
                 >
                   64%
                 </Typography>
@@ -474,11 +471,18 @@ export default function Dashboard(props) {
               alignItems="center"
             >
               <Grid item>
-                <Typography color="hint">New Tickets</Typography>
+                <Typography
+                  color="text"
+                  colorBrightness={"hint"}
+                  variant={"caption"}
+                >
+                  New Tickets
+                </Typography>
                 <Box display="flex" alignItems="center">
                   <Typography
                     size="md"
-                    style={{ marginRight: 8, fontWeight: 500 }}
+                    weight={"medium"}
+                    style={{ marginRight: 8 }}
                   >
                     45
                   </Typography>
@@ -486,11 +490,18 @@ export default function Dashboard(props) {
                 </Box>
               </Grid>
               <Grid item>
-                <Typography color="hint">Open</Typography>
+                <Typography
+                  color="text"
+                  colorBrightness={"hint"}
+                  variant={"caption"}
+                >
+                  Open
+                </Typography>
                 <Box display="flex" alignItems="center">
                   <Typography
                     size="md"
-                    style={{ marginRight: 8, fontWeight: 500 }}
+                    weight={"medium"}
+                    style={{ marginRight: 8 }}
                   >
                     147
                   </Typography>
@@ -498,11 +509,18 @@ export default function Dashboard(props) {
                 </Box>
               </Grid>
               <Grid item>
-                <Typography color="hint">Completed</Typography>
+                <Typography
+                  color="text"
+                  colorBrightness={"hint"}
+                  variant={"caption"}
+                >
+                  Completed
+                </Typography>
                 <Box display="flex" alignItems="center">
                   <Typography
                     size="md"
-                    style={{ marginRight: 8, fontWeight: 500 }}
+                    weight={"medium"}
+                    style={{ marginRight: 8 }}
                   >
                     351
                   </Typography>
@@ -513,7 +531,12 @@ export default function Dashboard(props) {
           </Widget>
         </Grid>
         <Grid item lg={3} sm={6} xs={12}>
-          <Widget title="Revenue Breakdown" upperTitle className={classes.card}>
+          <Widget
+            title="Revenue Breakdown"
+            upperTitle
+            className={classes.card}
+            bodyClass={classes.alignStandaloneElement}
+          >
             <Grid container spacing={3}>
               <Grid
                 item
@@ -527,7 +550,8 @@ export default function Dashboard(props) {
               >
                 <Typography
                   variant={"caption"}
-                  style={{ position: "absolute", fontWeight: 500 }}
+                  weight={"medium"}
+                  style={{ position: "absolute" }}
                 >
                   1700
                 </Typography>
@@ -553,21 +577,16 @@ export default function Dashboard(props) {
                 <div className={classes.pieChartLegendWrapper}>
                   {PieChartData.map(({ name, value, color }, index) => (
                     <div key={color} className={classes.legendItemContainer}>
-                      <Dot color={color} style={{ marginRight: 8 }} />
+                      <Dot color={color} style={{ marginRight: 4 }} />
                       <Typography
-                        color="hint"
-                        colorBrightness={"secondary"}
+                        color="text"
+                        colorBrightness={"hint"}
+                        variant={"caption"}
                         noWrap
-                        style={{ marginRight: 10 }}
-                        className={classes.responsiveTypography}
                       >
                         &nbsp;{name}&nbsp;
                       </Typography>
-                      <Typography
-                        color="text"
-                        colorBrightness="secondary"
-                        style={{ fontWeight: 500 }}
-                      >
+                      <Typography color="text" weight={"medium"}>
                         &nbsp;{value}
                       </Typography>
                     </div>
@@ -587,8 +606,9 @@ export default function Dashboard(props) {
               <div className={classes.legendElement}>
                 <Dot color="warning" />
                 <Typography
-                  color="hint"
-                  colorBrightness="secondary"
+                  color="text"
+                  colorBrightness="hint"
+                  variant={"body2"}
                   className={classes.legendElementText}
                 >
                   Integration
@@ -597,8 +617,9 @@ export default function Dashboard(props) {
               <div className={classes.legendElement}>
                 <Dot color="primary" />
                 <Typography
-                  color="hint"
-                  colorBrightness="secondary"
+                  color="text"
+                  colorBrightness="hint"
+                  variant={"body2"}
                   className={classes.legendElementText}
                 >
                   SDK
@@ -607,9 +628,8 @@ export default function Dashboard(props) {
             </div>
             <div className={classes.progressSection}>
               <Typography
-                size="md"
                 color="text"
-                colorBrightness="secondary"
+                variant={"body2"}
                 className={classes.progressSectionTitle}
               >
                 Integration
@@ -623,9 +643,8 @@ export default function Dashboard(props) {
             </div>
             <div>
               <Typography
-                size="md"
                 color="text"
-                colorBrightness="secondary"
+                variant={"body2"}
                 className={classes.progressSectionTitle}
               >
                 SDK
@@ -649,7 +668,9 @@ export default function Dashboard(props) {
             <div className={classes.serverOverviewElement}>
               <Typography
                 color="text"
-                colorBrightness="secondary"
+                noWrap
+                variant={"body2"}
+                weight={"medium"}
                 className={classes.serverOverviewElementText}
               >
                 60% / 37°С / 3.3 Ghz
@@ -672,7 +693,9 @@ export default function Dashboard(props) {
             <div className={classes.serverOverviewElement}>
               <Typography
                 color="text"
-                colorBrightness="secondary"
+                noWrap
+                weight={"medium"}
+                variant={"body2"}
                 className={classes.serverOverviewElementText}
               >
                 54% / 31°С / 3.3 Ghz
@@ -695,7 +718,9 @@ export default function Dashboard(props) {
             <div className={classes.serverOverviewElement}>
               <Typography
                 color="text"
-                colorBrightness="secondary"
+                noWrap
+                weight={"medium"}
+                variant={"body2"}
                 className={classes.serverOverviewElementText}
               >
                 57% / 21°С / 3.3 Ghz

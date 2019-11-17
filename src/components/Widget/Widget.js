@@ -28,6 +28,7 @@ export default function Widget({
   inheritHeight,
   searchField,
   className,
+  style,
   ...props
 }) {
   var classes = useStyles(props);
@@ -45,6 +46,7 @@ export default function Widget({
         },
         className
       )}
+      style={style}
     >
       <Paper
         className={classnames(classes.paper, {
@@ -64,7 +66,7 @@ export default function Widget({
               <Box display={"flex"}>
                 <Typography
                   variant="h6"
-                  color="hint"
+                  color="text"
                   colorBrightness={"secondary"}
                 >
                   {title}

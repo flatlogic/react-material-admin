@@ -167,6 +167,7 @@ const EnhancedTableToolbar = props => {
       className={cn(classes.root, {
         [classes.highlight]: numSelected > 0
       })}
+      style={{ marginTop: 8 }}
     >
       {numSelected > 0 ? (
         <Typography

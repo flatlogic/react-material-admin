@@ -47,11 +47,15 @@ export default function SidebarLink({
   // Chat Modal state
   const [isChat, setChat] = useState(false);
   const [anchorElChat, setAnchorElChat] = React.useState(null);
+
   // Login page onClick
-  const onLogin = () => {
+  function onLogin() {
     localStorage.removeItem("id_token");
     window.location.reload();
-  };
+  }
+
+  onLogin.clickName = "onLogin";
+
   var classes = useStyles(isOpen);
   const classes2 = useStyles2();
   var isLinkActive =
@@ -77,9 +81,11 @@ export default function SidebarLink({
   const open = Boolean(anchorEl);
   const id = open ? "add-section-popover" : undefined;
 
-  const addSectionClick = event => {
+  function addSectionClick(event) {
     setAnchorEl(event.currentTarget);
-  };
+  }
+
+  addSectionClick.clickName = "addSectionClick";
 
   const addSectionClose = () => {
     setAnchorEl(null);
@@ -87,9 +93,11 @@ export default function SidebarLink({
 
   // Chat Popper
 
-  const chatSetOpen = () => {
+  function chatSetOpen() {
     setChat(true);
-  };
+  }
+
+  chatSetOpen.clickName = "chatSetOpen";
 
   const chatSetClose = () => {
     setChat(false);

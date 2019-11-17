@@ -154,9 +154,10 @@ const structure = [
         click: function(...rest) {
           const name = "onLogin";
           rest.forEach(c => {
-            if (c.name === name) {
+            if (c.clickName === name) {
               return c();
             }
+            console.log("in here");
             return false;
           });
         }
@@ -223,7 +224,7 @@ const structure = [
     click: function(event, ...rest) {
       const name = "addSectionClick";
       rest.forEach(c => {
-        if (c.name === name) {
+        if (c.clickName === name) {
           return c(event);
         }
         return false;
@@ -240,7 +241,7 @@ const structure = [
     click: function(event, ...rest) {
       const name = "chatSetOpen";
       rest.forEach(c => {
-        if (c.name === name) {
+        if (c.clickName === name) {
           return c(event);
         }
         return false;

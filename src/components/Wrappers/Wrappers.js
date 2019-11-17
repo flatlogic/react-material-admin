@@ -351,8 +351,6 @@ export {
 function getColor(color, theme, brightness = "main") {
   if (color && theme.palette[color] && theme.palette[color][brightness]) {
     return theme.palette[color][brightness];
-  } else if (color) {
-    return theme.palette.text[color];
   }
 }
 

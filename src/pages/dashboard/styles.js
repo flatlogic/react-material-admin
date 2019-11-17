@@ -35,6 +35,12 @@ export default makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "space-between"
   },
+  alignStandaloneElement: {
+    display: "flex",
+    flexGrow: 1,
+    flexDirection: "column",
+    justifyContent: "center"
+  },
   tableWidget: {
     overflowX: "auto"
   },
@@ -61,9 +67,8 @@ export default makeStyles(theme => ({
     maxWidth: "100%"
   },
   serverOverviewElementText: {
-    minWidth: 145,
-    paddingRight: theme.spacing(2),
-    fontWeight: "500 !important"
+    minWidth: 149,
+    paddingRight: theme.spacing(2)
   },
   serverOverviewElementChartWrapper: {
     width: "100%"
@@ -123,10 +128,5 @@ export default makeStyles(theme => ({
     position: "absolute",
     top: 20,
     width: 1
-  },
-  responsiveTypography: {
-    "@media(max-width: 1500px)": {
-      fontSize: "0.4rem"
-    }
   }
 }));

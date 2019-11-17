@@ -45,7 +45,11 @@ export default () => {
                   <Typography variant={"body1"}>
                     Min-length On Change
                   </Typography>
-                  <Typography variant={"caption"} color="hint">
+                  <Typography
+                    variant={"caption"}
+                    color="text"
+                    colorBrightness={"secondary"}
+                  >
                     At least 10
                   </Typography>
                 </Grid>
