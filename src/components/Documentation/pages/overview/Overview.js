@@ -7,11 +7,14 @@ import {
   ListItemIcon,
   ListItemText
 } from "@material-ui/core";
-import { Done as DoneIcon } from "@material-ui/icons";
+import {
+  Done as DoneIcon,
+  ArrowRightAlt as ArrowRight
+} from "@material-ui/icons";
 
 //components
 import Widget from "../../../Widget";
-import { Typography } from "../../../Wrappers";
+import { Typography, Link } from "../../../Wrappers";
 
 //images
 import overview from "../../../../images/overview.png";
@@ -100,6 +103,32 @@ const Overview = () => {
                 <ListItemText primary="And even more coming soon!" />
               </ListItem>
             </List>
+            <Box display={"flex"} justifyContent={"space-around"} my={3}>
+              <Box>
+                <Typography variant={"h3"} style={{ marginBottom: 16 }}>
+                  Continue with
+                </Typography>
+                <Link
+                  href={"#/documentation/getting-started/licences"}
+                  variant={"h6"}
+                  color={"primary"}
+                >
+                  Licences <ArrowRight />
+                </Link>
+              </Box>
+              <Box>
+                <Typography variant={"h3"} style={{ marginBottom: 16 }}>
+                  Or learn about
+                </Typography>
+                <Link
+                  href={"#/documentation/getting-started/quick-start"}
+                  variant={"h6"}
+                  color={"primary"}
+                >
+                  How to start project <ArrowRight />
+                </Link>
+              </Box>
+            </Box>
           </Widget>
         </Grid>
       </Grid>

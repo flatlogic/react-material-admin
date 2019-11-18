@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/styles";
 export default makeStyles(theme => ({
   root: {
     "&:hover": {
-      backgroundColor: "transparent",
-    },
+      backgroundColor: "transparent"
+    }
   },
   icon: {
     borderRadius: "50%",
@@ -17,15 +17,15 @@ export default makeStyles(theme => ({
       "linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
     "$root.Mui-focusVisible &": {
       outline: "2px auto rgba(19,124,189,.6)",
-      outlineOffset: 2,
+      outlineOffset: 2
     },
     "input:hover ~ &": {
-      backgroundColor: "#ebf1f5",
+      backgroundColor: "#ebf1f5"
     },
     "input:disabled ~ &": {
       boxShadow: "none",
-      background: "rgba(206,217,224,.5)",
-    },
+      background: "rgba(206,217,224,.5)"
+    }
   },
   checkedIcon: {
     backgroundColor: "#137cbd",
@@ -36,10 +36,13 @@ export default makeStyles(theme => ({
       width: 16,
       height: 16,
       backgroundImage: "radial-gradient(#fff,#fff 28%,transparent 32%)",
-      content: '""',
+      content: '""'
     },
     "input:hover ~ &": {
-      backgroundColor: "#106ba3",
-    },
+      backgroundColor: "#106ba3"
+    }
   },
+  horizontalFormTop: {
+    paddingTop: theme.spacing(2)
+  }
 }));

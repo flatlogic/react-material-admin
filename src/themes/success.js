@@ -69,9 +69,9 @@ export default {
         .toHexString()
     },
     text: {
-      textPrimary: "#4A4A4A",
-      textSecondary: "#6E6E6E",
-      textHint: "#B9B9B9"
+      primary: "#4A4A4A",
+      secondary: "#6E6E6E",
+      hint: "#B9B9B9"
     },
     background: {
       default: "#F6F7FF",
