@@ -9,6 +9,10 @@ Built with [React](https://facebook.github.io/react/), [Material-UI](https://mat
 
 [![image](https://user-images.githubusercontent.com/24964748/55800639-df780300-5adc-11e9-84b7-7c2437088516.png)](https://flatlogic.com/admin-dashboards/react-material-admin/demo)
 
+## Full Version
+
+This is a limited version of [**Full React Material Admin**](https://flatlogic.com/templates/react-material-admin-full/demo) with more components, pages and theme support.
+
 ## Features
 
 - React (**16.8.6**)
