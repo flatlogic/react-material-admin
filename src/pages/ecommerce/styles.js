@@ -38,5 +38,10 @@ export default makeStyles(theme => ({
     position: "absolute",
     top: 20,
     width: 1
+  },
+  denseSelect: {
+    "& .MuiOutlinedInput-input": {
+      padding: 17
+    }
   }
 }));

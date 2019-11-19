@@ -376,21 +376,23 @@ export default function EcommercePage() {
                             </Box>
                           </TableCell>
                           <TableCell>
-                            <Button
-                              color="success"
-                              size="small"
-                              className={"mr-2"}
-                              variant="contained"
-                            >
-                              Edit
-                            </Button>
-                            <Button
-                              color="secondary"
-                              size="small"
-                              variant="contained"
-                            >
-                              Delete
-                            </Button>
+                            <Box display={"flex"} alignItems={"center"}>
+                              <Button
+                                color="success"
+                                size="small"
+                                className={"mr-2"}
+                                variant="contained"
+                              >
+                                Edit
+                              </Button>
+                              <Button
+                                color="secondary"
+                                size="small"
+                                variant="contained"
+                              >
+                                Delete
+                              </Button>
+                            </Box>
                           </TableCell>
                         </TableRow>
                       );

@@ -48,7 +48,11 @@ export default function BigStat(props) {
     >
       <div className={classes.totalValueContainer}>
         <div className={classes.totalValue}>
-          <Typography variant={"h2"} weight={"medium"}>
+          <Typography
+            variant={"h2"}
+            weight={"medium"}
+            style={{ marginRight: 8 }}
+          >
             {total[value]}
           </Typography>
           <Typography color={total.percent.profit ? "success" : "error"}>
@@ -56,7 +60,7 @@ export default function BigStat(props) {
             {total.percent.value}%
           </Typography>
         </div>
-        <BarChart width={150} height={70} data={getRandomData()}>
+        <BarChart width={100} height={70} data={getRandomData()}>
           <Bar
             dataKey="value"
             fill={theme.palette[color].main}
@@ -72,6 +76,7 @@ export default function BigStat(props) {
               color={"text"}
               weight="bold"
               colorBrightness={"secondary"}
+              variant={"h6"}
             >
               {registrations[value].value}
             </Typography>
@@ -91,6 +96,7 @@ export default function BigStat(props) {
               color={"text"}
               weight="bold"
               colorBrightness={"secondary"}
+              variant={"h6"}
             >
               {bounce[value].value}%
             </Typography>
@@ -110,6 +116,7 @@ export default function BigStat(props) {
               color={"text"}
               weight="bold"
               colorBrightness={"secondary"}
+              variant={"h6"}
             >
               {registrations[value].value * 10}
             </Typography>

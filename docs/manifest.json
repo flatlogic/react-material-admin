@@ -1,11 +1,21 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "React Material Admin Full",
+  "name": "React Material Admin Full",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "favicon.svg",
+      "sizes": "80x80 64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "80x80",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon blue.png",
+      "sizes": "80x80",
+      "type": "image/png"
     }
   ],
   "start_url": ".",

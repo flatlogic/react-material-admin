@@ -128,5 +128,10 @@ export default makeStyles(theme => ({
     position: "absolute",
     top: 20,
     width: 1
+  },
+  fixIconRight: {
+    "& .MuiSelect-icon": {
+      right: 4
+    }
   }
 }));

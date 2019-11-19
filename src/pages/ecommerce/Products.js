@@ -201,7 +201,7 @@ const Product = props => {
         <Grid item xs={12}>
           <Widget disableWidgetMenu noBodyPadding>
             <Grid container>
-              <Grid item md={8} xs={12}>
+              <Grid item md={6} xs={12}>
                 {!props.match.params.id ? (
                   <img
                     src={rows[0].img}
@@ -216,7 +216,7 @@ const Product = props => {
                   />
                 )}
               </Grid>
-              <Grid item md={4} xs={12}>
+              <Grid item md={6} xs={12}>
                 <Box
                   m={3}
                   display="flex"
@@ -268,7 +268,7 @@ const Product = props => {
                   <Box>
                     {!props.match.params.id ? (
                       <>
-                        <Typography weight="medium">
+                        <Typography weight="medium" variant={"h5"}>
                           ${rows[0].price}
                         </Typography>
                       </>
@@ -283,7 +283,7 @@ const Product = props => {
                   <Box>
                     <Link>Size Guide</Link>
                   </Box>
-                  <Box display="flex">
+                  <Box display="flex" alignItems={"center"}>
                     <FormControl
                       variant="outlined"
                       className={classes.form}
@@ -300,6 +300,7 @@ const Product = props => {
                           name: "size",
                           id: "size-simple"
                         }}
+                        className={classes.denseSelect}
                       >
                         <MenuItem value={1}>1</MenuItem>
                         <MenuItem value={2}>2</MenuItem>
@@ -313,6 +314,7 @@ const Product = props => {
                         value={addSize}
                         onChange={handleChangeAddSize}
                         className={classes.selectEmpty}
+                        margin={"dense"}
                       >
                         <MenuItem value={1}>1</MenuItem>
                         <MenuItem value={2}>2</MenuItem>
@@ -372,17 +374,8 @@ const Product = props => {
           <Widget disableWidgetMenu title="Product Info">
             <Grid container>
               <Grid item xs={12}>
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  flexWrap="wrap"
-                >
-                  <Box
-                    style={{ maxWidth: 500 }}
-                    display="flex"
-                    flexDirection="column"
-                    flexGrow={1}
-                  >
+                <Grid container item spacing={3}>
+                  <Grid item container direction={"column"} md={4} xs={12}>
                     <Typography variant="h5" style={{ marginBottom: 16 }}>
                       PRODUCT DESCRIPTION
                     </Typography>
@@ -400,11 +393,14 @@ const Product = props => {
                         an upper part made of leather or synthetic materials.
                       </li>
                     </ul>
-                  </Box>
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="space-between"
+                  </Grid>
+                  <Grid
+                    item
+                    container
+                    direction={"column"}
+                    justify={"space-between"}
+                    md={4}
+                    xs={12}
                   >
                     <Box>
                       <Typography variant="h5" style={{ marginBottom: 16 }}>
@@ -422,12 +418,8 @@ const Product = props => {
                         <li>Vulcanized rubber soles</li>
                       </ul>
                     </Box>
-                  </Box>
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="space-between"
-                  >
+                  </Grid>
+                  <Grid item container direction={"column"} md={4} xs={12}>
                     <Box>
                       <Typography variant="h5" style={{ marginBottom: 16 }}>
                         SHARE
@@ -438,7 +430,7 @@ const Product = props => {
                           #whitetrainers
                         </Link>
                       </p>
-                      <Box mb={1}>
+                      <Box mb={1} ml={"-16px"}>
                         <IconButton aria-label="facebook">
                           <Icon
                             path={FacebookIcon}
@@ -487,8 +479,8 @@ const Product = props => {
                         Read all
                       </Link>
                     </Box>
-                  </Box>
-                </Box>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Widget>

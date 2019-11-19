@@ -15,7 +15,6 @@ import {
   TableHead,
   TableSortLabel,
   Toolbar,
-  Tooltip,
   IconButton
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
@@ -29,7 +28,8 @@ import {
   Pie,
   Cell,
   YAxis,
-  XAxis
+  XAxis,
+  Tooltip
 } from "recharts";
 
 // styles
@@ -38,7 +38,7 @@ import useStyles from "./styles";
 // components
 import mock from "./mock";
 import Widget from "../../components/Widget";
-import { Chip, Typography } from "../../components/Wrappers";
+import { Chip, Typography, Avatar } from "../../components/Wrappers";
 import Dot from "../../components/Sidebar/components/Dot";
 import BigStat from "./components/BigStat/BigStat";
 import {
@@ -221,6 +221,7 @@ function EnhancedTableHead(props) {
             checked={numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{ "aria-label": "select all rows" }}
+            style={{ color: "rgb(185, 185, 185)" }}
           />
         </TableCell>
         {headCells.map(headCell => (
@@ -234,7 +235,11 @@ function EnhancedTableHead(props) {
               active={orderBy === headCell.id}
               direction={order}
               onClick={createSortHandler(headCell.id)}
-              style={{ whiteSpace: "nowrap" }}
+              style={{
+                whiteSpace: "nowrap",
+                textTransform: "uppercase",
+                fontSize: "0.85rem"
+              }}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
@@ -449,8 +454,8 @@ export default function Dashboard(props) {
                       startAngle={270}
                       endAngle={0}
                       paddingAngle={5}
-                      innerRadius={20}
-                      outerRadius={25}
+                      innerRadius={30}
+                      outerRadius={35}
                       dataKey="value"
                     >
                       {TicketChartData.map((entry, index) => (
@@ -788,6 +793,7 @@ export default function Dashboard(props) {
                     />
                   }
                   autoWidth
+                  className={classes.fixIconRight}
                 >
                   <MenuItem value="daily">Daily</MenuItem>
                   <MenuItem value="weekly">Weekly</MenuItem>
@@ -819,6 +825,7 @@ export default function Dashboard(props) {
                   stroke={theme.palette.text.hint + "80"}
                   tickLine={false}
                 />
+                <Tooltip />
                 <Area
                   type="natural"
                   dataKey="desktop"
@@ -843,6 +850,9 @@ export default function Dashboard(props) {
                     stroke: theme.palette.warning.dark,
                     strokeWidth: 2,
                     fill: theme.palette.warning.main
+                  }}
+                  activeDot={{
+                    r: 8
                   }}
                 />
               </ComposedChart>
@@ -893,6 +903,7 @@ export default function Dashboard(props) {
                             <Checkbox
                               checked={isItemSelected}
                               inputProps={{ "aria-labelledby": labelId }}
+                              style={{ color: "rgb(185, 185, 185)" }}
                             />
                           </TableCell>
                           <TableCell
@@ -903,14 +914,31 @@ export default function Dashboard(props) {
                           >
                             {row.orderId}
                           </TableCell>
-                          <TableCell>{row.customer}</TableCell>
+                          <TableCell>
+                            <Box
+                              display={"flex"}
+                              flexWrap={"nowrap"}
+                              alignItems={"center"}
+                            >
+                              <Avatar
+                                alt={row.customer}
+                                color={row.color}
+                                style={{ marginRight: 8 }}
+                              >
+                                {row.customer[0]}
+                              </Avatar>
+                              <Typography style={{ whiteSpace: "nowrap" }}>
+                                {row.customer}
+                              </Typography>
+                            </Box>
+                          </TableCell>
                           <TableCell>{row.office}</TableCell>
                           <TableCell>{row.weight}</TableCell>
                           <TableCell>${row.price}</TableCell>
                           <TableCell>{row.purDate}</TableCell>
                           <TableCell>{row.delDate}</TableCell>
                           <TableCell>
-                            <Chip label={row.status} color={row.color}></Chip>
+                            <Chip label={row.status} color={row.color} />
                           </TableCell>
                         </TableRow>
                       );

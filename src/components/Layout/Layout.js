@@ -143,6 +143,8 @@ function Layout(props) {
             direction="row"
             justify="space-between"
             alignItems="center"
+            wrap={"nowrap"}
+            style={{ overflow: "auto" }}
           >
             {SidebarStructure.map(c => {
               if (

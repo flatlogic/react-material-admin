@@ -9,6 +9,7 @@ import {
   Box
 } from "@material-ui/core";
 import { Add as PlusIcon, Remove as MinusIcon } from "@material-ui/icons";
+import useStyles from "./styles";
 
 //components
 import Widget from "../../../Widget";
@@ -18,13 +19,13 @@ import { Typography } from "../../../Wrappers";
 const rows = [
   {
     advantage: "Hundreds unique components",
-    single: <PlusIcon />,
-    extended: <PlusIcon />
+    single: "plus",
+    extended: "plus"
   },
   {
     advantage: "All pages",
-    single: <PlusIcon />,
-    extended: <PlusIcon />
+    single: "plus",
+    extended: "plus"
   },
   {
     advantage: "Free Updates",
@@ -33,12 +34,13 @@ const rows = [
   },
   {
     advantage: "Paying users allowed",
-    single: <MinusIcon />,
-    extended: <PlusIcon />
+    single: "no",
+    extended: "plus"
   }
 ];
 
 const Licences = () => {
+  const classes = useStyles();
   return (
     <>
       <Grid container spacing={6}>
@@ -66,8 +68,20 @@ const Licences = () => {
                     <TableCell component="th" scope="row">
                       {row.advantage}
                     </TableCell>
-                    <TableCell>{row.single}</TableCell>
-                    <TableCell>{row.extended}</TableCell>
+                    <TableCell>
+                      {row.extended === "plus" ? (
+                        <PlusIcon className={classes.successIcon} />
+                      ) : (
+                        <MinusIcon className={classes.failIcon} />
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      {row.extended === "plus" ? (
+                        <PlusIcon className={classes.successIcon} />
+                      ) : (
+                        <MinusIcon className={classes.failIcon} />
+                      )}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
