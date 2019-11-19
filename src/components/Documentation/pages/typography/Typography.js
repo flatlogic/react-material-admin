@@ -59,6 +59,31 @@ const TypographyPage = () => {
   return \`calc(\${defaultSize} * \${multiplier})\`;
 }
         `}</Code>
+      <Typography variant={"body1"} style={{ margin: "16px 0" }}>
+        You can define{" "}
+        <Code row inline>
+          weight
+        </Code>{" "}
+        prop to add{" "}
+        <Code row inline>
+          font-weight
+        </Code>
+        property to your text. Take a look at the function:
+      </Typography>
+      <Code>{`
+  function getFontWeight(style) {
+      switch (style) {
+        case "light":
+          return 300;
+        case "medium":
+          return 500;
+        case "bold":
+          return 600;
+        default:
+          return 400;
+      }
+  }
+        `}</Code>
     </Widget>
   );
 };

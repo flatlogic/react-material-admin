@@ -7,7 +7,7 @@ import Widget from "../../../Widget";
 import { Typography, Button } from "../../../Wrappers";
 import Code from "../../../Code";
 
-const Overview = props => {
+const Pages = props => {
   return (
     <>
       <Grid container spacing={3}>
@@ -96,4 +96,4 @@ const Overview = props => {
   );
 };
 
-export default withRouter(Overview);
+export default withRouter(Pages);

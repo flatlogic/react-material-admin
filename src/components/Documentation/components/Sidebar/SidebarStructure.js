@@ -40,6 +40,10 @@ const structure = [
         link: "/documentation/components/typography"
       },
       {
+        label: "Widget",
+        link: "/documentation/components/widget"
+      },
+      {
         label: "Header",
         link: "/documentation/components/header"
       },
@@ -54,7 +58,7 @@ const structure = [
       {
         label: "Progress",
         link: "/documentation/components/progress"
-      },
+      }
     ]
   },
   {

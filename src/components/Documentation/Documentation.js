@@ -16,6 +16,8 @@ import Licences from "./pages/licences";
 import Start from "./pages/start";
 import Pages from "./pages/pages";
 import TypographyPage from "./pages/typography";
+import WidgetPage from "./pages/widget";
+import Libs from "./pages/libs";
 
 //components
 import Header from "./components/Header";
@@ -106,6 +108,12 @@ const Documentation = props => {
           </Route>
           <Route path={`${path}/components/typography`}>
             <TypographyPage />
+          </Route>
+          <Route path={`${path}/components/widget`}>
+            <WidgetPage />
+          </Route>
+          <Route path={`${path}/libs`}>
+            <Libs />
           </Route>
         </Switch>
       </div>
