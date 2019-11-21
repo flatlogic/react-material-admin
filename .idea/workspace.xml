@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4909a5d2-7a4c-43db-b0ff-3729c7f59050" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/service-worker.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574328451392</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix: package.json improve">
+      <created>1574351850683</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574351850683</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +98,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: unlock full version button &amp;&amp; prettier add" />
     <MESSAGE value="adjust: React unmounted error" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjust: React unmounted error" />
+    <MESSAGE value="fix: package.json improve" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: package.json improve" />
   </component>
 </project>
