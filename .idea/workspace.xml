@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4909a5d2-7a4c-43db-b0ff-3729c7f59050" name="Default Changelist" comment="" />
+    <list default="true" id="4909a5d2-7a4c-43db-b0ff-3729c7f59050" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/static/js/2.d586ddca.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/2.d586ddca.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/media/fontawesome-webfont.674f50d2.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/media/fontawesome-webfont.912ec66d.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/media/fontawesome-webfont.af7ae505.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/media/fontawesome-webfont.b06871f2.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/media/fontawesome-webfont.fee66e71.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/media/google.695a3160.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/media/logo.a0185b04.svg" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
