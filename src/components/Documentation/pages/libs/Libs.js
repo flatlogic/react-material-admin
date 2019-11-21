@@ -4,10 +4,6 @@ import React from "react";
 import Widget from "../../../Widget";
 import { Typography } from "../../../Wrappers";
 import Code from "../../../Code";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-
-const Icon = <FontAwesomeIcon icon={faCoffee} />;
 
 const Libs = () => {
   return (
@@ -20,7 +16,6 @@ const Libs = () => {
         </Code>
       </Typography>
       <Typography variant={"h6"}>Examples:</Typography>
-      <Icon />
     </Widget>
   );
 };

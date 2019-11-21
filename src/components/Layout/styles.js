@@ -62,5 +62,14 @@ export default makeStyles(theme => ({
   },
   margin: {
     marginBottom: 24
+  },
+  changeThemeFab: {
+    position: "fixed",
+    top: theme.spacing(23),
+    right: 0,
+    zIndex: 1,
+    borderRadius: 0,
+    borderTopLeftRadius: "50%",
+    borderBottomLeftRadius: "50%"
   }
 }));

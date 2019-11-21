@@ -39,7 +39,6 @@ import Sidebar from "../Sidebar";
 import Footer from "../Footer";
 import Widget from "../Widget";
 import { Link, Typography, Button } from "../../components/Wrappers";
-import { Pop } from "./LayoutView";
 import SidebarStructure from "../Sidebar/SidebarStructure";
 
 // pages
@@ -313,15 +312,14 @@ function Layout(props) {
           <Route path="/app/maps/vector" component={VectorMaps} />
           <Route path="/app/ui/icons" component={Icons} />
         </Switch>
-        <Pop>
-          <Fab
-            color="primary"
-            aria-label="settings"
-            onClick={e => handleClick(e)}
-          >
-            <Icon path={SettingsIcon} size={1} color="#fff" />
-          </Fab>
-        </Pop>
+        <Fab
+          color="primary"
+          aria-label="settings"
+          onClick={e => handleClick(e)}
+          className={classes.changeThemeFab}
+        >
+          <Icon path={SettingsIcon} size={1} color="#fff" />
+        </Fab>
         <Popover
           id={id}
           open={open}
