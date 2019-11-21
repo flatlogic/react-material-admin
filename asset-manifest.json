@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/react-material-admin/static/js/main.a1bdcd63.chunk.js",
-    "main.js.map": "/react-material-admin/static/js/main.a1bdcd63.chunk.js.map",
-    "runtime~main.js": "/react-material-admin/static/js/runtime~main.cad08fbd.js",
-    "runtime~main.js.map": "/react-material-admin/static/js/runtime~main.cad08fbd.js.map",
-    "static/css/2.b95fcbb1.chunk.css": "/react-material-admin/static/css/2.b95fcbb1.chunk.css",
-    "static/js/2.d586ddca.chunk.js": "/react-material-admin/static/js/2.d586ddca.chunk.js",
-    "static/js/2.d586ddca.chunk.js.map": "/react-material-admin/static/js/2.d586ddca.chunk.js.map",
-    "index.html": "/react-material-admin/index.html",
-    "precache-manifest.ee33916327a02c25535ad47e9309bc71.js": "/react-material-admin/precache-manifest.ee33916327a02c25535ad47e9309bc71.js",
-    "service-worker.js": "/react-material-admin/service-worker.js",
-    "static/css/2.b95fcbb1.chunk.css.map": "/react-material-admin/static/css/2.b95fcbb1.chunk.css.map",
-    "static/media/font-awesome.min.css": "/react-material-admin/static/media/fontawesome-webfont.fee66e71.woff",
-    "static/media/google.svg": "/react-material-admin/static/media/google.695a3160.svg",
-    "static/media/logo.svg": "/react-material-admin/static/media/logo.a0185b04.svg"
+    "main.js": "./static/js/main.c12ee550.chunk.js",
+    "main.js.map": "./static/js/main.c12ee550.chunk.js.map",
+    "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
+    "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
+    "static/css/2.0a903cde.chunk.css": "./static/css/2.0a903cde.chunk.css",
+    "static/js/2.d586ddca.chunk.js": "./static/js/2.d586ddca.chunk.js",
+    "static/js/2.d586ddca.chunk.js.map": "./static/js/2.d586ddca.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.71fb3da54d3ffce76f0a33fec5092b12.js": "./precache-manifest.71fb3da54d3ffce76f0a33fec5092b12.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.0a903cde.chunk.css.map": "./static/css/2.0a903cde.chunk.css.map",
+    "static/media/font-awesome.min.css": "./static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/google.svg": "./static/media/google.695a3160.svg",
+    "static/media/logo.svg": "./static/media/logo.a0185b04.svg"
   }
 }
