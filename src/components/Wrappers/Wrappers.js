@@ -66,25 +66,52 @@ function Typography({
   );
 }
 
-function Button({ children, color, ...props }) {
+function Button({ children, color, className, ...props }) {
   var theme = useTheme();
 
   var Styled = createStyled({
-    button: {
+    root: {
+      color: getColor(color, theme),
+    },
+    contained: {
       backgroundColor: getColor(color, theme),
       boxShadow: theme.customShadows.widget,
-      color: "white",
+      color: `${color ? "white" : theme.palette.text.primary} !important`,
       "&:hover": {
         backgroundColor: getColor(color, theme, "light"),
         boxShadow: theme.customShadows.widgetWide,
       },
+      "&:active": {
+        boxShadow: theme.customShadows.widgetWide,
+      },
+    },
+    outlined: {
+      color: getColor(color, theme),
+      borderColor: getColor(color, theme),
+    },
+    select: {
+      backgroundColor: theme.palette.primary.main,
+      color: "#fff",
     },
   });
 
   return (
     <Styled>
       {({ classes }) => (
-        <ButtonBase classes={{ root: classes.button }} {...props}>
+        <ButtonBase
+          classes={{
+            contained: classes.contained,
+            root: classes.root,
+            outlined: classes.outlined,
+          }}
+          {...props}
+          className={classnames(
+            {
+              [classes.select]: props.select,
+            },
+            className,
+          )}
+        >
           {children}
         </ButtonBase>
       )}
