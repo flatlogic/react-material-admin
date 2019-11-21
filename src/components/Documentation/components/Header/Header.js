@@ -127,11 +127,11 @@ const Header = props => {
             >
               Live Preview
             </Button>
-              <Button
-                  href={"https://flatlogic.com/templates/react-material-admin-full"}
-                  variant="outlined"
-                  color="secondary"
-              >
+            <Button
+              href={"https://flatlogic.com/templates/react-material-admin-full"}
+              variant="outlined"
+              color="secondary"
+            >
               Buy
             </Button>
           </Box>
