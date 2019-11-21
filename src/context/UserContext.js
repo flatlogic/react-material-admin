@@ -54,13 +54,13 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
   setIsLoading(true);
 
   if (!!login && !!password) {
-    setTimeout(() => {
+    setTimeout(e => {
       localStorage.setItem("id_token", "1");
       // Setting up a default theme
       localStorage.setItem("theme", "default");
-      dispatch({ type: "LOGIN_SUCCESS" });
       setError(null);
       setIsLoading(false);
+      dispatch({ type: "LOGIN_SUCCESS" });
 
       history.push("/app/dashboard");
     }, 2000);
