@@ -3,18 +3,8 @@
   "name": "React Material Admin Full",
   "icons": [
     {
-      "src": "favicon.svg",
-      "sizes": "80x80 64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "favicon.png",
-      "sizes": "80x80",
-      "type": "image/png"
-    },
-    {
       "src": "favicon blue.png",
-      "sizes": "80x80",
+      "sizes": "80x80 64x64 32x32 24x24 16x16",
       "type": "image/png"
     }
   ],

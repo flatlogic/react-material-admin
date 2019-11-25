@@ -59,6 +59,7 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
       // Setting up a default theme
       localStorage.setItem("theme", "default");
       setError(null);
+      console.trace()
       setIsLoading(false);
       dispatch({ type: "LOGIN_SUCCESS" });
 
