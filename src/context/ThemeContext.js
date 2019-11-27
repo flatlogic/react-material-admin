@@ -42,7 +42,7 @@ function useThemeState() {
 function useThemeDispatch() {
   var context = React.useContext(ThemeDispatchContext);
   if (context === undefined) {
-    throw new Error("useTheemDispatch must be used within a ThemeProvider");
+    throw new Error("useThemeDispatch must be used within a ThemeProvider");
   }
   return context;
 }

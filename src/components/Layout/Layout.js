@@ -11,7 +11,7 @@ import {
 import {
   Fab,
   IconButton,
-    Popper,
+  Popper,
   FormControlLabel,
   RadioGroup,
   Box,
@@ -19,7 +19,7 @@ import {
   Grid,
   Breadcrumbs,
   Tabs,
-    Tab,
+  Tab,
 } from "@material-ui/core";
 import {
   NavigateNext as NavigateNextIcon,
@@ -39,7 +39,6 @@ import Sidebar from "../Sidebar";
 import Footer from "../Footer";
 import Widget from "../Widget";
 import { Link, Typography, Button } from "../../components/Wrappers";
-import SidebarStructure from "../Sidebar/SidebarStructure";
 
 // pages
 import Dashboard from "../../pages/dashboard";
@@ -104,11 +103,7 @@ function Layout(props) {
   const open = Boolean(anchorEl);
   const id = open ? "add-section-popover" : undefined;
   const handleClick = event => {
-      setAnchorEl(anchorEl ? null : event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
   // global
@@ -145,7 +140,7 @@ function Layout(props) {
             wrap={"nowrap"}
             style={{ overflow: "auto" }}
           >
-            {SidebarStructure.map(c => {
+            {structure.map(c => {
               if (
                 !c.children &&
                 window.location.hash.includes(c.link) &&
@@ -320,48 +315,48 @@ function Layout(props) {
         >
           <Icon path={SettingsIcon} size={1} color="#fff" />
         </Fab>
-          <Popper
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              placement={"left-start"}
+        <Popper
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            placement={"left-start"}
         >
-              <Widget disableWidgetMenu>
-                  <Box
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="space-between"
-                      alignItems="center"
-                  >
-                      <Typography variant="body2" weight={"bold"}>
-                          COLOR THEME
-                      </Typography>
-                      <RadioGroup
-                          aria-label="theme"
-                          value={localStorage.getItem("theme")}
-                          onChange={e => handleChangeTheme(e)}
-                      >
-                          <Box display="flex" justifyContent="space-between">
-                              <FormControlLabel
-                                  className={classes.noMargin}
-                                  value="default"
-                                  control={<Radio className={classes.defaultRadio}/>}
-                              />
-                              <FormControlLabel
-                                  className={classes.noMargin}
-                                  value="secondary"
-                                  control={<Radio className={classes.secondaryRadio}/>}
-                              />
-                              <FormControlLabel
-                                  className={classes.noMargin}
-                                  value="success"
-                                  control={<Radio className={classes.successRadio}/>}
-                              />
-                          </Box>
-                      </RadioGroup>
-                  </Box>
-              </Widget>
-          </Popper>
+          <Widget disableWidgetMenu>
+            <Box
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
+                alignItems="center"
+            >
+              <Typography variant="body2" weight={"bold"}>
+                COLOR THEME
+              </Typography>
+              <RadioGroup
+                  aria-label="theme"
+                  value={localStorage.getItem("theme")}
+                  onChange={e => handleChangeTheme(e)}
+              >
+                <Box display="flex" justifyContent="space-between">
+                  <FormControlLabel
+                      className={classes.noMargin}
+                      value="default"
+                      control={<Radio className={classes.defaultRadio}/>}
+                  />
+                  <FormControlLabel
+                      className={classes.noMargin}
+                      value="secondary"
+                      control={<Radio className={classes.secondaryRadio}/>}
+                  />
+                  <FormControlLabel
+                      className={classes.noMargin}
+                      value="success"
+                      control={<Radio className={classes.successRadio}/>}
+                  />
+                </Box>
+              </RadioGroup>
+            </Box>
+          </Widget>
+        </Popper>
         <Footer>
           <div>
             <Link
