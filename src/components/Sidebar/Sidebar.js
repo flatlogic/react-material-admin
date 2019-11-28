@@ -18,7 +18,7 @@ import {
   toggleSidebar
 } from "../../context/LayoutContext";
 
-function Sidebar({ location, structure, ...props }) {
+function Sidebar({location, structure}) {
   var classes = useStyles();
   var theme = useTheme();
 

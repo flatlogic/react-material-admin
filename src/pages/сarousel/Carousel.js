@@ -10,9 +10,8 @@ import {
 import img1 from "../../images/1.jpg";
 import img2 from "../../images/2.jpg";
 import img3 from "../../images/3.jpg";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "bootstrap-css-only/css/bootstrap.min.css";
-import "mdbreact/dist/css/mdb.css";
+// import "@fortawesome/fontawesome-free/css/all.min.css";
+// import "mdbreact/dist/css/mdb.css";
 
 // components
 import Widget from "../../components/Widget";

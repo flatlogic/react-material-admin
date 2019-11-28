@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ThemeProvider } from "@material-ui/styles";
-import { CssBaseline } from "@material-ui/core";
-
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { LayoutProvider } from "./context/LayoutContext";
 import { UserProvider } from "./context/UserContext";
-import { ThemeProvider as ThemeChangeProvider } from "./context/ThemeContext";
-import "./index.css";
+import {
+  ThemeProvider as ThemeChangeProvider,
+  ThemeStateContext
+} from "./context/ThemeContext";
 
-import { ThemeStateContext } from "./context/ThemeContext";
+import { CssBaseline } from "@material-ui/core";
+// import "./index.css";
 
 ReactDOM.render(
   <LayoutProvider>

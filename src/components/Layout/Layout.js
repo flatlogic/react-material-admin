@@ -12,7 +12,7 @@ import {
   Fab,
   IconButton,
   Popper,
-  FormControlLabel,
+  Divider,
   RadioGroup,
   Box,
   Radio,
@@ -20,6 +20,7 @@ import {
   Breadcrumbs,
   Tabs,
   Tab,
+  Switch as SwitchMode
 } from "@material-ui/core";
 import {
   NavigateNext as NavigateNextIcon,
@@ -328,32 +329,88 @@ function Layout(props) {
                 justifyContent="space-between"
                 alignItems="center"
             >
-              <Typography variant="body2" weight={"bold"}>
-                COLOR THEME
-              </Typography>
-              <RadioGroup
+              <>
+                <Typography variant="body2" weight={"bold"} uppercase>
+                  color theme
+                </Typography>
+                <RadioGroup
                   aria-label="theme"
                   value={localStorage.getItem("theme")}
                   onChange={e => handleChangeTheme(e)}
+                >
+                  <Box display="flex" justifyContent="space-between">
+                    <Radio value="default" className={classes.defaultRadio}/>
+                    <Radio
+                        value="secondary"
+                        className={classes.secondaryRadio}
+                    />
+                    <Radio value="success" className={classes.successRadio}/>
+                  </Box>
+                </RadioGroup>
+              </>
+              <Divider style={{width: "100%", margin: "8px 0 16px 0"}}/>
+              <>
+                <Typography variant="body2" weight={"bold"} uppercase>
+                  sidebar color
+                </Typography>
+                <RadioGroup
+                    aria-label="theme"
+                    value={localStorage.getItem("theme")}
+                >
+                  <Box display="flex" justifyContent="space-between">
+                    <Radio value="default" className={classes.defaultRadio}/>
+                    <Radio
+                        value="secondary"
+                        className={classes.secondaryRadio}
+                    />
+                    <Radio value="warning" className={classes.warningRadio}/>
+                    <Radio value="success" className={classes.successRadio}/>
+                    <Radio value="info" className={classes.infoRadio}/>
+                  </Box>
+                </RadioGroup>
+              </>
+              <Divider style={{width: "100%", margin: "8px 0 16px 0"}}/>
+              <>
+                <Typography variant="body2" weight={"bold"} uppercase>
+                  header color
+                </Typography>
+                <RadioGroup
+                    aria-label="theme"
+                    value={localStorage.getItem("theme")}
+                >
+                  <Box display="flex" justifyContent="space-between">
+                    <Radio value="default" className={classes.defaultRadio}/>
+                    <Radio
+                        value="secondary"
+                        className={classes.secondaryRadio}
+                    />
+                    <Radio value="warning" className={classes.warningRadio}/>
+                    <Radio value="success" className={classes.successRadio}/>
+                    <Radio value="info" className={classes.infoRadio}/>
+                  </Box>
+                </RadioGroup>
+              </>
+              <Divider style={{width: "100%", margin: "8px 0 16px 0"}}/>
+              <>
+                <Typography variant="body2" weight={"bold"} uppercase>
+                  dark mode
+                </Typography>
+                <SwitchMode checked={false}/>
+              </>
+              <Button
+                  color={"success"}
+                  variant={"contained"}
+                  style={{width: "100%", marginTop: 8, marginBottom: 8}}
               >
-                <Box display="flex" justifyContent="space-between">
-                  <FormControlLabel
-                      className={classes.noMargin}
-                      value="default"
-                      control={<Radio className={classes.defaultRadio}/>}
-                  />
-                  <FormControlLabel
-                      className={classes.noMargin}
-                      value="secondary"
-                      control={<Radio className={classes.secondaryRadio}/>}
-                  />
-                  <FormControlLabel
-                      className={classes.noMargin}
-                      value="success"
-                      control={<Radio className={classes.successRadio}/>}
-                  />
-                </Box>
-              </RadioGroup>
+                buy
+              </Button>
+              <Button
+                  color={"primary"}
+                  variant={"contained"}
+                  style={{width: "100%"}}
+              >
+                documentation
+              </Button>
             </Box>
           </Widget>
         </Popper>

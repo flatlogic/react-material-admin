@@ -37,8 +37,7 @@ export default function SidebarLink({
   nested,
   type,
   toggleDrawer,
-  click,
-  ...props
+                                      click
 }) {
   // local
   var [isOpen, setIsOpen] = useState(false);
@@ -46,7 +45,6 @@ export default function SidebarLink({
   const [anchorEl, setAnchorEl] = React.useState(null);
   // Chat Modal state
   const [isChat, setChat] = useState(false);
-  const [anchorElChat, setAnchorElChat] = React.useState(null);
 
   // Login page onClick
   function onLogin() {

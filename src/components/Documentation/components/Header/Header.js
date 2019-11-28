@@ -4,7 +4,7 @@ import Icon from "@mdi/react";
 import { withRouter } from "react-router-dom";
 
 // Material-UI core components
-import { AppBar, Toolbar, IconButton, Box } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Box, Button } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 
 // Material Icons
@@ -22,7 +22,7 @@ import {
 } from "@mdi/js";
 
 // Components
-import { Typography, Button, Link } from "../../../Wrappers";
+import { Typography, Link } from "../../../Wrappers";
 import {
   toggleSidebar,
   useLayoutDispatch,

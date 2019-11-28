@@ -16,9 +16,6 @@ import {
 import Widget from "../../../Widget";
 import { Typography, Link } from "../../../Wrappers";
 
-//images
-import overview from "../../../../images/overview.png";
-
 const Overview = () => {
   return (
     <>
@@ -33,11 +30,6 @@ const Overview = () => {
               like SAAS, CMS, financial dashboards, project management tools,
               etc.
             </Typography>
-            <img
-              src={overview}
-              alt="React Material Admin Full"
-              style={{ width: "100%", height: "100%", marginTop: 24 }}
-            />
             <Box pt={6}>
               <Typography variant={"h3"}>Features</Typography>
             </Box>
