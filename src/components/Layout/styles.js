@@ -43,18 +43,18 @@ export default makeStyles(theme => ({
       color: "#FF5C93"
     }
   },
-    warningRadio: {
-        color: "#FFC260",
-        "&.MuiRadio-colorSecondary.Mui-checked": {
-            color: "#FFC260"
-        }
-    },
-    infoRadio: {
-        color: "#9013FE",
-        "&.MuiRadio-colorSecondary.Mui-checked": {
-            color: "#9013FE"
-        }
-    },
+  warningRadio: {
+    color: "#FFC260",
+    "&.MuiRadio-colorSecondary.Mui-checked": {
+      color: "#FFC260"
+    }
+  },
+  infoRadio: {
+    color: "#9013FE",
+    "&.MuiRadio-colorSecondary.Mui-checked": {
+      color: "#9013FE"
+    }
+  },
   button: {
     boxShadow: theme.customShadows.widget,
     textTransform: "none",

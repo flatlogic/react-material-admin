@@ -317,17 +317,17 @@ function Layout(props) {
           <Icon path={SettingsIcon} size={1} color="#fff" />
         </Fab>
         <Popper
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            placement={"left-start"}
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          placement={"left-start"}
         >
           <Widget disableWidgetMenu>
             <Box
-                display="flex"
-                flexDirection="column"
-                justifyContent="space-between"
-                alignItems="center"
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-between"
+              alignItems="center"
             >
               <>
                 <Typography variant="body2" weight={"bold"} uppercase>
@@ -339,75 +339,75 @@ function Layout(props) {
                   onChange={e => handleChangeTheme(e)}
                 >
                   <Box display="flex" justifyContent="space-between">
-                    <Radio value="default" className={classes.defaultRadio}/>
+                    <Radio value="default" className={classes.defaultRadio} />
                     <Radio
-                        value="secondary"
-                        className={classes.secondaryRadio}
+                      value="secondary"
+                      className={classes.secondaryRadio}
                     />
-                    <Radio value="success" className={classes.successRadio}/>
+                    <Radio value="success" className={classes.successRadio} />
                   </Box>
                 </RadioGroup>
               </>
-              <Divider style={{width: "100%", margin: "8px 0 16px 0"}}/>
+              <Divider style={{ width: "100%", margin: "8px 0 16px 0" }} />
               <>
                 <Typography variant="body2" weight={"bold"} uppercase>
                   sidebar color
                 </Typography>
                 <RadioGroup
-                    aria-label="theme"
-                    value={localStorage.getItem("theme")}
+                  aria-label="theme"
+                  value={localStorage.getItem("theme")}
                 >
                   <Box display="flex" justifyContent="space-between">
-                    <Radio value="default" className={classes.defaultRadio}/>
+                    <Radio value="default" className={classes.defaultRadio} />
                     <Radio
-                        value="secondary"
-                        className={classes.secondaryRadio}
+                      value="secondary"
+                      className={classes.secondaryRadio}
                     />
-                    <Radio value="warning" className={classes.warningRadio}/>
-                    <Radio value="success" className={classes.successRadio}/>
-                    <Radio value="info" className={classes.infoRadio}/>
+                    <Radio value="warning" className={classes.warningRadio} />
+                    <Radio value="success" className={classes.successRadio} />
+                    <Radio value="info" className={classes.infoRadio} />
                   </Box>
                 </RadioGroup>
               </>
-              <Divider style={{width: "100%", margin: "8px 0 16px 0"}}/>
+              <Divider style={{ width: "100%", margin: "8px 0 16px 0" }} />
               <>
                 <Typography variant="body2" weight={"bold"} uppercase>
                   header color
                 </Typography>
                 <RadioGroup
-                    aria-label="theme"
-                    value={localStorage.getItem("theme")}
+                  aria-label="theme"
+                  value={localStorage.getItem("theme")}
                 >
                   <Box display="flex" justifyContent="space-between">
-                    <Radio value="default" className={classes.defaultRadio}/>
+                    <Radio value="default" className={classes.defaultRadio} />
                     <Radio
-                        value="secondary"
-                        className={classes.secondaryRadio}
+                      value="secondary"
+                      className={classes.secondaryRadio}
                     />
-                    <Radio value="warning" className={classes.warningRadio}/>
-                    <Radio value="success" className={classes.successRadio}/>
-                    <Radio value="info" className={classes.infoRadio}/>
+                    <Radio value="warning" className={classes.warningRadio} />
+                    <Radio value="success" className={classes.successRadio} />
+                    <Radio value="info" className={classes.infoRadio} />
                   </Box>
                 </RadioGroup>
               </>
-              <Divider style={{width: "100%", margin: "8px 0 16px 0"}}/>
+              <Divider style={{ width: "100%", margin: "8px 0 16px 0" }} />
               <>
                 <Typography variant="body2" weight={"bold"} uppercase>
                   dark mode
                 </Typography>
-                <SwitchMode checked={false}/>
+                <SwitchMode checked={false} />
               </>
               <Button
-                  color={"success"}
-                  variant={"contained"}
-                  style={{width: "100%", marginTop: 8, marginBottom: 8}}
+                color={"success"}
+                variant={"contained"}
+                style={{ width: "100%", marginTop: 8, marginBottom: 8 }}
               >
                 buy
               </Button>
               <Button
-                  color={"primary"}
-                  variant={"contained"}
-                  style={{width: "100%"}}
+                color={"primary"}
+                variant={"contained"}
+                style={{ width: "100%" }}
               >
                 documentation
               </Button>
