@@ -37,7 +37,7 @@ export default function SidebarLink({
   nested,
   type,
   toggleDrawer,
-                                      click
+                                        click
 }) {
   // local
   var [isOpen, setIsOpen] = useState(false);
