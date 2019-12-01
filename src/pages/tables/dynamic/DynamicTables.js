@@ -571,26 +571,26 @@ export default function EnhancedTable() {
                           </TableFooter>
                         </Table>
                       </div>
-                  ) && (
-                      <TableRow style={{height: 48 * emptyRows}}>
-                        <TableCell colSpan={6}/>
+                    ) && (
+                      <TableRow style={{ height: 48 * emptyRows }}>
+                        <TableCell colSpan={6} />
                       </TableRow>
-                  )}
+                    )}
                 </TableBody>
                 <TableFooter>
                   <TablePagination
-                      rowsPerPageOptions={[5, 10, 25]}
-                      colSpan={3}
-                      count={rows2.length}
-                      rowsPerPage={rowsPerPage2}
-                      page={page2}
-                      SelectProps={{
-                        inputProps: {"aria-label": "rows per page"},
-                        native: true
-                      }}
-                      onChangePage={handleChangePage2}
-                      onChangeRowsPerPage={handleChangeRowsPerPage2}
-                      ActionsComponent={TablePaginationActions}
+                    rowsPerPageOptions={[5, 10, 25]}
+                    colSpan={3}
+                    count={rows2.length}
+                    rowsPerPage={rowsPerPage2}
+                    page={page2}
+                    SelectProps={{
+                      inputProps: { "aria-label": "rows per page" },
+                      native: true
+                    }}
+                    onChangePage={handleChangePage2}
+                    onChangeRowsPerPage={handleChangeRowsPerPage2}
+                    ActionsComponent={TablePaginationActions}
                   />
                 </TableFooter>
               </Table>

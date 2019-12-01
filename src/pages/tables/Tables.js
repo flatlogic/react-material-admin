@@ -41,18 +41,18 @@ export default function Tables() {
               data={datatableData}
               columns={["Name", "Company", "City", "State"]}
               options={{
-                filterType: "checkbox"
+                  filterType: "checkbox"
               }}
           />
         </Grid>
         <Grid item xs={12}>
-          <Widget
-              title="Material-UI Table"
-              noBodyPadding
-              bodyClass={classes.tableWrapper}
-          >
-            <Table data={mock.table}/>
-          </Widget>
+            <Widget
+                title="Material-UI Table"
+                noBodyPadding
+                bodyClass={classes.tableWrapper}
+            >
+                <Table data={mock.table}/>
+            </Widget>
         </Grid>
       </Grid>
     </>

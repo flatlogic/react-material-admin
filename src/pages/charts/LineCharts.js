@@ -313,45 +313,45 @@ export default function Charts(props) {
     <>
       <Grid container spacing={4}>
         <Grid item md={6} xs={12}>
-          <Widget title={"Line Basic"} noBodyPadding>
-              <ReactApexChart
-                  options={themeOptions(theme)}
-                  series={state.series}
-                  type="line"
-                  height="350"
-              />
-          </Widget>
-        </Grid>
-        <Grid item md={6} xs={12}>
-            <Widget title={"Line with Data Labels"} noBodyPadding>
+            <Widget title={"Line Basic"} noBodyPadding>
                 <ReactApexChart
-                    options={themeOptions(theme).options}
-                    series={state.series2}
+                    options={themeOptions(theme)}
+                    series={state.series}
                     type="line"
                     height="350"
                 />
             </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
-            <Widget title={"Zoomable Timeseries"} noBodyPadding>
-                <ReactApexChart
-                    options={themeOptions(theme).options2}
-                    series={state.series3}
-                    type="area"
-                    height="350"
-                />
-            </Widget>
-        </Grid>
-        <Grid item md={6} xs={12}>
-            <Widget title={"Dynamic Updating Chart"} noBodyPadding>
-                <ReactApexChart
-                    options={themeOptions(theme).options3}
-                    series={state.series4}
-                    type="line"
-                    height="350"
-                />
-            </Widget>
-        </Grid>
+          <Grid item md={6} xs={12}>
+              <Widget title={"Line with Data Labels"} noBodyPadding>
+                  <ReactApexChart
+                      options={themeOptions(theme).options}
+                      series={state.series2}
+                      type="line"
+                      height="350"
+                  />
+              </Widget>
+          </Grid>
+          <Grid item md={6} xs={12}>
+              <Widget title={"Zoomable Timeseries"} noBodyPadding>
+                  <ReactApexChart
+                      options={themeOptions(theme).options2}
+                      series={state.series3}
+                      type="area"
+                      height="350"
+                  />
+              </Widget>
+          </Grid>
+          <Grid item md={6} xs={12}>
+              <Widget title={"Dynamic Updating Chart"} noBodyPadding>
+                  <ReactApexChart
+                      options={themeOptions(theme).options3}
+                      series={state.series4}
+                      type="line"
+                      height="350"
+                  />
+              </Widget>
+          </Grid>
       </Grid>
     </>
   );

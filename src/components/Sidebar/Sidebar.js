@@ -30,15 +30,15 @@ function Sidebar({location, structure}) {
             return;
         }
 
-    if (value && !isPermanent) toggleSidebar(layoutDispatch);
-  };
+        if (value && !isPermanent) toggleSidebar(layoutDispatch);
+    };
 
-  // global
-  var { isSidebarOpened } = useLayoutState();
-  var layoutDispatch = useLayoutDispatch();
+    // global
+    var {isSidebarOpened} = useLayoutState();
+    var layoutDispatch = useLayoutDispatch();
 
-  // local
-  var [isPermanent, setPermanent] = useState(true);
+    // local
+    var [isPermanent, setPermanent] = useState(true);
 
   useEffect(function() {
     window.addEventListener("resize", handleWindowWidthChange);

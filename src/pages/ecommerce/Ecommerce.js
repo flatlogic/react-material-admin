@@ -22,8 +22,8 @@ import {
   Delete as DeleteIcon,
   FilterList as FilterListIcon
 } from "@material-ui/icons";
-import { yellow } from "@material-ui/core/colors";
-import { lighten, makeStyles } from "@material-ui/core/styles";
+import {yellow} from "@material-ui/core/colors";
+import {lighten, makeStyles} from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import useStyles from "./styles";
 import cn from "classnames";
@@ -35,13 +35,13 @@ import {Typography, Button, Link} from "../../components/Wrappers";
 import {rows} from "./Products";
 
 function desc(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
+    if (b[orderBy] < a[orderBy]) {
+        return -1;
+    }
+    if (b[orderBy] > a[orderBy]) {
+        return 1;
+    }
+    return 0;
 }
 
 function stableSort(array, cmp) {
@@ -270,15 +270,15 @@ export default function EcommercePage() {
             disableWidgetMenu
             searchField
           >
-            <Button
-                variant={"contained"}
-                component={Link}
-                href={"/app/ecommerce/management/create"}
-                color={"success"}
-            >
-              Create Product
-            </Button>
-            <EnhancedTableToolbar numSelected={selected.length} />
+              <Button
+                  variant={"contained"}
+                  component={Link}
+                  href={"/app/ecommerce/management/create"}
+                  color={"success"}
+              >
+                  Create Product
+              </Button>
+              <EnhancedTableToolbar numSelected={selected.length}/>
             <div className={classes.tableWrapper}>
               <Table
                 className={classes.table}
@@ -325,19 +325,19 @@ export default function EcommercePage() {
                           >
                             {row.id}
                           </TableCell>
-                          <TableCell>
-                            <img
-                              src={row.img}
-                              alt={row.title}
-                              style={{ width: 100 }}
-                            />
-                          </TableCell>
-                          <TableCell>
-                              <Link href={`/app/ecommerce/product/${row.id}`}>
-                                  {row.title}
-                              </Link>
-                          </TableCell>
-                          <TableCell>{row.subtitle}</TableCell>
+                            <TableCell>
+                                <img
+                                    src={row.img}
+                                    alt={row.title}
+                                    style={{width: 100}}
+                                />
+                            </TableCell>
+                            <TableCell>
+                                <Link href={`/app/ecommerce/product/${row.id}`}>
+                                    {row.title}
+                                </Link>
+                            </TableCell>
+                            <TableCell>{row.subtitle}</TableCell>
                           <TableCell>${row.price}</TableCell>
                           <TableCell>
                             <Typography

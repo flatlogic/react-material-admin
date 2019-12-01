@@ -266,45 +266,45 @@ export default function Charts(props) {
     <>
       <Grid container spacing={4}>
         <Grid item md={6} xs={12}>
-          <Widget title={"Bar Basic"} noBodyPadding>
-              <ReactApexChart
-                  options={themeOptions(theme)}
-                  series={state.series}
-                  type="bar"
-                  height="350"
-              />
-          </Widget>
-        </Grid>
-        <Grid item md={6} xs={12}>
-            <Widget title={"Grouped Basic"} noBodyPadding>
+            <Widget title={"Bar Basic"} noBodyPadding>
                 <ReactApexChart
-                    options={themeOptions(theme).options}
-                    series={state.series2}
+                    options={themeOptions(theme)}
+                    series={state.series}
                     type="bar"
                     height="350"
                 />
             </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
-            <Widget title={"Stacked Basic"} noBodyPadding>
-                <ReactApexChart
-                    options={themeOptions(theme).options2}
-                    series={state.series3}
-                    type="bar"
-                    height="350"
-                />
-            </Widget>
-        </Grid>
-        <Grid item md={6} xs={12}>
-            <Widget title={"Bar with Images"} noBodyPadding>
-                <ReactApexChart
-                    options={themeOptions(theme).options3}
-                    series={state.series4}
-                    type="bar"
-                    height="350"
-                />
-            </Widget>
-        </Grid>
+          <Grid item md={6} xs={12}>
+              <Widget title={"Grouped Basic"} noBodyPadding>
+                  <ReactApexChart
+                      options={themeOptions(theme).options}
+                      series={state.series2}
+                      type="bar"
+                      height="350"
+                  />
+              </Widget>
+          </Grid>
+          <Grid item md={6} xs={12}>
+              <Widget title={"Stacked Basic"} noBodyPadding>
+                  <ReactApexChart
+                      options={themeOptions(theme).options2}
+                      series={state.series3}
+                      type="bar"
+                      height="350"
+                  />
+              </Widget>
+          </Grid>
+          <Grid item md={6} xs={12}>
+              <Widget title={"Bar with Images"} noBodyPadding>
+                  <ReactApexChart
+                      options={themeOptions(theme).options3}
+                      series={state.series4}
+                      type="bar"
+                      height="350"
+                  />
+              </Widget>
+          </Grid>
       </Grid>
     </>
   );

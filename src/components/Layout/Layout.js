@@ -299,14 +299,14 @@ function Layout(props) {
             render={() => <Redirect to="/app/maps/google" />}
           />
           <Route path="/app/extra/timeline" component={Timeline} />
-          <Route path="/app/extra/search" component={Search} />
-          <Route path="/app/extra/gallery" component={Gallery} />
-          <Route path="/app/extra/invoice" component={Invoice} />
-          <Route path="/app/extra/calendar" component={Calendar} />
-          <Route path="/app/core/colors" component={Colors} />
-          <Route path="/app/maps/google" component={MapsGoogle} />
-          <Route path="/app/maps/vector" component={VectorMaps} />
-          <Route path="/app/ui/icons" component={Icons} />
+          <Route path="/app/extra/search" component={Search}/>
+          <Route path="/app/extra/gallery" component={Gallery}/>
+          <Route path="/app/extra/invoice" component={Invoice}/>
+          <Route path="/app/extra/calendar" component={Calendar}/>
+          <Route path="/app/core/colors" component={Colors}/>
+          <Route path="/app/maps/google" component={MapsGoogle}/>
+          <Route path="/app/maps/vector" component={VectorMaps}/>
+          <Route path="/app/ui/icons" component={Icons}/>
         </Switch>
         <Fab
             color="primary"
@@ -337,9 +337,9 @@ function Layout(props) {
                   color theme
                 </Typography>
                 <RadioGroup
-                  aria-label="theme"
-                  value={localStorage.getItem("theme")}
-                  onChange={e => handleChangeTheme(e)}
+                    aria-label="theme"
+                    value={localStorage.getItem("theme")}
+                    onChange={e => handleChangeTheme(e)}
                 >
                   <Box display="flex" justifyContent="space-between">
                     <Radio value="default" className={classes.defaultRadio} />
