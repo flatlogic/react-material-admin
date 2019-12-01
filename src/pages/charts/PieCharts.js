@@ -176,37 +176,37 @@ export default function Charts(props) {
     <>
       <Grid container spacing={4}>
         <Grid item md={6} xs={12}>
-          <Widget title={"Simple Pie"} upperTitle noBodyPadding>
-            <ReactApexChart
-              options={themeOptions(theme)}
-              series={state.series}
-              type="pie"
-              height="380"
-            />
+          <Widget title={"Simple Pie"} noBodyPadding>
+              <ReactApexChart
+                  options={themeOptions(theme)}
+                  series={state.series}
+                  type="pie"
+                  height="380"
+              />
           </Widget>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Widget title={"Simple Donut"} upperTitle noBodyPadding>
-            <ReactApexChart
-              options={themeOptions(theme).options}
-              series={state.series2}
-              type="donut"
-              height="380"
-            />
-          </Widget>
+            <Widget title={"Simple Donut"} noBodyPadding>
+                <ReactApexChart
+                    options={themeOptions(theme).options}
+                    series={state.series2}
+                    type="donut"
+                    height="380"
+                />
+            </Widget>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Widget title={"Update Donut"} upperTitle noBodyPadding>
-            <ReactApexChart
-              options={themeOptions(theme).options2}
-              series={state.series3}
-              type="donut"
-              height="380"
-            />
-            <Box display={"flex"} flexWrap="wrap" m={3}>
-              <Box mt={1} mr={1}>
-                <Button
-                  variant="contained"
+            <Widget title={"Update Donut"} noBodyPadding>
+                <ReactApexChart
+                    options={themeOptions(theme).options2}
+                    series={state.series3}
+                    type="donut"
+                    height="380"
+                />
+                <Box display={"flex"} flexWrap="wrap" m={3}>
+                    <Box mt={1} mr={1}>
+                        <Button
+                            variant="contained"
                   onClick={() => randomize()}
                   color="primary"
                 >
@@ -244,14 +244,14 @@ export default function Charts(props) {
           </Widget>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Widget title={"Monochrome Pie"} upperTitle noBodyPadding>
-            <ReactApexChart
-              options={themeOptions(theme).options}
-              series={state.series2}
-              type="pie"
-              height="380"
-            />
-          </Widget>
+            <Widget title={"Monochrome Pie"} noBodyPadding>
+                <ReactApexChart
+                    options={themeOptions(theme).options}
+                    series={state.series2}
+                    type="pie"
+                    height="380"
+                />
+            </Widget>
         </Grid>
       </Grid>
     </>

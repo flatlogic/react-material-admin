@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
+import useStyles from "./styles";
 
 // components
 import Widget from "../../components/Widget";
@@ -30,22 +31,27 @@ const datatableData = [
 ];
 
 export default function Tables() {
+  const classes = useStyles();
   return (
     <>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <MUIDataTable
-            title="Employee List"
-            data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
-            options={{
-              filterType: "checkbox"
-            }}
+              title="Employee List"
+              data={datatableData}
+              columns={["Name", "Company", "City", "State"]}
+              options={{
+                filterType: "checkbox"
+              }}
           />
         </Grid>
         <Grid item xs={12}>
-          <Widget title="Material-UI Table" upperTitle noBodyPadding>
-            <Table data={mock.table} />
+          <Widget
+              title="Material-UI Table"
+              noBodyPadding
+              bodyClass={classes.tableWrapper}
+          >
+            <Table data={mock.table}/>
           </Widget>
         </Grid>
       </Grid>

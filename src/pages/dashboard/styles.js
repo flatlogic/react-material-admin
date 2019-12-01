@@ -133,5 +133,8 @@ export default makeStyles(theme => ({
     "& .MuiSelect-icon": {
       right: 4
     }
+  },
+  checkboxColor: {
+    color: "rgb(185, 185, 185)"
   }
 }));

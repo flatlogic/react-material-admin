@@ -26,14 +26,13 @@ import { yellow } from "@material-ui/core/colors";
 import { lighten, makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import useStyles from "./styles";
-import { Link } from "react-router-dom";
 import cn from "classnames";
 
 // components
 import Widget from "../../components/Widget";
 import Dot from "../../components/Sidebar/components/Dot";
-import { Typography, Button } from "../../components/Wrappers";
-import { rows } from "./Products";
+import {Typography, Button, Link} from "../../components/Wrappers";
+import {rows} from "./Products";
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -272,10 +271,10 @@ export default function EcommercePage() {
             searchField
           >
             <Button
-              variant={"contained"}
-              component={Link}
-              to={"/app/ecommerce/management/create"}
-              color={"success"}
+                variant={"contained"}
+                component={Link}
+                href={"/app/ecommerce/management/create"}
+                color={"success"}
             >
               Create Product
             </Button>
@@ -334,9 +333,9 @@ export default function EcommercePage() {
                             />
                           </TableCell>
                           <TableCell>
-                            <Link to={`/app/ecommerce/product/${row.id}`}>
-                              {row.title}
-                            </Link>
+                              <Link href={`/app/ecommerce/product/${row.id}`}>
+                                  {row.title}
+                              </Link>
                           </TableCell>
                           <TableCell>{row.subtitle}</TableCell>
                           <TableCell>${row.price}</TableCell>

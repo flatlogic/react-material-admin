@@ -19,16 +19,16 @@ import {
 } from "../../context/LayoutContext";
 
 function Sidebar({location, structure}) {
-  var classes = useStyles();
-  var theme = useTheme();
+    var classes = useStyles();
+    var theme = useTheme();
 
-  const toggleDrawer = value => event => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
+    const toggleDrawer = value => event => {
+        if (
+            event.type === "keydown" &&
+            (event.key === "Tab" || event.key === "Shift")
+        ) {
+            return;
+        }
 
     if (value && !isPermanent) toggleSidebar(layoutDispatch);
   };

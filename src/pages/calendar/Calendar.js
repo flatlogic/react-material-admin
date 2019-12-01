@@ -205,50 +205,56 @@ class Calendar extends React.Component {
               }}
             >
               <div
-                data-event='{ "classNames": ["bg-success", "text-white"], "title": "Make a tea" }'
-                className={cn(
-                  "d-flex",
-                  "align-items-center",
-                  "draggable",
-                  "external-event",
-                  s.widget
-                )}
+                  data-event='{ "classNames": ["bg-success", "text-white"], "title": "Make a tea" }'
+                  className={cn(
+                      "d-flex",
+                      "align-items-center",
+                      "draggable",
+                      "external-event",
+                      s.widget
+                  )}
               >
-                <Dot color="success" size="large" />
-                <Typography variant="body2" style={{ marginLeft: 8 }}>
-                  Make a tea
-                </Typography>
+                  <Box display={"flex"}>
+                      <Dot color="success" size="large"/>
+                      <Typography variant="body2" style={{marginLeft: 8}}>
+                          Make a tea
+                      </Typography>
+                  </Box>
               </div>
-              <div
-                data-event='{ "classNames": ["bg-warning", "text-white"], "title": "Open windows" }'
-                className={cn(
-                  "d-flex",
-                  "align-items-center",
-                  "draggable",
-                  "external-event",
-                  s.widget
-                )}
-              >
-                <Dot color="warning" size="large" />
-                <Typography variant="body2" style={{ marginLeft: 8 }}>
-                  Open windows
-                </Typography>
-              </div>
-              <div
-                data-event='{ "classNames": ["bg-purple", "text-white"], "title": "Some stuff" }'
-                className={cn(
-                  "d-flex",
-                  "align-items-center",
-                  "draggable",
-                  "external-event",
-                  s.widget
-                )}
-              >
-                <Dot color="info" size="large" />
-                <Typography variant="body2" style={{ marginLeft: 8 }}>
-                  Some stuff
-                </Typography>
-              </div>
+                <div
+                    data-event='{ "classNames": ["bg-warning", "text-white"], "title": "Open windows" }'
+                    className={cn(
+                        "d-flex",
+                        "align-items-center",
+                        "draggable",
+                        "external-event",
+                        s.widget
+                    )}
+                >
+                    <Box display={"flex"}>
+                        <Dot color="warning" size="large"/>
+                        <Typography variant="body2" style={{marginLeft: 8}}>
+                            Open windows
+                        </Typography>
+                    </Box>
+                </div>
+                <div
+                    data-event='{ "classNames": ["bg-purple", "text-white"], "title": "Some stuff" }'
+                    className={cn(
+                        "d-flex",
+                        "align-items-center",
+                        "draggable",
+                        "external-event",
+                        s.widget
+                    )}
+                >
+                    <Box display={"flex"}>
+                        <Dot color="info" size="large"/>
+                        <Typography variant="body2" style={{marginLeft: 8}}>
+                            Some stuff
+                        </Typography>
+                    </Box>
+                </div>
             </div>
           </Grid>
           <Grid item xs={12} md={8}>

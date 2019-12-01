@@ -69,26 +69,6 @@ export default function NavComp() {
                   </Toolbar>
                 </AppBar>
               </Box>
-              <Paper className={classes.paper}>
-                <Grid item xs zeroMinWidth>
-                  <Code>{`
-  <AppBar>
-    <Toolbar>
-      <IconButton>
-        <MenuIcon />
-      </IconButton>
-      <Typography variant="h6">
-        Nav
-      </Typography>
-      <Button color="inherit">Link</Button>
-      <Button color="inherit">Link2</Button>
-      <Button color="inherit">Another Link</Button>
-      <Button disabled>Disabled Link</Button>
-    </Toolbar>
-  </AppBar>
-                  `}</Code>
-                </Grid>
-              </Paper>
             </div>
             <Typography>With menu</Typography>
             <Box my={3}>
