@@ -4,22 +4,25 @@ export default makeStyles(theme => ({
   link: {
     textDecoration: "none",
     "&:hover, &:focus": {
-      backgroundColor: theme.palette.background.light,
-      "& > .MuiSvgIcon-root": {
-        display: "inline-block"
-      }
+        backgroundColor: theme.palette.background.default,
+        "& > .MuiSvgIcon-root": {
+            display: "inline-block"
+        }
     },
     "&.Mui-focusVisible": {
       backgroundColor: "transparent"
     }
   },
   linkActive: {
-    backgroundColor: theme.palette.background.light
+      backgroundColor: theme.palette.background.default
   },
   linkNested: {
     paddingLeft: 0,
     "&:hover, &:focus": {
-      backgroundColor: "#FFFFFF"
+        backgroundColor:
+            theme.palette.type === "dark"
+                ? theme.palette.background.light
+                : "#FFFFFF"
     }
   },
   linkIcon: {

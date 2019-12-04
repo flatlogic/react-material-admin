@@ -40,15 +40,15 @@ function Sidebar({location, structure}) {
     // local
     var [isPermanent, setPermanent] = useState(true);
 
-  useEffect(function() {
-    window.addEventListener("resize", handleWindowWidthChange);
-    handleWindowWidthChange();
-    return function cleanup() {
-      window.removeEventListener("resize", handleWindowWidthChange);
-    };
-  });
+    useEffect(function () {
+        window.addEventListener("resize", handleWindowWidthChange);
+        handleWindowWidthChange();
+        return function cleanup() {
+            window.removeEventListener("resize", handleWindowWidthChange);
+        };
+    });
 
-  return (
+    return (
     <Drawer
       variant={isPermanent ? "permanent" : "temporary"}
       className={classNames(classes.drawer, {

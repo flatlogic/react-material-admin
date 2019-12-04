@@ -1,33 +1,21 @@
-import React from 'react'
-import Themes from '../themes'
+import React from "react";
+import Themes from "../themes";
+import {useMediaQuery} from "@material-ui/core";
 
 const ThemeStateContext = React.createContext();
 const ThemeDispatchContext = React.createContext();
 
-
-function themeReducer(state, action) {
-  switch (action.type) {
-    case "TOGGLE_COLOR_THEME":
-      return {
-        ...state,
-        theme: Themes[action.theme]
-      };
-    default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
-    }
-  }
-}
-
-function ThemeProvider({ children }) {
-  var [state, dispatch] = React.useReducer(themeReducer, {
-    theme: Themes[localStorage.getItem("theme")] || Themes.default
-  });
+function ThemeProvider({children}) {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  var [theme, setTheme] = React.useState(
+      Themes[localStorage.getItem("theme")] || Themes.default
+  );
   return (
-    <ThemeStateContext.Provider value={state}>
-      <ThemeDispatchContext.Provider value={dispatch}>
-        {children}
-      </ThemeDispatchContext.Provider>
-    </ThemeStateContext.Provider>
+      <ThemeStateContext.Provider value={theme}>
+        <ThemeDispatchContext.Provider value={setTheme}>
+          {children}
+        </ThemeDispatchContext.Provider>
+      </ThemeStateContext.Provider>
   );
 }
 
@@ -47,9 +35,4 @@ function useThemeDispatch() {
   return context;
 }
 
-export {
-  ThemeProvider,
-  useThemeState,
-  useThemeDispatch,
-  ThemeStateContext
-};
+export {ThemeProvider, useThemeState, useThemeDispatch, ThemeStateContext};

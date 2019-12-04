@@ -265,16 +265,16 @@ export default function Charts(props) {
   return (
     <>
       <Grid container spacing={4}>
-        <Grid item md={6} xs={12}>
-            <Widget title={"Bar Basic"} noBodyPadding>
-                <ReactApexChart
-                    options={themeOptions(theme)}
-                    series={state.series}
-                    type="bar"
-                    height="350"
-                />
-            </Widget>
-        </Grid>
+          <Grid item md={6} xs={12}>
+              <Widget title={"Bar Basic"} noBodyPadding>
+                  <ReactApexChart
+                      options={themeOptions(theme)}
+                      series={state.series}
+                      type="bar"
+                      height="350"
+                  />
+              </Widget>
+          </Grid>
           <Grid item md={6} xs={12}>
               <Widget title={"Grouped Basic"} noBodyPadding>
                   <ReactApexChart

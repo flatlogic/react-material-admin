@@ -1,5 +1,11 @@
 import React from "react";
-import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  Redirect,
+  withRouter,
+  Link as RouterLink
+} from "react-router-dom";
 import classnames from "classnames";
 import Icon from "@mdi/react";
 import {
@@ -29,7 +35,8 @@ import {
   AddShoppingCart as AddIcon,
   StarBorder as StarIcon
 } from "@material-ui/icons";
-import { withStyles } from "@material-ui/styles";
+import {withStyles} from "@material-ui/styles";
+import Themes from "../../themes";
 
 // styles
 import useStyles from "./styles";
@@ -39,7 +46,8 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 import Footer from "../Footer";
 import Widget from "../Widget";
-import { Link, Typography, Button } from "../../components/Wrappers";
+import {Link, Typography, Button} from "../../components/Wrappers";
+import ColorChangeThemePopper from "./components/ColorChangeThemePopper";
 
 // pages
 import Dashboard from "../../pages/dashboard";
@@ -97,14 +105,10 @@ function Layout(props) {
   const [value, setValue] = React.useState(2);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleChangeTheme = e => {
-    localStorage.setItem("theme", e.target.value);
-    themeDispatch({ type: "TOGGLE_COLOR_THEME", theme: e.target.value });
-  };
   const open = Boolean(anchorEl);
   const id = open ? "add-section-popover" : undefined;
   const handleClick = event => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
+    setAnchorEl(event.currentTarget);
   };
 
   // global
@@ -289,16 +293,16 @@ function Layout(props) {
             render={() => <Redirect to="/app/ecommerce/management" />}
           />
           <Route
-            exact
-            path="/app/extra"
-            render={() => <Redirect to="/app/extra/timeline" />}
+              exact
+              path="/app/extra"
+              render={() => <Redirect to="/app/extra/timeline"/>}
           />
           <Route
-            exact
-            path="/app/maps"
-            render={() => <Redirect to="/app/maps/google" />}
+              exact
+              path="/app/maps"
+              render={() => <Redirect to="/app/maps/google"/>}
           />
-          <Route path="/app/extra/timeline" component={Timeline} />
+          <Route path="/app/extra/timeline" component={Timeline}/>
           <Route path="/app/extra/search" component={Search}/>
           <Route path="/app/extra/gallery" component={Gallery}/>
           <Route path="/app/extra/invoice" component={Invoice}/>
@@ -317,71 +321,14 @@ function Layout(props) {
         >
           <Icon path={SettingsIcon} size={1} color="#fff"/>
         </Fab>
-        <Popper
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            placement={"left-start"}
-            style={{zIndex: 100}}
-            elevation={4}
-        >
-          <Widget disableWidgetMenu>
-            <Box
-                display="flex"
-                flexDirection="column"
-                justifyContent="space-between"
-                alignItems="center"
-            >
-              <>
-                <Typography variant="body2" weight={"bold"} uppercase>
-                  color theme
-                </Typography>
-                <RadioGroup
-                    aria-label="theme"
-                    value={localStorage.getItem("theme")}
-                    onChange={e => handleChangeTheme(e)}
-                >
-                  <Box display="flex" justifyContent="space-between">
-                    <Radio value="default" className={classes.defaultRadio} />
-                    <Radio
-                      value="secondary"
-                      className={classes.secondaryRadio}
-                    />
-                    <Radio value="success" className={classes.successRadio} />
-                  </Box>
-                </RadioGroup>
-              </>
-              <Divider style={{ width: "100%", margin: "8px 0 16px 0" }} />
-              <>
-                <Typography variant="body2" weight={"bold"} uppercase>
-                  dark mode
-                </Typography>
-                <SwitchMode checked={false} />
-              </>
-              <Button
-                color={"success"}
-                variant={"contained"}
-                style={{ width: "100%", marginTop: 8, marginBottom: 8 }}
-              >
-                buy
-              </Button>
-              <Button
-                color={"primary"}
-                variant={"contained"}
-                style={{ width: "100%" }}
-              >
-                documentation
-              </Button>
-            </Box>
-          </Widget>
-        </Popper>
+        <ColorChangeThemePopper id={id} open={open} anchorEl={anchorEl}/>
         <Footer>
           <div>
             <Link
-              color={"primary"}
-              href={"https://flatlogic.com/"}
-              target={"_blank"}
-              className={classes.link}
+                color={"primary"}
+                href={"https://flatlogic.com/"}
+                target={"_blank"}
+                className={classes.link}
             >
               Flatlogic
             </Link>

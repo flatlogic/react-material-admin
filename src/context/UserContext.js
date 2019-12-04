@@ -56,11 +56,9 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
   if (!!login && !!password) {
     setTimeout(e => {
       localStorage.setItem("id_token", "1");
-      // Setting up a default theme
-      localStorage.setItem("theme", "default");
       setError(null);
-      console.trace()
-      setIsLoading(false);
+        console.trace();
+        setIsLoading(false);
       dispatch({ type: "LOGIN_SUCCESS" });
 
       history.push("/app/dashboard");

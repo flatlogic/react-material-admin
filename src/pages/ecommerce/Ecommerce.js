@@ -15,6 +15,7 @@ import {
   LinearProgress,
   Box
 } from "@material-ui/core";
+import {Link as RouterLink} from "react-router-dom";
 
 // Material UI icons
 import {
@@ -35,13 +36,13 @@ import {Typography, Button, Link} from "../../components/Wrappers";
 import {rows} from "./Products";
 
 function desc(a, b, orderBy) {
-    if (b[orderBy] < a[orderBy]) {
-        return -1;
-    }
-    if (b[orderBy] > a[orderBy]) {
-        return 1;
-    }
-    return 0;
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
 }
 
 function stableSort(array, cmp) {
@@ -265,30 +266,30 @@ export default function EcommercePage() {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Widget
-            title="List of Products"
-            subtitle={"321 total"}
-            disableWidgetMenu
-            searchField
+              title="List of Products"
+              subtitle={"321 total"}
+              disableWidgetMenu
+              searchField
           >
-              <Button
-                  variant={"contained"}
-                  component={Link}
-                  href={"/app/ecommerce/management/create"}
-                  color={"success"}
-              >
-                  Create Product
-              </Button>
-              <EnhancedTableToolbar numSelected={selected.length}/>
+            <Button
+                variant={"contained"}
+                component={RouterLink}
+                to={"/app/ecommerce/management/create"}
+                color={"success"}
+            >
+              Create Product
+            </Button>
+            <EnhancedTableToolbar numSelected={selected.length}/>
             <div className={classes.tableWrapper}>
               <Table
-                className={classes.table}
-                aria-labelledby="tableTitle"
-                aria-label="enhanced table"
+                  className={classes.table}
+                  aria-labelledby="tableTitle"
+                  aria-label="enhanced table"
               >
                 <EnhancedTableHead
-                  classes={classes}
-                  numSelected={selected.length}
-                  order={order}
+                    classes={classes}
+                    numSelected={selected.length}
+                    order={order}
                   orderBy={orderBy}
                   onSelectAllClick={handleSelectAllClick}
                   onRequestSort={handleRequestSort}
@@ -318,36 +319,36 @@ export default function EcommercePage() {
                             />
                           </TableCell>
                           <TableCell
-                            component="th"
-                            id={labelId}
-                            scope="row"
-                            padding="none"
+                              component="th"
+                              id={labelId}
+                              scope="row"
+                              padding="none"
                           >
                             {row.id}
                           </TableCell>
-                            <TableCell>
-                                <img
-                                    src={row.img}
-                                    alt={row.title}
-                                    style={{width: 100}}
-                                />
-                            </TableCell>
-                            <TableCell>
-                                <Link href={`/app/ecommerce/product/${row.id}`}>
-                                    {row.title}
-                                </Link>
-                            </TableCell>
-                            <TableCell>{row.subtitle}</TableCell>
+                          <TableCell>
+                            <img
+                                src={row.img}
+                                alt={row.title}
+                                style={{width: 100}}
+                            />
+                          </TableCell>
+                          <TableCell>
+                            <Link href={`/app/ecommerce/product/${row.id}`}>
+                              {row.title}
+                            </Link>
+                          </TableCell>
+                          <TableCell>{row.subtitle}</TableCell>
                           <TableCell>${row.price}</TableCell>
                           <TableCell>
                             <Typography
-                              style={{ color: yellow[700] }}
-                              display={"inline"}
+                                style={{color: yellow[700]}}
+                                display={"inline"}
                             >
                               {row.rating}
                             </Typography>{" "}
                             <StarIcon
-                              style={{ color: yellow[700], marginTop: -5 }}
+                                style={{color: yellow[700], marginTop: -5}}
                             />
                           </TableCell>
                           <TableCell>

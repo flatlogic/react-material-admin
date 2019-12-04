@@ -1,6 +1,7 @@
 import defaultTheme from "./default";
 import successTheme from "./success";
 import secondaryTheme from "./secondary";
+import darkTheme from "./dark";
 
 import { createMuiTheme } from "@material-ui/core";
 
@@ -32,16 +33,10 @@ const overrides = {
           "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
       }
     },
-    // MuiPaper: {
-    //   root: {
-    //     boxShadow:
-    //       "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
-    //   }
-    // },
     MUIDataTable: {
       paper: {
         boxShadow:
-            "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
+          "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A"
       }
     },
     MuiBackdrop: {
@@ -103,8 +98,37 @@ const overrides = {
   }
 };
 
+const darkModeOverrides = {
+  overrides: {
+    MuiPaper: {
+      root: {
+        backgroundColor: "#23232D",
+        boxShadow:
+          "0px 1px 8px rgba(0, 0, 0, 0.103475), 0px 3px 3px rgba(0, 0, 0, 0.0988309), 0px 3px 4px rgba(0, 0, 0, 0.10301) !important"
+      }
+    },
+    MuiAppBar: {
+      root: {
+        backgroundColor: "#23232D !important"
+      }
+    },
+    MuiButton: {
+      root: {
+        boxShadow:
+          "0px 1px 8px rgba(154, 154, 154, 0.330064), 0px 6px 3px rgba(178, 178, 178, 0.324), 0px 6px 11px #030303 !important"
+      }
+    },
+    typography: {
+      root: {
+        color: "white !important "
+      }
+    }
+  }
+};
+
 export default {
   default: createMuiTheme({ ...defaultTheme, ...overrides }),
   secondary: createMuiTheme({ ...secondaryTheme, ...overrides }),
-  success: createMuiTheme({ ...successTheme, ...overrides })
+  success: createMuiTheme({ ...successTheme, ...overrides }),
+  dark: createMuiTheme({ ...darkTheme, ...overrides, ...darkModeOverrides })
 };

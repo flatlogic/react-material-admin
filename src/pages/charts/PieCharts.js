@@ -175,16 +175,16 @@ export default function Charts(props) {
   return (
     <>
       <Grid container spacing={4}>
-        <Grid item md={6} xs={12}>
-            <Widget title={"Simple Pie"} noBodyPadding>
-                <ReactApexChart
-                    options={themeOptions(theme)}
-                    series={state.series}
-                    type="pie"
-                    height="380"
-                />
-            </Widget>
-        </Grid>
+          <Grid item md={6} xs={12}>
+              <Widget title={"Simple Pie"} noBodyPadding>
+                  <ReactApexChart
+                      options={themeOptions(theme)}
+                      series={state.series}
+                      type="pie"
+                      height="380"
+                  />
+              </Widget>
+          </Grid>
           <Grid item md={6} xs={12}>
               <Widget title={"Simple Donut"} noBodyPadding>
                   <ReactApexChart
@@ -217,29 +217,29 @@ export default function Charts(props) {
                           <Button
                               variant="contained"
                               onClick={() => appendData()}
-                  color="secondary"
-                >
-                  add
-                </Button>
-              </Box>
-              <Box mt={1} mr={1}>
-                <Button
-                  variant="contained"
-                  onClick={() => removeData()}
-                  color="warning"
+                              color="secondary"
+                          >
+                              add
+                          </Button>
+                      </Box>
+                      <Box mt={1} mr={1}>
+                          <Button
+                              variant="contained"
+                              onClick={() => removeData()}
+                              color="warning"
                 >
                   remove
                 </Button>
-              </Box>
-              <Box mt={1} mr={1}>
-                <Button
-                    variant="contained"
-                    onClick={() => reset()}
-                    color="success"
-                >
-                    reset
-                </Button>
-              </Box>
+                      </Box>
+                      <Box mt={1} mr={1}>
+                          <Button
+                              variant="contained"
+                              onClick={() => reset()}
+                              color="success"
+                          >
+                              reset
+                          </Button>
+                      </Box>
                   </Box>
               </Widget>
           </Grid>

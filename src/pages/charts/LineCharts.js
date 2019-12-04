@@ -312,16 +312,16 @@ export default function Charts(props) {
   return (
     <>
       <Grid container spacing={4}>
-        <Grid item md={6} xs={12}>
-            <Widget title={"Line Basic"} noBodyPadding>
-                <ReactApexChart
-                    options={themeOptions(theme)}
-                    series={state.series}
-                    type="line"
-                    height="350"
-                />
-            </Widget>
-        </Grid>
+          <Grid item md={6} xs={12}>
+              <Widget title={"Line Basic"} noBodyPadding>
+                  <ReactApexChart
+                      options={themeOptions(theme)}
+                      series={state.series}
+                      type="line"
+                      height="350"
+                  />
+              </Widget>
+          </Grid>
           <Grid item md={6} xs={12}>
               <Widget title={"Line with Data Labels"} noBodyPadding>
                   <ReactApexChart

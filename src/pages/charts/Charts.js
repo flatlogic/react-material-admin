@@ -83,11 +83,11 @@ export default function Charts(props) {
   return (
     <>
       <Grid container spacing={4}>
-        <Grid item xs={12} md={6}>
-            <Widget title="Apex Line Chart" noBodyPadding>
-                <ApexLineChart/>
-            </Widget>
-        </Grid>
+          <Grid item xs={12} md={6}>
+              <Widget title="Apex Line Chart" noBodyPadding>
+                  <ApexLineChart/>
+              </Widget>
+          </Grid>
           <Grid item xs={12} md={6}>
               <Widget title="Apex Heatmap" noBodyPadding>
                   <ApexHeatmap/>
@@ -125,9 +125,9 @@ export default function Charts(props) {
                           <Line
                               type="monotone"
                               dataKey="pv"
-                  stroke={theme.palette.primary.main}
-                  activeDot={{ r: 8 }}
-                />
+                              stroke={theme.palette.primary.main}
+                              activeDot={{r: 8}}
+                          />
                           <Line
                               type="monotone"
                               dataKey="uv"

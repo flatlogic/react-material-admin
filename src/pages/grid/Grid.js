@@ -25,22 +25,22 @@ export default function GridComp() {
         <Grid item md={6}>
           <Widget title="How it works" disableWidgetMenu>
             <Typography>
-                Material UI’s grid system uses a series of containers, rows, and
-                columns to layout and align content. It’s built with flexbox and
-                is fully responsive. Below is an example and an in-depth look at
-                how the grid comes together.
+              Material UI’s grid system uses a series of containers, rows, and
+              columns to layout and align content. It’s built with flexbox and
+              is fully responsive. Below is an example and an in-depth look at
+              how the grid comes together.
             </Typography>
-              <Grid container spacing={3} style={{marginTop: 24}}>
-                  <Grid item xs={4}>
-                      <Paper className={classes.paperItem} color="primary">
-                          One of three
-                      </Paper>
-                  </Grid>
-                  <Grid item xs={4}>
-                      <Paper className={classes.paperItem} color="secondary">
-                          One of three
-                      </Paper>
-                  </Grid>
+            <Grid container spacing={3} style={{marginTop: 24}}>
+              <Grid item xs={4}>
+                <Paper className={classes.paperItem} color="primary">
+                  One of three
+                </Paper>
+              </Grid>
+              <Grid item xs={4}>
+                <Paper className={classes.paperItem} color="secondary">
+                  One of three
+                </Paper>
+              </Grid>
               <Grid item xs={4}>
                 <Paper className={classes.paperItem} color="warning">
                   One of three
@@ -60,23 +60,23 @@ export default function GridComp() {
         </Grid>
         <Grid item md={6}>
           <Widget title="Equal width" disableWidgetMenu>
-              <Typography>
-                  For example, here are two grid layouts that apply to every device
-                  and viewport, from xs to xl. Add any number of unit-less classes
-                  for each breakpoint you need and every column will be the same
-                  width.
-              </Typography>
-              <Grid container spacing={3} style={{marginTop: 24}}>
-                  <Grid item xs>
-                      <Paper className={classes.paperItem} color="primary">
-                          1 of 2
-                      </Paper>
-                  </Grid>
-                  <Grid item xs>
-                      <Paper className={classes.paperItem} color="secondary">
-                          2 of 2
-                      </Paper>
-                  </Grid>
+            <Typography>
+              For example, here are two grid layouts that apply to every device
+              and viewport, from xs to xl. Add any number of unit-less classes
+              for each breakpoint you need and every column will be the same
+              width.
+            </Typography>
+            <Grid container spacing={3} style={{marginTop: 24}}>
+              <Grid item xs>
+                <Paper className={classes.paperItem} color="primary">
+                  1 of 2
+                </Paper>
+              </Grid>
+              <Grid item xs>
+                <Paper className={classes.paperItem} color="secondary">
+                  2 of 2
+                </Paper>
+              </Grid>
               <Grid item xs={12} zeroMinWidth>
                 <Code>
                   {`
@@ -93,30 +93,30 @@ export default function GridComp() {
         </Grid>
         <Grid item md={12}>
           <Widget title="Grid options" disableWidgetMenu>
-              <Typography>
-                  While Material UI grid uses ems or rems for defining most sizes,
-                  pxs are used for grid breakpoints and container widths. This is
-                  because the viewport width is in pixels and does not change with
-                  the font size. See how aspects of the Material UI grid system work
-                  across multiple devices with a handy table.
-              </Typography>
-              <Table className="mb-0" style={{overflowX: "auto"}}>
-                  <TableHead>
-                      <TableRow>
-                          <TableCell/>
-                          <TableCell>
-                              <b>Extra small</b>
-                              <br/>
-                              <small>&lt;576px</small>
-                          </TableCell>
-                          <TableCell>
-                              <b>Small</b>
-                    <br />
+            <Typography>
+              While Material UI grid uses ems or rems for defining most sizes,
+              pxs are used for grid breakpoints and container widths. This is
+              because the viewport width is in pixels and does not change with
+              the font size. See how aspects of the Material UI grid system work
+              across multiple devices with a handy table.
+            </Typography>
+            <Table className="mb-0" style={{overflowX: "auto"}}>
+              <TableHead>
+                <TableRow>
+                  <TableCell/>
+                  <TableCell>
+                    <b>Extra small</b>
+                    <br/>
+                    <small>&lt;576px</small>
+                  </TableCell>
+                  <TableCell>
+                    <b>Small</b>
+                    <br/>
                     <small>≥576px</small>
                   </TableCell>
                   <TableCell>
                     <b>Medium</b>
-                    <br />
+                    <br/>
                     <small>≥768px</small>
                   </TableCell>
                   <TableCell>
@@ -195,40 +195,40 @@ export default function GridComp() {
         </Grid>
         <Grid item md={6} xs={12}>
           <Widget title="Vertical Alignment" disableWidgetMenu inheritHeight>
-              <Typography>
-                  Use flexbox alignment utilities to vertically and horizontally
-                  align columns.
-              </Typography>
-              <Grid container spacing={3} style={{marginTop: 36}}>
-                  <Box display="flex" height={150} width={"100%"}>
-                      <Box alignSelf="flex-start" width={"100%"}>
-                          <Grid item xs={12}>
-                              <Paper
-                                  className={cn(classes.paperItem, classes.paperMargin)}
-                                  color="primary"
-                              >
-                                  Start
-                              </Paper>
-                          </Grid>
+            <Typography>
+              Use flexbox alignment utilities to vertically and horizontally
+              align columns.
+            </Typography>
+            <Grid container spacing={3} style={{marginTop: 36}}>
+              <Box display="flex" height={150} width={"100%"}>
+                <Box alignSelf="flex-start" width={"100%"}>
+                  <Grid item xs={12}>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
+                    >
+                      Start
+                    </Paper>
+                  </Grid>
                 </Box>
                 <Box alignSelf="center" width={"100%"}>
                   <Grid item xs={12}>
-                      <Paper
-                          className={cn(classes.paperItem, classes.paperMargin)}
-                          color="secondary"
-                      >
-                          Center
-                      </Paper>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
+                    >
+                      Center
+                    </Paper>
                   </Grid>
                 </Box>
                 <Box alignSelf="flex-end" width={"100%"}>
                   <Grid item xs={12}>
-                      <Paper
-                          className={cn(classes.paperItem, classes.paperMargin)}
-                          color="warning"
-                      >
-                          End
-                      </Paper>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="warning"
+                    >
+                      End
+                    </Paper>
                   </Grid>
                 </Box>
               </Box>
@@ -254,87 +254,87 @@ export default function GridComp() {
         </Grid>
         <Grid item md={6} xs={12}>
           <Widget title="Vertical Alignment" disableWidgetMenu>
-              <Typography>
-                  Use flexbox alignment utilities to vertically and horizontally
-                  align columns.
-              </Typography>
-              <Grid container spacing={3} style={{marginTop: 36}}>
-                  <Box display="flex" width={"100%"} flexDirection="column">
-                      <Box
-                          display="flex"
-                          flexDirection="row"
-                          justifyContent="flex-end"
-                          width={"100%"}
-                      >
-                          <Grid item xs={3}>
-                              <Paper
-                                  className={cn(classes.paperItem, classes.paperMargin)}
-                                  color="primary"
-                              >
-                                  1
-                              </Paper>
-                          </Grid>
-                          <Grid item xs={3}>
-                              <Paper
-                                  className={cn(classes.paperItem, classes.paperMargin)}
-                                  color="secondary"
-                              >
-                                  2
-                              </Paper>
-                          </Grid>
-                      </Box>
-                      <Box
-                          display="flex"
-                          flexDirection="row"
-                          justifyContent="space-around"
-                          width={"100%"}
-                      >
-                          <Grid item xs={3}>
-                              <Paper
-                                  className={cn(classes.paperItem, classes.paperMargin)}
-                                  color="primary"
-                              >
-                                  1
-                              </Paper>
-                          </Grid>
-                          <Grid item xs={3}>
-                              <Paper
-                                  className={cn(classes.paperItem, classes.paperMargin)}
-                                  color="secondary"
-                              >
-                                  2
-                              </Paper>
-                          </Grid>
-                      </Box>
-                      <Box
-                          display="flex"
-                          flexDirection="row"
-                          justifyContent="space-between"
-                          width={"100%"}
-                      >
-                          <Grid item xs={3}>
-                              <Paper
-                                  className={cn(classes.paperItem, classes.paperMargin)}
-                                  color="primary"
-                              >
-                                  1
-                              </Paper>
-                          </Grid>
-                          <Grid item xs={3}>
-                              <Paper
-                                  className={cn(classes.paperItem, classes.paperMargin)}
-                                  color="secondary"
-                              >
-                                  2
-                              </Paper>
+            <Typography>
+              Use flexbox alignment utilities to vertically and horizontally
+              align columns.
+            </Typography>
+            <Grid container spacing={3} style={{marginTop: 36}}>
+              <Box display="flex" width={"100%"} flexDirection="column">
+                <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="flex-end"
+                    width={"100%"}
+                >
+                  <Grid item xs={3}>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
+                    >
+                      1
+                    </Paper>
                   </Grid>
                   <Grid item xs={3}>
-                      <Paper
-                          className={cn(classes.paperItem, classes.paperMargin)}
-                          color="warning"
-                      >
-                          3
-                      </Paper>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
+                    >
+                      2
+                    </Paper>
+                  </Grid>
+                </Box>
+                <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-around"
+                    width={"100%"}
+                >
+                  <Grid item xs={3}>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
+                    >
+                      1
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
+                    >
+                      2
+                    </Paper>
+                  </Grid>
+                </Box>
+                <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    width={"100%"}
+                >
+                  <Grid item xs={3}>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="primary"
+                    >
+                      1
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="secondary"
+                    >
+                      2
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Paper
+                        className={cn(classes.paperItem, classes.paperMargin)}
+                        color="warning"
+                    >
+                      3
+                    </Paper>
                   </Grid>
                 </Box>
               </Box>

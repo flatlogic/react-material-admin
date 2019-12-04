@@ -11,19 +11,18 @@ import {
 } from "./context/ThemeContext";
 
 import { CssBaseline } from "@material-ui/core";
-// import "./index.css";
 
 ReactDOM.render(
   <LayoutProvider>
     <UserProvider>
       <ThemeChangeProvider>
         <ThemeStateContext.Consumer>
-          {value => (
-            <ThemeProvider theme={value.theme}>
-              <CssBaseline />
-              <App />
-            </ThemeProvider>
-          )}
+            {theme => (
+                <ThemeProvider theme={theme}>
+                    <CssBaseline/>
+                    <App/>
+                </ThemeProvider>
+            )}
         </ThemeStateContext.Consumer>
       </ThemeChangeProvider>
     </UserProvider>
