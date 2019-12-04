@@ -18,37 +18,37 @@ import {
   toggleSidebar
 } from "../../context/LayoutContext";
 
-function Sidebar({location, structure}) {
-    var classes = useStyles();
-    var theme = useTheme();
+function Sidebar({ location, structure }) {
+  var classes = useStyles();
+  var theme = useTheme();
 
-    const toggleDrawer = value => event => {
-        if (
-            event.type === "keydown" &&
-            (event.key === "Tab" || event.key === "Shift")
-        ) {
-            return;
-        }
+  const toggleDrawer = value => event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
 
-        if (value && !isPermanent) toggleSidebar(layoutDispatch);
+    if (value && !isPermanent) toggleSidebar(layoutDispatch);
+  };
+
+  // global
+  var { isSidebarOpened } = useLayoutState();
+  var layoutDispatch = useLayoutDispatch();
+
+  // local
+  var [isPermanent, setPermanent] = useState(true);
+
+  useEffect(function() {
+    window.addEventListener("resize", handleWindowWidthChange);
+    handleWindowWidthChange();
+    return function cleanup() {
+      window.removeEventListener("resize", handleWindowWidthChange);
     };
+  });
 
-    // global
-    var {isSidebarOpened} = useLayoutState();
-    var layoutDispatch = useLayoutDispatch();
-
-    // local
-    var [isPermanent, setPermanent] = useState(true);
-
-    useEffect(function () {
-        window.addEventListener("resize", handleWindowWidthChange);
-        handleWindowWidthChange();
-        return function cleanup() {
-            window.removeEventListener("resize", handleWindowWidthChange);
-        };
-    });
-
-    return (
+  return (
     <Drawer
       variant={isPermanent ? "permanent" : "temporary"}
       className={classNames(classes.drawer, {

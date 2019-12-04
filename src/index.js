@@ -17,12 +17,12 @@ ReactDOM.render(
     <UserProvider>
       <ThemeChangeProvider>
         <ThemeStateContext.Consumer>
-            {theme => (
-                <ThemeProvider theme={theme}>
-                    <CssBaseline/>
-                    <App/>
-                </ThemeProvider>
-            )}
+          {theme => (
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <App />
+            </ThemeProvider>
+          )}
         </ThemeStateContext.Consumer>
       </ThemeChangeProvider>
     </UserProvider>

@@ -57,8 +57,8 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
     setTimeout(e => {
       localStorage.setItem("id_token", "1");
       setError(null);
-        console.trace();
-        setIsLoading(false);
+      console.trace();
+      setIsLoading(false);
       dispatch({ type: "LOGIN_SUCCESS" });
 
       history.push("/app/dashboard");

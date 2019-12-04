@@ -30,7 +30,7 @@ export default function GridComp() {
               is fully responsive. Below is an example and an in-depth look at
               how the grid comes together.
             </Typography>
-            <Grid container spacing={3} style={{marginTop: 24}}>
+            <Grid container spacing={3} style={{ marginTop: 24 }}>
               <Grid item xs={4}>
                 <Paper className={classes.paperItem} color="primary">
                   One of three
@@ -66,7 +66,7 @@ export default function GridComp() {
               for each breakpoint you need and every column will be the same
               width.
             </Typography>
-            <Grid container spacing={3} style={{marginTop: 24}}>
+            <Grid container spacing={3} style={{ marginTop: 24 }}>
               <Grid item xs>
                 <Paper className={classes.paperItem} color="primary">
                   1 of 2
@@ -100,23 +100,23 @@ export default function GridComp() {
               the font size. See how aspects of the Material UI grid system work
               across multiple devices with a handy table.
             </Typography>
-            <Table className="mb-0" style={{overflowX: "auto"}}>
+            <Table className="mb-0" style={{ overflowX: "auto" }}>
               <TableHead>
                 <TableRow>
-                  <TableCell/>
+                  <TableCell />
                   <TableCell>
                     <b>Extra small</b>
-                    <br/>
+                    <br />
                     <small>&lt;576px</small>
                   </TableCell>
                   <TableCell>
                     <b>Small</b>
-                    <br/>
+                    <br />
                     <small>≥576px</small>
                   </TableCell>
                   <TableCell>
                     <b>Medium</b>
-                    <br/>
+                    <br />
                     <small>≥768px</small>
                   </TableCell>
                   <TableCell>
@@ -199,13 +199,13 @@ export default function GridComp() {
               Use flexbox alignment utilities to vertically and horizontally
               align columns.
             </Typography>
-            <Grid container spacing={3} style={{marginTop: 36}}>
+            <Grid container spacing={3} style={{ marginTop: 36 }}>
               <Box display="flex" height={150} width={"100%"}>
                 <Box alignSelf="flex-start" width={"100%"}>
                   <Grid item xs={12}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="primary"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="primary"
                     >
                       Start
                     </Paper>
@@ -214,8 +214,8 @@ export default function GridComp() {
                 <Box alignSelf="center" width={"100%"}>
                   <Grid item xs={12}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="secondary"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="secondary"
                     >
                       Center
                     </Paper>
@@ -224,8 +224,8 @@ export default function GridComp() {
                 <Box alignSelf="flex-end" width={"100%"}>
                   <Grid item xs={12}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="warning"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="warning"
                     >
                       End
                     </Paper>
@@ -258,80 +258,80 @@ export default function GridComp() {
               Use flexbox alignment utilities to vertically and horizontally
               align columns.
             </Typography>
-            <Grid container spacing={3} style={{marginTop: 36}}>
+            <Grid container spacing={3} style={{ marginTop: 36 }}>
               <Box display="flex" width={"100%"} flexDirection="column">
                 <Box
-                    display="flex"
-                    flexDirection="row"
-                    justifyContent="flex-end"
-                    width={"100%"}
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-end"
+                  width={"100%"}
                 >
                   <Grid item xs={3}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="primary"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="primary"
                     >
                       1
                     </Paper>
                   </Grid>
                   <Grid item xs={3}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="secondary"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="secondary"
                     >
                       2
                     </Paper>
                   </Grid>
                 </Box>
                 <Box
-                    display="flex"
-                    flexDirection="row"
-                    justifyContent="space-around"
-                    width={"100%"}
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="space-around"
+                  width={"100%"}
                 >
                   <Grid item xs={3}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="primary"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="primary"
                     >
                       1
                     </Paper>
                   </Grid>
                   <Grid item xs={3}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="secondary"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="secondary"
                     >
                       2
                     </Paper>
                   </Grid>
                 </Box>
                 <Box
-                    display="flex"
-                    flexDirection="row"
-                    justifyContent="space-between"
-                    width={"100%"}
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="space-between"
+                  width={"100%"}
                 >
                   <Grid item xs={3}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="primary"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="primary"
                     >
                       1
                     </Paper>
                   </Grid>
                   <Grid item xs={3}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="secondary"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="secondary"
                     >
                       2
                     </Paper>
                   </Grid>
                   <Grid item xs={3}>
                     <Paper
-                        className={cn(classes.paperItem, classes.paperMargin)}
-                        color="warning"
+                      className={cn(classes.paperItem, classes.paperMargin)}
+                      color="warning"
                     >
                       3
                     </Paper>

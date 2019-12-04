@@ -35,7 +35,7 @@ import {
   AddShoppingCart as AddIcon,
   StarBorder as StarIcon
 } from "@material-ui/icons";
-import {withStyles} from "@material-ui/styles";
+import { withStyles } from "@material-ui/styles";
 import Themes from "../../themes";
 
 // styles
@@ -46,7 +46,7 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 import Footer from "../Footer";
 import Widget from "../Widget";
-import {Link, Typography, Button} from "../../components/Wrappers";
+import { Link, Typography, Button } from "../../components/Wrappers";
 import ColorChangeThemePopper from "./components/ColorChangeThemePopper";
 
 // pages
@@ -293,42 +293,42 @@ function Layout(props) {
             render={() => <Redirect to="/app/ecommerce/management" />}
           />
           <Route
-              exact
-              path="/app/extra"
-              render={() => <Redirect to="/app/extra/timeline"/>}
+            exact
+            path="/app/extra"
+            render={() => <Redirect to="/app/extra/timeline" />}
           />
           <Route
-              exact
-              path="/app/maps"
-              render={() => <Redirect to="/app/maps/google"/>}
+            exact
+            path="/app/maps"
+            render={() => <Redirect to="/app/maps/google" />}
           />
-          <Route path="/app/extra/timeline" component={Timeline}/>
-          <Route path="/app/extra/search" component={Search}/>
-          <Route path="/app/extra/gallery" component={Gallery}/>
-          <Route path="/app/extra/invoice" component={Invoice}/>
-          <Route path="/app/extra/calendar" component={Calendar}/>
-          <Route path="/app/core/colors" component={Colors}/>
-          <Route path="/app/maps/google" component={MapsGoogle}/>
-          <Route path="/app/maps/vector" component={VectorMaps}/>
-          <Route path="/app/ui/icons" component={Icons}/>
+          <Route path="/app/extra/timeline" component={Timeline} />
+          <Route path="/app/extra/search" component={Search} />
+          <Route path="/app/extra/gallery" component={Gallery} />
+          <Route path="/app/extra/invoice" component={Invoice} />
+          <Route path="/app/extra/calendar" component={Calendar} />
+          <Route path="/app/core/colors" component={Colors} />
+          <Route path="/app/maps/google" component={MapsGoogle} />
+          <Route path="/app/maps/vector" component={VectorMaps} />
+          <Route path="/app/ui/icons" component={Icons} />
         </Switch>
         <Fab
-            color="primary"
-            aria-label="settings"
-            onClick={e => handleClick(e)}
-            className={classes.changeThemeFab}
-            style={{zIndex: 100}}
+          color="primary"
+          aria-label="settings"
+          onClick={e => handleClick(e)}
+          className={classes.changeThemeFab}
+          style={{ zIndex: 100 }}
         >
-          <Icon path={SettingsIcon} size={1} color="#fff"/>
+          <Icon path={SettingsIcon} size={1} color="#fff" />
         </Fab>
-        <ColorChangeThemePopper id={id} open={open} anchorEl={anchorEl}/>
+        <ColorChangeThemePopper id={id} open={open} anchorEl={anchorEl} />
         <Footer>
           <div>
             <Link
-                color={"primary"}
-                href={"https://flatlogic.com/"}
-                target={"_blank"}
-                className={classes.link}
+              color={"primary"}
+              href={"https://flatlogic.com/"}
+              target={"_blank"}
+              className={classes.link}
             >
               Flatlogic
             </Link>

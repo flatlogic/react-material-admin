@@ -1,15 +1,15 @@
 import React from "react";
 import {
-    Grid,
-    Box,
-    Card,
-    CardActions,
-    CardContent,
-    CardActionArea,
-    CardMedia,
-    CardHeader,
-    IconButton,
-    Divider
+  Grid,
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  CardActionArea,
+  CardMedia,
+  CardHeader,
+  IconButton,
+  Divider
 } from "@material-ui/core";
 import {
   Star as StarIcon,
@@ -95,36 +95,36 @@ export default function BadgeComp() {
         <Grid container item md={4} xs={12}>
           <Box display={"flex"} flexDirection={"column"} width={"100%"}>
             <Box mb={6}>
-                <Card className={classes.cardMedia}>
-                    <CardContent>
-                        <Typography gutterBottom variant="h6">
-                            <Link color={"success"}>Avr Rating </Link>
-                            <Link>All Time</Link>
-                        </Typography>
-                        <Divider style={{width: "100%"}}/>
-                        <Box display={"flex"} alignItems={"center"} my={3}>
-                            <Box>
-                                <StarIcon className={classes.starIcon}/>
-                                <StarIcon className={classes.starIcon}/>
-                                <StarIcon className={classes.starIcon}/>
-                                <StarIcon className={classes.starIcon}/>
-                                <StarIcon className={classes.starIcon}/>
-                            </Box>
-                            <Box style={{marginLeft: "auto"}}>342 REVIEWS</Box>
-                        </Box>
-                        <Typography variant="body2" color="textSecondary" block>
-                            <Typography color={"success"} variant={"h5"}>
-                                69%
-                            </Typography>
-                            of customers recommend this product
-                        </Typography>
-                    </CardContent>
-                    <CardActions classes={{root: classes.cardActions}}>
-                        <Button variant="contained" size="small" color="success">
-                            Write a review
-                        </Button>
-                    </CardActions>
-                </Card>
+              <Card className={classes.cardMedia}>
+                <CardContent>
+                  <Typography gutterBottom variant="h6">
+                    <Link color={"success"}>Avr Rating </Link>
+                    <Link>All Time</Link>
+                  </Typography>
+                  <Divider style={{ width: "100%" }} />
+                  <Box display={"flex"} alignItems={"center"} my={3}>
+                    <Box>
+                      <StarIcon className={classes.starIcon} />
+                      <StarIcon className={classes.starIcon} />
+                      <StarIcon className={classes.starIcon} />
+                      <StarIcon className={classes.starIcon} />
+                      <StarIcon className={classes.starIcon} />
+                    </Box>
+                    <Box style={{ marginLeft: "auto" }}>342 REVIEWS</Box>
+                  </Box>
+                  <Typography variant="body2" color="textSecondary" block>
+                    <Typography color={"success"} variant={"h5"}>
+                      69%
+                    </Typography>
+                    of customers recommend this product
+                  </Typography>
+                </CardContent>
+                <CardActions classes={{ root: classes.cardActions }}>
+                  <Button variant="contained" size="small" color="success">
+                    Write a review
+                  </Button>
+                </CardActions>
+              </Card>
             </Box>
             <Box>
               <Card className={classes.cardMedia}>
@@ -170,35 +170,35 @@ export default function BadgeComp() {
           </Box>
         </Grid>
         <Grid item md={4} xs={12}>
-            <Card className={classes.cardMedia}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={rnsImg}
-                        title="Technology"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            Technology
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            React Native Starter
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-                <Divider style={{width: "100%"}}/>
-                <CardActions classes={{root: classes.cardActions}}>
-                    <Typography variant={"subtitle1"}>from $49.95</Typography>
-                    <Button
-                        size="small"
-                        color="success"
-                        variant="contained"
-                        style={{marginLeft: "auto"}}
-                    >
-                        Read more
-                    </Button>
-                </CardActions>
-            </Card>
+          <Card className={classes.cardMedia}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={rnsImg}
+                title="Technology"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Technology
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  React Native Starter
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <Divider style={{ width: "100%" }} />
+            <CardActions classes={{ root: classes.cardActions }}>
+              <Typography variant={"subtitle1"}>from $49.95</Typography>
+              <Button
+                size="small"
+                color="success"
+                variant="contained"
+                style={{ marginLeft: "auto" }}
+              >
+                Read more
+              </Button>
+            </CardActions>
+          </Card>
         </Grid>
       </Grid>
     </div>

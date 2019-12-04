@@ -1,21 +1,21 @@
 import React from "react";
 import Themes from "../themes";
-import {useMediaQuery} from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
 
 const ThemeStateContext = React.createContext();
 const ThemeDispatchContext = React.createContext();
 
-function ThemeProvider({children}) {
+function ThemeProvider({ children }) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   var [theme, setTheme] = React.useState(
-      Themes[localStorage.getItem("theme")] || Themes.default
+    Themes[localStorage.getItem("theme")] || Themes.default
   );
   return (
-      <ThemeStateContext.Provider value={theme}>
-        <ThemeDispatchContext.Provider value={setTheme}>
-          {children}
-        </ThemeDispatchContext.Provider>
-      </ThemeStateContext.Provider>
+    <ThemeStateContext.Provider value={theme}>
+      <ThemeDispatchContext.Provider value={setTheme}>
+        {children}
+      </ThemeDispatchContext.Provider>
+    </ThemeStateContext.Provider>
   );
 }
 
@@ -35,4 +35,4 @@ function useThemeDispatch() {
   return context;
 }
 
-export {ThemeProvider, useThemeState, useThemeDispatch, ThemeStateContext};
+export { ThemeProvider, useThemeState, useThemeDispatch, ThemeStateContext };

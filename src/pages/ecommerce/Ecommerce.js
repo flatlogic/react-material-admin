@@ -15,7 +15,7 @@ import {
   LinearProgress,
   Box
 } from "@material-ui/core";
-import {Link as RouterLink} from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 // Material UI icons
 import {
@@ -23,8 +23,8 @@ import {
   Delete as DeleteIcon,
   FilterList as FilterListIcon
 } from "@material-ui/icons";
-import {yellow} from "@material-ui/core/colors";
-import {lighten, makeStyles} from "@material-ui/core/styles";
+import { yellow } from "@material-ui/core/colors";
+import { lighten, makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import useStyles from "./styles";
 import cn from "classnames";
@@ -32,8 +32,8 @@ import cn from "classnames";
 // components
 import Widget from "../../components/Widget";
 import Dot from "../../components/Sidebar/components/Dot";
-import {Typography, Button, Link} from "../../components/Wrappers";
-import {rows} from "./Products";
+import { Typography, Button, Link } from "../../components/Wrappers";
+import { rows } from "./Products";
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -266,30 +266,30 @@ export default function EcommercePage() {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Widget
-              title="List of Products"
-              subtitle={"321 total"}
-              disableWidgetMenu
-              searchField
+            title="List of Products"
+            subtitle={"321 total"}
+            disableWidgetMenu
+            searchField
           >
             <Button
-                variant={"contained"}
-                component={RouterLink}
-                to={"/app/ecommerce/management/create"}
-                color={"success"}
+              variant={"contained"}
+              component={RouterLink}
+              to={"/app/ecommerce/management/create"}
+              color={"success"}
             >
               Create Product
             </Button>
-            <EnhancedTableToolbar numSelected={selected.length}/>
+            <EnhancedTableToolbar numSelected={selected.length} />
             <div className={classes.tableWrapper}>
               <Table
-                  className={classes.table}
-                  aria-labelledby="tableTitle"
-                  aria-label="enhanced table"
+                className={classes.table}
+                aria-labelledby="tableTitle"
+                aria-label="enhanced table"
               >
                 <EnhancedTableHead
-                    classes={classes}
-                    numSelected={selected.length}
-                    order={order}
+                  classes={classes}
+                  numSelected={selected.length}
+                  order={order}
                   orderBy={orderBy}
                   onSelectAllClick={handleSelectAllClick}
                   onRequestSort={handleRequestSort}
@@ -319,18 +319,18 @@ export default function EcommercePage() {
                             />
                           </TableCell>
                           <TableCell
-                              component="th"
-                              id={labelId}
-                              scope="row"
-                              padding="none"
+                            component="th"
+                            id={labelId}
+                            scope="row"
+                            padding="none"
                           >
                             {row.id}
                           </TableCell>
                           <TableCell>
                             <img
-                                src={row.img}
-                                alt={row.title}
-                                style={{width: 100}}
+                              src={row.img}
+                              alt={row.title}
+                              style={{ width: 100 }}
                             />
                           </TableCell>
                           <TableCell>
@@ -342,13 +342,13 @@ export default function EcommercePage() {
                           <TableCell>${row.price}</TableCell>
                           <TableCell>
                             <Typography
-                                style={{color: yellow[700]}}
-                                display={"inline"}
+                              style={{ color: yellow[700] }}
+                              display={"inline"}
                             >
                               {row.rating}
                             </Typography>{" "}
                             <StarIcon
-                                style={{color: yellow[700], marginTop: -5}}
+                              style={{ color: yellow[700], marginTop: -5 }}
                             />
                           </TableCell>
                           <TableCell>

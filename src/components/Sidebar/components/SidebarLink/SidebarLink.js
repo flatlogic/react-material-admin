@@ -118,8 +118,8 @@ export default function SidebarLink({
           className={classes.link}
           classes={{
             root: classnames(classes.link, {
-                [classes.linkActive]: isLinkActive && !nested,
-                [classes.linkNested]: nested
+              [classes.linkActive]: isLinkActive && !nested,
+              [classes.linkNested]: nested
             })
           }}
           disableRipple

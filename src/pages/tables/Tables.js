@@ -36,24 +36,24 @@ export default function Tables() {
     <>
       <Grid container spacing={4}>
         <Grid item xs={12}>
-            <MUIDataTable
-                title="Employee List"
-                data={datatableData}
-                columns={["Name", "Company", "City", "State"]}
-                options={{
-                    filterType: "checkbox"
-                }}
-            />
+          <MUIDataTable
+            title="Employee List"
+            data={datatableData}
+            columns={["Name", "Company", "City", "State"]}
+            options={{
+              filterType: "checkbox"
+            }}
+          />
         </Grid>
-          <Grid item xs={12}>
-              <Widget
-                  title="Material-UI Table"
-                  noBodyPadding
-                  bodyClass={classes.tableWrapper}
-              >
-                  <Table data={mock.table}/>
-              </Widget>
-          </Grid>
+        <Grid item xs={12}>
+          <Widget
+            title="Material-UI Table"
+            noBodyPadding
+            bodyClass={classes.tableWrapper}
+          >
+            <Table data={mock.table} />
+          </Widget>
+        </Grid>
       </Grid>
     </>
   );
