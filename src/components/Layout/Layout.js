@@ -108,7 +108,7 @@ function Layout(props) {
   const open = Boolean(anchorEl);
   const id = open ? "add-section-popover" : undefined;
   const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(open ? null : event.currentTarget);
   };
 
   // global

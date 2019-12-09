@@ -49,8 +49,6 @@ import PropTypes from "prop-types";
 import { lighten } from "@material-ui/core/styles";
 import cn from "classnames";
 
-const mainChartData = getMainChartData();
-
 const PieChartData = [
   { name: "Group A", value: 400, color: "primary" },
   { name: "Group B", value: 300, color: "secondary" },
@@ -344,7 +342,7 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired
 };
 
-export default function Dashboard(props) {
+function Dashboard() {
   var classes = useStyles();
   var theme = useTheme();
 
@@ -406,17 +404,36 @@ export default function Dashboard(props) {
   const isSelected = name => selected.indexOf(name) !== -1;
 
   const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+      rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
+  const randomData = React.useMemo(() => getRandomData(), []);
+
+  const mainChartData = React.useMemo(() => {
+    var resultArray = [];
+    var tablet = getRandomData(31, 3500, 6500, 7500, 1000);
+    var desktop = getRandomData(31, 1500, 7500, 7500, 1500);
+    var mobile = getRandomData(31, 1500, 7500, 7500, 1500);
+
+    for (let i = 0; i < tablet.length; i++) {
+      resultArray.push({
+        tablet: tablet[i].value,
+        desktop: desktop[i].value,
+        mobile: mobile[i].value
+      });
+    }
+
+    return resultArray;
+  }, [mainChartState]);
 
   return (
-    <Grid container spacing={3}>
-      <Grid item lg={3} sm={6} xs={12}>
-        <Widget
-          title="Support Tracker"
-          bodyClass={classes.fullHeightBody}
-          className={classes.card}
-        >
-          <Grid container spacing={3} alignItems="center">
+      <Grid container spacing={3}>
+        <Grid item lg={3} sm={6} xs={12}>
+          <Widget
+              title="Support Tracker"
+              bodyClass={classes.fullHeightBody}
+              className={classes.card}
+          >
+            <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
               <Box display="flex">
                 <Typography variant="h2" weight="medium">
@@ -678,14 +695,14 @@ export default function Dashboard(props) {
             </Typography>
             <div className={classes.serverOverviewElementChartWrapper}>
               <ResponsiveContainer height={50} width="99%">
-                <AreaChart data={getRandomData(10)}>
+                <AreaChart data={randomData}>
                   <Area
-                    type="natural"
-                    dataKey="value"
-                    stroke={theme.palette.secondary.main}
-                    fill={theme.palette.secondary.light}
-                    strokeWidth={2}
-                    fillOpacity="0.25"
+                      type="natural"
+                      dataKey="value"
+                      stroke={theme.palette.secondary.main}
+                      fill={theme.palette.secondary.light}
+                      strokeWidth={2}
+                      fillOpacity="0.25"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -703,14 +720,14 @@ export default function Dashboard(props) {
             </Typography>
             <div className={classes.serverOverviewElementChartWrapper}>
               <ResponsiveContainer height={50} width="99%">
-                <AreaChart data={getRandomData(10)}>
+                <AreaChart data={randomData}>
                   <Area
-                    type="natural"
-                    dataKey="value"
-                    stroke={theme.palette.primary.main}
-                    fill={theme.palette.primary.light}
-                    strokeWidth={2}
-                    fillOpacity="0.25"
+                      type="natural"
+                      dataKey="value"
+                      stroke={theme.palette.primary.main}
+                      fill={theme.palette.primary.light}
+                      strokeWidth={2}
+                      fillOpacity="0.25"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -728,14 +745,14 @@ export default function Dashboard(props) {
             </Typography>
             <div className={classes.serverOverviewElementChartWrapper}>
               <ResponsiveContainer height={50} width="99%">
-                <AreaChart data={getRandomData(10)}>
+                <AreaChart data={randomData}>
                   <Area
-                    type="natural"
-                    dataKey="value"
-                    stroke={theme.palette.warning.main}
-                    fill={theme.palette.warning.light}
-                    strokeWidth={2}
-                    fillOpacity="0.25"
+                      type="natural"
+                      dataKey="value"
+                      stroke={theme.palette.warning.main}
+                      fill={theme.palette.warning.light}
+                      strokeWidth={2}
+                      fillOpacity="0.25"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -770,7 +787,7 @@ export default function Dashboard(props) {
                   </Typography>
                 </div>
                 <div className={classes.mainChartHeaderLabel}>
-                  <Dot color="primary" />
+                  <Dot color="secondary"/>
                   <Typography className={classes.mainChartLegentElement}>
                     Desktop
                   </Typography>
@@ -969,6 +986,7 @@ export default function Dashboard(props) {
 }
 
 // #######################################################################
+
 function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
   var array = new Array(length).fill();
   let lastValue;
@@ -990,19 +1008,4 @@ function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
   });
 }
 
-function getMainChartData() {
-  var resultArray = [];
-  var tablet = getRandomData(31, 3500, 6500, 7500, 1000);
-  var desktop = getRandomData(31, 1500, 7500, 7500, 1500);
-  var mobile = getRandomData(31, 1500, 7500, 7500, 1500);
-
-  for (let i = 0; i < tablet.length; i++) {
-    resultArray.push({
-      tablet: tablet[i].value,
-      desktop: desktop[i].value,
-      mobile: mobile[i].value
-    });
-  }
-
-  return resultArray;
-}
+export default Dashboard;
