@@ -13,7 +13,7 @@ import Widget from "../../../../components/Widget";
 import { Typography } from "../../../../components/Wrappers";
 
 export default function BigStat(props) {
-  var {product, total, color, registrations, bounce} = props;
+  var { product, total, color, registrations, bounce } = props;
   var classes = useStyles();
   var theme = useTheme();
 
@@ -21,23 +21,23 @@ export default function BigStat(props) {
   var [value, setValue] = useState("daily");
 
   const getRandomData = React.useMemo(
-      function getRandomData() {
-        return Array(7)
-            .fill()
-            .map(() => ({value: Math.floor(Math.random() * 10) + 1}));
-      },
-      [value]
+    function getRandomData() {
+      return Array(7)
+        .fill()
+        .map(() => ({ value: Math.floor(Math.random() * 10) + 1 }));
+    },
+    [value]
   );
 
   return (
-      <Widget
-          header={
-            <div className={classes.title}>
-              <Typography variant="h5" color="text" colorBrightness={"secondary"}>
-                {product}
-              </Typography>
+    <Widget
+      header={
+        <div className={classes.title}>
+          <Typography variant="h5" color="text" colorBrightness={"secondary"}>
+            {product}
+          </Typography>
 
-              <Select
+          <Select
             value={value}
             onChange={e => setValue(e.target.value)}
             input={
@@ -58,9 +58,9 @@ export default function BigStat(props) {
       <div className={classes.totalValueContainer}>
         <div className={classes.totalValue}>
           <Typography
-              variant={"h2"}
-              weight={"medium"}
-              style={{marginRight: 8}}
+            variant={"h2"}
+            weight={"medium"}
+            style={{ marginRight: 8 }}
           >
             {total[value]}
           </Typography>
@@ -71,10 +71,10 @@ export default function BigStat(props) {
         </div>
         <BarChart width={100} height={70} data={getRandomData}>
           <Bar
-              dataKey="value"
-              fill={theme.palette[color].main}
-              radius={10}
-              barSize={10}
+            dataKey="value"
+            fill={theme.palette[color].main}
+            radius={10}
+            barSize={10}
           />
         </BarChart>
       </div>

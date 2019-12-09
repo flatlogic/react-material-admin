@@ -404,7 +404,7 @@ function Dashboard() {
   const isSelected = name => selected.indexOf(name) !== -1;
 
   const emptyRows =
-      rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   const randomData = React.useMemo(() => getRandomData(), []);
 
@@ -426,14 +426,14 @@ function Dashboard() {
   }, [mainChartState]);
 
   return (
-      <Grid container spacing={3}>
-        <Grid item lg={3} sm={6} xs={12}>
-          <Widget
-              title="Support Tracker"
-              bodyClass={classes.fullHeightBody}
-              className={classes.card}
-          >
-            <Grid container spacing={3} alignItems="center">
+    <Grid container spacing={3}>
+      <Grid item lg={3} sm={6} xs={12}>
+        <Widget
+          title="Support Tracker"
+          bodyClass={classes.fullHeightBody}
+          className={classes.card}
+        >
+          <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
               <Box display="flex">
                 <Typography variant="h2" weight="medium">
@@ -697,12 +697,12 @@ function Dashboard() {
               <ResponsiveContainer height={50} width="99%">
                 <AreaChart data={randomData}>
                   <Area
-                      type="natural"
-                      dataKey="value"
-                      stroke={theme.palette.secondary.main}
-                      fill={theme.palette.secondary.light}
-                      strokeWidth={2}
-                      fillOpacity="0.25"
+                    type="natural"
+                    dataKey="value"
+                    stroke={theme.palette.secondary.main}
+                    fill={theme.palette.secondary.light}
+                    strokeWidth={2}
+                    fillOpacity="0.25"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -722,12 +722,12 @@ function Dashboard() {
               <ResponsiveContainer height={50} width="99%">
                 <AreaChart data={randomData}>
                   <Area
-                      type="natural"
-                      dataKey="value"
-                      stroke={theme.palette.primary.main}
-                      fill={theme.palette.primary.light}
-                      strokeWidth={2}
-                      fillOpacity="0.25"
+                    type="natural"
+                    dataKey="value"
+                    stroke={theme.palette.primary.main}
+                    fill={theme.palette.primary.light}
+                    strokeWidth={2}
+                    fillOpacity="0.25"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -747,12 +747,12 @@ function Dashboard() {
               <ResponsiveContainer height={50} width="99%">
                 <AreaChart data={randomData}>
                   <Area
-                      type="natural"
-                      dataKey="value"
-                      stroke={theme.palette.warning.main}
-                      fill={theme.palette.warning.light}
-                      strokeWidth={2}
-                      fillOpacity="0.25"
+                    type="natural"
+                    dataKey="value"
+                    stroke={theme.palette.warning.main}
+                    fill={theme.palette.warning.light}
+                    strokeWidth={2}
+                    fillOpacity="0.25"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -787,7 +787,7 @@ function Dashboard() {
                   </Typography>
                 </div>
                 <div className={classes.mainChartHeaderLabel}>
-                  <Dot color="secondary"/>
+                  <Dot color="secondary" />
                   <Typography className={classes.mainChartLegentElement}>
                     Desktop
                   </Typography>
