@@ -27,7 +27,9 @@ export default makeStyles(theme => ({
   legendItemContainer: {
     display: "flex",
     alignItems: "center",
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
+    justifyContent: "space-between",
+    width: "100%"
   },
   fullHeightBody: {
     display: "flex",

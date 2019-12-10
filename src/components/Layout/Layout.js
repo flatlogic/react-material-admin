@@ -17,16 +17,11 @@ import {
 import {
   Fab,
   IconButton,
-  Popper,
-  Divider,
-  RadioGroup,
   Box,
-  Radio,
   Grid,
   Breadcrumbs,
   Tabs,
-  Tab,
-  Switch as SwitchMode
+  Tab
 } from "@material-ui/core";
 import {
   NavigateNext as NavigateNextIcon,
@@ -36,7 +31,6 @@ import {
   StarBorder as StarIcon
 } from "@material-ui/icons";
 import { withStyles } from "@material-ui/styles";
-import Themes from "../../themes";
 
 // styles
 import useStyles from "./styles";
@@ -87,7 +81,6 @@ import Calendar from "../../pages/calendar";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
-import { useThemeDispatch } from "../../context/ThemeContext";
 
 //Sidebar structure
 import structure from "../Sidebar/SidebarStructure";
@@ -113,7 +106,6 @@ function Layout(props) {
 
   // global
   var layoutState = useLayoutState();
-  var themeDispatch = useThemeDispatch();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -143,7 +135,7 @@ function Layout(props) {
             justify="space-between"
             alignItems="center"
             wrap={"nowrap"}
-            style={{ overflow: "auto" }}
+            style={{ overflowX: "auto" }}
           >
             {structure.map(c => {
               if (

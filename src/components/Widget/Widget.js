@@ -62,24 +62,28 @@ export default function Widget({
           </>
         ) : (
           <div className={classes.widgetHeader}>
-            <React.Fragment>
-              <Box display={"flex"}>
+            <Box
+              display={"flex"}
+              alignItems={"center"}
+              justifyContent={"space-between"}
+              width={"100%"}
+            >
+              <Typography
+                variant="h6"
+                color="text"
+                colorBrightness={"secondary"}
+                noWrap
+              >
+                {title}
+              </Typography>
+              <Box alignSelf={"flex-end"} ml={1}>
                 <Typography
-                  variant="h6"
                   color="text"
-                  colorBrightness={"secondary"}
+                  colorBrightness={"hint"}
+                  variant={"caption"}
                 >
-                  {title}
+                  {subtitle}
                 </Typography>
-                <Box alignSelf={"flex-end"} ml={1}>
-                  <Typography
-                    color="text"
-                    colorBrightness={"hint"}
-                    variant={"caption"}
-                  >
-                    {subtitle}
-                  </Typography>
-                </Box>
               </Box>
               {searchField && (
                 <Input
@@ -109,7 +113,7 @@ export default function Widget({
                   <MoreIcon />
                 </IconButton>
               )}
-            </React.Fragment>
+            </Box>
           </div>
         )}
         <div

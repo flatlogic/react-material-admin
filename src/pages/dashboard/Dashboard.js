@@ -406,7 +406,7 @@ function Dashboard() {
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-  const randomData = React.useMemo(() => getRandomData(), []);
+  const randomData = React.useMemo(() => getRandomData(10), []);
 
   const mainChartData = React.useMemo(() => {
     var resultArray = [];
@@ -439,11 +439,15 @@ function Dashboard() {
                 <Typography variant="h2" weight="medium">
                   543
                 </Typography>
-                <Box alignSelf={"flex-end"} ml={1}>
-                  <Typography color="text" variant={"caption"}>
-                    Tickets
-                  </Typography>
-                </Box>
+
+                <Typography
+                  color="text"
+                  variant={"caption"}
+                  noWrap
+                  style={{ alignSelf: "flex-end", marginLeft: 8 }}
+                >
+                  Tickets
+                </Typography>
               </Box>
             </Grid>
             <Grid
@@ -489,16 +493,19 @@ function Dashboard() {
             direction="row"
             justify="space-between"
             alignItems="center"
+            wrap={"nowrap"}
           >
             <Grid item>
               <Typography
                 color="text"
                 colorBrightness={"hint"}
                 variant={"caption"}
+                style={{ marginRight: 5 }}
+                noWrap
               >
                 New Tickets
               </Typography>
-              <Box display="flex" alignItems="center">
+              <Box display="flex" alignItems="center" justifyContent={"center"}>
                 <Typography
                   size="md"
                   weight={"medium"}
@@ -514,10 +521,11 @@ function Dashboard() {
                 color="text"
                 colorBrightness={"hint"}
                 variant={"caption"}
+                style={{ marginRight: 5 }}
               >
                 Open
               </Typography>
-              <Box display="flex" alignItems="center">
+              <Box display="flex" alignItems="center" justifyContent={"center"}>
                 <Typography
                   size="md"
                   weight={"medium"}
@@ -536,7 +544,7 @@ function Dashboard() {
               >
                 Completed
               </Typography>
-              <Box display="flex" alignItems="center">
+              <Box display="flex" alignItems="center" justifyContent={"center"}>
                 <Typography
                   size="md"
                   weight={"medium"}
@@ -596,7 +604,7 @@ function Dashboard() {
               <div className={classes.pieChartLegendWrapper}>
                 {PieChartData.map(({ name, value, color }, index) => (
                   <div key={color} className={classes.legendItemContainer}>
-                    <Dot color={color} style={{ marginRight: 4 }} />
+                    <Dot color={color} style={{ marginRight: 5 }} />
                     <Typography
                       color="text"
                       colorBrightness={"hint"}
