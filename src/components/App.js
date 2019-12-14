@@ -3,7 +3,7 @@ import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // components
 import Layout from "./Layout";
-import Documentation from "./Documentation";
+import Documentation from "./Documentation/Documentation";
 
 // pages
 import Error from "../pages/error";

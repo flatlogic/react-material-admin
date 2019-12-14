@@ -68,22 +68,24 @@ export default function Widget({
               justifyContent={"space-between"}
               width={"100%"}
             >
-              <Typography
-                variant="h6"
-                color="text"
-                colorBrightness={"secondary"}
-                noWrap
-              >
-                {title}
-              </Typography>
-              <Box alignSelf={"flex-end"} ml={1}>
+              <Box display={"flex"} style={{ width: "calc(100% - 20px)" }}>
                 <Typography
+                  variant="h6"
                   color="text"
-                  colorBrightness={"hint"}
-                  variant={"caption"}
+                  colorBrightness={"secondary"}
+                  noWrap
                 >
-                  {subtitle}
+                  {title}
                 </Typography>
+                <Box alignSelf="flex-end" ml={1}>
+                  <Typography
+                    color="text"
+                    colorBrightness={"hint"}
+                    variant={"caption"}
+                  >
+                    {subtitle}
+                  </Typography>
+                </Box>
               </Box>
               {searchField && (
                 <Input
@@ -104,7 +106,7 @@ export default function Widget({
               {!disableWidgetMenu && (
                 <IconButton
                   color="primary"
-                  classes={{ root: classes.moreButton }}
+                  className={classes.moreButton}
                   aria-owns="widget-menu"
                   aria-haspopup="true"
                   onClick={() => setMoreMenuOpen(true)}

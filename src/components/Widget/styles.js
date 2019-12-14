@@ -6,13 +6,13 @@ export default makeStyles(theme => ({
     minHeight: "100%"
   },
   inheritHeight: {
-    minHeight: 'auto',
+    minHeight: "auto"
   },
   widgetHeader: {
     padding: theme.spacing(3),
     paddingBottom: theme.spacing(1),
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center"
   },
   widgetRoot: {
