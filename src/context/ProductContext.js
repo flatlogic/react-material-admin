@@ -1,0 +1,75 @@
+import React from "react";
+import axios from "axios";
+
+import config from "../config";
+import { rows } from "../pages/ecommerce/mock";
+
+const ProductsContext = React.createContext();
+
+const rootReducer = (state = rows, action) => {
+  switch (action.type) {
+    case "UPDATE_PRODUCTS":
+      return [...action.payload];
+    default:
+      return {
+        ...state
+      };
+  }
+};
+
+const ProductsProvider = ({ children }) => {
+  const [products, setProducts] = React.useReducer(rootReducer, rows);
+  return (
+    <ProductsContext.Provider value={{ products, setProducts }}>
+      {children}
+    </ProductsContext.Provider>
+  );
+};
+
+const useProductsDispatch = () => {
+  const context = React.useContext(ProductsContext);
+  return context.setProducts;
+};
+
+const useProductsState = () => {
+  const context = React.useContext(ProductsContext);
+  return context;
+};
+
+export function getProductsRequest(dispatch) {
+  // We check if app runs with backend mode
+  if (config.isBackend) {
+    axios.get("/products").then(res => {
+      dispatch({ type: "UPDATE_PRODUCTS", payload: res.data });
+    });
+  }
+}
+
+export function deleteProductRequest({ id, history, dispatch }) {
+  // We check if app runs with backend mode
+  if (!config.isBackend) return;
+
+  axios.delete("/products/" + id).then(res => {
+    if (history.location.pathname !== "/app/ecommerce/management") {
+      history.push("/app/ecommerce/management");
+    }
+  });
+  getProductsRequest(dispatch);
+}
+
+export function getProductInfo(dispatch) {
+  // We check if app runs with backend mode
+  if (config.isBackend) {
+    axios.get("/products").then(res => {
+      console.log(res.data);
+      dispatch({ type: "UPDATE_PRODUCTS", payload: res.data });
+    });
+  }
+}
+
+export {
+  ProductsProvider,
+  ProductsContext,
+  useProductsDispatch,
+  useProductsState
+};

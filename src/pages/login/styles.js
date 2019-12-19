@@ -43,7 +43,7 @@ export default makeStyles(theme => ({
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    overflow: "auto",
     alignItems: "center",
     [theme.breakpoints.down("md")]: {
       width: "50%"

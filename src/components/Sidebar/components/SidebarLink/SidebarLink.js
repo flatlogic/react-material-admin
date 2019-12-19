@@ -24,7 +24,7 @@ import useStyles2 from "../../styles";
 
 // components
 import Dot from "../Dot";
-import { Button } from "../../../Wrappers";
+import { Button, Badge } from "../../../Wrappers";
 import Chat from "../../../Chat";
 
 export default function SidebarLink({
@@ -37,7 +37,8 @@ export default function SidebarLink({
   nested,
   type,
   toggleDrawer,
-  click
+  click,
+  ...props
 }) {
   // local
   var [isOpen, setIsOpen] = useState(false);
@@ -48,7 +49,7 @@ export default function SidebarLink({
 
   // Login page onClick
   function onLogin() {
-    localStorage.removeItem("id_token");
+    localStorage.removeItem("token");
     window.location.reload();
   }
 
@@ -186,43 +187,85 @@ export default function SidebarLink({
 
   return (
     <>
-      <ListItem
-        button
-        component={link && Link}
-        onClick={toggleCollapse}
-        className={classnames(classes.link, {
-          [classes.linkActive]: isLinkActive,
-          [classes.nestedMenu]: type === "nested"
-        })}
-        to={link}
-        disableRipple
-      >
-        <ListItemIcon
-          className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive
+      {props.badge ? (
+        <ListItem
+          button
+          component={link && Link}
+          onClick={toggleCollapse}
+          className={classnames(classes.link, {
+            [classes.linkActive]: isLinkActive,
+            [classes.nestedMenu]: type === "nested"
           })}
+          to={link}
+          disableRipple
         >
-          {icon ? icon : <InboxIcon />}
-        </ListItemIcon>
-        <ListItemText
-          classes={{
-            primary: classnames(classes.linkText, {
-              [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened
-            })
-          }}
-          primary={label}
-        />
-        <ExpandIcon
-          className={classnames(
-            {
-              [classes.expand]: isOpen,
-              [classes.linkTextHidden]: !isSidebarOpened
-            },
-            classes.expandWrapper
-          )}
-        />
-      </ListItem>
+          <ListItemIcon
+            className={classnames(classes.linkIcon, {
+              [classes.linkIconActive]: isLinkActive
+            })}
+          >
+            {icon ? icon : <InboxIcon />}
+          </ListItemIcon>
+          <Badge badgeContent={props.badge} color="success">
+            <ListItemText
+              classes={{
+                primary: classnames(classes.linkText, {
+                  [classes.linkTextActive]: isLinkActive,
+                  [classes.linkTextHidden]: !isSidebarOpened
+                })
+              }}
+              primary={label}
+            />
+          </Badge>
+          <ExpandIcon
+            className={classnames(
+              {
+                [classes.expand]: isOpen,
+                [classes.linkTextHidden]: !isSidebarOpened
+              },
+              classes.expandWrapper
+            )}
+          />
+        </ListItem>
+      ) : (
+        <ListItem
+          button
+          component={link && Link}
+          onClick={toggleCollapse}
+          className={classnames(classes.link, {
+            [classes.linkActive]: isLinkActive,
+            [classes.nestedMenu]: type === "nested"
+          })}
+          to={link}
+          disableRipple
+        >
+          <ListItemIcon
+            className={classnames(classes.linkIcon, {
+              [classes.linkIconActive]: isLinkActive
+            })}
+          >
+            {icon ? icon : <InboxIcon />}
+          </ListItemIcon>
+          <ListItemText
+            classes={{
+              primary: classnames(classes.linkText, {
+                [classes.linkTextActive]: isLinkActive,
+                [classes.linkTextHidden]: !isSidebarOpened
+              })
+            }}
+            primary={label}
+          />
+          <ExpandIcon
+            className={classnames(
+              {
+                [classes.expand]: isOpen,
+                [classes.linkTextHidden]: !isSidebarOpened
+              },
+              classes.expandWrapper
+            )}
+          />
+        </ListItem>
+      )}
       {children && (
         <Collapse
           in={isOpen && isSidebarOpened}

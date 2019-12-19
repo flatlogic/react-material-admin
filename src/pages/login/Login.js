@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   CircularProgress,
@@ -19,9 +19,12 @@ import google from "../../images/google.svg";
 
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
+import { receiveToken } from "../../context/UserContext";
 
 //components
 import { Button, Typography } from "../../components/Wrappers";
+import Widget from "../../components/Widget";
+import config from "../../config";
 
 const getGreeting = () => {
   const d = new Date();
@@ -42,13 +45,21 @@ function Login(props) {
   // global
   var userDispatch = useUserDispatch();
 
+  useEffect(() => {
+    const params = new URLSearchParams(props.location.search);
+    const token = params.get("token");
+    if (token) {
+      receiveToken(token, userDispatch);
+    }
+  }, []);
+
   // local
   var [isLoading, setIsLoading] = useState(false);
   var [error, setError] = useState(null);
   var [activeTabId, setActiveTabId] = useState(0);
   var [nameValue, setNameValue] = useState("");
   var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
-  var [passwordValue, setPasswordValue] = useState("12345678");
+  var [passwordValue, setPasswordValue] = useState("password");
 
   return (
     <Grid container className={classes.container}>
@@ -70,10 +81,43 @@ function Login(props) {
           </Tabs>
           {activeTabId === 0 && (
             <React.Fragment>
+              {config.isBackend ? (
+                <Widget
+                  disableWidgetMenu
+                  inheritHeight
+                  style={{ marginTop: 32 }}
+                >
+                  <Typography
+                    variant={"body2"}
+                    block
+                    style={{ textAlign: "center" }}
+                  >
+                    This is a real app with Node.js backend - use
+                    <Typography variant={"body2"} weight={"bold"}>
+                      "admin@flatlogic.com / password"
+                    </Typography>{" "}
+                    to login!
+                  </Typography>
+                </Widget>
+              ) : null}
               <Typography variant="h1" className={classes.greeting}>
                 {getGreeting()}, User
               </Typography>
-              <Button size="large" className={classes.googleButton}>
+              <Button
+                size="large"
+                className={classes.googleButton}
+                onClick={() =>
+                  loginUser(
+                    userDispatch,
+                    loginValue,
+                    passwordValue,
+                    props.history,
+                    setIsLoading,
+                    setError,
+                    "google"
+                  )
+                }
+              >
                 <img src={google} alt="google" className={classes.googleIcon} />
                 &nbsp;Sign in with Google
               </Button>
@@ -256,6 +300,17 @@ function Login(props) {
                   classes.googleButton,
                   classes.googleButtonCreating
                 )}
+                onClick={() =>
+                  loginUser(
+                    userDispatch,
+                    loginValue,
+                    passwordValue,
+                    props.history,
+                    setIsLoading,
+                    setError,
+                    "google"
+                  )
+                }
               >
                 <img src={google} alt="google" className={classes.googleIcon} />
                 &nbsp;Sign in with Google

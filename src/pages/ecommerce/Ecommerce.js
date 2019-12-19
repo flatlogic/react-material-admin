@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Grid,
   Table,
@@ -15,13 +15,15 @@ import {
   LinearProgress,
   Box
 } from "@material-ui/core";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, withRouter } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 // Material UI icons
 import {
   Star as StarIcon,
   Delete as DeleteIcon,
-  FilterList as FilterListIcon
+  FilterList as FilterListIcon,
+  Close as CloseIcon
 } from "@material-ui/icons";
 import { yellow } from "@material-ui/core/colors";
 import { lighten, makeStyles } from "@material-ui/core/styles";
@@ -29,11 +31,19 @@ import PropTypes from "prop-types";
 import useStyles from "./styles";
 import cn from "classnames";
 
+//context
+import {
+  ProductsProvider,
+  useProductsState,
+  getProductsRequest,
+  deleteProductRequest
+} from "../../context/ProductContext";
+
 // components
 import Widget from "../../components/Widget";
 import Dot from "../../components/Sidebar/components/Dot";
 import { Typography, Button, Link } from "../../components/Wrappers";
-import { rows } from "./Products";
+import Notification from "../../components/Notification";
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -73,7 +83,6 @@ const headCells = [
   { id: "subtitle", numeric: true, disablePadding: false, label: "Subtitle" },
   { id: "price", numeric: true, disablePadding: false, label: "Price" },
   { id: "rating", numeric: true, disablePadding: false, label: "Rating" },
-  { id: "status", numeric: true, disablePadding: false, label: "Status" },
   { id: "actions", numeric: true, disablePadding: false, label: "Actions" }
 ];
 
@@ -204,18 +213,36 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired
 };
 
-export default function EcommercePage() {
+function EcommercePage({ history }) {
   const classes = useStyles();
+  const context = useProductsState();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("price");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+  const rows = context.products;
+
+  useEffect(() => {
+    sendNotification();
+    getProductsRequest(context.setProducts);
+  }, []);
+
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === "desc";
     setOrder(isDesc ? "asc" : "desc");
     setOrderBy(property);
+  };
+
+  const openProduct = (id, event) => {
+    history.push("/app/ecommerce/product/" + id);
+    event.stopPropagation();
+  };
+
+  const deleteProduct = (id, history, event) => {
+    deleteProductRequest({ id, history, dispatch: context.setProducts });
+    event.stopPropagation();
   };
 
   const handleSelectAllClick = event => {
@@ -261,9 +288,46 @@ export default function EcommercePage() {
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
+  function sendNotification() {
+    const componentProps = {
+      type: "feedback",
+      message:
+        "This page is only available in React Material Admin Full with Node.js integration!",
+      variant: "contained",
+      color: "success"
+    };
+    const options = {
+      type: "info",
+      position: toast.POSITION.TOP_RIGHT,
+      progressClassName: classes.progress,
+      className: classes.notification,
+      timeOut: 1000
+    };
+    return toast(
+      <Notification
+        {...componentProps}
+        className={classes.notificationComponent}
+      />,
+      options
+    );
+  }
+
+  const openProductEdit = (event, id) => {
+    history.push("/app/ecommerce/management/edit/" + id);
+    event.stopPropagation();
+  };
+
   return (
     <>
       <Grid container spacing={3}>
+        <ToastContainer
+          className={classes.toastsContainer}
+          closeButton={
+            <CloseButton className={classes.notificationCloseButton} />
+          }
+          closeOnClick={false}
+          progressClassName={classes.notificationProgress}
+        />
         <Grid item xs={12}>
           <Widget
             title="List of Products"
@@ -295,114 +359,132 @@ export default function EcommercePage() {
                   onRequestSort={handleRequestSort}
                   rowCount={rows.length}
                 />
-                <TableBody>
-                  {stableSort(rows, getSorting(order, orderBy))
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((row, index) => {
-                      const isItemSelected = isSelected(row.id);
-                      const labelId = `enhanced-table-checkbox-${index}`;
+                <ProductsProvider>
+                  <TableBody>
+                    {stableSort(rows, getSorting(order, orderBy))
+                      .slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                      .map((row, index) => {
+                        const isItemSelected = isSelected(row.id);
+                        const labelId = `enhanced-table-checkbox-${index}`;
 
-                      return (
-                        <TableRow
-                          hover
-                          onClick={event => handleClick(event, row.id)}
-                          role="checkbox"
-                          aria-checked={isItemSelected}
-                          tabIndex={-1}
-                          key={row.id}
-                          selected={isItemSelected}
-                        >
-                          <TableCell padding="checkbox">
-                            <Checkbox
-                              checked={isItemSelected}
-                              inputProps={{ "aria-labelledby": labelId }}
-                            />
-                          </TableCell>
-                          <TableCell
-                            component="th"
-                            id={labelId}
-                            scope="row"
-                            padding="none"
+                        return (
+                          <TableRow
+                            hover
+                            onClick={event => handleClick(event, row.id)}
+                            role="checkbox"
+                            aria-checked={isItemSelected}
+                            tabIndex={-1}
+                            key={row.id}
+                            selected={isItemSelected}
                           >
-                            {row.id}
-                          </TableCell>
-                          <TableCell>
-                            <img
-                              src={row.img}
-                              alt={row.title}
-                              style={{ width: 100 }}
-                            />
-                          </TableCell>
-                          <TableCell>
-                            <Link href={`/app/ecommerce/product/${row.id}`}>
-                              {row.title}
-                            </Link>
-                          </TableCell>
-                          <TableCell>{row.subtitle}</TableCell>
-                          <TableCell>${row.price}</TableCell>
-                          <TableCell>
-                            <Typography
-                              style={{ color: yellow[700] }}
-                              display={"inline"}
+                            <TableCell padding="checkbox">
+                              <Checkbox
+                                checked={isItemSelected}
+                                inputProps={{ "aria-labelledby": labelId }}
+                              />
+                            </TableCell>
+                            <TableCell
+                              component="th"
+                              id={labelId}
+                              scope="row"
+                              padding="none"
                             >
-                              {row.rating}
-                            </Typography>{" "}
-                            <StarIcon
-                              style={{ color: yellow[700], marginTop: -5 }}
-                            />
-                          </TableCell>
-                          <TableCell>
-                            <Box display={"flex"}>
-                              <Box mr={1} alignSelf={"center"}>
-                                <Dot color={row.color} size={"medium"} />
-                              </Box>
-                              <Box mr={1}>
-                                <Typography variant={"subtitle2"}>
-                                  {row.status}
-                                </Typography>
-                                <LinearProgress
-                                  variant="determinate"
-                                  value={+row.process.split("%")[0]}
+                              {row.id}
+                            </TableCell>
+                            <TableCell>
+                              <img
+                                src={row.img}
+                                alt={row.title}
+                                style={{ width: 100 }}
+                              />
+                            </TableCell>
+                            <TableCell>
+                              <Link
+                                component={"button"}
+                                variant="body2"
+                                onClick={e => openProduct(row.id, e)}
+                                color={"primary"}
+                              >
+                                {row.title.split("").map((c, n) => {
+                                  return n === 0 ? c.toUpperCase() : c;
+                                })}
+                              </Link>
+                            </TableCell>
+                            <TableCell>{row.subtitle}</TableCell>
+                            <TableCell>${row.price}</TableCell>
+                            <TableCell>
+                              <Box display={"flex"} alignItems={"center"}>
+                                <Typography
+                                  style={{ color: yellow[700] }}
+                                  display={"inline"}
+                                >
+                                  {row.rating}
+                                </Typography>{" "}
+                                <StarIcon
+                                  style={{ color: yellow[700], marginTop: -5 }}
                                 />
                               </Box>
-                              <Box display={"flex"} alignSelf={"flex-end"}>
-                                <Typography
-                                  color={"text"}
-                                  colorBrightness={"hint"}
+                            </TableCell>
+                            {/*<TableCell>*/}
+                            {/*  <Box display={"flex"}>*/}
+                            {/*    <Box mr={1} alignSelf={"center"}>*/}
+                            {/*      <Dot color={row.color} size={"medium"} />*/}
+                            {/*    </Box>*/}
+                            {/*    <Box mr={1}>*/}
+                            {/*      <Typography variant={"subtitle2"}>*/}
+                            {/*        {row.status}*/}
+                            {/*      </Typography>*/}
+                            {/*      <LinearProgress*/}
+                            {/*        variant="determinate"*/}
+                            {/*        value={+row.process.split("%")[0]}*/}
+                            {/*      />*/}
+                            {/*    </Box>*/}
+                            {/*    <Box display={"flex"} alignSelf={"flex-end"}>*/}
+                            {/*      <Typography*/}
+                            {/*        color={"text"}*/}
+                            {/*        colorBrightness={"hint"}*/}
+                            {/*      >*/}
+                            {/*        {row.process}*/}
+                            {/*      </Typography>*/}
+                            {/*    </Box>*/}
+                            {/*  </Box>*/}
+                            {/*</TableCell>*/}
+                            <TableCell>
+                              <Box display={"flex"} alignItems={"center"}>
+                                <Button
+                                  color="success"
+                                  size="small"
+                                  style={{ marginRight: 8 }}
+                                  variant="contained"
+                                  onClick={e => openProductEdit(e, row.id)}
                                 >
-                                  {row.process}
-                                </Typography>
+                                  Edit
+                                </Button>
+                                <Button
+                                  color="secondary"
+                                  size="small"
+                                  variant="contained"
+                                  onClick={e =>
+                                    deleteProduct(row.id, history, e)
+                                  }
+                                >
+                                  Delete
+                                </Button>
                               </Box>
-                            </Box>
-                          </TableCell>
-                          <TableCell>
-                            <Box display={"flex"} alignItems={"center"}>
-                              <Button
-                                color="success"
-                                size="small"
-                                className={"mr-2"}
-                                variant="contained"
-                              >
-                                Edit
-                              </Button>
-                              <Button
-                                color="secondary"
-                                size="small"
-                                variant="contained"
-                              >
-                                Delete
-                              </Button>
-                            </Box>
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )}
-                </TableBody>
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    {emptyRows > 0 && (
+                      <TableRow style={{ height: 53 * emptyRows }}>
+                        <TableCell colSpan={6} />
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </ProductsProvider>
               </Table>
             </div>
             <TablePagination
@@ -426,3 +508,9 @@ export default function EcommercePage() {
     </>
   );
 }
+
+function CloseButton({ closeToast, className }) {
+  return <CloseIcon className={className} onClick={closeToast} />;
+}
+
+export default withRouter(EcommercePage);

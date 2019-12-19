@@ -24,6 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
     "apexcharts": "^3.8.3",
+    "axios": "^0.19.0",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "8.0.6",
@@ -53,6 +54,7 @@
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mini-css-extract-plugin": "0.8.0",
     "moment": "moment/moment",
     "mui-datatables": "^2.6.4",
@@ -93,8 +95,9 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
+    "build": "REACT_APP_BACKEND=true PUBLIC_URL='./' node scripts/build.js",
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "start:backend": "REACT_APP_BACKEND=true node scripts/start.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

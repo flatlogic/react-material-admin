@@ -27,19 +27,25 @@ export default makeStyles(theme => ({
   },
   linkIcon: {
     marginRight: theme.spacing(1),
-    color: theme.palette.text.secondary + "99",
+    color:
+      theme.palette.type === "dark"
+        ? "#616168 !important"
+        : theme.palette.text.secondary + "99",
     transition: theme.transitions.create("color"),
     display: "flex",
     justifyContent: "center"
   },
   linkIconActive: {
-    color: theme.palette.primary.main
+    color: `${theme.palette.primary.main} !important`
   },
   linkText: {
     padding: 0,
-    color: theme.palette.text.secondary + "CC",
+    color:
+      theme.palette.type === "dark"
+        ? "#D6D6D6 !important"
+        : theme.palette.text.secondary + "CC",
     transition: theme.transitions.create(["opacity", "color"]),
-    fontSize: 16
+    fontSize: 14
   },
   linkTextActive: {
     color: theme.palette.text.primary
@@ -59,7 +65,7 @@ export default makeStyles(theme => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
     height: 1,
-    backgroundColor: "#D8D8D880"
+    backgroundColor: theme.palette.type === "dark" ? "#D8D8D8" : "#D8D8D880"
   },
   expand: {
     transform: "rotate(180deg)"
@@ -67,7 +73,8 @@ export default makeStyles(theme => ({
   expandWrapper: {
     color: theme.palette.text.secondary + "99",
     transition: theme.transitions.create("transform"),
-    display: props => (props ? "inline-block" : "none")
+    display: props => (props ? "inline-flex" : "none"),
+    flex: "1 1 auto"
   },
   nestedMenu: {
     paddingLeft: 0

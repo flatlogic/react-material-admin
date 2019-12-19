@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
 import { ThemeProvider } from "@material-ui/styles";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
@@ -9,8 +10,16 @@ import {
   ThemeProvider as ThemeChangeProvider,
   ThemeStateContext
 } from "./context/ThemeContext";
-
 import { CssBaseline } from "@material-ui/core";
+import config from "../src/config";
+
+// Add Authorization Header to prevent 401 error
+axios.defaults.baseURL = config.baseURLApi;
+axios.defaults.headers.common["Content-Type"] = "application/json";
+const token = localStorage.getItem("token");
+if (token) {
+  axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+}
 
 ReactDOM.render(
   <LayoutProvider>

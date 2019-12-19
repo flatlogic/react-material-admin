@@ -206,13 +206,13 @@ const Product = props => {
                   <img
                     src={rows[0].img}
                     alt={rows[0].title}
-                    style={{ width: "100%", maxHeight: 500 }}
+                    style={{ width: "100%", minHeight: 400 }}
                   />
                 ) : (
                   <img
                     src={rows[props.match.params.id - 1].img}
                     alt={rows[props.match.params.id - 1].title}
-                    style={{ width: "100%", maxHeight: 500 }}
+                    style={{ width: "100%", minHeight: 400 }}
                   />
                 )}
               </Grid>

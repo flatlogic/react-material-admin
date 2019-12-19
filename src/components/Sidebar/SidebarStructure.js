@@ -28,6 +28,7 @@ const structure = [
   {
     id: 1,
     label: "E-commerce",
+    badge: "NodeJS",
     link: "/app/ecommerce",
     icon: <ShoppingCartIcon />,
     children: [
@@ -157,7 +158,6 @@ const structure = [
             if (c.clickName === name) {
               return c();
             }
-            console.log("in here");
             return false;
           });
         }

@@ -75,6 +75,7 @@ import Calendar from "../../pages/calendar";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
+import { ProductsProvider } from "../../context/ProductContext";
 
 //Sidebar structure
 import structure from "../Sidebar/SidebarStructure";
@@ -240,11 +241,21 @@ function Layout(props) {
           <Route path="/app/charts/line" component={LineCharts} />
           <Route path="/app/charts/bar" component={BarCharts} />
           <Route path="/app/charts/pie" component={PieCharts} />
-          <Route exact path="/app/ecommerce/management" component={Ecommerce} />
-          <Route
-            path="/app/ecommerce/management/create"
-            component={CreateProduct}
-          />
+          <Route exact path="/app/ecommerce/management" exact>
+            <ProductsProvider>
+              <Ecommerce />
+            </ProductsProvider>
+          </Route>
+          <Route exact path="/app/ecommerce/management/edit/:id">
+            <ProductsProvider>
+              <CreateProduct />
+            </ProductsProvider>
+          </Route>
+          <Route path="/app/ecommerce/management/create">
+            <ProductsProvider>
+              <CreateProduct />
+            </ProductsProvider>
+          </Route>
           <Route path="/app/ecommerce/product/:id" component={Product} />
           <Route path="/app/ecommerce/product" component={Product} />
           <Route path="/app/ecommerce/gridproducts" component={ProductsGrid} />

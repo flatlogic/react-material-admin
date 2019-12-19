@@ -22,7 +22,7 @@ const Pages = props => {
               to redirect. We're using <Code inline row>{`localStorage`}</Code>{" "}
               to keep that the user is login. When a user is coming in{" "}
               <Code row inline>
-                id_token
+                token
               </Code>{" "}
               value is recorded with the number key. You can see a logic
               specified in <Code row inline>{`/src/components/App.js`}</Code>
