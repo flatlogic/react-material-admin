@@ -9,7 +9,7 @@ export default {
   hostApi,
   portApi,
   baseURLApi,
-  remote: "",
+  remote: "https://flatlogic-node-backend.herokuapp.com",
   isBackend: process.env.REACT_APP_BACKEND,
   auth: {
     email: "admin@flatlogic.com",

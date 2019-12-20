@@ -149,7 +149,7 @@ const CreateProduct = () => {
                         isCreateProduct ? 0.01 : localProducts["description_1"]
                       }
                       fullWidth
-                      onChange={e => changeInputValue(e)}
+                      onChange={e => console.log(e.target.value)}
                     />
                   </Box>
                 </Box>
