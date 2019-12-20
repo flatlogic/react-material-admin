@@ -229,6 +229,9 @@ function EcommercePage({ history }) {
     getProductsRequest(context.setProducts);
   }, []);
 
+  console.log(context.products);
+  console.log(rows, "--");
+
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === "desc";
     setOrder(isDesc ? "asc" : "desc");

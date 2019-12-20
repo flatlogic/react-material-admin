@@ -6,9 +6,11 @@ import { rows } from "../pages/ecommerce/mock";
 
 const ProductsContext = React.createContext();
 
-const rootReducer = (state = rows, action) => {
+const rootReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_PRODUCTS":
+      return [...action.payload];
+    case "EDIT_PRODUCT":
       return [...action.payload];
     default:
       return {
@@ -61,10 +63,28 @@ export function getProductInfo(dispatch) {
   // We check if app runs with backend mode
   if (config.isBackend) {
     axios.get("/products").then(res => {
-      console.log(res.data);
       dispatch({ type: "UPDATE_PRODUCTS", payload: res.data });
     });
   }
+}
+
+export function updateProduct(product, dispatch) {
+  // We check if app runs with backend mode
+  if (!config.isBackend) return;
+
+  axios.put("/products/" + product.id, product).then(res => {
+    dispatch({ type: "EDIT_PRODUCT", payload: res.data });
+  });
+}
+
+export function createProduct(payload, dispatch) {
+  // We check if app runs with backend mode
+  if (!config.isBackend) return;
+
+  axios.post("/products", payload.product).then(res => {
+    dispatch(updateProduct(res.data));
+    payload.history.push("/app/ecommerce/management");
+  });
 }
 
 export {

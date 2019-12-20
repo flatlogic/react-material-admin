@@ -80,7 +80,7 @@ function loginUser(
         "/user/signin/" +
         social +
         (process.env.NODE_ENV === "production"
-          ? "?app=react-material-admin-full"
+          ? "?app=https://flatlogic.github.io/react-material-admin-full"
           : "");
     } else if (login.length > 0 && password.length > 0) {
       axios

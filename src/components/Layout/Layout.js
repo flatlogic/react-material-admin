@@ -246,7 +246,7 @@ function Layout(props) {
               <Ecommerce />
             </ProductsProvider>
           </Route>
-          <Route exact path="/app/ecommerce/management/edit/:id">
+          <Route path="/app/ecommerce/management/edit/:id" exact>
             <ProductsProvider>
               <CreateProduct />
             </ProductsProvider>

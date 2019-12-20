@@ -12,7 +12,8 @@ import { useParams, useHistory } from "react-router-dom";
 //context
 import {
   getProductsRequest,
-  useProductsState
+  useProductsState,
+  updateProduct
 } from "../../context/ProductContext";
 
 //components
@@ -20,22 +21,30 @@ import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
 
 const CreateProduct = () => {
+  const context = useProductsState();
+  useEffect(() => {
+    getProductsRequest(context.setProducts);
+  }, []);
   const history = useHistory();
   const { id } = useParams();
-  const context = useProductsState();
 
-  const [localProducts, setLocalProducts] = React.useState([
-    ...context.products
-  ]);
+  const [localProducts, setLocalProducts] = React.useState(
+    context.products[id - 1]
+  );
 
   console.log(localProducts);
 
   const changeInputValue = e => {
-    setLocalProducts([localProducts]);
+    console.log(e.currentTarget);
   };
-  useEffect(() => {
-    getProductsRequest(context.setProducts);
-  }, []);
+
+  const editProduct = () => {
+    updateProduct(localProducts, context.setProducts);
+  };
+
+  const join = localProducts.technology
+    ? localProducts.technology.join(", ")
+    : null;
 
   const isCreateProduct =
     window.location.hash === "#/app/ecommerce/management/create";
@@ -48,15 +57,15 @@ const CreateProduct = () => {
             disableWidgetMenu
           >
             <Box display={"flex"} flexDirection="column">
-              <form onChange={e => changeInputValue(e)}>
+              <form>
                 <Box display={"flex"} alignItems={"center"}>
                   <Box width={300}>
                     <Typography variant={"h6"}>Image</Typography>
                   </Box>
                   <Box width={200}>
-                    <Select value={id - 1} fullWidth>
-                      {localProducts.map(c => (
-                        <MenuItem value={id - 1}>
+                    <Select value={id} fullWidth>
+                      {context.products.map(c => (
+                        <MenuItem value={c.id}>
                           <img
                             src={c.img}
                             alt={c.title}
@@ -76,7 +85,7 @@ const CreateProduct = () => {
                       id="outlined-name"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? "" : localProducts[id].title}
+                      value={isCreateProduct ? "" : localProducts.title}
                       fullWidth
                       onChange={e => changeInputValue(e)}
                     />
@@ -91,7 +100,7 @@ const CreateProduct = () => {
                       id="outlined-name"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? "" : localProducts[id].subtitle}
+                      value={isCreateProduct ? "" : localProducts.subtitle}
                       fullWidth
                     />
                   </Box>
@@ -105,7 +114,7 @@ const CreateProduct = () => {
                       id="outlined-name"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? 0.01 : localProducts[id].price}
+                      value={isCreateProduct ? 0.01 : localProducts.price}
                       type={"number"}
                       fullWidth
                     />
@@ -120,9 +129,7 @@ const CreateProduct = () => {
                       id="outlined-name"
                       margin="normal"
                       variant="outlined"
-                      value={
-                        isCreateProduct ? 0.01 : localProducts[id].discount
-                      }
+                      value={isCreateProduct ? 0.01 : localProducts.discount}
                       type={"number"}
                       fullWidth
                     />
@@ -139,11 +146,10 @@ const CreateProduct = () => {
                       variant="outlined"
                       multiline
                       value={
-                        isCreateProduct
-                          ? 0.01
-                          : localProducts[id]["description_1"]
+                        isCreateProduct ? 0.01 : localProducts["description_1"]
                       }
                       fullWidth
+                      onChange={e => changeInputValue(e)}
                     />
                   </Box>
                 </Box>
@@ -156,7 +162,7 @@ const CreateProduct = () => {
                       id="outlined-name"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? "" : localProducts[id].code}
+                      value={isCreateProduct ? "" : localProducts.code}
                       fullWidth
                     />
                   </Box>
@@ -170,7 +176,7 @@ const CreateProduct = () => {
                       id="outlined-name"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? 0.01 : localProducts[id].hashtag}
+                      value={isCreateProduct ? 0.01 : localProducts.hashtag}
                       fullWidth
                     />
                   </Box>
@@ -186,11 +192,7 @@ const CreateProduct = () => {
                       variant="outlined"
                       placeholder={"Add Tag"}
                       fullWidth
-                      value={
-                        isCreateProduct
-                          ? ""
-                          : localProducts[id].technology.join(", ")
-                      }
+                      value={isCreateProduct ? "" : join}
                     />
                   </Box>
                 </Box>
@@ -204,7 +206,7 @@ const CreateProduct = () => {
                       margin="normal"
                       variant="outlined"
                       type={"number"}
-                      value={isCreateProduct ? 5 : localProducts[id].rating}
+                      value={isCreateProduct ? 5 : localProducts.rating}
                       fullWidth
                     />
                   </Box>

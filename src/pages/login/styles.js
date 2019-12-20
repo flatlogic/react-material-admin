@@ -46,7 +46,8 @@ export default makeStyles(theme => ({
     overflow: "auto",
     alignItems: "center",
     [theme.breakpoints.down("md")]: {
-      width: "50%"
+      width: "50%",
+      overflow: "visible"
     }
   },
   form: {
