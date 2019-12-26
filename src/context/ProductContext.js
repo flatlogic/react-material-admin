@@ -9,9 +9,15 @@ const ProductsContext = React.createContext();
 const rootReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_PRODUCTS":
-      return [...action.payload];
+      return {
+        isLoaded: true,
+        products: action.payload
+      };
     case "EDIT_PRODUCT":
-      return [...action.payload];
+      return {
+        isLoaded: true,
+        products: action.payload
+      };
     default:
       return {
         ...state
@@ -20,17 +26,15 @@ const rootReducer = (state, action) => {
 };
 
 const ProductsProvider = ({ children }) => {
-  const [products, setProducts] = React.useReducer(rootReducer, rows);
+  const [products, setProducts] = React.useReducer(rootReducer, {
+    isLoaded: false,
+    products: rows
+  });
   return (
     <ProductsContext.Provider value={{ products, setProducts }}>
       {children}
     </ProductsContext.Provider>
   );
-};
-
-const useProductsDispatch = () => {
-  const context = React.useContext(ProductsContext);
-  return context.setProducts;
 };
 
 const useProductsState = () => {
@@ -41,7 +45,7 @@ const useProductsState = () => {
 export function getProductsRequest(dispatch) {
   // We check if app runs with backend mode
   if (config.isBackend) {
-    axios.get("/products").then(res => {
+    return axios.get("/products").then(res => {
       dispatch({ type: "UPDATE_PRODUCTS", payload: res.data });
     });
   }
@@ -73,6 +77,7 @@ export function updateProduct(product, dispatch) {
   if (!config.isBackend) return;
 
   axios.put("/products/" + product.id, product).then(res => {
+    console.log(res.data);
     dispatch({ type: "EDIT_PRODUCT", payload: res.data });
   });
 }
@@ -87,9 +92,4 @@ export function createProduct(payload, dispatch) {
   });
 }
 
-export {
-  ProductsProvider,
-  ProductsContext,
-  useProductsDispatch,
-  useProductsState
-};
+export { ProductsProvider, ProductsContext, useProductsState };

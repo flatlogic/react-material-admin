@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import {
   Box,
+  CircularProgress,
   Grid,
   MenuItem,
   OutlinedInput,
@@ -19,27 +20,37 @@ import {
 //components
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
+import config from "../../config";
 
 const CreateProduct = () => {
+  const { id } = useParams();
   const context = useProductsState();
+  const [localProducts, setLocalProducts] = React.useState(
+    context.products.products[id - 1]
+  );
   useEffect(() => {
     getProductsRequest(context.setProducts);
   }, []);
-  const history = useHistory();
-  const { id } = useParams();
 
-  const [localProducts, setLocalProducts] = React.useState(
-    context.products[id - 1]
-  );
+  useEffect(() => {
+    setLocalProducts(context.products.products[id - 1]);
+  }, [context]);
+
+  const history = useHistory();
 
   console.log(localProducts);
+  console.log(context.products, "--");
 
-  const changeInputValue = e => {
-    console.log(e.currentTarget);
+  const editProduct = e => {
+    setLocalProducts({
+      ...localProducts,
+      [e.target.id]: e.currentTarget.value
+    });
   };
 
-  const editProduct = () => {
+  const getEditProduct = () => {
     updateProduct(localProducts, context.setProducts);
+    // history.push("/app/ecommerce/management");
   };
 
   const join = localProducts.technology
@@ -48,6 +59,7 @@ const CreateProduct = () => {
 
   const isCreateProduct =
     window.location.hash === "#/app/ecommerce/management/create";
+
   return (
     <>
       <Grid container spacing={3}>
@@ -56,16 +68,24 @@ const CreateProduct = () => {
             title={isCreateProduct ? "New product" : "Edit product"}
             disableWidgetMenu
           >
-            <Box display={"flex"} flexDirection="column">
-              <form>
+            {config.isBackend && !context.products.isLoaded ? (
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <CircularProgress size={26} />
+              </Box>
+            ) : (
+              <Box display={"flex"} flexDirection="column">
                 <Box display={"flex"} alignItems={"center"}>
                   <Box width={300}>
                     <Typography variant={"h6"}>Image</Typography>
                   </Box>
                   <Box width={200}>
                     <Select value={id} fullWidth>
-                      {context.products.map(c => (
-                        <MenuItem value={c.id}>
+                      {context.products.products.map(c => (
+                        <MenuItem value={c.id} key={c.id}>
                           <img
                             src={c.img}
                             alt={c.title}
@@ -82,12 +102,12 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="outlined-name"
+                      id="title"
                       margin="normal"
                       variant="outlined"
                       value={isCreateProduct ? "" : localProducts.title}
                       fullWidth
-                      onChange={e => changeInputValue(e)}
+                      onChange={e => editProduct(e)}
                     />
                   </Box>
                 </Box>
@@ -97,11 +117,12 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="outlined-name"
+                      id="subtitle"
                       margin="normal"
                       variant="outlined"
                       value={isCreateProduct ? "" : localProducts.subtitle}
                       fullWidth
+                      onChange={e => editProduct(e)}
                     />
                   </Box>
                 </Box>
@@ -111,12 +132,13 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="outlined-name"
+                      id="price"
                       margin="normal"
                       variant="outlined"
                       value={isCreateProduct ? 0.01 : localProducts.price}
                       type={"number"}
                       fullWidth
+                      onChange={e => editProduct(e)}
                     />
                   </Box>
                 </Box>
@@ -126,12 +148,13 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="outlined-name"
+                      id="discount"
                       margin="normal"
                       variant="outlined"
                       value={isCreateProduct ? 0.01 : localProducts.discount}
                       type={"number"}
                       fullWidth
+                      onChange={e => editProduct(e)}
                     />
                   </Box>
                 </Box>
@@ -141,7 +164,7 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="outlined-name"
+                      id="description_1"
                       margin="normal"
                       variant="outlined"
                       multiline
@@ -149,7 +172,7 @@ const CreateProduct = () => {
                         isCreateProduct ? 0.01 : localProducts["description_1"]
                       }
                       fullWidth
-                      onChange={e => console.log(e.target.value)}
+                      onChange={e => editProduct(e)}
                     />
                   </Box>
                 </Box>
@@ -159,11 +182,12 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="outlined-name"
+                      id="code"
                       margin="normal"
                       variant="outlined"
                       value={isCreateProduct ? "" : localProducts.code}
                       fullWidth
+                      onChange={e => editProduct(e)}
                     />
                   </Box>
                 </Box>
@@ -173,11 +197,12 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="outlined-name"
+                      id="hashtag"
                       margin="normal"
                       variant="outlined"
                       value={isCreateProduct ? 0.01 : localProducts.hashtag}
                       fullWidth
+                      onChange={e => editProduct(e)}
                     />
                   </Box>
                 </Box>
@@ -187,12 +212,13 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="outlined-name"
+                      id="technology"
                       margin="normal"
                       variant="outlined"
                       placeholder={"Add Tag"}
                       fullWidth
                       value={isCreateProduct ? "" : join}
+                      onChange={e => editProduct(e)}
                     />
                   </Box>
                 </Box>
@@ -202,12 +228,13 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="outlined-name"
+                      id="rating"
                       margin="normal"
                       variant="outlined"
                       type={"number"}
                       value={isCreateProduct ? 5 : localProducts.rating}
                       fullWidth
+                      onChange={e => editProduct(e)}
                     />
                   </Box>
                 </Box>
@@ -216,6 +243,7 @@ const CreateProduct = () => {
                     variant={"contained"}
                     color={"success"}
                     style={{ marginRight: 8 }}
+                    onClick={() => getEditProduct()}
                   >
                     {isCreateProduct ? "Save" : "Edit"}
                   </Button>
@@ -226,8 +254,8 @@ const CreateProduct = () => {
                     Back
                   </Button>
                 </Box>
-              </form>
-            </Box>
+              </Box>
+            )}
           </Widget>
         </Grid>
       </Grid>

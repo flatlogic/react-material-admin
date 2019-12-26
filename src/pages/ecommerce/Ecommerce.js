@@ -12,11 +12,14 @@ import {
   TableSortLabel,
   Tooltip,
   Toolbar,
-  LinearProgress,
+  CircularProgress,
   Box
 } from "@material-ui/core";
 import { Link as RouterLink, withRouter } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+
+//config
+import config from "../../config";
 
 // Material UI icons
 import {
@@ -222,15 +225,12 @@ function EcommercePage({ history }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const rows = context.products;
+  const backProducts = context.products.products;
 
   useEffect(() => {
     sendNotification();
     getProductsRequest(context.setProducts);
   }, []);
-
-  console.log(context.products);
-  console.log(rows, "--");
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === "desc";
@@ -250,7 +250,7 @@ function EcommercePage({ history }) {
 
   const handleSelectAllClick = event => {
     if (event.target.checked) {
-      const newSelecteds = rows.map(n => n.id);
+      const newSelecteds = backProducts.map(n => n.id);
       setSelected(newSelecteds);
       return;
     }
@@ -289,7 +289,8 @@ function EcommercePage({ history }) {
   const isSelected = name => selected.indexOf(name) !== -1;
 
   const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    rowsPerPage -
+    Math.min(rowsPerPage, backProducts.length - page * rowsPerPage);
 
   function sendNotification() {
     const componentProps = {
@@ -347,153 +348,164 @@ function EcommercePage({ history }) {
               Create Product
             </Button>
             <EnhancedTableToolbar numSelected={selected.length} />
-            <div className={classes.tableWrapper}>
-              <Table
-                className={classes.table}
-                aria-labelledby="tableTitle"
-                aria-label="enhanced table"
+            {config.isBackend && !context.products.isLoaded ? (
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
               >
-                <EnhancedTableHead
-                  classes={classes}
-                  numSelected={selected.length}
-                  order={order}
-                  orderBy={orderBy}
-                  onSelectAllClick={handleSelectAllClick}
-                  onRequestSort={handleRequestSort}
-                  rowCount={rows.length}
-                />
-                <ProductsProvider>
-                  <TableBody>
-                    {stableSort(rows, getSorting(order, orderBy))
-                      .slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage
-                      )
-                      .map((row, index) => {
-                        const isItemSelected = isSelected(row.id);
-                        const labelId = `enhanced-table-checkbox-${index}`;
+                <CircularProgress size={26} />
+              </Box>
+            ) : (
+              <div className={classes.tableWrapper}>
+                <Table
+                  className={classes.table}
+                  aria-labelledby="tableTitle"
+                  aria-label="enhanced table"
+                >
+                  <EnhancedTableHead
+                    classes={classes}
+                    numSelected={selected.length}
+                    order={order}
+                    orderBy={orderBy}
+                    onSelectAllClick={handleSelectAllClick}
+                    onRequestSort={handleRequestSort}
+                    rowCount={backProducts.length}
+                  />
+                  <ProductsProvider>
+                    <TableBody>
+                      {stableSort(backProducts, getSorting(order, orderBy))
+                        .slice(
+                          page * rowsPerPage,
+                          page * rowsPerPage + rowsPerPage
+                        )
+                        .map((row, index) => {
+                          const isItemSelected = isSelected(row.id);
+                          const labelId = `enhanced-table-checkbox-${index}`;
 
-                        return (
-                          <TableRow
-                            hover
-                            onClick={event => handleClick(event, row.id)}
-                            role="checkbox"
-                            aria-checked={isItemSelected}
-                            tabIndex={-1}
-                            key={row.id}
-                            selected={isItemSelected}
-                          >
-                            <TableCell padding="checkbox">
-                              <Checkbox
-                                checked={isItemSelected}
-                                inputProps={{ "aria-labelledby": labelId }}
-                              />
-                            </TableCell>
-                            <TableCell
-                              component="th"
-                              id={labelId}
-                              scope="row"
-                              padding="none"
+                          return (
+                            <TableRow
+                              hover
+                              onClick={event => handleClick(event, row.id)}
+                              role="checkbox"
+                              aria-checked={isItemSelected}
+                              selected={isItemSelected}
                             >
-                              {row.id}
-                            </TableCell>
-                            <TableCell>
-                              <img
-                                src={row.img}
-                                alt={row.title}
-                                style={{ width: 100 }}
-                              />
-                            </TableCell>
-                            <TableCell>
-                              <Link
-                                component={"button"}
-                                variant="body2"
-                                onClick={e => openProduct(row.id, e)}
-                                color={"primary"}
-                              >
-                                {row.title.split("").map((c, n) => {
-                                  return n === 0 ? c.toUpperCase() : c;
-                                })}
-                              </Link>
-                            </TableCell>
-                            <TableCell>{row.subtitle}</TableCell>
-                            <TableCell>${row.price}</TableCell>
-                            <TableCell>
-                              <Box display={"flex"} alignItems={"center"}>
-                                <Typography
-                                  style={{ color: yellow[700] }}
-                                  display={"inline"}
-                                >
-                                  {row.rating}
-                                </Typography>{" "}
-                                <StarIcon
-                                  style={{ color: yellow[700], marginTop: -5 }}
+                              <TableCell padding="checkbox">
+                                <Checkbox
+                                  checked={isItemSelected}
+                                  inputProps={{ "aria-labelledby": labelId }}
                                 />
-                              </Box>
-                            </TableCell>
-                            {/*<TableCell>*/}
-                            {/*  <Box display={"flex"}>*/}
-                            {/*    <Box mr={1} alignSelf={"center"}>*/}
-                            {/*      <Dot color={row.color} size={"medium"} />*/}
-                            {/*    </Box>*/}
-                            {/*    <Box mr={1}>*/}
-                            {/*      <Typography variant={"subtitle2"}>*/}
-                            {/*        {row.status}*/}
-                            {/*      </Typography>*/}
-                            {/*      <LinearProgress*/}
-                            {/*        variant="determinate"*/}
-                            {/*        value={+row.process.split("%")[0]}*/}
-                            {/*      />*/}
-                            {/*    </Box>*/}
-                            {/*    <Box display={"flex"} alignSelf={"flex-end"}>*/}
-                            {/*      <Typography*/}
-                            {/*        color={"text"}*/}
-                            {/*        colorBrightness={"hint"}*/}
-                            {/*      >*/}
-                            {/*        {row.process}*/}
-                            {/*      </Typography>*/}
-                            {/*    </Box>*/}
-                            {/*  </Box>*/}
-                            {/*</TableCell>*/}
-                            <TableCell>
-                              <Box display={"flex"} alignItems={"center"}>
-                                <Button
-                                  color="success"
-                                  size="small"
-                                  style={{ marginRight: 8 }}
-                                  variant="contained"
-                                  onClick={e => openProductEdit(e, row.id)}
+                              </TableCell>
+                              <TableCell
+                                component="th"
+                                id={labelId}
+                                scope="row"
+                                padding="none"
+                              >
+                                {row.id}
+                              </TableCell>
+                              <TableCell>
+                                <img
+                                  src={row.img}
+                                  alt={row.title}
+                                  style={{ width: 100 }}
+                                />
+                              </TableCell>
+                              <TableCell>
+                                <Link
+                                  component={"button"}
+                                  variant="body2"
+                                  onClick={e => openProduct(row.id, e)}
+                                  color={"primary"}
                                 >
-                                  Edit
-                                </Button>
-                                <Button
-                                  color="secondary"
-                                  size="small"
-                                  variant="contained"
-                                  onClick={e =>
-                                    deleteProduct(row.id, history, e)
-                                  }
-                                >
-                                  Delete
-                                </Button>
-                              </Box>
-                            </TableCell>
-                          </TableRow>
-                        );
-                      })}
-                    {emptyRows > 0 && (
-                      <TableRow style={{ height: 53 * emptyRows }}>
-                        <TableCell colSpan={6} />
-                      </TableRow>
-                    )}
-                  </TableBody>
-                </ProductsProvider>
-              </Table>
-            </div>
+                                  {row.title.split("").map((c, n) => {
+                                    return n === 0 ? c.toUpperCase() : c;
+                                  })}
+                                </Link>
+                              </TableCell>
+                              <TableCell>{row.subtitle}</TableCell>
+                              <TableCell>${row.price}</TableCell>
+                              <TableCell>
+                                <Box display={"flex"} alignItems={"center"}>
+                                  <Typography
+                                    style={{ color: yellow[700] }}
+                                    display={"inline"}
+                                  >
+                                    {row.rating}
+                                  </Typography>{" "}
+                                  <StarIcon
+                                    style={{
+                                      color: yellow[700],
+                                      marginTop: -5
+                                    }}
+                                  />
+                                </Box>
+                              </TableCell>
+                              {/*<TableCell>*/}
+                              {/*  <Box display={"flex"}>*/}
+                              {/*    <Box mr={1} alignSelf={"center"}>*/}
+                              {/*      <Dot color={row.color} size={"medium"} />*/}
+                              {/*    </Box>*/}
+                              {/*    <Box mr={1}>*/}
+                              {/*      <Typography variant={"subtitle2"}>*/}
+                              {/*        {row.status}*/}
+                              {/*      </Typography>*/}
+                              {/*      <LinearProgress*/}
+                              {/*        variant="determinate"*/}
+                              {/*        value={+row.process.split("%")[0]}*/}
+                              {/*      />*/}
+                              {/*    </Box>*/}
+                              {/*    <Box display={"flex"} alignSelf={"flex-end"}>*/}
+                              {/*      <Typography*/}
+                              {/*        color={"text"}*/}
+                              {/*        colorBrightness={"hint"}*/}
+                              {/*      >*/}
+                              {/*        {row.process}*/}
+                              {/*      </Typography>*/}
+                              {/*    </Box>*/}
+                              {/*  </Box>*/}
+                              {/*</TableCell>*/}
+                              <TableCell>
+                                <Box display={"flex"} alignItems={"center"}>
+                                  <Button
+                                    color="success"
+                                    size="small"
+                                    style={{ marginRight: 8 }}
+                                    variant="contained"
+                                    onClick={e => openProductEdit(e, row.id)}
+                                  >
+                                    Edit
+                                  </Button>
+                                  <Button
+                                    color="secondary"
+                                    size="small"
+                                    variant="contained"
+                                    onClick={e =>
+                                      deleteProduct(row.id, history, e)
+                                    }
+                                  >
+                                    Delete
+                                  </Button>
+                                </Box>
+                              </TableCell>
+                            </TableRow>
+                          );
+                        })}
+                      {emptyRows > 0 && (
+                        <TableRow style={{ height: 53 * emptyRows }}>
+                          <TableCell colSpan={6} />
+                        </TableRow>
+                      )}
+                    </TableBody>
+                  </ProductsProvider>
+                </Table>
+              </div>
+            )}
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
-              count={rows.length}
+              count={backProducts.length}
               rowsPerPage={rowsPerPage}
               page={page}
               backIconButtonProps={{
