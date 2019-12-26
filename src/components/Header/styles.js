@@ -3,7 +3,7 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 
 export default makeStyles(theme => ({
   logotype: {
-    color: "white",
+    color: theme.palette.type === "dark" ? theme.palette.primary.main : "white",
     marginLeft: theme.spacing(2.5),
     marginRight: theme.spacing(2.5),
     fontWeight: 500,
@@ -105,7 +105,7 @@ export default makeStyles(theme => ({
     color: "rgba(255, 255, 255, 0.35)"
   },
   headerIconCollapse: {
-    color: "white"
+    color: theme.palette.type === "dark" ? theme.palette.primary.main : "white"
   },
   profileMenu: {
     minWidth: 265

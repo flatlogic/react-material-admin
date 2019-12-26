@@ -77,7 +77,6 @@ export function updateProduct(product, dispatch) {
   if (!config.isBackend) return;
 
   axios.put("/products/" + product.id, product).then(res => {
-    console.log(res.data);
     dispatch({ type: "EDIT_PRODUCT", payload: res.data });
   });
 }

@@ -28,7 +28,7 @@ export default {
       dark: tinycolor(secondary)
         .darken(darkenRate)
         .toHexString(),
-      contrastText: "#FFFFFF"
+      contrastText: "#ccc"
     },
     warning: {
       main: warning,

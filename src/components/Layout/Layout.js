@@ -84,7 +84,9 @@ import structure from "../Sidebar/SidebarStructure";
 
 const CustomTab = withStyles(theme => ({
   root: {
-    minWidth: 72
+    minWidth: 72,
+    textTransform: "none",
+    fontWeight: 400
   }
 }))(props => <Tab {...props} />);
 
@@ -123,7 +125,12 @@ function Layout(props) {
         })}
       >
         <div className={classes.fakeToolbar} />
-        <Widget disableWidgetMenu inheritHeight className={classes.margin}>
+        <Widget
+          disableWidgetMenu
+          inheritHeight
+          className={classes.margin}
+          bodyClass={classes.navPadding}
+        >
           <Grid
             container
             direction="row"
@@ -186,7 +193,7 @@ function Layout(props) {
             {window.location.hash.includes("/app/dashboard") && (
               <Box display="flex" alignItems="center">
                 <CalendarIcon className={classes.calendarIcon} />
-                <Typography style={{ marginRight: 38 }}>
+                <Typography className={classes.date}>
                   29 Oct 2019, Tuesday
                 </Typography>
                 <Button

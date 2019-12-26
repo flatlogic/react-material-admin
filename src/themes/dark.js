@@ -11,6 +11,7 @@ const darkenRate = 15;
 
 export default {
   palette: {
+    contrastText: "#fff",
     type: "dark",
     primary: {
       main: primary,

@@ -476,11 +476,13 @@ function Dashboard() {
                     innerRadius={30}
                     outerRadius={35}
                     dataKey="value"
+                    style={{ border: 0 }}
                   >
                     {TicketChartData.map((entry, index) => (
                       <Cell
                         key={`cell-${index}`}
                         fill={theme.palette[entry.color].main}
+                        stroke={""}
                       />
                     ))}
                   </Pie>
@@ -594,6 +596,7 @@ function Dashboard() {
                       <Cell
                         key={`cell-${index}`}
                         fill={theme.palette[entry.color].main}
+                        stroke={""}
                       />
                     ))}
                   </Pie>

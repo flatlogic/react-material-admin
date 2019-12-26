@@ -80,5 +80,13 @@ export default makeStyles(theme => ({
     borderRadius: 0,
     borderTopLeftRadius: "50%",
     borderBottomLeftRadius: "50%"
+  },
+  navPadding: {
+    paddingTop: `${theme.spacing(1)}px !important`,
+    paddingBottom: `6px !important`
+  },
+  date: {
+    marginRight: 38,
+    color: theme.palette.type === "dark" ? "#D6D6D6" : "#4A494A"
   }
 }));
