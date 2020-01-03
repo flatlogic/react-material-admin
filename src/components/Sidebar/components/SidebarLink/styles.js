@@ -65,7 +65,8 @@ export default makeStyles(theme => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
     height: 1,
-    backgroundColor: theme.palette.type === "dark" ? "#D8D8D8" : "#D8D8D880"
+    backgroundColor:
+      theme.palette.type === "dark" ? "rgba(151,151,151, .15)" : "#D8D8D880"
   },
   expand: {
     transform: "rotate(180deg)"

@@ -390,6 +390,7 @@ function EcommercePage({ history }) {
                               role="checkbox"
                               aria-checked={isItemSelected}
                               selected={isItemSelected}
+                              key={row.id}
                             >
                               <TableCell padding="checkbox">
                                 <Checkbox

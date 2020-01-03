@@ -13,7 +13,7 @@ import {
   ShoppingCart as ShoppingCartIcon,
   StarBorder as ExtraIcon,
   Chat as ChatIcon,
-  AddCircle as AddSectionIcon,
+  Add as AddSectionIcon,
   FolderOpen as FolderIcon,
   Description as DocumentationIcon
 } from "@material-ui/icons";
@@ -251,11 +251,25 @@ const structure = [
 ];
 
 function AddSection() {
-  const theme = useTheme();
+  const useStyles = makeStyles(theme => ({
+    root: {
+      backgroundColor: theme.palette.secondary.main,
+      borderRadius: "50%",
+      height: 30,
+      width: 30,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      color: "#fff"
+    }
+  }));
+
+  const classes = useStyles();
+
   return (
-    <AddSectionIcon
-      style={{ color: theme.palette.secondary.main, fontSize: 45 }}
-    />
+    <section className={classes.root}>
+      <AddSectionIcon />
+    </section>
   );
 }
 
@@ -264,8 +278,8 @@ function Chat() {
     root: {
       backgroundColor: theme.palette.primary.main,
       borderRadius: "50%",
-      height: 50,
-      width: 50,
+      height: 45,
+      width: 45,
       display: "flex",
       justifyContent: "center",
       alignItems: "center",

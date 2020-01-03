@@ -70,8 +70,8 @@ export default {
     },
     text: {
       primary: "#fff",
-      secondary: "#fff",
-      hint: "#fff"
+      secondary: "#D6D6D6",
+      hint: "#D6D6D6"
     },
     background: {
       default: "#13131A",
