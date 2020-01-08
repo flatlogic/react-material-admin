@@ -20,7 +20,11 @@ export default function WidgetComp() {
               statement.
             </Typography>
             <Widget className={classes.paper} disableWidgetMenu>
-              <Widget title="Simple Widget" disableWidgetMenu>
+              <Widget
+                title="Simple Widget"
+                disableWidgetMenu
+                slyle={{ backgroundColor: "#fff" }}
+              >
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. A,
                 rem?
               </Widget>

@@ -130,7 +130,6 @@ function Carousel() {
             ))}
           </AutoPlaySwipeableViews>
           <MobileStepper
-            style={{ backgroundColor: "#fff" }}
             steps={maxSteps}
             position="static"
             variant="text"
@@ -193,7 +192,6 @@ function Carousel() {
             ))}
           </AutoPlaySwipeableViews>
           <MobileStepper
-            style={{ backgroundColor: "#fff" }}
             steps={maxSteps}
             position="static"
             variant="dots"
@@ -256,7 +254,6 @@ function Carousel() {
             ))}
           </AutoPlaySwipeableViews>
           <MobileStepper
-            style={{ backgroundColor: "#fff" }}
             steps={maxSteps}
             position="static"
             variant="progress"

@@ -46,23 +46,18 @@ export default function App() {
     const token = localStorage.getItem("token");
     const date = new Date().getTime() / 1000;
     const data = jwt.decode(token);
-    if (date < data.exp) {
-      return (
-        <Route
-          {...rest}
-          render={props => React.createElement(component, props)}
-        />
-      );
-    } else {
-      return (
-        <Redirect
-          to={{
-            pathname: "/login",
-            from: location
-          }}
-        />
-      );
-    }
+    return (
+      <Route
+        {...rest}
+        render={props =>
+          isAuthenticated ? (
+            React.createElement(component, props)
+          ) : (
+            <Redirect to={"/login"} />
+          )
+        }
+      />
+    );
   }
 
   function PublicRoute({ component, ...rest }) {

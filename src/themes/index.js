@@ -114,13 +114,12 @@ const darkModeOverrides = {
     },
     MuiButton: {
       root: {
-        boxShadow:
-          "0px 1px 8px rgba(154, 154, 154, 0.330064), 0px 6px 3px rgba(178, 178, 178, 0.324), 0px 6px 11px #030303 !important"
+        boxShadow: "none !important"
       }
     },
     typography: {
       root: {
-        color: "white !important "
+        color: "white !important"
       }
     }
   }

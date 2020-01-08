@@ -216,7 +216,10 @@ class Calendar extends React.Component {
               >
                 <Box display={"flex"}>
                   <Dot color="success" size="large" />
-                  <Typography variant="body2" style={{ marginLeft: 8 }}>
+                  <Typography
+                    variant="body2"
+                    style={{ marginLeft: 8, color: "#000" }}
+                  >
                     Make a tea
                   </Typography>
                 </Box>
@@ -233,7 +236,10 @@ class Calendar extends React.Component {
               >
                 <Box display={"flex"}>
                   <Dot color="warning" size="large" />
-                  <Typography variant="body2" style={{ marginLeft: 8 }}>
+                  <Typography
+                    variant="body2"
+                    style={{ marginLeft: 8, color: "#000" }}
+                  >
                     Open windows
                   </Typography>
                 </Box>
@@ -250,7 +256,10 @@ class Calendar extends React.Component {
               >
                 <Box display={"flex"}>
                   <Dot color="info" size="large" />
-                  <Typography variant="body2" style={{ marginLeft: 8 }}>
+                  <Typography
+                    variant="body2"
+                    style={{ marginLeft: 8, color: "#000" }}
+                  >
                     Some stuff
                   </Typography>
                 </Box>

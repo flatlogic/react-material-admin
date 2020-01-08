@@ -182,6 +182,7 @@ export default function Charts(props) {
               series={state.series}
               type="pie"
               height="380"
+              stroke={""}
             />
           </Widget>
         </Grid>
@@ -192,6 +193,7 @@ export default function Charts(props) {
               series={state.series2}
               type="donut"
               height="380"
+              stroke={""}
             />
           </Widget>
         </Grid>
@@ -202,6 +204,7 @@ export default function Charts(props) {
               series={state.series3}
               type="donut"
               height="380"
+              stroke={""}
             />
             <Box display={"flex"} flexWrap="wrap" m={3}>
               <Box mt={1} mr={1}>
@@ -250,6 +253,7 @@ export default function Charts(props) {
               series={state.series2}
               type="pie"
               height="380"
+              stroke={""}
             />
           </Widget>
         </Grid>
