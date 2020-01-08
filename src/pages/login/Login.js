@@ -319,7 +319,7 @@ function Login(props) {
           )}
         </div>
         <Typography color="primary" className={classes.copyright}>
-          © 2014-2019 Flatlogic, LLC. All rights reserved.
+          © 2014-2020 Flatlogic, LLC. All rights reserved.
         </Typography>
       </div>
     </Grid>

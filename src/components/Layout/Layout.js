@@ -248,7 +248,7 @@ function Layout(props) {
           <Route path="/app/charts/line" component={LineCharts} />
           <Route path="/app/charts/bar" component={BarCharts} />
           <Route path="/app/charts/pie" component={PieCharts} />
-          <Route exact path="/app/ecommerce/management" exact>
+          <Route path="/app/ecommerce/management" exact>
             <ProductsProvider>
               <Ecommerce />
             </ProductsProvider>

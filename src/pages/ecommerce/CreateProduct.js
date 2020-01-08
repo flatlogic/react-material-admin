@@ -160,7 +160,7 @@ const CreateProduct = () => {
                 </Box>
                 <Box display={"flex"} alignItems={"center"}>
                   <Box width={300}>
-                    <Typography variant={"h6"}>Description</Typography>
+                    <Typography variant={"h6"}>Description 1</Typography>
                   </Box>
                   <Box width={500}>
                     <Input
@@ -170,6 +170,24 @@ const CreateProduct = () => {
                       multiline
                       value={
                         isCreateProduct ? 0.01 : localProducts["description_1"]
+                      }
+                      fullWidth
+                      onChange={e => editProduct(e)}
+                    />
+                  </Box>
+                </Box>
+                <Box display={"flex"} alignItems={"center"}>
+                  <Box width={300}>
+                    <Typography variant={"h6"}>Description 2</Typography>
+                  </Box>
+                  <Box width={500}>
+                    <Input
+                      id="description_1"
+                      margin="normal"
+                      variant="outlined"
+                      multiline
+                      value={
+                        isCreateProduct ? 0.01 : localProducts["description_2"]
                       }
                       fullWidth
                       onChange={e => editProduct(e)}

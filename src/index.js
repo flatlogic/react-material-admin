@@ -13,7 +13,6 @@ import {
 import { CssBaseline } from "@material-ui/core";
 import config from "../src/config";
 
-// Add Authorization Header to prevent 401 error
 axios.defaults.baseURL = config.baseURLApi;
 axios.defaults.headers.common["Content-Type"] = "application/json";
 const token = localStorage.getItem("token");
