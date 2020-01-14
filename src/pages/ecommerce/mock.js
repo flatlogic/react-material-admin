@@ -12,9 +12,8 @@ export const rows = [
     img: img1,
     title: "Trainers",
     subtitle: "Trainers In White",
-    price: 76,
-    rating: 4.6,
-    description_1: "test"
+    price: 80,
+    rating: 4.6
   },
   {
     id: 2,
@@ -22,8 +21,7 @@ export const rows = [
     title: "Boots",
     subtitle: "Trainers In Blue",
     price: 37,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 3,
@@ -31,8 +29,7 @@ export const rows = [
     title: "Flat sandals",
     subtitle: "Trainers In White",
     price: 70,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 4,
@@ -40,8 +37,7 @@ export const rows = [
     title: "Trainers",
     subtitle: "Trainers In Blue",
     price: 85,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 5,
@@ -49,8 +45,7 @@ export const rows = [
     title: "Flat sandals",
     subtitle: "Trainers In White",
     price: 12,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 6,
@@ -58,8 +53,7 @@ export const rows = [
     title: "Trainers",
     subtitle: "Trainers In Blue",
     price: 76,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 7,
@@ -67,8 +61,7 @@ export const rows = [
     title: "Boots",
     subtitle: "Trainers In White",
     price: 76,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 8,
@@ -76,8 +69,7 @@ export const rows = [
     title: "Flat sandals",
     subtitle: "Trainers In White",
     price: 76,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 9,
@@ -85,8 +77,7 @@ export const rows = [
     title: "Trainers",
     subtitle: "Trainers In White",
     price: 76,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 10,
@@ -94,8 +85,7 @@ export const rows = [
     title: "Boots",
     subtitle: "Trainers In Blue",
     price: 76,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 11,
@@ -103,8 +93,7 @@ export const rows = [
     title: "Trainers",
     subtitle: "Trainers In White",
     price: 71,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   },
   {
     id: 12,
@@ -112,7 +101,6 @@ export const rows = [
     title: "Flat sandals",
     subtitle: "Trainers In Blue",
     price: 76,
-    rating: 4.6,
-    description_1: "test"
+    rating: 4.6
   }
 ];

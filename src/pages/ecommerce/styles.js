@@ -122,5 +122,8 @@ export default makeStyles(theme => ({
   },
   notificationComponent: {
     paddingRight: theme.spacing(4)
+  },
+  searchIcon: {
+    color: "rgba(0, 0, 0, 0.23)"
   }
 }));

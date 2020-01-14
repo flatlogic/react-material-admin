@@ -14,10 +14,23 @@ const rootReducer = (state, action) => {
         products: action.payload
       };
     case "EDIT_PRODUCT":
+      const index = action.payload.id;
       return {
         isLoaded: true,
-        products: action.payload
+        products: rows.map(c => {
+          if (c.id === index) {
+            return { ...c, ...action.payload };
+          }
+          return c;
+        })
       };
+
+    case "CREATE_PRODUCT":
+      return {
+        isLoaded: true,
+        products: rows.push(action.payload)
+      };
+
     default:
       return {
         ...state
@@ -76,18 +89,30 @@ export function updateProduct(product, dispatch) {
   // We check if app runs with backend mode
   if (!config.isBackend) return;
 
+  function getProduct(product, backProducts) {
+    const index = product.id;
+    return rows.map(c => {
+      if (c.id === index) {
+        return { ...c, ...product };
+      }
+      return c;
+    });
+  }
+
   axios.put("/products/" + product.id, product).then(res => {
     dispatch({ type: "EDIT_PRODUCT", payload: res.data });
   });
 }
 
-export function createProduct(payload, dispatch) {
+export function createProduct(product, dispatch) {
   // We check if app runs with backend mode
   if (!config.isBackend) return;
 
-  axios.post("/products", payload.product).then(res => {
-    dispatch(updateProduct(res.data));
-    payload.history.push("/app/ecommerce/management");
+  console.log("in here");
+
+  axios.post("/products", product).then(res => {
+    console.log(res.data);
+    dispatch({ type: "EDIT_PRODUCT", payload: res.data });
   });
 }
 

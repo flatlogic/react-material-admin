@@ -13,9 +13,11 @@ import {
   Tooltip,
   Toolbar,
   CircularProgress,
-  Box
+  Box,
+  InputAdornment,
+  TextField as Input
 } from "@material-ui/core";
-import { Link as RouterLink, withRouter } from "react-router-dom";
+import { Link as RouterLink, withRouter, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 //config
@@ -26,7 +28,8 @@ import {
   Star as StarIcon,
   Delete as DeleteIcon,
   FilterList as FilterListIcon,
-  Close as CloseIcon
+  Close as CloseIcon,
+  Search as SearchIcon
 } from "@material-ui/icons";
 import { yellow } from "@material-ui/core/colors";
 import { lighten, makeStyles } from "@material-ui/core/styles";
@@ -334,10 +337,49 @@ function EcommercePage({ history }) {
         />
         <Grid item xs={12}>
           <Widget
-            title="List of Products"
-            subtitle={"321 total"}
             disableWidgetMenu
-            searchField
+            header={
+              <Box
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                width={"100%"}
+              >
+                <Box display={"flex"} style={{ width: "calc(100% - 20px)" }}>
+                  <Typography
+                    variant="h6"
+                    color="text"
+                    colorBrightness={"secondary"}
+                    noWrap
+                  >
+                    Products
+                  </Typography>
+                  <Box alignSelf="flex-end" ml={1}>
+                    <Typography
+                      color="text"
+                      colorBrightness={"hint"}
+                      variant={"caption"}
+                    >
+                      {backProducts.length} total
+                    </Typography>
+                  </Box>
+                </Box>
+                <Input
+                  id="search-field"
+                  className={classes.textField}
+                  label="Search"
+                  margin="dense"
+                  variant="outlined"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon className={classes.searchIcon} />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              </Box>
+            }
           >
             <Button
               variant={"contained"}

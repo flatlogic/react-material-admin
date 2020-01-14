@@ -9,37 +9,86 @@ import {
   TextField as Input
 } from "@material-ui/core";
 import { useParams, useHistory } from "react-router-dom";
+import useStyles from "./styles";
 
 //context
 import {
   getProductsRequest,
   useProductsState,
-  updateProduct
+  updateProduct,
+  createProduct
 } from "../../context/ProductContext";
 
 //components
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
 import config from "../../config";
+import { toast, ToastContainer } from "react-toastify";
+import { Close as CloseIcon } from "@material-ui/icons";
+import Notification from "../../components/Notification";
 
 const CreateProduct = () => {
+  const classes = useStyles();
   const { id } = useParams();
   const context = useProductsState();
+
+  const getId = () => {
+    return context.products.products.findIndex(c => {
+      return c.id == id;
+    });
+  };
+
   const [localProducts, setLocalProducts] = React.useState(
     context.products.products[id - 1]
   );
+
+  const [newProduct, setNewProduct] = React.useState({
+    img:
+      "https://flatlogic-node-backend.herokuapp.com/assets/products/img1.jpg",
+    title: "",
+    subtitle: "",
+    price: "0.1",
+    rating: "5",
+    description_1: "",
+    description_2: "",
+    code: "",
+    hashtag: "",
+    technology: [],
+    discount: "0"
+  });
+
+  function sendNotification() {
+    const componentProps = {
+      type: "feedback",
+      message: "Product has been Updated!",
+      variant: "contained",
+      color: "success"
+    };
+    const options = {
+      type: "info",
+      position: toast.POSITION.TOP_RIGHT,
+      progressClassName: classes.progress,
+      className: classes.notification,
+      timeOut: 1000
+    };
+    return toast(
+      <Notification
+        {...componentProps}
+        className={classes.notificationComponent}
+      />,
+      options
+    );
+  }
+
   useEffect(() => {
     getProductsRequest(context.setProducts);
   }, []);
 
   useEffect(() => {
-    setLocalProducts(context.products.products[id - 1]);
+    setLocalProducts(context.products.products[getId()]);
   }, [context]);
 
   const history = useHistory();
-
-  console.log(localProducts);
-  console.log(context.products, "--");
 
   const editProduct = e => {
     setLocalProducts({
@@ -48,14 +97,26 @@ const CreateProduct = () => {
     });
   };
 
-  const getEditProduct = () => {
-    updateProduct(localProducts, context.setProducts);
-    // history.push("/app/ecommerce/management");
+  const editNewProduct = e => {
+    setNewProduct({
+      ...newProduct,
+      [e.target.id]: e.currentTarget.value
+    });
   };
 
-  const join = localProducts.technology
-    ? localProducts.technology.join(", ")
-    : null;
+  console.log(localProducts);
+  console.log(context.products.products);
+  console.log(newProduct);
+
+  const getEditProduct = () => {
+    updateProduct(localProducts, context.setProducts);
+    sendNotification();
+  };
+
+  const createNewProduct = () => {
+    console.log("1");
+    createProduct(newProduct, context.setProducts);
+  };
 
   const isCreateProduct =
     window.location.hash === "#/app/ecommerce/management/create";
@@ -63,6 +124,14 @@ const CreateProduct = () => {
   return (
     <>
       <Grid container spacing={3}>
+        <ToastContainer
+          className={classes.toastsContainer}
+          closeButton={
+            <CloseButton className={classes.notificationCloseButton} />
+          }
+          closeOnClick={false}
+          progressClassName={classes.notificationProgress}
+        />
         <Grid item xs={12}>
           <Widget
             title={isCreateProduct ? "New product" : "Edit product"}
@@ -83,7 +152,11 @@ const CreateProduct = () => {
                     <Typography variant={"h6"}>Image</Typography>
                   </Box>
                   <Box width={200}>
-                    <Select value={id} fullWidth>
+                    <Select
+                      value={isCreateProduct ? 1 : id}
+                      fullWidth
+                      onChange={e => console.log(e.currentTarget)}
+                    >
                       {context.products.products.map(c => (
                         <MenuItem value={c.id} key={c.id}>
                           <img
@@ -105,9 +178,13 @@ const CreateProduct = () => {
                       id="title"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? "" : localProducts.title}
+                      value={
+                        isCreateProduct ? newProduct.title : localProducts.title
+                      }
                       fullWidth
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -120,9 +197,15 @@ const CreateProduct = () => {
                       id="subtitle"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? "" : localProducts.subtitle}
+                      value={
+                        isCreateProduct
+                          ? newProduct.subtitle
+                          : localProducts.subtitle
+                      }
                       fullWidth
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -135,10 +218,14 @@ const CreateProduct = () => {
                       id="price"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? 0.01 : localProducts.price}
+                      value={
+                        isCreateProduct ? newProduct.price : localProducts.price
+                      }
                       type={"number"}
                       fullWidth
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -151,10 +238,16 @@ const CreateProduct = () => {
                       id="discount"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? 0.01 : localProducts.discount}
+                      value={
+                        isCreateProduct
+                          ? newProduct.discount
+                          : localProducts.discount
+                      }
                       type={"number"}
                       fullWidth
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -169,10 +262,14 @@ const CreateProduct = () => {
                       variant="outlined"
                       multiline
                       value={
-                        isCreateProduct ? 0.01 : localProducts["description_1"]
+                        isCreateProduct
+                          ? newProduct["description_1"]
+                          : localProducts["description_1"]
                       }
                       fullWidth
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -187,10 +284,14 @@ const CreateProduct = () => {
                       variant="outlined"
                       multiline
                       value={
-                        isCreateProduct ? 0.01 : localProducts["description_2"]
+                        isCreateProduct
+                          ? newProduct["description_2"]
+                          : localProducts["description_2"]
                       }
                       fullWidth
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -205,7 +306,9 @@ const CreateProduct = () => {
                       variant="outlined"
                       value={isCreateProduct ? "" : localProducts.code}
                       fullWidth
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -218,9 +321,15 @@ const CreateProduct = () => {
                       id="hashtag"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? 0.01 : localProducts.hashtag}
+                      value={
+                        isCreateProduct
+                          ? newProduct.hashtag
+                          : localProducts.hashtag
+                      }
                       fullWidth
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -235,8 +344,9 @@ const CreateProduct = () => {
                       variant="outlined"
                       placeholder={"Add Tag"}
                       fullWidth
-                      value={isCreateProduct ? "" : join}
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -250,9 +360,15 @@ const CreateProduct = () => {
                       margin="normal"
                       variant="outlined"
                       type={"number"}
-                      value={isCreateProduct ? 5 : localProducts.rating}
+                      value={
+                        isCreateProduct
+                          ? newProduct.rating
+                          : localProducts.rating
+                      }
                       fullWidth
-                      onChange={e => editProduct(e)}
+                      onChange={e =>
+                        isCreateProduct ? editNewProduct(e) : editProduct(e)
+                      }
                     />
                   </Box>
                 </Box>
@@ -261,7 +377,9 @@ const CreateProduct = () => {
                     variant={"contained"}
                     color={"success"}
                     style={{ marginRight: 8 }}
-                    onClick={() => getEditProduct()}
+                    onClick={() =>
+                      isCreateProduct ? createNewProduct() : getEditProduct()
+                    }
                   >
                     {isCreateProduct ? "Save" : "Edit"}
                   </Button>
@@ -280,5 +398,9 @@ const CreateProduct = () => {
     </>
   );
 };
+
+function CloseButton({ closeToast, className }) {
+  return <CloseIcon className={className} onClick={closeToast} />;
+}
 
 export default CreateProduct;
