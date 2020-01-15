@@ -16,7 +16,8 @@ import {
   getProductsRequest,
   useProductsState,
   updateProduct,
-  createProduct
+  createProduct,
+  receiveProduct
 } from "../../context/ProductContext";
 
 //components
@@ -45,16 +46,16 @@ const CreateProduct = () => {
   const [newProduct, setNewProduct] = React.useState({
     img:
       "https://flatlogic-node-backend.herokuapp.com/assets/products/img1.jpg",
-    title: "",
-    subtitle: "",
-    price: "0.1",
-    rating: "5",
-    description_1: "",
-    description_2: "",
-    code: "",
-    hashtag: "",
+    title: null,
+    subtitle: null,
+    price: 0.1,
+    rating: 5,
+    description_1: null,
+    description_2: null,
+    code: null,
+    hashtag: null,
     technology: [],
-    discount: "0"
+    discount: 0
   });
 
   function sendNotification() {
@@ -82,6 +83,9 @@ const CreateProduct = () => {
 
   useEffect(() => {
     getProductsRequest(context.setProducts);
+    // if (getId() === -1) {
+    //   receiveProduct(newProduct, context.products.products);
+    // }
   }, []);
 
   useEffect(() => {
@@ -114,7 +118,6 @@ const CreateProduct = () => {
   };
 
   const createNewProduct = () => {
-    console.log("1");
     createProduct(newProduct, context.setProducts);
   };
 

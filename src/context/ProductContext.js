@@ -89,16 +89,6 @@ export function updateProduct(product, dispatch) {
   // We check if app runs with backend mode
   if (!config.isBackend) return;
 
-  function getProduct(product, backProducts) {
-    const index = product.id;
-    return rows.map(c => {
-      if (c.id === index) {
-        return { ...c, ...product };
-      }
-      return c;
-    });
-  }
-
   axios.put("/products/" + product.id, product).then(res => {
     dispatch({ type: "EDIT_PRODUCT", payload: res.data });
   });
@@ -108,12 +98,15 @@ export function createProduct(product, dispatch) {
   // We check if app runs with backend mode
   if (!config.isBackend) return;
 
-  console.log("in here");
-
   axios.post("/products", product).then(res => {
-    console.log(res.data);
     dispatch({ type: "EDIT_PRODUCT", payload: res.data });
   });
+}
+
+export function receiveProduct(product, products) {
+  if (!config.isBackend) return;
+
+  console.log(products);
 }
 
 export { ProductsProvider, ProductsContext, useProductsState };

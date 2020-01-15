@@ -227,18 +227,32 @@ function EcommercePage({ history }) {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const backProducts = context.products.products;
+  const [backProducts, setBackProducts] = React.useState(
+    context.products.products
+  );
 
   useEffect(() => {
     sendNotification();
     getProductsRequest(context.setProducts);
   }, []);
 
+  useEffect(() => {
+    setBackProducts(context.products.products);
+  }, [context]);
+
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === "desc";
     setOrder(isDesc ? "asc" : "desc");
     setOrderBy(property);
+  };
+
+  const searchProducts = e => {
+    const products = backProducts.filter(c => {
+      return e.currentTarget.value
+        ? c.title.includes(e.currentTarget.value)
+        : true;
+    });
+    setBackProducts(products);
   };
 
   const openProduct = (id, event) => {
@@ -247,7 +261,7 @@ function EcommercePage({ history }) {
   };
 
   const deleteProduct = (id, history, event) => {
-    deleteProductRequest({ id, history, dispatch: context.setProducts });
+    deleteProductRequesrm - rft({ id, history, dispatch: context.setProducts });
     event.stopPropagation();
   };
 
@@ -377,6 +391,7 @@ function EcommercePage({ history }) {
                       </InputAdornment>
                     )
                   }}
+                  onChange={e => searchProducts(e)}
                 />
               </Box>
             }
@@ -462,9 +477,11 @@ function EcommercePage({ history }) {
                                   onClick={e => openProduct(row.id, e)}
                                   color={"primary"}
                                 >
-                                  {row.title.split("").map((c, n) => {
-                                    return n === 0 ? c.toUpperCase() : c;
-                                  })}
+                                  {row.title
+                                    ? row.title.split("").map((c, n) => {
+                                        return n === 0 ? c.toUpperCase() : c;
+                                      })
+                                    : null}
                                 </Link>
                               </TableCell>
                               <TableCell>{row.subtitle}</TableCell>
