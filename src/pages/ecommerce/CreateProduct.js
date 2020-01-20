@@ -108,10 +108,6 @@ const CreateProduct = () => {
     });
   };
 
-  console.log(localProducts);
-  console.log(context.products.products);
-  console.log(newProduct);
-
   const getEditProduct = () => {
     updateProduct(localProducts, context.setProducts);
     sendNotification();
@@ -119,6 +115,7 @@ const CreateProduct = () => {
 
   const createNewProduct = () => {
     createProduct(newProduct, context.setProducts);
+    history.push("/app/ecommerce/management");
   };
 
   const isCreateProduct =
@@ -282,7 +279,7 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={500}>
                     <Input
-                      id="description_1"
+                      id="description_2"
                       margin="normal"
                       variant="outlined"
                       multiline

@@ -69,11 +69,11 @@ export function deleteProductRequest({ id, history, dispatch }) {
   if (!config.isBackend) return;
 
   axios.delete("/products/" + id).then(res => {
+    getProductsRequest(dispatch);
     if (history.location.pathname !== "/app/ecommerce/management") {
       history.push("/app/ecommerce/management");
     }
   });
-  getProductsRequest(dispatch);
 }
 
 export function getProductInfo(dispatch) {

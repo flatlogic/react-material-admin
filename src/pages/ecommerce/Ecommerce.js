@@ -231,13 +231,17 @@ function EcommercePage({ history }) {
     context.products.products
   );
 
+  console.log(selected);
+
   useEffect(() => {
     sendNotification();
     getProductsRequest(context.setProducts);
   }, []);
 
   useEffect(() => {
+    console.log(context.products.products);
     setBackProducts(context.products.products);
+    console.log("context have changed");
   }, [context]);
 
   const handleRequestSort = (event, property) => {
@@ -247,10 +251,12 @@ function EcommercePage({ history }) {
   };
 
   const searchProducts = e => {
-    const products = backProducts.filter(c => {
-      return e.currentTarget.value
-        ? c.title.includes(e.currentTarget.value)
-        : true;
+    let products = [];
+    context.products.products.forEach((c, i) => {
+      if (c.title.includes(e.currentTarget.value)) {
+        products.push(c);
+      }
+      return;
     });
     setBackProducts(products);
   };
@@ -261,7 +267,7 @@ function EcommercePage({ history }) {
   };
 
   const deleteProduct = (id, history, event) => {
-    deleteProductRequesrm - rft({ id, history, dispatch: context.setProducts });
+    deleteProductRequest({ id, history, dispatch: context.setProducts });
     event.stopPropagation();
   };
 
