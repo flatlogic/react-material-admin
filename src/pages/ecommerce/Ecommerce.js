@@ -237,8 +237,6 @@ function EcommercePage({ history }) {
     context.products.products
   );
 
-  console.log(context.products.products);
-
   useEffect(() => {
     sendNotification();
     getProductsRequest(context.setProducts);
@@ -248,8 +246,6 @@ function EcommercePage({ history }) {
   useEffect(() => {
     setBackProducts(context.products.products);
   }, [context]);
-
-  console.log(context.products.images, "123");
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === "desc";
