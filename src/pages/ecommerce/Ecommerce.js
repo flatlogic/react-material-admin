@@ -17,7 +17,12 @@ import {
   InputAdornment,
   TextField as Input
 } from "@material-ui/core";
-import { Link as RouterLink, withRouter, useLocation } from "react-router-dom";
+import {
+  Link as RouterLink,
+  withRouter,
+  useLocation,
+  useHistory
+} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 //config
@@ -42,7 +47,8 @@ import {
   ProductsProvider,
   useProductsState,
   getProductsRequest,
-  deleteProductRequest
+  deleteProductRequest,
+  getProductsImages
 } from "../../context/ProductContext";
 
 // components
@@ -173,9 +179,9 @@ const useToolbarStyles = makeStyles(theme => ({
   }
 }));
 
-const EnhancedTableToolbar = props => {
+const EnhancedTableToolbar = ({ numSelected, selected, deleteProducts }) => {
+  const history = useHistory();
   const classes = useToolbarStyles();
-  const { numSelected } = props;
 
   return (
     <Toolbar
@@ -201,7 +207,7 @@ const EnhancedTableToolbar = props => {
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
-            <DeleteIcon />
+            <DeleteIcon onClick={e => deleteProducts(selected, history, e)} />
           </IconButton>
         </Tooltip>
       ) : (
@@ -231,18 +237,19 @@ function EcommercePage({ history }) {
     context.products.products
   );
 
-  console.log(selected);
+  console.log(context.products.products);
 
   useEffect(() => {
     sendNotification();
     getProductsRequest(context.setProducts);
+    // getProductsImages(context.setProducts);
   }, []);
 
   useEffect(() => {
-    console.log(context.products.products);
     setBackProducts(context.products.products);
-    console.log("context have changed");
   }, [context]);
+
+  console.log(context.products.images, "123");
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === "desc";
@@ -263,11 +270,6 @@ function EcommercePage({ history }) {
 
   const openProduct = (id, event) => {
     history.push("/app/ecommerce/product/" + id);
-    event.stopPropagation();
-  };
-
-  const deleteProduct = (id, history, event) => {
-    deleteProductRequest({ id, history, dispatch: context.setProducts });
     event.stopPropagation();
   };
 
@@ -338,6 +340,17 @@ function EcommercePage({ history }) {
       options
     );
   }
+
+  const deleteProduct = (id, history, event) => {
+    deleteProductRequest({ id, history, dispatch: context.setProducts });
+    event.stopPropagation();
+  };
+
+  const getId = id => {
+    return backProducts.find(c => {
+      return c.id == id;
+    }).id;
+  };
 
   const openProductEdit = (event, id) => {
     history.push("/app/ecommerce/management/edit/" + id);
@@ -410,7 +423,11 @@ function EcommercePage({ history }) {
             >
               Create Product
             </Button>
-            <EnhancedTableToolbar numSelected={selected.length} />
+            <EnhancedTableToolbar
+              numSelected={selected.length}
+              selected={selected}
+              deleteProducts={deleteProduct}
+            />
             {config.isBackend && !context.products.isLoaded ? (
               <Box
                 display={"flex"}

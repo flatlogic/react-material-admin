@@ -40,7 +40,7 @@ const CreateProduct = () => {
   };
 
   const [localProducts, setLocalProducts] = React.useState(
-    context.products.products[id - 1]
+    context.products.products[getId(id)]
   );
 
   const [newProduct, setNewProduct] = React.useState({
@@ -83,9 +83,6 @@ const CreateProduct = () => {
 
   useEffect(() => {
     getProductsRequest(context.setProducts);
-    // if (getId() === -1) {
-    //   receiveProduct(newProduct, context.products.products);
-    // }
   }, []);
 
   useEffect(() => {
@@ -155,7 +152,7 @@ const CreateProduct = () => {
                     <Select
                       value={isCreateProduct ? 1 : id}
                       fullWidth
-                      onChange={e => console.log(e.currentTarget)}
+                      onChange={e => console.log(e.target)}
                     >
                       {context.products.products.map(c => (
                         <MenuItem value={c.id} key={c.id}>

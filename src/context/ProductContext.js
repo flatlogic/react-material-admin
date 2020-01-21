@@ -25,6 +25,12 @@ const rootReducer = (state, action) => {
         })
       };
 
+    case "GET_IMAGES":
+      return {
+        ...state,
+        images: action.payload
+      };
+
     case "CREATE_PRODUCT":
       return {
         isLoaded: true,
@@ -68,12 +74,20 @@ export function deleteProductRequest({ id, history, dispatch }) {
   // We check if app runs with backend mode
   if (!config.isBackend) return;
 
-  axios.delete("/products/" + id).then(res => {
-    getProductsRequest(dispatch);
-    if (history.location.pathname !== "/app/ecommerce/management") {
-      history.push("/app/ecommerce/management");
+  if (Array.isArray(id)) {
+    for (let key in id) {
+      axios.delete("/products/" + id[key]).then(res => {});
     }
-  });
+  } else {
+    axios.delete("/products/" + id).then(res => {
+      getProductsRequest(dispatch);
+      if (history.location.pathname !== "/app/ecommerce/management") {
+        history.push("/app/ecommerce/management");
+      }
+      return;
+    });
+  }
+  getProductsRequest(dispatch);
 }
 
 export function getProductInfo(dispatch) {
@@ -103,10 +117,15 @@ export function createProduct(product, dispatch) {
   });
 }
 
-export function receiveProduct(product, products) {
-  if (!config.isBackend) return;
+export function getProductsImages(dispatch) {
+  return dispatch => {
+    // We check if app runs with backend mode
+    if (!config.isBackend) return;
 
-  console.log(products);
+    axios.get("/products/images-list").then(res => {
+      dispatch({ type: "GET_IMAGES", payload: res.data });
+    });
+  };
 }
 
 export { ProductsProvider, ProductsContext, useProductsState };
