@@ -47,8 +47,7 @@ import {
   ProductsProvider,
   useProductsState,
   getProductsRequest,
-  deleteProductRequest,
-  getProductsImages
+  deleteProductRequest
 } from "../../context/ProductContext";
 
 // components
@@ -240,7 +239,6 @@ function EcommercePage({ history }) {
   useEffect(() => {
     sendNotification();
     getProductsRequest(context.setProducts);
-    // getProductsImages(context.setProducts);
   }, []);
 
   useEffect(() => {

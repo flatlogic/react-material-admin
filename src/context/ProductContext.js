@@ -11,11 +11,13 @@ const rootReducer = (state, action) => {
     case "UPDATE_PRODUCTS":
       return {
         isLoaded: true,
-        products: action.payload
+        products: action.payload,
+        images: state.images ? state.images : []
       };
     case "EDIT_PRODUCT":
       const index = action.payload.id;
       return {
+        ...state,
         isLoaded: true,
         products: rows.map(c => {
           if (c.id === index) {
@@ -33,6 +35,7 @@ const rootReducer = (state, action) => {
 
     case "CREATE_PRODUCT":
       return {
+        ...state,
         isLoaded: true,
         products: rows.push(action.payload)
       };
@@ -118,14 +121,12 @@ export function createProduct(product, dispatch) {
 }
 
 export function getProductsImages(dispatch) {
-  return dispatch => {
-    // We check if app runs with backend mode
-    if (!config.isBackend) return;
+  // We check if app runs with backend mode
+  if (!config.isBackend) return;
 
-    axios.get("/products/images-list").then(res => {
-      dispatch({ type: "GET_IMAGES", payload: res.data });
-    });
-  };
+  axios.get("/products/images-list").then(res => {
+    dispatch({ type: "GET_IMAGES", payload: res.data });
+  });
 }
 
 export { ProductsProvider, ProductsContext, useProductsState };

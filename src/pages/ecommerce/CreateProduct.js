@@ -17,7 +17,7 @@ import {
   useProductsState,
   updateProduct,
   createProduct,
-  receiveProduct
+  getProductsImages
 } from "../../context/ProductContext";
 
 //components
@@ -58,6 +58,10 @@ const CreateProduct = () => {
     discount: 0
   });
 
+  const getImage = () => {
+    return context.products.img;
+  };
+
   function sendNotification() {
     const componentProps = {
       type: "feedback",
@@ -83,10 +87,11 @@ const CreateProduct = () => {
 
   useEffect(() => {
     getProductsRequest(context.setProducts);
+    getProductsImages(context.setProducts);
   }, []);
 
   useEffect(() => {
-    setLocalProducts(context.products.products[getId()]);
+    setLocalProducts(context.products.products[getId(id)]);
   }, [context]);
 
   const history = useHistory();
@@ -113,6 +118,14 @@ const CreateProduct = () => {
   const createNewProduct = () => {
     createProduct(newProduct, context.setProducts);
     history.push("/app/ecommerce/management");
+  };
+
+  const getImgSrc = () => {
+    return localProducts.img.replace(/.+com\//, "http://localhost:8080/");
+  };
+
+  const changeImgSrc = e => {
+    setLocalProducts({ ...localProducts, img: e.target.value });
   };
 
   const isCreateProduct =
@@ -150,17 +163,13 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={200}>
                     <Select
-                      value={isCreateProduct ? 1 : id}
+                      value={getImgSrc()}
                       fullWidth
-                      onChange={e => console.log(e.target)}
+                      onChange={e => changeImgSrc(e)}
                     >
-                      {context.products.products.map(c => (
-                        <MenuItem value={c.id} key={c.id}>
-                          <img
-                            src={c.img}
-                            alt={c.title}
-                            style={{ height: 100, width: 200 }}
-                          />
+                      {context.products.images.map((c, i) => (
+                        <MenuItem value={c} key={c}>
+                          <img src={c} style={{ height: 100, width: 200 }} />
                         </MenuItem>
                       ))}
                     </Select>
