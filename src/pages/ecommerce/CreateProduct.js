@@ -44,8 +44,7 @@ const CreateProduct = () => {
   );
 
   const [newProduct, setNewProduct] = React.useState({
-    img:
-      "https://flatlogic-node-backend.herokuapp.com/assets/products/img1.jpg",
+    img: "http://localhost:8080/assets/products/img1.jpg",
     title: null,
     subtitle: null,
     price: 0.1,
@@ -57,10 +56,6 @@ const CreateProduct = () => {
     technology: [],
     discount: 0
   });
-
-  const getImage = () => {
-    return context.products.img;
-  };
 
   function sendNotification() {
     const componentProps = {
@@ -121,11 +116,17 @@ const CreateProduct = () => {
   };
 
   const getImgSrc = () => {
-    return localProducts.img.replace(/.+com\//, "http://localhost:8080/");
+    return isCreateProduct
+      ? newProduct.img
+      : localProducts.img.replace(/.+com\//, "http://localhost:8080/");
   };
 
   const changeImgSrc = e => {
-    setLocalProducts({ ...localProducts, img: e.target.value });
+    if (isCreateProduct) {
+      setNewProduct({ ...localProducts, img: e.target.value });
+    } else {
+      setLocalProducts({ ...localProducts, img: e.target.value });
+    }
   };
 
   const isCreateProduct =
