@@ -310,7 +310,9 @@ const CreateProduct = () => {
                       id="code"
                       margin="normal"
                       variant="outlined"
-                      value={isCreateProduct ? "" : localProducts.code}
+                      value={
+                        isCreateProduct ? newProduct.code : localProducts.code
+                      }
                       fullWidth
                       onChange={e =>
                         isCreateProduct ? editNewProduct(e) : editProduct(e)
