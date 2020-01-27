@@ -17,12 +17,7 @@ import {
   InputAdornment,
   TextField as Input
 } from "@material-ui/core";
-import {
-  Link as RouterLink,
-  withRouter,
-  useLocation,
-  useHistory
-} from "react-router-dom";
+import { Link as RouterLink, withRouter, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 //config
@@ -52,7 +47,6 @@ import {
 
 // components
 import Widget from "../../components/Widget";
-import Dot from "../../components/Sidebar/components/Dot";
 import { Typography, Button, Link } from "../../components/Wrappers";
 import Notification from "../../components/Notification";
 
@@ -253,7 +247,7 @@ function EcommercePage({ history }) {
 
   const searchProducts = e => {
     let products = [];
-    context.products.products.forEach((c, i) => {
+    context.products.products.forEach(c => {
       if (c.title.includes(e.currentTarget.value)) {
         products.push(c);
       }
@@ -275,6 +269,8 @@ function EcommercePage({ history }) {
     }
     setSelected([]);
   };
+
+  console.log(context.products.products, "--");
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);

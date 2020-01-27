@@ -19,7 +19,7 @@ const rootReducer = (state, action) => {
       return {
         ...state,
         isLoaded: true,
-        products: rows.map(c => {
+        products: state.products.map(c => {
           if (c.id === index) {
             return { ...c, ...action.payload };
           }
@@ -34,10 +34,11 @@ const rootReducer = (state, action) => {
       };
 
     case "CREATE_PRODUCT":
+      state.products.push(action.payload);
       return {
         ...state,
         isLoaded: true,
-        products: rows.push(action.payload)
+        products: state.products
       };
 
     default:
@@ -116,7 +117,7 @@ export function createProduct(product, dispatch) {
   if (!config.isBackend) return;
 
   axios.post("/products", product).then(res => {
-    dispatch({ type: "EDIT_PRODUCT", payload: res.data });
+    dispatch({ type: "CREATE_PRODUCT", payload: res.data });
   });
 }
 
@@ -124,8 +125,17 @@ export function getProductsImages(dispatch) {
   // We check if app runs with backend mode
   if (!config.isBackend) return;
 
+  const replacer = data => {
+    return data.map(c => {
+      return c.replace(
+        /http:\/\/.+\//,
+        "https://flatlogic-node-backend.herokuapp.com/assets/products/"
+      );
+    });
+  };
+
   axios.get("/products/images-list").then(res => {
-    dispatch({ type: "GET_IMAGES", payload: res.data });
+    dispatch({ type: "GET_IMAGES", payload: replacer(res.data) });
   });
 }
 

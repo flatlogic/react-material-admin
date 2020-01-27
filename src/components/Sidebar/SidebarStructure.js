@@ -17,10 +17,9 @@ import {
   FolderOpen as FolderIcon,
   Description as DocumentationIcon
 } from "@material-ui/icons";
-import { useTheme, makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/styles";
 
 // components
-import { Typography } from "../Wrappers/Wrappers";
 import Dot from "./components/Dot";
 
 const structure = [

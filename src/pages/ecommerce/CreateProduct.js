@@ -33,7 +33,7 @@ const CreateProduct = () => {
   const { id } = useParams();
   const context = useProductsState();
 
-  const getId = () => {
+  const getId = id => {
     return context.products.products.findIndex(c => {
       return c.id == id;
     });
@@ -44,7 +44,8 @@ const CreateProduct = () => {
   );
 
   const [newProduct, setNewProduct] = React.useState({
-    img: "http://localhost:8080/assets/products/img1.jpg",
+    img:
+      "https://flatlogic-node-backend.herokuapp.com/assets/products/img1.jpg",
     title: null,
     subtitle: null,
     price: 0.1,
@@ -115,12 +116,6 @@ const CreateProduct = () => {
     history.push("/app/ecommerce/management");
   };
 
-  const getImgSrc = () => {
-    return isCreateProduct
-      ? newProduct.img
-      : localProducts.img.replace(/.+com\//, "http://localhost:8080/");
-  };
-
   const changeImgSrc = e => {
     if (isCreateProduct) {
       setNewProduct({ ...localProducts, img: e.target.value });
@@ -128,6 +123,8 @@ const CreateProduct = () => {
       setLocalProducts({ ...localProducts, img: e.target.value });
     }
   };
+
+  console.log(localProducts, context.products.products, getId(id), newProduct);
 
   const isCreateProduct =
     window.location.hash === "#/app/ecommerce/management/create";
@@ -164,7 +161,9 @@ const CreateProduct = () => {
                   </Box>
                   <Box width={200}>
                     <Select
-                      value={getImgSrc()}
+                      value={
+                        isCreateProduct ? newProduct.img : localProducts.img
+                      }
                       fullWidth
                       onChange={e => changeImgSrc(e)}
                     >
