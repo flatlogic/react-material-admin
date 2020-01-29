@@ -128,6 +128,7 @@ export function receiveToken(token, dispatch) {
   delete user.id;
   localStorage.setItem("token", token);
   localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("theme", "default");
   axios.defaults.headers.common["Authorization"] = "Bearer " + token;
   dispatch({ type: "LOGIN_SUCCESS" });
 }
