@@ -50,7 +50,7 @@ export default function Widget({
     >
       <Paper
         className={classnames(classes.paper, {
-          [props.className]: props.className
+          [props.paperClass]: props.paperClass
         })}
         classes={{ root: classes.widgetRoot }}
       >
