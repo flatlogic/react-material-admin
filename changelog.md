@@ -12,4 +12,4 @@
 
 ## [1.0.0]
 
-Initial version of React Material Admin Full
+Initial version of the project
