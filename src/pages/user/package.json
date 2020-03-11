@@ -1,0 +1,6 @@
+{
+  "name": "user",
+  "version": "1.0.0",
+  "main": "UserList.js",
+  "license": "MIT"
+}
