@@ -378,12 +378,12 @@ function Layout(props) {
                     <Route path="/app/maps/google" component={MapsGoogle} />
                     <Route path="/app/maps/vector" component={VectorMaps} />
                     <Route path="/app/ui/icons" component={Icons} />
-                    <Route path={'/app/user'}>
-                        <Redirect to={'/app/user/list'} />
-                    </Route>
-                    <Route path={'/app/user/list'}>
-                        <UserList />
-                    </Route>
+                    <Route
+                        path={'/app/user'}
+                        exact
+                        render={() => <Redirect to={'/app/user/list'} />}
+                    />
+                    <Route path={'/app/user/list'} component={UserList} />
                 </Switch>
                 <Fab
                     color="primary"
