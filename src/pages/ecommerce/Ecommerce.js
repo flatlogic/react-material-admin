@@ -336,12 +336,6 @@ function EcommercePage({ history }) {
     event.stopPropagation();
   };
 
-  const getId = id => {
-    return backProducts.find(c => {
-      return c.id == id;
-    }).id;
-  };
-
   const openProductEdit = (event, id) => {
     history.push("/app/ecommerce/management/edit/" + id);
     event.stopPropagation();

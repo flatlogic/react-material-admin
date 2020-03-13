@@ -1,12 +1,10 @@
 import React from "react";
 import Themes from "../themes";
-import { useMediaQuery } from "@material-ui/core";
 
 const ThemeStateContext = React.createContext();
 const ThemeDispatchContext = React.createContext();
 
 function ThemeProvider({ children }) {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   var [theme, setTheme] = React.useState(
     Themes[localStorage.getItem("theme")] || Themes.default
   );

@@ -3,8 +3,7 @@ import { Grid, Box, LinearProgress } from "@material-ui/core";
 
 // components
 import Widget from "../../components/Widget";
-import Code from "../../components/Code";
-import { Typography, CircularProgress } from "../../components/Wrappers";
+import { CircularProgress } from "../../components/Wrappers";
 
 export default function ProgressComp() {
   const [completed, setCompleted] = React.useState(0);

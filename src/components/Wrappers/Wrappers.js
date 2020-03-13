@@ -109,7 +109,7 @@ function Typography({
   );
 }
 
-function Button({ children, color, className, ...props }) {
+function Button({ children, color, className, style, ...props }) {
   const useStyles = makeStyles(theme => ({
     root: {
       color: getColor(color, theme)
@@ -154,6 +154,7 @@ function Button({ children, color, className, ...props }) {
         },
         className
       )}
+      style={{...style}}
     >
       {children}
     </ButtonBase>

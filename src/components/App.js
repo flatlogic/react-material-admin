@@ -4,9 +4,7 @@ import {
   Route,
   Switch,
   Redirect,
-  useLocation
 } from "react-router-dom";
-import jwt from "jsonwebtoken";
 
 // components
 import Layout from "./Layout";
@@ -42,10 +40,6 @@ export default function App() {
   // #######################################################################
 
   function PrivateRoute({ component, ...rest }) {
-    const location = useLocation();
-    const token = localStorage.getItem("token");
-    const date = new Date().getTime() / 1000;
-    const data = jwt.decode(token);
     return (
       <Route
         {...rest}

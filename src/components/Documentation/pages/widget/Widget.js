@@ -14,35 +14,9 @@ const WidgetPage = () => {
         <Code row inline>
           Paper
         </Code>{" "}
-        component. But there are a couple of useful props. Such as:{" "}
+        component. But there are a couple of useful props: <Code inline>title, subtitle, noBodyPadding, bodyClass, disableWidgetMenu, header, inheritHeight, searchField</Code>
       </Typography>
-      <List>
-        <ListItem>
-          <ListItemText primary="title" />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="subtitle" />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="noBodyPadding" />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="bodyClass" />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="disableWidgetMenu" />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="header" />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="inheritHeight" />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="searchField" />
-        </ListItem>
-      </List>
-      <Typography variant={"body1"}>
+      <Typography variant={"body1"} style={{marginTop: 16}}>
         If{" "}
         <Code rowi inline>
           inheritHeight
@@ -65,7 +39,7 @@ const WidgetPage = () => {
         </Code>{" "}
         prop.
       </Typography>
-      <Typography variant={"body1"} style={{ marginTop: 16 }}>
+      <Typography variant={"body1"} style={{ marginTop: 16 }} >
         If you want to add{" "}
         <Code row inline>
           className

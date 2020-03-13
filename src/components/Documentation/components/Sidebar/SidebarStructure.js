@@ -55,10 +55,6 @@ const structure = [
         label: "Buttons",
         link: "/documentation/components/buttons"
       },
-      {
-        label: "Progress",
-        link: "/documentation/components/progress"
-      }
     ]
   },
   {

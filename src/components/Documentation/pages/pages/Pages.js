@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Box } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 
 //components

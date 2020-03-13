@@ -12,11 +12,14 @@ import {
   ArrowRightAlt as ArrowRight
 } from "@material-ui/icons";
 
+import useStyles from './styles'
+
 //components
 import Widget from "../../../Widget";
 import { Typography, Link } from "../../../Wrappers";
 
 const Overview = () => {
+  const styles = useStyles()
   return (
     <>
       <Grid container spacing={6}>
@@ -104,6 +107,7 @@ const Overview = () => {
                   href={"#/documentation/getting-started/licences"}
                   variant={"h6"}
                   color={"primary"}
+                  className={styles.link}
                 >
                   Licences <ArrowRight />
                 </Link>
@@ -116,6 +120,7 @@ const Overview = () => {
                   href={"#/documentation/getting-started/quick-start"}
                   variant={"h6"}
                   color={"primary"}
+                  className={styles.link}
                 >
                   How to start project <ArrowRight />
                 </Link>

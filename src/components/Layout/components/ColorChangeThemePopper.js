@@ -1,28 +1,19 @@
 import React from "react";
 
 import {
-  Fab,
-  IconButton,
   Popper,
   Divider,
   RadioGroup,
   Box,
   Radio,
-  Grid,
-  Breadcrumbs,
-  Tabs,
-  Tab,
   Switch as SwitchMode
 } from "@material-ui/core";
 
 import useStyles from "../styles";
 
 // components
-import Header from "../../Header";
-import Sidebar from "../../Sidebar";
-import Footer from "../../Footer";
 import Widget from "../../Widget";
-import { Link, Typography, Button } from "../../../components/Wrappers";
+import { Typography, Button } from "../../../components/Wrappers";
 import Themes from "../../../themes";
 import { useThemeDispatch } from "../../../context/ThemeContext";
 

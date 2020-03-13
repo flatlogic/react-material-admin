@@ -18,6 +18,9 @@ import Pages from "./pages/pages";
 import TypographyPage from "./pages/typography";
 import WidgetPage from "./pages/widget";
 import Libs from "./pages/libs";
+import HeaderPage from './pages/header'
+import SidebarPage from './pages/sidebar'
+import ButtonsPage from './pages/buttons'
 
 //components
 import Header from "./components/Header";
@@ -25,12 +28,12 @@ import Sidebar from "../../components/Sidebar";
 import structure from "./components/Sidebar/SidebarStructure";
 import Widget from "../Widget";
 
-import { Button, Typography } from "../Wrappers";
+import { Typography } from "../Wrappers";
 import classnames from "classnames";
 
 //context
 import { useLayoutState } from "../../context/LayoutContext";
-import { Box, Breadcrumbs, Grid, IconButton } from "@material-ui/core";
+import { Box, Breadcrumbs, Grid } from "@material-ui/core";
 
 import { NavigateNext as NavigateNextIcon } from "@material-ui/icons";
 
@@ -111,6 +114,15 @@ const Documentation = props => {
           </Route>
           <Route path={`${path}/components/widget`}>
             <WidgetPage />
+          </Route>
+          <Route path={`${path}/components/header`}>
+            <HeaderPage/>
+          </Route>
+          <Route path={`${path}/components/sidebar`}>
+            <SidebarPage/>
+          </Route>
+          <Route path={`${path}/components/buttons`}>
+            <ButtonsPage/>
           </Route>
           <Route path={`${path}/libs`}>
             <Libs />

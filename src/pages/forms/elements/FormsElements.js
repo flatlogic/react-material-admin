@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Grid,
-  Box,
   FormHelperText,
   InputAdornment,
   Divider,
@@ -13,7 +12,6 @@ import useStyles from "./styles";
 import cn from "classnames";
 import Checkbox from "@material-ui/core/Checkbox";
 import Radio from "@material-ui/core/Radio";
-import FormGroup from "@material-ui/core/FormGroup";
 import Input from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Favorite from "@material-ui/icons/Favorite";

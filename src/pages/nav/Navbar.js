@@ -3,7 +3,6 @@ import {
   Grid,
   Box,
   Menu,
-  Paper,
   InputBase,
   MenuItem,
   Toolbar,
@@ -16,7 +15,6 @@ import { Search as SearchIcon } from "@material-ui/icons";
 
 // components
 import Widget from "../../components/Widget";
-import Code from "../../components/Code";
 import { Typography, AppBar } from "../../components/Wrappers";
 
 import classNames from "classnames";
