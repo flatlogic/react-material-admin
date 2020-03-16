@@ -26,7 +26,7 @@ export default function BigStat(props) {
         .fill()
         .map(() => ({ value: Math.floor(Math.random() * 10) + 1 }));
     },
-    [value]
+    [value] // eslint-disable-line
   );
 
   return (

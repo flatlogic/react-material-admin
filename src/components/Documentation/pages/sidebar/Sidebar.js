@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 //components
 import Widget from "../../../Widget";
-import { Typography, Button } from "../../../Wrappers";
+import { Typography } from "../../../Wrappers";
 import Code from "../../../Code";
 
 const Pages = props => {

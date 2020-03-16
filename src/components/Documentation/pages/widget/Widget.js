@@ -4,7 +4,6 @@ import React from "react";
 import Widget from "../../../Widget";
 import { Typography } from "../../../Wrappers";
 import Code from "../../../Code";
-import { List, ListItem, ListItemText } from "@material-ui/core";
 
 const WidgetPage = () => {
   return (

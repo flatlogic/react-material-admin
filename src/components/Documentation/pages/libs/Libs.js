@@ -3,8 +3,7 @@ import React from "react";
 //components
 import Widget from "../../../Widget";
 import { Typography } from "../../../Wrappers";
-import {List, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
-import {Done as DoneIcon} from "@material-ui/icons";
+import {List, ListItem, ListItemText} from "@material-ui/core";
 
 const Libs = () => {
   return (

@@ -51,7 +51,7 @@ function Login(props) {
     if (token) {
       receiveToken(token, userDispatch);
     }
-  }, []);
+  }, []); // eslint-disable-line
 
   // local
   var [isLoading, setIsLoading] = useState(false);

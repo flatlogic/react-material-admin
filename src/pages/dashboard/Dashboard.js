@@ -423,7 +423,7 @@ function Dashboard() {
     }
 
     return resultArray;
-  }, [mainChartState]);
+  }, [mainChartState]); // eslint-disable-line
 
   return (
     <Grid container spacing={3}>

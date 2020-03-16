@@ -59,7 +59,7 @@ const Documentation = props => {
             justify="space-between"
             alignItems="center"
           >
-            {structure.map(c => {
+            {structure.map(c => { // eslint-disable-line
               if (
                 !c.children &&
                 window.location.hash.includes(c.link) &&
@@ -73,7 +73,7 @@ const Documentation = props => {
                   </Box>
                 );
               } else if (c.children) {
-                return c.children.map(currentInner => {
+                return c.children.map(currentInner => { // eslint-disable-line
                   if (window.location.hash.includes(currentInner.link)) {
                     return (
                       <Breadcrumbs

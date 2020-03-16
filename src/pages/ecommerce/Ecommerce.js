@@ -233,7 +233,7 @@ function EcommercePage({ history }) {
   useEffect(() => {
     sendNotification();
     getProductsRequest(context.setProducts);
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     setBackProducts(context.products.products);

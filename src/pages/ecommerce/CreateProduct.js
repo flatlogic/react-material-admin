@@ -34,7 +34,7 @@ const CreateProduct = () => {
 
   const getId = id => {
     return context.products.products.findIndex(c => {
-      return c.id == id;
+      return c.id == id; // eslint-disable-line
     });
   };
 
@@ -83,11 +83,11 @@ const CreateProduct = () => {
   useEffect(() => {
     getProductsRequest(context.setProducts);
     getProductsImages(context.setProducts);
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     setLocalProducts(context.products.products[getId(id)]);
-  }, [context]);
+  }, [context]); // eslint-disable-line
 
   const history = useHistory();
 
@@ -168,7 +168,7 @@ const CreateProduct = () => {
                     >
                       {context.products.images.map((c, i) => (
                         <MenuItem value={c} key={c}>
-                          <img src={c} style={{ height: 100, width: 200 }} />
+                          <img src={c} style={{ height: 100, width: 200 }} alt={"ecommerce product"}/>
                         </MenuItem>
                       ))}
                     </Select>
