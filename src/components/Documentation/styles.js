@@ -24,5 +24,9 @@ export default makeStyles(theme => ({
   },
   margin: {
     marginBottom: 24
+  },
+  tabPanel: {
+    backgroundColor: '#f5f5f5',
+    padding: theme.spacing(2),
   }
 }));
