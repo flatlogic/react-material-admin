@@ -1,39 +1,110 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
-import { withRouter } from 'react-router-dom'
+import { AppBar, Tabs, Tab, Box, Toolbar, IconButton } from '@material-ui/core'
+
+import { ArrowRightAlt as ArrowRight, Menu as MenuIcon } from '@material-ui/icons'
+
+import useStyles from '../../styles'
+import useStyles2 from '../overview/styles'
 
 //components
 import Widget from '../../../Widget'
-import { Typography } from '../../../Wrappers'
+import Header from '../../../Header'
+import { Typography, Link, Button } from '../../../Wrappers'
 import Code from '../../../Code'
 
-const Pages = props => {
+const WidgetPage = () => {
+    const classes = useStyles()
+    const classes2 = useStyles2()
+    const [value, setValue] = React.useState(0)
+    const [weightValue, setWeightValue] = React.useState(0)
+    const [colorValue, setColorValue] = React.useState(0)
+    const [value4, setValue4] = React.useState(0)
+    const [value5, setValue5] = React.useState(0)
+    const handleChange = (event, newValue) => {
+        setValue(newValue)
+    }
+    const handleChangeWeight = (event, newValue) => {
+        setWeightValue(newValue)
+    }
+    const handleChangeColor = (event, newValue) => {
+        setColorValue(newValue)
+    }
+    const handleChangeValue4 = (event, newValue) => {
+        setValue4(newValue)
+    }
+    const handleChangeValue5 = (event, newValue) => {
+        setValue5(newValue)
+    }
+    const TabPanel = ({
+                          children,
+                          index,
+                          className = classes.tabPanel,
+                          value,
+                      }) => {
+        if (index === value) {
+            return <section className={className}>{children}</section>
+        }
+        return null
+    }
     return (
-        <>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <Widget disableWidgetMenu>
-                        <Typography variant={'h6'}>Header</Typography>
-                        <Typography style={{ marginBottom: 16 }}>
-                            Header is the wrapper of native Material UI <Code inline>AppBar</Code> component. That contains <Code inline>Menu List, Search, Notifications dropdown</Code>. It's also responsive.
+        <Widget title={'Header'} inheritHeight disableWidgetMenu>
+            <Typography variant={'body2'}>
+                Header element on your page.
+            </Typography>
+            <Code>{`import { AppBar, Toolbar, IconButton } from '@material-ui/core'`}</Code>
+            <AppBar position="static">
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="typography size"
+                >
+                    <Tab label="Example" />
+                    <Tab label="Code" />
+                </Tabs>
+            </AppBar>
+            <TabPanel index={0} value={value}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" className={classes.title}>
+                            News
                         </Typography>
-                        <Typography style={{marginBottom: 16}}>
-                            You can easly try it:
-                        </Typography>
-                        <Code inline row>
-                            {`<Header history="props.history">`}
-                        </Code>
-                        <Typography style={{marginTop: 16}}>
-                            <Code inline>
-                                history
-                            </Code>
-                            prop contains <Code inline>withRouter</Code> wrapper <Code inline>history</Code> prop, that shows the history of your website visiting.
-                        </Typography>
-                    </Widget>
-                </Grid>
-            </Grid>
-        </>
-    )
-}
+                        <Button color="inherit" style={{marginLeft: 'auto'}}>Login</Button>
+                    </Toolbar>
+                </AppBar>
+            </TabPanel>
+            <TabPanel index={1} value={value}>
+                <Code>{`
+    <AppBar position="static">
+    <Toolbar>
+        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+        </IconButton>
+         <Typography variant="h6" className={classes.title}>
+             News
+         </Typography>
+        <Button color="inherit" style={{marginLeft: 'auto'}}>Login</Button>
+    </Toolbar>
+    </AppBar>
+                `}</Code>
+            </TabPanel>
+            <Box mt={1}>
+                <Link
+                    href={
+                        'https://material-ui.com/api/app-bar/'
+                    }
+                    color={'primary'}
+                    className={classes2.link}
+                    variant={'h6'}
+                    target={""}
+                >
+                    Other props <ArrowRight />
+                </Link>
+            </Box>
+        </Widget>
+    );
+};
 
-export default withRouter(Pages)
+export default WidgetPage;
