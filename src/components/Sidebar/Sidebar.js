@@ -66,19 +66,19 @@ const structure = [
     id: 12,
     label: "My recent",
     link: "",
-    icon: <Dot size="large" color="warning" />,
+    icon: <Dot size="small" color="warning" />,
   },
   {
     id: 13,
     label: "Starred",
     link: "",
-    icon: <Dot size="large" color="primary" />,
+    icon: <Dot size="small" color="primary" />,
   },
   {
     id: 14,
     label: "Background",
     link: "",
-    icon: <Dot size="large" color="secondary" />,
+    icon: <Dot size="small" color="secondary" />,
   },
 ];
 

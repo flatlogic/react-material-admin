@@ -5,15 +5,19 @@ import classnames from "classnames";
 // styles
 var useStyles = makeStyles(theme => ({
   dotBase: {
-    width: 5,
-    height: 5,
+    width: 8,
+    height: 8,
     backgroundColor: theme.palette.text.hint,
     borderRadius: "50%",
     transition: theme.transitions.create("background-color"),
   },
+  dotSmall: {
+    width: 5,
+    height: 5
+  },
   dotLarge: {
-    width: 8,
-    height: 8,
+    width: 11,
+    height: 11,
   },
 }));
 

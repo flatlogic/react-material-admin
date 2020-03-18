@@ -163,7 +163,7 @@ function Login(props) {
                 onChange={e => setNameValue(e.target.value)}
                 margin="normal"
                 placeholder="Full Name"
-                type="email"
+                type="text"
                 fullWidth
               />
               <TextField
