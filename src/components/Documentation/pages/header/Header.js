@@ -8,7 +8,6 @@ import useStyles2 from '../overview/styles'
 
 //components
 import Widget from '../../../Widget'
-import Header from '../../../Header'
 import { Typography, Link, Button } from '../../../Wrappers'
 import Code from '../../../Code'
 
@@ -16,25 +15,11 @@ const WidgetPage = () => {
     const classes = useStyles()
     const classes2 = useStyles2()
     const [value, setValue] = React.useState(0)
-    const [weightValue, setWeightValue] = React.useState(0)
-    const [colorValue, setColorValue] = React.useState(0)
-    const [value4, setValue4] = React.useState(0)
-    const [value5, setValue5] = React.useState(0)
+
     const handleChange = (event, newValue) => {
         setValue(newValue)
     }
-    const handleChangeWeight = (event, newValue) => {
-        setWeightValue(newValue)
-    }
-    const handleChangeColor = (event, newValue) => {
-        setColorValue(newValue)
-    }
-    const handleChangeValue4 = (event, newValue) => {
-        setValue4(newValue)
-    }
-    const handleChangeValue5 = (event, newValue) => {
-        setValue5(newValue)
-    }
+
     const TabPanel = ({
                           children,
                           index,

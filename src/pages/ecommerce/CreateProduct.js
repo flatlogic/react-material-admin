@@ -123,7 +123,6 @@ const CreateProduct = () => {
     }
   };
 
-  console.log(localProducts, context.products.products, getId(id), newProduct);
 
   const isCreateProduct =
     window.location.hash === "#/app/ecommerce/management/create";

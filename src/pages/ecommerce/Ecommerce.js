@@ -270,8 +270,6 @@ function EcommercePage({ history }) {
     setSelected([]);
   };
 
-  console.log(context.products.products, "--");
-
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
