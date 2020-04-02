@@ -16,6 +16,7 @@ import {
     Add as AddSectionIcon,
     FolderOpen as FolderIcon,
     Description as DocumentationIcon,
+    Person as PersonIcon
 } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 
@@ -45,6 +46,26 @@ const structure = [
             },
         ],
     },
+    // {
+    //     id: 1,
+    //     label: 'User',
+    //     link: '/app/user',
+    //     icon: <PersonIcon />,
+    //     children: [
+    //         {
+    //             label: 'User List',
+    //             link: '/app/user/list',
+    //         },
+    //         {
+    //             label: 'User Add',
+    //             link: '/app/user/add',
+    //         },
+    //         {
+    //             label: 'User Edit',
+    //             link: '/app/user/edit',
+    //         },
+    //     ],
+    // },
     {
         id: 2,
         label: 'Documentation',

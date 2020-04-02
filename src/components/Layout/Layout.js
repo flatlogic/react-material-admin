@@ -72,6 +72,9 @@ import Gallery from '../../pages/gallery'
 import Invoice from '../../pages/invoice'
 import CreateProduct from '../../pages/ecommerce/CreateProduct'
 import Calendar from '../../pages/calendar'
+import UserList from '../../pages/user'
+import UserAdd from '../../pages/user/AddUser'
+import UserEdit from '../../pages/user/EditUser'
 
 // context
 import { useLayoutState } from '../../context/LayoutContext'
@@ -376,7 +379,14 @@ function Layout(props) {
                     <Route path="/app/core/colors" component={Colors} />
                     <Route path="/app/maps/google" component={MapsGoogle} />
                     <Route path="/app/maps/vector" component={VectorMaps} />
-                    <Route path="/app/ui/icons" component={Icons} />
+                    <Route
+                        exact
+                        path="/app/user"
+                        render={() => <Redirect to="/app/user/list" />}
+                    />
+                    <Route path="/app/user/list" component={UserList} />
+                    <Route path="/app/user/add" component={UserAdd} />
+                    <Route path="/app/user/edit" component={UserEdit} />
                 </Switch>
                 <Fab
                     color="primary"

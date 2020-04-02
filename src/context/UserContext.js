@@ -11,9 +11,9 @@ var UserDispatchContext = React.createContext();
 function userReducer(state, action) {
   switch (action.type) {
     case "LOGIN_SUCCESS":
-      return { ...state, isAuthenticated: true };
+      return { ...state };
     case "SIGN_OUT_SUCCESS":
-      return { ...state, isAuthenticated: false };
+      return { ...state };
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -22,7 +22,17 @@ function userReducer(state, action) {
 
 function UserProvider({ children }) {
   var [state, dispatch] = React.useReducer(userReducer, {
-    isAuthenticated: !!localStorage.getItem("token")
+    isAuthenticated: () => {
+      const token = localStorage.getItem("token")
+      if (config.isBackend && token) {
+        const date = new Date().getTime() / 1000;
+        const data = jwt.decode(token);
+        return date < data.exp;
+      } else if (token) {
+        return true
+      }
+      return false;
+    }
   });
 
   return (
