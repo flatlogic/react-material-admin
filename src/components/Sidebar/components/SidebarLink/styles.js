@@ -75,7 +75,7 @@ export default makeStyles(theme => ({
     color: theme.palette.text.secondary + "99",
     transition: theme.transitions.create("transform"),
     display: props => (props ? "inline-flex" : "none"),
-    flex: "1 1 auto"
+    marginLeft: 'auto'
   },
   nestedMenu: {
     paddingLeft: 0

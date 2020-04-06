@@ -29,6 +29,7 @@ const structure = [
         id: 1,
         label: 'E-commerce',
         badge: 'NodeJS',
+        badgeColor: 'success',
         link: '/app/ecommerce',
         icon: <ShoppingCartIcon />,
         children: [
@@ -46,36 +47,38 @@ const structure = [
             },
         ],
     },
-    // {
-    //     id: 1,
-    //     label: 'User',
-    //     link: '/app/user',
-    //     icon: <PersonIcon />,
-    //     children: [
-    //         {
-    //             label: 'User List',
-    //             link: '/app/user/list',
-    //         },
-    //         {
-    //             label: 'User Add',
-    //             link: '/app/user/add',
-    //         },
-    //         {
-    //             label: 'User Edit',
-    //             link: '/app/user/edit',
-    //         },
-    //     ],
-    // },
     {
         id: 2,
+        label: 'User',
+        link: '/app/user',
+        badge: 'New',
+        badgeColor: 'secondary',
+        icon: <PersonIcon />,
+        children: [
+            {
+                label: 'User List',
+                link: '/app/user/list',
+            },
+            {
+                label: 'User Add',
+                link: '/app/user/add',
+            },
+            {
+                label: 'User Edit',
+                link: '/app/user/edit',
+            },
+        ],
+    },
+    {
+        id: 3,
         label: 'Documentation',
         link: '/documentation',
         icon: <DocumentationIcon />,
     },
-    { id: 3, type: 'divider' },
-    { id: 4, type: 'title', label: 'TEMPLATE' },
+    { id: 4, type: 'divider' },
+    { id: 5, type: 'title', label: 'TEMPLATE' },
     {
-        id: 5,
+        id: 6,
         label: 'Core',
         link: '/app/core',
         icon: <CoreIcon />,
@@ -95,7 +98,7 @@ const structure = [
         ],
     },
     {
-        id: 6,
+        id: 7,
         label: 'Tables',
         link: '/app/tables',
         icon: <TableIcon />,
@@ -108,7 +111,7 @@ const structure = [
         ],
     },
     {
-        id: 7,
+        id: 8,
         label: 'UI Elements',
         link: '/app/ui',
         icon: <UIElementsIcon />,
@@ -131,7 +134,7 @@ const structure = [
         ],
     },
     {
-        id: 8,
+        id: 9,
         label: 'Forms',
         link: '/app/forms',
         icon: <DescriptionIcon />,
@@ -141,7 +144,7 @@ const structure = [
         ],
     },
     {
-        id: 9,
+        id: 10,
         label: 'Charts',
         link: '/app/charts',
         icon: <ChartIcon />,
@@ -153,7 +156,7 @@ const structure = [
         ],
     },
     {
-        id: 10,
+        id: 11,
         label: 'Maps',
         link: '/app/maps',
         icon: <MapIcon />,
@@ -163,7 +166,7 @@ const structure = [
         ],
     },
     {
-        id: 11,
+        id: 12,
         label: 'Extra',
         link: '/app/extra',
         icon: <ExtraIcon />,
@@ -189,7 +192,7 @@ const structure = [
         ],
     },
     {
-        id: 12,
+        id: 13,
         label: 'Menu Levels',
         icon: <FolderIcon />,
         children: [
@@ -211,34 +214,34 @@ const structure = [
             },
         ],
     },
-    { id: 13, type: 'divider' },
-    { id: 14, type: 'title', label: 'HELP' },
-    { id: 15, label: 'Library', link: '', icon: <LibraryIcon /> },
-    { id: 16, label: 'Support', link: '', icon: <SupportIcon /> },
-    { id: 17, label: 'FAQ', link: '', icon: <FAQIcon /> },
-    { id: 18, type: 'divider' },
-    { id: 19, type: 'title', label: 'PROJECTS' },
+    { id: 14, type: 'divider' },
+    { id: 15, type: 'title', label: 'HELP' },
+    { id: 16, label: 'Library', link: '', icon: <LibraryIcon /> },
+    { id: 17, label: 'Support', link: '', icon: <SupportIcon /> },
+    { id: 18, label: 'FAQ', link: '', icon: <FAQIcon /> },
+    { id: 19, type: 'divider' },
+    { id: 20, type: 'title', label: 'PROJECTS' },
     {
-        id: 20,
+        id: 21,
         label: 'My recent',
         link: '',
         icon: <Dot size="medium" color="secondary" />,
     },
     {
-        id: 21,
+        id: 22,
         label: 'Starred',
         link: '',
         icon: <Dot size="medium" color="primary" />,
     },
     {
-        id: 22,
+        id: 23,
         label: 'Background',
         link: '',
         icon: <Dot size="medium" color="secondary" />,
     },
-    { id: 23, type: 'divider' },
+    { id: 24, type: 'divider' },
     {
-        id: 24,
+        id: 25,
         label: 'Add section',
         icon: <AddSection />,
         click: function(event, ...rest) {
@@ -251,11 +254,11 @@ const structure = [
             })
         },
     },
-    { id: 25, type: 'divider' },
-    { id: 26, type: 'margin' },
-    { id: 27, type: 'divider' },
+    { id: 26, type: 'divider' },
+    { id: 27, type: 'margin' },
+    { id: 28, type: 'divider' },
     {
-        id: 28,
+        id: 29,
         label: 'Chat',
         icon: <Chat />,
         click: function(event, ...rest) {

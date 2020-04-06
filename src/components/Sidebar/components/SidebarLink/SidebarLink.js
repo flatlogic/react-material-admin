@@ -206,7 +206,7 @@ export default function SidebarLink({
           >
             {icon ? icon : <InboxIcon />}
           </ListItemIcon>
-          <Badge badgeContent={props.badge} color="success">
+          <Badge badgeContent={props.badge} color={props.badgeColor}>
             <ListItemText
               classes={{
                 primary: classnames(classes.linkText, {

@@ -397,14 +397,26 @@ function EcommercePage({ history }) {
               </Box>
             }
           >
-            <Button
-              variant={"contained"}
-              component={RouterLink}
-              to={"/app/ecommerce/management/create"}
-              color={"success"}
-            >
-              Create Product
-            </Button>
+            { config.isBackend ? (
+              <Button
+                  variant={"contained"}
+                  component={RouterLink}
+                  to={"/app/ecommerce/management/create"}
+                  color={"success"}
+              >
+                Create Product
+              </Button>
+            ) : (
+                <Button
+                    variant={"contained"}
+                    component={RouterLink}
+                    to={"#"}
+                    color={"success"}
+                >
+                  Create Product
+                </Button>
+            )
+            }
             <EnhancedTableToolbar
               numSelected={selected.length}
               selected={selected}
@@ -533,15 +545,28 @@ function EcommercePage({ history }) {
                               {/*</TableCell>*/}
                               <TableCell>
                                 <Box display={"flex"} alignItems={"center"}>
-                                  <Button
-                                    color="success"
-                                    size="small"
-                                    style={{ marginRight: 8 }}
-                                    variant="contained"
-                                    onClick={e => openProductEdit(e, row.id)}
-                                  >
-                                    Edit
-                                  </Button>
+                                  { config.isBackend ? (
+                                    <Button
+                                        color="success"
+                                        size="small"
+                                        style={{marginRight: 8}}
+                                        variant="contained"
+                                        onClick={e => openProductEdit(e, row.id)}
+                                    >
+                                      Edit
+                                    </Button>
+                                  ) : (
+                                      <Button
+                                          color="success"
+                                          size="small"
+                                          style={{marginRight: 8}}
+                                          variant="contained"
+                                          onClick={(e) => e.stopPropagation()}
+                                      >
+                                        Edit
+                                      </Button>
+                                  )
+                                  }
                                   <Button
                                     color="secondary"
                                     size="small"

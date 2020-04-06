@@ -11,6 +11,8 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
+import useStyles from './styles'
+
 import photo from '../../images/profile.jpg'
 
 import { Button, Typography } from '../../components/Wrappers'
@@ -39,6 +41,7 @@ const AddUser = () => {
     const [activeStep, setActiveStep] = React.useState(0)
     const [skipped, setSkipped] = React.useState(new Set())
     const steps = getSteps()
+    const classes = useStyles()
 
     const isStepOptional = step => {
         return step === 1
@@ -63,24 +66,6 @@ const AddUser = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1)
     }
 
-    const handleSkip = () => {
-        if (!isStepOptional(activeStep)) {
-            // You probably want to guard against something like this,
-            // it should never occur unless someone's actively trying to break something.
-            throw new Error("You can't skip a step that isn't optional.")
-        }
-
-        setActiveStep(prevActiveStep => prevActiveStep + 1)
-        setSkipped(prevSkipped => {
-            const newSkipped = new Set(prevSkipped.values())
-            newSkipped.add(activeStep)
-            return newSkipped
-        })
-    }
-
-    const handleReset = () => {
-        setActiveStep(0)
-    }
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -94,7 +79,7 @@ const AddUser = () => {
                             }
                             return (
                                 <Step key={label} {...stepProps}>
-                                    <StepLabel {...labelProps}>
+                                    <StepLabel {...labelProps} classes={{completed: classes.stepCompleted}}>
                                         {label}
                                     </StepLabel>
                                 </Step>
@@ -326,23 +311,25 @@ const AddUser = () => {
                                         label="Company Registered ID"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
-                                        helperText={'Enter your company registered ID'}
+                                        helperText={
+                                            'Enter your company registered ID'
+                                        }
                                     />
                                     <TextField
                                         id="outlined-basic"
                                         label="Cmpany Email"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
-                                        helperText={
-                                            'Enter your company email'
-                                        }
+                                        helperText={'Enter your company email'}
                                     />
                                     <TextField
                                         id="outlined-basic"
                                         label="Company Contact"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
-                                        helperText={'Enter your company cpntact'}
+                                        helperText={
+                                            'Enter your company cpntact'
+                                        }
                                     />
                                 </>
                             ) : (
@@ -366,9 +353,7 @@ const AddUser = () => {
                                         label="Instagram"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
-                                        helperText={
-                                            'Enter your Instagram link'
-                                        }
+                                        helperText={'Enter your Instagram link'}
                                     />
                                     <TextField
                                         id="outlined-basic"

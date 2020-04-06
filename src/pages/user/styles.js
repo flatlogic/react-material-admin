@@ -8,4 +8,7 @@ export default makeStyles(theme => ({
             marginRight: 5,
         },
     },
+    stepCompleted: {
+        color: 'green'
+    }
 }))

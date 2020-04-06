@@ -15,27 +15,26 @@ import TableHead from '@material-ui/core/TableHead'
 import TablePagination from '@material-ui/core/TablePagination'
 import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
-import Toolbar from '@material-ui/core/Toolbar'
 import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
-import Tooltip from '@material-ui/core/Tooltip'
-import Avatar from '@material-ui/core/Avatar'
-import DeleteIcon from '@material-ui/icons/Delete'
-import FilterListIcon from '@material-ui/icons/FilterList'
-import { lighten, makeStyles } from '@material-ui/core/styles'
+import DeleteIcon from '@material-ui/icons/DeleteOutlined'
 
-import profile from '../../images/profile.jpg'
+// users images
+import user1 from '../../images/users/1.png'
+import user2 from '../../images/users/2.png'
+import user4 from '../../images/users/4.png'
+import user6 from '../../images/users/6.png'
+import user8 from '../../images/users/8.png'
+import user10 from '../../images/users/10.png'
 
-import { Typography } from '../../components/Wrappers'
-import Chip from '@material-ui/core/Chip'
+import { Typography, Chip, Avatar } from '../../components/Wrappers'
 
 // Icons
 import {
     Add as AddIcon,
     GetApp as DownloadIcon,
-    FilterList as FilterIcon,
     Search as SearchIcon,
-    Create as CreateIcon,
+    CreateOutlined as CreateIcon,
     HelpOutline as HelpIcon,
 } from '@material-ui/icons'
 
@@ -46,22 +45,28 @@ function createData(
     companyName,
     email,
     status,
+    statusColor,
     created,
-    actions
+    avatar,
+    type,
+    avatarColor
 ) {
-    return { id, name, role, companyName, email, status, created, actions }
+    return {
+        id,
+        name,
+        role,
+        companyName,
+        email,
+        status,
+        statusColor,
+        created,
+        avatar,
+        type,
+        avatarColor
+    }
 }
 
 const rows = [
-    createData(
-        0,
-        'Ivan Grud',
-        'Admin',
-        'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
-        'Active',
-        '09-02-2020'
-    ),
     createData(
         1,
         'Ivan Grud',
@@ -69,79 +74,122 @@ const rows = [
         'Flatlogic',
         'Ivan_flatlogic@gmail.com',
         'Active',
-        '09-02-2020'
+        'success',
+        '09-02-2020',
+        user1,
+        'image'
     ),
     createData(
         2,
-        'Ivan Grud',
+        'Anna Garsia',
         'Admin',
         'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
-        'Active',
-        '09-02-2020'
+        'Anna_flatlogic@gmail.com',
+        'Unactive',
+        'secondary',
+        '09-02-2020',
+        user2,
+        'image'
     ),
     createData(
         3,
-        'Ivan Grud',
-        'Admin',
+        'Kate Claus',
+        'Superadmin',
         'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
+        'Kate_flatlogic@gmail.com',
         'Active',
-        '09-02-2020'
+        'success',
+        '09-02-2020',
+        'KC',
+        'text',
+        'warning'
     ),
     createData(
         4,
-        'Ivan Grud',
-        'Admin',
+        'Nick Peru',
+        'Superadmin',
         'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
-        'Active',
-        '09-02-2020'
+        'Nick_flatlogic@gmail.com',
+        'Unactive',
+        'secondary',
+        '09-02-2020',
+        user4,
+        'image'
     ),
     createData(
         5,
-        'Ivan Grud',
-        'Admin',
+        'Lian Robinson',
+        'User',
         'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
+        'Lian_flatlogic@gmail.com',
         'Active',
-        '09-02-2020'
+        'success',
+        '09-02-2020',
+        'LR',
+        'text',
+        'primary'
     ),
     createData(
         6,
-        'Ivan Grud',
-        'Admin',
+        'Sam Fisher',
+        'User',
         'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
+        'Sam_flatlogic@gmail.com',
         'Active',
-        '09-02-2020'
+        'success',
+        '09-02-2020',
+        user6,
+        'image'
     ),
     createData(
         7,
-        'Ivan Grud',
-        'Admin',
+        'Kate Claus',
+        'Superadmin',
         'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
+        'Kate_flatlogic@gmail.com',
         'Active',
-        '09-02-2020'
+        'success',
+        '09-02-2020',
+        'KC',
+        'text',
+        'secondary'
     ),
     createData(
         8,
-        'Ivan Grud',
-        'Admin',
+        'Nina Peru',
+        'Superadmin',
         'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
-        'Active',
-        '09-02-2020'
+        'Nina_flatlogic@gmail.com',
+        'Unactive',
+        'secondary',
+        '09-02-2020',
+        user8,
+        'image'
     ),
     createData(
         9,
-        'Ivan Grud',
-        'Admin',
+        'Lian Torson',
+        'User',
         'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
+        'Torson_flatlogic@gmail.com',
         'Active',
-        '09-02-2020'
+        'success',
+        '09-02-2020',
+        'LT',
+        'text',
+        'primary'
+    ),
+    createData(
+        9,
+        'Samanta Fisher',
+        'User',
+        'Flatlogic',
+        'Samanta_flatlogic@gmail.com',
+        'Active',
+        'success',
+        '09-02-2020',
+        user10,
+        'image'
     ),
 ]
 
@@ -246,76 +294,6 @@ function EnhancedTableHead(props) {
     )
 }
 
-const useToolbarStyles = makeStyles(theme => ({
-    root: {
-        paddingLeft: theme.spacing(2),
-        paddingleft: theme.spacing(1),
-    },
-    highlight:
-        theme.palette.type === 'light'
-            ? {
-                  color: theme.palette.secondary.main,
-                  backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-              }
-            : {
-                  color: theme.palette.text.primary,
-                  backgroundColor: theme.palette.secondary.dark,
-              },
-    title: {
-        flex: '1 1 100%',
-    },
-}))
-
-const EnhancedTableToolbar = props => {
-    const classes = useToolbarStyles()
-    const { numSelected } = props
-
-    return (
-        <Toolbar>
-            <Typography color="inherit" variant="subtitle1">
-                {numSelected} selected
-            </Typography>
-
-            {numSelected > 0 ? (
-                <Tooltip title="Delete">
-                    <IconButton aria-label="delete">
-                        <DeleteIcon />
-                    </IconButton>
-                </Tooltip>
-            ) : (
-                <Tooltip title="Filter list">
-                    <IconButton aria-label="filter list">
-                        <FilterListIcon />
-                    </IconButton>
-                </Tooltip>
-            )}
-        </Toolbar>
-    )
-}
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: '100%',
-    },
-    paper: {
-        width: '100%',
-        marginBottom: theme.spacing(2),
-    },
-    table: {
-        minWidth: 750,
-    },
-    visuallyHidden: {
-        border: 0,
-        clip: 'rect(0 0 0 0)',
-        height: 1,
-        margin: -1,
-        overflow: 'hidden',
-        padding: 0,
-        position: 'absolute',
-        top: 20,
-        width: 1,
-    },
-}))
 
 const UserList = () => {
     const [order, setOrder] = React.useState('asc')
@@ -324,6 +302,7 @@ const UserList = () => {
     const [page, setPage] = React.useState(0)
     const [dense, setDense] = React.useState(false)
     const [rowsPerPage, setRowsPerPage] = React.useState(5)
+    const [usersRows, setUsersRows] = React.useState(rows)
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc'
@@ -378,6 +357,13 @@ const UserList = () => {
     const emptyRows =
         rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
 
+    const handleSearch = e => {
+        const newArr = rows.filter(c => {
+            return c.name.toLowerCase().includes(e.currentTarget.value.toLowerCase())
+        })
+        setUsersRows(newArr)
+    }
+
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -393,14 +379,6 @@ const UserList = () => {
                                     <AddIcon />
                                 </Box>
                                 Add
-                            </Button>
-                            <Button
-                                variant={'outlined'}
-                                color={'primary'}
-                                style={{ marginLeft: 16 }}
-                            >
-                                <FilterIcon />
-                                Filters
                             </Button>
                         </Box>
                         <Box
@@ -419,6 +397,7 @@ const UserList = () => {
                                 label="Search"
                                 margin="dense"
                                 variant="outlined"
+                                onChange={(e ) => handleSearch(e)}
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -448,17 +427,16 @@ const UserList = () => {
                                 rowCount={rows.length}
                             />
                             <TableBody>
-                                {stableSort(rows, getComparator(order, orderBy))
+                                {stableSort(usersRows, getComparator(order, orderBy))
                                     .slice(
                                         page * rowsPerPage,
                                         page * rowsPerPage + rowsPerPage
                                     )
                                     .map((row, index) => {
                                         const isItemSelected = isSelected(
-                                            row.id
+                                            row.name
                                         )
                                         const labelId = `enhanced-table-checkbox-${index}`
-
                                         return (
                                             <TableRow
                                                 hover
@@ -496,13 +474,25 @@ const UserList = () => {
                                                         display={'flex'}
                                                         alignItems={'center'}
                                                     >
-                                                        <Avatar
-                                                            alt={'name'}
-                                                            src={profile}
-                                                            style={{
-                                                                marginRight: 15,
-                                                            }}
-                                                        />
+                                                        {row.type == 'text' ? (
+                                                            <Avatar
+                                                                alt={row.name}
+                                                                style={{
+                                                                    marginRight: 15,
+                                                                }}
+                                                                color={row.avatarColor}
+                                                            >
+                                                                {row.avatar}
+                                                            </Avatar>
+                                                        ) : (
+                                                            <Avatar
+                                                                alt={row.name}
+                                                                src={row.avatar}
+                                                                style={{
+                                                                    marginRight: 15,
+                                                                }}
+                                                            />
+                                                        )}
                                                         <Typography
                                                             variant={'body2'}
                                                             noWrap
@@ -537,7 +527,9 @@ const UserList = () => {
                                                         variant={'body2'}
                                                     >
                                                         <Chip
-                                                            color={'secondary'}
+                                                            color={
+                                                                row.statusColor
+                                                            }
                                                             label={row.status}
                                                             style={{
                                                                 color: '#fff',
@@ -557,7 +549,7 @@ const UserList = () => {
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
-                                                    <Box display={'flex'}>
+                                                    <Box display={'flex'} style={{marginLeft: -12}}>
                                                         <IconButton
                                                             color={'primary'}
                                                         >

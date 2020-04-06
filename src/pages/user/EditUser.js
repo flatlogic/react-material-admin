@@ -404,7 +404,7 @@ const EditUser = () => {
                                             control={
                                                 <Checkbox
                                                     name="checkedB"
-                                                    color="primary"
+                                                    color="secondary"
                                                 />
                                             }
                                             label="Phone"
