@@ -136,7 +136,7 @@ export default makeStyles(theme => ({
       right: 4
     }
   },
-  checkboxColor: {
-    color: "rgb(185, 185, 185)"
+  actionsIcon: {
+    color: "#76767B"
   }
 }));

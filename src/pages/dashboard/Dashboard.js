@@ -15,7 +15,7 @@ import {
   TableHead,
   TableSortLabel,
   Toolbar,
-  IconButton
+  IconButton, Menu
 } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 import {
@@ -43,7 +43,8 @@ import Dot from "../../components/Sidebar/components/Dot";
 import BigStat from "./components/BigStat/BigStat";
 import {
   Delete as DeleteIcon,
-  FilterList as FilterListIcon
+  FilterList as FilterListIcon, MoreVert as MoreIcon,
+  MoreVert as ActionsIcon
 } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import { lighten } from "@material-ui/core/styles";
@@ -193,7 +194,8 @@ const headCells = [
     disablePadding: false,
     label: "Date of Delivery"
   },
-  { id: "status", numeric: true, disablePadding: false, label: "Status" }
+  { id: "status", numeric: true, disablePadding: false, label: "Status" },
+  { id: "actions", numeric: true, disablePadding: false, label: "Actions" }
 ];
 
 function EnhancedTableHead(props) {
@@ -219,7 +221,6 @@ function EnhancedTableHead(props) {
             checked={numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{ "aria-label": "select all rows" }}
-            classes={{ root: classes.checkboxColor }}
           />
         </TableCell>
         {headCells.map(headCell => (
@@ -236,10 +237,10 @@ function EnhancedTableHead(props) {
               style={{
                 whiteSpace: "nowrap",
                 textTransform: "uppercase",
-                fontSize: "0.85rem"
+                fontSize: "0.85rem",
               }}
             >
-              {headCell.label}
+              <Typography uppercase color="text" variant={"body2"} colorBrightness="hint">{headCell.label}</Typography>
               {orderBy === headCell.id ? (
                 <span className={classes.visuallyHidden}>
                   {order === "desc" ? "sorted descending" : "sorted ascending"}
@@ -342,6 +343,29 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired
 };
 
+const actionsMenuReducer = (state, action) => {
+  switch (action.type) {
+    case 'menu-1-op':
+      return {menu1: true};
+    case 'menu-1-cl':
+      return {menu1: false};
+    case 'menu-2-op':
+      return {menu2: true};
+    case 'menu-2-cl':
+      return {menu2: false};
+    case 'menu-3-op':
+      return {menu3: true};
+    case 'menu-3-cl':
+      return {menu3: false};
+    case 'menu-4-op':
+      return {menu4: true};
+    case 'menu-5':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
+
 function Dashboard() {
   var classes = useStyles();
   var theme = useTheme();
@@ -356,6 +380,13 @@ function Dashboard() {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [actionsButtonRefid, setActionsButtonRefid] =  React.useState(null);
+  const [actionsButtonRefcustomer, setActionsButtonRefcustomer] =  React.useState(null);
+  const [actionsButtonRefoffice, setActionsButtonRefoffice] =  React.useState(null);
+  const [actionsButtonRefweight, setActionsButtonRefweight] =  React.useState(null);
+  const [actionsButtonRefprice, setActionsButtonRefprice] =  React.useState(null);
+  const [isActionsMenu, setActionsMenu] = React.useState(false)
+
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === "desc";
@@ -927,7 +958,6 @@ function Dashboard() {
                           <Checkbox
                             checked={isItemSelected}
                             inputProps={{ "aria-labelledby": labelId }}
-                            classes={{ root: classes.checkboxColor }}
                           />
                         </TableCell>
                         <TableCell
@@ -963,6 +993,34 @@ function Dashboard() {
                         <TableCell>{row.delDate}</TableCell>
                         <TableCell>
                           <Chip label={row.status} color={row.color} />
+                        </TableCell>
+                        <TableCell align={"center"}>
+                          <IconButton
+                              className={classes.actionsIcon}
+                              aria-owns="actions-menu"
+                              aria-haspopup="true"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActionsMenu(true)
+                              }}
+                              buttonRef={setActionsButtonRefid}
+                          >
+                            <MoreIcon />
+                          </IconButton>
+                          <Menu
+                              id="actions-menu"
+                              open={isActionsMenu}
+                              anchorEl={actionsButtonRefid}
+                              onClose={() => setActionsMenu(false)}
+                              disableAutoFocusItem
+                          >
+                            <MenuItem>
+                              <Typography>Edit</Typography>
+                            </MenuItem>
+                            <MenuItem>
+                              <Typography>Delete</Typography>
+                            </MenuItem>
+                          </Menu>
                         </TableCell>
                       </TableRow>
                     );

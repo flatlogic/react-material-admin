@@ -9,6 +9,8 @@ export default makeStyles(theme => ({
         },
     },
     stepCompleted: {
-        color: 'green'
+        root : {
+            color: 'green'
+        }
     }
 }))

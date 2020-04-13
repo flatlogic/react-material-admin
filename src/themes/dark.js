@@ -71,7 +71,7 @@ export default {
     text: {
       primary: "#fff",
       secondary: "#D6D6D6",
-      hint: "#D6D6D6"
+      hint: "#76767B"
     },
     background: {
       default: "#13131A",

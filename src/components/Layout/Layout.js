@@ -343,7 +343,7 @@ function Layout(props) {
                         exact
                         path="/app/ui"
                         render={() => <Redirect to="/app/ui/icons" />}
-                    />
+                    />]
                     <Route
                         exact
                         path="/app/core"
@@ -371,6 +371,7 @@ function Layout(props) {
                         path="/app/maps"
                         render={() => <Redirect to="/app/maps/google" />}
                     />
+                    <Route path="/app/ui/icons" component={Icons} />
                     <Route path="/app/extra/timeline" component={Timeline} />
                     <Route path="/app/extra/search" component={Search} />
                     <Route path="/app/extra/gallery" component={Gallery} />
