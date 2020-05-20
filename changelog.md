@@ -1,5 +1,14 @@
 # Changelog
 
+# [1.2.1]
+
+### Fixed
+- JWT token checking fix
+
+### Updated
+- Update scrollbar color on Windows devices
+- Some color improvements
+
 # [1.1.1]
 
 ### Updated

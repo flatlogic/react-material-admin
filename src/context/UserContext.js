@@ -27,6 +27,7 @@ function UserProvider({ children }) {
       if (config.isBackend && token) {
         const date = new Date().getTime() / 1000;
         const data = jwt.decode(token);
+        if (!data) return false;
         return date < data.exp;
       } else if (token) {
         return true
