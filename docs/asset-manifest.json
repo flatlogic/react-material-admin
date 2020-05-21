@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "./static/css/main.4680caca.chunk.css",
-    "main.js": "./static/js/main.24e41870.chunk.js",
-    "main.js.map": "./static/js/main.24e41870.chunk.js.map",
+    "main.js": "./static/js/main.904672d8.chunk.js",
+    "main.js.map": "./static/js/main.904672d8.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.f1edd6f3.js",
     "runtime-main.js.map": "./static/js/runtime-main.f1edd6f3.js.map",
     "static/css/2.659925d3.chunk.css": "./static/css/2.659925d3.chunk.css",
     "static/js/2.36e49750.chunk.js": "./static/js/2.36e49750.chunk.js",
     "static/js/2.36e49750.chunk.js.map": "./static/js/2.36e49750.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.13f79efc1186e42bdfc2d35f79a63d8f.js": "./precache-manifest.13f79efc1186e42bdfc2d35f79a63d8f.js",
+    "precache-manifest.83dee2f603f832150f3a7e62030dff84.js": "./precache-manifest.83dee2f603f832150f3a7e62030dff84.js",
     "service-worker.js": "./service-worker.js",
     "static/css/2.659925d3.chunk.css.map": "./static/css/2.659925d3.chunk.css.map",
     "static/css/main.4680caca.chunk.css.map": "./static/css/main.4680caca.chunk.css.map",
@@ -44,7 +44,7 @@
     "static/media/isometric.jpg": "./static/media/isometric.3414e66f.jpg",
     "static/media/lifestyle.jpg": "./static/media/lifestyle.52254d52.jpg",
     "static/media/logo.svg": "./static/media/logo.a0185b04.svg",
-    "static/media/main-profile.png": "./static/media/main-profile.d7f2a278.png",
+    "static/media/main-profile.png": "./static/media/main-profile.d767941b.png",
     "static/media/mastercard.svg": "./static/media/mastercard.39748d61.svg",
     "static/media/mountains.jpeg": "./static/media/mountains.4130575d.jpeg",
     "static/media/paypal.svg": "./static/media/paypal.7c552892.svg",
@@ -57,6 +57,6 @@
     "static/css/2.659925d3.chunk.css",
     "static/js/2.36e49750.chunk.js",
     "static/css/main.4680caca.chunk.css",
-    "static/js/main.24e41870.chunk.js"
+    "static/js/main.904672d8.chunk.js"
   ]
 }
