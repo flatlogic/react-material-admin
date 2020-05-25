@@ -34,6 +34,7 @@
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "classnames": "^2.2.6",
+    "cross-env": "^7.0.2",
     "css-loader": "2.1.1",
     "dotenv": "6.2.0",
     "dotenv-expand": "5.1.0",
@@ -96,9 +97,9 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "build": "REACT_APP_BACKEND=true PUBLIC_URL='./' node scripts/build.js",
+    "build": "cross-env REACT_APP_BACKEND=true PUBLIC_URL='./' node scripts/build.js",
     "start": "node scripts/start.js",
-    "start:backend": "REACT_APP_BACKEND=true node scripts/start.js",
+    "start:backend": "cross-env REACT_APP_BACKEND=true node scripts/start.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
