@@ -28,7 +28,10 @@ import user8 from '../../images/users/8.png'
 import user10 from '../../images/users/10.png'
 
 import { Typography, Chip, Avatar } from '../../components/Wrappers'
-import { useManagementDispatch } from "../../context/ManagementContext";
+import {
+    useManagementDispatch,
+    useManagementState,
+} from '../../context/ManagementContext'
 // Icons
 import {
     Add as AddIcon,
@@ -38,7 +41,7 @@ import {
     HelpOutline as HelpIcon,
 } from '@material-ui/icons'
 
-import { actions } from "../../context/ManagementContext";
+import { actions } from '../../context/ManagementContext'
 
 function createData(
     id,
@@ -64,7 +67,7 @@ function createData(
         created,
         avatar,
         type,
-        avatarColor
+        avatarColor,
     }
 }
 
@@ -117,7 +120,6 @@ const headCells = [
     { id: 'actions', numeric: true, disablePadding: false, label: 'ACTIONS' },
 ]
 
-
 function EnhancedTableHead(props) {
     const {
         classes,
@@ -131,10 +133,17 @@ function EnhancedTableHead(props) {
     const createSortHandler = property => event => {
         onRequestSort(event, property)
     }
-    var managementDispatch = useManagementDispatch();
+    var managementDispatch = useManagementDispatch()
+    var managementValue = useManagementState()
+
     React.useEffect(() => {
-      console.log(actions.doFetch({}, false))
+        actions.doFetch({}, false)(managementDispatch)
     }, [])
+
+    React.useEffect(() => {
+        console.log(managementValue)
+    })
+
     return (
         <TableHead>
             <TableRow>
@@ -174,7 +183,6 @@ function EnhancedTableHead(props) {
         </TableHead>
     )
 }
-
 
 const UserList = () => {
     const [order, setOrder] = React.useState('asc')
@@ -240,7 +248,9 @@ const UserList = () => {
 
     const handleSearch = e => {
         const newArr = rows.filter(c => {
-            return c.name.toLowerCase().includes(e.currentTarget.value.toLowerCase())
+            return c.name
+                .toLowerCase()
+                .includes(e.currentTarget.value.toLowerCase())
         })
         setUsersRows(newArr)
     }
@@ -278,7 +288,7 @@ const UserList = () => {
                                 label="Search"
                                 margin="dense"
                                 variant="outlined"
-                                onChange={(e ) => handleSearch(e)}
+                                onChange={e => handleSearch(e)}
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -308,7 +318,10 @@ const UserList = () => {
                                 rowCount={rows.length}
                             />
                             <TableBody>
-                                {stableSort(usersRows, getComparator(order, orderBy))
+                                {stableSort(
+                                    usersRows,
+                                    getComparator(order, orderBy)
+                                )
                                     .slice(
                                         page * rowsPerPage,
                                         page * rowsPerPage + rowsPerPage
@@ -361,7 +374,9 @@ const UserList = () => {
                                                                 style={{
                                                                     marginRight: 15,
                                                                 }}
-                                                                color={row.avatarColor}
+                                                                color={
+                                                                    row.avatarColor
+                                                                }
                                                             >
                                                                 {row.avatar}
                                                             </Avatar>
@@ -430,7 +445,12 @@ const UserList = () => {
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
-                                                    <Box display={'flex'} style={{marginLeft: -12}}>
+                                                    <Box
+                                                        display={'flex'}
+                                                        style={{
+                                                            marginLeft: -12,
+                                                        }}
+                                                    >
                                                         <IconButton
                                                             color={'primary'}
                                                         >
