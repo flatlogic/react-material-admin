@@ -6,6 +6,7 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { LayoutProvider } from "./context/LayoutContext";
 import { UserProvider } from "./context/UserContext";
+import { ManagementProvider } from "./context/ManagementContext";
 import {
   ThemeProvider as ThemeChangeProvider,
   ThemeStateContext
@@ -23,16 +24,18 @@ if (token) {
 ReactDOM.render(
   <LayoutProvider>
     <UserProvider>
-      <ThemeChangeProvider>
-        <ThemeStateContext.Consumer>
-          {theme => (
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <App />
-            </ThemeProvider>
-          )}
-        </ThemeStateContext.Consumer>
-      </ThemeChangeProvider>
+      <ManagementProvider>
+        <ThemeChangeProvider>
+          <ThemeStateContext.Consumer>
+            {theme => (
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <App />
+              </ThemeProvider>
+            )}
+          </ThemeStateContext.Consumer>
+        </ThemeChangeProvider>
+      </ManagementProvider>
     </UserProvider>
   </LayoutProvider>,
   document.getElementById("root")

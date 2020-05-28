@@ -95,9 +95,9 @@ function loginUser(
           : "");
     } else if (login.length > 0 && password.length > 0) {
       axios
-        .post("/user/signin/local", { email: login, password })
+        .post("/auth/signin/local", { email: login, password })
         .then(res => {
-          const token = res.data.token;
+          const token = res.data;
           setTimeout(() => {
             setError(null);
             setIsLoading(false);

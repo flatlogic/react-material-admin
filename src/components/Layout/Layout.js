@@ -387,7 +387,8 @@ function Layout(props) {
                     />
                     <Route path="/app/user/list" component={UserList} />
                     <Route path="/app/user/add" component={UserAdd} />
-                    <Route path="/app/user/edit" component={UserEdit} />
+                    <Route path="/app/user/:id/edit" component={UserEdit} />
+                    <Route path="/app/user/:id" component={UserEdit} />
                 </Switch>
                 <Fab
                     color="primary"

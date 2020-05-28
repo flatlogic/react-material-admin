@@ -28,7 +28,7 @@ import user8 from '../../images/users/8.png'
 import user10 from '../../images/users/10.png'
 
 import { Typography, Chip, Avatar } from '../../components/Wrappers'
-
+import { useManagementDispatch } from "../../context/ManagementContext";
 // Icons
 import {
     Add as AddIcon,
@@ -37,6 +37,8 @@ import {
     CreateOutlined as CreateIcon,
     HelpOutline as HelpIcon,
 } from '@material-ui/icons'
+
+import { actions } from "../../context/ManagementContext";
 
 function createData(
     id,
@@ -66,132 +68,7 @@ function createData(
     }
 }
 
-const rows = [
-    createData(
-        1,
-        'Ivan Grud',
-        'Admin',
-        'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        user1,
-        'image'
-    ),
-    createData(
-        2,
-        'Anna Garsia',
-        'Admin',
-        'Flatlogic',
-        'Anna_flatlogic@gmail.com',
-        'Unactive',
-        'secondary',
-        '09-02-2020',
-        user2,
-        'image'
-    ),
-    createData(
-        3,
-        'Kate Claus',
-        'Superadmin',
-        'Flatlogic',
-        'Kate_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        'KC',
-        'text',
-        'warning'
-    ),
-    createData(
-        4,
-        'Nick Peru',
-        'Superadmin',
-        'Flatlogic',
-        'Nick_flatlogic@gmail.com',
-        'Unactive',
-        'secondary',
-        '09-02-2020',
-        user4,
-        'image'
-    ),
-    createData(
-        5,
-        'Lian Robinson',
-        'User',
-        'Flatlogic',
-        'Lian_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        'LR',
-        'text',
-        'primary'
-    ),
-    createData(
-        6,
-        'Sam Fisher',
-        'User',
-        'Flatlogic',
-        'Sam_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        user6,
-        'image'
-    ),
-    createData(
-        7,
-        'Kate Claus',
-        'Superadmin',
-        'Flatlogic',
-        'Kate_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        'KC',
-        'text',
-        'secondary'
-    ),
-    createData(
-        8,
-        'Nina Peru',
-        'Superadmin',
-        'Flatlogic',
-        'Nina_flatlogic@gmail.com',
-        'Unactive',
-        'secondary',
-        '09-02-2020',
-        user8,
-        'image'
-    ),
-    createData(
-        9,
-        'Lian Torson',
-        'User',
-        'Flatlogic',
-        'Torson_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        'LT',
-        'text',
-        'primary'
-    ),
-    createData(
-        9,
-        'Samanta Fisher',
-        'User',
-        'Flatlogic',
-        'Samanta_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        user10,
-        'image'
-    ),
-]
+const rows = []
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -240,6 +117,7 @@ const headCells = [
     { id: 'actions', numeric: true, disablePadding: false, label: 'ACTIONS' },
 ]
 
+
 function EnhancedTableHead(props) {
     const {
         classes,
@@ -253,7 +131,10 @@ function EnhancedTableHead(props) {
     const createSortHandler = property => event => {
         onRequestSort(event, property)
     }
-
+    var managementDispatch = useManagementDispatch();
+    React.useEffect(() => {
+      console.log(actions.doFetch({}, false))
+    }, [])
     return (
         <TableHead>
             <TableRow>
