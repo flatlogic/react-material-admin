@@ -13,9 +13,11 @@ var ManagementDispatchContext = React.createContext();
 const initialData = {
   findLoading: false,
   saveLoading: false,
-  record: null,
+  currentUser: null,
   rows: [],
   loading: false,
+  idToDelete: null,
+  modalOpen: false
 };
 
 
@@ -29,7 +31,7 @@ function managementReducer(state = initialData, { type, payload }) {
   if (type === 'USERS_FORM_FIND_STARTED') {
     return {
       ...state,
-      record: null,
+      currentUser: null,
       findLoading: true,
     };
   }
@@ -37,7 +39,7 @@ function managementReducer(state = initialData, { type, payload }) {
   if (type === 'USERS_FORM_FIND_SUCCESS') {
     return {
       ...state,
-      record: payload,
+      currentUser: payload,
       findLoading: false,
     };
   }
@@ -45,7 +47,7 @@ function managementReducer(state = initialData, { type, payload }) {
   if (type === 'USERS_FORM_FIND_ERROR') {
     return {
       ...state,
-      record: null,
+      currentUser: null,
       findLoading: false,
     };
   }
@@ -163,9 +165,11 @@ function ManagementProvider({ children }) {
   var [state, dispatch] = React.useReducer(managementReducer, {
     findLoading: false,
     saveLoading: false,
-    record: null,
+    currentUser: null,
     rows: [],
     loading: false,
+    idToDelete: null,
+    modalOpen: false
   });
 
   return (
@@ -199,6 +203,120 @@ export { ManagementProvider, useManagementState, useManagementDispatch, actions 
 // ###########################################################
 
 const actions = {
+  doNew: () => {
+    return {
+      type: 'USERS_FORM_RESET',
+    };
+  },
+
+  doFind: (id) => async (dispatch) => {
+    if (!config.isBackend) {
+      dispatch({
+        type: 'USERS_FORM_FIND_SUCCESS',
+        payload: mockUser,
+      });
+    } else {
+      try {
+        dispatch({
+          type: 'USERS_FORM_FIND_STARTED',
+        });
+  
+        axios.get(`/users/${id}`).then(res => {
+          const currentUser = res.data;
+          console.log('user find', currentUser)
+          dispatch({
+            type: 'USERS_FORM_FIND_SUCCESS',
+            payload: currentUser,
+          });
+        })
+      } catch (error) {
+        console.log(error, "ERRROE");
+        
+        dispatch({
+          type: 'USERS_FORM_FIND_ERROR',
+        });
+  
+        // dispatch(push('/admin/users'));
+      }
+    }
+  },
+
+  doCreate: (values) => async (dispatch) => {
+    try {
+      dispatch({
+        type: 'USERS_FORM_CREATE_STARTED',
+      });
+
+      axios.post('/users', { data: values }).then(res => {
+        dispatch({
+          type: 'USERS_FORM_CREATE_SUCCESS',
+        });
+        console.log(values);
+        console.log('User created');
+        // dispatch(push('/admin/users'));
+      })
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: 'USERS_FORM_CREATE_ERROR',
+      });
+    }
+  },
+
+  doUpdate: (id, values, isProfile) => async (
+    dispatch,
+    getState,
+  ) => {
+    try {
+      dispatch({
+        type: 'USERS_FORM_UPDATE_STARTED',
+      });
+
+      await axios.put(`/users/${id}`, {id, data: values});
+
+      // dispatch(doInit());
+
+      dispatch({
+        type: 'USERS_FORM_UPDATE_SUCCESS',
+      });
+
+      if (isProfile) {
+        console.log('Profile updated');
+      } else {
+        console.log('User updated');
+        // dispatch(push('/admin/users'));
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: 'USERS_FORM_UPDATE_ERROR',
+      });
+    }
+  },
+
+  doChangePassword: ({newPassword, currentPassword}) => async (dispatch) => {
+    try {
+      dispatch({
+        type: 'USERS_FORM_CREATE_STARTED',
+      });
+      await axios.put('/auth/password-update', {newPassword, currentPassword})
+      dispatch({
+        type: 'USERS_PASSWORD_UPDATE_SUCCESS',
+      });
+
+      console.log('Password has been updated');
+      // dispatch(push('/app/main'));
+
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: 'USERS_FORM_CREATE_ERROR',
+      });
+    }
+  },
 
   doFetch: (filter, keepPagination = false) => async (dispatch) => {
     if (!config.isBackend) {

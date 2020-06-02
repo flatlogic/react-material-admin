@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import jwt from "jsonwebtoken";
+import { mockUser } from "./mock";
 
 //config
 import config from "../../src/config";
@@ -11,9 +12,17 @@ var UserDispatchContext = React.createContext();
 function userReducer(state, action) {
   switch (action.type) {
     case "LOGIN_SUCCESS":
-      return { ...state };
+      return {
+        ...state,
+        ...action.payload
+      };
     case "SIGN_OUT_SUCCESS":
       return { ...state };
+    case "AUTH_INIT_ERROR":
+      return Object.assign({}, state, {
+          currentUser: null,
+          loadingInit: false,
+      });
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -33,7 +42,11 @@ function UserProvider({ children }) {
         return true
       }
       return false;
-    }
+    },
+    isFetching: false,
+    errorMessage: '',
+    currentUser: null,
+    loadingInit: true,
   });
 
   return (
@@ -76,23 +89,19 @@ function loginUser(
 ) {
   setError(false);
   setIsLoading(true);
-
+  console.log(  login,
+    password,)
   // We check if app runs with backend mode
   if (!config.isBackend) {
     setTimeout(() => {
       setError(null);
+      doInit()(dispatch);
       setIsLoading(false);
       receiveToken("token", dispatch);
     }, 2000);
   } else {
     if (!!social) {
-      window.location.href =
-        config.baseURLApi +
-        "/user/signin/" +
-        social +
-        (process.env.NODE_ENV === "production"
-          ? "?app=https://flatlogic.github.io/react-material-admin-full"
-          : "");
+      window.location.href = config.baseURLApi + "/auth/signin/" + social + '?app=' + config.redirectUrl;
     } else if (login.length > 0 && password.length > 0) {
       axios
         .post("/auth/signin/local", { email: login, password })
@@ -102,6 +111,7 @@ function loginUser(
             setError(null);
             setIsLoading(false);
             receiveToken(token, dispatch);
+            doInit()(dispatch);
           }, 2000);
         })
         .catch(() => {
@@ -142,4 +152,57 @@ export function receiveToken(token, dispatch) {
   localStorage.setItem("theme", "default");
   axios.defaults.headers.common["Authorization"] = "Bearer " + token;
   dispatch({ type: "LOGIN_SUCCESS" });
+}
+
+async function findMe() {
+  if (config.isBackend) {
+    const response = await axios.get('/auth/me');
+    console.log('find', response);
+    return response.data;    
+  } else {
+    return mockUser;
+  }
+}
+
+export function authError(payload) {
+  return {
+    type: 'AUTH_FAILURE',
+    payload,
+  };
+}
+
+export function doInit() {
+  return async (dispatch) => {
+    let currentUser = null;
+    if (!config.isBackend) {
+      currentUser = mockUser;
+      dispatch({
+        type: 'LOGIN_SUCCESS',
+        payload: {
+          currentUser,
+        },
+      });
+    } else {
+      try {
+        let token = localStorage.getItem('token');
+        if (token) {
+          currentUser = await findMe();
+        }
+        console.log(currentUser, '<<<<<<<<<<<<');
+        dispatch({
+          type: 'LOGIN_SUCCESS',
+          payload: {
+            currentUser,
+          },
+        });
+      } catch (error) {
+        console.log(error);
+
+        dispatch({
+          type: 'AUTH_INIT_ERROR',
+          payload: error,
+        });
+      }
+    }
+  }
 }

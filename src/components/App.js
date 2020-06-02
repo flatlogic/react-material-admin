@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   HashRouter,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
-
+import { useUserDispatch, doInit } from "../context/UserContext";
 // components
 import Layout from "./Layout";
 import Documentation from "./Documentation/Documentation";
@@ -21,6 +21,12 @@ export default function App() {
   // global
   var { isAuthenticated } = useUserState();
   const isAuth = isAuthenticated()
+  const userDispatch = useUserDispatch()
+
+  useEffect(() => {
+    console.log('init')
+    doInit()(userDispatch);
+  }, []);
   return (
     <HashRouter>
       <Switch>

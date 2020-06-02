@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useReducer, useCallback } from 'react'
 import { Grid, Box, TextField } from '@material-ui/core'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import SwipeableViews from 'react-swipeable-views'
+import { useParams } from 'react-router'
 import Checkbox from '@material-ui/core/Checkbox'
 import Switch from '@material-ui/core/Switch'
 
@@ -13,8 +14,10 @@ import {
     Lock as LockIcon,
     Settings as SettingsIcon,
 } from '@material-ui/icons'
+import usersFields from './usersField';
 
 import Widget from '../../components/Widget'
+import ImagesFormItem from '../../components/FormItems/items/ImageFromItem';
 import { Typography, Button } from '../../components/Wrappers'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
@@ -24,16 +27,65 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import photo from '../../images/profile.jpg'
 
+import {
+  useManagementDispatch,
+  useManagementState,
+} from '../../context/ManagementContext'
+import {
+  useUserState,
+} from '../../context/UserContext'
+
+
+import { actions } from '../../context/ManagementContext'
+
 const EditUser = () => {
     const classes = useStyles()
     const [tab, setTab] = React.useState(0)
-
+    const [data, setData] = React.useState(null);
+    let { id } = useParams();
     const handleChangeTab = (event, newValue) => {
         setTab(newValue)
     }
 
+    var managementDispatch = useManagementDispatch()
+    var managementValue = useManagementState()
+    let userState = useUserState();
+
+    useEffect(() => {
+        //  const res = actions.doFind(id)(managementDispatch)
+        //   console.log('with id', res)
+        //   setData(managementValue);
+      async function init() {
+        if (id !== 'edit') {
+          
+          const res = await actions.doFind(id)(managementDispatch)
+          console.log('with id', res)
+          setData(managementValue);
+        } else {
+          console.log('without id',userState)
+          setData(userState)
+        }
+      }
+      
+      init();
+      //console.log(managementValue, userState, id)
+    }, [])
+
+    function handleSubmit() {
+      actions.doUpdate(id, data)(managementDispatch)
+    }
+
+    function handleChange(e) {
+      setData({
+        ...data,
+        [e.target.name]: e.target.value,
+      });
+    }
+
     return (
         <Grid container spacing={3}>
+          <h1>{id}</h1>
+         
             <Grid item xs={12}>
                 <Widget>
                     <Box display={'flex'} justifyContent={'center'}>
@@ -88,13 +140,13 @@ const EditUser = () => {
                                     </Typography>
                                     <TextField
                                         id="outlined-basic"
-                                        defaultValue={'Username'}
+                                        value={managementValue && managementValue.currentUser && managementValue.currentUser.firstName}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                     />
                                     <TextField
                                         id="outlined-basic"
-                                        defaultValue={'Username@gmail.com'}
+                                        value={'Username@gmail.com'}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                     />
@@ -129,12 +181,16 @@ const EditUser = () => {
                                     <Typography weight={'medium'}>
                                         Photo:
                                     </Typography>
-                                    <img
-                                        src={photo}
-                                        alt="photo"
-                                        width={123}
-                                        style={{ borderRadius: 8 }}
-                                    />
+                                    {/* <ImagesFormItem
+                                      name={'avatar'}
+                                      schema={usersFields}
+                                      path={'users/avatar'}
+                                      fileProps={{
+                                        size: undefined,
+                                        formats: undefined,
+                                      }}
+                                      max={undefined}
+                                    /> */}
                                     <Typography
                                         size={'sm'}
                                         style={{ marginBottom: 35 }}
@@ -431,7 +487,7 @@ const EditUser = () => {
                                 <Button variant={'outlined'} color={'primary'}>
                                     Reset
                                 </Button>
-                                <Button variant={'contained'} color={'success'}>
+                                <Button variant={'contained'} color={'success'} onClick={handleSubmit}>
                                     Save
                                 </Button>
                             </Box>

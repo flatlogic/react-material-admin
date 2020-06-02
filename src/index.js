@@ -24,18 +24,18 @@ if (token) {
 ReactDOM.render(
   <LayoutProvider>
     <UserProvider>
-      <ManagementProvider>
         <ThemeChangeProvider>
           <ThemeStateContext.Consumer>
             {theme => (
               <ThemeProvider theme={theme}>
+                <ManagementProvider>
                 <CssBaseline />
                 <App />
+                </ManagementProvider>
               </ThemeProvider>
             )}
           </ThemeStateContext.Consumer>
         </ThemeChangeProvider>
-      </ManagementProvider>
     </UserProvider>
   </LayoutProvider>,
   document.getElementById("root")

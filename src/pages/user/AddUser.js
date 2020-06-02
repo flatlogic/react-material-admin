@@ -18,6 +18,25 @@ import photo from '../../images/profile.jpg'
 import { Button, Typography } from '../../components/Wrappers'
 import Widget from '../../components/Widget'
 
+import { actions } from '../../context/ManagementContext'
+import {
+  useManagementDispatch,
+  useManagementState,
+} from '../../context/ManagementContext'
+
+
+
+// async function fetchAPI() {
+//   try {
+//     const response = await actions.doFetch({}, false)(managementDispatch);
+//     console.log(managementValue.rows)
+//     setUsersRows(managementValue.rows);
+//   } catch (e) {
+//     console.log('false');
+//   }
+// }
+// fetchAPI();
+
 function getSteps() {
     return ['Create Account', 'User Details', 'Business Details', 'Social']
 }
@@ -40,6 +59,28 @@ function getStepContent(step) {
 const AddUser = () => {
     const [activeStep, setActiveStep] = React.useState(0)
     const [skipped, setSkipped] = React.useState(new Set())
+    const [newUser, setNewUser] = React.useState({
+      avatar: 'https://flatlogic.com/assets/templates/lb_react_full_nodejs-5c3911e26e8d9e2cad16f5d3e4c480fe133e97ba1d50c9cc2fdc35d53c7ebb2a.png',
+      disabled: null,
+      email: '',
+      emailVerificationToken: null,
+      emailVerificationTokenExpiresAt: null,
+      emailVerified: true,
+      firstName: '',
+      fullName: '',
+      lastName: '',
+      password: null,
+      passwordResetToken: null,
+      passwordResetTokenExpiresAt: null,
+      phoneNumber: '',
+      role: 'user',
+    });
+    function handleChange(e) {
+      setNewUser({
+        ...newUser,
+        [e.target.name]: e.target.value,
+      });
+    }
     const steps = getSteps()
     const classes = useStyles()
 
@@ -51,6 +92,17 @@ const AddUser = () => {
         return skipped.has(step)
     }
 
+    var managementDispatch = useManagementDispatch()
+    var managementValue = useManagementState()
+
+    const doSubmit = (id, data) => {
+      if (false) {
+        actions.doUpdate(id, data, this.isProfile())(managementDispatch);
+      } else {
+        actions.doCreate(data)(managementDispatch);
+      }
+    };
+
     const handleNext = () => {
         let newSkipped = skipped
         if (isStepSkipped(activeStep)) {
@@ -60,12 +112,16 @@ const AddUser = () => {
 
         setActiveStep(prevActiveStep => prevActiveStep + 1)
         setSkipped(newSkipped)
+
+        if (activeStep === 3) {
+          console.log('sdfsdf', newUser)
+          doSubmit(null, newUser)
+        }
     }
 
     const handleBack = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1)
     }
-
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -108,6 +164,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Username"
+                                        onChange={handleChange}
+                                        name="fullName"
+                                        value={newUser.fullName}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText="Please enter your username"
@@ -115,6 +174,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Email Address"
+                                        onChange={handleChange}
+                                        value={newUser.email}
+                                        name="email"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={
@@ -125,6 +187,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Password"
+                                        onChange={handleChange}
+                                        name="password"
+                                        value={newUser.password}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={
@@ -142,16 +207,14 @@ const AddUser = () => {
                                         <Select
                                             labelId="demo-simple-select-outlined-label"
                                             id="demo-simple-select-outlined"
-                                            value={''}
+                                            value={newUser.role}
+                                            defaultValue="User"
+                                            name="role"
+                                            onChange={handleChange}
                                             label="Role"
                                         >
-                                            <MenuItem value={10}>User</MenuItem>
-                                            <MenuItem value={20}>
-                                                Admin
-                                            </MenuItem>
-                                            <MenuItem value={30}>
-                                                Super Admin
-                                            </MenuItem>
+                                            <MenuItem value="user">User</MenuItem>
+                                            <MenuItem value="admin">Admin</MenuItem>
                                         </Select>
                                         <FormHelperText
                                             id={'demo-simple-select-outlined'}
@@ -180,6 +243,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="First Name"
+                                        onChange={handleChange}
+                                        name="firstName"
+                                        value={newUser.firstName}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText="Enter your first name"
@@ -187,6 +253,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Last Name"
+                                        onChange={handleChange}
+                                        name="lastName"
+                                        value={newUser.lastName}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your last name'}
@@ -194,6 +263,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Contact number"
+                                        onChange={handleChange}
+                                        value={newUser.phoneNumber}
+                                        name="phoneNumber"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={
@@ -324,6 +396,7 @@ const AddUser = () => {
                                     />
                                     <TextField
                                         id="outlined-basic"
+                                        value={''}
                                         label="Company Contact"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}

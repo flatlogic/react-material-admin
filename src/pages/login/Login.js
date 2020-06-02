@@ -19,7 +19,7 @@ import google from "../../images/google.svg";
 
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
-import { receiveToken } from "../../context/UserContext";
+import { receiveToken, doInit } from "../../context/UserContext";
 
 //components
 import { Button, Typography } from "../../components/Wrappers";
@@ -50,6 +50,7 @@ function Login(props) {
     const token = params.get("token");
     if (token) {
       receiveToken(token, userDispatch);
+      doInit()(userDispatch);
     }
   }, []); // eslint-disable-line
 

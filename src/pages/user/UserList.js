@@ -3,8 +3,14 @@ import {
     Grid,
     Box,
     InputAdornment,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
     TextField as Input,
 } from '@material-ui/core'
+import moment from 'moment'
 import Widget from '../../components/Widget'
 import { Button } from '../../components/Wrappers'
 import Table from '@material-ui/core/Table'
@@ -27,7 +33,7 @@ import user6 from '../../images/users/6.png'
 import user8 from '../../images/users/8.png'
 import user10 from '../../images/users/10.png'
 
-import { Typography, Chip, Avatar } from '../../components/Wrappers'
+import { Typography, Chip, Avatar, Link } from '../../components/Wrappers'
 import {
     useManagementDispatch,
     useManagementState,
@@ -42,36 +48,6 @@ import {
 } from '@material-ui/icons'
 
 import { actions } from '../../context/ManagementContext'
-
-function createData(
-    id,
-    name,
-    role,
-    companyName,
-    email,
-    status,
-    statusColor,
-    created,
-    avatar,
-    type,
-    avatarColor
-) {
-    return {
-        id,
-        name,
-        role,
-        companyName,
-        email,
-        status,
-        statusColor,
-        created,
-        avatar,
-        type,
-        avatarColor,
-    }
-}
-
-const rows = []
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -133,16 +109,6 @@ function EnhancedTableHead(props) {
     const createSortHandler = property => event => {
         onRequestSort(event, property)
     }
-    var managementDispatch = useManagementDispatch()
-    var managementValue = useManagementState()
-
-    React.useEffect(() => {
-        actions.doFetch({}, false)(managementDispatch)
-    }, [])
-
-    React.useEffect(() => {
-        console.log(managementValue)
-    })
 
     return (
         <TableHead>
@@ -191,7 +157,42 @@ const UserList = () => {
     const [page, setPage] = React.useState(0)
     const [dense, setDense] = React.useState(false)
     const [rowsPerPage, setRowsPerPage] = React.useState(5)
-    const [usersRows, setUsersRows] = React.useState(rows)
+    const [usersRows, setUsersRows] = React.useState([])
+
+    var managementDispatch = useManagementDispatch()
+    var managementValue = useManagementState()
+
+    const openModal = (cell) => {
+      actions.doOpenConfirm(cell)(managementDispatch);
+    }
+
+    const closeModal = () => {
+      actions.doCloseConfirm()(managementDispatch)
+    }
+
+    const handleDelete = () => {
+      actions.doDelete(managementValue.idToDelete)(managementDispatch);
+    }
+
+    React.useEffect(() => {
+      async function fetchAPI() {
+        try {
+          await actions.doFetch({}, false)(managementDispatch);
+          
+          setUsersRows(managementValue.rows);
+        } catch (e) {
+          console.log('false');
+        }
+      }
+      fetchAPI();
+    }, []);
+
+
+
+    React.useEffect(() => {
+      setUsersRows(managementValue.rows)
+      console.log(managementValue.rows)
+    });
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc'
@@ -201,7 +202,7 @@ const UserList = () => {
 
     const handleSelectAllClick = event => {
         if (event.target.checked) {
-            const newSelecteds = rows.map(n => n.name)
+            const newSelecteds = managementValue.rows.map(n => n.id)
             setSelected(newSelecteds)
             return
         }
@@ -244,10 +245,10 @@ const UserList = () => {
     const isSelected = name => selected.indexOf(name) !== -1
 
     const emptyRows =
-        rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
+        rowsPerPage - Math.min(rowsPerPage, usersRows.length - page * rowsPerPage)
 
     const handleSearch = e => {
-        const newArr = rows.filter(c => {
+        const newArr = usersRows.filter(c => {
             return c.name
                 .toLowerCase()
                 .includes(e.currentTarget.value.toLowerCase())
@@ -257,6 +258,38 @@ const UserList = () => {
 
     return (
         <Grid container spacing={3}>
+          <Dialog
+            open={managementValue.modalOpen}
+            onClose={closeModal}
+            scroll={"body"}
+            aria-labelledby="scroll-dialog-title"
+          >
+            <DialogTitle id="alert-dialog-title">
+              Are you sure that you want to delete user?
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Let Google help apps determine location. This means
+                sending anonymous location data to Google, even when no
+                apps are running.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={closeModal}
+                color="primary"
+              >
+                Disagree
+              </Button>
+              <Button
+                onClick={handleDelete}
+                color="primary"
+                autoFocus
+              >
+                Agree
+              </Button>
+            </DialogActions>
+          </Dialog>
             <Grid item xs={12}>
                 <Widget inheritHeight>
                     <Box
@@ -265,12 +298,14 @@ const UserList = () => {
                         alignItems={'flex-start'}
                     >
                         <Box>
-                            <Button variant={'contained'} color={'success'}>
-                                <Box mr={1} display={'flex'}>
-                                    <AddIcon />
-                                </Box>
-                                Add
-                            </Button>
+                            <Link href="#/app/user/add" underline="none" color="#fff">
+                                <Button variant={'contained'} color={'success'}>
+                                    <Box mr={1} display={'flex'}>
+                                        <AddIcon />
+                                    </Box>
+                                    Add
+                                </Button>
+                            </Link>
                         </Box>
                         <Box
                             display={'flex'}
@@ -315,7 +350,7 @@ const UserList = () => {
                                 orderBy={orderBy}
                                 onSelectAllClick={handleSelectAllClick}
                                 onRequestSort={handleRequestSort}
-                                rowCount={rows.length}
+                                rowCount={usersRows.length}
                             />
                             <TableBody>
                                 {stableSort(
@@ -328,14 +363,14 @@ const UserList = () => {
                                     )
                                     .map((row, index) => {
                                         const isItemSelected = isSelected(
-                                            row.name
+                                            row.id
                                         )
                                         const labelId = `enhanced-table-checkbox-${index}`
                                         return (
                                             <TableRow
                                                 hover
                                                 onClick={event =>
-                                                    handleClick(event, row.name)
+                                                    handleClick(event, row.id)
                                                 }
                                                 role="checkbox"
                                                 aria-checked={isItemSelected}
@@ -360,7 +395,7 @@ const UserList = () => {
                                                     <Typography
                                                         variant={'body2'}
                                                     >
-                                                        {row.id}
+                                                        {index+1}
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
@@ -368,17 +403,15 @@ const UserList = () => {
                                                         display={'flex'}
                                                         alignItems={'center'}
                                                     >
-                                                        {row.type == 'text' ? (
+                                                        {!row.avatar ? (
                                                             <Avatar
                                                                 alt={row.name}
                                                                 style={{
                                                                     marginRight: 15,
+                                                                    backgroundColor: '#536DFE'
                                                                 }}
-                                                                color={
-                                                                    row.avatarColor
-                                                                }
                                                             >
-                                                                {row.avatar}
+                                                                {row.email.charAt(0).toUpperCase()}
                                                             </Avatar>
                                                         ) : (
                                                             <Avatar
@@ -408,7 +441,7 @@ const UserList = () => {
                                                     <Typography
                                                         variant={'body2'}
                                                     >
-                                                        {row.companyName}
+                                                        Flatlogic
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
@@ -426,10 +459,11 @@ const UserList = () => {
                                                             color={
                                                                 row.statusColor
                                                             }
-                                                            label={row.status}
+                                                            label={'active'}
                                                             style={{
                                                                 color: '#fff',
                                                                 height: 16,
+                                                                backgroundColor: '#3CD4A0',
                                                                 fontSize: 11,
                                                                 fontWeight:
                                                                     'bold',
@@ -441,7 +475,7 @@ const UserList = () => {
                                                     <Typography
                                                         variant={'body2'}
                                                     >
-                                                        {row.created}
+                                                        {moment(row.createdAt).format('YYYY-DD-MM')}
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
@@ -454,14 +488,19 @@ const UserList = () => {
                                                         <IconButton
                                                             color={'primary'}
                                                         >
+                                                          <Link href={`#app/user/${row.id}/edit`} color="#fff">
                                                             <CreateIcon />
+                                                          </Link>
                                                         </IconButton>
                                                         <IconButton
                                                             color={'primary'}
                                                         >
-                                                            <HelpIcon />
+                                                            <Link href={`#app/user/${row.id}`} color="#fff">
+                                                              <HelpIcon />
+                                                            </Link>
                                                         </IconButton>
                                                         <IconButton
+                                                            onClick={() => openModal(row.id)}
                                                             color={'primary'}
                                                         >
                                                             <DeleteIcon />
@@ -487,7 +526,7 @@ const UserList = () => {
                     <TablePagination
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
-                        count={rows.length}
+                        count={usersRows.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         onChangePage={handleChangePage}
