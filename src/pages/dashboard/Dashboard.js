@@ -44,7 +44,6 @@ import BigStat from "./components/BigStat/BigStat";
 import {
   Delete as DeleteIcon,
   FilterList as FilterListIcon, MoreVert as MoreIcon,
-  MoreVert as ActionsIcon
 } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import { lighten } from "@material-ui/core/styles";
@@ -343,28 +342,28 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired
 };
 
-const actionsMenuReducer = (state, action) => {
-  switch (action.type) {
-    case 'menu-1-op':
-      return {menu1: true};
-    case 'menu-1-cl':
-      return {menu1: false};
-    case 'menu-2-op':
-      return {menu2: true};
-    case 'menu-2-cl':
-      return {menu2: false};
-    case 'menu-3-op':
-      return {menu3: true};
-    case 'menu-3-cl':
-      return {menu3: false};
-    case 'menu-4-op':
-      return {menu4: true};
-    case 'menu-5':
-      return {count: state.count - 1};
-    default:
-      throw new Error();
-  }
-}
+// const actionsMenuReducer = (state, action) => {
+//   switch (action.type) {
+//     case 'menu-1-op':
+//       return {menu1: true};
+//     case 'menu-1-cl':
+//       return {menu1: false};
+//     case 'menu-2-op':
+//       return {menu2: true};
+//     case 'menu-2-cl':
+//       return {menu2: false};
+//     case 'menu-3-op':
+//       return {menu3: true};
+//     case 'menu-3-cl':
+//       return {menu3: false};
+//     case 'menu-4-op':
+//       return {menu4: true};
+//     case 'menu-5':
+//       return {count: state.count - 1};
+//     default:
+//       throw new Error();
+//   }
+// }
 
 function Dashboard() {
   var classes = useStyles();
@@ -381,10 +380,6 @@ function Dashboard() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [actionsButtonRefid, setActionsButtonRefid] =  React.useState(null);
-  const [actionsButtonRefcustomer, setActionsButtonRefcustomer] =  React.useState(null);
-  const [actionsButtonRefoffice, setActionsButtonRefoffice] =  React.useState(null);
-  const [actionsButtonRefweight, setActionsButtonRefweight] =  React.useState(null);
-  const [actionsButtonRefprice, setActionsButtonRefprice] =  React.useState(null);
   const [isActionsMenu, setActionsMenu] = React.useState(false)
 
 

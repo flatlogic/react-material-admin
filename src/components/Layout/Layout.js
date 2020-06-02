@@ -343,7 +343,7 @@ function Layout(props) {
                         exact
                         path="/app/ui"
                         render={() => <Redirect to="/app/ui/icons" />}
-                    />]
+                    />
                     <Route
                         exact
                         path="/app/core"

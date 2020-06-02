@@ -25,13 +25,6 @@ import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/DeleteOutlined'
 
-// users images
-import user1 from '../../images/users/1.png'
-import user2 from '../../images/users/2.png'
-import user4 from '../../images/users/4.png'
-import user6 from '../../images/users/6.png'
-import user8 from '../../images/users/8.png'
-import user10 from '../../images/users/10.png'
 
 import { Typography, Chip, Avatar, Link } from '../../components/Wrappers'
 import {
@@ -98,7 +91,6 @@ const headCells = [
 
 function EnhancedTableHead(props) {
     const {
-        classes,
         onSelectAllClick,
         order,
         orderBy,
@@ -192,7 +184,7 @@ const UserList = () => {
     React.useEffect(() => {
       setUsersRows(managementValue.rows)
       console.log(managementValue.rows)
-    });
+    },[managementValue.rows]);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc'
@@ -238,9 +230,9 @@ const UserList = () => {
         setPage(0)
     }
 
-    const handleChangeDense = event => {
-        setDense(event.target.checked)
-    }
+    // const handleChangeDense = event => {
+    //     setDense(event.target.checked)
+    // }
 
     const isSelected = name => selected.indexOf(name) !== -1
 
@@ -452,24 +444,20 @@ const UserList = () => {
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
-                                                    <Typography
-                                                        variant={'body2'}
-                                                    >
-                                                        <Chip
-                                                            color={
-                                                                row.statusColor
-                                                            }
-                                                            label={'active'}
-                                                            style={{
-                                                                color: '#fff',
-                                                                height: 16,
-                                                                backgroundColor: '#3CD4A0',
-                                                                fontSize: 11,
-                                                                fontWeight:
-                                                                    'bold',
-                                                            }}
-                                                        />
-                                                    </Typography>
+                                                    <Chip
+                                                        color={
+                                                            row.statusColor
+                                                        }
+                                                        label={'active'}
+                                                        style={{
+                                                            color: '#fff',
+                                                            height: 16,
+                                                            backgroundColor: '#3CD4A0',
+                                                            fontSize: 11,
+                                                            fontWeight:
+                                                                'bold',
+                                                        }}
+                                                    />
                                                 </TableCell>
                                                 <TableCell align="right">
                                                     <Typography

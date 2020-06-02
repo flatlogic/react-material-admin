@@ -1,8 +1,7 @@
-import React, { useEffect, useReducer, useCallback } from 'react'
+import React, { useEffect } from 'react'
 import { Grid, Box, TextField } from '@material-ui/core'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import SwipeableViews from 'react-swipeable-views'
 import { useParams } from 'react-router'
 import Checkbox from '@material-ui/core/Checkbox'
 import Switch from '@material-ui/core/Switch'
@@ -14,18 +13,13 @@ import {
     Lock as LockIcon,
     Settings as SettingsIcon,
 } from '@material-ui/icons'
-import usersFields from './usersField';
 
 import Widget from '../../components/Widget'
-import ImagesFormItem from '../../components/FormItems/items/ImageFromItem';
 import { Typography, Button } from '../../components/Wrappers'
-import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
-import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
-import photo from '../../images/profile.jpg'
 
 import {
   useManagementDispatch,
@@ -58,8 +52,8 @@ const EditUser = () => {
       async function init() {
         if (id !== 'edit') {
           
-          const res = await actions.doFind(id)(managementDispatch)
-          console.log('with id', res)
+          await actions.doFind(id)(managementDispatch)
+          setTimeout(() => console.log('with id', managementValue),1000)
           setData(managementValue);
         } else {
           console.log('without id',userState)
@@ -69,28 +63,27 @@ const EditUser = () => {
       
       init();
       //console.log(managementValue, userState, id)
-    }, [])
+    }, [managementDispatch, id])
 
     function handleSubmit() {
       actions.doUpdate(id, data)(managementDispatch)
     }
 
-    function handleChange(e) {
-      setData({
-        ...data,
-        [e.target.name]: e.target.value,
-      });
-    }
-
+    // function handleChange(e) {
+    //   setData({
+    //     ...data,
+    //     [e.target.name]: e.target.value,
+    //   });
+    // }
+    console.log('render ONe')
     return (
         <Grid container spacing={3}>
           <h1>{id}</h1>
-         
+          <h2>-> {managementValue && managementValue.currentUser && managementValue.currentUser.firstName}</h2>
             <Grid item xs={12}>
                 <Widget>
                     <Box display={'flex'} justifyContent={'center'}>
                         <Tabs
-                            value={0}
                             indicatorColor="primary"
                             textColor="primary"
                             value={tab}
@@ -140,7 +133,7 @@ const EditUser = () => {
                                     </Typography>
                                     <TextField
                                         id="outlined-basic"
-                                        value={managementValue && managementValue.currentUser && managementValue.currentUser.firstName}
+                                        defaultValue={managementValue && managementValue.currentUser && managementValue.currentUser.firstName}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                     />
@@ -181,16 +174,7 @@ const EditUser = () => {
                                     <Typography weight={'medium'}>
                                         Photo:
                                     </Typography>
-                                    {/* <ImagesFormItem
-                                      name={'avatar'}
-                                      schema={usersFields}
-                                      path={'users/avatar'}
-                                      fileProps={{
-                                        size: undefined,
-                                        formats: undefined,
-                                      }}
-                                      max={undefined}
-                                    /> */}
+      
                                     <Typography
                                         size={'sm'}
                                         style={{ marginBottom: 35 }}
@@ -227,8 +211,8 @@ const EditUser = () => {
                                         style={{ marginBottom: 35 }}
                                     >
                                         <Select
-                                            labelId="demo-simple-select-outlined-label"
-                                            id="demo-simple-select-outlined"
+                                            labelId="demo-simple-select-outlined-label-2"
+                                            id="demo-simple-select-outlined-2"
                                             value={10}
                                         >
                                             <MenuItem value={10}>

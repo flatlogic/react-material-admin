@@ -21,21 +21,8 @@ import Widget from '../../components/Widget'
 import { actions } from '../../context/ManagementContext'
 import {
   useManagementDispatch,
-  useManagementState,
 } from '../../context/ManagementContext'
 
-
-
-// async function fetchAPI() {
-//   try {
-//     const response = await actions.doFetch({}, false)(managementDispatch);
-//     console.log(managementValue.rows)
-//     setUsersRows(managementValue.rows);
-//   } catch (e) {
-//     console.log('false');
-//   }
-// }
-// fetchAPI();
 
 function getSteps() {
     return ['Create Account', 'User Details', 'Business Details', 'Social']
@@ -84,16 +71,16 @@ const AddUser = () => {
     const steps = getSteps()
     const classes = useStyles()
 
-    const isStepOptional = step => {
-        return step === 1
-    }
+    // const isStepOptional = step => {
+    //     return step === 1
+    // }
 
     const isStepSkipped = step => {
         return skipped.has(step)
     }
 
     var managementDispatch = useManagementDispatch()
-    var managementValue = useManagementState()
+    // var managementValue = useManagementState()
 
     const doSubmit = (id, data) => {
       if (false) {
@@ -230,8 +217,8 @@ const AddUser = () => {
                                     </Typography>
                                     <img
                                         src={photo}
-                                        alt="photo"
                                         width={123}
+                                        alt="sdfsd"
                                         style={{ borderRadius: 8 }}
                                     />
                                     <Typography

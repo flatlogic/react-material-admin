@@ -26,7 +26,7 @@ export default function App() {
   useEffect(() => {
     console.log('init')
     doInit()(userDispatch);
-  }, []);
+  }, [userDispatch]);
   return (
     <HashRouter>
       <Switch>
