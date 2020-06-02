@@ -153,7 +153,7 @@ const AddUser = () => {
                                         label="Username"
                                         onChange={handleChange}
                                         name="fullName"
-                                        value={newUser.fullName}
+                                        value={newUser.fullName || ''}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText="Please enter your username"
@@ -162,7 +162,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Email Address"
                                         onChange={handleChange}
-                                        value={newUser.email}
+                                        value={newUser.email || ''}
                                         name="email"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
@@ -176,7 +176,7 @@ const AddUser = () => {
                                         label="Password"
                                         onChange={handleChange}
                                         name="password"
-                                        value={newUser.password}
+                                        value={newUser.password || ''}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={
@@ -186,6 +186,7 @@ const AddUser = () => {
                                     />
                                     <FormControl
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                     >
                                         <InputLabel id="demo-simple-select-outlined-label">
@@ -352,6 +353,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Address"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your adress'}
                                     />
@@ -362,6 +364,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Company Name"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText="Enter your company name"
                                     />
@@ -369,6 +372,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Company Registered ID"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={
                                             'Enter your company registered ID'
@@ -377,6 +381,7 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Cmpany Email"
+                                        onChange={handleChange}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your company email'}
@@ -385,6 +390,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         value={''}
                                         label="Company Contact"
+                                        onChange={handleChange}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={
@@ -398,6 +404,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Facebook"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText="Enter your Facebook link"
                                     />
@@ -405,6 +412,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Twitter"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your Twitter link'}
                                     />
@@ -412,6 +420,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Instagram"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your Instagram link'}
                                     />
@@ -419,6 +428,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="GitHub"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your GitHub link'}
                                     />
@@ -426,6 +436,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="CodePen"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your CodePen link'}
                                     />
