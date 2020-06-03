@@ -5,7 +5,7 @@ import Tab from '@material-ui/core/Tab'
 import { useParams } from 'react-router'
 import Checkbox from '@material-ui/core/Checkbox'
 import Switch from '@material-ui/core/Switch'
-
+import { useLocation, useHistory } from 'react-router-dom';
 import useStyles from './styles'
 
 import {
@@ -35,51 +35,68 @@ import { actions } from '../../context/ManagementContext'
 const EditUser = () => {
     const classes = useStyles()
     const [tab, setTab] = React.useState(0)
-    const [data, setData] = React.useState(null);
+    const [password, setPassword] = React.useState({
+      newPassword: '',
+      confirmPassword: '',
+      currentPassword: '',
+    });
+    const [data, setData] = React.useState(null)
+    const [editable, setEditable] = React.useState(false)
     let { id } = useParams();
     const handleChangeTab = (event, newValue) => {
         setTab(newValue)
     }
-
-    var managementDispatch = useManagementDispatch()
-    var managementValue = useManagementState()
-    let userState = useUserState();
+    const location = useLocation();
+    const managementDispatch = useManagementDispatch()
+    const managementValue = useManagementState()
+    const userState = useUserState();
+    const history = useHistory();
 
     useEffect(() => {
-        //  const res = actions.doFind(id)(managementDispatch)
-        //   console.log('with id', res)
-        //   setData(managementValue);
-      async function init() {
-        if (id !== 'edit') {
-          
-          await actions.doFind(id)(managementDispatch)
-          setTimeout(() => console.log('with id', managementValue),1000)
-          setData(managementValue);
-        } else {
-          console.log('without id',userState)
-          setData(userState)
-        }
+      actions.doFind(id)(managementDispatch)
+    }, []);
+
+    useEffect(() => {
+      if (location.pathname.includes('edit')) {
+        setEditable(true);
       }
-      
-      init();
-      //console.log(managementValue, userState, id)
-    }, [managementDispatch, id])
+    }, [location.pathname]);
+
+    useEffect(() => {
+      if (id !== 'edit') {
+        setData(managementValue.currentUser)
+      } else {
+        setData(userState.currentUser)
+      }
+    }, [managementDispatch, managementValue, id])
 
     function handleSubmit() {
       actions.doUpdate(id, data)(managementDispatch)
+      history.push('/app/user/list')
     }
 
-    // function handleChange(e) {
-    //   setData({
-    //     ...data,
-    //     [e.target.name]: e.target.value,
-    //   });
-    // }
+    function handleUpdatePassword() {
+      actions.doChangePassword(password)(managementDispatch)
+    }
+
+    function handleChangePassword(e) {
+      setPassword({
+        ...password,
+        [e.target.name]: e.target.value,
+      })
+    }
+
+    function handleChange(e) {
+      setData({
+        ...data,
+        [e.target.name]: e.target.value,
+      });
+    }
     console.log('render ONe')
     return (
         <Grid container spacing={3}>
-          <h1>{id}</h1>
-          <h2>-> {managementValue && managementValue.currentUser && managementValue.currentUser.firstName}</h2>
+          <h1>{'loca'}->{location.pathname}</h1>
+          <h2>-> {data && data.firstName}</h2>
             <Grid item xs={12}>
                 <Widget>
                     <Box display={'flex'} justifyContent={'center'}>
@@ -133,13 +150,16 @@ const EditUser = () => {
                                     </Typography>
                                     <TextField
                                         id="outlined-basic"
-                                        defaultValue={managementValue && managementValue.currentUser && managementValue.currentUser.firstName}
+                                        value={data && data.firstName}
+                                        onChange={handleChange}
+                                        name="firstName"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                     />
                                     <TextField
                                         id="outlined-basic"
-                                        value={'Username@gmail.com'}
+                                        value={data && data.email}
+                                        name="email"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                     />
@@ -150,14 +170,13 @@ const EditUser = () => {
                                         <Select
                                             labelId="demo-simple-select-outlined-label"
                                             id="demo-simple-select-outlined"
-                                            value={20}
+                                            value="user"
                                         >
-                                            <MenuItem value={10}>User</MenuItem>
-                                            <MenuItem value={20}>
+                                            <MenuItem value={"admin"}>
                                                 Admin
                                             </MenuItem>
-                                            <MenuItem value={30}>
-                                                Super Admin
+                                            <MenuItem value={"user"}>
+                                                User
                                             </MenuItem>
                                         </Select>
                                     </FormControl>
@@ -174,7 +193,6 @@ const EditUser = () => {
                                     <Typography weight={'medium'}>
                                         Photo:
                                     </Typography>
-      
                                     <Typography
                                         size={'sm'}
                                         style={{ marginBottom: 35 }}
@@ -373,6 +391,9 @@ const EditUser = () => {
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         defaultValue={'Current Password'}
+                                        value={password.currentPassword || ''}
+                                        name="currentPassword"
+                                        onChange={handleChangePassword}
                                         helperText={'Forgot Password?'}
                                     />
                                     <TextField
@@ -380,12 +401,18 @@ const EditUser = () => {
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         defaultValue={'New Password'}
+                                        value={password.newPassword || ''}
+                                        name="newPassword"
+                                        onChange={handleChangePassword}
                                     />
                                     <TextField
                                         id="outlined-basic"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         defaultValue={'Verify Password'}
+                                        value={password.confirmPassword || ''}
+                                        name="confirmPassword"
+                                        onChange={handleChangePassword}
                                     />
                                 </>
                             ) : (
@@ -464,17 +491,34 @@ const EditUser = () => {
                                     </Box>
                                 </>
                             )}
-                            <Box
-                                display={'flex'}
-                                justifyContent={'space-between'}
-                            >
-                                <Button variant={'outlined'} color={'primary'}>
-                                    Reset
-                                </Button>
-                                <Button variant={'contained'} color={'success'} onClick={handleSubmit}>
-                                    Save
-                                </Button>
-                            </Box>
+                            {editable && 
+                              <Box
+                                  display={'flex'}
+                                  justifyContent={'space-between'}
+                              >
+                                {tab !== 2 ? (
+                                  <>
+                                  <Button variant={'outlined'} color={'primary'}>
+                                      Reset
+                                  </Button>
+                                  <Button variant={'contained'} color={'success'} onClick={handleSubmit}>
+                                      Save
+                                  </Button>
+                                  </>                                
+                                ) : (
+                                  <>
+                                  <Button variant={'outlined'} color={'primary'}>
+                                      Reset
+                                  </Button>
+                                  <Button variant={'contained'} color={'success'} onClick={handleUpdatePassword}>
+                                      Save Password
+                                  </Button>
+                                  </> 
+                                )}
+
+                              </Box>                              
+                             
+                            }
                         </Box>
                     </Grid>
                 </Widget>

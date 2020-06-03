@@ -75,6 +75,7 @@ import Calendar from '../../pages/calendar'
 import UserList from '../../pages/user'
 import UserAdd from '../../pages/user/AddUser'
 import UserEdit from '../../pages/user/EditUser'
+import BreadCrumbs from '../../components/BreadCrumbs'
 
 // context
 import { useLayoutState } from '../../context/LayoutContext'
@@ -128,146 +129,7 @@ function Layout(props) {
                 })}
             >
                 <div className={classes.fakeToolbar} />
-                <Widget
-                    disableWidgetMenu
-                    inheritHeight
-                    className={classes.margin}
-                    bodyClass={classes.navPadding}
-                >
-                    <Grid
-                        container
-                        direction="row"
-                        justify="space-between"
-                        alignItems="center"
-                        wrap={'nowrap'}
-                        style={{ overflowX: 'auto' }}
-                    >
-                        {structure.map(c => {
-                            if (
-                                !c.children &&
-                                window.location.hash.includes(c.link) &&
-                                c.link
-                            ) {
-                                return (
-                                    <Box
-                                        display="flex"
-                                        alignItems="center"
-                                        key={c.id}
-                                    >
-                                        <Breadcrumbs aria-label="breadcrumb">
-                                            <Typography variant="h4">
-                                                {c.label}
-                                            </Typography>
-                                        </Breadcrumbs>
-                                        {window.location.hash.includes(
-                                            '/app/dashboard'
-                                        ) && (
-                                            <Tabs
-                                                value={value}
-                                                onChange={handleChange}
-                                                aria-label="simple tabs example"
-                                                variant="scrollable"
-                                                scrollButtons="auto"
-                                                style={{ marginLeft: 38 }}
-                                            >
-                                                <CustomTab
-                                                    label="Today"
-                                                    {...a11yProps(0)}
-                                                />
-                                                <CustomTab
-                                                    label="This week"
-                                                    {...a11yProps(1)}
-                                                />
-                                                <CustomTab
-                                                    label="This month"
-                                                    {...a11yProps(2)}
-                                                />
-                                                <CustomTab
-                                                    label="This year"
-                                                    {...a11yProps(3)}
-                                                />
-                                            </Tabs>
-                                        )}
-                                    </Box>
-                                )
-                            } else if (c.children) {
-                                return c.children.map(currentInner => {
-                                    if (
-                                        window.location.hash.includes(
-                                            currentInner.link
-                                        )
-                                    ) {
-                                        return (
-                                            <Breadcrumbs
-                                                separator={
-                                                    <NavigateNextIcon fontSize="small" />
-                                                }
-                                                aria-label="breadcrumb"
-                                                key={c.id}
-                                            >
-                                                <Typography variant={'h6'}>
-                                                    {c.label}
-                                                </Typography>
-                                                <Typography
-                                                    variant={'h6'}
-                                                    color="primary"
-                                                >
-                                                    {currentInner.label}
-                                                </Typography>
-                                            </Breadcrumbs>
-                                        )
-                                    } else {
-                                        return null
-                                    }
-                                })
-                            } else {
-                                return null
-                            }
-                        })}
-                        {window.location.hash.includes('/app/dashboard') && (
-                            <Box display="flex" alignItems="center">
-                                <CalendarIcon
-                                    className={classes.calendarIcon}
-                                />
-                                <Typography className={classes.date}>
-                                    29 Oct 2019, Tuesday
-                                </Typography>
-                                <Button
-                                    variant="contained"
-                                    color="secondary"
-                                    className={classes.button}
-                                >
-                                    Latest Reports
-                                </Button>
-                            </Box>
-                        )}
-                        {window.location.hash.includes('/app/ecommerce') && (
-                            <Box display="flex" alignItems="center">
-                                <Box>
-                                    <IconButton aria-label="chat">
-                                        <ChatIcon
-                                            className={classes.ecommerceIcon}
-                                        />
-                                    </IconButton>
-                                </Box>
-                                <Box>
-                                    <IconButton aria-label="add_to_cart">
-                                        <AddIcon
-                                            className={classes.ecommerceIcon}
-                                        />
-                                    </IconButton>
-                                </Box>
-                                <Box>
-                                    <IconButton aria-label="rate">
-                                        <StarIcon
-                                            className={classes.ecommerceIcon}
-                                        />
-                                    </IconButton>
-                                </Box>
-                            </Box>
-                        )}
-                    </Grid>
-                </Widget>
+                <BreadCrumbs />
                 <Switch>
                     <Route path="/app/dashboard" component={Dashboard} />
                     <Route

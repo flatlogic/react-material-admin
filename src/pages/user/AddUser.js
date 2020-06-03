@@ -10,8 +10,11 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
-
+import { useHistory } from 'react-router-dom'
 import useStyles from './styles'
+import { toast } from 'react-toastify'
+
+import Notification from "../../components/Notification";
 
 import photo from '../../images/profile.jpg'
 
@@ -47,7 +50,7 @@ const AddUser = () => {
     const [activeStep, setActiveStep] = React.useState(0)
     const [skipped, setSkipped] = React.useState(new Set())
     const [newUser, setNewUser] = React.useState({
-      avatar: 'https://flatlogic.com/assets/templates/lb_react_full_nodejs-5c3911e26e8d9e2cad16f5d3e4c480fe133e97ba1d50c9cc2fdc35d53c7ebb2a.png',
+      avatar: '',
       disabled: null,
       email: '',
       emailVerificationToken: null,
@@ -81,13 +84,10 @@ const AddUser = () => {
 
     var managementDispatch = useManagementDispatch()
     // var managementValue = useManagementState()
-
+    const history = useHistory()
     const doSubmit = (id, data) => {
-      if (false) {
-        actions.doUpdate(id, data, this.isProfile())(managementDispatch);
-      } else {
-        actions.doCreate(data)(managementDispatch);
-      }
+        actions.doCreate(data, history)(managementDispatch);
+      
     };
 
     const handleNext = () => {
@@ -101,13 +101,36 @@ const AddUser = () => {
         setSkipped(newSkipped)
 
         if (activeStep === 3) {
-          console.log('sdfsdf', newUser)
-          doSubmit(null, newUser)
+          doSubmit(null, newUser, history)
+          sendNotification()
         }
     }
 
     const handleBack = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1)
+    }
+
+    function sendNotification() {
+      const componentProps = {
+        type: "feedback",
+        message: "User added!",
+        variant: "contained",
+        color: "success"
+      };
+      const options = {
+        type: "info",
+        position: toast.POSITION.TOP_RIGHT,
+        progressClassName: classes.progress,
+        className: classes.notification,
+        timeOut: 1000
+      };
+      return toast(
+        <Notification
+          {...componentProps}
+          className={classes.notificationComponent}
+        />,
+        options
+      );
     }
     return (
         <Grid container spacing={3}>

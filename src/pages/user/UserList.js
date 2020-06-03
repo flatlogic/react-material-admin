@@ -440,7 +440,7 @@ const UserList = () => {
                                                     <Typography
                                                         variant={'body2'}
                                                     >
-                                                        {row.email}
+                                                        {row.email}/{row.firstName}
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">

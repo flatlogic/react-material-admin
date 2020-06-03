@@ -18,7 +18,7 @@ import logo from "./logo.svg";
 import google from "../../images/google.svg";
 
 // context
-import { useUserDispatch, loginUser } from "../../context/UserContext";
+import { useUserDispatch, loginUser, registerUser } from "../../context/UserContext";
 import { receiveToken, doInit } from "../../context/UserContext";
 
 //components
@@ -266,14 +266,14 @@ function Login(props) {
                 ) : (
                   <Button
                     onClick={() =>
-                      loginUser(
+                      registerUser(
                         userDispatch,
                         loginValue,
                         passwordValue,
                         props.history,
                         setIsLoading,
                         setError
-                      )
+                      )()
                     }
                     disabled={
                       loginValue.length === 0 ||

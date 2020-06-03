@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import jwt from "jsonwebtoken";
+import { toast } from "react-toastify";
 import { mockUser } from "./mock";
 
 //config
@@ -16,12 +17,23 @@ function userReducer(state, action) {
         ...state,
         ...action.payload
       };
+    case "REGISTER_REQUEST":
+      return {
+        ...state,
+        isFetching: true,
+        errorMessage: '',
+      };
     case "SIGN_OUT_SUCCESS":
       return { ...state };
     case "AUTH_INIT_ERROR":
       return Object.assign({}, state, {
           currentUser: null,
           loadingInit: false,
+      });
+    case "REGISTER_SUCCESS":
+      return Object.assign({}, state, {
+          isFetching: false,
+          errorMessage: '',
       });
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -89,8 +101,6 @@ function loginUser(
 ) {
   setError(false);
   setIsLoading(true);
-  console.log(  login,
-    password,)
   // We check if app runs with backend mode
   if (!config.isBackend) {
     setTimeout(() => {
@@ -188,7 +198,6 @@ export function doInit() {
         if (token) {
           currentUser = await findMe();
         }
-        console.log(currentUser, '<<<<<<<<<<<<');
         dispatch({
           type: 'LOGIN_SUCCESS',
           payload: {
@@ -205,4 +214,39 @@ export function doInit() {
       }
     }
   }
+}
+
+export function registerUser(
+  dispatch,
+  login,
+  password,
+  history,
+  setIsLoading,
+  setError,
+  social = ""
+) {
+  return () => {
+    if (!config.isBackend) {
+      history.push('/login');
+    } else {
+      dispatch({
+        type: 'REGISTER_REQUEST',
+      });
+      console.log('start')
+      if (login.length > 0 && password.length > 0) {
+        axios.post("/auth/signup", {email: login, password}).then(res => {
+          dispatch({
+            type: 'REGISTER_SUCCESS'
+          });
+          toast.success("You've been registered successfully. Please check your email for verification link");
+          history.push('/login');
+        }).catch(err => {
+          dispatch(authError(err.response.data));
+        })
+  
+      } else {
+        dispatch(authError('Something was wrong. Try again'));
+      }
+    }
+  };
 }

@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { mockUser } from './mock';
 import config from "../../src/config";
+import { toast } from "react-toastify";
+import Notification from '../components/Notification/Notification'
 
 async function list() {
   const response = await axios.get(`/users`);
@@ -83,6 +85,7 @@ function managementReducer(state = initialData, { type, payload }) {
   if (type === 'USERS_FORM_UPDATE_SUCCESS') {
     return {
       ...state,
+      currentUser: payload,
       saveLoading: false,
     };
   }
@@ -223,41 +226,36 @@ const actions = {
   
         axios.get(`/users/${id}`).then(res => {
           const currentUser = res.data;
-          console.log('user find', currentUser)
           dispatch({
             type: 'USERS_FORM_FIND_SUCCESS',
             payload: currentUser,
           });
         })
       } catch (error) {
-        console.log(error, "ERRROE");
-        
+        toast("Error");
+        console.log(error)
         dispatch({
           type: 'USERS_FORM_FIND_ERROR',
         });
   
-        // dispatch(push('/admin/users'));
       }
     }
   },
 
-  doCreate: (values) => async (dispatch) => {
+  doCreate: (values, history) => async (dispatch) => {
     try {
       dispatch({
         type: 'USERS_FORM_CREATE_STARTED',
       });
-
       axios.post('/users', { data: values }).then(res => {
         dispatch({
           type: 'USERS_FORM_CREATE_SUCCESS',
         });
-        console.log(values);
-        console.log('User created');
-        // dispatch(push('/admin/users'));
+        history.push('/app/user/list');
       })
     } catch (error) {
-      console.log(error);
-
+      toast("Error");
+      console.log(error)
       dispatch({
         type: 'USERS_FORM_CREATE_ERROR',
       });
@@ -275,20 +273,19 @@ const actions = {
 
       await axios.put(`/users/${id}`, {id, data: values});
 
-      // dispatch(doInit());
-
       dispatch({
         type: 'USERS_FORM_UPDATE_SUCCESS',
+        payload: values
       });
 
       if (isProfile) {
         console.log('Profile updated');
       } else {
-        console.log('User updated');
-        // dispatch(push('/admin/users'));
+        toast("User updated");
       }
     } catch (error) {
-      console.log(error);
+      toast("Error");
+      console.log(error)
 
       dispatch({
         type: 'USERS_FORM_UPDATE_ERROR',
@@ -306,11 +303,11 @@ const actions = {
         type: 'USERS_PASSWORD_UPDATE_SUCCESS',
       });
 
-      console.log('Password has been updated');
-      // dispatch(push('/app/main'));
+      toast("Password updated");
 
     } catch (error) {
-      console.log(error);
+      toast("Error");
+      console.log(error)
 
       dispatch({
         type: 'USERS_FORM_CREATE_ERROR',
@@ -344,7 +341,8 @@ const actions = {
           },
         });
       } catch (error) {
-        console.log(error);
+        toast("Error");
+        console.log(error)
 
         dispatch({
           type: 'USERS_LIST_FETCH_ERROR',
@@ -369,7 +367,6 @@ const actions = {
         dispatch({
           type: 'USERS_LIST_DELETE_SUCCESS',
         });
-  
         const response = await list();
         dispatch({
           type: 'USERS_LIST_FETCH_SUCCESS',
@@ -380,8 +377,8 @@ const actions = {
         });
   
       } catch (error) {
-        console.log(error);
-  
+        toast("Error");
+        console.log(error)
         dispatch({
           type: 'USERS_LIST_DELETE_ERROR',
         });

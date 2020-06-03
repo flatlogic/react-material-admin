@@ -6,6 +6,9 @@ import {
   Redirect,
 } from "react-router-dom";
 import { useUserDispatch, doInit } from "../context/UserContext";
+import { ToastContainer } from "react-toastify";
+import { Close as CloseIcon } from "@material-ui/icons";
+import useStyles from './styles';
 // components
 import Layout from "./Layout";
 import Documentation from "./Documentation/Documentation";
@@ -22,26 +25,40 @@ export default function App() {
   var { isAuthenticated } = useUserState();
   const isAuth = isAuthenticated()
   const userDispatch = useUserDispatch()
+  const classes = useStyles();
+  function CloseButton({ closeToast, className }) {
+    return <CloseIcon className={className} onClick={closeToast} />;
+  }
 
   useEffect(() => {
     console.log('init')
     doInit()(userDispatch);
   }, [userDispatch]);
   return (
-    <HashRouter>
-      <Switch>
-        <Route exact path="/" render={() => <Redirect to="/app/dashboard" />} />
-        <Route
-          exact
-          path="/app"
-          render={() => <Redirect to="/app/dashboard" />}
-        />
-        <Route path="/documentation" component={Documentation} />
-        <PrivateRoute path="/app" component={Layout} />
-        <PublicRoute path="/login" component={Login} />
-        <Route component={Error} />
-      </Switch>
-    </HashRouter>
+    <>
+    <ToastContainer
+      className={classes.toastsContainer}
+      closeButton={
+        <CloseButton className={classes.notificationCloseButton} />
+      }
+      closeOnClick={false}
+      progressClassName={classes.notificationProgress}
+    />
+      <HashRouter>
+        <Switch>
+          <Route exact path="/" render={() => <Redirect to="/app/dashboard" />} />
+          <Route
+            exact
+            path="/app"
+            render={() => <Redirect to="/app/dashboard" />}
+          />
+          <Route path="/documentation" component={Documentation} />
+          <PrivateRoute path="/app" component={Layout} />
+          <PublicRoute path="/login" component={Login} />
+          <Route component={Error} />
+        </Switch>
+      </HashRouter>
+    </>
   );
 
   // #######################################################################
