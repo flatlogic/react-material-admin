@@ -20,7 +20,7 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
-
+import ImageUploader from 'react-images-upload';
 import {
   useManagementDispatch,
   useManagementState,
@@ -28,6 +28,7 @@ import {
 import {
   useUserState,
 } from '../../context/UserContext'
+import photo from '../../images/profile.jpg'
 
 
 import { actions } from '../../context/ManagementContext'
@@ -92,11 +93,17 @@ const EditUser = () => {
         [e.target.name]: e.target.value,
       });
     }
-    console.log('render ONe')
+
+    function onDrop(pictureFiles, pictureDataURLs) {
+      setData({
+          ...data,
+          avatars: [{publicUrl: pictureDataURLs}],
+      });
+    }
+
+    console.log('render ONe', data)
     return (
         <Grid container spacing={3}>
-          <h1>{'loca'}->{location.pathname}</h1>
-          <h2>-> {data && data.firstName}</h2>
             <Grid item xs={12}>
                 <Widget>
                     <Box display={'flex'} justifyContent={'center'}>
@@ -193,6 +200,22 @@ const EditUser = () => {
                                     <Typography weight={'medium'}>
                                         Photo:
                                     </Typography>
+                                    {data && data.avatars && (
+                                      <img
+                                        src={data.avatars[0].publicUrl}
+                                        width={123}
+                                        alt="photo"
+                                        style={{ borderRadius: 8 }}
+                                      />
+                                    )}
+                                    <ImageUploader
+                                        withIcon={true}
+                                        buttonText='Choose images'
+                                        onChange={onDrop}
+                                        singleImage
+                                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                        maxFileSize={5242880}
+                                    />
                                     <Typography
                                         size={'sm'}
                                         style={{ marginBottom: 35 }}

@@ -1,9 +1,7 @@
 import React from 'react'
 import Widget from '../Widget'
-import { Route, Switch, Redirect, withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
-    Fab,
-    IconButton,
     Box,
     Grid,
     Breadcrumbs,
@@ -14,9 +12,6 @@ import { Typography, Button } from '../Wrappers'
 import {
     NavigateNext as NavigateNextIcon,
     CalendarToday as CalendarIcon,
-    ChatBubbleOutline as ChatIcon,
-    AddShoppingCart as AddIcon,
-    StarBorder as StarIcon,
 } from '@material-ui/icons'
 import { useLocation } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles'

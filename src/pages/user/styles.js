@@ -93,5 +93,5 @@ export default makeStyles(theme => ({
     },
     searchIcon: {
       color: "rgba(0, 0, 0, 0.23)"
-    }
+    },
 }))

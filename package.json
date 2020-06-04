@@ -75,6 +75,7 @@
     "react-dev-utils": "^9.1.0",
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
+    "react-images-upload": "^1.2.8",
     "react-paginate": "^6.3.0",
     "react-router-dom": "^5.1.2",
     "react-simple-maps": "^0.12.1",

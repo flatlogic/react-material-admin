@@ -35,6 +35,11 @@ function userReducer(state, action) {
           isFetching: false,
           errorMessage: '',
       });
+    case 'AUTH_FAILURE':
+      return Object.assign({}, state, {
+          isFetching: false,
+          errorMessage: action.payload,
+      });
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -249,4 +254,22 @@ export function registerUser(
       }
     }
   };
+}
+
+export function verifyEmail(token, history) {
+  return(dispatch) => {
+    if (!config.isBackend) {
+      history.push('/login');
+    } else {
+      axios.put("/auth/verify-email", {token}).then(verified => {
+        if (verified) {
+          toast.success("Your email was verified");
+        }
+      }).catch(err => {
+        toast.error(err.response.data);
+      }).finally(() => {
+        history.push('/login');
+      })
+    }
+  }
 }

@@ -242,7 +242,7 @@ const AddUser = () => {
                                     <img
                                         src={photo}
                                         width={123}
-                                        alt="sdfsd"
+                                        alt="photo"
                                         style={{ borderRadius: 8 }}
                                     />
                                     <Typography

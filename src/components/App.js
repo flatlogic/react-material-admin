@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import {
   HashRouter,
   Route,
@@ -16,6 +16,7 @@ import Documentation from "./Documentation/Documentation";
 // pages
 import Error from "../pages/error";
 import Login from "../pages/login";
+import Verify from "../pages/verify";
 
 // context
 import { useUserState } from "../context/UserContext";
@@ -30,10 +31,6 @@ export default function App() {
     return <CloseIcon className={className} onClick={closeToast} />;
   }
 
-  useEffect(() => {
-    console.log('init')
-    doInit()(userDispatch);
-  }, [userDispatch]);
   return (
     <>
     <ToastContainer
@@ -55,6 +52,7 @@ export default function App() {
           <Route path="/documentation" component={Documentation} />
           <PrivateRoute path="/app" component={Layout} />
           <PublicRoute path="/login" component={Login} />
+          <PublicRoute path="/verify-email" component={Verify} />
           <Route component={Error} />
         </Switch>
       </HashRouter>

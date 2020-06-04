@@ -3,7 +3,6 @@ import axios from "axios";
 import { mockUser } from './mock';
 import config from "../../src/config";
 import { toast } from "react-toastify";
-import Notification from '../components/Notification/Notification'
 
 async function list() {
   const response = await axios.get(`/users`);

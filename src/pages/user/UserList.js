@@ -24,13 +24,16 @@ import TableSortLabel from '@material-ui/core/TableSortLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/DeleteOutlined'
-
+import Notification from '../../components/Notification/Notification'
+import { toast } from 'react-toastify'
 
 import { Typography, Chip, Avatar, Link } from '../../components/Wrappers'
 import {
     useManagementDispatch,
     useManagementState,
 } from '../../context/ManagementContext'
+
+import useStyles from './styles'
 // Icons
 import {
     Add as AddIcon,
@@ -41,6 +44,8 @@ import {
 } from '@material-ui/icons'
 
 import { actions } from '../../context/ManagementContext'
+
+
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -179,11 +184,34 @@ const UserList = () => {
       fetchAPI();
     }, []);
 
+    const classes = useStyles();
 
+    function sendNotification() {
+      const componentProps = {
+        type: "feedback",
+        message: "Product has been Updated!",
+        variant: "contained",
+        color: "success"
+      };
+      const options = {
+        type: "info",
+        position: toast.POSITION.TOP_RIGHT,
+        progressClassName: classes.progress,
+        className: classes.notification,
+        timeOut: 1000
+      };
+      return toast(
+        <Notification
+          {...componentProps}
+          className={classes.notificationComponent}
+        />,
+        options
+      );
+    }
 
     React.useEffect(() => {
       setUsersRows(managementValue.rows)
-      console.log(managementValue.rows)
+      
     },[managementValue.rows]);
 
     const handleRequestSort = (event, property) => {
@@ -448,11 +476,11 @@ const UserList = () => {
                                                         color={
                                                             row.statusColor
                                                         }
-                                                        label={'active'}
+                                                        label={row.emailVerified ? 'active' : 'inactive'}
                                                         style={{
                                                             color: '#fff',
                                                             height: 16,
-                                                            backgroundColor: '#3CD4A0',
+                                                            backgroundColor: row.emailVerified ? '#3CD4A0' : '#FF5C93',
                                                             fontSize: 11,
                                                             fontWeight:
                                                                 'bold',
