@@ -211,8 +211,6 @@ const UserList = () => {
 
     React.useEffect(() => {
       setUsersRows(managementValue.rows)
-      console.log(managementValue.rows);
-      
     },[managementValue.rows]);
 
     const handleRequestSort = (event, property) => {

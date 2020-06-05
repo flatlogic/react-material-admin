@@ -260,7 +260,6 @@ export function registerUser(
       dispatch({
         type: 'REGISTER_REQUEST',
       });
-      console.log('start')
       if (login.length > 0 && password.length > 0) {
         axios.post("/auth/signup", {email: login, password}).then(res => {
           dispatch({

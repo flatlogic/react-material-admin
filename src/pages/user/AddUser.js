@@ -105,7 +105,6 @@ const AddUser = () => {
         setSkipped(newSkipped)
 
         if (activeStep === 3) {
-          console.log(newUser, 'submit');
           doSubmit(null, newUser, history)
           sendNotification()
         }
