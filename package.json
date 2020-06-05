@@ -34,6 +34,7 @@
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "classnames": "^2.2.6",
+    "cross-env": "^7.0.2",
     "css-loader": "2.1.1",
     "dotenv": "6.2.0",
     "dotenv-expand": "5.1.0",
@@ -47,6 +48,7 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "file-loader": "3.0.1",
     "font-awesome": "^4.7.0",
+    "formik": "^2.1.4",
     "fs-extra": "7.0.1",
     "html-webpack-plugin": "4.0.0-beta.5",
     "identity-obj-proxy": "3.0.0",
@@ -73,6 +75,7 @@
     "react-dev-utils": "^9.1.0",
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
+    "react-images-upload": "^1.2.8",
     "react-paginate": "^6.3.0",
     "react-router-dom": "^5.1.2",
     "react-simple-maps": "^0.12.1",
@@ -86,6 +89,7 @@
     "sass-loader": "7.2.0",
     "semver": "6.3.0",
     "style-loader": "1.0.0",
+    "styled-components": "^5.1.1",
     "terser-webpack-plugin": "1.4.1",
     "tinycolor2": "^1.4.1",
     "ts-pnp": "1.1.4",
@@ -96,9 +100,9 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "build": "REACT_APP_BACKEND=true PUBLIC_URL='./' node scripts/build.js",
+    "build": "cross-env REACT_APP_BACKEND=true PUBLIC_URL='./' node scripts/build.js",
     "start": "node scripts/start.js",
-    "start:backend": "REACT_APP_BACKEND=true node scripts/start.js",
+    "start:backend": "cross-env REACT_APP_BACKEND=true node scripts/start.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

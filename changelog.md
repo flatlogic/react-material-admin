@@ -1,5 +1,14 @@
 # Changelog
 
+# [2.0.0]
+
+### Fixed
+- Added user management table
+- Added register functionality
+- Added reset password functionality
+- User invitation functionality
+- Social Login
+
 # [1.2.1]
 
 ### Fixed

@@ -3,8 +3,14 @@ import {
     Grid,
     Box,
     InputAdornment,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
     TextField as Input,
 } from '@material-ui/core'
+import moment from 'moment'
 import Widget from '../../components/Widget'
 import { Button } from '../../components/Wrappers'
 import Table from '@material-ui/core/Table'
@@ -18,17 +24,16 @@ import TableSortLabel from '@material-ui/core/TableSortLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/DeleteOutlined'
+import Notification from '../../components/Notification/Notification'
+import { toast } from 'react-toastify'
 
-// users images
-import user1 from '../../images/users/1.png'
-import user2 from '../../images/users/2.png'
-import user4 from '../../images/users/4.png'
-import user6 from '../../images/users/6.png'
-import user8 from '../../images/users/8.png'
-import user10 from '../../images/users/10.png'
+import { Typography, Chip, Avatar, Link } from '../../components/Wrappers'
+import {
+    useManagementDispatch,
+    useManagementState,
+} from '../../context/ManagementContext'
 
-import { Typography, Chip, Avatar } from '../../components/Wrappers'
-
+import useStyles from './styles'
 // Icons
 import {
     Add as AddIcon,
@@ -38,160 +43,9 @@ import {
     HelpOutline as HelpIcon,
 } from '@material-ui/icons'
 
-function createData(
-    id,
-    name,
-    role,
-    companyName,
-    email,
-    status,
-    statusColor,
-    created,
-    avatar,
-    type,
-    avatarColor
-) {
-    return {
-        id,
-        name,
-        role,
-        companyName,
-        email,
-        status,
-        statusColor,
-        created,
-        avatar,
-        type,
-        avatarColor
-    }
-}
+import { actions } from '../../context/ManagementContext'
 
-const rows = [
-    createData(
-        1,
-        'Ivan Grud',
-        'Admin',
-        'Flatlogic',
-        'Ivan_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        user1,
-        'image'
-    ),
-    createData(
-        2,
-        'Anna Garsia',
-        'Admin',
-        'Flatlogic',
-        'Anna_flatlogic@gmail.com',
-        'Unactive',
-        'secondary',
-        '09-02-2020',
-        user2,
-        'image'
-    ),
-    createData(
-        3,
-        'Kate Claus',
-        'Superadmin',
-        'Flatlogic',
-        'Kate_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        'KC',
-        'text',
-        'warning'
-    ),
-    createData(
-        4,
-        'Nick Peru',
-        'Superadmin',
-        'Flatlogic',
-        'Nick_flatlogic@gmail.com',
-        'Unactive',
-        'secondary',
-        '09-02-2020',
-        user4,
-        'image'
-    ),
-    createData(
-        5,
-        'Lian Robinson',
-        'User',
-        'Flatlogic',
-        'Lian_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        'LR',
-        'text',
-        'primary'
-    ),
-    createData(
-        6,
-        'Sam Fisher',
-        'User',
-        'Flatlogic',
-        'Sam_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        user6,
-        'image'
-    ),
-    createData(
-        7,
-        'Kate Claus',
-        'Superadmin',
-        'Flatlogic',
-        'Kate_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        'KC',
-        'text',
-        'secondary'
-    ),
-    createData(
-        8,
-        'Nina Peru',
-        'Superadmin',
-        'Flatlogic',
-        'Nina_flatlogic@gmail.com',
-        'Unactive',
-        'secondary',
-        '09-02-2020',
-        user8,
-        'image'
-    ),
-    createData(
-        9,
-        'Lian Torson',
-        'User',
-        'Flatlogic',
-        'Torson_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        'LT',
-        'text',
-        'primary'
-    ),
-    createData(
-        9,
-        'Samanta Fisher',
-        'User',
-        'Flatlogic',
-        'Samanta_flatlogic@gmail.com',
-        'Active',
-        'success',
-        '09-02-2020',
-        user10,
-        'image'
-    ),
-]
+
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -242,7 +96,6 @@ const headCells = [
 
 function EnhancedTableHead(props) {
     const {
-        classes,
         onSelectAllClick,
         order,
         orderBy,
@@ -294,7 +147,6 @@ function EnhancedTableHead(props) {
     )
 }
 
-
 const UserList = () => {
     const [order, setOrder] = React.useState('asc')
     const [orderBy, setOrderBy] = React.useState('calories')
@@ -302,7 +154,66 @@ const UserList = () => {
     const [page, setPage] = React.useState(0)
     const [dense, setDense] = React.useState(false)
     const [rowsPerPage, setRowsPerPage] = React.useState(5)
-    const [usersRows, setUsersRows] = React.useState(rows)
+    const [usersRows, setUsersRows] = React.useState([])
+
+    var managementDispatch = useManagementDispatch()
+    var managementValue = useManagementState()
+    const openModal = (cell) => {
+      actions.doOpenConfirm(cell)(managementDispatch);
+    }
+
+    const closeModal = () => {
+      actions.doCloseConfirm()(managementDispatch)
+    }
+
+    const handleDelete = () => {
+      actions.doDelete(managementValue.idToDelete)(managementDispatch);
+      sendNotification('User deleted')
+    }
+
+    React.useEffect(() => {
+      sendNotification('This page is only available in React Material Admin Full with Node.js integration!')
+      async function fetchAPI() {
+        try {
+          await actions.doFetch({}, false)(managementDispatch);
+          setUsersRows(managementValue.rows);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      fetchAPI();
+    }, []);
+
+    const classes = useStyles();
+
+    function sendNotification(text) {
+      const componentProps = {
+        type: "feedback",
+        message: text,
+        variant: "contained",
+        color: "success"
+      };
+      const options = {
+        type: "info",
+        position: toast.POSITION.TOP_RIGHT,
+        progressClassName: classes.progress,
+        className: classes.notification,
+        timeOut: 1000
+      };
+      return toast(
+        <Notification
+          {...componentProps}
+          className={classes.notificationComponent}
+        />,
+        options
+      );
+    }
+
+    React.useEffect(() => {
+      setUsersRows(managementValue.rows)
+      console.log(managementValue.rows);
+      
+    },[managementValue.rows]);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc'
@@ -312,7 +223,7 @@ const UserList = () => {
 
     const handleSelectAllClick = event => {
         if (event.target.checked) {
-            const newSelecteds = rows.map(n => n.name)
+            const newSelecteds = managementValue.rows.map(n => n.id)
             setSelected(newSelecteds)
             return
         }
@@ -348,24 +259,52 @@ const UserList = () => {
         setPage(0)
     }
 
-    const handleChangeDense = event => {
-        setDense(event.target.checked)
-    }
-
     const isSelected = name => selected.indexOf(name) !== -1
 
     const emptyRows =
-        rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
+        rowsPerPage - Math.min(rowsPerPage, usersRows.length - page * rowsPerPage)
 
     const handleSearch = e => {
-        const newArr = rows.filter(c => {
-            return c.name.toLowerCase().includes(e.currentTarget.value.toLowerCase())
+        const newArr = usersRows.filter(c => {
+            return c.name
+                .toLowerCase()
+                .includes(e.currentTarget.value.toLowerCase())
         })
         setUsersRows(newArr)
     }
 
     return (
         <Grid container spacing={3}>
+          <Dialog
+            open={managementValue.modalOpen}
+            onClose={closeModal}
+            scroll={"body"}
+            aria-labelledby="scroll-dialog-title"
+          >
+            <DialogTitle id="alert-dialog-title">
+              Are you sure that you want to delete user?
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                User will be deleted.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={closeModal}
+                color="primary"
+              >
+                Disagree
+              </Button>
+              <Button
+                onClick={handleDelete}
+                color="primary"
+                autoFocus
+              >
+                Agree
+              </Button>
+            </DialogActions>
+          </Dialog>
             <Grid item xs={12}>
                 <Widget inheritHeight>
                     <Box
@@ -374,12 +313,14 @@ const UserList = () => {
                         alignItems={'flex-start'}
                     >
                         <Box>
-                            <Button variant={'contained'} color={'success'}>
-                                <Box mr={1} display={'flex'}>
-                                    <AddIcon />
-                                </Box>
-                                Add
-                            </Button>
+                            <Link href="#/app/user/add" underline="none" color="#fff">
+                                <Button variant={'contained'} color={'success'}>
+                                    <Box mr={1} display={'flex'}>
+                                        <AddIcon />
+                                    </Box>
+                                    Add
+                                </Button>
+                            </Link>
                         </Box>
                         <Box
                             display={'flex'}
@@ -397,7 +338,7 @@ const UserList = () => {
                                 label="Search"
                                 margin="dense"
                                 variant="outlined"
-                                onChange={(e ) => handleSearch(e)}
+                                onChange={e => handleSearch(e)}
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -424,24 +365,27 @@ const UserList = () => {
                                 orderBy={orderBy}
                                 onSelectAllClick={handleSelectAllClick}
                                 onRequestSort={handleRequestSort}
-                                rowCount={rows.length}
+                                rowCount={usersRows.length}
                             />
                             <TableBody>
-                                {stableSort(usersRows, getComparator(order, orderBy))
+                                {stableSort(
+                                    usersRows,
+                                    getComparator(order, orderBy)
+                                )
                                     .slice(
                                         page * rowsPerPage,
                                         page * rowsPerPage + rowsPerPage
                                     )
                                     .map((row, index) => {
                                         const isItemSelected = isSelected(
-                                            row.name
+                                            row.id
                                         )
                                         const labelId = `enhanced-table-checkbox-${index}`
                                         return (
                                             <TableRow
                                                 hover
                                                 onClick={event =>
-                                                    handleClick(event, row.name)
+                                                    handleClick(event, row.id)
                                                 }
                                                 role="checkbox"
                                                 aria-checked={isItemSelected}
@@ -466,7 +410,7 @@ const UserList = () => {
                                                     <Typography
                                                         variant={'body2'}
                                                     >
-                                                        {row.id}
+                                                        {index+1}
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
@@ -474,24 +418,24 @@ const UserList = () => {
                                                         display={'flex'}
                                                         alignItems={'center'}
                                                     >
-                                                        {row.type == 'text' ? (
+                                                        {!row.avatars ? (
                                                             <Avatar
                                                                 alt={row.name}
                                                                 style={{
                                                                     marginRight: 15,
+                                                                    backgroundColor: '#536DFE'
                                                                 }}
-                                                                color={row.avatarColor}
                                                             >
-                                                                {row.avatar}
+                                                                {row.email.charAt(0).toUpperCase()}
                                                             </Avatar>
                                                         ) : (
-                                                            <Avatar
-                                                                alt={row.name}
-                                                                src={row.avatar}
-                                                                style={{
-                                                                    marginRight: 15,
-                                                                }}
-                                                            />
+                                                          <Avatar
+                                                              alt={row.name}
+                                                              src={row.avatars[0] && row.avatars[0].publicUrl && row.avatars[0].publicUrl}
+                                                              style={{
+                                                                  marginRight: 15,
+                                                              }}
+                                                          />
                                                         )}
                                                         <Typography
                                                             variant={'body2'}
@@ -512,7 +456,7 @@ const UserList = () => {
                                                     <Typography
                                                         variant={'body2'}
                                                     >
-                                                        {row.companyName}
+                                                        Flatlogic
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
@@ -523,44 +467,51 @@ const UserList = () => {
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
-                                                    <Typography
-                                                        variant={'body2'}
-                                                    >
-                                                        <Chip
-                                                            color={
-                                                                row.statusColor
-                                                            }
-                                                            label={row.status}
-                                                            style={{
-                                                                color: '#fff',
-                                                                height: 16,
-                                                                fontSize: 11,
-                                                                fontWeight:
-                                                                    'bold',
-                                                            }}
-                                                        />
-                                                    </Typography>
+                                                    <Chip
+                                                        color={
+                                                            row.statusColor
+                                                        }
+                                                        label={(row.emailVerified && row.password) ? 'active' : 'inactive'}
+                                                        style={{
+                                                            color: '#fff',
+                                                            height: 16,
+                                                            backgroundColor: (row.emailVerified && row.password) ? '#3CD4A0' : '#FF5C93',
+                                                            fontSize: 11,
+                                                            fontWeight:
+                                                                'bold',
+                                                        }}
+                                                    />
                                                 </TableCell>
                                                 <TableCell align="right">
                                                     <Typography
                                                         variant={'body2'}
                                                     >
-                                                        {row.created}
+                                                        {moment(row.createdAt).format('YYYY-DD-MM')}
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
-                                                    <Box display={'flex'} style={{marginLeft: -12}}>
+                                                    <Box
+                                                        display={'flex'}
+                                                        style={{
+                                                            marginLeft: -12,
+                                                        }}
+                                                    >
                                                         <IconButton
                                                             color={'primary'}
                                                         >
+                                                          <Link href={`#app/user/${row.id}/edit`} color="#fff">
                                                             <CreateIcon />
+                                                          </Link>
                                                         </IconButton>
                                                         <IconButton
                                                             color={'primary'}
                                                         >
-                                                            <HelpIcon />
+                                                            <Link href={`#app/user/${row.id}`} color="#fff">
+                                                              <HelpIcon />
+                                                            </Link>
                                                         </IconButton>
                                                         <IconButton
+                                                            onClick={() => openModal(row.id)}
                                                             color={'primary'}
                                                         >
                                                             <DeleteIcon />
@@ -586,7 +537,7 @@ const UserList = () => {
                     <TablePagination
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
-                        count={rows.length}
+                        count={usersRows.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         onChangePage={handleChangePage}

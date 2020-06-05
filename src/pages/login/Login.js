@@ -18,8 +18,8 @@ import logo from "./logo.svg";
 import google from "../../images/google.svg";
 
 // context
-import { useUserDispatch, loginUser } from "../../context/UserContext";
-import { receiveToken } from "../../context/UserContext";
+import { useUserDispatch, loginUser, registerUser, sendPasswordResetEmail } from "../../context/UserContext";
+import { receiveToken, doInit } from "../../context/UserContext";
 
 //components
 import { Button, Typography } from "../../components/Wrappers";
@@ -50,8 +50,10 @@ function Login(props) {
     const token = params.get("token");
     if (token) {
       receiveToken(token, userDispatch);
+      doInit()(userDispatch);
     }
   }, []); // eslint-disable-line
+  
 
   // local
   var [isLoading, setIsLoading] = useState(false);
@@ -60,6 +62,8 @@ function Login(props) {
   var [nameValue, setNameValue] = useState("");
   var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
   var [passwordValue, setPasswordValue] = useState("password");
+  var [forgotEmail, setForgotEmail] = useState("");
+  var [isForgot, setIsForgot] = useState(false);
 
   return (
     <Grid container className={classes.container}>
@@ -67,8 +71,57 @@ function Login(props) {
         <img src={logo} alt="logo" className={classes.logotypeImage} />
         <Typography className={classes.logotypeText}>Material Admin</Typography>
       </div>
-      <div className={classes.formContainer}>
+      <div className={!isForgot ? classes.formContainer : classes.customFormContainer}>
         <div className={classes.form}>
+          {isForgot ? (
+            <div>
+            <Input
+                id="password"
+                InputProps={{
+                  classes: {
+                    underline: classes.InputUnderline,
+                    input: classes.Input
+                  }
+                }}
+                value={forgotEmail}
+                onChange={e => setForgotEmail(e.target.value)}
+                margin="normal"
+                placeholder="Email"
+                type="Email"
+                fullWidth
+              />
+              <div className={classes.formButtons}>
+                {isLoading ? (
+                  <CircularProgress size={26} className={classes.loginLoader} />
+                ) : (
+                  <Button
+                    disabled={
+                      forgotEmail.length === 0
+                    }
+                    onClick={() =>
+                      sendPasswordResetEmail(
+                        forgotEmail,
+                      )(userDispatch)
+                    }
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                  >
+                    Send
+                  </Button>
+                )}
+                <Button
+                  color="primary"
+                  size="large"
+                  onClick={() => setIsForgot(!isForgot)}
+                  className={classes.forgetButton}
+                >
+                  Back to login
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <>
           <Tabs
             value={activeTabId}
             onChange={(e, id) => setActiveTabId(id)}
@@ -194,6 +247,7 @@ function Login(props) {
                 <Button
                   color="primary"
                   size="large"
+                  onClick={() => setIsForgot(!isForgot)}
                   className={classes.forgetButton}
                 >
                   Forgot Password?
@@ -265,14 +319,14 @@ function Login(props) {
                 ) : (
                   <Button
                     onClick={() =>
-                      loginUser(
+                      registerUser(
                         userDispatch,
                         loginValue,
                         passwordValue,
                         props.history,
                         setIsLoading,
                         setError
-                      )
+                      )()
                     }
                     disabled={
                       loginValue.length === 0 ||
@@ -317,6 +371,8 @@ function Login(props) {
               </Button>
             </React.Fragment>
           )}
+          </>
+        )}
         </div>
         <Typography color="primary" className={classes.copyright}>
           © 2014-2020 Flatlogic, LLC. All rights reserved.
