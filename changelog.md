@@ -2,7 +2,7 @@
 
 # [2.0.0]
 
-### Fixed
+### New Features
 - Added user management table
 - Added register functionality
 - Added reset password functionality
