@@ -1,11 +1,10 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import {
   HashRouter,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
-import { useUserDispatch, doInit } from "../context/UserContext";
 import { ToastContainer } from "react-toastify";
 import { Close as CloseIcon } from "@material-ui/icons";
 import useStyles from './styles';
@@ -17,6 +16,7 @@ import Documentation from "./Documentation/Documentation";
 import Error from "../pages/error";
 import Login from "../pages/login";
 import Verify from "../pages/verify";
+import Reset from "../pages/reset";
 
 // context
 import { useUserState } from "../context/UserContext";
@@ -25,7 +25,6 @@ export default function App() {
   // global
   var { isAuthenticated } = useUserState();
   const isAuth = isAuthenticated()
-  const userDispatch = useUserDispatch()
   const classes = useStyles();
   function CloseButton({ closeToast, className }) {
     return <CloseIcon className={className} onClick={closeToast} />;
@@ -52,7 +51,8 @@ export default function App() {
           <Route path="/documentation" component={Documentation} />
           <PrivateRoute path="/app" component={Layout} />
           <PublicRoute path="/login" component={Login} />
-          <PublicRoute path="/verify-email" component={Verify} />
+          <PublicRoute path="/verify-email" exact component={Verify} />
+          <PublicRoute path="/password-reset" exact component={Reset}/>
           <Route component={Error} />
         </Switch>
       </HashRouter>

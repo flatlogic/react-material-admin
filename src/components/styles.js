@@ -62,9 +62,9 @@ export default makeStyles(theme => ({
     right: theme.spacing(2),
   },
   toastsContainer: {
-    width: 400,
+    width: "auto",
     marginTop: theme.spacing(6),
-    right: 0,
+    right: 0
   },
   progress: {
     visibility: "hidden",

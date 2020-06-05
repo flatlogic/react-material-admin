@@ -20,15 +20,18 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
-import ImageUploader from 'react-images-upload';
+import ImageUploader from 'react-images-upload'
+import { toast } from 'react-toastify'
+
+import Notification from "../../components/Notification";
 import {
   useManagementDispatch,
   useManagementState,
 } from '../../context/ManagementContext'
 import {
   useUserState,
+  useUserDispatch,
 } from '../../context/UserContext'
-import photo from '../../images/profile.jpg'
 
 
 import { actions } from '../../context/ManagementContext'
@@ -51,17 +54,41 @@ const EditUser = () => {
     const managementDispatch = useManagementDispatch()
     const managementValue = useManagementState()
     const userState = useUserState();
+    const userDispatch = useUserDispatch();
     const history = useHistory();
-
+    function sendNotification() {
+      const componentProps = {
+        type: "feedback",
+        message: "User edited!",
+        variant: "contained",
+        color: "success"
+      };
+      const options = {
+        type: "info",
+        position: toast.POSITION.TOP_RIGHT,
+        progressClassName: classes.progress,
+        className: classes.notification,
+        timeOut: 1000
+      };
+      return toast(
+        <Notification
+          {...componentProps}
+          className={classes.notificationComponent}
+        />,
+        options
+      );
+    }
     useEffect(() => {
       actions.doFind(id)(managementDispatch)
     }, []);
 
     useEffect(() => {
+      
       if (location.pathname.includes('edit')) {
         setEditable(true);
       }
     }, [location.pathname]);
+
 
     useEffect(() => {
       if (id !== 'edit') {
@@ -73,6 +100,7 @@ const EditUser = () => {
 
     function handleSubmit() {
       actions.doUpdate(id, data)(managementDispatch)
+      sendNotification()
       history.push('/app/user/list')
     }
 
@@ -101,7 +129,6 @@ const EditUser = () => {
       });
     }
 
-    console.log('render ONe', data)
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -167,6 +194,7 @@ const EditUser = () => {
                                         id="outlined-basic"
                                         value={data && data.email}
                                         name="email"
+                                        onChange={handleChange}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                     />
@@ -177,7 +205,10 @@ const EditUser = () => {
                                         <Select
                                             labelId="demo-simple-select-outlined-label"
                                             id="demo-simple-select-outlined"
-                                            value="user"
+                                            defaultValue="user"
+                                            value={data && data.role}
+                                            name="email"
+                                            onChange={handleChange}
                                         >
                                             <MenuItem value={"admin"}>
                                                 Admin
@@ -226,12 +257,19 @@ const EditUser = () => {
                                         id="outlined-basic"
                                         defaultValue={'Robbert'}
                                         variant="outlined"
+                                        defaultValue="Name"
+                                        value={data && data.firstName}
+                                        name="firstName"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                     />
                                     <TextField
                                         id="outlined-basic"
                                         variant="outlined"
-                                        defaultValue={'Cotton'}
+                                        defaultValue={'Last Name'}
+                                        value={data && data.lastName}
+                                        name="lastName"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                     />
                                     <TextField
@@ -239,6 +277,9 @@ const EditUser = () => {
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         defaultValue={'1-555-666-7070'}
+                                        value={data && data.phone}
+                                        name="phone"
+                                        onChange={handleChange}
                                     />
                                     <TextField
                                         id="outlined-basic"
@@ -246,6 +287,9 @@ const EditUser = () => {
                                         style={{ marginBottom: 35 }}
                                         type={'email'}
                                         defaultValue={'Jane@gmail.com'}
+                                        value={data && data.email}
+                                        name="email"
+                                        onChange={handleChange}
                                     />
                                     <FormControl
                                         variant="outlined"

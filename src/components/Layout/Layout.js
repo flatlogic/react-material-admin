@@ -11,19 +11,8 @@ import {
 import {
     Fab,
     IconButton,
-    Box,
-    Grid,
-    Breadcrumbs,
-    Tabs,
     Tab,
 } from '@material-ui/core'
-import {
-    NavigateNext as NavigateNextIcon,
-    CalendarToday as CalendarIcon,
-    ChatBubbleOutline as ChatIcon,
-    AddShoppingCart as AddIcon,
-    StarBorder as StarIcon,
-} from '@material-ui/icons'
 import { withStyles } from '@material-ui/styles'
 
 // styles
@@ -33,8 +22,7 @@ import useStyles from './styles'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
 import Footer from '../Footer'
-import Widget from '../Widget'
-import { Link, Typography, Button } from '../../components/Wrappers'
+import { Link } from '../../components/Wrappers'
 import ColorChangeThemePopper from './components/ColorChangeThemePopper'
 
 // pages
@@ -83,16 +71,6 @@ import { ProductsProvider } from '../../context/ProductContext'
 
 //Sidebar structure
 import structure from '../Sidebar/SidebarStructure'
-
-// Tab styling
-
-const CustomTab = withStyles(theme => ({
-    root: {
-        minWidth: 72,
-        textTransform: 'none',
-        fontWeight: 400,
-    },
-}))(props => <Tab {...props} />)
 
 function Layout(props) {
     const classes = useStyles()

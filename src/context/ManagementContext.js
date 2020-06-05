@@ -279,11 +279,8 @@ const actions = {
 
       if (isProfile) {
         console.log('Profile updated');
-      } else {
-        toast("User updated");
       }
     } catch (error) {
-      toast("Error");
       console.log(error)
 
       dispatch({

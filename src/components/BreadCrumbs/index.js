@@ -64,6 +64,7 @@ const BreadCrumbs = () => {
       
       return (
         <Breadcrumbs
+          key={index + '_b'}
           separator={
               <NavigateNextIcon fontSize="small" />
           }
@@ -161,7 +162,7 @@ const BreadCrumbs = () => {
                   )
               }
           })}
-          {window.location.hash.includes('/app/dashboard') && (
+          {window.location.hash.includes('/app/dashboard') ? (
               <Box display="flex" alignItems="center">
                   <CalendarIcon
                       className={classes.calendarIcon}
@@ -177,19 +178,20 @@ const BreadCrumbs = () => {
                       Latest Reports
                   </Button>
               </Box>
+          ) : (
+            <Breadcrumbs
+                separator={
+                  <NavigateNextIcon fontSize="small" />
+              }
+              aria-label="breadcrumb"
+            >
+              {renderBreadCrumbs()}
+            </Breadcrumbs>            
           )}
-          <Breadcrumbs
-              separator={
-                <NavigateNextIcon fontSize="small" />
-            }
-            aria-label="breadcrumb"
-          >
-            {renderBreadCrumbs()}
-          </Breadcrumbs>
       </Grid>
   </Widget>
   
-)
+  )
 }
 export default BreadCrumbs
                 

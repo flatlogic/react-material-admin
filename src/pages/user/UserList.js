@@ -158,7 +158,6 @@ const UserList = () => {
 
     var managementDispatch = useManagementDispatch()
     var managementValue = useManagementState()
-
     const openModal = (cell) => {
       actions.doOpenConfirm(cell)(managementDispatch);
     }
@@ -169,16 +168,17 @@ const UserList = () => {
 
     const handleDelete = () => {
       actions.doDelete(managementValue.idToDelete)(managementDispatch);
+      sendNotification('User deleted')
     }
 
     React.useEffect(() => {
+      sendNotification('This page is only available in React Material Admin Full with Node.js integration!')
       async function fetchAPI() {
         try {
           await actions.doFetch({}, false)(managementDispatch);
-          
           setUsersRows(managementValue.rows);
         } catch (e) {
-          console.log('false');
+          console.log(e);
         }
       }
       fetchAPI();
@@ -186,10 +186,10 @@ const UserList = () => {
 
     const classes = useStyles();
 
-    function sendNotification() {
+    function sendNotification(text) {
       const componentProps = {
         type: "feedback",
-        message: "Product has been Updated!",
+        message: text,
         variant: "contained",
         color: "success"
       };
@@ -211,6 +211,7 @@ const UserList = () => {
 
     React.useEffect(() => {
       setUsersRows(managementValue.rows)
+      console.log(managementValue.rows);
       
     },[managementValue.rows]);
 
@@ -258,10 +259,6 @@ const UserList = () => {
         setPage(0)
     }
 
-    // const handleChangeDense = event => {
-    //     setDense(event.target.checked)
-    // }
-
     const isSelected = name => selected.indexOf(name) !== -1
 
     const emptyRows =
@@ -289,9 +286,7 @@ const UserList = () => {
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-                Let Google help apps determine location. This means
-                sending anonymous location data to Google, even when no
-                apps are running.
+                User will be deleted.
               </DialogContentText>
             </DialogContent>
             <DialogActions>
@@ -423,7 +418,7 @@ const UserList = () => {
                                                         display={'flex'}
                                                         alignItems={'center'}
                                                     >
-                                                        {!row.avatar ? (
+                                                        {!row.avatars ? (
                                                             <Avatar
                                                                 alt={row.name}
                                                                 style={{
@@ -434,13 +429,13 @@ const UserList = () => {
                                                                 {row.email.charAt(0).toUpperCase()}
                                                             </Avatar>
                                                         ) : (
-                                                            <Avatar
-                                                                alt={row.name}
-                                                                src={row.avatar}
-                                                                style={{
-                                                                    marginRight: 15,
-                                                                }}
-                                                            />
+                                                          <Avatar
+                                                              alt={row.name}
+                                                              src={row.avatars[0] && row.avatars[0].publicUrl && row.avatars[0].publicUrl}
+                                                              style={{
+                                                                  marginRight: 15,
+                                                              }}
+                                                          />
                                                         )}
                                                         <Typography
                                                             variant={'body2'}
@@ -468,7 +463,7 @@ const UserList = () => {
                                                     <Typography
                                                         variant={'body2'}
                                                     >
-                                                        {row.email}/{row.firstName}
+                                                        {row.email}
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">
@@ -476,11 +471,11 @@ const UserList = () => {
                                                         color={
                                                             row.statusColor
                                                         }
-                                                        label={row.emailVerified ? 'active' : 'inactive'}
+                                                        label={(row.emailVerified && row.password) ? 'active' : 'inactive'}
                                                         style={{
                                                             color: '#fff',
                                                             height: 16,
-                                                            backgroundColor: row.emailVerified ? '#3CD4A0' : '#FF5C93',
+                                                            backgroundColor: (row.emailVerified && row.password) ? '#3CD4A0' : '#FF5C93',
                                                             fontSize: 11,
                                                             fontWeight:
                                                                 'bold',

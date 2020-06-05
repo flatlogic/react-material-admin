@@ -18,6 +18,8 @@ function userReducer(state, action) {
         ...action.payload
       };
     case "REGISTER_REQUEST":
+    case "RESET_REQUEST":
+    case "PASSWORD_RESET_EMAIL_REQUEST":
       return {
         ...state,
         isFetching: true,
@@ -31,6 +33,8 @@ function userReducer(state, action) {
           loadingInit: false,
       });
     case "REGISTER_SUCCESS":
+    case "RESET_SUCCESS":
+    case "PASSWORD_RESET_EMAIL_SUCCESS":
       return Object.assign({}, state, {
           isFetching: false,
           errorMessage: '',
@@ -139,6 +143,26 @@ function loginUser(
   }
 }
 
+export function sendPasswordResetEmail(email) {
+  return (dispatch) => {
+    if (!config.isBackend) {
+      return
+    } else {
+      dispatch({
+        type: 'PASSWORD_RESET_EMAIL_REQUEST',
+      });
+      axios.post("/auth/send-password-reset-email", {email}).then(res => {
+        dispatch({
+          type: 'PASSWORD_RESET_EMAIL_SUCCESS',
+        });
+        toast.success("Email with resetting instructions has been sent");
+      }).catch(err => {
+        dispatch(authError(err.response.data));
+      })
+    }
+  }
+}
+
 function signOut(dispatch, history) {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
@@ -172,7 +196,6 @@ export function receiveToken(token, dispatch) {
 async function findMe() {
   if (config.isBackend) {
     const response = await axios.get('/auth/me');
-    console.log('find', response);
     return response.data;    
   } else {
     return mockUser;
@@ -269,6 +292,27 @@ export function verifyEmail(token, history) {
         toast.error(err.response.data);
       }).finally(() => {
         history.push('/login');
+      })
+    }
+  }
+}
+
+export function resetPassword(token, password, history) {
+  return (dispatch) => {
+    if (!config.isBackend) {
+      history.push('/login');
+    } else {
+      dispatch({
+        type: 'RESET_REQUEST',
+      });
+      axios.put("/auth/password-reset", {token, password}).then(res => {
+          dispatch({
+            type: 'RESET_SUCCESS',
+          });
+          toast.success("Password has been updated");
+        history.push('/login');
+      }).catch(err => {
+        dispatch(authError(err.response.data));
       })
     }
   }
