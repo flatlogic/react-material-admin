@@ -12,7 +12,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import { useHistory } from 'react-router-dom'
 import useStyles from './styles'
-import ImageUploader from 'react-images-upload'
 import { toast } from 'react-toastify'
 
 import Notification from "../../components/Notification";
@@ -87,7 +86,6 @@ const AddUser = () => {
     }
 
     var managementDispatch = useManagementDispatch()
-    // var managementValue = useManagementState()
     const history = useHistory()
     const doSubmit = (id, data) => {
         actions.doCreate(data, history)(managementDispatch);
@@ -243,13 +241,11 @@ const AddUser = () => {
                                     <Typography weight={'medium'}>
                                         Photo:
                                     </Typography>
-                                    <ImageUploader
-                                        withIcon={true}
-                                        buttonText='Choose images'
-                                        onChange={onDrop}
-                                        singleImage
-                                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                                        maxFileSize={5242880}
+                                    <img
+                                        src={photo}
+                                        alt="photo"
+                                        width={123}
+                                        style={{ borderRadius: 8 }}
                                     />
                                     <Typography
                                         size={'sm'}

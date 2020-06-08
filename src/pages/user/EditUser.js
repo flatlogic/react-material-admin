@@ -14,24 +14,20 @@ import {
     Settings as SettingsIcon,
 } from '@material-ui/icons'
 
+import photo from '../../images/profile.jpg'
 import Widget from '../../components/Widget'
 import { Typography, Button } from '../../components/Wrappers'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
-import ImageUploader from 'react-images-upload'
 import { toast } from 'react-toastify'
 
-import Notification from "../../components/Notification";
+import Notification from '../../components/Notification'
 import {
   useManagementDispatch,
   useManagementState,
 } from '../../context/ManagementContext'
-import {
-  useUserState,
-  useUserDispatch,
-} from '../../context/UserContext'
 
 
 import { actions } from '../../context/ManagementContext'
@@ -53,8 +49,6 @@ const EditUser = () => {
     const location = useLocation();
     const managementDispatch = useManagementDispatch()
     const managementValue = useManagementState()
-    const userState = useUserState();
-    const userDispatch = useUserDispatch();
     const history = useHistory();
     function sendNotification() {
       const componentProps = {
@@ -80,6 +74,7 @@ const EditUser = () => {
     }
     useEffect(() => {
       actions.doFind(id)(managementDispatch)
+      actions.doFetch({}, false)(managementDispatch);
     }, []);
 
     useEffect(() => {
@@ -94,12 +89,17 @@ const EditUser = () => {
       if (id !== 'edit') {
         setData(managementValue.currentUser)
       } else {
-        setData(userState.currentUser)
+        const currentUser = managementValue.rows.find(x => x.id === localStorage.getItem('user_id'));
+        setData(currentUser)
       }
     }, [managementDispatch, managementValue, id])
 
     function handleSubmit() {
-      actions.doUpdate(id, data)(managementDispatch)
+      if (id === 'edit') {
+        actions.doUpdate(localStorage.getItem('user_id'), data)(managementDispatch)
+      } else {
+        actions.doUpdate(id, data)(managementDispatch)        
+      }
       sendNotification()
       history.push('/app/user/list')
     }
@@ -231,21 +231,11 @@ const EditUser = () => {
                                     <Typography weight={'medium'}>
                                         Photo:
                                     </Typography>
-                                    {data && data.avatars && (
-                                      <img
-                                        src={data.avatars[0].publicUrl}
-                                        width={123}
+                                    <img
+                                        src={photo}
                                         alt="photo"
+                                        width={123}
                                         style={{ borderRadius: 8 }}
-                                      />
-                                    )}
-                                    <ImageUploader
-                                        withIcon={true}
-                                        buttonText='Choose images'
-                                        onChange={onDrop}
-                                        singleImage
-                                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                                        maxFileSize={5242880}
                                     />
                                     <Typography
                                         size={'sm'}

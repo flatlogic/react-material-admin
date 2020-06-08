@@ -166,6 +166,7 @@ export function sendPasswordResetEmail(email) {
 function signOut(dispatch, history) {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
+  localStorage.removeItem('user_id');
   document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
   axios.defaults.headers.common["Authorization"] = "";
   dispatch({ type: "SIGN_OUT_SUCCESS" });
@@ -214,6 +215,7 @@ export function doInit() {
     let currentUser = null;
     if (!config.isBackend) {
       currentUser = mockUser;
+      
       dispatch({
         type: 'LOGIN_SUCCESS',
         payload: {
@@ -226,6 +228,7 @@ export function doInit() {
         if (token) {
           currentUser = await findMe();
         }
+        localStorage.setItem('user_id', currentUser.id);
         dispatch({
           type: 'LOGIN_SUCCESS',
           payload: {
