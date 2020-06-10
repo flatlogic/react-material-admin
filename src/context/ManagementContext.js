@@ -261,7 +261,7 @@ const actions = {
     }
   },
 
-  doUpdate: (id, values, isProfile) => async (
+  doUpdate: (id, values, history) => async (
     dispatch,
     getState,
   ) => {
@@ -277,9 +277,7 @@ const actions = {
         payload: values
       });
 
-      if (isProfile) {
-        console.log('Profile updated');
-      }
+      history.push('/app/user/list')
     } catch (error) {
       console.log(error)
 

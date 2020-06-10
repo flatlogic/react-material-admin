@@ -13,8 +13,8 @@ import {
     Lock as LockIcon,
     Settings as SettingsIcon,
 } from '@material-ui/icons'
+import uuid from 'uuid/v4'
 
-import photo from '../../images/profile.jpg'
 import Widget from '../../components/Widget'
 import { Typography, Button } from '../../components/Wrappers'
 import Select from '@material-ui/core/Select'
@@ -28,7 +28,8 @@ import {
   useManagementDispatch,
   useManagementState,
 } from '../../context/ManagementContext'
-
+import config from '../../config'
+import Axios from 'axios'
 
 import { actions } from '../../context/ManagementContext'
 
@@ -43,12 +44,70 @@ const EditUser = () => {
     const [data, setData] = React.useState(null)
     const [editable, setEditable] = React.useState(false)
     let { id } = useParams();
+    const fileInput = React.useRef(null);
     const handleChangeTab = (event, newValue) => {
         setTab(newValue)
     }
     const location = useLocation();
     const managementDispatch = useManagementDispatch()
     const managementValue = useManagementState()
+
+    function extractExtensionFrom(filename) {
+      if (!filename) {
+        return null;
+      }
+    
+      const regex = /(?:\.([^.]+))?$/;
+      return regex.exec(filename)[1];
+    }
+
+    const uploadToServer = async (file, path, filename) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('filename', filename);
+      const uri = `${config.baseURLApi}/file/upload/${path}`;
+      await Axios.post(uri, formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
+  
+      const privateUrl = `${path}/${filename}`;
+  
+      return `${config.baseURLApi}/file/download?privateUrl=${privateUrl}`;
+    }
+
+    const handleFile = async (event) => {
+      const file = event.target.files[0];
+  
+      const extension = extractExtensionFrom(file.name);
+      const id = uuid();
+      const filename = `${id}.${extension}`;
+      const privateUrl = `users/avatar/${filename}`;
+  
+      const publicUrl = await uploadToServer(
+        file,
+        'users/avatar',
+        filename,
+      );
+      let avatarObj = {
+        id: id,
+        name: file.name,
+        sizeInBytes: file.size,
+        privateUrl,
+        publicUrl,
+        new: true
+      }
+
+      setData({
+        ...data,
+        avatar: [...data.avatar, avatarObj]
+      })
+
+      return null;
+    }
     const history = useHistory();
     function sendNotification() {
       const componentProps = {
@@ -73,8 +132,11 @@ const EditUser = () => {
       );
     }
     useEffect(() => {
-      actions.doFind(id)(managementDispatch)
-      actions.doFetch({}, false)(managementDispatch);
+      if (id !== 'edit') {
+        actions.doFind(id)(managementDispatch)
+      } else {
+        actions.doFind(sessionStorage.getItem('user_id'))(managementDispatch)
+      }
     }, []);
 
     useEffect(() => {
@@ -86,22 +148,23 @@ const EditUser = () => {
 
 
     useEffect(() => {
-      if (id !== 'edit') {
         setData(managementValue.currentUser)
-      } else {
-        const currentUser = managementValue.rows.find(x => x.id === localStorage.getItem('user_id'));
-        setData(currentUser)
-      }
     }, [managementDispatch, managementValue, id])
+
+    const deleteOneImage = (id) => {
+      setData({
+        ...data,
+        avatar: data.avatar.filter(avatar => avatar.id !== id)
+      })
+    }
 
     function handleSubmit() {
       if (id === 'edit') {
-        actions.doUpdate(localStorage.getItem('user_id'), data)(managementDispatch)
+        actions.doUpdate(sessionStorage.getItem('user_id'), data, history)(managementDispatch)
       } else {
-        actions.doUpdate(id, data)(managementDispatch)        
+        actions.doUpdate(id, data, history)(managementDispatch)        
       }
       sendNotification()
-      history.push('/app/user/list')
     }
 
     function handleUpdatePassword() {
@@ -119,13 +182,6 @@ const EditUser = () => {
       setData({
         ...data,
         [e.target.name]: e.target.value,
-      });
-    }
-
-    function onDrop(pictureFiles, pictureDataURLs) {
-      setData({
-          ...data,
-          avatars: [{publicUrl: pictureDataURLs}],
       });
     }
 
@@ -231,12 +287,28 @@ const EditUser = () => {
                                     <Typography weight={'medium'}>
                                         Photo:
                                     </Typography>
-                                    <img
-                                        src={photo}
-                                        alt="photo"
-                                        width={123}
-                                        style={{ borderRadius: 8 }}
-                                    />
+                                    <div class={classes.galleryWrap}>
+                                    {data && data.avatar && data.avatar.length !== 0 ? (
+                                      data.avatar.map((avatar, idx) => (
+                                        <div className={classes.imgWrap}>
+                                          <span className={classes.deleteImageX} onClick={() => deleteOneImage(avatar.id)}>×</span>
+                                          <img
+                                              src={avatar.publicUrl}
+                                              alt="photo"
+                                              height={'100%'}
+                                          />                                          
+                                        </div>
+                                      ))
+                                    ): null}
+                                    </div>
+                                    <label
+                                      className={classes.uploadLabel}
+                                      style={{ cursor: 'pointer' }}
+                                    >
+                                      {'Upload an image'}
+                                        <input style={{ display: 'none' }} accept="image/*" type="file" ref={fileInput} onChange={handleFile} />
+                                    </label>
+
                                     <Typography
                                         size={'sm'}
                                         style={{ marginBottom: 35 }}

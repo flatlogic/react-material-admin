@@ -416,7 +416,7 @@ const UserList = () => {
                                                         display={'flex'}
                                                         alignItems={'center'}
                                                     >
-                                                        {!row.avatars ? (
+                                                        {!row.avatars.length ? (
                                                             <Avatar
                                                                 alt={row.name}
                                                                 style={{
@@ -429,7 +429,7 @@ const UserList = () => {
                                                         ) : (
                                                           <Avatar
                                                               alt={row.name}
-                                                              src={row.avatars[0] && row.avatars[0].publicUrl && row.avatars[0].publicUrl}
+                                                              src={row.avatars && row.avatars[0].publicUrl && row.avatars[row.avatars.length-1].publicUrl}
                                                               style={{
                                                                   marginRight: 15,
                                                               }}
