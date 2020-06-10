@@ -1,5 +1,10 @@
 # Changelog
 
+# [2.1.0]
+
+### New Features
+- Added upload image functionality
+
 # [2.0.0]
 
 ### New Features
