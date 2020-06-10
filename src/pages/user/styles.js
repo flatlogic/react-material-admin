@@ -94,4 +94,35 @@ export default makeStyles(theme => ({
     searchIcon: {
       color: "rgba(0, 0, 0, 0.23)"
     },
+    imgWrap: {
+      height: 100,
+      overflow: 'hidden',
+      borderRadius: 8,
+      boxShadow: '0 0 10px 0px #ccc',
+      marginRight: 20,
+      marginBottom: 20,
+      maxWidth: 125,
+      position: 'relative'
+    },
+    galleryWrap: {
+      display: 'flex'
+    },
+    uploadLabel: {
+      backgroundColor: tinycolor(theme.palette.primary.main),
+      color: '#f4f4f4',
+      maxWidth: 220,
+      display: 'inline-block',
+      borderRadius: 8,
+      textAlign: 'center',
+      padding: '8px 12px',
+      margin: '20px 0'
+    },
+    deleteImageX: {
+      fontSize: 20,
+      position: 'absolute',
+      top: 5,
+      left: 5,
+      cursor: 'pointer',
+      lineHeight: .5
+    }
 }))

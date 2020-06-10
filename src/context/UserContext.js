@@ -228,7 +228,7 @@ export function doInit() {
         if (token) {
           currentUser = await findMe();
         }
-        localStorage.setItem('user_id', currentUser.id);
+        sessionStorage.setItem('user_id', currentUser.id);
         dispatch({
           type: 'LOGIN_SUCCESS',
           payload: {

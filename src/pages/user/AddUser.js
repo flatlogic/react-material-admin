@@ -13,10 +13,11 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import { useHistory } from 'react-router-dom'
 import useStyles from './styles'
 import { toast } from 'react-toastify'
+import Axios from 'axios'
+import config from '../../config'
+import uuid from 'uuid/v4'
 
 import Notification from "../../components/Notification";
-
-import photo from '../../images/profile.jpg'
 
 import { Button, Typography } from '../../components/Wrappers'
 import Widget from '../../components/Widget'
@@ -71,16 +72,66 @@ const AddUser = () => {
         [e.target.name]: e.target.value,
       });
     }
+    const fileInput = React.useRef(null);
     const steps = getSteps()
     const classes = useStyles()
 
-    function onDrop(pictureFiles, pictureDataURLs) {
-      setNewUser({
-          ...newUser,
-          avatars: [{publicUrl: pictureDataURLs}],
-      });
+    function extractExtensionFrom(filename) {
+      if (!filename) {
+        return null;
+      }
+    
+      const regex = /(?:\.([^.]+))?$/;
+      return regex.exec(filename)[1];
     }
 
+    const uploadToServer = async (file, path, filename) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('filename', filename);
+      const uri = `${config.baseURLApi}/file/upload/${path}`;
+      await Axios.post(uri, formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
+  
+      const privateUrl = `${path}/${filename}`;
+  
+      return `${config.baseURLApi}/file/download?privateUrl=${privateUrl}`;
+    }
+
+    const handleFile = async (event) => {
+      const file = event.target.files[0];
+  
+      const extension = extractExtensionFrom(file.name);
+      const id = uuid();
+      const filename = `${id}.${extension}`;
+      const privateUrl = `users/avatar/${filename}`;
+  
+      const publicUrl = await uploadToServer(
+        file,
+        'users/avatar',
+        filename,
+      );
+      let avatarObj = {
+        id: id,
+        name: file.name,
+        sizeInBytes: file.size,
+        privateUrl,
+        publicUrl,
+        new: true      
+      }
+
+      setNewUser({
+          ...newUser,
+          avatars: [...newUser.avatars, avatarObj]
+      })
+
+      return ;
+    }
     const isStepSkipped = step => {
         return skipped.has(step)
     }
@@ -110,6 +161,13 @@ const AddUser = () => {
 
     const handleBack = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1)
+    }
+
+    const deleteOneImage = (id) => {
+      setNewUser({
+        ...newUser,
+        avatars: newUser.avatars.filter(avatar => avatar.id !== id)
+      })
     }
 
     function sendNotification() {
@@ -241,12 +299,27 @@ const AddUser = () => {
                                     <Typography weight={'medium'}>
                                         Photo:
                                     </Typography>
-                                    <img
-                                        src={photo}
-                                        alt="photo"
-                                        width={123}
-                                        style={{ borderRadius: 8 }}
-                                    />
+                                    <div class={classes.galleryWrap}>
+                                    {newUser && newUser.avatars && newUser.avatars.length !== 0 ? (
+                                      newUser.avatars.map((avatar, idx) => (
+                                        <div className={classes.imgWrap}>
+                                          <span className={classes.deleteImageX} onClick={() => deleteOneImage(avatar.id)}>×</span>
+                                          <img
+                                              src={avatar.publicUrl}
+                                              alt="photo"
+                                              height={'100%'}
+                                          />                                          
+                                        </div>
+                                      ))
+                                    ): null}
+                                    </div>
+                                    <label
+                                      className={classes.uploadLabel}
+                                      style={{ cursor: 'pointer' }}
+                                    >
+                                      {'Upload an image'}
+                                        <input style={{ display: 'none' }} accept="image/*" type="file" ref={fileInput} onChange={handleFile} />
+                                    </label>
                                     <Typography
                                         size={'sm'}
                                         style={{ marginBottom: 35 }}
