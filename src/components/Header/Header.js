@@ -37,6 +37,12 @@ import {
   useLayoutDispatch,
   toggleSidebar
 } from "../../context/LayoutContext";
+import {
+  useManagementDispatch,
+  useManagementState,
+} from '../../context/ManagementContext'
+
+import { actions } from '../../context/ManagementContext'
 import { useUserDispatch, signOut } from "../../context/UserContext";
 
 const messages = [
@@ -100,6 +106,7 @@ export default function Header(props) {
   var layoutState = useLayoutState();
   var layoutDispatch = useLayoutDispatch();
   var userDispatch = useUserDispatch();
+  const managementDispatch = useManagementDispatch();
 
   // local
   var [mailMenu, setMailMenu] = useState(null);
@@ -109,6 +116,12 @@ export default function Header(props) {
   var [profileMenu, setProfileMenu] = useState(null);
   var [isSearchOpen, setSearchOpen] = useState(false);
   const [isSmall, setSmall] = useState(false);
+
+  const managementValue = useManagementState()
+
+  useEffect(() => {
+    actions.doFind(sessionStorage.getItem('user_id'))(managementDispatch)
+  }, [])
 
   useEffect(function() {
     window.addEventListener("resize", handleWindowWidthChange);
@@ -219,7 +232,7 @@ export default function Header(props) {
         >
           <Avatar
             alt="Robert Cotton"
-            src={profile}
+            src={managementValue.currentUser && managementValue.currentUser.avatar.length >=1 && managementValue.currentUser.avatar[managementValue.currentUser.avatar.length-1].publicUrl || profile}
             classes={{ root: classes.headerIcon }}
           />
         </IconButton>
