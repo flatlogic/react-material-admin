@@ -88,9 +88,6 @@ export default makeStyles(theme => ({
       boxShadow: "none",
       overflow: "visible"
     },
-    notificationComponent: {
-      paddingRight: theme.spacing(4)
-    },
     searchIcon: {
       color: "rgba(0, 0, 0, 0.23)"
     },

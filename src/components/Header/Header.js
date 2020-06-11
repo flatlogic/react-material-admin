@@ -233,7 +233,7 @@ export default function Header(props) {
         >
           <Avatar
             alt="Robert Cotton"
-            src={config.isBackend ? managementValue.currentUser && managementValue.currentUser.avatar.length >=1 && managementValue.currentUser.avatar[managementValue.currentUser.avatar.length-1].publicUrl : profile}
+            src={config.isBackend ? (managementValue.currentUser && managementValue.currentUser.avatar.length >=1 && managementValue.currentUser.avatar[managementValue.currentUser.avatar.length-1].publicUrl || profile) : profile}
             classes={{ root: classes.headerIcon }}
           />
         </IconButton>

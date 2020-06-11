@@ -1,4 +1,5 @@
 export const mockUser = {
+  avatars: [],
   id: "98cea92c-84e5-4c0d-ac21-9998f4b23883",
   firstName: "Admin",
   authenticationUid: null,

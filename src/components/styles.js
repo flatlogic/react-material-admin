@@ -64,7 +64,19 @@ export default makeStyles(theme => ({
   toastsContainer: {
     width: "auto",
     marginTop: theme.spacing(6),
-    right: 0
+    right: 0,
+    background: "transparent",
+    boxShadow: "none",
+    '& div': {
+      display: "flex",
+      alignItems: "center",
+      background: "transparent",
+      boxShadow: "none",
+      overflow: "visible",
+    },
+    '& p': {
+      paddingRight: 32
+    }
   },
   progress: {
     visibility: "hidden",
@@ -75,8 +87,5 @@ export default makeStyles(theme => ({
     background: "transparent",
     boxShadow: "none",
     overflow: "visible",
-  },
-  notificationComponent: {
-    paddingRight: theme.spacing(4),
   },
 }));
