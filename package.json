@@ -2,6 +2,9 @@
   "name": "react-material-admin",
   "version": "1.1.0",
   "private": true,
+  "resolutions": {
+    "websocket-extensions": "^0.1.4"
+  },
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
