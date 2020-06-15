@@ -1,5 +1,11 @@
 # Changelog
 
+
+# [2.1.1]
+
+### Improved
+- Improved css
+
 # [2.1.0]
 
 ### New Features
