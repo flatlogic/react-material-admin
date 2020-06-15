@@ -44,7 +44,7 @@ export default makeStyles(theme => ({
     padding: theme.spacing(3)
   },
   sidebarList: {
-    marginTop: theme.spacing(6)
+    marginTop: theme.spacing(1)
   },
   mobileBackButton: {
     marginTop: theme.spacing(0.5),
