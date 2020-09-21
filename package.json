@@ -3,7 +3,9 @@
   "version": "1.1.0",
   "private": true,
   "resolutions": {
-    "websocket-extensions": "^0.1.4"
+    "websocket-extensions": "^0.1.4",
+    "node-forge": "^0.10.0",
+    "node-fetch": "^2.6.1"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
