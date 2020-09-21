@@ -1,9 +1,14 @@
 # Changelog
 
-# [1.2.2]
+# [1.2.3]
 
 ### Updated
 - Fixed security vulnerabilities in dependencies
+
+# [1.2.2]
+
+### Updated
+- Packages updated
 
 # [1.2.1]
 
