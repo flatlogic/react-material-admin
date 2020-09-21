@@ -16,11 +16,12 @@ import {
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
+import listPlugin from '@fullcalendar/list';
 import interactionPlugin, { Draggable } from "@fullcalendar/interaction";
 
 import s from "./Calendar.module.scss";
 
-import "@fullcalendar/core/main.css";
+// import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
 
@@ -47,10 +48,10 @@ class Calendar extends React.Component {
       currentMonth: moment().format("MMM YYYY"),
       currentDay: moment().format("dddd"),
       calendarOptions: {
-        header: {
-          left: "",
-          center: "",
-          right: ""
+        headerToolbar: {
+          left: '',
+          center: 'title',
+          right: ''
         },
         events: [
           {
@@ -64,7 +65,7 @@ class Calendar extends React.Component {
             title: "Long Event",
             start: new Date(y, m, d + 5),
             end: new Date(y, m, d + 7),
-            textColor: "#333",
+            textColor: '#fff',
             description: "This conference should be worse visiting"
           },
           {
@@ -122,7 +123,7 @@ class Calendar extends React.Component {
         editable: true,
         droppable: true
       },
-      calendarPlugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+      calendarPlugins: [dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin],
       dragOptions: { zIndex: 999, revert: true, revertDuration: 0 }
     };
   }
@@ -171,12 +172,10 @@ class Calendar extends React.Component {
   today = () => {
     this.fullCalendar.getApi().today();
   };
-  changeView = view => {
+  changeView = (view) => {
+    this.setState({ calendarView: view });
     this.fullCalendar.getApi().changeView(view);
-    this.setState({
-      calendarView: view
-    });
-  };
+  }
   getFormattedDate = date => {
     return moment(date).format("YYYY-MM-DD");
   };
@@ -331,6 +330,22 @@ class Calendar extends React.Component {
                     style={{ marginLeft: 8 }}
                   >
                     Day
+                  </Button>
+                  <Button
+                    onClick={() => this.changeView("list")}
+                    color={
+                      this.state.calendarView === "list"
+                        ? "primary"
+                        : "none"
+                    }
+                    variant={
+                      this.state.calendarView === "list"
+                        ? "contained"
+                        : "text"
+                    }
+                    style={{ marginLeft: 8 }}
+                  >
+                    List
                   </Button>
                 </Grid>
               </Grid>
