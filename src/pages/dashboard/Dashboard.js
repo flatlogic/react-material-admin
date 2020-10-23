@@ -418,19 +418,8 @@ function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
   let lastValue;
 
   return array.map((item, index) => {
-    let randomValue = Math.floor(Math.random() * multiplier + 1);
-
-    while (
-      randomValue <= min ||
-      randomValue >= max ||
-      (lastValue && randomValue - lastValue > maxDiff)
-    ) {
-      randomValue = Math.floor(Math.random() * multiplier + 1);
-    }
-
-    lastValue = randomValue;
-
-    return { value: randomValue };
+    lastValue = Math.floor((Math.random() * (max-min)) + 1) + min;
+    return { value: lastValue };
   });
 }
 
