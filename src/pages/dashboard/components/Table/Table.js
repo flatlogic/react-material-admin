@@ -5,10 +5,9 @@ import {
   TableHead,
   TableBody,
   TableCell,
+  Chip
 } from "@material-ui/core";
-
-// components
-import { Button } from "../../../../components/Wrappers";
+import useStyles from "../../styles";
 
 const states = {
   sent: "success",
@@ -17,6 +16,7 @@ const states = {
 };
 
 export default function TableComponent({ data }) {
+  const classes = useStyles();
   var keys = Object.keys(data[0]).map(i => i.toUpperCase());
   keys.shift(); // delete "id" key
 
@@ -39,14 +39,7 @@ export default function TableComponent({ data }) {
             <TableCell>{date}</TableCell>
             <TableCell>{city}</TableCell>
             <TableCell>
-              <Button
-                color={states[status.toLowerCase()]}
-                size="small"
-                className="px-2"
-                variant="contained"
-              >
-                {status}
-              </Button>
+              <Chip label={status} classes={{root: classes[states[status.toLowerCase()]]}}/>
             </TableCell>
           </TableRow>
         ))}

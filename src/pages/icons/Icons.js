@@ -5,6 +5,9 @@ import {
   Tabs,
   Tab,
   Paper,
+  Menu,
+  MenuItem,
+  Button
 } from "@material-ui/core";
 import * as Icons from "@material-ui/icons";
 
@@ -19,6 +22,16 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import "font-awesome/css/font-awesome.min.css";
 
 export default function IconsPage () {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   var classes = useStyles();
 
   // local
@@ -26,7 +39,30 @@ export default function IconsPage () {
 
   return (
   <>
-    <PageTitle title="Icons" button="Action" />
+    <PageTitle title="Icons" button={(
+      <>
+        <Button
+      variant="contained"
+      size="medium"
+      color="secondary"
+      onClick={e => handleClick(e)}
+    >
+      Actions
+    </Button>
+        <Menu
+      id="simple-menu"
+      anchorEl={anchorEl}
+      keepMounted
+      open={Boolean(anchorEl)}
+      onClose={handleClose}
+    >
+      <MenuItem onClick={handleClose}><Icons.Print style={{marginRight: 16}}/> Print PDF</MenuItem>
+      <MenuItem onClick={handleClose}><Icons.GetApp style={{marginRight: 16}}/> Download</MenuItem>
+      <MenuItem onClick={handleClose}><Icons.Email style={{marginRight: 16}}/>Send by mail</MenuItem>
+          <MenuItem onClick={handleClose}><Icons.Share style={{marginRight: 16}}/>Share</MenuItem>
+    </Menu>
+      </>
+    )} />
     <Paper className={classes.iconsContainer}>
       <Tabs
         indicatorColor="primary"

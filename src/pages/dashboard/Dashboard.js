@@ -5,6 +5,7 @@ import {
   Select,
   OutlinedInput,
   MenuItem,
+  Button
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import {
@@ -50,7 +51,13 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <PageTitle title="Dashboard" button="Latest Reports" />
+      <PageTitle title="Dashboard" button={<Button
+      variant="contained"
+      size="medium"
+      color="secondary"
+    >
+        Latest Reports
+    </Button>} />
       <Grid container spacing={4}>
         <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget
@@ -60,11 +67,15 @@ export default function Dashboard(props) {
             className={classes.card}
           >
             <div className={classes.visitsNumberContainer}>
-              <Typography size="xl" weight="medium">
+              <Grid container item alignItems={"center"}>
+                <Grid item xs={6}>
+              <Typography size="xl" weight="medium" noWrap>
                 12, 678
               </Typography>
+                </Grid>
+                <Grid item xs={6}>
               <LineChart
-                width={55}
+                width={100}
                 height={30}
                 data={[
                   { value: 10 },
@@ -73,7 +84,6 @@ export default function Dashboard(props) {
                   { value: 17 },
                   { value: 18 },
                 ]}
-                margin={{ left: theme.spacing(2) }}
               >
                 <Line
                   type="natural"
@@ -83,6 +93,8 @@ export default function Dashboard(props) {
                   dot={false}
                 />
               </LineChart>
+                </Grid>
+              </Grid>
             </div>
             <Grid
               container
@@ -90,20 +102,20 @@ export default function Dashboard(props) {
               justify="space-between"
               alignItems="center"
             >
-              <Grid item>
-                <Typography color="text" colorBrightness="secondary">
+              <Grid item xs={4}>
+                <Typography color="text" colorBrightness="secondary" noWrap>
                   Registrations
                 </Typography>
                 <Typography size="md">860</Typography>
               </Grid>
-              <Grid item>
-                <Typography color="text" colorBrightness="secondary">
+              <Grid item xs={4}>
+                <Typography color="text" colorBrightness="secondary" noWrap>
                   Sign Out
                 </Typography>
                 <Typography size="md">32</Typography>
               </Grid>
-              <Grid item>
-                <Typography color="text" colorBrightness="secondary">
+              <Grid item xs={4}>
+                <Typography color="text" colorBrightness="secondary" noWrap>
                   Rate
                 </Typography>
                 <Typography size="md">3.25%</Typography>
@@ -151,8 +163,8 @@ export default function Dashboard(props) {
               </Typography>
               <LinearProgress
                 variant="determinate"
-                value={30}
-                classes={{ barColorPrimary: classes.progressBar }}
+                value={77}
+                classes={{ barColorPrimary: classes.progressBarPrimary }}
                 className={classes.progress}
               />
             </div>
@@ -167,8 +179,8 @@ export default function Dashboard(props) {
               </Typography>
               <LinearProgress
                 variant="determinate"
-                value={55}
-                classes={{ barColorPrimary: classes.progressBar }}
+                value={73}
+                classes={{ barColorPrimary: classes.progressBarWarning }}
                 className={classes.progress}
               />
             </div>
@@ -186,6 +198,7 @@ export default function Dashboard(props) {
                 color="text"
                 colorBrightness="secondary"
                 className={classes.serverOverviewElementText}
+                noWrap
               >
                 60% / 37°С / 3.3 Ghz
               </Typography>
@@ -209,6 +222,7 @@ export default function Dashboard(props) {
                 color="text"
                 colorBrightness="secondary"
                 className={classes.serverOverviewElementText}
+                noWrap
               >
                 54% / 31°С / 3.3 Ghz
               </Typography>
@@ -232,6 +246,7 @@ export default function Dashboard(props) {
                 color="text"
                 colorBrightness="secondary"
                 className={classes.serverOverviewElementText}
+                noWrap
               >
                 57% / 21°С / 3.3 Ghz
               </Typography>
@@ -257,11 +272,11 @@ export default function Dashboard(props) {
             <Grid container spacing={2}>
               <Grid item xs={6}>
                 <ResponsiveContainer width="100%" height={144}>
-                  <PieChart margin={{ left: theme.spacing(2) }}>
+                  <PieChart>
                     <Pie
                       data={PieChartData}
-                      innerRadius={45}
-                      outerRadius={60}
+                      innerRadius={30}
+                      outerRadius={40}
                       dataKey="value"
                     >
                       {PieChartData.map((entry, index) => (
@@ -279,7 +294,7 @@ export default function Dashboard(props) {
                   {PieChartData.map(({ name, value, color }, index) => (
                     <div key={color} className={classes.legendItemContainer}>
                       <Dot color={color} />
-                      <Typography style={{ whiteSpace: "nowrap" }}>
+                      <Typography style={{ whiteSpace: "nowrap", fontSize: 12 }} >
                         &nbsp;{name}&nbsp;
                       </Typography>
                       <Typography color="text" colorBrightness="secondary">
@@ -318,7 +333,7 @@ export default function Dashboard(props) {
                     </Typography>
                   </div>
                   <div className={classes.mainChartHeaderLabel}>
-                    <Dot color="primary" />
+                    <Dot color="secondary" />
                     <Typography className={classes.mainChartLegentElement}>
                       Desktop
                     </Typography>

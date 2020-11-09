@@ -1,5 +1,16 @@
 # Changelog
 
+# [1.3.0]
+
+### Updated
+- Update packages
+
+### Fixed
+- Header button on md adjusting
+- Dashboard page make more responsive
+- Notification page fix
+- Tables page fix TableBody paddings
+
 # [1.2.3]
 
 ### Updated

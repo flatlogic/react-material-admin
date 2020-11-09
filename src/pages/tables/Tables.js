@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 import MUIDataTable from "mui-datatables";
 
 // components
@@ -30,7 +31,14 @@ const datatableData = [
   ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
 ];
 
+const useStyles = makeStyles(theme => ({
+  tableOverflow: {
+    overflow: 'auto'
+  }
+}))
+
 export default function Tables() {
+  const classes = useStyles();
   return (
     <>
       <PageTitle title="Tables" />
@@ -46,7 +54,7 @@ export default function Tables() {
           />
         </Grid>
         <Grid item xs={12}>
-          <Widget title="Material-UI Table" upperTitle noBodyPadding>
+          <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>
             <Table data={mock.table} />
           </Widget>
         </Grid>

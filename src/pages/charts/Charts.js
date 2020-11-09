@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import {
   CartesianGrid,
@@ -81,7 +81,15 @@ export default function Charts(props) {
 
   return (
     <>
-      <PageTitle title="Charts Page - Data Display" button="Latest Reports" />
+      <PageTitle title="Charts Page - Data Display" button={
+        <Button
+          variant="contained"
+          size="medium"
+          color="secondary"
+        >
+          Latest Reports
+        </Button>
+      } />
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
           <Widget title="Apex Line Chart" upperTitle noBodyPadding>
@@ -135,8 +143,6 @@ export default function Charts(props) {
                   activeIndex={activeIndex}
                   activeShape={renderActiveShape}
                   data={pieChartData}
-                  cx={200}
-                  cy={150}
                   innerRadius={60}
                   outerRadius={80}
                   fill={theme.palette.primary.main}

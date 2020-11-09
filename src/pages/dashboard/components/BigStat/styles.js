@@ -42,4 +42,7 @@ export default makeStyles(theme => ({
       backgroundColor: "white",
     },
   },
+  bodyWidgetOverflow: {
+    overflow: 'auto'
+  }
 }));

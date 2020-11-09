@@ -20,7 +20,7 @@ export default makeStyles(theme => ({
   },
   progress: {
     marginBottom: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: 'rgb(236, 236, 236)',
   },
   pieChartLegendWrapper: {
     height: "100%",
@@ -44,7 +44,10 @@ export default makeStyles(theme => ({
   tableWidget: {
     overflowX: "auto",
   },
-  progressBar: {
+  progressBarPrimary: {
+    backgroundColor: theme.palette.primary.main,
+  },
+  progressBarWarning: {
     backgroundColor: theme.palette.warning.main,
   },
   performanceLegendWrapper: {
@@ -112,4 +115,16 @@ export default makeStyles(theme => ({
     fontSize: "18px !important",
     marginLeft: theme.spacing(1),
   },
+  success: {
+    backgroundColor: theme.palette.success.main,
+    color: '#fff',
+  },
+  warning: {
+    backgroundColor: theme.palette.warning.main,
+    color: '#fff',
+  },
+  secondary: {
+    backgroundColor: theme.palette.secondary.main,
+    color: '#fff',
+  }
 }));

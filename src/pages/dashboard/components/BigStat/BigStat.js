@@ -44,6 +44,7 @@ export default function BigStat(props) {
         </div>
       }
       upperTitle
+      bodyClass={classes.bodyWidgetOverflow}
     >
       <div className={classes.totalValueContainer}>
         <div className={classes.totalValue}>

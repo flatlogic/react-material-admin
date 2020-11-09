@@ -19,6 +19,10 @@ export default function Widget({
   bodyClass,
   disableWidgetMenu,
   header,
+  noHeaderPadding,
+  headerClass,
+  style,
+  noWidgetShadow,
   ...props
 }) {
   var classes = useStyles();
@@ -28,14 +32,19 @@ export default function Widget({
   var [isMoreMenuOpen, setMoreMenuOpen] = useState(false);
 
   return (
-    <div className={classes.widgetWrapper}>
-      <Paper className={classes.paper} classes={{ root: classes.widgetRoot }}>
-        <div className={classes.widgetHeader}>
+    <div className={classes.widgetWrapper} style={style && {...style}}>
+      <Paper className={classes.paper} classes={{ root: classnames(classes.widgetRoot, {
+        [classes.noWidgetShadow]: noWidgetShadow
+        }) }}>
+        <div className={classnames(classes.widgetHeader, {
+          [classes.noPadding]: noHeaderPadding,
+          [headerClass]: headerClass
+        })}>
           {header ? (
             header
           ) : (
             <React.Fragment>
-              <Typography variant="h5" color="textSecondary">
+              <Typography variant="h5" color="textSecondary" noWrap>
                 {title}
               </Typography>
               {!disableWidgetMenu && (

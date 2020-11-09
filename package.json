@@ -11,6 +11,8 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.10.0",
+    "@mdi/js": "^5.8.55",
+    "@mdi/react": "^1.4.0",
     "apexcharts": "^3.20.0",
     "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",

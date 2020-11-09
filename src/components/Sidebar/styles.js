@@ -48,7 +48,7 @@ export default makeStyles(theme => ({
   }, */
   mobileBackButton: {
     marginTop: theme.spacing(0.5),
-    marginLeft: theme.spacing(3),
+    marginLeft: 18,
     [theme.breakpoints.only("sm")]: {
       marginTop: theme.spacing(0.625),
     },

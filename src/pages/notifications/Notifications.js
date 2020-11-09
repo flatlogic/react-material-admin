@@ -35,7 +35,7 @@ export default function NotificationsPage(props) {
   return (
     <>
       <PageTitle title="Notifications" />
-      <Grid container spacing={8}>
+      <Grid container spacing={4}>
         <ToastContainer
           className={classes.toastsContainer}
           closeButton={
@@ -44,8 +44,11 @@ export default function NotificationsPage(props) {
           closeOnClick={false}
           progressClassName={classes.notificationProgress}
         />
-        <Grid item xs={12} md={6} lg={4}>
-          <Widget title="Layout Options" disableWidgetMenu>
+        <Grid item xs={12}>
+        <Widget disableWidgetMenu>
+          <Grid container item xs={12}>
+          <Grid item xs={4}>
+          <Widget title="Layout Options" noWidgetShadow disableWidgetMenu noBodyPadding noHeaderPadding style={{paddingRight: 15}} headerClass={classes.widgetHeader}>
             <Typography>
               There are few position options available for notifications. You
               can click any of them to change notifications position:
@@ -96,9 +99,9 @@ export default function NotificationsPage(props) {
               </div>
             </div>
           </Widget>
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <Widget title="Notifications Types" disableWidgetMenu>
+            </Grid>
+            <Grid item xs={4}>
+          <Widget title="Notifications Types" disableWidgetMenu noBodyPadding noWidgetShadow noHeaderPadding style={{paddingRight: 15}} headerClass={classes.widgetHeader}>
             <Typography>
               Different types of notifications for lost of use cases. Custom
               classes are also supported.
@@ -130,9 +133,9 @@ export default function NotificationsPage(props) {
               </Button>
             </div>
           </Widget>
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <Widget title="Usage" disableWidgetMenu>
+            </Grid>
+            <Grid item xs={4}>
+          <Widget title="Usage" disableWidgetMenu noBodyPadding noWidgetShadow noHeaderPadding style={{paddingRight: 15}} headerClass={classes.widgetHeader}>
             <Typography>
               Notifications are created with the help of{" "}
               <a href="https://github.com/fkhadra/react-toastify">
@@ -162,6 +165,9 @@ export default function NotificationsPage(props) {
                 For more API information refer to the library documentation
               </Typography>
             </div>
+          </Widget>
+            </Grid>
+          </Grid>
           </Widget>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>

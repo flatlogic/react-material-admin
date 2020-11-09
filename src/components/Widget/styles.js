@@ -27,7 +27,7 @@ export default makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    overflow: "hidden",
+    overflow: "auto",
   },
   moreButton: {
     margin: -theme.spacing(1),
@@ -40,4 +40,7 @@ export default makeStyles(theme => ({
       color: "rgba(255, 255, 255, 0.35)",
     },
   },
+  noWidgetShadow: {
+    boxShadow: 'none'
+  }
 }));

@@ -22,4 +22,9 @@ export default makeStyles(theme => ({
   fakeToolbar: {
     ...theme.mixins.toolbar,
   },
+  link: {
+    '&:not(:first-child)': {
+      paddingLeft: 15
+    }
+  }
 }));

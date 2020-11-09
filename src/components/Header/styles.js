@@ -89,12 +89,19 @@ export default makeStyles(theme => ({
   },
   headerMenuItem: {
     "&:hover, &:focus": {
-      backgroundColor: theme.palette.primary.main,
-      color: "white",
+      backgroundColor: theme.palette.background.light,
+      // color: "white",
     },
   },
   headerMenuButton: {
     marginLeft: theme.spacing(2),
+    padding: theme.spacing(0.5),
+  },
+  headerMenuButtonSandwich: {
+    marginLeft: 9,
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: 0
+    },
     padding: theme.spacing(0.5),
   },
   headerMenuButtonCollapse: {
@@ -121,6 +128,9 @@ export default makeStyles(theme => ({
   profileMenuIcon: {
     marginRight: theme.spacing(2),
     color: theme.palette.text.hint,
+    '&:hover': {
+      color: theme.palette.primary.main,
+    }
   },
   profileMenuLink: {
     fontSize: 16,
@@ -156,4 +166,10 @@ export default makeStyles(theme => ({
   sendButtonIcon: {
     marginLeft: theme.spacing(2),
   },
+  purchaseBtn: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    },
+    marginRight: theme.spacing(3)
+  }
 }));
