@@ -1,5 +1,10 @@
 # Changelog
 
+# [2.1.3]
+
+### Updated
+- Added link to flatlogic on login and register pages
+
 # [2.1.2]
 
 ### Updated
