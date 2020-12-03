@@ -18,7 +18,7 @@ import {
   TextField as Input
 } from "@material-ui/core";
 import { Link as RouterLink, withRouter, useHistory } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 //config
 import config from "../../config";
@@ -342,14 +342,6 @@ function EcommercePage({ history }) {
   return (
     <>
       <Grid container spacing={3}>
-        <ToastContainer
-          className={classes.toastsContainer}
-          closeButton={
-            <CloseButton className={classes.notificationCloseButton} />
-          }
-          closeOnClick={false}
-          progressClassName={classes.notificationProgress}
-        />
         <Grid item xs={12}>
           <Widget
             disableWidgetMenu

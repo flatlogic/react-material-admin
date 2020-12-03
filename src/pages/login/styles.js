@@ -38,6 +38,19 @@ export default makeStyles(theme => ({
       fontSize: 48
     }
   },
+  customFormContainer: {
+    width: "40%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    overflow: "auto",
+    alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      width: "50%",
+      overflow: "visible"
+    }
+  },
   formContainer: {
     width: "40%",
     height: "100%",

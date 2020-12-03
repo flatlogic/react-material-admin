@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Grid, Box } from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import classnames from "classnames";
 
 // styles
@@ -33,14 +32,6 @@ export default function NotificationsPage(props) {
   return (
     <>
       <Grid container spacing={3}>
-        <ToastContainer
-          className={classes.toastsContainer}
-          closeButton={
-            <CloseButton className={classes.notificationCloseButton} />
-          }
-          closeOnClick={false}
-          progressClassName={classes.notificationProgress}
-        />
         <Grid item xs={12} md={6} lg={4}>
           <Widget title="Layout Options" disableWidgetMenu>
             <Typography>
@@ -371,9 +362,4 @@ export default function NotificationsPage(props) {
   function changeNotificationPosition(positionId) {
     setNotificationPosition(positionId);
   }
-}
-
-// #############################################################
-function CloseButton({ closeToast, className }) {
-  return <CloseIcon className={className} onClick={closeToast} />;
 }

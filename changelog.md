@@ -1,5 +1,34 @@
 # Changelog
 
+# [2.1.3]
+
+### Updated
+- Added link to flatlogic on login and register pages
+
+# [2.1.2]
+
+### Updated
+- Updated fullcalendar package to v5.3.0
+
+# [2.1.1]
+
+### Improved
+- Improved css
+
+# [2.1.0]
+
+### New Features
+- Added upload image functionality
+
+# [2.0.0]
+
+### New Features
+- Added user management table
+- Added register functionality
+- Added reset password functionality
+- User invitation functionality
+- Social Login
+
 # [1.2.1]
 
 ### Fixed

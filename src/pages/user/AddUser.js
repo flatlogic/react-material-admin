@@ -10,13 +10,23 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
-
+import { useHistory } from 'react-router-dom'
 import useStyles from './styles'
+import { toast } from 'react-toastify'
+import Axios from 'axios'
+import config from '../../config'
+import uuid from 'uuid/v4'
 
-import photo from '../../images/profile.jpg'
+import Notification from "../../components/Notification";
 
 import { Button, Typography } from '../../components/Wrappers'
 import Widget from '../../components/Widget'
+
+import { actions } from '../../context/ManagementContext'
+import {
+  useManagementDispatch,
+} from '../../context/ManagementContext'
+
 
 function getSteps() {
     return ['Create Account', 'User Details', 'Business Details', 'Social']
@@ -40,16 +50,98 @@ function getStepContent(step) {
 const AddUser = () => {
     const [activeStep, setActiveStep] = React.useState(0)
     const [skipped, setSkipped] = React.useState(new Set())
+    const [newUser, setNewUser] = React.useState({
+      avatars: [],
+      disabled: null,
+      email: '',
+      emailVerificationToken: null,
+      emailVerificationTokenExpiresAt: null,
+      emailVerified: true,
+      firstName: '',
+      fullName: '',
+      lastName: '',
+      password: null,
+      passwordResetToken: null,
+      passwordResetTokenExpiresAt: null,
+      phoneNumber: '',
+      role: 'user',
+    });
+    function handleChange(e) {
+      setNewUser({
+        ...newUser,
+        [e.target.name]: e.target.value,
+      });
+    }
+    const fileInput = React.useRef(null);
     const steps = getSteps()
     const classes = useStyles()
 
-    const isStepOptional = step => {
-        return step === 1
+    function extractExtensionFrom(filename) {
+      if (!filename) {
+        return null;
+      }
+    
+      const regex = /(?:\.([^.]+))?$/;
+      return regex.exec(filename)[1];
     }
 
+    const uploadToServer = async (file, path, filename) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('filename', filename);
+      const uri = `${config.baseURLApi}/file/upload/${path}`;
+      await Axios.post(uri, formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
+  
+      const privateUrl = `${path}/${filename}`;
+  
+      return `${config.baseURLApi}/file/download?privateUrl=${privateUrl}`;
+    }
+
+    const handleFile = async (event) => {
+      const file = event.target.files[0];
+  
+      const extension = extractExtensionFrom(file.name);
+      const id = uuid();
+      const filename = `${id}.${extension}`;
+      const privateUrl = `users/avatar/${filename}`;
+  
+      const publicUrl = await uploadToServer(
+        file,
+        'users/avatar',
+        filename,
+      );
+      let avatarObj = {
+        id: id,
+        name: file.name,
+        sizeInBytes: file.size,
+        privateUrl,
+        publicUrl,
+        new: true      
+      }
+
+      setNewUser({
+          ...newUser,
+          avatars: [...newUser.avatars, avatarObj]
+      })
+
+      return ;
+    }
     const isStepSkipped = step => {
         return skipped.has(step)
     }
+
+    var managementDispatch = useManagementDispatch()
+    const history = useHistory()
+    const doSubmit = (id, data) => {
+        actions.doCreate(data, history)(managementDispatch);
+      
+    };
 
     const handleNext = () => {
         let newSkipped = skipped
@@ -60,12 +152,46 @@ const AddUser = () => {
 
         setActiveStep(prevActiveStep => prevActiveStep + 1)
         setSkipped(newSkipped)
+
+        if (activeStep === 3) {
+          doSubmit(null, newUser, history)
+          sendNotification()
+        }
     }
 
     const handleBack = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1)
     }
 
+    const deleteOneImage = (id) => {
+      setNewUser({
+        ...newUser,
+        avatars: newUser.avatars.filter(avatar => avatar.id !== id)
+      })
+    }
+
+    function sendNotification() {
+      const componentProps = {
+        type: "feedback",
+        message: "User added!",
+        variant: "contained",
+        color: "success"
+      };
+      const options = {
+        type: "info",
+        position: toast.POSITION.TOP_RIGHT,
+        progressClassName: classes.progress,
+        className: classes.notification,
+        timeOut: 1000
+      };
+      return toast(
+        <Notification
+          {...componentProps}
+          className={classes.notificationComponent}
+        />,
+        options
+      );
+    }
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -108,6 +234,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Username"
+                                        onChange={handleChange}
+                                        name="fullName"
+                                        value={newUser.fullName || ''}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText="Please enter your username"
@@ -115,6 +244,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Email Address"
+                                        onChange={handleChange}
+                                        value={newUser.email || ''}
+                                        name="email"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={
@@ -125,6 +257,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Password"
+                                        onChange={handleChange}
+                                        name="password"
+                                        value={newUser.password || ''}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={
@@ -134,6 +269,7 @@ const AddUser = () => {
                                     />
                                     <FormControl
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                     >
                                         <InputLabel id="demo-simple-select-outlined-label">
@@ -142,16 +278,14 @@ const AddUser = () => {
                                         <Select
                                             labelId="demo-simple-select-outlined-label"
                                             id="demo-simple-select-outlined"
-                                            value={''}
+                                            value={newUser.role || "user"}
+                                            defaultValue="User"
+                                            name="role"
+                                            onChange={handleChange}
                                             label="Role"
                                         >
-                                            <MenuItem value={10}>User</MenuItem>
-                                            <MenuItem value={20}>
-                                                Admin
-                                            </MenuItem>
-                                            <MenuItem value={30}>
-                                                Super Admin
-                                            </MenuItem>
+                                            <MenuItem value="user">User</MenuItem>
+                                            <MenuItem value="admin">Admin</MenuItem>
                                         </Select>
                                         <FormHelperText
                                             id={'demo-simple-select-outlined'}
@@ -165,12 +299,27 @@ const AddUser = () => {
                                     <Typography weight={'medium'}>
                                         Photo:
                                     </Typography>
-                                    <img
-                                        src={photo}
-                                        alt="photo"
-                                        width={123}
-                                        style={{ borderRadius: 8 }}
-                                    />
+                                    <div class={classes.galleryWrap}>
+                                    {newUser && newUser.avatars && newUser.avatars.length !== 0 ? (
+                                      newUser.avatars.map((avatar, idx) => (
+                                        <div className={classes.imgWrap}>
+                                          <span className={classes.deleteImageX} onClick={() => deleteOneImage(avatar.id)}>×</span>
+                                          <img
+                                              src={avatar.publicUrl}
+                                              alt="photo"
+                                              height={'100%'}
+                                          />                                          
+                                        </div>
+                                      ))
+                                    ): null}
+                                    </div>
+                                    <label
+                                      className={classes.uploadLabel}
+                                      style={{ cursor: 'pointer' }}
+                                    >
+                                      {'Upload an image'}
+                                        <input style={{ display: 'none' }} accept="image/*" type="file" ref={fileInput} onChange={handleFile} />
+                                    </label>
                                     <Typography
                                         size={'sm'}
                                         style={{ marginBottom: 35 }}
@@ -180,6 +329,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="First Name"
+                                        onChange={handleChange}
+                                        name="firstName"
+                                        value={newUser.firstName || ''}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText="Enter your first name"
@@ -187,6 +339,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Last Name"
+                                        onChange={handleChange}
+                                        name="lastName"
+                                        value={newUser.lastName || ''}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your last name'}
@@ -194,6 +349,9 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Contact number"
+                                        onChange={handleChange}
+                                        value={newUser.phoneNumber || ''}
+                                        name="phoneNumber"
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={
@@ -204,6 +362,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Email"
                                         variant="outlined"
+                                        value={newUser.email || ''}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your email'}
                                         type={'email'}
@@ -218,21 +377,23 @@ const AddUser = () => {
                                         <Select
                                             labelId="demo-simple-select-outlined-label"
                                             id="demo-simple-select-outlined"
-                                            value={''}
-                                            label="Country"
+                                            value={newUser.role || "user"}
+                                            defaultValue="User"
+                                            name="role"
+                                            onChange={handleChange}
+                                            label="Role"
                                         >
-                                            <MenuItem value={10}>User</MenuItem>
-                                            <MenuItem value={20}>
-                                                Admin
+                                            <MenuItem value="user">
+                                                User
                                             </MenuItem>
-                                            <MenuItem value={30}>
-                                                Super Admin
+                                            <MenuItem value="admin">
+                                                Admin
                                             </MenuItem>
                                         </Select>
                                         <FormHelperText
                                             id={'demo-simple-select-outlined'}
                                         >
-                                            Choose your country
+                                            Choose your role
                                         </FormHelperText>
                                     </FormControl>
                                     <FormControl
@@ -293,6 +454,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Address"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your adress'}
                                     />
@@ -303,6 +465,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Company Name"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText="Enter your company name"
                                     />
@@ -310,6 +473,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Company Registered ID"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={
                                             'Enter your company registered ID'
@@ -318,13 +482,16 @@ const AddUser = () => {
                                     <TextField
                                         id="outlined-basic"
                                         label="Cmpany Email"
+                                        onChange={handleChange}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your company email'}
                                     />
                                     <TextField
                                         id="outlined-basic"
+                                        value={''}
                                         label="Company Contact"
+                                        onChange={handleChange}
                                         variant="outlined"
                                         style={{ marginBottom: 35 }}
                                         helperText={
@@ -338,6 +505,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Facebook"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText="Enter your Facebook link"
                                     />
@@ -345,6 +513,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Twitter"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your Twitter link'}
                                     />
@@ -352,6 +521,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="Instagram"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your Instagram link'}
                                     />
@@ -359,6 +529,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="GitHub"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your GitHub link'}
                                     />
@@ -366,6 +537,7 @@ const AddUser = () => {
                                         id="outlined-basic"
                                         label="CodePen"
                                         variant="outlined"
+                                        onChange={handleChange}
                                         style={{ marginBottom: 35 }}
                                         helperText={'Enter your CodePen link'}
                                     />
