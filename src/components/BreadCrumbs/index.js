@@ -167,7 +167,7 @@ const BreadCrumbs = () => {
                   <CalendarIcon
                       className={classes.calendarIcon}
                   />
-                  <Typography className={classes.date}>
+                  <Typography className={classes.date} style={{marginRight: 38}}>
                       29 Oct 2019, Tuesday
                   </Typography>
                   <Button
@@ -194,4 +194,3 @@ const BreadCrumbs = () => {
   )
 }
 export default BreadCrumbs
-                
