@@ -161,10 +161,10 @@ export default function ColorsComp() {
         <Grid item xs={12} md={6}>
           <Widget title="Example buttons" disableWidgetMenu inheritHeight>
             <Box display={"flex"} flexWrap="wrap">
-              <Box mt={1} mr={1}>
+              <Box mt={1} mr={2}>
                 <Button variant="contained">default</Button>
               </Box>
-              <Box mt={1} mr={1}>
+              <Box mt={1} mr={2}>
                 <Button
                   color="primary"
                   variant="contained"
@@ -173,7 +173,7 @@ export default function ColorsComp() {
                   primary
                 </Button>
               </Box>
-              <Box mt={1} mr={1}>
+              <Box mt={1} mr={2}>
                 <Button
                   color="secondary"
                   variant="contained"
@@ -182,7 +182,7 @@ export default function ColorsComp() {
                   secondary
                 </Button>
               </Box>
-              <Box mt={1} mr={1}>
+              <Box mt={1} mr={2}>
                 <Button
                   color="warning"
                   variant="contained"
@@ -191,7 +191,7 @@ export default function ColorsComp() {
                   warning
                 </Button>
               </Box>
-              <Box mt={1} mr={1}>
+              <Box mt={1} mr={2}>
                 <Button
                   color="success"
                   variant="contained"

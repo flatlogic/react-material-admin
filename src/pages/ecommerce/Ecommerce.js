@@ -399,6 +399,7 @@ function EcommercePage({ history }) {
           >
             { config.isBackend ? (
               <Button
+                  style={{marginTop: -10}}
                   variant={"contained"}
                   component={RouterLink}
                   to={"/app/ecommerce/management/create"}
@@ -408,6 +409,7 @@ function EcommercePage({ history }) {
               </Button>
             ) : (
                 <Button
+                    style={{marginTop: -10}}
                     variant={"contained"}
                     component={RouterLink}
                     to={"#"}
@@ -549,7 +551,7 @@ function EcommercePage({ history }) {
                                     <Button
                                         color="success"
                                         size="small"
-                                        style={{marginRight: 8}}
+                                        style={{marginRight: 16}}
                                         variant="contained"
                                         onClick={e => openProductEdit(e, row.id)}
                                     >
@@ -559,7 +561,7 @@ function EcommercePage({ history }) {
                                       <Button
                                           color="success"
                                           size="small"
-                                          style={{marginRight: 8}}
+                                          style={{marginRight: 16}}
                                           variant="contained"
                                           onClick={(e) => e.stopPropagation()}
                                       >

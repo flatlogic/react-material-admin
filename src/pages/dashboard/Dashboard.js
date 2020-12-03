@@ -696,10 +696,10 @@ function Dashboard() {
               Integration
             </Typography>
             <LinearProgress
-              variant="determinate"
-              value={30}
-              classes={{ barColorPrimary: classes.progressBar }}
-              className={classes.progress}
+                variant="determinate"
+                value={77}
+                classes={{ barColorPrimary: classes.progressBarPrimary }}
+                className={classes.progress}
             />
           </div>
           <div>
@@ -711,10 +711,10 @@ function Dashboard() {
               SDK
             </Typography>
             <LinearProgress
-              variant="determinate"
-              value={55}
-              classes={{ barColorPrimary: classes.progressBar }}
-              className={classes.progress}
+                variant="determinate"
+                value={73}
+                classes={{ barColorPrimary: classes.progressBarWarning }}
+                className={classes.progress}
             />
           </div>
         </Widget>

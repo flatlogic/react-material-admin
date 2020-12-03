@@ -340,7 +340,7 @@ const Product = props => {
                       className={classes.form}
                     />
                   </Box>
-                  <Box>
+                  <Box display="flex" alignItems="center">
                     <img
                       src={payment1}
                       alt={"mastercard"}
@@ -512,9 +512,9 @@ const Product = props => {
                 <Typography variant="body2" component="p">
                   ${rows[0].price}
                 </Typography>
-                <div style={{ color: yellow[700] }}>
+                <div style={{ color: yellow[700], display: 'flex', alignItems: 'center' }}>
                   {rows[0].rating}
-                  <StarIcon style={{ color: yellow[700], marginTop: -5 }} />
+                  <StarIcon style={{ color: yellow[700], marginLeft: 5 }} />
                 </div>
               </CardActions>
             </Card>
@@ -542,9 +542,9 @@ const Product = props => {
                 <Typography variant="body2" component="p">
                   ${rows[1].price}
                 </Typography>
-                <div style={{ color: yellow[700] }}>
+                <div style={{ color: yellow[700], display: 'flex', alignItems: 'center' }}>
                   {rows[1].rating}
-                  <StarIcon style={{ color: yellow[700], marginTop: -5 }} />
+                  <StarIcon style={{ color: yellow[700], marginLeft: 5 }} />
                 </div>
               </CardActions>
             </Card>
@@ -572,9 +572,9 @@ const Product = props => {
                 <Typography variant="body2" component="p">
                   ${rows[2].price}
                 </Typography>
-                <div style={{ color: yellow[700] }}>
+                <div style={{ color: yellow[700], display: 'flex', alignItems: 'center' }}>
                   {rows[2].rating}
-                  <StarIcon style={{ color: yellow[700], marginTop: -5 }} />
+                  <StarIcon style={{ color: yellow[700], marginLeft: 5 }} />
                 </div>
               </CardActions>
             </Card>
@@ -602,9 +602,9 @@ const Product = props => {
                 <Typography variant="body2" component="p">
                   ${rows[3].price}
                 </Typography>
-                <div style={{ color: yellow[700] }}>
+                <div style={{ color: yellow[700], display: 'flex', alignItems: 'center' }}>
                   {rows[3].rating}
-                  <StarIcon style={{ color: yellow[700], marginTop: -5 }} />
+                  <StarIcon style={{ color: yellow[700], marginLeft: 5 }} />
                 </div>
               </CardActions>
             </Card>

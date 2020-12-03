@@ -393,6 +393,7 @@ const UserList = () => {
                                 Download
                             </Button>
                             <Input
+                                style={{marginTop: 16}}
                                 id="search-field"
                                 label="Search"
                                 margin="dense"
