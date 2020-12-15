@@ -64,6 +64,7 @@ import UserList from '../../pages/user'
 import UserAdd from '../../pages/user/AddUser'
 import UserEdit from '../../pages/user/EditUser'
 import BreadCrumbs from '../../components/BreadCrumbs'
+import Profile from '../../pages/profile'
 
 // context
 import { useLayoutState } from '../../context/LayoutContext'
@@ -225,6 +226,7 @@ function Layout(props) {
                         path="/app/user"
                         render={() => <Redirect to="/app/user/list" />}
                     />
+                    <Route path="/app/user/profile" component={Profile} />
                     <Route path="/app/user/list" component={UserList} />
                     <Route path="/app/user/add" component={UserAdd} />
                     <Route path="/app/user/:id/edit" component={UserEdit} />

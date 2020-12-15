@@ -16,7 +16,8 @@ import {
     Add as AddSectionIcon,
     FolderOpen as FolderIcon,
     Description as DocumentationIcon,
-    Person as PersonIcon
+    Person as PersonIcon,
+    AccountCircle as ProfileIcon
 } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 
@@ -24,6 +25,7 @@ import { makeStyles } from '@material-ui/styles'
 import Dot from './components/Dot'
 
 const structure = [
+    { id: 100, label: 'Profile', link: '/app/user/profile', icon: <ProfileIcon /> },
     { id: 0, label: 'Dashboard', link: '/app/dashboard', icon: <HomeIcon /> },
     {
         id: 1,

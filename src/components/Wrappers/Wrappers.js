@@ -30,13 +30,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Badge({ children, colorBrightness, color, ...props }) {
+function Badge({ children, colorBrightness, color, type, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const Styled = createStyled({
     badge: {
-      backgroundColor: getColor(color, theme, colorBrightness),
-      color: "white"
+      backgroundColor: type === 'tag' ? `${getColor(color, theme, colorBrightness)}44` : getColor(color, theme, colorBrightness),
+      color: type === 'tag' ? getColor(color, theme, colorBrightness) : "white",
+      borderRadius: type === 'tag' && 2,
+      padding: type === 'tag' && '4px 7px',
+      height: type === 'tag' && 'auto',
+      position: type === 'tag' && 'static',
+      transform: type === 'tag' && 'none',
+      marginRight:  type === 'tag' && 10,
+      marginBottom:  type === 'tag' && 10,
     }
   });
 
@@ -56,12 +63,12 @@ function Badge({ children, colorBrightness, color, ...props }) {
   );
 }
 
-function Chip({ colorBrightness, color, ...props }) {
+function Chip({ colorBrightness, color, variant, ...props }) {
   const theme = useTheme();
   const Styled = createStyled({
     root: {
       backgroundColor: getColor(color, theme, colorBrightness),
-      color: "white"
+      color: "white",
     }
   });
 
@@ -355,6 +362,12 @@ export {
 function getColor(color, theme, brightness = "main") {
   if (color && theme.palette[color] && theme.palette[color][brightness]) {
     return theme.palette[color][brightness];
+  }
+}
+
+function getColorText (color, theme) {
+  if (color && theme.palette.text[color]) {
+    return theme.palette.text[color];
   }
 }
 
