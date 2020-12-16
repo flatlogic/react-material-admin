@@ -3,6 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 
 import { Badge, Chip } from '../../components/Wrappers';
+import Tabs from './Components/Tabs';
 import ProfileIcon from '../../images/profile/profilePhoto.png';
 import BehanceIcon from '../../images/profile/behanceIcon.png';
 import MediumIcon from '../../images/profile/mediumIcon.png';
@@ -49,7 +50,7 @@ function Profile() {
                 <div>
                   <Badge type="tag" badgeContent={"UI/UX"} color="primary"/>
                   <Badge type="tag" badgeContent={"Art"} color="warning"/>
-                  <Badge type="tag" badgeContent={"Design"} color="error"/>
+                  <Badge type="tag" badgeContent={"Design"} color="secondary"/>
                   <Badge type="tag" badgeContent={"Illustration"} color="warning"/>
                   <Badge type="tag" badgeContent={"Mobile"} color="success"/>
                 </div>
@@ -70,7 +71,7 @@ function Profile() {
         <Widget title="Files">
           <Grid container spacing={1}>
             <Grid item xs={12}>
-              
+              <Tabs />
             </Grid>
           </Grid>
         </Widget>
