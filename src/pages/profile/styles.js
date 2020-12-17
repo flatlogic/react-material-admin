@@ -55,7 +55,15 @@ export default makeStyles(theme => ({
     alignItems: 'center',
     maxWidth: 180,
   },
-
+  // adjustHeight: {
+  //   height: '100%',
+  //   '@media (max-width: 1280px)': {
+  //     height: 'auto',
+  //   }
+  // },
+  mediaBlockPadding: {
+    padding: '0 24px 12px 24px',
+  },
 
 
 

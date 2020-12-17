@@ -4,6 +4,8 @@ import { useTheme, makeStyles } from "@material-ui/styles";
 
 import { Badge, Chip } from '../../components/Wrappers';
 import Tabs from './Components/Tabs';
+import Donut from './Components/DonutChart';
+import MediaBlock from './Components/MediaBlock';
 import ProfileIcon from '../../images/profile/profilePhoto.png';
 import BehanceIcon from '../../images/profile/behanceIcon.png';
 import MediumIcon from '../../images/profile/mediumIcon.png';
@@ -68,7 +70,7 @@ function Profile() {
         </Widget>
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={7}>
-        <Widget title="Files">
+        <Widget title="Files" disableWidgetMenu>
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Tabs />
@@ -76,29 +78,29 @@ function Profile() {
           </Grid>
         </Widget>
       </Grid>
+
       <Grid item xs={12} lg={5}>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={4} md={4} lg={5}>
+          <Grid item xs={12} sm={4} md={4} lg={6}>
             <Widget
-              title="Widget"
-              className={classes.card}
-              bodyClass={classes.fullHeightBody}
+              bodyClass={classes.mediaBlockPadding}
+              title="Media"
             >
+              <Grid container spacing={1}>
+                <MediaBlock />
+              </Grid>
             </Widget>
           </Grid>
-          <Grid item xs={12} sm={4} md={4} lg={7}>
-            <Widget
-              title="Widget"
-              className={classes.card}
-              bodyClass={classes.fullHeightBody}
+          <Grid item xs={12} sm={4} md={4} lg={6}>
+            <Widget widgetWithDropdown
+              title="Projects"
             >
+              <Donut />
             </Widget>
           </Grid>
           <Grid item xs={12} sm={4} md={4} lg={12}>
-            <Widget
-              title="Widget"
-              className={classes.card}
-              bodyClass={classes.fullHeightBody}
+            <Widget widgetWithDropdown
+              title="New"
             >
             </Widget>
           </Grid>

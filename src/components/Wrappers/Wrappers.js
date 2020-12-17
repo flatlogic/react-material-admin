@@ -44,8 +44,9 @@ function Badge({ children, colorBrightness, color, type, ...props }) {
       transform: type === 'tag' && 'none',
       marginRight:  type === 'tag' && 10,
       marginBottom:  type === 'tag' && 10,
+      alignContent: 'center',
+      
       // Выровнять надписи в бэджах по вертикали
-      alignItems: 'center',
     }
   });
 
