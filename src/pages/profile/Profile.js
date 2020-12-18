@@ -5,6 +5,7 @@ import { useTheme, makeStyles } from "@material-ui/styles";
 import { Badge, Chip } from '../../components/Wrappers';
 import Tabs from './Components/Tabs';
 import Donut from './Components/DonutChart';
+import RNSWidget from './Components/RNSWIdget';
 import MediaBlock from './Components/MediaBlock';
 import ProfileIcon from '../../images/profile/profilePhoto.png';
 import BehanceIcon from '../../images/profile/behanceIcon.png';
@@ -12,6 +13,7 @@ import MediumIcon from '../../images/profile/mediumIcon.png';
 import FacebookIcon from '../../images/profile/facebookIcon.png';
 import DribbleIcon from '../../images/profile/dribbleIcon.png';
 import InstagramIcon from '../../images/profile/instagramIcon.png';
+
 
 // styles
 import useStyles from "./styles";
@@ -99,9 +101,8 @@ function Profile() {
             </Widget>
           </Grid>
           <Grid item xs={12} sm={4} md={4} lg={12}>
-            <Widget widgetWithDropdown
-              title="New"
-            >
+            <Widget>
+              <RNSWidget/>
             </Widget>
           </Grid>
         </Grid>
