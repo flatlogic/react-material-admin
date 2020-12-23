@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/styles";
 
-import { Badge, Chip } from '../../components/Wrappers';
+import { Badge, Chip, Button } from '../../components/Wrappers';
 import Tabs from './Components/Tabs';
 import Donut from './Components/DonutChart';
 import RNSWidget from './Components/RNSWIdget';
+import ToDo from './Components/ToDo';
+import Calendar from './Components/Calendar/Calendar';
 import MediaBlock from './Components/MediaBlock';
-import ProfileIcon from '../../images/profile/profilePhoto.png';
-import BehanceIcon from '../../images/profile/behanceIcon.png';
-import MediumIcon from '../../images/profile/mediumIcon.png';
-import FacebookIcon from '../../images/profile/facebookIcon.png';
-import DribbleIcon from '../../images/profile/dribbleIcon.png';
-import InstagramIcon from '../../images/profile/instagramIcon.png';
+import ViewsWidget from './Components/ViewsWidget';
+import ProfileIcon from '../../images/profile/profilePhoto.svg';
+import BehanceIcon from '../../images/profile/BehanceIcon.svg';
+import MediumIcon from '../../images/profile/MediumIcon.svg';
+import FacebookIcon from '../../images/profile/FacebookIcon.svg';
+import DribbleIcon from '../../images/profile/DribbleIcon.svg';
+import InstagramIcon from '../../images/profile/InstagramIcon.svg';
+import CloudIcon from '../../images/profile/cloudImg.svg';
 
 
 // styles
@@ -40,13 +44,11 @@ function Profile() {
                   color="secondary"
                   label={"PRO"}
                 />
-              {/* Исправить ширину и высоту бэйджа  */}
               </div>
             </Grid>
             <Grid item xs={12} sm={7} md={7} lg={7}>
               <div class={classes.profileDescription}>
                 <Typography variant="h3" className={classes.profileTitle}>
-                {/* Сделать нужный шрифт!  */}
                   Julee Cruise
                 </Typography>
                 <span className={classes.profileSubtitle}>Product Designer</span>
@@ -64,7 +66,6 @@ function Profile() {
                   <a href="#"><img src={DribbleIcon} alt="DribbleIcon" /></a>
                   <a href="#"><img src={BehanceIcon} alt="BehanceIcon" /></a>
                   <a href="#"><img src={InstagramIcon} alt="InstagramIcon" /></a>
-                  {/* Использовать вместо картинок иконки */}
                 </div>
               </div>
             </Grid>
@@ -109,37 +110,35 @@ function Profile() {
       </Grid>
       <Grid item xs={12} lg={4}>
         <Widget
-          title="New Widget"
-          className={classes.card}
-          bodyClass={classes.fullHeightBody}
+          title="Tasks"
+          bodyClass={classes.widgetBody}
+          widgetWithDropdown
         >
+          <ToDo />
         </Widget>
       </Grid>
       <Grid item xs={12} lg={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={6} lg={12}>
-            <Widget
-              title="Container Widget 2"
-              className={classes.card}
-              bodyClass={classes.fullHeightBody}
-            >
+            <Widget>
+              <Calendar />
             </Widget>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={12}>
-            <Widget
-              title="Container Widget 2"
-              className={classes.card}
-              bodyClass={classes.fullHeightBody}
-            >
+            <Widget>
+              <ViewsWidget color="#FF5992" title="Views" subtitle="7.2%" value={7.156} />
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget
-              title="New Widget"
-              className={classes.card}
-              bodyClass={classes.fullHeightBody}
-            >
-            </Widget>
+            <div className={classes.updateWidget}>
+              <div className={classes.updateWidgetFlexContainer}>
+                <div className={classes.imgWrap}>
+                  <img src={CloudIcon} alt="Download icon" />
+                </div>
+                <Typography color="#fff" variant="h4">Updates</Typography>
+              </div>
+              <Button classes={{ root: classes.detailsBtn }} variant="outlined" color="transparent">DETAILS</Button>
+            </div>
           </Grid>
         </Grid>
       </Grid>

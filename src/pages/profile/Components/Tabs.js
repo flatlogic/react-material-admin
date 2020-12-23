@@ -3,10 +3,14 @@ import { withStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import FolderBlue from '../Icons/FolderBlue';
+import FolderBlue from '../Icons/FolderBlueLight';
+import FolderBlueDark from '../Icons/FolderBlueDark';
 import FolderRed from '../Icons/FolderRed';
+import FolderRedDark from '../Icons/FolderRedDark';
 import FolderGreen from '../Icons/FolderGreen';
+import FolderGreenDark from '../Icons/FolderGreenDark';
 import FolderYellow from '../Icons/FolderYellow';
+import FolderYellowDark from '../Icons/FolderYellowDark';
 import SwipeableViews from 'react-swipeable-views';
 import Box from '@material-ui/core/Box';
 
@@ -30,15 +34,15 @@ function TabPanel(props) {
   );
 }
 
-const AntTabs = withStyles({
+const AntTabs = withStyles((theme) => ({
   root: {
-    borderBottom: `1px solid #e8e8e8`,
+    borderBottom: `1px solid ${theme.palette.text.hint}`,
   },
   indicator: {
-    backgroundColor: 'FF5992',
+    backgroundColor: theme.palette.primary.main,
     borderRadius: 2,
   },
-})(Tabs);
+}))(Tabs);
 
 const AntTab = withStyles((theme) => ({
   root: {
@@ -47,20 +51,20 @@ const AntTab = withStyles((theme) => ({
     fontSize: '12px',
     fontWeight: theme.typography.fontWeightMedium,
     marginRight: theme.spacing(0),
-    color: '#A1AEBD',
+    color: theme.palette.text.primary,
     fontFamily: [
       'Roboto',
       'sans-serif'
     ].join(','),
     '&:hover': {
-      color: '#4A4A4A',
+      color: theme.palette.text.primary,
       opacity: 1,
     },
     '&$selected': {
-      color: '#4A4A4A',
+      color: theme.palette.text.primary,
     },
     '&:focus': {
-      color: '#4A4A4A',
+      color: theme.palette.text.primary,
     },
   },
   selected: {},
@@ -128,26 +132,86 @@ function CustomizedTabs({ classes }) {
       >
         <TabPanel>
           <span className={classes.folderWrapper}>
-            <FolderBlue title="UI/UX" label="files" value={178} />
-            <FolderRed title="Design" label="files" value={154} />
-            <FolderGreen title="Mobile" label="files" value={98} />
-            <FolderYellow title="Illustration" label="files" value={154} />
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderBlueDark title="UI/UX" label="files" value={178} /> 
+              : <FolderBlue title="UI/UX" label="files" value={178} />
+            }
+          </div>
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderRedDark title="Design" label="files" value={154} /> 
+              : <FolderRed title="Design" label="files" value={154} />
+            }
+          </div>
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderGreenDark title="Mobile" label="files" value={98} /> 
+              : <FolderGreen title="Mobile" label="files" value={98} />
+            }
+          </div>
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderYellowDark title="Illustration" label="files" value={154} /> 
+              : <FolderYellow title="Illustration" label="files" value={154} />
+            }
+          </div>
           </span>
         </TabPanel>
         <TabPanel>
           <span className={classes.folderWrapper}>
-            <FolderBlue title="UI/UX" label="files" value={178} />
-            <FolderRed title="Design" label="files" value={154} />
-            <FolderGreen title="Mobile" label="files" value={98} />
-            <FolderYellow title="Illustration" label="files" value={154} />
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderBlueDark title="UI/UX" label="files" value={178} /> 
+              : <FolderBlue title="UI/UX" label="files" value={178} />
+            }
+          </div>
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderRedDark title="Design" label="files" value={154} /> 
+              : <FolderRed title="Design" label="files" value={154} />
+            }
+          </div>
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderGreenDark title="Mobile" label="files" value={98} /> 
+              : <FolderGreen title="Mobile" label="files" value={98} />
+            }
+          </div>
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderYellowDark title="Illustration" label="files" value={154} /> 
+              : <FolderYellow title="Illustration" label="files" value={154} />
+            }
+          </div>
           </span>
         </TabPanel>
         <TabPanel>
           <span className={classes.folderWrapper}>
-            <FolderBlue title="UI/UX" label="files" value={178} />
-            <FolderRed title="Design" label="files" value={154} />
-            <FolderGreen title="Mobile" label="files" value={98} />
-            <FolderYellow title="Illustration" label="files" value={154} />
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderBlueDark title="UI/UX" label="files" value={178} /> 
+              : <FolderBlue title="UI/UX" label="files" value={178} />
+            }
+          </div>
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderRedDark title="Design" label="files" value={154} /> 
+              : <FolderRed title="Design" label="files" value={154} />
+            }
+          </div>
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderGreenDark title="Mobile" label="files" value={98} /> 
+              : <FolderGreen title="Mobile" label="files" value={98} />
+            }
+          </div>
+          <div>
+            {theme.palette.type === "dark" 
+              ? <FolderYellowDark title="Illustration" label="files" value={154} /> 
+              : <FolderYellow title="Illustration" label="files" value={154} />
+            }
+          </div>
           </span>
         </TabPanel>
       </SwipeableViews>

@@ -5,7 +5,8 @@ export default makeStyles(theme => ({
   visualProfile: {
     display: 'flex',
     flexDirection: 'column',
-    alighItems: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   profileImage: {
     padding: 5,
@@ -38,15 +39,20 @@ export default makeStyles(theme => ({
   profileExternalRes: {
     fontSize: 16,
     margin: '12px 0 25px',
-    color: '#536DFE',
+    color: theme.palette.primary.main,
     display: 'block',
     marginTop: 4,
     textDecoration: 'none',
   },
   chipMargin: {
+    display: 'flex',
+    justifyContent: 'end',
+    alignItems: 'center',
     marginTop: 20,
     fontWeight: 700,
-    fontSize: 12,
+    fontSize: 11,
+    width: 48,
+    height: 26,
   },
   socials: {
     display: 'flex',
@@ -55,20 +61,32 @@ export default makeStyles(theme => ({
     alignItems: 'center',
     maxWidth: 180,
   },
-  // adjustHeight: {
-  //   height: '100%',
-  //   '@media (max-width: 1280px)': {
-  //     height: 'auto',
-  //   }
-  // },
   mediaBlockPadding: {
     padding: '0 24px 12px 24px',
   },
-
-
-
-
-
+  widgetBody: {
+    padding: 0,
+  },
+  updateWidget: {
+    background: theme.palette.primary.main,
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    padding: '20px 0',
+    color: '#fff',
+  },
+  updateWidgetFlexContainer: {
+    display: 'flex',
+    marginRight: 32,
+    alignItems: 'center',
+  },
+  imgWrap: {
+    marginRight: 15,
+  },
+  detailsBtn: {
+    color: '#fff',
+    borderColor: '#fff',
+  },
   card: {
     minHeight: "100%",
     display: "flex",

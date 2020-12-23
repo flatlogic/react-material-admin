@@ -37,8 +37,8 @@ function Badge({ children, colorBrightness, color, type, ...props }) {
     badge: {
       backgroundColor: type === 'tag' ? `${getColor(color, theme, colorBrightness)}44` : getColor(color, theme, colorBrightness),
       color: type === 'tag' ? getColor(color, theme, colorBrightness) : "white",
-      borderRadius: type === 'tag' && 2,
-      padding: type === 'tag' && '4px 7px',
+      borderRadius: type === 'tag' && 4,
+      padding: type === 'tag' && '6px 6px',
       height: type === 'tag' && 'auto',
       position: type === 'tag' && 'static',
       transform: type === 'tag' && 'none',
@@ -46,7 +46,6 @@ function Badge({ children, colorBrightness, color, type, ...props }) {
       marginBottom:  type === 'tag' && 10,
       alignContent: 'center',
       
-      // Выровнять надписи в бэджах по вертикали
     }
   });
 

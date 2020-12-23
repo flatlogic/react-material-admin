@@ -22,20 +22,6 @@ const styles = (theme) => ({
       opacity: .6,
     }
   },
-  // iconWraper: {
-  //   position: 'relative',
-  //   '&:before': {
-  //     content: '""',
-  //     position: 'absolute',
-  //     width: 30,
-  //     height: 30,
-  //     background: '#FEB35D',
-  //     top: 0,
-  //     left: '50%',
-  //     transform: 'translateX(-50%)',
-  //     borderRadius: '50%',
-  //   }
-  // },
   mediaIconsWrapper: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -43,6 +29,9 @@ const styles = (theme) => ({
     '@media (max-width: 1280px)': {
       marginTop: 40,
     }
+  },
+  valueLabel: {
+    marginBottom: '-8px',
   }
 })
 
@@ -51,23 +40,23 @@ const MediaBlock = ({ classes }) => {
     <div className={classes.mediaIconsWrapper}>
       <div className={classes.mediaIndicator}>
         <DocIcon/>
-        <strong className={classes.mediaValue}>194</strong>
-        <span className={classes.mediaLabel}>Posts</span>
+        <strong className={classes.valueLabel}>194</strong>
+        <span>Posts</span>
       </div>
       <div className={classes.mediaIndicator}>
         <ProjectIcon />
-        <strong className={classes.mediaValue}>554</strong>
-        <span className={classes.mediaLabel}>Projects</span>
+        <strong>554</strong>
+        <span>Projects</span>
       </div>
       <div className={classes.mediaIndicator}>
         <UsersIcon />
-        <strong className={classes.mediaValue}>12.8k</strong>
-        <span className={classes.mediaLabel}>Followers</span>
+        <strong>12.8k</strong>
+        <span>Followers</span>
       </div>
       <div className={classes.mediaIndicator}>
         <FollowIcon />
-        <strong className={classes.mediaValue}>1.1k</strong>
-        <span className={classes.mediaLabel}>Following</span>
+        <strong>1.1k</strong>
+        <span>Following</span>
       </div>
     </div>
   )

@@ -12,31 +12,34 @@ import {
 import chartsData from './mock';
 
 const PieChartData = [
-  { name: "New", value: 400 ,color: "#FF4D3A" },
-  { name: "In Progress", value: 300 ,color: "#5DC5FF" },
-  { name: "Completed", value: 300 ,color: "#1ACA95" },
-  { name: "Cancel", value: 200 ,color: "#FEAA4B" }
+  { name: "New", value: 400 ,color: "#536DFE" },
+  { name: "In Progress", value: 300 ,color: "#FFC35F" },
+  { name: "Completed", value: 300 ,color: "#3CD4A0" },
+  { name: "Cancel", value: 200 ,color: "#FF5C93" }
 ];
 
 const styles = (theme) => ({
-  // legendItemContainer: {
-  //     display: 'flex',
-  //     alignItems: 'center',
-  //     marginBottom: 8,
-  //     paddingLeft: 5
-  // },
-  // detailsWrapper: {
-  //     display: 'flex',
-  //     justifyContent: 'flex-end',
-  //     paddingRight: 0,
-  //     paddingLeft: 0,
-  //     width: '100%',
-  //     bottom: 5,
-  // },
-  // formControl: {
-  //     margin: theme.spacing(1),
-  //     minWidth: 80,
-  // }
+  legendItemContainer: {
+      display: 'flex',
+      alignItems: 'center',
+
+  },
+  detailsWrapper: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      paddingRight: 0,
+      paddingLeft: 0,
+      width: '100%',
+      bottom: 5,
+  },
+  pieChartLegendWrapper: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    marginRight: theme.spacing(1)
+  },
 })
 
 const DonutChart = (classes) => {
@@ -83,17 +86,16 @@ const DonutChart = (classes) => {
         </ResponsiveContainer>
       </Grid>
       <Grid item lg={6} md={12} xs={12} style={{ display: "flex", alignItems: "center"}}>
-        <div>
+        <div className={classes.pieChartLegendWrapper}>
           {PieChartData.map(({ name, value, color }, index) => (
-            <div key={color} >
-              <Dot color={color} style={{ marginRight: 5 }} />
+            <div key={color} className={classes.legendItemContainer}>
+              <Dot color={color} style={{ marginLeft: 5 }} />
               <Typography
                 color="text"
                 colorBrightness={"hint"}
                 variant={"caption"}
-                style={{ fontSize: 14 }}
-                
-                //  Как отредактировать записи
+                style={{ fontSize: 12 }}
+                //  Как сделать записи на одном уровне с точками
               >
                 &nbsp;{name}&nbsp;
               </Typography>
@@ -101,9 +103,14 @@ const DonutChart = (classes) => {
           ))}
         </div>
       </Grid>
-      <div style={{ marginLeft: 110 }}>
-      {/* Как отодвинуть кропку к краю без хардкода */}
-        <Button variant="outlined" color="primary">DETAIL</Button>
+      <div className={classes.detailsWrapper}>
+      {/* Как отодвинуть кнопку к краю без хардкода */}
+        <Button 
+          variant="outlined" 
+          color="primary" 
+        >
+          DETAILS
+        </Button>
       </div>
     </Grid>
   )

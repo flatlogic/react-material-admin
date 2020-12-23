@@ -4,8 +4,8 @@ import classnames from "classnames";
 
 var useStyles = makeStyles(theme => ({
   dotBase: {
-    width: 5,
-    height: 5,
+    width: 6,
+    height: 6,
     backgroundColor: theme.palette.text.hint,
     borderRadius: "50%",
     transition: theme.transitions.create("background-color")
