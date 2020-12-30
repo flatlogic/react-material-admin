@@ -1,5 +1,10 @@
 # Changelog
 
+# [2.2.3]
+
+### New Features
+- Added Profile page
+
 # [2.1.3]
 
 ### Updated
