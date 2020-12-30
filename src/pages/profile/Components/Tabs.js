@@ -36,10 +36,10 @@ function TabPanel(props) {
 
 const AntTabs = withStyles((theme) => ({
   root: {
-    borderBottom: `1px solid ${theme.palette.text.hint}`,
+    borderBottom: `1px solid rgba(185, 185, 185, 0.3)`,
   },
   indicator: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
     borderRadius: 2,
   },
 }))(Tabs);
@@ -48,7 +48,7 @@ const AntTab = withStyles((theme) => ({
   root: {
     textTransform: 'none',
     minWidth: 72,
-    fontSize: '12px',
+    fontSize: '14px',
     fontWeight: theme.typography.fontWeightMedium,
     marginRight: theme.spacing(0),
     color: theme.palette.text.primary,

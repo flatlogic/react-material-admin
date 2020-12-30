@@ -17,7 +17,6 @@ import GrowthIcon from '../../../images/profile/growth.svg';
 
 const styles = theme => ({
   widgetBackground: {
-      background: "#fff",
       transition: 'background .35s ease',
       cursor: 'pointer',
   },
@@ -70,6 +69,9 @@ const styles = theme => ({
       textTransform: 'none',
       padding: '5px 10px',
       marginTop: 10
+  },
+  menuIcon: {
+    color: theme.palette.text.hint,
   }
 })
 
@@ -102,13 +104,13 @@ const SimpleLine = ({ classes, color, title, subtitle, value }) => {
   return (
     <div className={classes.widgetBackground}>
       <div className={classes.titleWrapper}>
-          <h4 className={classes.widgetTitle}>{title}</h4>
+          <Typography variant="h5">{title}</Typography>
           <IconButton
-              color={"#9B9B9B"}
               aria-owns="widget-menu"
               aria-haspopup="true"
               onClick={() => setMoreMenuOpen(true)}
               buttonRef={setMoreButtonRef}
+              className={classes.menuIcon}
           >
               <MoreIcon />
           </IconButton>

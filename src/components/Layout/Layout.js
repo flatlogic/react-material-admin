@@ -110,6 +110,7 @@ function Layout(props) {
                 <div className={classes.fakeToolbar} />
                 <BreadCrumbs />
                 <Switch>
+                    <Route path="/app/profile" component={Profile} />
                     <Route path="/app/dashboard" component={Dashboard} />
                     <Route
                         path="/app/core/typography"
@@ -226,7 +227,6 @@ function Layout(props) {
                         path="/app/user"
                         render={() => <Redirect to="/app/user/list" />}
                     />
-                    <Route path="/app/user/profile" component={Profile} />
                     <Route path="/app/user/list" component={UserList} />
                     <Route path="/app/user/add" component={UserAdd} />
                     <Route path="/app/user/:id/edit" component={UserEdit} />

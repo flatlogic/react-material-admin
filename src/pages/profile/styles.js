@@ -77,7 +77,6 @@ export default makeStyles(theme => ({
   },
   updateWidgetFlexContainer: {
     display: 'flex',
-    marginRight: 32,
     alignItems: 'center',
   },
   imgWrap: {
@@ -230,5 +229,11 @@ export default makeStyles(theme => ({
   },
   actionsIcon: {
     color: "#76767B"
-  }
+  },
+  adjustHeight: {
+    height: '100%',
+    '@media (max-width: 1280px)': {
+        height: 'auto'
+    }
+}
 }));

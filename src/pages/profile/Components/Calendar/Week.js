@@ -44,7 +44,7 @@ const Week = ({ selected, currentMonthView, previousCurrentNextView, currentDay,
           info: "",
           itemStyle: "#FF5C93",
           link: "http://www.flatlogic.com",
-          date: moment(`${moment().year()}-${moment().month() + 1}-29`, "YYYYMMDD"),
+          date: moment(`${moment().year()}-${moment().month() + 1}-28`, "YYYYMMDD"),
         },
     ];
 

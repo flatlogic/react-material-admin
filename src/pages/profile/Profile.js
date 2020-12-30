@@ -16,7 +16,7 @@ import MediumIcon from '../../images/profile/MediumIcon.svg';
 import FacebookIcon from '../../images/profile/FacebookIcon.svg';
 import DribbleIcon from '../../images/profile/DribbleIcon.svg';
 import InstagramIcon from '../../images/profile/InstagramIcon.svg';
-import CloudIcon from '../../images/profile/cloudImg.svg';
+import CloudIcon from './Icons/CloudIcon'
 
 
 // styles
@@ -30,7 +30,7 @@ function Profile() {
   var theme = useTheme();
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={4}>
       <Grid item xs={12} sm={6} md={6} lg={5}>
         <Widget>
           <Grid container spacing={1}>
@@ -85,7 +85,7 @@ function Profile() {
       <Grid item xs={12} lg={5}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4} md={4} lg={6}>
-            <Widget
+            <Widget widgetWithDropdown
               bodyClass={classes.mediaBlockPadding}
               title="Media"
             >
@@ -96,6 +96,7 @@ function Profile() {
           </Grid>
           <Grid item xs={12} sm={4} md={4} lg={6}>
             <Widget widgetWithDropdown
+              className={classes.adjustHeight}
               title="Projects"
             >
               <Donut />
@@ -126,16 +127,14 @@ function Profile() {
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={12}>
             <Widget>
-              <ViewsWidget color="#FF5992" title="Views" subtitle="7.2%" value={7.156} />
+              <ViewsWidget color={theme.palette.primary.main} title="Views" subtitle="7.2%" value={7.156} />
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <div className={classes.updateWidget}>
               <div className={classes.updateWidgetFlexContainer}>
-                <div className={classes.imgWrap}>
-                  <img src={CloudIcon} alt="Download icon" />
-                </div>
-                <Typography color="#fff" variant="h4">Updates</Typography>
+                <CloudIcon className={classes.imgWrap} />
+                <Typography variant="h4">Updates</Typography>
               </div>
               <Button classes={{ root: classes.detailsBtn }} variant="outlined" color="transparent">DETAILS</Button>
             </div>

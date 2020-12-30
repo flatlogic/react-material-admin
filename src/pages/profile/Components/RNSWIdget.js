@@ -19,6 +19,9 @@ const styles = (theme) => ({
     opacity: .8,
     fontSize: 12,
   },
+  text: {
+    fontWeight: theme.typography.fontWeightMedium,
+  },
   date: {
     opacity: .6,
     fontSize: 12,
@@ -48,9 +51,9 @@ const RNSWidget = ({ classes }) => {
       <Grid item xs={12} md={12} lg={6}>
         <div>
           <span className={classes.author}>Nastassia Ovchinnikova</span>
-          <p>React Native allows us to create a boilerplate that have been crafted for both platforms. The ability to create an app both for Android and iOS...</p>
+          <p className={classes.text} >React Native allows us to create a boilerplate that have been crafted for both platforms. The ability to create an app both for Android and iOS...</p>
           <div className={classes.flexContainer}>
-            <span className={classes.date}>11 Feb 2019 | 5 min read</span>
+            <span className={classes.date}>11 Sep 2020 | 5 min read</span>
             <IconButton classes={{ root: classes.iconColor }} aria-label="bookmark">
               <BookmarkIcon/>
             </IconButton>

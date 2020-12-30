@@ -42,11 +42,15 @@ export default function App() {
     />
       <HashRouter>
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/app/dashboard" />} />
+          {/* <Route exact path="/" render={() => <Redirect to="/app/dashboard" />} /> */}
+          <Route exact path="/" render={() => <Redirect to="/app/profile" />} />
+
           <Route
             exact
             path="/app"
-            render={() => <Redirect to="/app/dashboard" />}
+            // render={() => <Redirect to="/app/dashboard" />}
+            render={() => <Redirect to="/app/profile" />}
+
           />
           <Route path="/documentation" component={Documentation} />
           <PrivateRoute path="/app" component={Layout} />

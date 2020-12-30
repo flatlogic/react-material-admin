@@ -26,35 +26,36 @@ function TabPanel(props) {
   );
 }
 
-const AntTabs = withStyles({
+const AntTabs = withStyles((theme) => ({
   root: {
-    borderBottom: `1px solid #E8E8E8`,
+    borderBottom: `1px solid rgba(185, 185, 185, 0.3)`,
     margin: '0 24px',
   },
   indicator: {
-    backgroundColor: '#EE266D',
+    backgroundColor: theme.palette.secondary.main,
     borderRadius: 2,
   },
-})(Tabs);
+}))(Tabs);
 
 const AntTab = withStyles((theme) => ({
   root: {
     textTransform: 'none',
     minWidth: 72,
-    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: '14px',
+    fontWeight: theme.typography.fontWeightMedium,
     marginRight: theme.spacing(4),
-    color: '#A1AEBD',
+    color: theme.palette.text.primary,
     fontFamily: ['Roboto', 'sans-serif'].join(','),
     '&:hover': {
-      color: '#4A4A4A',
+      color: theme.palette.text.primary,
       opacity: 1,
     },
     '&$selected': {
-      color: '#4A4A4A',
+      color: theme.palette.text.primary,
       fontWeight: theme.typography.fontWeightMedium,
     },
     '&:focus': {
-      color: '#4A4A4A',
+      color: theme.palette.text.primary,
     },
   },
   selected: {},
@@ -140,9 +141,9 @@ function CustomizedTabs({ classes }) {
         value={index}
         onChange={handleChange}
       >
-        <AntTab value={0} label="TODAY" />
-        <AntTab value={1} label="THIS WEEK" />
-        <AntTab value={2} label="THIS MONTH" />
+        <AntTab value={0} label="Today" />
+        <AntTab value={1} label="This week" />
+        <AntTab value={2} label="This month" />
       </AntTabs>
       <SwipeableViews
         index={index}
@@ -151,17 +152,17 @@ function CustomizedTabs({ classes }) {
       >
         <TabPanel style={{ padding: 0 }}>
           {Todos.map((item, index) => (
-            <ToDoItem backgroundColor={ index % 2 === 0 ? 'rgba(225,239,255,.28)' : '#fff' } key={index} title={item.title} color={item.color} time={item.time} />
+            <ToDoItem key={index} title={item.title} color={item.color} time={item.time} />
           ))}
         </TabPanel>
         <TabPanel>
-          {Todos.map((item, idx) => (
-            <ToDoItem backgroundColor={ idx % 2 === 0 ? 'rgba(225,239,255,.28)' : '#fff' } key={idx} color={item.color} time={item.time} title={item.title} />
+          {Todos.map((item, index) => (
+            <ToDoItem key={index} color={item.color} time={item.time} title={item.title} />
           ))}
         </TabPanel>
         <TabPanel>
-          {Todos.map((item, idx) => (
-            <ToDoItem backgroundColor={ idx % 2 === 0 ? 'rgba(225,239,255,.28)' : '#fff' } key={idx} color={item.color} time={item.time} title={item.title} />
+          {Todos.map((item, index) => (
+            <ToDoItem key={index} color={item.color} time={item.time} title={item.title} />
           ))}
         </TabPanel>
       </SwipeableViews>

@@ -10,11 +10,13 @@ const styles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '8px 24px',
+    padding: '8px 0px',
     cursor: 'pointer',
+    borderBottom: `1px solid rgba(185, 185, 185, 0.3)`,
+    margin: '0 24px',
   },
   itemIsDone: {
-    color: '#9B9B9B',
+    color: theme.palette.text.hint,
     textDecoration: 'line-through',
     'div > div': {
       background: '#9B9B9B !important'
@@ -27,7 +29,8 @@ const styles = (theme) => ({
     paddingLeft: 30,
     '& p': {
       margin: 0,
-      fontSize: 14,
+      fontSize: 15,
+      fontWeight: theme.typography.fontWeightMedium,
       width: 210,
       overflow: 'hidden',
     }
@@ -35,6 +38,9 @@ const styles = (theme) => ({
   time: {
     fontSize: 10,
     fontWeight: 500,
+  },
+  menuItem: {
+    color: theme.palette.text.hint,
   }
 })
 
@@ -52,14 +58,13 @@ const ToDoItem = ({ classes, time, title, color, backgroundColor}) => {
       </div>
       <div>
         <IconButton
-          color="#9B9B9B"
           className={classes.moreButton}
           aria-owns="widget-menu"
           aria-haspopup="true"
           onClick={() => setMoreMenuOpen(true)}
           buttonRef={setMoreButtonRef}
         >
-          <MoreIcon />
+          <MoreIcon className={classes.menuItem} />
         </IconButton>
         <Menu
           id="widget-menu"
@@ -82,7 +87,6 @@ const ToDoItem = ({ classes, time, title, color, backgroundColor}) => {
           </MenuItem>
         </Menu>
       </div>
-
     </div>
   )
 }

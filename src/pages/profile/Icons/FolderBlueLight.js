@@ -46,7 +46,7 @@ const styles = (theme) => ({
 
 // className={classes.folderMainColor}
 
-const Forlder = ({ classes, color, title, value, label }) => {
+const Folder = ({ classes, color, title, value, label }) => {
     return (
         <div className={classes.root}>
             <svg width="153" height="115" viewBox="0 0 153 115" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,4 +74,4 @@ const Forlder = ({ classes, color, title, value, label }) => {
     )
 }
 
-export default withStyles(styles)(Forlder);
+export default withStyles(styles)(Folder);

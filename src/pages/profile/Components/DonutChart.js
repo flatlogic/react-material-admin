@@ -20,29 +20,22 @@ const PieChartData = [
 
 const styles = (theme) => ({
   legendItemContainer: {
-      display: 'flex',
-      alignItems: 'center',
-
-  },
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 8,
+    paddingLeft: 10
+},
   detailsWrapper: {
-      display: 'flex',
-      justifyContent: 'flex-end',
-      paddingRight: 0,
-      paddingLeft: 0,
-      width: '100%',
-      bottom: 5,
-  },
-  pieChartLegendWrapper: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    marginRight: theme.spacing(1)
-  },
+    display: 'flex',
+    justifyContent: 'flex-end',
+    paddingRight: 0,
+    paddingLeft: 0,
+    width: '100%',
+    bottom: 5,
+},
 })
 
-const DonutChart = (classes) => {
+const DonutChart = ({ classes }) => {
   const [donutData, setDonutData] = useState(chartsData);
   const [age, setAge] = React.useState('');
 
@@ -85,7 +78,7 @@ const DonutChart = (classes) => {
           </PieChart>
         </ResponsiveContainer>
       </Grid>
-      <Grid item lg={6} md={12} xs={12} style={{ display: "flex", alignItems: "center"}}>
+      <Grid item lg={6} md={12} xs={12} style={{ display: 'flex', alignItems: 'center' }}>
         <div className={classes.pieChartLegendWrapper}>
           {PieChartData.map(({ name, value, color }, index) => (
             <div key={color} className={classes.legendItemContainer}>
@@ -94,8 +87,8 @@ const DonutChart = (classes) => {
                 color="text"
                 colorBrightness={"hint"}
                 variant={"caption"}
-                style={{ fontSize: 12 }}
-                //  Как сделать записи на одном уровне с точками
+                style={{ fontSize: 14 }}
+                noWrap
               >
                 &nbsp;{name}&nbsp;
               </Typography>
@@ -103,8 +96,7 @@ const DonutChart = (classes) => {
           ))}
         </div>
       </Grid>
-      <div className={classes.detailsWrapper}>
-      {/* Как отодвинуть кнопку к краю без хардкода */}
+      <div className={classes.detailsWrapper} >
         <Button 
           variant="outlined" 
           color="primary" 

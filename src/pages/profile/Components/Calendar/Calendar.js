@@ -132,7 +132,7 @@ const Calendar = ({ classes }) => {
           info: "",
           itemStyle: "#f45722",
           link: "http://www.flatlogic.com",
-          date: moment(`${moment().year()}-${moment().month() + 1}-29`, "YYYYMMDD"),
+          date: moment(`${moment().year()}-${moment().month() + 1}-28`, "YYYYMMDD"),
           },
       ],
       showEvents: false
