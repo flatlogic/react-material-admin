@@ -1,15 +1,15 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import FolderRedDark from '../../../images/profile/FolderRedDark.svg';
+import FolderBlueLight from '../../../images/profile/FolderBlueLight.svg';
 
 const styles = (theme) => ({
     root: {
         position: 'relative',
         marginRight: 20,
-        backgroundImage: `url(${FolderRedDark})`,
+        backgroundImage: `url(${FolderBlueLight})`,
         backgroundSize: 'cover',
-        height: 115,
-        width: 153,
+            height: 115,
+            width: 153,
     },
     folderContent: {
         position: 'absolute',
@@ -31,7 +31,7 @@ const styles = (theme) => ({
     },
     parag: {
         margin: 0
-    }
+    },
 })
 
 const Folder = ({ classes, color, title, value, label }) => {

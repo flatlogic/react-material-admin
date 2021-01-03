@@ -3,7 +3,7 @@ import { withStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import FolderBlue from '../Icons/FolderBlueLight';
+import FolderBlue from '../Icons/FolderBlue';
 import FolderBlueDark from '../Icons/FolderBlueDark';
 import FolderRed from '../Icons/FolderRed';
 import FolderRedDark from '../Icons/FolderRedDark';
