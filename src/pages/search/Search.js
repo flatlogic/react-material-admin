@@ -11,6 +11,7 @@ import {
   ListItemText,
   ButtonGroup
 } from "@material-ui/core";
+import Pagination from '@material-ui/lab/es/Pagination';
 import {
   BorderAll as GridIcon,
   FormatAlignJustify as RowIcon
@@ -26,7 +27,6 @@ import img4 from "../../images/img4.jpg";
 //components
 import { Typography, Button, Link, Chip } from "../../components/Wrappers";
 import Widget from "../../components/Widget";
-import Pagination from "../../components/Pagination";
 
 export default function SearchComp() {
   const [select, setSelect] = React.useState({
@@ -360,12 +360,18 @@ export default function SearchComp() {
                   </Grid>
                 </Grid>
               </Widget>
-              <Pagination
-                pageCount={10}
-                previousLabel={"<"}
-                nextLabel={">"}
-                initialPage={1}
-              />
+              <Box
+                m={4}
+                display="flex"
+                alignItems="center"
+                justifyContent={"center"}
+              >
+                <Pagination 
+                  count={10} 
+                  color="primary" 
+                  size="large"
+                />
+              </Box>
             </Grid>
           </Grid>
         </Grid>
