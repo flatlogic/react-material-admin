@@ -9,7 +9,7 @@ const styles = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        flexWrap: 'wrap',
+        flexWrap: 'nowrap',
     },
     week: {
         height: '15%',
