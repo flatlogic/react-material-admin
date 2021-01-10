@@ -43,7 +43,7 @@ const DonutChart = ({ classes }) => {
     <Grid container spacing={0}>
       <Grid
         item
-        lg={6}
+        lg={12}
         md={12} xs={12}
         style={{
           display: "flex",
@@ -55,11 +55,11 @@ const DonutChart = ({ classes }) => {
       >
         <Typography
           variant={"caption"}
-          style={{ position: "absolute", top: 85, fontWeight: "bold", fontSize: 18 }}
+          style={{ position: "absolute", top: 60, fontWeight: "bold", fontSize: 18 }}
         >
           121
         </Typography>
-        <ResponsiveContainer width="100%" height={200}>
+        <ResponsiveContainer width="100%" height={150}>
           <PieChart>
             <Pie
               data={PieChartData}
@@ -78,7 +78,7 @@ const DonutChart = ({ classes }) => {
           </PieChart>
         </ResponsiveContainer>
       </Grid>
-      <Grid item lg={6} md={12} xs={12} style={{ display: 'flex', alignItems: 'center' }}>
+      <Grid item lg={12} md={12} xs={12} style={{ display: 'flex', alignItems: 'center' }}>
         <div className={classes.pieChartLegendWrapper}>
           {PieChartData.map(({ name, value, color }, index) => (
             <div key={color} className={classes.legendItemContainer}>
