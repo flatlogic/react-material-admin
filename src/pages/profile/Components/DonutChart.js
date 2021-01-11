@@ -24,7 +24,7 @@ const styles = (theme) => ({
     alignItems: 'center',
     marginBottom: 8,
     paddingLeft: 10
-},
+  },
   detailsWrapper: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -32,7 +32,12 @@ const styles = (theme) => ({
     paddingLeft: 0,
     width: '100%',
     bottom: 5,
-},
+  },
+  legendItemsContainer: {
+    display: 'flex', 
+    alignItems: 'center', 
+    flexWrap: 'wrap'
+  }
 })
 
 const DonutChart = ({ classes }) => {
@@ -78,8 +83,7 @@ const DonutChart = ({ classes }) => {
           </PieChart>
         </ResponsiveContainer>
       </Grid>
-      <Grid item lg={12} md={12} xs={12} style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-        
+      <Grid item lg={12} md={12} xs={12} className={classes.legendItemsContainer}>
           {PieChartData.map(({ name, value, color }, index) => (
             <div key={color} className={classes.legendItemContainer}>
               <Dot color={color} style={{ marginLeft: 5 }} />
@@ -94,7 +98,6 @@ const DonutChart = ({ classes }) => {
               </Typography>
             </div>
           ))}
-        
       </Grid>
       <div className={classes.detailsWrapper} >
         <Button 

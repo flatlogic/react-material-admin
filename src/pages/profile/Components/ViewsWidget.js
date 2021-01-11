@@ -23,7 +23,7 @@ const styles = theme => ({
   contentWrapper: {
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center',   
+      alignItems: 'center',      
   },
   widgetTitle: {
       fontSize: 18,
@@ -67,7 +67,7 @@ const styles = theme => ({
       color: theme.palette.primary.main,
       borderColor: theme.palette.primary.main,
       textTransform: 'none',
-      padding: '5px 10px',
+      padding: '5px',
       marginTop: 10
   },
   menuIcon: {

@@ -134,9 +134,9 @@ function Profile() {
             <div className={classes.updateWidget}>
               <div className={classes.updateWidgetFlexContainer}>
                 <CloudIcon className={classes.imgWrap} />
-                <Typography variant="h4">Updates</Typography>
+                <Typography variant="h5">Updates</Typography>
               </div>
-              <Button classes={{ root: classes.detailsBtn }} variant="outlined" color="transparent">DETAILS</Button>
+              <Button className={classes.detailsBtn} variant="outlined" color="transparent">DETAILS</Button>
             </div>
           </Grid>
         </Grid>

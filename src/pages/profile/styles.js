@@ -20,7 +20,7 @@ export default makeStyles(theme => ({
     }
   },
   profileDescription: {
-    paddingLeft: 40
+    paddingLeft: 20
   },
   profileTitle: {
     fontSize: 32,
@@ -29,7 +29,7 @@ export default makeStyles(theme => ({
     display: 'block'
   },
   profileSubtitle: {
-    color: '#27282C',
+    color: theme.palette.text.primary,
     opacity: 0.5,
     fontSize: 12,
     marginTop: 20,
@@ -70,17 +70,18 @@ export default makeStyles(theme => ({
   updateWidget: {
     background: theme.palette.primary.main,
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '20px 0',
+    padding: '20px 20px',
     color: '#fff',
   },
   updateWidgetFlexContainer: {
     display: 'flex',
     alignItems: 'center',
+    marginRight: 5,
   },
   imgWrap: {
-    marginRight: 15,
+    marginRight: 10,
   },
   detailsBtn: {
     color: '#fff',
@@ -235,5 +236,9 @@ export default makeStyles(theme => ({
     '@media (max-width: 1280px)': {
         height: 'auto'
     }
-}
+},
+  spacer: {
+    flexGrow: 1,
+    marginRight: 10,
+  }
 }));

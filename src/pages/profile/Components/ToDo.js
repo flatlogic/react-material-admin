@@ -63,7 +63,7 @@ const AntTab = withStyles((theme) => ({
 
 const styles = (theme) => ({
   root: {
-    maxHeight: 625,
+    maxHeight: 575,
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
 
