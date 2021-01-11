@@ -63,7 +63,10 @@ const AntTab = withStyles((theme) => ({
 
 const styles = (theme) => ({
   root: {
-    maxHeight: 550,
+    maxHeight: 625,
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+
     overflow: 'auto',
     whiteSpace: 'nowrap',
     '&::-webkit-scrollbar': {
