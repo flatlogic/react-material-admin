@@ -245,9 +245,5 @@ export default makeStyles(theme => ({
     '@media (max-width: 1280px)': {
         height: 'auto'
     }
-},
-  spacer: {
-    flexGrow: 1,
-    marginRight: 10,
-  }
+  },
 }));
