@@ -69,19 +69,28 @@ export default makeStyles(theme => ({
   },
   updateWidget: {
     background: theme.palette.primary.main,
-    display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '20px 20px',
+    padding: '24px 24px',
+    height: 90,
     color: '#fff',
+    borderRadius: 4,
   },
   updateWidgetFlexContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginRight: 5,
+    justifyContent: 'space-between',
   },
-  imgWrap: {
-    marginRight: 10,
+  updateLabel: {
+    display: 'inline-block',
+    fontSize: '20px',
+    fontWeight: 400,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+  spacer: {
+    flexGrow: 1,
   },
   detailsBtn: {
     color: '#fff',

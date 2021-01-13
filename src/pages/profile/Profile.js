@@ -133,10 +133,11 @@ function Profile() {
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <div className={classes.updateWidget}>
               <div className={classes.updateWidgetFlexContainer}>
-                <CloudIcon className={classes.imgWrap} />
-                <Typography variant="h5">Updates</Typography>
+                <CloudIcon />
+                <div className={classes.updateLabel}>Updates</div>
+                <div className={classes.spacer}></div>
+                <Button className={classes.detailsBtn} variant="outlined" color="transparent">DETAILS</Button>
               </div>
-              <Button className={classes.detailsBtn} variant="outlined" color="transparent">DETAILS</Button>
             </div>
           </Grid>
         </Grid>
