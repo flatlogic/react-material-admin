@@ -65,6 +65,7 @@ import UserAdd from '../../pages/user/AddUser'
 import UserEdit from '../../pages/user/EditUser'
 import BreadCrumbs from '../../components/BreadCrumbs'
 import Profile from '../../pages/profile'
+import DraggableGrid from '../../pages/draggablegrid'
 
 // context
 import { useLayoutState } from '../../context/LayoutContext'
@@ -143,6 +144,7 @@ function Layout(props) {
                         path="/app/tables/dynamic"
                         component={DynamicTables}
                     />
+                    <Route path="/app/grid" component={DraggableGrid} />
                     <Route path="/app/charts/overview" component={Charts} />
                     <Route path="/app/charts/line" component={LineCharts} />
                     <Route path="/app/charts/bar" component={BarCharts} />
