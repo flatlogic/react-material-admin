@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { useTheme, makeStyles } from '@material-ui/styles';
 import Widget from '../../components/Widget';
+import Sortable from 'react-sortablejs'
 
 import mock from './mock';
-import { useStyles } from '../typography/Typography';
+import useStyles from "./styles";
 
 function DraggableGrid() {
   var classes = useStyles();
@@ -13,52 +14,60 @@ function DraggableGrid() {
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} sm={12} md={6} lg={6}>
-        <Grid container spacing={3}>
+        <Sortable options={{
+              group: "shared",
+              animation: 350,
+              ghostClass: 'widget-placeholder-react'
+            }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget>
+            <Widget className={classes.widgetLayout}>
               1.1 block
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget>
+            <Widget className={classes.widgetLayout}>
               1.2 block
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget>
+            <Widget className={classes.widgetLayout}>
               1.3 block
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget>
+            <Widget className={classes.widgetLayout}>
               1.4 block
             </Widget>
           </Grid>
-        </Grid>
+        </Sortable>
       </Grid>
       <Grid item xs={12} sm={12} md={6} lg={6}>
-        <Grid container spacing={3}>
+        <Sortable options={{
+              group: "shared",
+              animation: 350,
+              ghostClass: 'widget-placeholder-react'
+            }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget>
+            <Widget className={classes.widgetLayout}>
               2.1 block
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget>
+            <Widget className={classes.widgetLayout}>
               2.2 block
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget>
+            <Widget className={classes.widgetLayout}>
               2.3 block
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget>
+            <Widget className={classes.widgetLayout}>
               2.4 block
             </Widget>
           </Grid>
-        </Grid>
+          </Sortable>
       </Grid>
     </Grid>
   )
