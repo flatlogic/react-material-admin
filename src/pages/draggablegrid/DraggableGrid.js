@@ -16,12 +16,17 @@ function DraggableGrid() {
       <Grid item xs={12} sm={12} md={6} lg={6}>
         <Sortable options={{
               group: "shared",
-              animation: 350,
+              animation: 550,
               ghostClass: 'widget-placeholder-react'
             }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget className={classes.widgetLayout}>
-              1.1 block
+            <Widget className={classes.widgetLayout}
+                    title="Default Widget">
+              <Typography >
+                {mock.mainData.default.map(item => (  
+                    <p key={item.value}>{item.value}</p>
+                ))} 
+              </Typography>
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -44,7 +49,7 @@ function DraggableGrid() {
       <Grid item xs={12} sm={12} md={6} lg={6}>
         <Sortable options={{
               group: "shared",
-              animation: 350,
+              animation: 550,
               ghostClass: 'widget-placeholder-react'
             }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
