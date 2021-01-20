@@ -14,25 +14,25 @@ export default {
       ],
     shares: [
       {
-        img: '/sing-app-react/static/media/a1.jpg',
+        img: '/react-material-admin-full/src/images/grid/a1.jpg',
         name: 'Maikel Basso',
         comment: 'about 2 mins ago',
         type: 'danger'
       },
       {
-        img: '/sing-app-react/static/media/a2.jpg',
+        img: '/react-material-admin-full/src/images/grid/a2.jpg',
         name: 'Ianus Arendse',
         comment: 'about 42 mins ago',
         type: 'info'
       },
       {
-        img: '/sing-app-react/static/media/a3.jpg',
+        img: '/react-material-admin-full/src/images/grid/a3.jpg',
         name: 'Valdemar Landau',
         comment: 'one hour ago',
         type: 'success'
       },
       {
-        img: '/sing-app-react/static/media/a4.jpg',
+        img: '/react-material-admin-full/src/images/grid/a4.jpg',
         name: 'Rick Teagan',
         comment: '3 hours ago',
         type: 'warning'
@@ -80,32 +80,32 @@ export default {
     ],
     shares: [
       {
-        img: '/sing-app-react/static/media/a6.jpg',
+        img: '/react-material-admin-full/src/images/grid/a6.jpg',
         name: 'Jenny Wilington',
         comment: 'just now',
         type: 'success',
         extraClass: 'animated fadeInDown'
       },
       {
-        img: '/sing-app-react/static/media/a1.jpg',
+        img: '/react-material-admin-full/src/images/grid/a1.jpg',
         name: 'Maikel Basso',
         comment: 'about 2 mins ago',
         type: 'danger'
       },
       {
-        img: '/sing-app-react/static/media/a2.jpg',
+        img: '/react-material-admin-full/src/images/grid/a2.jpg',
         name: 'Ianus Arendse',
         comment: 'about 42 mins ago',
         type: 'info'
       },
       {
-        img: '/sing-app-react/static/media/a3.jpg',
+        img: '/react-material-admin-full/src/images/grid/a3.jpg',
         name: 'Valdemar Landau',
         comment: 'one hour ago',
         type: 'success'
       },
       {
-        img: '/sing-app-react/static/media/a4.jpg',
+        img: '/react-material-admin-full/src/images/grid/a4.jpg',
         name: 'Rick Teagan',
         comment: '3 hours ago',
         type: 'warning'

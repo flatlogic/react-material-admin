@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { MenuItem, IconButton, Menu } from '@material-ui/core';
 import { MoreVert as MoreIcon } from '@material-ui/icons';
-import Dot from './Dot';
+import Dot from '../../../components/Dot/Dot';
 
 const styles = (theme) => ({
   todoItemWrap: {

@@ -8,6 +8,7 @@ import DraggableStory from './Components/DraggableStory';
 import Loader from './Components/Loader';
 import CollapsedWidget from './Components/CollapsedWidget';
 import WidgsterInfo from './Components/WidgsterInfo';
+import SharesWidget from './Components/SharesWidget';
 
 import mock from './mock';
 import useStyles from "./styles";
@@ -17,7 +18,7 @@ function DraggableGrid() {
   var theme = useTheme();
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={4} className={classes.root} >
       <Grid item xs={12} sm={12} md={6} lg={6}>
         <Sortable options={{
               group: "shared",
@@ -27,7 +28,7 @@ function DraggableGrid() {
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <Widget 
               className={classes.widgetLayout} 
-              title="Default Widget"
+              title="Draggable Grid"
               disableWidgetMenu
             >
               <WidgsterInfo />
@@ -46,8 +47,11 @@ function DraggableGrid() {
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget className={classes.widgetLayout}>
-              1.3 block
+            <Widget 
+              className={classes.widgetLayout}
+              title="Latest Shares"
+            >
+              <SharesWidget />
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>

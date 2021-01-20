@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../../../components/Wrappers';
 import { Grid, Typography } from "@material-ui/core";
-import Dot from "./Dot";
+import Dot from '../../../components/Dot/Dot';
 import { withStyles } from '@material-ui/core/styles';
 import {
     ResponsiveContainer,
