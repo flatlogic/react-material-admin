@@ -43,21 +43,21 @@ export default {
     },
     news: [
       {
-        background: 'danger',
+        background: '#FFC260',
         icon: 'star',
         title: 'First Human Colony on Mars',
-        description: 'First 700 will take part in building first human settlement outside of Earth. That&apos;s awesome, right?',
+        description: 'First 700 will take part in building first human settlement outside of Earth. That\'s awesome, right?',
         date: 'Mar 20, 18:46'
       },
       {
-        background: 'info',
+        background: '#536DFE',
         icon: 'microphone',
         title: 'Light Blue reached $300',
-        description: 'Light Blue Inc. shares just hit $300 price. &quot;This was inevitable. It should have happen sooner or later&quot; - says NYSE expert.',
+        description: 'Light Blue Inc. shares just hit $300 price. \"This was inevitable. It should have happen sooner or later\" - says NYSE expert.',
         date: 'Sep 25, 11:59'
       },
       {
-        background: 'success',
+        background: '#3CD4A0',
         icon: 'eye',
         title: 'No more spying',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -135,7 +135,7 @@ export default {
         background: 'info',
         icon: 'microphone',
         title: 'Light Blue reached $300',
-        description: 'Light Blue Inc. shares just hit $300 price. &quot;This was inevitable. It should have happen sooner or later&quot; - says NYSE expert.',
+        description: 'Light Blue Inc. shares just hit $300 price. &#8216;This was inevitable. It should have happen sooner or later&quot; - says NYSE expert.',
         date: 'Sep 25, 11:59'
       },
       {

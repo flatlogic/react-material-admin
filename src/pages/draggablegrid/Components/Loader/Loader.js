@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loader.css';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = (theme) => ({
@@ -8,20 +8,13 @@ const styles = (theme) => ({
     justifyContent: 'center',
     alingItems: 'center',
     margin: '3.5rem',
-  },
-
-  loader: {
-    
-  },
-
-  
+  },  
 })
 
 const Loader = ({ classes }) => {
   return (
       <div className={classes.container}>
-        <div className="lds-default">
-          <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <CircularProgress/>
       </div>
   )
 }

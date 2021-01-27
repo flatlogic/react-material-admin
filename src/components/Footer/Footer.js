@@ -7,6 +7,7 @@ const Footer = ({ children }) => {
       mt={5}
       width={"100%"}
       display={"flex"}
+      flexWrap={"wrap"}
       alignItems={"center"}
       justifyContent="space-between"
     >

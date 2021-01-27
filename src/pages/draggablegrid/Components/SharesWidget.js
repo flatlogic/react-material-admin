@@ -52,6 +52,11 @@ const styles = (theme) => ({
   userLabel: {
     color: theme.palette.text.secondary,
   },
+  dot: {
+    '@media (max-width: 320px)': {
+      display: 'none',
+    }
+  }
 })
 
 const SharesWidget = ({ classes }) => {
@@ -82,6 +87,7 @@ const SharesWidget = ({ classes }) => {
       type: '#FF5C93'
     }
   ]
+
   // function updatedData = (data) => {
 
   // }
@@ -98,7 +104,9 @@ const SharesWidget = ({ classes }) => {
               <small className={classes.userLabel}>{item.comment}</small>
             </div>
           </div>
-          <Dot size='medium' color={item.type}/>
+          <div className={classes.dot}>
+            <Dot size='large' color={item.type}/>
+          </div>
         </div>                
       ))}
     </div>
@@ -106,20 +114,3 @@ const SharesWidget = ({ classes }) => {
 }
 
 export default withStyles(styles)(SharesWidget)
-
-
-// <div className="list-group list-group-lg">
-// {this.state.gridData.shares.map(item => (
-//   <button key={item.name} className={`list-group-item text-left ${item.extraClass}`}>
-//     <span className="thumb-sm mr">
-//       <img className="rounded-circle" src={item.img} alt="..." />
-//     </span>
-//     <div>
-//       <h6 className="m-0">{item.name}</h6>
-//       <small className="text-muted">{item.comment}</small>
-//     </div>
-//     <i className={`fa fa-circle ml-auto text-${item.type}`} />
-//   </button>                
-// ))}
-
-// </div>

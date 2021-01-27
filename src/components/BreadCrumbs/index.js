@@ -114,9 +114,8 @@ const BreadCrumbs = () => {
       >
           {structure.map(c => {
               if (
-                  !c.children &&
                   window.location.hash.includes(c.link) &&
-                  c.link
+                  c.link && c.label === "Dashboard"
               ) {
                   return (
                       <Box

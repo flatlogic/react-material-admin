@@ -6,7 +6,7 @@ import { Typography } from '@material-ui/core';
 const styles = (theme) => ({
   quote: {
     fontStyle: 'italic',
-    padding: 15,
+    margin: '1rem',
   },
   author: {
     fontSize: '0.85rem',

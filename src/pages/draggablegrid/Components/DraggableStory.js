@@ -33,7 +33,6 @@ const styles = (theme) => ({
     padding: '6px 12px',
     border: '1px solid',
     lineHeight: 1.5,
-    backgroundColor: '#fd5f00',
   },
 })
 

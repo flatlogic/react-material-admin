@@ -15,8 +15,8 @@ var useStyles = makeStyles(theme => ({
     height: 8
   },
   dotLarge: {
-    width: 18,
-    height: 18
+    width: 14,
+    height: 14
   }
 }));
 
