@@ -4,6 +4,7 @@
 
 ### New Features
 - Added Profile page
+- Added Grid page
 
 # [2.1.3]
 
