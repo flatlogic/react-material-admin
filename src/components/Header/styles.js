@@ -171,5 +171,10 @@ export default makeStyles(theme => ({
       display: 'none'
     },
     marginRight: theme.spacing(3)
-  }
+  },
+  profileLabel: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    }
+  },
 }));

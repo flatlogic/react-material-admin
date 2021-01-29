@@ -242,8 +242,8 @@ export default function Header(props) {
           variant="body2"
           style={{ display: "flex", alignItems: "center", marginLeft: 8 }}
         >
-          Hi,&nbsp;
-          <Typography variant="body2" weight={"bold"}>
+          <div className={classes.profileLabel}>Hi,&nbsp;</div>
+          <Typography variant="body2" weight={"bold"} className={classes.profileLabel}>
             Robert Cotton
           </Typography>
         </Typography>
