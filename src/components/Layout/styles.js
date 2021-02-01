@@ -23,7 +23,7 @@ export default makeStyles(theme => ({
         ...theme.mixins.toolbar,
     },
     link: {
-        marginRight: theme.spacing(2),
+        marginRight: `16px !important`,
     },
     defaultRadio: {
         color: '#536DFE',

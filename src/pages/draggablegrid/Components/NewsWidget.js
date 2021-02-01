@@ -37,7 +37,6 @@ const styles = (theme) => ({
     width: 60,
     height: 60,
     borderRadius: '50%',
-    // backgroundColor: '#fd5f00',
     color: '#fff',
   },
   newsItemInfo: {

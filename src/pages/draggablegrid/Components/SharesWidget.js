@@ -7,8 +7,6 @@ import a1 from '../../../images/grid/a1.jpg';
 import a2 from '../../../images/grid/a2.jpg';
 import a3 from '../../../images/grid/a3.jpg';
 import a4 from '../../../images/grid/a4.jpg';
-import a5 from '../../../images/grid/a5.jpg';
-import a6 from '../../../images/grid/a6.jpg';
 
 
 const styles = (theme) => ({
