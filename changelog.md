@@ -5,6 +5,8 @@
 ### New Features
 - Added Profile page
 - Added Grid page
+- Updated packages
+- Updated README.md
 
 # [2.1.3]
 
