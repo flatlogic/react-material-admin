@@ -1,5 +1,10 @@
 # Changelog
 
+# [1.3.2]
+
+### Updated
+- Packages updated
+- Edited README.md
 
 # [1.3.1]
 

@@ -1,4 +1,4 @@
-export default {
+const mock = {
   tasks: [
     {
       id: 0,
@@ -180,3 +180,5 @@ export default {
     }
   ]
 };
+
+export default mock;
