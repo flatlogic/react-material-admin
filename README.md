@@ -3,7 +3,7 @@
 Built with [React](https://facebook.github.io/react/), [Material-UI](https://material-ui.com), [React Router](https://reacttraining.com/react-router/).
 **No jQuery and Bootstrap!**
 
-**This version uses React 16.8.6, React Router v5, MaterialUI v4, built with React Hooks and React Context (No Redux)**
+**This version uses React 16.14.0, React Router v5, MaterialUI v4, built with React Hooks and React Context (No Redux)**
 
 [Demo](https://flatlogic.com/admin-dashboards/react-material-admin/demo). Use any credentials to log in.
 
@@ -11,7 +11,7 @@ Built with [React](https://facebook.github.io/react/), [Material-UI](https://mat
 
 ## Features
 
-- React (**16.8.6**)
+- React (**16.14.0**)
 - React Hooks
 - React Context
 - **No jQuery and Bootstrap!**
@@ -30,6 +30,7 @@ Built with [React](https://facebook.github.io/react/), [Material-UI](https://mat
 
 We have implemented some basic pages, so you can see our template in action.
 
+- Profile
 - Dashboard
 - E-commerce (Product Management, Products Grid, Product Page)
 - Typography
