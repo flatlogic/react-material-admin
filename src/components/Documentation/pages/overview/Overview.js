@@ -98,6 +98,15 @@ const Overview = () => {
                 <ListItemText primary="And even more coming soon!" />
               </ListItem>
             </List>
+            <Box pt={6} pb={6}>
+              <Typography variant={"h3"}>Support</Typography>
+              <Typography variant={"p"}>
+              <p className="lead">For any additional information please go to our support forum and raise your questions or feedback provide there. We highly appreciate your participation!</p>
+              <a href="https://flatlogic.com/forum" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                Support forum <ArrowRight />
+              </a>
+              </Typography>
+            </Box>
             <Box display={"flex"} justifyContent={"space-around"} my={3}>
               <Box>
                 <Typography variant={"h3"} style={{ marginBottom: 16 }}>

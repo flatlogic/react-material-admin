@@ -1,5 +1,9 @@
 # Changelog
 
+# [2.2.4]
+
+- Updated documentation
+
 # [2.2.3]
 
 ### New Features

@@ -78,7 +78,7 @@ Your app is ready to be deployed!
 
 ## Support
 
-For any additional information please refer to [Flatlogic homepage](https://flatlogic.com).
+For any additional information please refer to [Support forum](https://flatlogic.com/forum).
 
 ## How can I support developers?
 
