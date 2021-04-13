@@ -80,11 +80,13 @@ function ColorChangeThemePopper({ open, id, anchorEl }) {
           <Button
             color={"success"}
             variant={"contained"}
+            href="https://flatlogic.com/templates/react-material-admin-full"
             style={{ width: "100%", marginTop: 8, marginBottom: 8 }}
           >
             buy
           </Button>
           <Button
+            href="https://flatlogic.github.io/react-material-admin-full/#/documentation/getting-started/overview"
             color={"primary"}
             variant={"contained"}
             style={{ width: "100%" }}
