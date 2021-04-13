@@ -101,7 +101,40 @@ export default function SidebarLink({
   const chatSetClose = () => {
     setChat(false);
   };
-
+  if (link && link.includes('http')) {
+    return (
+      <ListItem
+        button
+        className={classes.link}
+        classes={{
+          root: classnames(classes.linkRoot, {
+            [classes.linkActive]: isLinkActive && !nested,
+            [classes.linkNested]: nested,
+          }),
+        }}
+        disableRipple
+      >
+        <a className={classes.externalLink} href={link}>
+        <ListItemIcon
+          className={classnames(classes.linkIcon, {
+            [classes.linkIconActive]: isLinkActive,
+          })}
+        >
+          {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
+        </ListItemIcon>
+        <ListItemText
+          classes={{
+            primary: classnames(classes.linkText, {
+              [classes.linkTextActive]: isLinkActive,
+              [classes.linkTextHidden]: !isSidebarOpened,
+            }),
+          }}
+          primary={label}
+        />
+        </a>
+      </ListItem>
+    )
+  }
   if (!children)
     return (
       <>

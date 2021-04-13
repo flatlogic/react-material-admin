@@ -226,9 +226,9 @@ const structure = [
     },
     { id: 14, type: 'divider' },
     { id: 15, type: 'title', label: 'HELP' },
-    { id: 16, label: 'Library', link: '', icon: <LibraryIcon /> },
-    { id: 17, label: 'Support', link: '', icon: <SupportIcon /> },
-    { id: 18, label: 'FAQ', link: '', icon: <FAQIcon /> },
+    { id: 16, label: 'Library', link: 'https://flatlogic.com/templates', icon: <LibraryIcon /> },
+    { id: 17, label: 'Support', link: 'https://flatlogic.com/forum/', icon: <SupportIcon /> },
+    { id: 18, label: 'FAQ', link: 'https://flatlogic.com/forum/', icon: <FAQIcon /> },
     { id: 19, type: 'divider' },
     { id: 20, type: 'title', label: 'PROJECTS' },
     {
