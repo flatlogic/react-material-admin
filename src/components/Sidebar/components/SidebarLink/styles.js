@@ -7,6 +7,12 @@ export default makeStyles(theme => ({
       backgroundColor: theme.palette.background.light,
     },
   },
+  externalLink: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textDecoration: 'none'
+  },
   linkActive: {
     backgroundColor: theme.palette.background.light,
   },
