@@ -19,16 +19,15 @@ export default function WidgetComp() {
               first component after <Code row inline>{`return`}</Code>{" "}
               statement.
             </Typography>
-            <Widget className={classes.paper} disableWidgetMenu>
               <Widget
+                className={classes.paper}
                 title="Simple Widget"
                 disableWidgetMenu
-                slyle={{ backgroundColor: "#fff" }}
+                slyle={{ backgroundColor: "#fff"}}
               >
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. A,
                 rem?
-              </Widget>
-              <Code>
+              <Code className={classes.scrollX}>
                 {`
   <Widget title="Simple Widget" disableWidgetMenu>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. A,
@@ -36,7 +35,7 @@ export default function WidgetComp() {
   </Widget>
               `}
               </Code>
-            </Widget>
+              </Widget>
           </Widget>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -47,7 +46,7 @@ export default function WidgetComp() {
               statement.
             </Typography>
             <Box mt={1}>
-              <Code>
+              <Code className={classes.ScrollX}>
                 {`
               <PageTitle title="Widget" />
               `}

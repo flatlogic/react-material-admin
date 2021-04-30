@@ -359,7 +359,8 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                 Grid
               </Button>
               <Paper className={classes.paper}>
-                <Grid item xs zeroMinWidth>
+                {/* <Grid item xs zeroMinWidth> */}
+                  <Widget item xs zeroMinWidth>
                   <Code>{`
   <Grid container>
     <Box display="flex" flexDirection="column">
@@ -379,8 +380,10 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
     </Box>
   </Grid>
                   `}</Code>
-                </Grid>
+                   </Widget>
+                {/* </Grid> */}
               </Paper>
+
             </Box>
             <Dialog
               fullWidth={true}

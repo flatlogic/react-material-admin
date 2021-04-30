@@ -1,3 +1,4 @@
+import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles(theme => ({
@@ -28,11 +29,15 @@ export default makeStyles(theme => ({
     padding: 0
   },
   paper: {
-    display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    overflow: "hidden"
+    overflow: "hidden", 
   },
+  scrollX: {
+    webkitScrollbarTrack: "inset 0 0 6px rgba(0,0,0,0.3)", 
+    borderRadius: "10px", 
+    backgroundColor: "#F5F5F5"
+  }, 
   moreButton: {
     margin: -theme.spacing(1),
     padding: 0,

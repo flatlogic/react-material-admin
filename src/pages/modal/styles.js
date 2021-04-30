@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles(theme => ({
   marginRight: {
-    marginRight: '10px'
+    marginRight: '5%'
   },
   marginTop: {
     marginTop: '10px'
@@ -15,7 +15,6 @@ export default makeStyles(theme => ({
   },
   paper: {
     margin: theme.spacing(3),
-    padding: 10,
     backgroundColor: "#f3f3f3",
   },
   wrapFix: {

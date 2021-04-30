@@ -996,26 +996,30 @@ function Dashboard() {
                               aria-haspopup="true"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                setActionsMenu(true)
+                                setActionsMenu(true);
+                                setActionsButtonRefid(e.currentTarget)
                               }}
                               buttonRef={setActionsButtonRefid}
                           >
                             <MoreIcon />
                           </IconButton>
-                          <Menu
-                              id="actions-menu"
-                              open={isActionsMenu}
-                              anchorEl={actionsButtonRefid}
-                              onClose={() => setActionsMenu(false)}
-                              disableAutoFocusItem
-                          >
-                            <MenuItem>
-                              <Typography>Edit</Typography>
-                            </MenuItem>
-                            <MenuItem>
-                              <Typography>Delete</Typography>
-                            </MenuItem>
-                          </Menu>
+
+                            <Menu
+                                id="actions-menu"
+                                open={isActionsMenu}
+                                anchorEl={actionsButtonRefid}
+                                onClose={() => setActionsMenu(false)}
+                                disableAutoFocusItem
+                                //style={{padding: 0, margin: 0}}
+                            >
+                              <MenuItem>
+                                <Typography>Edit</Typography>
+                              </MenuItem>
+                              <MenuItem>
+                                <Typography>Delete</Typography>
+                              </MenuItem>
+                            </Menu>
+                  
                         </TableCell>
                       </TableRow>
                     );

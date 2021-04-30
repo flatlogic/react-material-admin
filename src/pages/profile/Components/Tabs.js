@@ -13,6 +13,7 @@ import FolderYellow from '../Icons/FolderYellow';
 import FolderYellowDark from '../Icons/FolderYellowDark';
 import SwipeableViews from 'react-swipeable-views';
 import Box from '@material-ui/core/Box';
+import { autoPlay } from 'react-swipeable-views-utils';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -78,6 +79,32 @@ const styles = (theme) => ({
     },
     paddingBottom: 0,
   },
+  codeComponent: {
+    flexGrow: 1,
+    borderRadius: '10px', 
+    backgroundColor: 'red',  
+    border: '3px solid black',
+    // '&::-webkit-scrollbar': {
+    //   width: '6px'
+    // },
+    '&:: -webkit-scrollbar-track': {
+      '-webkit-box-shadow': 'inset 0 0 7px rgba(0,0,0,.3)', 
+      borderRadius: '10px', 
+      backgroundColor: '#F5F5F5'
+    },
+    '&:: -webkit-scrollbar': {
+      width: '5px', 
+      backgroundColor: '#F5F5F5', 
+      borderRadius: '10px'
+    }, 
+    '&:: -webkit-scrollbar-thumb': {
+      width: '4px', 
+      height: '5px',
+      borderRadius: '10px', 
+      '-webkit-box-shadow': 'inset 0 0 7px rgba(0,0,0,.3)', 
+      backgroundColor: 'white'
+    } 
+  },
   padding: {
     padding: theme.spacing(3),
     paddingBottom: 0,
@@ -127,7 +154,7 @@ function CustomizedTabs({ classes }) {
       </AntTabs>
       <SwipeableViews
         index={index}
-        style={{ padding: '24px 0 0 ' }}
+        style={{ padding: '24px 0 0 '}}
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel>

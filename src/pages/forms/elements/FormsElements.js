@@ -120,6 +120,7 @@ export default function FormsElements() {
   return (
     <div>
       <Grid container spacing={6}>
+
         <Grid item md={6} xs={12}>
           <Widget
             title="Horizontal form"
@@ -272,40 +273,102 @@ export default function FormsElements() {
             </Grid>
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
-          <Widget title="Default Form" disableWidgetMenu inheritHeight>
-            <Grid container direction={"column"}>
-              <Grid item>
-                <Typography variant={"body1"}>Search type input</Typography>
-                <Input
-                  color={"primary"}
-                  type={"search"}
-                  placeholder={"Search"}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item>
-                <Typography variant={"body1"} style={{ marginTop: 16 }}>
-                  Outlined input
-                </Typography>
-                <Input
-                  id="outlined-input"
-                  margin="normal"
-                  variant={"outlined"}
-                />
-              </Grid>
-              <Grid item>
-                <Typography style={{ marginTop: 16 }}>Filled input</Typography>
-              </Grid>
-              <Grid item>
-                <Input id="outlined-input" margin="normal" variant={"filled"} />
-              </Grid>
+            
+        <Grid item md={6} xs={12} lg={6}>
+            <Grid item md={12} xs={12} lg={12} spacing={3}>
+              <Widget title="Default Form" disableWidgetMenu inheritHeight>
+                  <Grid container item md={12} xs={12} lg={12}  style={{justifyContent: "space-between", alignItems: "center", direction: "column"}} spacing={3}>
+                    <Grid item md={6} xs={12} lg={4}>
+                        <Typography variant={"body1"}>Search type input</Typography>
+                        <Input
+                          color={"primary"}
+                          type={"search"}
+                          style={{margin: "normal", marginTop: 30}}
+                          placeholder={"Search"}
+                        />
+                    </Grid>
+                    <Grid item md={6} xs={12} lg={4}>
+                      <Typography variant={"body1"}>
+                        Outlined input
+                      </Typography>
+                      <Input
+                        id="outlined-input"
+                        style={{margin: "normal", marginTop: "16px"}}
+                        variant={"outlined"}
+                      />
+                    </Grid>
+                    <Grid item md={6} xs={12} lg={4}>
+                      <Typography>Filled input</Typography>
+                      <Input 
+                        id="outlined-input"  
+                        style={{margin: "normal", marginTop: "16px"}} 
+                        variant={"filled"} 
+                      />
+                    </Grid>
+                </Grid>
+              </Widget>
             </Grid>
-          </Widget>
-        </Grid>
+          
+          
+
+                <Grid md={12} xs={12} lg={12} style={{justifyContent: "space-between", alignItems: "center", direction: "column", marginTop: '10%'}} spacing={3}>
+                  <Widget title="Selects" disableWidgetMenu inheritHeight>
+                    <Grid item container>
+                      <Grid item  md={6} xs={12} lg={6}>
+                        <Typography variant={"body1"}>Default select</Typography>
+                      </Grid>
+                      <Grid item md={6} xs={12} lg={6}>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          style={{ alignSelf: 'flex-end'}}
+                          value={action}
+                          onChange={handleChange}
+                        >
+                          {actions.map(c =>
+                            c.type === "divider" ? (
+                              <Divider key={c.id} />
+                            ) : (
+                              <MenuItem value={c.value} key={c.id}>
+                                {c.value}
+                              </MenuItem>
+                            )
+                          )}
+                        </Select>
+                      </Grid>
+                    </Grid>
+                    <Grid item container>
+                      <Grid item md={6} xs={12} lg={6}>
+                        <Typography variant={"body1"}>Grouped select</Typography>
+                      </Grid>
+                      <Grid item md={6} xs={12} lg={6}>
+                        <Select
+                          style={{}}
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={action}
+                          onChange={handleChange}
+                        >
+                          {actions.map(c =>
+                            c.type === "divider" ? (
+                              <Divider key={c.id} />
+                            ) : (
+                              <MenuItem value={c.value} key={c.id}>
+                                {c.value}
+                              </MenuItem>
+                            )
+                          )}
+                        </Select>
+                      </Grid>
+                    </Grid>
+                  </Widget>
+                </Grid>
+          </Grid>
       </Grid>
+        
+
       <Grid container spacing={6}>
-        <Grid item md={6} xs={12}>
+        <Grid item md={5} xs={12}>
           <Widget title="Control sizing" disableWidgetMenu inheritHeight>
             <Grid container direction={"column"}>
               <Grid item>
@@ -338,57 +401,8 @@ export default function FormsElements() {
             </Grid>
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Widget title="Selects" disableWidgetMenu inheritHeight>
-            <Grid item container alignItems={"center"}>
-              <Grid item xs={6}>
-                <Typography variant={"body1"}>Default select</Typography>
-              </Grid>
-              <Grid xs={6} item>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={action}
-                  onChange={handleChange}
-                >
-                  {actions.map(c =>
-                    c.type === "divider" ? (
-                      <Divider key={c.id} />
-                    ) : (
-                      <MenuItem value={c.value} key={c.id}>
-                        {c.value}
-                      </MenuItem>
-                    )
-                  )}
-                </Select>
-              </Grid>
-            </Grid>
-            <Grid item container alignItems={"center"}>
-              <Grid item xs={6}>
-                <Typography variant={"body1"}>Grouped select</Typography>
-              </Grid>
-              <Grid xs={6} item>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={action}
-                  onChange={handleChange}
-                >
-                  {actions.map(c =>
-                    c.type === "divider" ? (
-                      <Divider key={c.id} />
-                    ) : (
-                      <MenuItem value={c.value} key={c.id}>
-                        {c.value}
-                      </MenuItem>
-                    )
-                  )}
-                </Select>
-              </Grid>
-            </Grid>
-          </Widget>
-        </Grid>
       </Grid>
+
       <Grid container spacing={3}>
         <Grid item md={6} xs={12}>
           <Widget title="Input variants" disableWidgetMenu inheritHeight>

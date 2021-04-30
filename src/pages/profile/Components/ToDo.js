@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { withStyles, useTheme } from '@material-ui/core/styles';
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SwipeableViews from 'react-swipeable-views';
@@ -12,7 +12,7 @@ function TabPanel(props) {
   return (
     <div
       role="tabpanel"
-      hidden={value != index}
+      hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
@@ -136,7 +136,6 @@ function CustomizedTabs({ classes }) {
     { color: '#536DFE', time: '16.00', title: 'Code review and refactoring' },
   ]
 
-  const theme = useTheme();
 
   return (
     <div className={classes.root}>

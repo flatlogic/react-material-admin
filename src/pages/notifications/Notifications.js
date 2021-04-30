@@ -12,6 +12,7 @@ import Widget from "../../components/Widget";
 import Notification from "../../components/Notification";
 import Code from "../../components/Code";
 import { Typography, Button } from "../../components/Wrappers";
+import { CallReceived } from "@material-ui/icons";
 
 const positions = [
   toast.POSITION.TOP_LEFT,
@@ -32,122 +33,136 @@ export default function NotificationsPage(props) {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6} lg={4}>
-          <Widget title="Layout Options" disableWidgetMenu>
-            <Typography>
-              There are few position options available for notifications. You
-              can click any of them to change notifications position:
-            </Typography>
-            <div className={classes.layoutContainer}>
-              <div className={classes.layoutButtonsRow}>
-                <button
-                  onClick={() => changeNotificationPosition(0)}
-                  className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 0
-                  })}
-                />
-                <button
-                  onClick={() => changeNotificationPosition(1)}
-                  className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 1
-                  })}
-                />
-                <button
-                  onClick={() => changeNotificationPosition(2)}
-                  className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 2
-                  })}
-                />
-              </div>
-              <Typography className={classes.layoutText} size="md">
-                Click any position
+       <Grid item xs={12} md={12} lg={12}>
+        <Widget>
+          <Grid container spacing={3}>
+          <Grid item xs={12} md={6} lg={4}>
+              <Typography className={classes.head5}>
+                Layout Options
               </Typography>
-              <div className={classes.layoutButtonsRow}>
-                <button
-                  onClick={() => changeNotificationPosition(3)}
-                  className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 3
-                  })}
-                />
-                <button
-                  onClick={() => changeNotificationPosition(4)}
-                  className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 4
-                  })}
-                />
-                <button
-                  onClick={() => changeNotificationPosition(5)}
-                  className={classnames(classes.layoutButton, {
-                    [classes.layoutButtonActive]: notificationsPosition === 5
-                  })}
-                />
+              <Typography>
+                There are few position options available for notifications. You
+                can click any of them to change notifications position:
+              </Typography>
+              <div className={classes.layoutContainer}>
+                <div className={classes.layoutButtonsRow}>
+                  <button
+                    onClick={() => changeNotificationPosition(0)}
+                    className={classnames(classes.layoutButton, {
+                      [classes.layoutButtonActive]: notificationsPosition === 0
+                    })}
+                  />
+                  <button
+                    onClick={() => changeNotificationPosition(1)}
+                    className={classnames(classes.layoutButton, {
+                      [classes.layoutButtonActive]: notificationsPosition === 1
+                    })}
+                  />
+                  <button
+                    onClick={() => changeNotificationPosition(2)}
+                    className={classnames(classes.layoutButton, {
+                      [classes.layoutButtonActive]: notificationsPosition === 2
+                    })}
+                  />
+                </div>
+                <Typography className={classes.layoutText} size="md">
+                  Click any position
+                </Typography>
+                <div className={classes.layoutButtonsRow}>
+                  <button
+                    onClick={() => changeNotificationPosition(3)}
+                    className={classnames(classes.layoutButton, {
+                      [classes.layoutButtonActive]: notificationsPosition === 3
+                    })}
+                  />
+                  <button
+                    onClick={() => changeNotificationPosition(4)}
+                    className={classnames(classes.layoutButton, {
+                      [classes.layoutButtonActive]: notificationsPosition === 4
+                    })}
+                  />
+                  <button
+                    onClick={() => changeNotificationPosition(5)}
+                    className={classnames(classes.layoutButton, {
+                      [classes.layoutButtonActive]: notificationsPosition === 5
+                    })}
+                  />
+                </div>
               </div>
-            </div>
-          </Widget>
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <Widget title="Notifications Types" disableWidgetMenu>
-            <Typography>
-              Different types of notifications for lost of use cases. Custom
-              classes are also supported.
-            </Typography>
-            <div className={classes.buttonsContainer}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => handleNotificationCall("info")}
-                className={classnames(classes.notificationCallButton)}
-              >
-                Info Message
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => handleNotificationCall("error")}
-                className={classnames(classes.notificationCallButton)}
-              >
-                Error + Retry Message
-              </Button>
-              <Button
-                variant="contained"
-                color="success"
-                onClick={() => handleNotificationCall("success")}
-                className={classnames(classes.notificationCallButton)}
-              >
-                Success Message
-              </Button>
-            </div>
-          </Widget>
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <Widget title="Usage" disableWidgetMenu>
-            <Typography>
-              Notifications are created with the help of{" "}
-              <a href="https://github.com/fkhadra/react-toastify">
-                react-toastify
-              </a>
-            </Typography>
-            <Code>{`
-  // import needed components, functions and styles
-  import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+          </Grid>
 
-  const Page = () => {
-    <div>
-      <ToastContainer />
-      <button onClick={() => toast('Toast Message')}>
-        show notification
-      </button>
-    </div>
-  };
-            `}</Code>
-            <Box py={1}>
-              <Typography variant="caption">
-                For more API information refer to the library documentation
+          <Grid item xs={12} md={6} lg={4}>
+              <Typography className={classes.head5}>
+                  Notifications Types
               </Typography>
-            </Box>
+              <Typography>
+                Different types of notifications for lost of use cases. Custom
+                classes are also supported.
+              </Typography>
+              <div className={classes.buttonsContainer}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleNotificationCall("info")}
+                  className={classnames(classes.notificationCallButton)}
+                >
+                  Info Message
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => handleNotificationCall("error")}
+                  className={classnames(classes.notificationCallButton)}
+                >
+                  Error + Retry Message
+                </Button>
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={() => handleNotificationCall("success")}
+                  className={classnames(classes.notificationCallButton)}
+                >
+                  Success Message
+                </Button>
+              </div>
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+            <Typography className={classes.head5}>
+                  Usage
+              </Typography>
+              <Typography>
+                Notifications are created with the help of{" "}
+                <a href="https://github.com/fkhadra/react-toastify">
+                  react-toastify
+                </a>
+              </Typography>
+              <Code>{`
+    // import needed components, functions and styles
+    import { ToastContainer, toast } from 'react-toastify';
+    import 'react-toastify/dist/ReactToastify.css';
+
+    const Page = () => {
+      <div>
+        <ToastContainer />
+        <button onClick={() => toast('Toast Message')}>
+          show notification
+        </button>
+      </div>
+    };
+              `}</Code>
+              <Box py={1}>
+                <Typography variant="caption">
+                  For more API information refer to the library documentation
+                </Typography>
+              </Box>
+          </Grid>
+          </Grid>
           </Widget>
         </Grid>
+      </Grid>
+
+        <Grid container spacing={3}>
         <Grid item xs={12} md={6} lg={4}>
           <Widget title="Notification Types Examples" disableWidgetMenu>
             <Notification

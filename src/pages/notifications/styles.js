@@ -1,3 +1,4 @@
+import { CallReceived } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
 import tinycolor from "tinycolor2";
 
@@ -13,6 +14,15 @@ export default makeStyles(theme => ({
     borderColor: theme.palette.primary.main,
     position: "relative",
   },
+  head5: {
+      color: "rgb(110, 110, 110)", 
+      marginBottom: "3%", 
+      fontSize: "calc(1.285rem)", 
+      textTransform: "none", 
+      lineHeight: "1.334", 
+      letterSpacing: "0em", 
+      fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+  }, 
   layoutText: {
     color: tinycolor(theme.palette.background.light)
       .darken()

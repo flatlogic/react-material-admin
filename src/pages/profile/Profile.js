@@ -16,7 +16,7 @@ import MediumIcon from '../../images/profile/MediumIcon.svg';
 import FacebookIcon from '../../images/profile/FacebookIcon.svg';
 import DribbleIcon from '../../images/profile/DribbleIcon.svg';
 import InstagramIcon from '../../images/profile/InstagramIcon.svg';
-import CloudIcon from './Icons/CloudIcon'
+import CloudIcon from './Icons/CloudIcon' 
 
 
 // styles

@@ -17,16 +17,58 @@ export default makeStyles(theme => ({
   },
   drawerOpen: {
     width: drawerWidth,
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: '#B9B9B9'
+    },
+    '&::-webkit-resizer':{
+      backgroundColor: '#4A4A4A'
+    },
+    '&::-webkit-scrollbar': {
+      width: '3px', 
+      height: '3px'
+    }, 
+    '&::-webkit-scrollbar-button': {
+      display: 'none'
+    },
+    '&::-webkit-scrollbar-thumb': { 
+      height: '50px',
+      borderRadius: '36px',  
+      backgroundColor: '#B9B9B9'
+    }, 
+    '&::-webkit-scrollbar-track-piece': {
+      backgroundColor: 'white'
+    }, 
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
-    })
+    }), 
   },
   drawerClose: {
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: '#B9B9B9'
+    },
+    '&::-webkit-resizer':{
+      backgroundColor: '#4A4A4A'
+    },
+    '&::-webkit-scrollbar': {
+      width: '3px', 
+      height: '3px'
+    }, 
+    '&::-webkit-scrollbar-button': {
+      display: 'none'
+    },
+    '&::-webkit-scrollbar-thumb': { 
+      height: '20px',
+      borderRadius: '36px',  
+      backgroundColor: '#B9B9B9'
+    }, 
+    '&::-webkit-scrollbar-track-piece': {
+      backgroundColor: 'white'
+    },
     overflowX: "hidden",
     width: theme.spacing(7) + 40,
     [theme.breakpoints.down("sm")]: {
@@ -37,14 +79,14 @@ export default makeStyles(theme => ({
     ...theme.mixins.toolbar,
     [theme.breakpoints.down("sm")]: {
       display: "none"
-    }
+    }, 
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
   },
   sidebarList: {
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1), 
   },
   mobileBackButton: {
     marginTop: theme.spacing(0.5),

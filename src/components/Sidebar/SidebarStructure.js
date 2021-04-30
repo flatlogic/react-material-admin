@@ -17,8 +17,7 @@ import {
     FolderOpen as FolderIcon,
     Description as DocumentationIcon,
     Person as PersonIcon,
-    AccountCircle as ProfileIcon,
-    ViewCompactRoundedIcon as GridIcon,
+    AccountCircle as ProfileIcon
 } from '@material-ui/icons'
 import ViewCompactRoundedIcon from '@material-ui/icons/ViewCompactRounded';
 import { makeStyles } from '@material-ui/styles'
@@ -107,7 +106,9 @@ const structure = [
         link: '/app/tables',
         icon: <TableIcon />,
         children: [
-            { label: 'Tables Basic', link: '/app/tables/static' },
+            {   label: 'Tables Basic', 
+                link: '/app/tables/static'
+            },
             {
                 label: 'Tables Dynamic',
                 link: '/app/tables/dynamic',
