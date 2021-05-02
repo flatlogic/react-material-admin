@@ -1,4 +1,3 @@
-import { CallReceived } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
 import tinycolor from "tinycolor2";
 

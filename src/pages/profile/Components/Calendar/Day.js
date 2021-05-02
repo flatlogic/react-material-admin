@@ -131,16 +131,19 @@ const Day = ({ classes, day, selected }) => {
     setAnchorEl(event.currentTarget);
   }
 
+  // eslint-disable-next-line no-unused-vars
   const toggleTooltip = () => {
     setPopover({ tooltipShow: !popover.tooltipShow })
   }
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  // eslint-disable-next-line no-unused-vars
   const handleClick = (event) => {
     
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleClose = () => {
     setAnchorEl(null);
   };

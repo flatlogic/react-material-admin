@@ -44,7 +44,9 @@ const BreadCrumbs = () => {
   const [anchorEl, setAnchorEl] = React.useState(null)
 
   const open = Boolean(anchorEl)
+  // eslint-disable-next-line no-unused-vars
   const id = open ? 'add-section-popover' : undefined
+  // eslint-disable-next-line no-unused-vars
   const handleClick = event => {
       setAnchorEl(open ? null : event.currentTarget)
   }
@@ -85,7 +87,8 @@ const BreadCrumbs = () => {
 
 
   // global
-  var layoutState = useLayoutState()
+  // eslint-disable-next-line no-unused-vars
+  const layoutState = useLayoutState();
 
   const handleChange = (event, newValue) => {
       setValue(newValue)
@@ -112,7 +115,9 @@ const BreadCrumbs = () => {
           wrap={'nowrap'}
           style={{ overflowX: 'auto' }}
       >
-          {structure.map(c => {
+
+          {// eslint-disable-next-line
+            structure.map(c => {
               if (
                   window.location.hash.includes(c.link) &&
                   c.link && c.label === "Dashboard"

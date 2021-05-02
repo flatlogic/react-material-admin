@@ -53,7 +53,7 @@ export default {
         background: '#536DFE',
         icon: 'microphone',
         title: 'Light Blue reached $300',
-        description: 'Light Blue Inc. shares just hit $300 price. \"This was inevitable. It should have happen sooner or later\" - says NYSE expert.',
+        description: 'Light Blue Inc. shares just hit $300 price. "This was inevitable. It should have happen sooner or later" - says NYSE expert.',
         date: 'Sep 25, 11:59'
       },
       {

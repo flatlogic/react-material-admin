@@ -13,7 +13,6 @@ import FolderYellow from '../Icons/FolderYellow';
 import FolderYellowDark from '../Icons/FolderYellowDark';
 import SwipeableViews from 'react-swipeable-views';
 import Box from '@material-ui/core/Box';
-import { autoPlay } from 'react-swipeable-views-utils';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -122,6 +121,7 @@ const styles = (theme) => ({
 })
 
 function CustomizedTabs({ classes }) {
+  // eslint-disable-next-line no-unused-vars
   const [value, setValue] = React.useState(0);
   const [index, setIndex] = React.useState(0);
 
@@ -133,6 +133,7 @@ function CustomizedTabs({ classes }) {
     setIndex(index)
   }
 
+  // eslint-disable-next-line no-unused-vars
   function a11yProps(index) {
     return {
       id: `full-width-tab-${index}`,

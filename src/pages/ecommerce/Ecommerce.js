@@ -608,6 +608,7 @@ function EcommercePage({ history }) {
   );
 }
 
+// eslint-disable-next-line no-unused-vars
 function CloseButton({ closeToast, className }) {
   return <CloseIcon className={className} onClick={closeToast} />;
 }

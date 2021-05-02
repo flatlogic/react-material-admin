@@ -12,7 +12,6 @@ import Widget from "../../components/Widget";
 import Notification from "../../components/Notification";
 import Code from "../../components/Code";
 import { Typography, Button } from "../../components/Wrappers";
-import { CallReceived } from "@material-ui/icons";
 
 const positions = [
   toast.POSITION.TOP_LEFT,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { Bookmark as BookmarkIcon } from '@material-ui/icons';
 import IconButton from "@material-ui/core/IconButton";
 import rnsHero from "../../../images/profile/rnsHero.png";

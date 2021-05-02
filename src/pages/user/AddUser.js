@@ -306,7 +306,7 @@ const AddUser = () => {
                                           <span className={classes.deleteImageX} onClick={() => deleteOneImage(avatar.id)}>×</span>
                                           <img
                                               src={avatar.publicUrl}
-                                              alt="photo"
+                                              alt="avatar"
                                               height={'100%'}
                                           />                                          
                                         </div>

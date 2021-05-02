@@ -367,6 +367,7 @@ function getColor(color, theme, brightness = "main") {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 function getColorText (color, theme) {
   if (color && theme.palette.text[color]) {
     return theme.palette.text[color];

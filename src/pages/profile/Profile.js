@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid, Typography } from "@material-ui/core";
-import { useTheme, makeStyles } from "@material-ui/styles";
+import { useTheme } from "@material-ui/styles";
 
 import { Badge, Chip, Button } from '../../components/Wrappers';
 import Tabs from './Components/Tabs';
@@ -47,7 +47,7 @@ function Profile() {
               </div>
             </Grid>
             <Grid item xs={12} sm={7} md={7} lg={7}>
-              <div class={classes.profileDescription}>
+              <div className={classes.profileDescription}>
                 <Typography variant="h3" className={classes.profileTitle}>
                   Julee Cruise
                 </Typography>
@@ -61,10 +61,15 @@ function Profile() {
                   <Badge type="tag" badgeContent={"Mobile"} color="success"/>
                 </div>
                 <div className={classes.socials}>
+                  {/* eslint-disable-next-line */}
                   <a href="#"><img src={FacebookIcon} alt="FacebookIcon" /></a>
+                  {/* eslint-disable-next-line */}
                   <a href="#"><img src={MediumIcon} alt="MediumIcon" /></a>
+                  {/* eslint-disable-next-line */}
                   <a href="#"><img src={DribbleIcon} alt="DribbleIcon" /></a>
+                  {/* eslint-disable-next-line */}
                   <a href="#"><img src={BehanceIcon} alt="BehanceIcon" /></a>
+                  {/* eslint-disable-next-line */}
                   <a href="#"><img src={InstagramIcon} alt="InstagramIcon" /></a>
                 </div>
               </div>

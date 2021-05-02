@@ -33,6 +33,7 @@ export default function Dot({ size = "small", color, style }) {
       })}
       style={{
         backgroundColor:
+        // eslint-disable-next-line no-mixed-operators
           color && (theme.palette.text[color] && theme.palette.text[color]) || color,
         ...style
       }}

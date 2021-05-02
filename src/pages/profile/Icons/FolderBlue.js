@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import FolderBlueLight from '../../../images/profile/FolderBlueLight.svg';
 
-const styles = (theme) => ({
+const styles = () => ({
     root: {
         position: 'relative',
         marginRight: 20,
@@ -34,15 +34,15 @@ const styles = (theme) => ({
     },
 })
 
-const Folder = ({ classes, color, title, value, label }) => {
+const Folder = ({ classes, title, value, label }) => {
     return (
-        <div className={classes.root}>
+        <div className={classes.root} >
             <div className={classes.folderContent}>
                 <span className={classes.folderTitle}>{title}</span>
-                <p className={classes.parag}>
-                    <span className={classes.folderValue}>{value}</span>{' '}
-                    <span className={classes.folderLabel}>{label}</span>
-                </p>
+                    <div className={classes.parag}>
+                        <span className={classes.folderValue}>{value}</span>{' '}
+                        <span className={classes.folderLabel}>{label}</span>
+                    </div>
             </div>
         </div>
     )

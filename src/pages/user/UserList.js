@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import {
     Grid,
@@ -152,6 +153,7 @@ const UserList = () => {
     const [orderBy, setOrderBy] = React.useState('calories')
     const [selected, setSelected] = React.useState([])
     const [page, setPage] = React.useState(0)
+  // eslint-disable-next-line no-unused-vars
     const [dense, setDense] = React.useState(false)
     const [rowsPerPage, setRowsPerPage] = React.useState(5)
     const [usersRows, setUsersRows] = React.useState([])

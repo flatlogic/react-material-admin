@@ -11,9 +11,7 @@ import {
 import {
     Fab,
     IconButton,
-    Tab,
 } from '@material-ui/core'
-import { withStyles } from '@material-ui/styles'
 
 // styles
 import useStyles from './styles'
@@ -76,6 +74,7 @@ import structure from '../Sidebar/SidebarStructure'
 
 function Layout(props) {
     const classes = useStyles()
+    // eslint-disable-next-line no-unused-vars
     const [value, setValue] = React.useState(2)
     const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -86,12 +85,14 @@ function Layout(props) {
     }
 
     // global
-    var layoutState = useLayoutState()
+    const layoutState = useLayoutState();
 
+    // eslint-disable-next-line no-unused-vars
     const handleChange = (event, newValue) => {
         setValue(newValue)
     }
 
+    // eslint-disable-next-line no-unused-vars
     function a11yProps(index) {
         return {
             id: `simple-tab-${index}`,

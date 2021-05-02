@@ -41,7 +41,9 @@ const styles = (theme) => ({
 })
 
 const DonutChart = ({ classes }) => {
+  // eslint-disable-next-line no-unused-vars
   const [donutData, setDonutData] = useState(chartsData);
+  // eslint-disable-next-line no-unused-vars
   const [age, setAge] = React.useState('');
 
   return (

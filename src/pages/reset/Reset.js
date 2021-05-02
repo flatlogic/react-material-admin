@@ -18,13 +18,14 @@ import { useUserDispatch, resetPassword, authError } from "../../context/UserCon
 //components
 import { Button, Typography } from "../../components/Wrappers";
 
-function Reset(props) {
+function Reset() {
   var classes = useStyles();
   const history = useHistory();
   // global
   var userDispatch = useUserDispatch();
   const [passwordValue, setPasswordValue] = useState("");
   const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
     const checkPassword = () => {
     if (!isPasswordValid()) {

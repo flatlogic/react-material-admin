@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { useTheme, makeStyles } from '@material-ui/styles';
+import { useTheme } from '@material-ui/styles';
 import Widget from '../../components/Widget';
 import Sortable from 'react-sortablejs'
 // Components
@@ -16,8 +16,9 @@ import mock from './mock';
 import useStyles from "./styles";
 
 function DraggableGrid() {
-  var classes = useStyles();
-  var theme = useTheme();
+  const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
+  const theme = useTheme();
 
   return (
     <Grid container spacing={4} className={classes.root}>

@@ -136,7 +136,7 @@ const EditUser = () => {
         actions.doFind(id)(managementDispatch)
       } else {
         actions.doFind(sessionStorage.getItem('user_id'))(managementDispatch)
-      }
+      }// eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -294,8 +294,8 @@ const EditUser = () => {
                                           <span className={classes.deleteImageX} onClick={() => deleteOneImage(avatar.id)}>×</span>
                                           <img
                                               src={avatar.publicUrl}
-                                              alt="photo"
                                               height={'100%'}
+                                              alt="avatar"
                                           />                                          
                                         </div>
                                       ))
@@ -317,7 +317,6 @@ const EditUser = () => {
                                     </Typography>
                                     <TextField
                                         id="outlined-basic"
-                                        defaultValue={'Robbert'}
                                         variant="outlined"
                                         defaultValue="Name"
                                         value={data && data.firstName}

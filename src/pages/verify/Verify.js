@@ -13,7 +13,7 @@ const Verify = () => {
       if (token) {
         verifyEmail(token, history)(userDispatch)
       }
-    }, []);
+    }, [history, location.search, userDispatch]);
 
     return (
       <></>
