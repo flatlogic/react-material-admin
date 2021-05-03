@@ -1,5 +1,11 @@
 # Changelog
 
+# [2.2.5] - 05/03/2021
+
+- Fixed errors
+- Clear code
+- Hide warnings
+
 # [2.2.4]
 
 - Updated documentation
