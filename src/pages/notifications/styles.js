@@ -15,12 +15,8 @@ export default makeStyles(theme => ({
   },
   head5: {
       color: "rgb(110, 110, 110)", 
-      marginBottom: "3%", 
-      fontSize: "calc(1.285rem)", 
-      textTransform: "none", 
-      lineHeight: "1.334", 
-      letterSpacing: "0em", 
-      fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+      marginBottom: theme.spacing(2),
+      fontSize: "20px",
   }, 
   layoutText: {
     color: tinycolor(theme.palette.background.light)

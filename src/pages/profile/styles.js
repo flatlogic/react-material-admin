@@ -19,36 +19,6 @@ export default makeStyles(theme => ({
       maxWidth: 200
     }
   },
-  // codeComponent: {
-  //   // flexGrow: 1,
-  //   // borderRadius: '10px', 
-  //   // backgroundColor: 'red',  
-  //   // border: '3px solid black',
-  //   // // '&::-webkit-scrollbar': {
-  //   // //   width: '6px'
-  //   // // },
-  //   '&::-webkit-scrollbar-track': {
-  //     backgroundColor: '#B9B9B9'
-  //   },
-  //   '&::-webkit-resizer':{
-  //     backgroundColor: '#4A4A4A'
-  //   },
-  //   '&::-webkit-scrollbar': {
-  //     width: '10px', 
-  //     height: '7px'
-  //   }, 
-  //   '&::-webkit-scrollbar-button': {
-  //     display: 'none'
-  //   },
-  //   '&::-webkit-scrollbar-thumb': { 
-  //     height: '50px',
-  //     borderRadius: '36px',  
-  //     backgroundColor: '#B9B9B9'
-  //   }, 
-  //   '&::-webkit-scrollbar-track-piece': {
-  //     backgroundColor: 'white'
-  //   }
-  // },
   profileDescription: {
     paddingLeft: 20
   },
