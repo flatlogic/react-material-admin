@@ -13,12 +13,12 @@ import Widget from "../../../../components/Widget";
 import { Typography } from "../../../../components/Wrappers";
 
 export default function BigStat(props) {
-  var { product, total, color, registrations, bounce } = props;
-  var classes = useStyles();
-  var theme = useTheme();
+  let { product, total, color, registrations, bounce } = props;
+  let classes = useStyles();
+  let theme = useTheme();
 
   // local
-  var [value, setValue] = useState("daily");
+  let [value, setValue] = useState("daily");
 
   return (
     <Widget

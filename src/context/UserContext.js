@@ -1,7 +1,7 @@
 import React from "react";
 
-var UserStateContext = React.createContext();
-var UserDispatchContext = React.createContext();
+let UserStateContext = React.createContext();
+let UserDispatchContext = React.createContext();
 
 function userReducer(state, action) {
   switch (action.type) {
@@ -16,7 +16,7 @@ function userReducer(state, action) {
 }
 
 function UserProvider({ children }) {
-  var [state, dispatch] = React.useReducer(userReducer, {
+  let [state, dispatch] = React.useReducer(userReducer, {
     isAuthenticated: !!localStorage.getItem("id_token"),
   });
 
@@ -30,7 +30,7 @@ function UserProvider({ children }) {
 }
 
 function useUserState() {
-  var context = React.useContext(UserStateContext);
+  let context = React.useContext(UserStateContext);
   if (context === undefined) {
     throw new Error("useUserState must be used within a UserProvider");
   }
@@ -38,7 +38,7 @@ function useUserState() {
 }
 
 function useUserDispatch() {
-  var context = React.useContext(UserDispatchContext);
+  let context = React.useContext(UserDispatchContext);
   if (context === undefined) {
     throw new Error("useUserDispatch must be used within a UserProvider");
   }

@@ -37,7 +37,7 @@ const Widget = ({
                 aria-owns="widget-menu"
                 aria-haspopup="true"
                 onClick={() => props.setMoreMenuOpen(true)}
-                buttonRef={props.setMoreButtonRef}
+                ref={props.setMoreButtonRef}
               >
                 <MoreIcon />
               </IconButton>

@@ -90,20 +90,20 @@ const notifications = [
 ];
 
 export default function Header(props) {
-  var classes = useStyles();
+  let classes = useStyles();
 
   // global
-  var layoutState = useLayoutState();
-  var layoutDispatch = useLayoutDispatch();
-  var userDispatch = useUserDispatch();
+  let layoutState = useLayoutState();
+  let layoutDispatch = useLayoutDispatch();
+  let userDispatch = useUserDispatch();
 
   // local
-  var [mailMenu, setMailMenu] = useState(null);
-  var [isMailsUnread, setIsMailsUnread] = useState(true);
-  var [notificationsMenu, setNotificationsMenu] = useState(null);
-  var [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
-  var [profileMenu, setProfileMenu] = useState(null);
-  var [isSearchOpen, setSearchOpen] = useState(false);
+  let [mailMenu, setMailMenu] = useState(null);
+  let [isMailsUnread, setIsMailsUnread] = useState(true);
+  let [notificationsMenu, setNotificationsMenu] = useState(null);
+  let [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
+  let [profileMenu, setProfileMenu] = useState(null);
+  let [isSearchOpen, setSearchOpen] = useState(false);
 
   return (
     <AppBar position="fixed" className={classes.appBar}>

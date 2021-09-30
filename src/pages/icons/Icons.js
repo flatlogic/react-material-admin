@@ -32,10 +32,10 @@ export default function IconsPage () {
     setAnchorEl(null)
   }
 
-  var classes = useStyles();
+  let classes = useStyles();
 
   // local
-  var [activeTabId, setActiveTabId] = useState(0);
+  let [activeTabId, setActiveTabId] = useState(0);
 
   return (
   <>

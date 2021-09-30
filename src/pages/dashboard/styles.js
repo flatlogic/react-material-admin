@@ -116,8 +116,8 @@ export default makeStyles(theme => ({
     marginLeft: theme.spacing(1),
   },
   success: {
-    backgroundColor: theme.palette.success.main,
-    color: '#fff',
+      backgroundColor: theme.palette.success.main,
+      color: '#fff',
   },
   warning: {
     backgroundColor: theme.palette.warning.main,
@@ -127,4 +127,5 @@ export default makeStyles(theme => ({
     backgroundColor: theme.palette.secondary.main,
     color: '#fff',
   }
-}));
+
+}), {index: 1});

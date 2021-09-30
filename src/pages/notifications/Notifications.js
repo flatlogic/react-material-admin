@@ -14,7 +14,7 @@ import useStyles from "./styles";
 import Widget from "../../components/Widget/Widget";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Notification from "../../components/Notification";
-import { Typography, Button } from "../../components/Wrappers/Wrappers";
+import { Typography, Button } from "../../components/Wrappers";
 
 const positions = [
   toast.POSITION.TOP_LEFT,
@@ -25,12 +25,12 @@ const positions = [
   toast.POSITION.BOTTOM_RIGHT,
 ];
 
-export default function NotificationsPage(props) {
-  var classes = useStyles();
+export default function NotificationsPage() {
+  let classes = useStyles();
 
   // local
-  var [notificationsPosition, setNotificationPosition] = useState(2);
-  var [errorToastId, setErrorToastId] = useState(null);
+  let [notificationsPosition, setNotificationPosition] = useState(2);
+  let [errorToastId, setErrorToastId] = useState(null);
 
   return (
     <>
@@ -324,7 +324,7 @@ export default function NotificationsPage(props) {
   }
 
   function retryErrorNotification() {
-    var componentProps = {
+    let componentProps = {
       type: "message",
       message: "Message was sent successfully!",
       variant: "contained",
@@ -338,7 +338,7 @@ export default function NotificationsPage(props) {
   }
 
   function handleNotificationCall(notificationType) {
-    var componentProps;
+    let componentProps;
 
     if (errorToastId && notificationType === "error") return;
 
@@ -370,7 +370,7 @@ export default function NotificationsPage(props) {
         };
     }
 
-    var toastId = sendNotification(componentProps, {
+    let toastId = sendNotification(componentProps, {
       type: notificationType,
       position: positions[notificationsPosition],
       progressClassName: classes.progress,

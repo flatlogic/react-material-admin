@@ -10,7 +10,7 @@ import useStyles from "./styles";
 import logo from "./logo.svg";
 
 export default function Error() {
-  var classes = useStyles();
+  let classes = useStyles();
 
   return (
     <Grid container className={classes.container}>

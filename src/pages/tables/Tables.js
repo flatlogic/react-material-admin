@@ -31,11 +31,11 @@ const datatableData = [
   ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
 ];
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   tableOverflow: {
     overflow: 'auto'
   }
-}))
+})
 
 export default function Tables() {
   const classes = useStyles();

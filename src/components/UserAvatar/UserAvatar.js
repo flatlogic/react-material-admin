@@ -8,10 +8,10 @@ import useStyles from "./styles";
 import { Typography } from "../Wrappers";
 
 export default function UserAvatar({ color = "primary", ...props }) {
-  var classes = useStyles();
-  var theme = useTheme();
+  let classes = useStyles();
+  let theme = useTheme();
 
-  var letters = props.name
+  let letters = props.name
     .split(" ")
     .map(word => word[0])
     .join("");

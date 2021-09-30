@@ -3,7 +3,7 @@ import { makeStyles, useTheme } from "@material-ui/styles";
 import classnames from "classnames";
 
 // styles
-var useStyles = makeStyles(theme => ({
+let useStyles = makeStyles(theme => ({
   dotBase: {
     width: 8,
     height: 8,
@@ -22,8 +22,8 @@ var useStyles = makeStyles(theme => ({
 }));
 
 export default function Dot({ size, color }) {
-  var classes = useStyles();
-  var theme = useTheme();
+  let classes = useStyles();
+  let theme = useTheme();
 
   return (
     <div

@@ -17,7 +17,7 @@ const states = {
 
 export default function TableComponent({ data }) {
   const classes = useStyles();
-  var keys = Object.keys(data[0]).map(i => i.toUpperCase());
+  let keys = Object.keys(data[0]).map(i => i.toUpperCase());
   keys.shift(); // delete "id" key
 
   return (
@@ -39,7 +39,7 @@ export default function TableComponent({ data }) {
             <TableCell>{date}</TableCell>
             <TableCell>{city}</TableCell>
             <TableCell>
-              <Chip label={status} classes={{root: classes[states[status.toLowerCase()]]}}/>
+              <Chip label={status} classes={{root: classes[states[status.toLowerCase()]] }}/>
             </TableCell>
           </TableRow>
         ))}

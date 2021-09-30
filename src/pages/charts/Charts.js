@@ -73,11 +73,11 @@ const pieChartData = [
   { name: "Group D", value: 200 },
 ];
 
-export default function Charts(props) {
-  var theme = useTheme();
+export default function Charts() {
+  let theme = useTheme();
 
   // local
-  var [activeIndex, setActiveIndexId] = useState(0);
+  let [activeIndex, setActiveIndexId] = useState(0);
 
   return (
     <>
@@ -161,8 +161,8 @@ export default function Charts(props) {
 // ################################################################
 
 function renderActiveShape(props) {
-  var RADIAN = Math.PI / 180;
-  var {
+  let RADIAN = Math.PI / 180;
+  let {
     cx,
     cy,
     midAngle,
@@ -175,15 +175,15 @@ function renderActiveShape(props) {
     percent,
     value,
   } = props;
-  var sin = Math.sin(-RADIAN * midAngle);
-  var cos = Math.cos(-RADIAN * midAngle);
-  var sx = cx + (outerRadius + 10) * cos;
-  var sy = cy + (outerRadius + 10) * sin;
-  var mx = cx + (outerRadius + 30) * cos;
-  var my = cy + (outerRadius + 30) * sin;
-  var ex = mx + (cos >= 0 ? 1 : -1) * 22;
-  var ey = my;
-  var textAnchor = cos >= 0 ? "start" : "end";
+  let sin = Math.sin(-RADIAN * midAngle);
+  let cos = Math.cos(-RADIAN * midAngle);
+  let sx = cx + (outerRadius + 10) * cos;
+  let sy = cy + (outerRadius + 10) * sin;
+  let mx = cx + (outerRadius + 30) * cos;
+  let my = cy + (outerRadius + 30) * sin;
+  let ex = mx + (cos >= 0 ? 1 : -1) * 22;
+  let ey = my;
+  let textAnchor = cos >= 0 ? "start" : "end";
 
   return (
     <g>

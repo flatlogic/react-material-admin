@@ -10,7 +10,7 @@ import Widget from "../../components/Widget";
 import { Typography } from "../../components/Wrappers";
 
 export default function TypographyPage() {
-  var classes = useStyles();
+  let classes = useStyles();
 
   return (
     <>

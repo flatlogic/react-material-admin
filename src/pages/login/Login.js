@@ -23,18 +23,18 @@ import google from "../../images/google.svg";
 import { useUserDispatch, loginUser } from "../../context/UserContext";
 
 function Login(props) {
-  var classes = useStyles();
+  let classes = useStyles();
 
   // global
-  var userDispatch = useUserDispatch();
+  let userDispatch = useUserDispatch();
 
   // local
-  var [isLoading, setIsLoading] = useState(false);
-  var [error, setError] = useState(null);
-  var [activeTabId, setActiveTabId] = useState(0);
-  var [nameValue, setNameValue] = useState("");
-  var [loginValue, setLoginValue] = useState("admin@flatlogic.com");
-  var [passwordValue, setPasswordValue] = useState("password");
+  let [isLoading, setIsLoading] = useState(false);
+  let [error, setError] = useState(null);
+  let [activeTabId, setActiveTabId] = useState(0);
+  let [nameValue, setNameValue] = useState("");
+  let [loginValue, setLoginValue] = useState("admin@flatlogic.com");
+  let [passwordValue, setPasswordValue] = useState("password");
 
   return (
     <Grid container className={classes.container}>

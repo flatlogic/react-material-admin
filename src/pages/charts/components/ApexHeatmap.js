@@ -69,7 +69,7 @@ const series = [
 ];
 
 export default function ApexLineChart() {
-  var theme = useTheme();
+  let theme = useTheme();
 
   return (
     <ApexCharts
@@ -83,11 +83,11 @@ export default function ApexLineChart() {
 
 // ##################################################################
 function generateData(count, yrange) {
-  var i = 0;
-  var series = [];
+  let i = 0;
+  let series = [];
   while (i < count) {
-    var x = "w" + (i + 1).toString();
-    var y =
+    let x = "w" + (i + 1).toString();
+    let y =
       Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
 
     series.push({

@@ -42,12 +42,12 @@ const PieChartData = [
   { name: "Group D", value: 200, color: "success" },
 ];
 
-export default function Dashboard(props) {
-  var classes = useStyles();
-  var theme = useTheme();
+export default function Dashboard() {
+  let classes = useStyles();
+  let theme = useTheme();
 
   // local
-  var [mainChartState, setMainChartState] = useState("monthly");
+  let [mainChartState, setMainChartState] = useState("monthly");
 
   return (
     <>
@@ -99,7 +99,7 @@ export default function Dashboard(props) {
             <Grid
               container
               direction="row"
-              justify="space-between"
+              justifyContent="space-between"
               alignItems="center"
             >
               <Grid item xs={4}>
@@ -291,7 +291,7 @@ export default function Dashboard(props) {
               </Grid>
               <Grid item xs={6}>
                 <div className={classes.pieChartLegendWrapper}>
-                  {PieChartData.map(({ name, value, color }, index) => (
+                  {PieChartData.map(({ name, value, color }) => (
                     <div key={color} className={classes.legendItemContainer}>
                       <Dot color={color} />
                       <Typography style={{ whiteSpace: "nowrap", fontSize: 12 }} >
@@ -429,10 +429,10 @@ export default function Dashboard(props) {
 
 // #######################################################################
 function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
-  var array = new Array(length).fill();
+  let array = new Array(length).fill();
   let lastValue;
 
-  return array.map((item, index) => {
+  return array.map(() => {
     let randomValue = Math.floor(Math.random() * multiplier + 1);
 
     while (
@@ -450,10 +450,10 @@ function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
 }
 
 function getMainChartData() {
-  var resultArray = [];
-  var tablet = getRandomData(31, 3500, 6500, 7500, 1000);
-  var desktop = getRandomData(31, 1500, 7500, 7500, 1500);
-  var mobile = getRandomData(31, 1500, 7500, 7500, 1500);
+  let resultArray = [];
+  let tablet = getRandomData(31, 3500, 6500, 7500, 1000);
+  let desktop = getRandomData(31, 1500, 7500, 7500, 1500);
+  let mobile = getRandomData(31, 1500, 7500, 7500, 1500);
 
   for (let i = 0; i < tablet.length; i++) {
     resultArray.push({

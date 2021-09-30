@@ -83,15 +83,15 @@ const structure = [
 ];
 
 function Sidebar({ location }) {
-  var classes = useStyles();
-  var theme = useTheme();
+  let classes = useStyles();
+  let theme = useTheme();
 
   // global
-  var { isSidebarOpened } = useLayoutState();
-  var layoutDispatch = useLayoutDispatch();
+  let { isSidebarOpened } = useLayoutState();
+  let layoutDispatch = useLayoutDispatch();
 
   // local
-  var [isPermanent, setPermanent] = useState(true);
+  let [isPermanent, setPermanent] = useState(true);
 
   useEffect(function() {
     window.addEventListener("resize", handleWindowWidthChange);
@@ -141,9 +141,9 @@ function Sidebar({ location }) {
 
   // ##################################################################
   function handleWindowWidthChange() {
-    var windowWidth = window.innerWidth;
-    var breakpointWidth = theme.breakpoints.values.md;
-    var isSmallScreen = windowWidth < breakpointWidth;
+    let windowWidth = window.innerWidth;
+    let breakpointWidth = theme.breakpoints.values.md;
+    let isSmallScreen = windowWidth < breakpointWidth;
 
     if (isSmallScreen && isPermanent) {
       setPermanent(false);

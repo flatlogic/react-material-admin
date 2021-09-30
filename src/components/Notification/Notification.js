@@ -42,8 +42,8 @@ const typesIcons = {
 };
 
 export default function Notification({ variant, ...props }) {
-  var classes = useStyles();
-  var theme = useTheme();
+  let classes = useStyles();
+  let theme = useTheme();
 
   const icon = getIconByType(props.type);
   const iconWithStyles = React.cloneElement(icon, {

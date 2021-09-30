@@ -14,7 +14,7 @@ const series = [
 ];
 
 export default function ApexLineChart() {
-  var theme = useTheme();
+  let theme = useTheme();
 
   return (
     <ApexCharts
