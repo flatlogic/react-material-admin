@@ -25,8 +25,8 @@ import { makeStyles } from '@mui/styles';
 import Dot from './components/Dot';
 
 const structure = [
-  { id: 100, label: 'Profile', link: '/app/profile', icon: <ProfileIcon /> },
-  { id: 0, label: 'Dashboard', link: '/app/dashboard', icon: <HomeIcon /> },
+  { id: 100, label: 'Profile', link: '/admin/profile', icon: <ProfileIcon /> },
+  { id: 0, label: 'Dashboard', link: '/admin/dashboard', icon: <HomeIcon /> },
   {
     id: 1,
     label: 'E-commerce',
@@ -59,15 +59,15 @@ const structure = [
     children: [
       {
         label: 'User List',
-        link: '/app/user/list',
+        link: '/admin/users',
       },
       {
         label: 'User Add',
-        link: '/app/user/add',
+        link: '/admin/user/new',
       },
       {
         label: 'User Edit',
-        link: '/app/user/edit',
+        link: '/admin/user/edit',
       },
     ],
   },
@@ -76,6 +76,28 @@ const structure = [
     label: 'Documentation',
     link: '/documentation',
     icon: <DocumentationIcon />,
+  },
+  { id: 4, type: 'divider' },
+  { id: 5, type: 'title', label: 'TEMPLATE' },
+  {
+    id: 6,
+    label: 'Core',
+    link: '/admin/core',
+    icon: <CoreIcon />,
+    children: [
+      {
+        label: 'Typography',
+        link: '/admin/core/typography',
+      },
+      {
+        label: 'Colors',
+        link: '/admin/core/colors',
+      },
+      {
+        label: 'Grid',
+        link: '/admin/core/grid',
+      },
+    ],
   },
 ];
 

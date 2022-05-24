@@ -8,12 +8,14 @@ import useStyles from './styles';
 import Layout from './Layout';
 import Documentation from './Documentation/Documentation';
 
+
 // pages
 import Starter from '../pages/starter';
 import Error from '../pages/error';
 import Login from '../pages/login';
 import Verify from '../pages/verify';
 import Reset from '../pages/reset';
+import Profile from '../pages/profile';
 
 // context
 import { useUserState } from '../context/UserContext';
@@ -45,6 +47,7 @@ export default function App() {
                 path='/admin'
                 render={() => <Redirect to='/admin/dashboard' />}
               />
+
               <Route path='/documentation' component={Documentation} />
               <PrivateRoute path='/admin' component={Layout} />
               <PublicRoute path='/starter' component={Starter} />

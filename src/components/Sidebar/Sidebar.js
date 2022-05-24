@@ -92,75 +92,15 @@ function Sidebar({ location, structure }) {
         className={classes.sidebarList}
         classes={{ padding: classes.padding }}
       >
-        <SidebarLink
-          label='Dashboard'
-          link='/admin/dashboard'
-          location={location}
-          isSidebarOpened={isSidebarOpenedWrapper}
-          icon={<HomeIcon />}
-          toggleDrawer={toggleDrawer(true)}
-        />
-
-        <SidebarLink
-          label='Edit User'
-          link='/admin/user/edit'
-          location={location}
-          isSidebarOpened={isSidebarOpenedWrapper}
-          icon={<ProfileIcon />}
-          toggleDrawer={toggleDrawer(true)}
-        />
-
-        <SidebarLink
-          label='Users'
-          link='/admin/users'
-          location={location}
-          isSidebarOpened={isSidebarOpenedWrapper}
-          icon={<CoreIcon />}
-          toggleDrawer={toggleDrawer(true)}
-        />
-
-        <SidebarLink
-          label='Documentation'
-          link='/documentation'
-          location={location}
-          isSidebarOpened={isSidebarOpenedWrapper}
-          icon={<DocumentationIcon />}
-          toggleDrawer={toggleDrawer(true)}
-          children={[
-            {
-              label: 'Getting Started',
-              link: '/documentation/getting-started',
-              children: [
-                {
-                  label: 'Quick start',
-                  link: '/documentation/getting-started/quick-start',
-                },
-              ],
-            },
-            {
-              label: 'Components',
-              link: '/documentation/components',
-              children: [
-                {
-                  label: 'Typography',
-                  link: '/documentation/components/typography',
-                },
-                {
-                  label: 'Header',
-                  link: '/documentation/components/header',
-                },
-                {
-                  label: 'Sidebar',
-                  link: '/documentation/components/sidebar',
-                },
-                {
-                  label: 'Buttons',
-                  link: '/documentation/components/buttons',
-                },
-              ],
-            },
-          ]}
-        />
+        {structure.map(link => (
+          <SidebarLink
+            key={link.id}
+            location={location}
+            isSidebarOpened={!isPermanent ? !isSidebarOpened : isSidebarOpened}
+            {...link}
+            toggleDrawer={toggleDrawer(true)}
+          />
+        ))}
 
         <SidebarLink
           label='API docs'
