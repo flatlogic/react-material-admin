@@ -25,8 +25,8 @@ import { makeStyles } from '@mui/styles';
 import Dot from './components/Dot';
 
 const structure = [
-  { id: 100, label: 'Profile', link: '/admin/profile', icon: <ProfileIcon /> },
-  { id: 0, label: 'Dashboard', link: '/admin/dashboard', icon: <HomeIcon /> },
+  { id: 100, label: 'Profile', link: '/app/profile', icon: <ProfileIcon /> },
+  { id: 0, label: 'Dashboard', link: '/app/dashboard', icon: <HomeIcon /> },
   {
     id: 1,
     label: 'E-commerce',
@@ -59,15 +59,15 @@ const structure = [
     children: [
       {
         label: 'User List',
-        link: '/admin/users',
+        link: '/app/users',
       },
       {
         label: 'User Add',
-        link: '/admin/user/new',
+        link: '/app/user/new',
       },
       {
         label: 'User Edit',
-        link: '/admin/user/edit',
+        link: '/app/user/edit',
       },
     ],
   },
@@ -82,20 +82,35 @@ const structure = [
   {
     id: 6,
     label: 'Core',
-    link: '/admin/core',
+    link: '/app/core',
     icon: <CoreIcon />,
     children: [
       {
         label: 'Typography',
-        link: '/admin/core/typography',
+        link: '/app/core/typography',
       },
       {
         label: 'Colors',
-        link: '/admin/core/colors',
+        link: '/app/core/colors',
       },
       {
         label: 'Grid',
-        link: '/admin/core/grid',
+        link: '/app/core/grid',
+      },
+    ],
+  },
+  {
+    id: 7,
+    label: 'Tables',
+    link: '/app/tables',
+    icon: <TableIcon />,
+    children: [
+      {   label: 'Tables Basic',
+        link: '/app/tables/static'
+      },
+      {
+        label: 'Tables Dynamic',
+        link: '/app/tables/dynamic',
       },
     ],
   },

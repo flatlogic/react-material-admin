@@ -6,7 +6,7 @@ import {
   TableBody,
   TableCell,
   Box
-} from "@material-ui/core";
+} from "@mui/material";
 
 import { Button, Avatar } from "../../../../components/Wrappers";
 
@@ -17,7 +17,7 @@ const states = {
   declined: "secondary"
 };
 export default function TableComponent({ data }) {
-  var keys = Object.keys(data[0]).map(i => i.toUpperCase());
+  let keys = Object.keys(data[0]).map(i => i.toUpperCase());
   keys.shift();
   keys.pop(); // delete "id, colors" key
 

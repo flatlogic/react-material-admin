@@ -29,6 +29,11 @@ import Profile from '../../pages/profile'
 import TypographyPage from '../../pages/typography'
 import ColorsPage from '../../pages/colors'
 import GridPage from '../../pages/grid'
+
+import StaticTablesPage from '../../pages/tables'
+import DynamicTablesPage from '../../pages/tables/dynamic'
+
+
 import BreadCrumbs from '../../components/BreadCrumbs';
 
 // context
@@ -70,15 +75,20 @@ function Layout(props) {
         <div className={classes.fakeToolbar} />
         <BreadCrumbs />
         <Switch>
-          <Route path='/admin/dashboard' component={Dashboard} />
-          <Route path="/admin/profile" component={Profile} />
-          <Route path='/admin/user/edit' component={EditUser} />
+          <Route path='/app/dashboard' component={Dashboard} />
+          <Route path="/app/profile" component={Profile} />
+          <Route path='/app/user/edit' component={EditUser} />
           {/*TypographyPage*/}
-          <Route path="/admin/core/typography" component={TypographyPage} />
-          <Route path="/admin/core/colors" component={ColorsPage} />
-          <Route path="/admin/core/grid" component={GridPage} />
+          <Route path="/app/core/typography" component={TypographyPage} />
+          <Route path="/app/core/colors" component={ColorsPage} />
+          <Route path="/app/core/grid" component={GridPage} />
 
-          <Route path={'/admin/api-docs'} exact
+          <Route path="/app/tables/static" component={StaticTablesPage} />
+          <Route path="/app/tables/dynamic" component={DynamicTablesPage}
+          />
+          />
+
+          <Route path={'/app/api-docs'} exact
             component={(props) => (
               <Redirect
                 url={
@@ -91,10 +101,10 @@ function Layout(props) {
             )}
           />
 
-          <Route path={'/admin/users'} exact component={UsersTablePage} />
-          <Route path={'/admin/user/new'} exact component={AddUser} />
+          <Route path={'/app/users'} exact component={UsersTablePage} />
+          <Route path={'/app/user/new'} exact component={AddUser} />
           <Route
-            path={'/admin/users/:id/edit'}
+            path={'/app/users/:id/edit'}
             exact
             component={UsersFormPage}
           />

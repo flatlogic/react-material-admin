@@ -39,22 +39,22 @@ export default function App() {
               <Route
                 exact
                 path='/'
-                render={() => <Redirect to='/admin/dashboard' />}
+                render={() => <Redirect to='/app/dashboard' />}
               />
 
               <Route
                 exact
-                path='/admin'
-                render={() => <Redirect to='/admin/dashboard' />}
+                path='/app'
+                render={() => <Redirect to='/app/dashboard' />}
               />
 
               <Route path='/documentation' component={Documentation} />
-              <PrivateRoute path='/admin' component={Layout} />
+              <PrivateRoute path='/app' component={Layout} />
               <PublicRoute path='/starter' component={Starter} />
               <PublicRoute path='/login' component={Login} />
               <PublicRoute path='/verify-email' exact component={Verify} />
               <PublicRoute path='/password-reset' exact component={Reset} />
-              <Redirect from='*' to='/admin/dashboard' />
+              <Redirect from='*' to='/app/dashboard' />
               <Route component={Error} />
             </Switch>
           </Router>
