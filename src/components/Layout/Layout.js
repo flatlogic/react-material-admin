@@ -58,6 +58,12 @@ import DraggableGrid from '../../pages/draggablegrid'
 import MapsGoogle from '../../pages/maps'
 import VectorMaps from '../../pages/maps/VectorMap'
 
+import Timeline from '../../pages/timeline'
+import Search from '../../pages/search'
+import Gallery from '../../pages/gallery'
+import Invoice from '../../pages/invoice'
+import Calendar from '../../pages/calendar'
+
 import BreadCrumbs from '../../components/BreadCrumbs';
 
 // context
@@ -102,14 +108,17 @@ function Layout(props) {
           <Route path='/app/dashboard' component={Dashboard} />
           <Route path="/app/profile" component={Profile} />
           <Route path='/app/user/edit' component={EditUser} />
-          {/*TypographyPage*/}
+
+          <Route exact path="/app/core" render={() => <Redirect to="/app/core/typography" />} />
           <Route path="/app/core/typography" component={TypographyPage} />
           <Route path="/app/core/colors" component={ColorsPage} />
           <Route path="/app/core/grid" component={GridPage} />
 
+          <Route exact path="/app/tables" render={() => <Redirect to={'/app/tables/static'} />} />
           <Route path="/app/tables/static" component={StaticTablesPage} />
           <Route path="/app/tables/dynamic" component={DynamicTablesPage} />
 
+          <Route exact path="/app/ui" render={() => <Redirect to="/app/ui/icons" />} />
           <Route path="/app/ui/icons" component={IconsPage} />
           <Route path="/app/ui/badge" component={BadgesPage} />
           <Route path="/app/ui/carousel" component={CarouselsPage} />
@@ -122,9 +131,11 @@ function Layout(props) {
           <Route path="/app/ui/progress" component={ProgressPage} />
           {/*<Route path="/app/ui/notifications" component={NotificationsPage} />*/}
 
+          <Route exact path="/app/forms" render={() => <Redirect to="/app/forms/elements" />} />
           <Route path="/app/forms/elements" component={FormsElements} />
           <Route path="/app/forms/validation" component={FormValidation} />
 
+          <Route exact path="/app/charts" render={() => <Redirect to={'/app/charts/overview'} />} />
           <Route path="/app/charts/overview" component={Charts} />
           <Route path="/app/charts/line" component={LineCharts} />
           <Route path="/app/charts/bar" component={BarCharts} />
@@ -135,6 +146,13 @@ function Layout(props) {
           <Route exact path="/app/maps" render={() => <Redirect to="/app/maps/google" />} />
           <Route path="/app/maps/google" component={MapsGoogle} />
           <Route path="/app/maps/vector" component={VectorMaps} />
+
+          <Route exact path="/app/extra" render={() => <Redirect to="/app/extra/timeline" />}/>
+          <Route path="/app/extra/timeline" component={Timeline} />
+          <Route path="/app/extra/search" component={Search} />
+          <Route path="/app/extra/gallery" component={Gallery} />
+          <Route path="/app/extra/invoice" component={Invoice} />
+          <Route path="/app/extra/calendar" component={Calendar} />
 
           />
 
@@ -150,11 +168,7 @@ function Layout(props) {
               />
             )}
           />
-          <Route
-            exact
-            path="/app/ui"
-            render={() => <Redirect to="/app/ui/icons" />}
-          />
+
           <Route path={'/app/users'} exact component={UsersTablePage} />
           <Route path={'/app/user/new'} exact component={AddUser} />
           <Route
