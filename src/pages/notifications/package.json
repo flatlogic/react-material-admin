@@ -1,0 +1,6 @@
+{
+  "name": "Notifications",
+  "version": "0.0.0",
+  "main": "Notifications.js",
+  "private": true
+}

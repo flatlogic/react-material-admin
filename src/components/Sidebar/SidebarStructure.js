@@ -114,6 +114,39 @@ const structure = [
       },
     ],
   },
+  {
+    id: 8,
+    label: 'UI Elements',
+    link: '/app/ui',
+    icon: <UIElementsIcon />,
+    children: [
+      { label: 'Icons', link: '/app/ui/icons' },
+      { label: 'Badge', link: '/app/ui/badge' },
+      { label: 'Carousel', link: '/app/ui/carousel' },
+      { label: 'Cards', link: '/app/ui/cards' },
+      { label: 'Modal', link: '/app/ui/modal' },
+      {
+        label: 'Notifications',
+        link: '/app/ui/notifications',
+      },
+      { label: 'Navbar', link: '/app/ui/navbar' },
+      { label: 'Tooltips', link: '/app/ui/tooltips' },
+      { label: 'Tabs', link: '/app/ui/tabs' },
+      { label: 'Pagination', link: '/app/tables/dynamic' },
+      { label: 'Progress', link: '/app/ui/progress' },
+      { label: 'Widget', link: '/app/ui/widget' },
+    ],
+  },
+  {
+    id: 9,
+    label: 'Forms',
+    link: '/app/forms',
+    icon: <DescriptionIcon />,
+    children: [
+      { label: 'Form Elements', link: '/app/forms/elements' },
+      { label: 'Form Validation', link: '/app/forms/validation' },
+    ],
+  },
 ];
 
 export default structure;

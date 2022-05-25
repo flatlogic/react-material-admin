@@ -33,6 +33,17 @@ import GridPage from '../../pages/grid'
 import StaticTablesPage from '../../pages/tables'
 import DynamicTablesPage from '../../pages/tables/dynamic'
 
+import IconsPage from '../../pages/icons'
+import BadgesPage from '../../pages/badge'
+import CarouselsPage from '../../pages/carousel'
+import CardsPage from '../../pages/cards'
+import ModalsPage from '../../pages/modal'
+// import NotificationsPage from '../../pages/notifications'
+import NavbarsPage from '../../pages/nav'
+import TooltipsPage from '../../pages/tooltips'
+import TabsPage from '../../pages/tabs'
+import ProgressPage from '../../pages/progress'
+import WidgetsPage from '../../pages/widget'
 
 import BreadCrumbs from '../../components/BreadCrumbs';
 
@@ -84,8 +95,19 @@ function Layout(props) {
           <Route path="/app/core/grid" component={GridPage} />
 
           <Route path="/app/tables/static" component={StaticTablesPage} />
-          <Route path="/app/tables/dynamic" component={DynamicTablesPage}
-          />
+          <Route path="/app/tables/dynamic" component={DynamicTablesPage} />
+
+          <Route path="/app/ui/icons" component={IconsPage} />
+          <Route path="/app/ui/badge" component={BadgesPage} />
+          <Route path="/app/ui/carousel" component={CarouselsPage} />
+          <Route path="/app/ui/modal" component={ModalsPage} />
+          <Route path="/app/ui/navbar" component={NavbarsPage} />
+          <Route path="/app/ui/tooltips" component={TooltipsPage} />
+          <Route path="/app/ui/tabs" component={TabsPage} />
+          <Route path="/app/ui/cards" component={CardsPage} />
+          <Route path="/app/ui/widget" component={WidgetsPage} />
+          <Route path="/app/ui/progress" component={ProgressPage} />
+          {/*<Route path="/app/ui/notifications" component={NotificationsPage} />*/}
           />
 
           <Route path={'/app/api-docs'} exact
@@ -100,7 +122,11 @@ function Layout(props) {
               />
             )}
           />
-
+          <Route
+            exact
+            path="/app/ui"
+            render={() => <Redirect to="/app/ui/icons" />}
+          />
           <Route path={'/app/users'} exact component={UsersTablePage} />
           <Route path={'/app/user/new'} exact component={AddUser} />
           <Route
