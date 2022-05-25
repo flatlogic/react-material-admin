@@ -48,6 +48,11 @@ import WidgetsPage from '../../pages/widget'
 import FormsElements from '../../pages/forms/elements'
 import FormValidation from '../../pages/forms/validation'
 
+import Charts from '../../pages/charts'
+import LineCharts from '../../pages/charts/LineCharts'
+import BarCharts from '../../pages/charts/BarCharts'
+import PieCharts from '../../pages/charts/PieCharts'
+
 import BreadCrumbs from '../../components/BreadCrumbs';
 
 // context
@@ -114,6 +119,11 @@ function Layout(props) {
 
           <Route path="/app/forms/elements" component={FormsElements} />
           <Route path="/app/forms/validation" component={FormValidation} />
+
+          <Route path="/app/charts/overview" component={Charts} />
+          <Route path="/app/charts/line" component={LineCharts} />
+          <Route path="/app/charts/bar" component={BarCharts} />
+          <Route path="/app/charts/pie" component={PieCharts} />
 
           />
 
