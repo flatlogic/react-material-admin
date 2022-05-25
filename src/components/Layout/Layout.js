@@ -53,6 +53,8 @@ import LineCharts from '../../pages/charts/LineCharts'
 import BarCharts from '../../pages/charts/BarCharts'
 import PieCharts from '../../pages/charts/PieCharts'
 
+import DraggableGrid from '../../pages/draggablegrid'
+
 import BreadCrumbs from '../../components/BreadCrumbs';
 
 // context
@@ -124,6 +126,8 @@ function Layout(props) {
           <Route path="/app/charts/line" component={LineCharts} />
           <Route path="/app/charts/bar" component={BarCharts} />
           <Route path="/app/charts/pie" component={PieCharts} />
+
+          <Route path="/app/grid" component={DraggableGrid} />
 
           />
 

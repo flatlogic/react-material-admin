@@ -17,8 +17,9 @@ import {
   FolderOpen as FolderIcon,
   Description as DocumentationIcon,
   Person as PersonIcon,
-  AccountCircle as ProfileIcon,
+  AccountCircle as ProfileIcon
 } from '@mui/icons-material';
+import ViewCompactRoundedIcon from '@mui/icons-material/ViewCompactRounded';
 import { makeStyles } from '@mui/styles';
 
 // components
@@ -158,6 +159,12 @@ const structure = [
       { label: 'Bar Charts', link: '/app/charts/bar' },
       { label: 'Pie Charts', link: '/app/charts/pie' },
     ],
+  },
+  {
+    id: 200,
+    label: 'Grid',
+    link: '/app/grid',
+    icon: <ViewCompactRoundedIcon />,
   },
 ];
 
