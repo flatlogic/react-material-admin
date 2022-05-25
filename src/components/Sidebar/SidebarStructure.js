@@ -147,6 +147,18 @@ const structure = [
       { label: 'Form Validation', link: '/app/forms/validation' },
     ],
   },
+  {
+    id: 10,
+    label: 'Charts',
+    link: '/app/charts',
+    icon: <ChartIcon />,
+    children: [
+      { label: 'Charts Overview', link: '/app/charts/overview' },
+      { label: 'Line Charts', link: '/app/charts/line' },
+      { label: 'Bar Charts', link: '/app/charts/bar' },
+      { label: 'Pie Charts', link: '/app/charts/pie' },
+    ],
+  },
 ];
 
 export default structure;

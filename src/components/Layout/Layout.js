@@ -45,6 +45,9 @@ import TabsPage from '../../pages/tabs'
 import ProgressPage from '../../pages/progress'
 import WidgetsPage from '../../pages/widget'
 
+import FormsElements from '../../pages/forms/elements'
+import FormValidation from '../../pages/forms/validation'
+
 import BreadCrumbs from '../../components/BreadCrumbs';
 
 // context
@@ -108,6 +111,10 @@ function Layout(props) {
           <Route path="/app/ui/widget" component={WidgetsPage} />
           <Route path="/app/ui/progress" component={ProgressPage} />
           {/*<Route path="/app/ui/notifications" component={NotificationsPage} />*/}
+
+          <Route path="/app/forms/elements" component={FormsElements} />
+          <Route path="/app/forms/validation" component={FormValidation} />
+
           />
 
           <Route path={'/app/api-docs'} exact
