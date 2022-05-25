@@ -12,13 +12,13 @@ import {
   Description as DescriptionIcon,
   ShoppingCart as ShoppingCartIcon,
   StarBorder as ExtraIcon,
-  Chat as ChatIcon,
-  Add as AddSectionIcon,
+  AddCircle as AddSectionIcon,
   FolderOpen as FolderIcon,
   Description as DocumentationIcon,
   Person as PersonIcon,
   AccountCircle as ProfileIcon
 } from '@mui/icons-material';
+import ChatIcon from '@mui/icons-material/Chat';
 import ViewCompactRoundedIcon from '@mui/icons-material/ViewCompactRounded';
 import { makeStyles } from '@mui/styles';
 
@@ -165,6 +165,122 @@ const structure = [
     label: 'Grid',
     link: '/app/grid',
     icon: <ViewCompactRoundedIcon />,
+  },
+  {
+    id: 11,
+    label: 'Maps',
+    link: '/app/maps',
+    icon: <MapIcon />,
+    children: [
+      { label: 'Google Maps', link: '/app/maps/google' },
+      { label: 'Vector Map', link: '/app/maps/vector' },
+    ],
+  },
+  {
+    id: 12,
+    label: 'Extra',
+    link: '/app/extra',
+    icon: <ExtraIcon />,
+    children: [
+      { label: 'Calendar', link: '/app/extra/calendar' },
+      { label: 'Invoice', link: '/app/extra/invoice' },
+      {
+        label: 'Login Page',
+        click: function(...rest) {
+          const name = 'onLogin'
+          rest.forEach(c => {
+            if (c.clickName === name) {
+              return c()
+            }
+            return false
+          })
+        },
+      },
+      { label: 'Error Page', link: '/404' },
+      { label: 'Gallery', link: '/app/extra/gallery' },
+      { label: 'Search Result', link: '/app/extra/search' },
+      { label: 'Time Line', link: '/app/extra/timeline' },
+    ],
+  },
+  {
+    id: 13,
+    label: 'Menu Levels',
+    icon: <FolderIcon />,
+    children: [
+      { label: 'Level 1.1' },
+      {
+        label: 'Level 1.2',
+        type: 'nested',
+        children: [
+          { label: 'Level 2.1' },
+          {
+            label: 'Level 2.2',
+            children: [
+              {
+                label: 'Level 3.1',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  { id: 14, type: 'divider' },
+  { id: 15, type: 'title', label: 'HELP' },
+  { id: 16, label: 'Library', link: 'https://flatlogic.com/templates', icon: <LibraryIcon /> },
+  { id: 17, label: 'Support', link: 'https://flatlogic.com/forum/', icon: <SupportIcon /> },
+  { id: 18, label: 'FAQ', link: 'https://flatlogic.com/forum/', icon: <FAQIcon /> },
+  { id: 19, type: 'divider' },
+  { id: 20, type: 'title', label: 'PROJECTS' },
+  {
+    id: 21,
+    label: 'My recent',
+    link: '',
+    icon: <Dot size="medium" color="secondary" />,
+  },
+  {
+    id: 22,
+    label: 'Starred',
+    link: '',
+    icon: <Dot size="medium" color="primary" />,
+  },
+  {
+    id: 23,
+    label: 'Background',
+    link: '',
+    icon: <Dot size="medium" color="secondary" />,
+  },
+  { id: 24, type: 'divider' },
+  {
+    id: 25,
+    label: 'Add section',
+    icon: <AddSectionIcon />,
+    click: function(event, ...rest) {
+      const name = 'addSectionClick'
+      rest.forEach(c => {
+        if (c.clickName === name) {
+          return c(event)
+        }
+        return false
+      })
+    },
+  },
+  { id: 26, type: 'divider' },
+  { id: 27, type: 'margin' },
+  { id: 28, type: 'divider' },
+  {
+    id: 29,
+    label: 'Chat',
+    icon: <ChatIcon />,
+    click: function(event, ...rest) {
+      const name = 'chatSetOpen'
+      rest.forEach(c => {
+        if (c.clickName === name) {
+          return c(event)
+        }
+        return false
+      })
+    },
   },
 ];
 

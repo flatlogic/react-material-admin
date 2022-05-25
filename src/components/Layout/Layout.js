@@ -55,6 +55,9 @@ import PieCharts from '../../pages/charts/PieCharts'
 
 import DraggableGrid from '../../pages/draggablegrid'
 
+import MapsGoogle from '../../pages/maps'
+import VectorMaps from '../../pages/maps/VectorMap'
+
 import BreadCrumbs from '../../components/BreadCrumbs';
 
 // context
@@ -128,6 +131,10 @@ function Layout(props) {
           <Route path="/app/charts/pie" component={PieCharts} />
 
           <Route path="/app/grid" component={DraggableGrid} />
+
+          <Route exact path="/app/maps" render={() => <Redirect to="/app/maps/google" />} />
+          <Route path="/app/maps/google" component={MapsGoogle} />
+          <Route path="/app/maps/vector" component={VectorMaps} />
 
           />
 
