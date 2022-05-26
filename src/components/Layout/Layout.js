@@ -38,7 +38,7 @@ import BadgesPage from '../../pages/badge'
 import CarouselsPage from '../../pages/carousel'
 import CardsPage from '../../pages/cards'
 import ModalsPage from '../../pages/modal'
-// import NotificationsPage from '../../pages/notifications'
+import NotificationsPage from '../../pages/notifications'
 import NavbarsPage from '../../pages/nav'
 import TooltipsPage from '../../pages/tooltips'
 import TabsPage from '../../pages/tabs'
@@ -129,7 +129,7 @@ function Layout(props) {
           <Route path="/app/ui/cards" component={CardsPage} />
           <Route path="/app/ui/widget" component={WidgetsPage} />
           <Route path="/app/ui/progress" component={ProgressPage} />
-          {/*<Route path="/app/ui/notifications" component={NotificationsPage} />*/}
+          <Route path="/app/ui/notifications" component={NotificationsPage} />
 
           <Route exact path="/app/forms" render={() => <Redirect to="/app/forms/elements" />} />
           <Route path="/app/forms/elements" component={FormsElements} />
