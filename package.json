@@ -13,6 +13,11 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@fullcalendar/daygrid": "^5.11.0",
+    "@fullcalendar/interaction": "^5.11.0",
+    "@fullcalendar/list": "^5.11.0",
+    "@fullcalendar/react": "^5.11.1",
+    "@fullcalendar/timegrid": "^5.11.0",
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.1",
     "@mui/styled-engine-sc": "^5.4.2",
