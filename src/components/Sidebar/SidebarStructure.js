@@ -20,7 +20,6 @@ import {
 } from '@mui/icons-material';
 import ChatIcon from '@mui/icons-material/Chat';
 import ViewCompactRoundedIcon from '@mui/icons-material/ViewCompactRounded';
-import { makeStyles } from '@mui/styles';
 
 // components
 import Dot from './components/Dot';

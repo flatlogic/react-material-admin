@@ -294,14 +294,14 @@ const EnhancedTableToolbar = props => {
             <Typography
                 className={classes.title}
                 color="inherit"
-                variant="subtitle1"
+                letiant="subtitle1"
             >
               {numSelected} selected
             </Typography>
         ) : (
             <Box display={"flex"} className={classes.title}>
               <Typography
-                  variant="h6"
+                  letiant="h6"
                   color="text"
                   colorBrightness={"secondary"}
                   id="tableTitle"
@@ -313,7 +313,7 @@ const EnhancedTableToolbar = props => {
                   <Typography
                       color="text"
                       colorBrightness={"hint"}
-                      variant={"caption"}
+                      letiant={"caption"}
                   >
                     1.340 total
                   </Typography>
@@ -343,35 +343,12 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired
 };
 
-// const actionsMenuReducer = (state, action) => {
-//   switch (action.type) {
-//     case 'menu-1-op':
-//       return {menu1: true};
-//     case 'menu-1-cl':
-//       return {menu1: false};
-//     case 'menu-2-op':
-//       return {menu2: true};
-//     case 'menu-2-cl':
-//       return {menu2: false};
-//     case 'menu-3-op':
-//       return {menu3: true};
-//     case 'menu-3-cl':
-//       return {menu3: false};
-//     case 'menu-4-op':
-//       return {menu4: true};
-//     case 'menu-5':
-//       return {count: state.count - 1};
-//     default:
-//       throw new Error();
-//   }
-// }
-
 function Dashboard() {
-  var classes = useStyles();
-  var theme = useTheme();
+  let classes = useStyles();
+  let theme = useTheme();
 
   // local
-  var [mainChartState, setMainChartState] = useState("monthly");
+  let [mainChartState, setMainChartState] = useState("monthly");
 
   // Recent Orders table
 
@@ -436,10 +413,10 @@ function Dashboard() {
   const randomData = React.useMemo(() => getRandomData(10), []);
 
   const mainChartData = React.useMemo(() => {
-    var resultArray = [];
-    var tablet = getRandomData(31, 3500, 6500, 7500, 1000);
-    var desktop = getRandomData(31, 1500, 7500, 7500, 1500);
-    var mobile = getRandomData(31, 1500, 7500, 7500, 1500);
+    let resultArray = [];
+    let tablet = getRandomData(31, 3500, 6500, 7500, 1000);
+    let desktop = getRandomData(31, 1500, 7500, 7500, 1500);
+    let mobile = getRandomData(31, 1500, 7500, 7500, 1500);
 
     for (let i = 0; i < tablet.length; i++) {
       resultArray.push({
@@ -453,611 +430,611 @@ function Dashboard() {
   }, [mainChartState]); // eslint-disable-line
 
   return (
-      <Grid container spacing={3}>
-        <Grid item lg={3} sm={6} xs={12}>
-          <Widget
-              title="Support Tracker"
-              bodyClass={classes.fullHeightBody}
-              className={classes.card}
-          >
-            <Grid container spacing={3} alignItems="center">
-              <Grid item xs={6}>
-                <Box display="flex">
-                  <Typography variant="h2" weight="medium">
-                    543
-                  </Typography>
-
-                  <Typography
-                      color="text"
-                      variant={"caption"}
-                      noWrap
-                      style={{ alignSelf: "flex-end", marginLeft: 8 }}
-                  >
-                    Tickets
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid
-                  item
-                  xs={6}
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    display: "flex"
-                  }}
-              >
-                <Typography
-                    variant="caption"
-                    weight={"medium"}
-                    style={{ position: "absolute" }}
-                >
-                  64%
+    <Grid container spacing={3}>
+      <Grid item lg={3} sm={6} xs={12}>
+        <Widget
+            title="Support Tracker"
+            bodyClass={classes.fullHeightBody}
+            className={classes.card}
+        >
+          <Grid container spacing={3} alignItems="center">
+            <Grid item xs={6}>
+              <Box display="flex">
+                <Typography letiant="h2" weight="medium">
+                  543
                 </Typography>
-                <ResponsiveContainer width="100%" height={80}>
-                  <PieChart>
-                    <Pie
-                        data={TicketChartData}
-                        startAngle={270}
-                        endAngle={0}
-                        paddingAngle={5}
-                        innerRadius={30}
-                        outerRadius={35}
-                        dataKey="value"
-                        style={{ border: 0 }}
-                    >
-                      {TicketChartData.map((entry, index) => (
-                          <Cell
-                              key={`cell-${index}`}
-                              fill={theme.palette[entry.color].main}
-                              stroke={""}
-                          />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
-              </Grid>
+
+                <Typography
+                    color="text"
+                    letiant={"caption"}
+                    noWrap
+                    style={{ alignSelf: "flex-end", marginLeft: 8 }}
+                >
+                  Tickets
+                </Typography>
+              </Box>
             </Grid>
             <Grid
-                container
-                direction="row"
-                justify="space-between"
-                alignItems="center"
-                wrap={"nowrap"}
+                item
+                xs={6}
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  display: "flex"
+                }}
             >
-              <Grid item>
-                <Typography
-                    color="text"
-                    colorBrightness={"hint"}
-                    variant={"caption"}
-                    style={{ marginRight: 5 }}
-                    noWrap
-                >
-                  New Tickets
-                </Typography>
-                <Box display="flex" alignItems="center" justifyContent={"center"}>
-                  <Typography
-                      size="md"
-                      weight={"medium"}
-                      style={{ marginRight: 8 }}
-                  >
-                    45
-                  </Typography>
-                  <Dot color="success" />
-                </Box>
-              </Grid>
-              <Grid item>
-                <Typography
-                    color="text"
-                    colorBrightness={"hint"}
-                    variant={"caption"}
-                    style={{ marginRight: 5 }}
-                >
-                  Open
-                </Typography>
-                <Box display="flex" alignItems="center" justifyContent={"center"}>
-                  <Typography
-                      size="md"
-                      weight={"medium"}
-                      style={{ marginRight: 8 }}
-                  >
-                    147
-                  </Typography>
-                  <Dot color="warning" />
-                </Box>
-              </Grid>
-              <Grid item>
-                <Typography
-                    color="text"
-                    colorBrightness={"hint"}
-                    variant={"caption"}
-                >
-                  Completed
-                </Typography>
-                <Box display="flex" alignItems="center" justifyContent={"center"}>
-                  <Typography
-                      size="md"
-                      weight={"medium"}
-                      style={{ marginRight: 8 }}
-                  >
-                    351
-                  </Typography>
-                  <Dot color="primary" />
-                </Box>
-              </Grid>
-            </Grid>
-          </Widget>
-        </Grid>
-        <Grid item lg={3} sm={6} xs={12}>
-          <Widget
-              title="Revenue Breakdown"
-              className={classes.card}
-              bodyClass={classes.alignStandaloneElement}
-          >
-            <Grid container spacing={3}>
-              <Grid
-                  item
-                  xs={6}
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    padding: 6
-                  }}
+              <Typography
+                  letiant="caption"
+                  weight={"medium"}
+                  style={{ position: "absolute" }}
               >
-                <Typography
-                    variant={"caption"}
-                    weight={"medium"}
-                    style={{ position: "absolute" }}
-                >
-                  1700
-                </Typography>
-                <ResponsiveContainer width="100%" height={144}>
-                  <PieChart>
-                    <Pie
-                        data={PieChartData}
-                        innerRadius={30}
-                        outerRadius={40}
-                        dataKey="value"
-                    >
-                      {PieChartData.map((entry, index) => (
-                          <Cell
-                              key={`cell-${index}`}
-                              fill={theme.palette[entry.color].main}
-                              stroke={""}
-                          />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
-              </Grid>
-              <Grid item xs={6}>
-                <div className={classes.pieChartLegendWrapper}>
-                  {PieChartData.map(({ name, value, color }, index) => (
-                      <div key={color} className={classes.legendItemContainer}>
-                        <Dot color={color} style={{ marginRight: 5 }} />
-                        <Typography
-                            color="text"
-                            colorBrightness={"hint"}
-                            variant={"caption"}
-                            noWrap
-                        >
-                          &nbsp;{name}&nbsp;
-                        </Typography>
-                        <Typography color="text" weight={"medium"}>
-                          &nbsp;{value}
-                        </Typography>
-                      </div>
-                  ))}
-                </div>
-              </Grid>
+                64%
+              </Typography>
+              <ResponsiveContainer width="100%" height={80}>
+                <PieChart>
+                  <Pie
+                      data={TicketChartData}
+                      startAngle={270}
+                      endAngle={0}
+                      paddingAngle={5}
+                      innerRadius={30}
+                      outerRadius={35}
+                      dataKey="value"
+                      style={{ border: 0 }}
+                  >
+                    {TicketChartData.map((entry, index) => (
+                        <Cell
+                            key={`cell-${index}`}
+                            fill={theme.palette[entry.color].main}
+                            stroke={""}
+                        />
+                    ))}
+                  </Pie>
+                </PieChart>
+              </ResponsiveContainer>
             </Grid>
-          </Widget>
-        </Grid>
-        <Grid item lg={3} sm={6} xs={12}>
-          <Widget
-              title="App Performance"
-              className={classes.card}
-              bodyClass={classes.fullHeightBody}
+          </Grid>
+          <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+              wrap={"nowrap"}
           >
-            <div className={classes.performanceLegendWrapper}>
-              <div className={classes.legendElement}>
-                <Dot color="warning" />
-                <Typography
-                    color="text"
-                    colorBrightness="hint"
-                    variant={"body2"}
-                    className={classes.legendElementText}
-                >
-                  Integration
-                </Typography>
-              </div>
-              <div className={classes.legendElement}>
-                <Dot color="primary" />
-                <Typography
-                    color="text"
-                    colorBrightness="hint"
-                    variant={"body2"}
-                    className={classes.legendElementText}
-                >
-                  SDK
-                </Typography>
-              </div>
-            </div>
-            <div className={classes.progressSection}>
+            <Grid item>
               <Typography
                   color="text"
-                  variant={"body2"}
-                  className={classes.progressSectionTitle}
+                  colorBrightness={"hint"}
+                  letiant={"caption"}
+                  style={{ marginRight: 5 }}
+                  noWrap
+              >
+                New Tickets
+              </Typography>
+              <Box display="flex" alignItems="center" justifyContent={"center"}>
+                <Typography
+                    size="md"
+                    weight={"medium"}
+                    style={{ marginRight: 8 }}
+                >
+                  45
+                </Typography>
+                <Dot color="success" />
+              </Box>
+            </Grid>
+            <Grid item>
+              <Typography
+                  color="text"
+                  colorBrightness={"hint"}
+                  letiant={"caption"}
+                  style={{ marginRight: 5 }}
+              >
+                Open
+              </Typography>
+              <Box display="flex" alignItems="center" justifyContent={"center"}>
+                <Typography
+                    size="md"
+                    weight={"medium"}
+                    style={{ marginRight: 8 }}
+                >
+                  147
+                </Typography>
+                <Dot color="warning" />
+              </Box>
+            </Grid>
+            <Grid item>
+              <Typography
+                  color="text"
+                  colorBrightness={"hint"}
+                  letiant={"caption"}
+              >
+                Completed
+              </Typography>
+              <Box display="flex" alignItems="center" justifyContent={"center"}>
+                <Typography
+                    size="md"
+                    weight={"medium"}
+                    style={{ marginRight: 8 }}
+                >
+                  351
+                </Typography>
+                <Dot color="primary" />
+              </Box>
+            </Grid>
+          </Grid>
+        </Widget>
+      </Grid>
+      <Grid item lg={3} sm={6} xs={12}>
+        <Widget
+            title="Revenue Breakdown"
+            className={classes.card}
+            bodyClass={classes.alignStandaloneElement}
+        >
+          <Grid container spacing={3}>
+            <Grid
+                item
+                xs={6}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: 6
+                }}
+            >
+              <Typography
+                  letiant={"caption"}
+                  weight={"medium"}
+                  style={{ position: "absolute" }}
+              >
+                1700
+              </Typography>
+              <ResponsiveContainer width="100%" height={144}>
+                <PieChart>
+                  <Pie
+                      data={PieChartData}
+                      innerRadius={30}
+                      outerRadius={40}
+                      dataKey="value"
+                  >
+                    {PieChartData.map((entry, index) => (
+                        <Cell
+                            key={`cell-${index}`}
+                            fill={theme.palette[entry.color].main}
+                            stroke={""}
+                        />
+                    ))}
+                  </Pie>
+                </PieChart>
+              </ResponsiveContainer>
+            </Grid>
+            <Grid item xs={6}>
+              <div className={classes.pieChartLegendWrapper}>
+                {PieChartData.map(({ name, value, color }, index) => (
+                    <div key={color} className={classes.legendItemContainer}>
+                      <Dot color={color} style={{ marginRight: 5 }} />
+                      <Typography
+                          color="text"
+                          colorBrightness={"hint"}
+                          letiant={"caption"}
+                          noWrap
+                      >
+                        &nbsp;{name}&nbsp;
+                      </Typography>
+                      <Typography color="text" weight={"medium"}>
+                        &nbsp;{value}
+                      </Typography>
+                    </div>
+                ))}
+              </div>
+            </Grid>
+          </Grid>
+        </Widget>
+      </Grid>
+      <Grid item lg={3} sm={6} xs={12}>
+        <Widget
+            title="App Performance"
+            className={classes.card}
+            bodyClass={classes.fullHeightBody}
+        >
+          <div className={classes.performanceLegendWrapper}>
+            <div className={classes.legendElement}>
+              <Dot color="warning" />
+              <Typography
+                  color="text"
+                  colorBrightness="hint"
+                  letiant={"body2"}
+                  className={classes.legendElementText}
               >
                 Integration
               </Typography>
-              <LinearProgress
-                  variant="determinate"
-                  value={77}
-                  classes={{ barColorPrimary: classes.progressBarPrimary }}
-                  className={classes.progress}
-              />
             </div>
-            <div>
+            <div className={classes.legendElement}>
+              <Dot color="primary" />
               <Typography
                   color="text"
-                  variant={"body2"}
-                  className={classes.progressSectionTitle}
+                  colorBrightness="hint"
+                  letiant={"body2"}
+                  className={classes.legendElementText}
               >
                 SDK
               </Typography>
-              <LinearProgress
-                  variant="determinate"
-                  value={73}
-                  classes={{ barColorPrimary: classes.progressBarWarning }}
-                  className={classes.progress}
-              />
             </div>
-          </Widget>
-        </Grid>
-        <Grid item lg={3} sm={6} xs={12}>
-          <Widget
-              title="Server Overview"
-              className={classes.card}
-              bodyClass={classes.fullHeightBody}
-          >
-            <div className={classes.serverOverviewElement}>
-              <Typography
-                  color="text"
-                  noWrap
-                  variant={"body2"}
-                  weight={"medium"}
-                  className={classes.serverOverviewElementText}
-              >
-                60% / 37°С / 3.3 Ghz
-              </Typography>
-              <div className={classes.serverOverviewElementChartWrapper}>
-                <ResponsiveContainer height={50} width="99%">
-                  <AreaChart data={randomData}>
-                    <Area
-                        type="natural"
-                        dataKey="value"
-                        stroke={theme.palette.secondary.main}
-                        fill={theme.palette.secondary.light}
-                        strokeWidth={2}
-                        fillOpacity="0.25"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-            <div className={classes.serverOverviewElement}>
-              <Typography
-                  color="text"
-                  noWrap
-                  weight={"medium"}
-                  variant={"body2"}
-                  className={classes.serverOverviewElementText}
-              >
-                54% / 31°С / 3.3 Ghz
-              </Typography>
-              <div className={classes.serverOverviewElementChartWrapper}>
-                <ResponsiveContainer height={50} width="99%">
-                  <AreaChart data={randomData}>
-                    <Area
-                        type="natural"
-                        dataKey="value"
-                        stroke={theme.palette.primary.main}
-                        fill={theme.palette.primary.light}
-                        strokeWidth={2}
-                        fillOpacity="0.25"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-            <div className={classes.serverOverviewElement}>
-              <Typography
-                  color="text"
-                  noWrap
-                  weight={"medium"}
-                  variant={"body2"}
-                  className={classes.serverOverviewElementText}
-              >
-                57% / 21°С / 3.3 Ghz
-              </Typography>
-              <div className={classes.serverOverviewElementChartWrapper}>
-                <ResponsiveContainer height={50} width="99%">
-                  <AreaChart data={randomData}>
-                    <Area
-                        type="natural"
-                        dataKey="value"
-                        stroke={theme.palette.warning.main}
-                        fill={theme.palette.warning.light}
-                        strokeWidth={2}
-                        fillOpacity="0.25"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-          </Widget>
-        </Grid>
-        <Grid item xs={12}>
-          <Widget
-              bodyClass={classes.mainChartBody}
-              header={
-                <div className={classes.mainChartHeader}>
-                  <Typography
-                      variant="h6"
-                      color="text"
-                      weight={"medium"}
-                      colorBrightness="secondary"
-                  >
-                    Daily Line Chart
-                  </Typography>
-                  <div className={classes.mainChartHeaderLabels}>
-                    <div className={classes.mainChartHeaderLabel}>
-                      <Dot color="warning" />
-                      <Typography className={classes.mainChartLegentElement}>
-                        Tablet
-                      </Typography>
-                    </div>
-                    <div className={classes.mainChartHeaderLabel}>
-                      <Dot color="primary" />
-                      <Typography className={classes.mainChartLegentElement}>
-                        Mobile
-                      </Typography>
-                    </div>
-                    <div className={classes.mainChartHeaderLabel}>
-                      <Dot color="secondary" />
-                      <Typography className={classes.mainChartLegentElement}>
-                        Desktop
-                      </Typography>
-                    </div>
-                  </div>
-                  <Select
-                      value={mainChartState}
-                      onChange={e => setMainChartState(e.target.value)}
-                      input={
-                        <OutlinedInput
-                            labelWidth={0}
-                            classes={{
-                              notchedOutline: classes.mainChartSelectRoot,
-                              input: classes.mainChartSelect
-                            }}
-                        />
-                      }
-                      autoWidth
-                      className={classes.fixIconRight}
-                  >
-                    <MenuItem value="daily">Daily</MenuItem>
-                    <MenuItem value="weekly">Weekly</MenuItem>
-                    <MenuItem value="monthly">Monthly</MenuItem>
-                  </Select>
-                </div>
-              }
-          >
-            <ResponsiveContainer width="100%" minWidth={500} height={350}>
-              <ComposedChart
-                  margin={{ top: 0, right: -15, left: -15, bottom: 0 }}
-                  data={mainChartData}
-              >
-                <YAxis
-                    ticks={[0, 2500, 5000, 7500]}
-                    tick={{
-                      fill: theme.palette.text.hint + "80",
-                      fontSize: 14
-                    }}
-                    stroke={theme.palette.text.hint + "80"}
-                    tickLine={false}
-                />
-                <XAxis
-                    tickFormatter={i => i + 1}
-                    tick={{
-                      fill: theme.palette.text.hint + "80",
-                      fontSize: 14
-                    }}
-                    stroke={theme.palette.text.hint + "80"}
-                    tickLine={false}
-                />
-                <Tooltip />
-                <Area
-                    type="natural"
-                    dataKey="desktop"
-                    fill={theme.palette.background.light}
-                    strokeWidth={0}
-                    activeDot={false}
-                />
-                <Line
-                    type="natural"
-                    dataKey="mobile"
-                    stroke={theme.palette.primary.main}
-                    strokeWidth={2}
-                    dot={false}
-                    activeDot={false}
-                />
-                <Line
-                    type="linear"
-                    dataKey="tablet"
-                    stroke={theme.palette.warning.main}
-                    strokeWidth={2}
-                    dot={{
-                      stroke: theme.palette.warning.dark,
-                      strokeWidth: 2,
-                      fill: theme.palette.warning.main
-                    }}
-                    activeDot={{
-                      r: 8
-                    }}
-                />
-              </ComposedChart>
-            </ResponsiveContainer>
-          </Widget>
-        </Grid>
-        {mock.bigStat.map(stat => (
-            <Grid item md={4} sm={6} xs={12} key={stat.product}>
-              <BigStat {...stat} />
-            </Grid>
-        ))}
-        <Grid item xs={12}>
-          <Widget noBodyPadding bodyClass={classes.tableWidget}>
-            <EnhancedTableToolbar numSelected={selected.length} />
-            <div className={classes.tableWrapper}>
-              <Table
-                  className={classes.table}
-                  aria-labelledby="tableTitle"
-                  aria-label="recent orders"
-              >
-                <EnhancedTableHead
-                    classes={classes}
-                    numSelected={selected.length}
-                    order={order}
-                    orderBy={orderBy}
-                    onSelectAllClick={handleSelectAllClick}
-                    onRequestSort={handleRequestSort}
-                    rowCount={rows.length}
-                />
-                <TableBody>
-                  {stableSort(rows, getSorting(order, orderBy))
-                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      .map((row, index) => {
-                        const isItemSelected = isSelected(row.id);
-                        const labelId = `orders-table-checkbox-${index}`;
-
-                        return (
-                            <TableRow
-                                hover
-                                onClick={event => handleClick(event, row.id)}
-                                role="checkbox"
-                                aria-checked={isItemSelected}
-                                tabIndex={-1}
-                                key={row.id}
-                                selected={isItemSelected}
-                            >
-                              <TableCell padding="checkbox">
-                                <Checkbox
-                                    checked={isItemSelected}
-                                    inputProps={{ "aria-labelledby": labelId }}
-                                />
-                              </TableCell>
-                              <TableCell
-                                  component="th"
-                                  id={labelId}
-                                  scope="row"
-                                  padding="none"
-                              >
-                                {row.orderId}
-                              </TableCell>
-                              <TableCell>
-                                <Box
-                                    display={"flex"}
-                                    flexWrap={"nowrap"}
-                                    alignItems={"center"}
-                                >
-                                  <Avatar
-                                      alt={row.customer}
-                                      color={row.color}
-                                      style={{ marginRight: 8 }}
-                                  >
-                                    {row.customer[0]}
-                                  </Avatar>
-                                  <Typography style={{ whiteSpace: "nowrap" }}>
-                                    {row.customer}
-                                  </Typography>
-                                </Box>
-                              </TableCell>
-                              <TableCell>{row.office}</TableCell>
-                              <TableCell>{row.weight}</TableCell>
-                              <TableCell>${row.price}</TableCell>
-                              <TableCell>{row.purDate}</TableCell>
-                              <TableCell>{row.delDate}</TableCell>
-                              <TableCell>
-                                <Chip label={row.status} color={row.color} />
-                              </TableCell>
-                              <TableCell align={"center"}>
-                                <IconButton
-                                    className={classes.actionsIcon}
-                                    aria-owns="actions-menu"
-                                    aria-haspopup="true"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      setActionsMenu(true);
-                                      setActionsButtonRefid(e.currentTarget)
-                                    }}
-                                    buttonRef={setActionsButtonRefid}
-                                >
-                                  <MoreIcon />
-                                </IconButton>
-
-                                <Menu
-                                    id="actions-menu"
-                                    open={isActionsMenu}
-                                    anchorEl={actionsButtonRefid}
-                                    onClose={() => setActionsMenu(false)}
-                                    disableAutoFocusItem
-                                    //style={{padding: 0, margin: 0}}
-                                >
-                                  <MenuItem>
-                                    <Typography>Edit</Typography>
-                                  </MenuItem>
-                                  <MenuItem>
-                                    <Typography>Delete</Typography>
-                                  </MenuItem>
-                                </Menu>
-
-                              </TableCell>
-                            </TableRow>
-                        );
-                      })}
-                  {emptyRows > 0 && (
-                      <TableRow style={{ height: 53 * emptyRows }}>
-                        <TableCell colSpan={6} />
-                      </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-            </div>
-            <TablePagination
-                rowsPerPageOptions={[5, 10, 25]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                backIconButtonProps={{
-                  "aria-label": "previous page"
-                }}
-                nextIconButtonProps={{
-                  "aria-label": "next page"
-                }}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
+          </div>
+          <div className={classes.progressSection}>
+            <Typography
+                color="text"
+                letiant={"body2"}
+                className={classes.progressSectionTitle}
+            >
+              Integration
+            </Typography>
+            <LinearProgress
+                letiant="determinate"
+                value={77}
+                classes={{ barColorPrimary: classes.progressBarPrimary }}
+                className={classes.progress}
             />
-          </Widget>
-        </Grid>
+          </div>
+          <div>
+            <Typography
+                color="text"
+                letiant={"body2"}
+                className={classes.progressSectionTitle}
+            >
+              SDK
+            </Typography>
+            <LinearProgress
+                letiant="determinate"
+                value={73}
+                classes={{ barColorPrimary: classes.progressBarWarning }}
+                className={classes.progress}
+            />
+          </div>
+        </Widget>
       </Grid>
+      <Grid item lg={3} sm={6} xs={12}>
+        <Widget
+            title="Server Overview"
+            className={classes.card}
+            bodyClass={classes.fullHeightBody}
+        >
+          <div className={classes.serverOverviewElement}>
+            <Typography
+                color="text"
+                noWrap
+                letiant={"body2"}
+                weight={"medium"}
+                className={classes.serverOverviewElementText}
+            >
+              60% / 37°С / 3.3 Ghz
+            </Typography>
+            <div className={classes.serverOverviewElementChartWrapper}>
+              <ResponsiveContainer height={50} width="99%">
+                <AreaChart data={randomData}>
+                  <Area
+                      type="natural"
+                      dataKey="value"
+                      stroke={theme.palette.secondary.main}
+                      fill={theme.palette.secondary.light}
+                      strokeWidth={2}
+                      fillOpacity="0.25"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          <div className={classes.serverOverviewElement}>
+            <Typography
+                color="text"
+                noWrap
+                weight={"medium"}
+                letiant={"body2"}
+                className={classes.serverOverviewElementText}
+            >
+              54% / 31°С / 3.3 Ghz
+            </Typography>
+            <div className={classes.serverOverviewElementChartWrapper}>
+              <ResponsiveContainer height={50} width="99%">
+                <AreaChart data={randomData}>
+                  <Area
+                      type="natural"
+                      dataKey="value"
+                      stroke={theme.palette.primary.main}
+                      fill={theme.palette.primary.light}
+                      strokeWidth={2}
+                      fillOpacity="0.25"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          <div className={classes.serverOverviewElement}>
+            <Typography
+                color="text"
+                noWrap
+                weight={"medium"}
+                letiant={"body2"}
+                className={classes.serverOverviewElementText}
+            >
+              57% / 21°С / 3.3 Ghz
+            </Typography>
+            <div className={classes.serverOverviewElementChartWrapper}>
+              <ResponsiveContainer height={50} width="99%">
+                <AreaChart data={randomData}>
+                  <Area
+                      type="natural"
+                      dataKey="value"
+                      stroke={theme.palette.warning.main}
+                      fill={theme.palette.warning.light}
+                      strokeWidth={2}
+                      fillOpacity="0.25"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </Widget>
+      </Grid>
+      <Grid item xs={12}>
+        <Widget
+            bodyClass={classes.mainChartBody}
+            header={
+              <div className={classes.mainChartHeader}>
+                <Typography
+                    letiant="h6"
+                    color="text"
+                    weight={"medium"}
+                    colorBrightness="secondary"
+                >
+                  Daily Line Chart
+                </Typography>
+                <div className={classes.mainChartHeaderLabels}>
+                  <div className={classes.mainChartHeaderLabel}>
+                    <Dot color="warning" />
+                    <Typography className={classes.mainChartLegentElement}>
+                      Tablet
+                    </Typography>
+                  </div>
+                  <div className={classes.mainChartHeaderLabel}>
+                    <Dot color="primary" />
+                    <Typography className={classes.mainChartLegentElement}>
+                      Mobile
+                    </Typography>
+                  </div>
+                  <div className={classes.mainChartHeaderLabel}>
+                    <Dot color="secondary" />
+                    <Typography className={classes.mainChartLegentElement}>
+                      Desktop
+                    </Typography>
+                  </div>
+                </div>
+                <Select
+                    value={mainChartState}
+                    onChange={e => setMainChartState(e.target.value)}
+                    input={
+                      <OutlinedInput
+                          labelWidth={0}
+                          classes={{
+                            notchedOutline: classes.mainChartSelectRoot,
+                            input: classes.mainChartSelect
+                          }}
+                      />
+                    }
+                    autoWidth
+                    className={classes.fixIconRight}
+                >
+                  <MenuItem value="daily">Daily</MenuItem>
+                  <MenuItem value="weekly">Weekly</MenuItem>
+                  <MenuItem value="monthly">Monthly</MenuItem>
+                </Select>
+              </div>
+            }
+        >
+          <ResponsiveContainer width="100%" minWidth={500} height={350}>
+            <ComposedChart
+                margin={{ top: 0, right: -15, left: -15, bottom: 0 }}
+                data={mainChartData}
+            >
+              <YAxis
+                  ticks={[0, 2500, 5000, 7500]}
+                  tick={{
+                    fill: theme.palette.text.hint + "80",
+                    fontSize: 14
+                  }}
+                  stroke={theme.palette.text.hint + "80"}
+                  tickLine={false}
+              />
+              <XAxis
+                  tickFormatter={i => i + 1}
+                  tick={{
+                    fill: theme.palette.text.hint + "80",
+                    fontSize: 14
+                  }}
+                  stroke={theme.palette.text.hint + "80"}
+                  tickLine={false}
+              />
+              <Tooltip />
+              <Area
+                  type="natural"
+                  dataKey="desktop"
+                  fill={theme.palette.background.light}
+                  strokeWidth={0}
+                  activeDot={false}
+              />
+              <Line
+                  type="natural"
+                  dataKey="mobile"
+                  stroke={theme.palette.primary.main}
+                  strokeWidth={2}
+                  dot={false}
+                  activeDot={false}
+              />
+              <Line
+                  type="linear"
+                  dataKey="tablet"
+                  stroke={theme.palette.warning.main}
+                  strokeWidth={2}
+                  dot={{
+                    stroke: theme.palette.warning.dark,
+                    strokeWidth: 2,
+                    fill: theme.palette.warning.main
+                  }}
+                  activeDot={{
+                    r: 8
+                  }}
+              />
+            </ComposedChart>
+          </ResponsiveContainer>
+        </Widget>
+      </Grid>
+      {mock.bigStat.map(stat => (
+          <Grid item md={4} sm={6} xs={12} key={stat.product}>
+            <BigStat {...stat} />
+          </Grid>
+      ))}
+      <Grid item xs={12}>
+        <Widget noBodyPadding bodyClass={classes.tableWidget}>
+          <EnhancedTableToolbar numSelected={selected.length} />
+          <div className={classes.tableWrapper}>
+            <Table
+                className={classes.table}
+                aria-labelledby="tableTitle"
+                aria-label="recent orders"
+            >
+              <EnhancedTableHead
+                  classes={classes}
+                  numSelected={selected.length}
+                  order={order}
+                  orderBy={orderBy}
+                  onSelectAllClick={handleSelectAllClick}
+                  onRequestSort={handleRequestSort}
+                  rowCount={rows.length}
+              />
+              <TableBody>
+                {stableSort(rows, getSorting(order, orderBy))
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row, index) => {
+                      const isItemSelected = isSelected(row.id);
+                      const labelId = `orders-table-checkbox-${index}`;
+
+                      return (
+                          <TableRow
+                              hover
+                              onClick={event => handleClick(event, row.id)}
+                              role="checkbox"
+                              aria-checked={isItemSelected}
+                              tabIndex={-1}
+                              key={row.id}
+                              selected={isItemSelected}
+                          >
+                            <TableCell padding="checkbox">
+                              <Checkbox
+                                  checked={isItemSelected}
+                                  inputProps={{ "aria-labelledby": labelId }}
+                              />
+                            </TableCell>
+                            <TableCell
+                                component="th"
+                                id={labelId}
+                                scope="row"
+                                padding="none"
+                            >
+                              {row.orderId}
+                            </TableCell>
+                            <TableCell>
+                              <Box
+                                  display={"flex"}
+                                  flexWrap={"nowrap"}
+                                  alignItems={"center"}
+                              >
+                                <Avatar
+                                    alt={row.customer}
+                                    color={row.color}
+                                    style={{ marginRight: 8 }}
+                                >
+                                  {row.customer[0]}
+                                </Avatar>
+                                <Typography style={{ whiteSpace: "nowrap" }}>
+                                  {row.customer}
+                                </Typography>
+                              </Box>
+                            </TableCell>
+                            <TableCell>{row.office}</TableCell>
+                            <TableCell>{row.weight}</TableCell>
+                            <TableCell>${row.price}</TableCell>
+                            <TableCell>{row.purDate}</TableCell>
+                            <TableCell>{row.delDate}</TableCell>
+                            <TableCell>
+                              <Chip label={row.status} color={row.color} />
+                            </TableCell>
+                            <TableCell align={"center"}>
+                              <IconButton
+                                  className={classes.actionsIcon}
+                                  aria-owns="actions-menu"
+                                  aria-haspopup="true"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setActionsMenu(true);
+                                    setActionsButtonRefid(e.currentTarget)
+                                  }}
+                                  buttonRef={setActionsButtonRefid}
+                              >
+                                <MoreIcon />
+                              </IconButton>
+
+                              <Menu
+                                  id="actions-menu"
+                                  open={isActionsMenu}
+                                  anchorEl={actionsButtonRefid}
+                                  onClose={() => setActionsMenu(false)}
+                                  disableAutoFocusItem
+                                  //style={{padding: 0, margin: 0}}
+                              >
+                                <MenuItem>
+                                  <Typography>Edit</Typography>
+                                </MenuItem>
+                                <MenuItem>
+                                  <Typography>Delete</Typography>
+                                </MenuItem>
+                              </Menu>
+
+                            </TableCell>
+                          </TableRow>
+                      );
+                    })}
+                {emptyRows > 0 && (
+                    <TableRow style={{ height: 53 * emptyRows }}>
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+          <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              backIconButtonProps={{
+                "aria-label": "previous page"
+              }}
+              nextIconButtonProps={{
+                "aria-label": "next page"
+              }}
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+          />
+        </Widget>
+      </Grid>
+    </Grid>
   );
 }
 
 // #######################################################################
 
 function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
-  var array = new Array(length).fill();
+  let array = new Array(length).fill();
   let lastValue;
 
   return array.map((item, index) => {

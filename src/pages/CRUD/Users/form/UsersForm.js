@@ -1,23 +1,13 @@
 import { Formik } from 'formik';
-import React, { Component } from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Loader from 'components/Loader';
-// eslint-disable-next-line no-unused-vars
+
 import InputFormItem from 'components/FormItems/items/InputFormItem';
-// eslint-disable-next-line no-unused-vars
 import SwitchFormItem from 'components/FormItems/items/SwitchFormItem';
-// eslint-disable-next-line no-unused-vars
 import RadioFormItem from 'components/FormItems/items/RadioFormItem';
-// eslint-disable-next-line no-unused-vars
-import SelectFormItem from 'components/FormItems/items/SelectFormItem';
-// eslint-disable-next-line no-unused-vars
-import DatePickerFormItem from 'components/FormItems/items/DatePickerFormItem';
-// eslint-disable-next-line no-unused-vars
 import ImagesFormItem from 'components/FormItems/items/ImagesFormItem';
-// eslint-disable-next-line no-unused-vars
-import FilesFormItem from 'components/FormItems/items/FilesFormItem';
-// eslint-disable-next-line no-unused-vars
 
 import usersFields from 'pages/CRUD/Users/helpers/usersFields';
 import IniValues from 'components/FormItems/iniValues';
@@ -30,11 +20,9 @@ const UsersForm = (props) => {
     isEditing,
     isProfile,
     findLoading,
-    saveLoading,
     record,
     onSubmit,
     onCancel,
-    modal,
   } = props;
 
   const iniValues = () => {

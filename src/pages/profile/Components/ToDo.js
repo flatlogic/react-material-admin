@@ -135,7 +135,6 @@ function CustomizedTabs({ classes }) {
     { color: '#536DFE', time: '16.00', title: 'Code review and refactoring' },
   ]
 
-
   return (
     <div className={classes.root}>
       <AntTabs

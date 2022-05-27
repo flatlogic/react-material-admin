@@ -12,7 +12,7 @@ import Code from "../../components/Code";
 import { Typography, Button } from "../../components/Wrappers";
 
 
-export default function NotificationsPage(props) {
+export default function NotificationsPage() {
   let classes = useStyles();
 
   const [type, setType] = useState({
@@ -36,9 +36,7 @@ export default function NotificationsPage(props) {
     setState({ ...state, open: false });
   };
 
-  // local
   let [notificationsPosition, setNotificationPosition] = useState(2);
-  let [errorToastId, setErrorToastId] = useState(null);
 
   const handleChange = (type) => {
     setType(type)

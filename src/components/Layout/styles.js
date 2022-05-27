@@ -15,7 +15,7 @@ export default makeStyles((theme) => ({
     paddingBottom: 70,
   },
   contentShift: {
-    width: `calc(100vw - ${240 + theme.spacing(6)}px)`,
+    width: `calc(100vw - (240px + ${theme.spacing(8)}))`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,

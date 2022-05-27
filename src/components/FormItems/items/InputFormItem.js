@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
 import FormErrors from 'components/FormItems/formErrors';
 import { FastField } from 'formik';
@@ -9,15 +9,12 @@ const InputFormItem = (props) => {
     name,
     schema,
     hint,
-    size,
-    password,
     placeholder,
     autoFocus,
     autoComplete,
     inputProps,
     errorMessage,
-    multiline,
-    required = false,
+    multiline
   } = props;
 
   const { label } = schema[name];
@@ -34,11 +31,6 @@ const InputFormItem = (props) => {
             multiline={multiline}
             rows={multiline && 4}
             onChange={(event) => {
-              const errors = FormErrors.validateStatus(
-                form,
-                name,
-                errorMessage,
-              );
               form.setFieldValue(name, event.target.value);
               form.setFieldTouched(name);
             }}

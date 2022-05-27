@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import * as dataFormat from 'pages/CRUD/Users/table/UsersDataFormatters';
 
 import actions from 'actions/users/usersListActions';
@@ -7,15 +6,12 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { uniqueId } from 'lodash';
-import { withStyles } from '@mui/styles';
+
 import { makeStyles } from '@mui/styles';
 import { DataGrid } from '@mui/x-data-grid';
 import { Link as LinkMaterial } from '../../../../components/Wrappers';
 
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -52,9 +48,9 @@ const UsersTable = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
-  const [width, setWidth] = React.useState(window.innerWidth);
+  const [setWidth] = React.useState(window.innerWidth);
 
-  const [filters, setFilters] = React.useState([
+  const [filters] = React.useState([
     { label: 'First Name', title: 'firstName' },
     { label: 'Last Name', title: 'lastName' },
     { label: 'Phone Number', title: 'phoneNumber' },
@@ -86,7 +82,7 @@ const UsersTable = () => {
 
   React.useEffect(() => {
     loadData(rowsState.pageSize, rowsState.page, sortModel[0], filterUrl);
-  }, [sortModel, rowsState]);
+  }, [sortModel, rowsState, filterUrl]);
 
   React.useEffect(() => {
     updateWindowDimensions();

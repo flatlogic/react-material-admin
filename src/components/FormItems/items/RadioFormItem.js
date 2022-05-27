@@ -9,7 +9,7 @@ import FormLabel from '@mui/material/FormLabel';
 import { FastField } from 'formik';
 
 const RadioFormItem = (props) => {
-  const { name, schema, hint, errorMessage, required = false } = props;
+  const { name, schema, hint, errorMessage } = props;
 
   const { label, options } = schema[name];
 

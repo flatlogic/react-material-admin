@@ -9,8 +9,7 @@ export default makeStyles((theme) => ({
   },
   widgetHeader: {
     padding: theme.spacing(3),
-    paddingBottom: theme.spacing(1),
-    paddingTop: 10,
+    paddingBottom: theme.spacing(0),
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -20,9 +19,8 @@ export default makeStyles((theme) => ({
   },
   widgetBody: {
     height: (props) => (props.fullHeight ? '100%' : 'inherit'),
-    paddingBottom: theme.spacing(1),
-    paddingRight: theme.spacing(3),
-    paddingLeft: theme.spacing(3),
+    padding: theme.spacing(3),
+    paddingTop: theme.spacing(1),
   },
   noPadding: {
     padding: 0,
@@ -43,9 +41,6 @@ export default makeStyles((theme) => ({
       backgroundColor: theme.palette.primary.main,
       color: 'rgba(255, 255, 255, 0.35)',
     },
-  },
-  paddingTop: {
-    paddingTop: theme.spacing(1),
   },
   searchIcon: {
     color: 'rgba(0, 0, 0, 0.23)',

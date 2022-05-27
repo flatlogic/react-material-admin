@@ -26,7 +26,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={0}>
-          <Typography>{children}</Typography>
+          <Typography component={'div'} >{children}</Typography>
         </Box>
       )}
     </div>
@@ -82,9 +82,6 @@ const styles = (theme) => ({
     borderRadius: '10px', 
     backgroundColor: 'red',  
     border: '3px solid black',
-    // '&::-webkit-scrollbar': {
-    //   width: '6px'
-    // },
     '&:: -webkit-scrollbar-track': {
       '-webkit-box-shadow': 'inset 0 0 7px rgba(0,0,0,.3)', 
       borderRadius: '10px', 
@@ -143,7 +140,7 @@ function CustomizedTabs({ classes }) {
   const theme = useTheme();
 
   return (
-    <div class={classes.root}>
+    <div className={classes.root}>
       <AntTabs
         value={index}
         onChange={handleChange}

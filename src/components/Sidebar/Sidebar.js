@@ -5,16 +5,8 @@ import { useTheme } from '@mui/material';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 
-import {
-  Home as HomeIcon,
-  Apps as CoreIcon,
-  Description as DocumentationIcon,
-  AccountCircle as ProfileIcon,
-} from '@mui/icons-material';
-
 // styles
 import useStyles from './styles';
-import useStyles2 from './components/SidebarLink/styles';
 
 // components
 import SidebarLink from './components/SidebarLink/SidebarLink';
@@ -28,7 +20,6 @@ import {
 
 function Sidebar({ location, structure }) {
   let classes = useStyles();
-  let classes2 = useStyles2();
   let theme = useTheme();
 
   const toggleDrawer = (value) => (event) => {
@@ -101,15 +92,6 @@ function Sidebar({ location, structure }) {
             toggleDrawer={toggleDrawer(true)}
           />
         ))}
-
-        <SidebarLink
-          label='API docs'
-          link='/admin/api-docs'
-          location={location}
-          isSidebarOpened={isSidebarOpenedWrapper}
-          icon={<DocumentationIcon />}
-          toggleDrawer={toggleDrawer(true)}
-        />
       </List>
     </Drawer>
   );

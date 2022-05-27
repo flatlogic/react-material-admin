@@ -123,8 +123,8 @@ export default function Header(props) {
             alt={currentUser?.firstName}
             // eslint-disable-next-line no-mixed-operators
             src={
-              currentUser?.avatar?.length >= 1 &&
-              currentUser?.avatar[currentUser.avatar.length - 1].publicUrl
+              (currentUser?.avatar?.length >= 1 &&
+              currentUser?.avatar[currentUser.avatar.length - 1].publicUrl) || profile
             }
             classes={{ root: classes.headerIcon }}
           >

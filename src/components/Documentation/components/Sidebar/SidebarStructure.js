@@ -1,5 +1,3 @@
-import React from 'react';
-
 const structure = [
   {
     id: 0,

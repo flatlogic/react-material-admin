@@ -77,7 +77,7 @@ function Profile() {
         </Widget>
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={7}>
-        <Widget title="Files" disableWidgetMenu>
+        <Widget title="Files" >
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Tabs />
@@ -89,7 +89,7 @@ function Profile() {
       <Grid item xs={12} lg={5}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4} md={4} lg={6}>
-            <Widget widgetWithDropdown
+            <Widget
               bodyClass={classes.mediaBlockPadding}
               title="Media"
             >
@@ -99,7 +99,7 @@ function Profile() {
             </Widget>
           </Grid>
           <Grid item xs={12} sm={4} md={4} lg={6}>
-            <Widget widgetWithDropdown
+            <Widget
               className={classes.adjustHeight}
               title="Projects"
             >
@@ -117,7 +117,6 @@ function Profile() {
         <Widget
           title="Tasks"
           bodyClass={classes.widgetBody}
-          widgetWithDropdown
         >
           <ToDo />
         </Widget>

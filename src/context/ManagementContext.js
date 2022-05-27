@@ -202,14 +202,6 @@ function useManagementDispatch() {
   return context;
 }
 
-// eslint-disable-next-line no-use-before-define
-export {
-  ManagementProvider,
-  useManagementState,
-  useManagementDispatch,
-  actions,
-};
-
 // ###########################################################
 
 const actions = {
@@ -401,4 +393,11 @@ const actions = {
       type: 'USERS_LIST_CLOSE_CONFIRM',
     });
   },
+};
+
+export {
+  ManagementProvider,
+  useManagementState,
+  useManagementDispatch,
+  actions,
 };

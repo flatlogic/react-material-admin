@@ -2,20 +2,16 @@ import React from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { SnackbarProvider } from './Snackbar';
-import { Close as CloseIcon } from '@mui/icons-material';
-import useStyles from './styles';
+
 // components
 import Layout from './Layout';
 import Documentation from './Documentation/Documentation';
 
-
 // pages
-import Starter from '../pages/starter';
 import Error from '../pages/error';
 import Login from '../pages/login';
 import Verify from '../pages/verify';
 import Reset from '../pages/reset';
-import Profile from '../pages/profile';
 
 // context
 import { useUserState } from '../context/UserContext';
@@ -25,10 +21,6 @@ export default function App() {
   // global
   let { isAuthenticated } = useUserState();
   const isAuth = isAuthenticated();
-  const classes = useStyles();
-  function CloseButton({ closeToast, className }) {
-    return <CloseIcon className={className} onClick={closeToast} />;
-  }
 
   return (
     <>
@@ -50,7 +42,6 @@ export default function App() {
 
               <Route path='/documentation' component={Documentation} />
               <PrivateRoute path='/app' component={Layout} />
-              <PublicRoute path='/starter' component={Starter} />
               <PublicRoute path='/login' component={Login} />
               <PublicRoute path='/verify-email' exact component={Verify} />
               <PublicRoute path='/password-reset' exact component={Reset} />
@@ -73,7 +64,7 @@ export default function App() {
           isAuth ? (
             React.createElement(component, props)
           ) : (
-            <Redirect to={'/starter'} />
+            <Redirect to={'/login'} />
           )
         }
       />

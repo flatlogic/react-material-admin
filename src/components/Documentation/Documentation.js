@@ -55,12 +55,7 @@ const Documentation = (props) => {
             alignItems='center'
           >
             {structure.map((c) => {
-              // eslint-disable-line
-              if (
-                !c.children &&
-                window.location.hash.includes(c.link) &&
-                c.link
-              ) {
+              if (!c.children && window.location.hash.includes(c.link) && c.link) {
                 return (
                   <Box display='flex' alignItems='center' key={c.id}>
                     <Breadcrumbs aria-label='breadcrumb'>
@@ -69,8 +64,8 @@ const Documentation = (props) => {
                   </Box>
                 );
               } else if (c.children) {
-                return c.children.map((currentInner) => {
-                  // eslint-disable-line
+                return c.children.forEach((currentInner) => {
+                  // eslint-disable-array-callback-return
                   if (window.location.hash.includes(currentInner.link)) {
                     return (
                       <Breadcrumbs

@@ -91,7 +91,6 @@ const DonutChart = ({ classes }) => {
               <Dot color={color} style={{ marginLeft: 5 }} />
               <Typography
                 color="text"
-                colorBrightness={"hint"}
                 variant={"caption"}
                 style={{ fontSize: 14 }}
                 noWrap
