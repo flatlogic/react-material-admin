@@ -205,7 +205,7 @@ function EnhancedTableHead(props) {
           <TableCell
             key={headCell.id}
             align={headCell.numeric ? "right" : "left"}
-            padding={headCell.disablePadding ? "none" : "default"}
+            padding={headCell.disablePadding ? "none" : null}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
@@ -495,8 +495,8 @@ export default function EnhancedTable() {
               nextIconButtonProps={{
                 "aria-label": "next page"
               }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
             />
           </Widget>
         </Grid>
@@ -517,9 +517,7 @@ export default function EnhancedTable() {
                     )
                     .map(row => (
                       <TableRow key={row.name}>
-                        <TableCell component="th" scope="row">
-                          {row.name}
-                        </TableCell>
+                        <TableCell component="th" scope="row">{row.name}</TableCell>
                         <TableCell align="right">{row.calories}</TableCell>
                         <TableCell align="right">{row.fat}</TableCell>
                       </TableRow>
@@ -564,8 +562,8 @@ export default function EnhancedTable() {
                                   inputProps: { "aria-label": "rows per page" },
                                   native: true
                                 }}
-                                onChangePage={handleChangePage2}
-                                onChangeRowsPerPage={handleChangeRowsPerPage2}
+                                onPageChange={handleChangePage2}
+                                onRowsPerPageChange={handleChangeRowsPerPage2}
                                 ActionsComponent={TablePaginationActions}
                               />
                             </TableRow>
@@ -589,8 +587,8 @@ export default function EnhancedTable() {
                       inputProps: { "aria-label": "rows per page" },
                       native: true
                     }}
-                    onChangePage={handleChangePage2}
-                    onChangeRowsPerPage={handleChangeRowsPerPage2}
+                    onPageChange={handleChangePage2}
+                    onRowsPerPageChange={handleChangeRowsPerPage2}
                     ActionsComponent={TablePaginationActions}
                   />
                 </TableFooter>

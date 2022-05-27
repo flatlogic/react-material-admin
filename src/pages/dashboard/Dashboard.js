@@ -142,6 +142,18 @@ const rows = [
     delDate: "19 Jan 2019",
     status: "In a process",
     color: "warning"
+  },
+  {
+    id: 6,
+    orderId: Math.floor(Math.random() * 3000000),
+    customer: "Constance Clayton",
+    office: "Peru",
+    weight: "105 kg",
+    price: 1.876,
+    purDate: "06 Jan 2019",
+    delDate: "19 Jan 2019",
+    status: "In a process",
+    color: "warning"
   }
 ];
 
@@ -227,7 +239,7 @@ function EnhancedTableHead(props) {
               <TableCell
                   key={headCell.id}
                   align={headCell.numeric ? "left" : "right"}
-                  padding={headCell.disablePadding ? "none" : "default"}
+                  padding={headCell.disablePadding ? "none" : null}
                   sortDirection={orderBy === headCell.id ? order : false}
               >
                 <TableSortLabel
@@ -286,34 +298,34 @@ const EnhancedTableToolbar = props => {
 
   return (
       <Toolbar
-          className={cn(classes.root, {
-            [classes.highlight]: numSelected > 0
-          })}
+        className={cn(classes.root, {
+          [classes.highlight]: numSelected > 0
+        })}
       >
         {numSelected > 0 ? (
-            <Typography
-                className={classes.title}
-                color="inherit"
-                letiant="subtitle1"
-            >
-              {numSelected} selected
-            </Typography>
+          <Typography
+            className={classes.title}
+            color="inherit"
+            variant="subtitle1"
+          >
+            {numSelected} selected
+          </Typography>
         ) : (
             <Box display={"flex"} className={classes.title}>
               <Typography
-                  letiant="h6"
-                  color="text"
-                  colorBrightness={"secondary"}
-                  id="tableTitle"
-                  style={{ display: "flex" }}
-                  block
+                variant="h6"
+                color="text"
+                colorBrightness={"secondary"}
+                id="tableTitle"
+                style={{ display: "flex" }}
+                block
               >
                 Recent Orders
                 <Box display="flex" alignSelf={"flex-end"} ml={1}>
                   <Typography
-                      color="text"
-                      colorBrightness={"hint"}
-                      letiant={"caption"}
+                    color="text"
+                    colorBrightness={"hint"}
+                    variant={"caption"}
                   >
                     1.340 total
                   </Typography>
@@ -357,7 +369,7 @@ function Dashboard() {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [actionsButtonRefid, setActionsButtonRefid] =  React.useState(null);
+  const [actionsButtonRefID, setActionsButtonRefID] =  React.useState(null);
   const [isActionsMenu, setActionsMenu] = React.useState(false)
 
 
@@ -440,13 +452,13 @@ function Dashboard() {
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
               <Box display="flex">
-                <Typography letiant="h2" weight="medium">
+                <Typography variant="h2" weight="medium">
                   543
                 </Typography>
 
                 <Typography
                     color="text"
-                    letiant={"caption"}
+                    variant={"caption"}
                     noWrap
                     style={{ alignSelf: "flex-end", marginLeft: 8 }}
                 >
@@ -464,7 +476,7 @@ function Dashboard() {
                 }}
             >
               <Typography
-                  letiant="caption"
+                  variant="caption"
                   weight={"medium"}
                   style={{ position: "absolute" }}
               >
@@ -505,7 +517,7 @@ function Dashboard() {
               <Typography
                   color="text"
                   colorBrightness={"hint"}
-                  letiant={"caption"}
+                  variant={"caption"}
                   style={{ marginRight: 5 }}
                   noWrap
               >
@@ -526,7 +538,7 @@ function Dashboard() {
               <Typography
                   color="text"
                   colorBrightness={"hint"}
-                  letiant={"caption"}
+                  variant={"caption"}
                   style={{ marginRight: 5 }}
               >
                 Open
@@ -546,7 +558,7 @@ function Dashboard() {
               <Typography
                   color="text"
                   colorBrightness={"hint"}
-                  letiant={"caption"}
+                  variant={"caption"}
               >
                 Completed
               </Typography>
@@ -582,7 +594,7 @@ function Dashboard() {
                 }}
             >
               <Typography
-                  letiant={"caption"}
+                  variant={"caption"}
                   weight={"medium"}
                   style={{ position: "absolute" }}
               >
@@ -615,7 +627,7 @@ function Dashboard() {
                       <Typography
                           color="text"
                           colorBrightness={"hint"}
-                          letiant={"caption"}
+                          variant={"caption"}
                           noWrap
                       >
                         &nbsp;{name}&nbsp;
@@ -642,7 +654,7 @@ function Dashboard() {
               <Typography
                   color="text"
                   colorBrightness="hint"
-                  letiant={"body2"}
+                  variant={"body2"}
                   className={classes.legendElementText}
               >
                 Integration
@@ -653,7 +665,7 @@ function Dashboard() {
               <Typography
                   color="text"
                   colorBrightness="hint"
-                  letiant={"body2"}
+                  variant={"body2"}
                   className={classes.legendElementText}
               >
                 SDK
@@ -663,31 +675,31 @@ function Dashboard() {
           <div className={classes.progressSection}>
             <Typography
                 color="text"
-                letiant={"body2"}
+                variant={"body2"}
                 className={classes.progressSectionTitle}
             >
               Integration
             </Typography>
             <LinearProgress
-                letiant="determinate"
-                value={77}
-                classes={{ barColorPrimary: classes.progressBarPrimary }}
-                className={classes.progress}
+              variant="determinate"
+              value={77}
+              classes={{ barColorPrimary: classes.progressBarPrimary }}
+              className={classes.progress}
             />
           </div>
           <div>
             <Typography
-                color="text"
-                letiant={"body2"}
-                className={classes.progressSectionTitle}
+              color="text"
+              variant={"body2"}
+              className={classes.progressSectionTitle}
             >
               SDK
             </Typography>
             <LinearProgress
-                letiant="determinate"
-                value={73}
-                classes={{ barColorPrimary: classes.progressBarWarning }}
-                className={classes.progress}
+              variant="determinate"
+              value={73}
+              classes={{ barColorPrimary: classes.progressBarWarning }}
+              className={classes.progress}
             />
           </div>
         </Widget>
@@ -702,7 +714,7 @@ function Dashboard() {
             <Typography
                 color="text"
                 noWrap
-                letiant={"body2"}
+                variant={"body2"}
                 weight={"medium"}
                 className={classes.serverOverviewElementText}
             >
@@ -728,7 +740,7 @@ function Dashboard() {
                 color="text"
                 noWrap
                 weight={"medium"}
-                letiant={"body2"}
+                variant={"body2"}
                 className={classes.serverOverviewElementText}
             >
               54% / 31°С / 3.3 Ghz
@@ -753,7 +765,7 @@ function Dashboard() {
                 color="text"
                 noWrap
                 weight={"medium"}
-                letiant={"body2"}
+                variant={"body2"}
                 className={classes.serverOverviewElementText}
             >
               57% / 21°С / 3.3 Ghz
@@ -781,29 +793,29 @@ function Dashboard() {
             header={
               <div className={classes.mainChartHeader}>
                 <Typography
-                    letiant="h6"
-                    color="text"
-                    weight={"medium"}
-                    colorBrightness="secondary"
+                  variant="h6"
+                  color="text"
+                  weight={"medium"}
+                  colorBrightness="secondary"
                 >
                   Daily Line Chart
                 </Typography>
                 <div className={classes.mainChartHeaderLabels}>
                   <div className={classes.mainChartHeaderLabel}>
                     <Dot color="warning" />
-                    <Typography className={classes.mainChartLegentElement}>
+                    <Typography className={classes.mainChartLegendElement}>
                       Tablet
                     </Typography>
                   </div>
                   <div className={classes.mainChartHeaderLabel}>
                     <Dot color="primary" />
-                    <Typography className={classes.mainChartLegentElement}>
+                    <Typography className={classes.mainChartLegendElement}>
                       Mobile
                     </Typography>
                   </div>
                   <div className={classes.mainChartHeaderLabel}>
                     <Dot color="secondary" />
-                    <Typography className={classes.mainChartLegentElement}>
+                    <Typography className={classes.mainChartLegendElement}>
                       Desktop
                     </Typography>
                   </div>
@@ -813,7 +825,6 @@ function Dashboard() {
                     onChange={e => setMainChartState(e.target.value)}
                     input={
                       <OutlinedInput
-                          labelWidth={0}
                           classes={{
                             notchedOutline: classes.mainChartSelectRoot,
                             input: classes.mainChartSelect
@@ -912,98 +923,97 @@ function Dashboard() {
               />
               <TableBody>
                 {stableSort(rows, getSorting(order, orderBy))
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((row, index) => {
-                      const isItemSelected = isSelected(row.id);
-                      const labelId = `orders-table-checkbox-${index}`;
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    const isItemSelected = isSelected(row.id);
+                    const labelId = `orders-table-checkbox-${index}`;
 
-                      return (
-                          <TableRow
-                              hover
-                              onClick={event => handleClick(event, row.id)}
-                              role="checkbox"
-                              aria-checked={isItemSelected}
-                              tabIndex={-1}
-                              key={row.id}
-                              selected={isItemSelected}
+                    return (
+                      <TableRow
+                        hover
+                        onClick={event => handleClick(event, row.id)}
+                        role="checkbox"
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.id}
+                        selected={isItemSelected}
+                      >
+                        <TableCell padding="checkbox">
+                          <Checkbox
+                              checked={isItemSelected}
+                              inputProps={{ "aria-labelledby": labelId }}
+                          />
+                        </TableCell>
+                        <TableCell
+                            component="th"
+                            id={labelId}
+                            scope="row"
+                            padding="none"
+                        >
+                          {row.orderId}
+                        </TableCell>
+                        <TableCell>
+                          <Box
+                              display={"flex"}
+                              flexWrap={"nowrap"}
+                              alignItems={"center"}
                           >
-                            <TableCell padding="checkbox">
-                              <Checkbox
-                                  checked={isItemSelected}
-                                  inputProps={{ "aria-labelledby": labelId }}
-                              />
-                            </TableCell>
-                            <TableCell
-                                component="th"
-                                id={labelId}
-                                scope="row"
-                                padding="none"
+                            <Avatar
+                                alt={row.customer}
+                                color={row.color}
+                                style={{ marginRight: 8 }}
                             >
-                              {row.orderId}
-                            </TableCell>
-                            <TableCell>
-                              <Box
-                                  display={"flex"}
-                                  flexWrap={"nowrap"}
-                                  alignItems={"center"}
-                              >
-                                <Avatar
-                                    alt={row.customer}
-                                    color={row.color}
-                                    style={{ marginRight: 8 }}
-                                >
-                                  {row.customer[0]}
-                                </Avatar>
-                                <Typography style={{ whiteSpace: "nowrap" }}>
-                                  {row.customer}
-                                </Typography>
-                              </Box>
-                            </TableCell>
-                            <TableCell>{row.office}</TableCell>
-                            <TableCell>{row.weight}</TableCell>
-                            <TableCell>${row.price}</TableCell>
-                            <TableCell>{row.purDate}</TableCell>
-                            <TableCell>{row.delDate}</TableCell>
-                            <TableCell>
-                              <Chip label={row.status} color={row.color} />
-                            </TableCell>
-                            <TableCell align={"center"}>
-                              <IconButton
-                                  className={classes.actionsIcon}
-                                  aria-owns="actions-menu"
-                                  aria-haspopup="true"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setActionsMenu(true);
-                                    setActionsButtonRefid(e.currentTarget)
-                                  }}
-                                  buttonRef={setActionsButtonRefid}
-                              >
-                                <MoreIcon />
-                              </IconButton>
+                              {row.customer[0]}
+                            </Avatar>
+                            <Typography style={{ whiteSpace: "nowrap" }}>
+                              {row.customer}
+                            </Typography>
+                          </Box>
+                        </TableCell>
+                        <TableCell>{row.office}</TableCell>
+                        <TableCell>{row.weight}</TableCell>
+                        <TableCell>${row.price}</TableCell>
+                        <TableCell>{row.purDate}</TableCell>
+                        <TableCell>{row.delDate}</TableCell>
+                        <TableCell>
+                          <Chip label={row.status} color={row.color} />
+                        </TableCell>
+                        <TableCell align={"center"}>
+                          <IconButton
+                              className={classes.actionsIcon}
+                              aria-owns="actions-menu"
+                              aria-haspopup="true"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActionsMenu(true);
+                                setActionsButtonRefID(e.currentTarget)
+                              }}
+                              ref={setActionsButtonRefID}
+                          >
+                            <MoreIcon />
+                          </IconButton>
 
-                              <Menu
-                                  id="actions-menu"
-                                  open={isActionsMenu}
-                                  anchorEl={actionsButtonRefid}
-                                  onClose={() => setActionsMenu(false)}
-                                  disableAutoFocusItem
-                                  //style={{padding: 0, margin: 0}}
-                              >
-                                <MenuItem>
-                                  <Typography>Edit</Typography>
-                                </MenuItem>
-                                <MenuItem>
-                                  <Typography>Delete</Typography>
-                                </MenuItem>
-                              </Menu>
+                          <Menu
+                            id="actions-menu"
+                            open={isActionsMenu}
+                            anchorEl={actionsButtonRefID}
+                            onClose={() => setActionsMenu(false)}
+                            disableAutoFocusItem
+                          >
+                            <MenuItem>
+                              <Typography>Edit</Typography>
+                            </MenuItem>
+                            <MenuItem>
+                              <Typography>Delete</Typography>
+                            </MenuItem>
+                          </Menu>
 
-                            </TableCell>
-                          </TableRow>
-                      );
-                    })}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
                 {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
+                  <TableRow style={{ height: 53 * emptyRows }}>
                       <TableCell colSpan={6} />
                     </TableRow>
                 )}
@@ -1011,19 +1021,19 @@ function Dashboard() {
             </Table>
           </div>
           <TablePagination
-              rowsPerPageOptions={[5, 10, 25]}
-              component="div"
-              count={rows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              backIconButtonProps={{
-                "aria-label": "previous page"
-              }}
-              nextIconButtonProps={{
-                "aria-label": "next page"
-              }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            backIconButtonProps={{
+              "aria-label": "previous page"
+            }}
+            nextIconButtonProps={{
+              "aria-label": "next page"
+            }}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Widget>
       </Grid>

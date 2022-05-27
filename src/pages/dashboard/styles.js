@@ -9,8 +9,8 @@ export default makeStyles((theme) => ({
   progressSection: {
     marginBottom: theme.spacing(1),
   },
-  progressTitle: {
-    marginBottom: theme.spacing(2),
+  progressSectionTitle: {
+    marginBottom: theme.spacing(1),
   },
   progress: {
     marginBottom: theme.spacing(1),
@@ -116,7 +116,7 @@ export default makeStyles((theme) => ({
     padding: 10,
     paddingRight: 25,
   },
-  mainChartLegentElement: {
+  mainChartLegendElement: {
     fontSize: '14px !important',
     marginLeft: theme.spacing(1),
   },

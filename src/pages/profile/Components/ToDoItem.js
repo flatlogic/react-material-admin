@@ -62,7 +62,7 @@ const ToDoItem = ({ classes, time, title, color, backgroundColor}) => {
           aria-owns="widget-menu"
           aria-haspopup="true"
           onClick={() => setMoreMenuOpen(true)}
-          buttonRef={setMoreButtonRef}
+          ref={setMoreButtonRef}
         >
           <MoreIcon className={classes.menuItem} />
         </IconButton>

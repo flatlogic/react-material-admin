@@ -257,7 +257,7 @@ const UsersTable = () => {
 
   return (
     <div>
-      <Widget title={<h4>Users</h4>} disableWidgetMenu>
+      <Widget title='Users' disableWidgetMenu>
         <Box className={classes.actions}>
           <Link to='/admin/users/new'>
             <Button variant='contained'>New</Button>

@@ -81,6 +81,19 @@ const BreadCrumbs = () => {
     setValue(newValue);
   };
 
+  const date = () => {
+    let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    let d = new Date()
+    let year = d.getFullYear()
+    let month = d.getMonth()
+    let date = d.getDate()
+    let day = d.getDay() + 1
+    return `${date} ${monthNames[month]} ${year}, ${dayNames[day - 1]}`
+  }
+
   function a11yProps(index) {
     return {
       id: `simple-tab-${index}`,
@@ -97,7 +110,7 @@ const BreadCrumbs = () => {
       <Grid
         container
         direction='row'
-        justify='space-between'
+        justifyContent='space-between'
         alignItems='center'
         wrap={'nowrap'}
         style={{ overflowX: 'auto' }}
@@ -139,7 +152,8 @@ const BreadCrumbs = () => {
           <Box display='flex' alignItems='center'>
             <CalendarIcon className={classes.calendarIcon} />
             <Typography className={classes.date} style={{ marginRight: 38 }}>
-              29 Oct 2019, Tuesday
+              {/*29 Oct 2019, Tuesday*/}
+              {date()}
             </Typography>
             <Button
               variant='contained'

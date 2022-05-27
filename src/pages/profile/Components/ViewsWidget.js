@@ -106,7 +106,7 @@ const SimpleLine = ({ classes, color, title, subtitle, value }) => {
               aria-owns="widget-menu"
               aria-haspopup="true"
               onClick={() => setMoreMenuOpen(true)}
-              buttonRef={setMoreButtonRef}
+              ref={setMoreButtonRef}
               className={classes.menuIcon}
           >
               <MoreIcon />
