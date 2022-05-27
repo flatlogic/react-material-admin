@@ -41,22 +41,22 @@ const useStyles1 = makeStyles(theme => ({
 function TablePaginationActions(props) {
   const classes = useStyles1();
   const theme = useTheme();
-  const { count, page, rowsPerPage, onChangePage } = props;
+  const { count, page, rowsPerPage, onPageChange } = props;
 
   function handleFirstPageButtonClick(event) {
-    onChangePage(event, 0);
+    onPageChange(event, 0);
   }
 
   function handleBackButtonClick(event) {
-    onChangePage(event, page - 1);
+    onPageChange(event, page - 1);
   }
 
   function handleNextButtonClick(event) {
-    onChangePage(event, page + 1);
+    onPageChange(event, page + 1);
   }
 
   function handleLastPageButtonClick(event) {
-    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+    onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   }
 
   return (
@@ -577,20 +577,22 @@ export default function EnhancedTable() {
                     )}
                 </TableBody>
                 <TableFooter>
-                  <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
-                    colSpan={3}
-                    count={rows2.length}
-                    rowsPerPage={rowsPerPage2}
-                    page={page2}
-                    SelectProps={{
-                      inputProps: { "aria-label": "rows per page" },
-                      native: true
-                    }}
-                    onPageChange={handleChangePage2}
-                    onRowsPerPageChange={handleChangeRowsPerPage2}
-                    ActionsComponent={TablePaginationActions}
-                  />
+                  <TableRow>
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25]}
+                      colSpan={3}
+                      count={rows2.length}
+                      rowsPerPage={rowsPerPage2}
+                      page={page2}
+                      SelectProps={{
+                        inputProps: { "aria-label": "rows per page" },
+                        native: true
+                      }}
+                      onPageChange={handleChangePage2}
+                      onRowsPerPageChange={handleChangeRowsPerPage2}
+                      ActionsComponent={TablePaginationActions}
+                    />
+                  </TableRow>
                 </TableFooter>
               </Table>
             </div>
