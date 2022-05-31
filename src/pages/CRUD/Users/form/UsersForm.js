@@ -47,7 +47,7 @@ const UsersForm = (props) => {
   };
 
   const renderForm = () => (
-    <Widget title={<h4>{title()}</h4>} collapse close>
+    <Widget title={title()} collapse close>
       <Formik
         onSubmit={handleSubmit}
         initialValues={iniValues()}

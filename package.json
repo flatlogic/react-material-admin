@@ -42,6 +42,7 @@
     "lodash": "^4.17.21",
     "moment": "2.29.1",
     "mui-datatables": "^4.2.2",
+    "prop-types": "^15.8.1",
     "query-string": "7.1.0",
     "react": "^17.0.2",
     "react-apexcharts": "^1.4.0",

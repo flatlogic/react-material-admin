@@ -22,7 +22,6 @@ import ColorChangeThemePopper from './components/ColorChangeThemePopper';
 import EditUser from '../../pages/user/EditUser';
 import AddUser from '../../pages/CRUD/Users/form/UsersForm';
 
-
 // pages
 import Dashboard from '../../pages/dashboard';
 import Profile from '../../pages/profile'

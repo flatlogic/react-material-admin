@@ -48,7 +48,8 @@ const UsersTable = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
-  const [setWidth] = React.useState(window.innerWidth);
+  // eslint-disable-next-line no-unused-vars
+  const [width, setWidth] = React.useState(window.innerWidth);
 
   const [filters] = React.useState([
     { label: 'First Name', title: 'firstName' },
@@ -63,7 +64,7 @@ const UsersTable = () => {
   const [loading, setLoading] = React.useState(false);
   const [sortModel, setSortModel] = React.useState([]);
   const [selectionModel, setSelectionModel] = React.useState([]);
-
+  // eslint-disable-next-line no-unused-vars
   const count = useSelector((store) => store.users.list.count);
   const modalOpen = useSelector((store) => store.users.list.modalOpen);
   const rows = useSelector((store) => store.users.list.rows);
@@ -382,7 +383,6 @@ const UsersTable = () => {
             pageSize={5}
             pagination
             {...rowsState}
-            rowCount={count}
             paginationMode='server'
             components={{ NoRowsOverlay, LoadingOverlay: LinearProgress }}
             onPageChange={(page) => {
@@ -400,7 +400,7 @@ const UsersTable = () => {
             disableColumnMenu
             loading={loading}
             onRowClick={(e) => {
-              history.push(`/admin/users/${e.id}/edit`);
+              history.push(`/app/users/${e.id}/edit`);
             }}
             autoHeight
           />
@@ -422,7 +422,7 @@ const UsersTable = () => {
       </Widget>
 
       <Dialog
-        open={modalOpen}
+        open={modalOpen || false}
         title='Confirm delete'
         contentText='Are you sure you want to delete this item?'
         onClose={closeModal}
