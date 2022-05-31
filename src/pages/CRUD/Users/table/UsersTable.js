@@ -9,7 +9,6 @@ import { uniqueId } from 'lodash';
 
 import { makeStyles } from '@mui/styles';
 import { DataGrid } from '@mui/x-data-grid';
-import { Link as LinkMaterial } from '../../../../components/Wrappers';
 
 import MenuItem from '@mui/material/MenuItem';
 
@@ -404,20 +403,6 @@ const UsersTable = () => {
             }}
             autoHeight
           />
-        </div>
-
-        <div>
-          <LinkMaterial
-            color={'primary'}
-            target={'_blank'}
-            href={
-              process.env.NODE_ENV === 'production'
-                ? window.location.origin + '/api-docs/#/Users'
-                : 'http://localhost:8080/api-docs/#/Users'
-            }
-          >
-            API documentation for users
-          </LinkMaterial>
         </div>
       </Widget>
 

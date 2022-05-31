@@ -24,10 +24,11 @@ import useStyles2 from '../../styles';
 
 // components
 import Dot from '../Dot';
-import { Button, Badge } from '../../../Wrappers';
+import {Button, Badge, Link as LinkMaterial} from '../../../Wrappers';
 
 export default function SidebarLink({
   link,
+  ext,
   icon,
   label,
   children,
@@ -87,6 +88,47 @@ export default function SidebarLink({
     setAnchorEl(null);
   };
 
+  if (!children && ext)
+    return (
+      <>
+        <ListItem
+          onClick={(e) => {
+            if (click) {
+              return click(e, addSectionClick, onLogin);
+            }
+            return toggleDrawer(e);
+          }}
+          onKeyPress={toggleDrawer}
+          component={link ? LinkMaterial : null}
+          href={link}
+          className={classes.link}
+          classes={{
+            root: classnames(classes.link, {
+              [classes.linkActive]: isLinkActive && !nested,
+              [classes.linkNested]: nested,
+            }),
+          }}
+        >
+          <ListItemIcon
+            className={classnames(classes.linkIcon, {
+              [classes.linkIconActive]: isLinkActive,
+            })}
+            style={{ margin: nested && -11 }}
+          >
+            {nested ? <Dot color={isLinkActive && 'primary'} /> : icon}
+          </ListItemIcon>
+          <ListItemText
+            classes={{
+              primary: classnames(classes.linkText, {
+                [classes.linkTextActive]: isLinkActive,
+                [classes.linkTextHidden]: !isSidebarOpened,
+              }),
+            }}
+            primary={label}
+          />
+        </ListItem>
+      </>
+    );
   if (!children)
     return (
       <>
