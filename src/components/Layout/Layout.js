@@ -44,6 +44,11 @@ import TabsPage from '../../pages/tabs'
 import ProgressPage from '../../pages/progress'
 import WidgetsPage from '../../pages/widget'
 
+import Ecommerce from '../../pages/ecommerce'
+import Product from '../../pages/ecommerce/Products'
+import ProductsGrid from '../../pages/ecommerce/ProductsGrid'
+import CreateProduct from '../../pages/ecommerce/CreateProduct'
+
 import FormsElements from '../../pages/forms/elements'
 import FormValidation from '../../pages/forms/validation'
 
@@ -67,6 +72,7 @@ import BreadCrumbs from '../../components/BreadCrumbs';
 
 // context
 import { useLayoutState } from '../../context/LayoutContext';
+import { ProductsProvider } from '../../context/ProductContext'
 
 import UsersFormPage from 'pages/CRUD/Users/form/UsersFormPage';
 import UsersTablePage from 'pages/CRUD/Users/table/UsersTablePage';
@@ -152,6 +158,25 @@ function Layout(props) {
           <Route path="/app/extra/gallery" component={Gallery} />
           <Route path="/app/extra/invoice" component={Invoice} />
           <Route path="/app/extra/calendar" component={Calendar} />
+
+          <Route path="/app/ecommerce/management" exact>
+            <ProductsProvider>
+              <Ecommerce />
+            </ProductsProvider>
+          </Route>
+          <Route path="/app/ecommerce/management/edit/:id" exact>
+            <ProductsProvider>
+              <CreateProduct />
+            </ProductsProvider>
+          </Route>
+          <Route path="/app/ecommerce/management/create">
+            <ProductsProvider>
+              <CreateProduct />
+            </ProductsProvider>
+          </Route>
+          <Route path="/app/ecommerce/product/:id" component={Product}/>
+          <Route path="/app/ecommerce/product" component={Product} />
+          <Route path="/app/ecommerce/gridproducts" component={ProductsGrid}/>
 
           />
 

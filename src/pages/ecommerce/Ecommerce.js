@@ -16,9 +16,8 @@ import {
   Box,
   InputAdornment,
   TextField as Input
-} from "@material-ui/core";
+} from "@mui/material";
 import { Link as RouterLink, withRouter, useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 
 //config
 import config from "../../config";
@@ -30,9 +29,10 @@ import {
   FilterList as FilterListIcon,
   Close as CloseIcon,
   Search as SearchIcon
-} from "@material-ui/icons";
-import { yellow } from "@material-ui/core/colors";
-import { lighten, makeStyles } from "@material-ui/core/styles";
+} from "@mui/icons-material";
+import { yellow } from "@mui/material/colors";
+import { lighten } from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
 import PropTypes from "prop-types";
 import useStyles from "./styles";
 import cn from "classnames";
@@ -48,7 +48,7 @@ import {
 // components
 import Widget from "../../components/Widget";
 import { Typography, Button, Link } from "../../components/Wrappers";
-import Notification from "../../components/Notification";
+// import Notification from "../../components/Notification";
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -120,7 +120,7 @@ function EnhancedTableHead(props) {
           <TableCell
             key={headCell.id}
             align={headCell.numeric ? "left" : "right"}
-            padding={headCell.disablePadding ? "none" : "default"}
+            padding={headCell.disablePadding ? "none" : null}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
@@ -231,7 +231,7 @@ function EcommercePage({ history }) {
   );
 
   useEffect(() => {
-    sendNotification();
+    // sendNotification();
     getProductsRequest(context.setProducts);
   }, []); // eslint-disable-line
 
@@ -305,29 +305,29 @@ function EcommercePage({ history }) {
     rowsPerPage -
     Math.min(rowsPerPage, backProducts.length - page * rowsPerPage);
 
-  function sendNotification() {
-    const componentProps = {
-      type: "feedback",
-      message:
-        "This page is only available in React Material Admin Full with Node.js integration!",
-      variant: "contained",
-      color: "success"
-    };
-    const options = {
-      type: "info",
-      position: toast.POSITION.TOP_RIGHT,
-      progressClassName: classes.progress,
-      className: classes.notification,
-      timeOut: 1000
-    };
-    return toast(
-      <Notification
-        {...componentProps}
-        className={classes.notificationComponent}
-      />,
-      options
-    );
-  }
+  // function sendNotification() {
+  //   const componentProps = {
+  //     type: "feedback",
+  //     message:
+  //       "This page is only available in React Material Admin Full with Node.js integration!",
+  //     variant: "contained",
+  //     color: "success"
+  //   };
+  //   const options = {
+  //     type: "info",
+  //     position: toast.POSITION.TOP_RIGHT,
+  //     progressClassName: classes.progress,
+  //     className: classes.notification,
+  //     timeOut: 1000
+  //   };
+  //   return toast(
+  //     <Notification
+  //       {...componentProps}
+  //       className={classes.notificationComponent}
+  //     />,
+  //     options
+  //   );
+  // }
 
   const deleteProduct = (id, history, event) => {
     deleteProductRequest({ id, history, dispatch: context.setProducts });
@@ -598,8 +598,8 @@ function EcommercePage({ history }) {
               nextIconButtonProps={{
                 "aria-label": "next page"
               }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
             />
           </Widget>
         </Grid>
