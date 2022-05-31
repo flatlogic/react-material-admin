@@ -5,9 +5,11 @@ export default makeStyles(theme => ({
     fontWeight: 600
   },
   iconsBar: {
-    marginBottom: theme.spacing(4),
     borderBottom: "1px solid",
     borderBottomColor: theme.palette.text.hint + "80"
+  },
+  iconList: {
+    paddingTop: theme.spacing(2),
   },
   tab: {
     color: theme.palette.primary.light + "CC"

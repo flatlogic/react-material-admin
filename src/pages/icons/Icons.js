@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Typography, Grid, Tabs, Tab, Paper } from "@mui/material";
 import * as Icons from "@mui/icons-material";
-
+import Widget from "../../components/Widget";
 // styles
 import useStyles from "./styles";
 
@@ -28,8 +28,8 @@ export default function IconsPage() {
           <Tab label="Font Awesome" classes={{ root: classes.tab }} />
         </Tabs>
         {activeTabId === 0 && (
-          <div>
-            <Grid container spacing={2} className="icon-list">
+          <Widget>
+            <Grid container spacing={2} className={classes.iconList}>
               <Grid
                 className={classes.materailIcon}
                 item
@@ -12442,12 +12442,12 @@ export default function IconsPage() {
                 </Typography>
               </Grid>
             </Grid>
-          </div>
+          </Widget>
         )}
 
         {activeTabId === 1 && (
-          <div>
-            <Grid container spacing={2} className="icon-list">
+          <Widget>
+            <Grid container spacing={2} className={classes.iconList}>
               <Grid
                 className={classes.materailIcon}
                 item
@@ -13613,7 +13613,7 @@ export default function IconsPage() {
                 </Typography>
               </Grid>
             </Grid>
-          </div>
+          </Widget>
         )}
       </Paper>
     </>
