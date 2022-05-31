@@ -54,6 +54,8 @@ const Documentation = (props) => {
             justifyContent='space-between'
             alignItems='center'
           >
+
+            {/* eslint-disable-next-line array-callback-return */}
             {structure.map((c) => {
               if (!c.children && window.location.hash.includes(c.link) && c.link) {
                 return (

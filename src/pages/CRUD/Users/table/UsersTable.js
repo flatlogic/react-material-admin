@@ -82,12 +82,14 @@ const UsersTable = () => {
 
   React.useEffect(() => {
     loadData(rowsState.pageSize, rowsState.page, sortModel[0], filterUrl);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortModel, rowsState, filterUrl]);
 
   React.useEffect(() => {
     updateWindowDimensions();
     window.addEventListener('resize', updateWindowDimensions);
     return () => window.removeEventListener('resize', updateWindowDimensions);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSortModelChange = (newModel) => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import { useTheme } from '@mui/styles';
 import Widget from '../../components/Widget';
 import Sortable from 'react-sortablejs'
 // Components
@@ -17,8 +16,6 @@ import useStyles from "./styles";
 
 function DraggableGrid() {
   const classes = useStyles();
-  // eslint-disable-next-line no-unused-vars
-  const theme = useTheme();
 
   return (
     <Grid container spacing={4} className={classes.root}>
@@ -41,11 +38,9 @@ function DraggableGrid() {
               className={classes.widgetLayout}
               title="Default Widget"
             >
-              <Typography >
                 {mock.mainData.default.map(item => (
-                    <p key={item.value}>{item.value}</p>
+                  <Typography key={item.value} component="p" gutterBottom>{item.value}</Typography>
                 ))}
-              </Typography>
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -100,7 +95,7 @@ function DraggableGrid() {
               <Loader />
             </Widget>
           </Grid>
-          </Sortable>
+        </Sortable>
       </Grid>
     </Grid>
   )

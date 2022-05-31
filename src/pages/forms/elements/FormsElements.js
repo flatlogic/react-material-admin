@@ -6,7 +6,7 @@ import {
   Divider,
   MenuItem,
   Select,
-  TextField, TextareaAutosize
+  TextField,
 } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import useStyles from "./styles";
@@ -48,26 +48,6 @@ const GreenRadio = withStyles({
     }
   }
 })(props => <Radio color="default" {...props} />);
-
-const SuccessInput = withStyles(theme => ({
-  root: {
-    "& .MuiInputLabel-root": {
-      color: "green"
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "green"
-      },
-      "&:hover fieldset": {
-        borderColor: "green"
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "green",
-        borderWidth: 2
-      }
-    }
-  }
-}))(props => <Input {...props} />);
 
 const actions = [
   {
@@ -523,15 +503,13 @@ export default function FormsElements() {
               </Grid>
               <Grid item container alignItems="center">
                 <Grid xs={12} item>
-                  <TextareaAutosize
+                  <TextField
                       id="outlined-multiline-static"
                       label="Multiline"
                       multiline
-                      minRows="4"
+                      rows={4}
                       defaultValue="Default Value"
-                      margin="none"
-                      variant="outlined"
-                      style={{ width: '100%' }}
+                      style={{marginTop: '1rem', width: '100%'}}
                   />
                 </Grid>
               </Grid>

@@ -23,13 +23,13 @@ export default () => {
           >
             <Grid
               container
-              direction={"column"}
+              direction="column"
               alignItems="center"
               spacing={6}
             >
-              <Grid item container alignItems={"center"} xs={6}>
+              <Grid item container alignItems="center" xs={6}>
                 <Grid item xs={6}>
-                  <Typography variant={"body1"}>Simple required</Typography>
+                  <Typography variant="body1">Simple required</Typography>
                 </Grid>
                 <Grid xs={6} item>
                   <Input

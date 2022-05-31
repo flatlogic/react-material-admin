@@ -1,8 +1,6 @@
 import React from 'react';
 import { withStyles } from '@mui/styles';
-
 import { Button } from "../../../components/Wrappers";
-
 
 const styles = (theme) => ({
   container: {
@@ -43,7 +41,12 @@ const DraggableStory = ({ classes }) => {
           <p className={classes.header}>Draggable story!</p>
           <p className={classes.description}><i>Build</i> your own interfaces! Sit back and relax.</p>
           <div>
-            <Button className={classes.button} size="large" color="warning" variant="contained" style={{ boxShadow: 'none' }}>Fullscreen me!</Button>
+            <Button
+              className={classes.button}
+              size="large"
+              color="warning"
+              variant="contained"
+              style={{ boxShadow: 'none' }}>Fullscreen me!</Button>
           </div>
         </div>
       </div>
