@@ -5,7 +5,7 @@
   "private": true,
   "homepage": "./",
   "scripts": {
-    "build": "cross-env REACT_APP_BACKEND=true PUBLIC_URL='./' react-scripts build",
+    "build": "cross-env REACT_APP_BACKEND=true NODE_ENV=production PUBLIC_URL='./' react-scripts build",
     "start": "cross-env REACT_APP_BACKEND=true react-scripts start",
     "test": "react-scripts test",
     "format": "prettier --write src/"

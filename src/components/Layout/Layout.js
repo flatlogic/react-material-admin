@@ -180,19 +180,6 @@ function Layout(props) {
 
           />
 
-          <Route path={'/app/api-docs'} exact
-            component={(props) => (
-              <Redirect
-                url={
-                  process.env.NODE_ENV === 'production'
-                    ? window.location.origin + '/api-docs'
-                    : 'http://localhost:8080/api-docs'
-                }
-                {...props}
-              />
-            )}
-          />
-
           <Route path={'/app/users'} exact component={UsersTablePage} />
           <Route path={'/app/user/new'} exact component={AddUser} />
           <Route

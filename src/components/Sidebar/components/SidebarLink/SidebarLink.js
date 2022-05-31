@@ -98,8 +98,7 @@ export default function SidebarLink({
             return toggleDrawer(e);
           }}
           onKeyPress={toggleDrawer}
-          button
-          component={link && Link}
+          component={link ? Link : null}
           to={link}
           className={classes.link}
           classes={{
@@ -108,7 +107,6 @@ export default function SidebarLink({
               [classes.linkNested]: nested,
             }),
           }}
-          disableRipple
         >
           <ListItemIcon
             className={classnames(classes.linkIcon, {
