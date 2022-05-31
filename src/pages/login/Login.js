@@ -167,7 +167,7 @@ function Login(props) {
                     >
                       <Typography
                         variant={'body2'}
-                        block
+                        component="div"
                         style={{ textAlign: 'center' }}
                       >
                         This is a real app with Node.js backend - use
