@@ -169,7 +169,7 @@ export default function Header(props) {
             )}
           >
             <AccountIcon className={classes.profileMenuIcon} />
-            <Link to='/admin/user/edit' style={{ textDecoration: 'none' }}>
+            <Link to='/app/user/edit' style={{ textDecoration: 'none' }}>
               Profile
             </Link>
           </MenuItem>
