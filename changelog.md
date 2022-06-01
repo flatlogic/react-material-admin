@@ -1,5 +1,12 @@
 # Changelog
 
+# [2.3.0] - 01/06/2022
+
+- Updated from MUI4 to MUI5, fixed Dark Theme
+- Fixed Grid actions
+- Fixed various bugs related to DataGrid
+- Updated packages
+
 # [2.2.5] - 05/03/2021
 
 - Fixed errors

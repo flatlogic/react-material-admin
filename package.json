@@ -1,12 +1,13 @@
 {
-  "name": "reactmaterialadminfull",
-  "description": "React Material Admin Full - template backend",
-  "version": "0.1.1",
+  "name": "react-material-full",
+  "description": "React Material Admin Full",
+  "version": "2.3.0",
   "private": true,
   "homepage": "./",
   "scripts": {
     "build": "cross-env REACT_APP_BACKEND=true NODE_ENV=production PUBLIC_URL='./' react-scripts build",
-    "start": "cross-env REACT_APP_BACKEND=true react-scripts start",
+    "start": "cross-env REACT_APP_BACKEND=false react-scripts start",
+    "dev": "cross-env react-scripts start",
     "test": "react-scripts test",
     "format": "prettier --write src/"
   },
