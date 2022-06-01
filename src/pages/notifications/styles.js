@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@mui/styles";
 import tinycolor from "tinycolor2";
 
 export default makeStyles(theme => ({

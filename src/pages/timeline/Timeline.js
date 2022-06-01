@@ -7,8 +7,8 @@ import {
   Collapse,
   CardContent,
   TextField as Input
-} from "@material-ui/core";
-import { Navigation as NavigationIcon } from "@material-ui/icons";
+} from "@mui/material";
+import { Navigation as NavigationIcon } from "@mui/icons-material";
 import {
   withGoogleMap,
   withScriptjs,
@@ -20,16 +20,16 @@ import {
   Chat as CommentsIcon,
   ChatBubble as ChatIcon,
   FreeBreakfast as BreakfastIcon
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import useStyles from "./styles";
 
 //images
-import img1 from "../../images/a2.jpg";
-import img2 from "../../images/a4.jpg";
-import img3 from "../../images/profile.jpg";
-import img4 from "../../images/a6.jpg";
-import img5 from "../../images/a1.jpg";
-import mountains from "../../images/mountains.jpeg";
+import img1 from "../../images/timeline/a2.jpg";
+import img2 from "../../images/timeline/a3.jpg";
+import img3 from "../../images/timeline/profile.jpg";
+import img4 from "../../images/timeline/a4.jpg";
+import img5 from "../../images/timeline/a1.jpg";
+import mountains from "../../images/timeline/mountains.jpeg";
 
 //components
 import { Typography, Avatar, Link, Button } from "../../components/Wrappers";

@@ -16,8 +16,8 @@ import {
   TableSortLabel,
   Toolbar,
   IconButton, Menu
-} from "@material-ui/core";
-import { useTheme, makeStyles } from "@material-ui/styles";
+} from "@mui/material";
+import { useTheme, makeStyles } from '@mui/styles';
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -44,9 +44,10 @@ import BigStat from "./components/BigStat/BigStat";
 import {
   Delete as DeleteIcon,
   FilterList as FilterListIcon, MoreVert as MoreIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import PropTypes from "prop-types";
-import { lighten } from "@material-ui/core/styles";
+
+import { lighten } from '@mui/material/styles';
 import cn from "classnames";
 
 const PieChartData = [
@@ -141,6 +142,18 @@ const rows = [
     delDate: "19 Jan 2019",
     status: "In a process",
     color: "warning"
+  },
+  {
+    id: 6,
+    orderId: Math.floor(Math.random() * 3000000),
+    customer: "Constance Clayton",
+    office: "Peru",
+    weight: "105 kg",
+    price: 1.876,
+    purDate: "06 Jan 2019",
+    delDate: "19 Jan 2019",
+    status: "In a process",
+    color: "warning"
   }
 ];
 
@@ -166,8 +179,8 @@ function stableSort(array, cmp) {
 
 function getSorting(order, orderBy) {
   return order === "desc"
-    ? (a, b) => desc(a, b, orderBy)
-    : (a, b) => -desc(a, b, orderBy);
+      ? (a, b) => desc(a, b, orderBy)
+      : (a, b) => -desc(a, b, orderBy);
 }
 
 const headCells = [
@@ -212,44 +225,44 @@ function EnhancedTableHead(props) {
   };
 
   return (
-    <TableHead>
-      <TableRow>
-        <TableCell padding="checkbox">
-          <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{ "aria-label": "select all rows" }}
-          />
-        </TableCell>
-        {headCells.map(headCell => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? "left" : "right"}
-            padding={headCell.disablePadding ? "none" : "default"}
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={order}
-              onClick={createSortHandler(headCell.id)}
-              style={{
-                whiteSpace: "nowrap",
-                textTransform: "uppercase",
-                fontSize: "0.85rem",
-              }}
-            >
-              <Typography uppercase color="text" variant={"body2"} colorBrightness="hint">{headCell.label}</Typography>
-              {orderBy === headCell.id ? (
-                <span className={classes.visuallyHidden}>
+      <TableHead>
+        <TableRow>
+          <TableCell padding="checkbox">
+            <Checkbox
+                indeterminate={numSelected > 0 && numSelected < rowCount}
+                checked={numSelected === rowCount}
+                onChange={onSelectAllClick}
+                inputProps={{ "aria-label": "select all rows" }}
+            />
+          </TableCell>
+          {headCells.map(headCell => (
+              <TableCell
+                  key={headCell.id}
+                  align={headCell.numeric ? "left" : "right"}
+                  padding={headCell.disablePadding ? "none" : null}
+                  sortDirection={orderBy === headCell.id ? order : false}
+              >
+                <TableSortLabel
+                    active={orderBy === headCell.id}
+                    direction={order}
+                    onClick={createSortHandler(headCell.id)}
+                    style={{
+                      whiteSpace: "nowrap",
+                      textTransform: "uppercase",
+                      fontSize: "0.85rem",
+                    }}
+                >
+                  <Typography uppercase color="text" variant={"body2"} colorBrightness="hint">{headCell.label}</Typography>
+                  {orderBy === headCell.id ? (
+                      <span className={classes.visuallyHidden}>
                   {order === "desc" ? "sorted descending" : "sorted ascending"}
                 </span>
-              ) : null}
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
+                  ) : null}
+                </TableSortLabel>
+              </TableCell>
+          ))}
+        </TableRow>
+      </TableHead>
   );
 }
 
@@ -265,15 +278,15 @@ EnhancedTableHead.propTypes = {
 
 const useToolbarStyles = makeStyles(theme => ({
   highlight:
-    theme.palette.type === "light"
-      ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85)
-        }
-      : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark
-        },
+      theme.palette.type === "light"
+          ? {
+            color: theme.palette.secondary.main,
+            backgroundColor: lighten(theme.palette.secondary.light, 0.85)
+          }
+          : {
+            color: theme.palette.text.primary,
+            backgroundColor: theme.palette.secondary.dark
+          },
   title: {
     flex: "1 1 100%"
   }
@@ -284,57 +297,57 @@ const EnhancedTableToolbar = props => {
   const { numSelected } = props;
 
   return (
-    <Toolbar
-      className={cn(classes.root, {
-        [classes.highlight]: numSelected > 0
-      })}
-    >
-      {numSelected > 0 ? (
-        <Typography
-          className={classes.title}
-          color="inherit"
-          variant="subtitle1"
-        >
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Box display={"flex"} className={classes.title}>
+      <Toolbar
+        className={cn(classes.root, {
+          [classes.highlight]: numSelected > 0
+        })}
+      >
+        {numSelected > 0 ? (
           <Typography
-            variant="h6"
-            color="text"
-            colorBrightness={"secondary"}
-            id="tableTitle"
-            style={{ display: "flex" }}
-            block
+            className={classes.title}
+            color="inherit"
+            variant="subtitle1"
           >
-            Recent Orders
-            <Box display="flex" alignSelf={"flex-end"} ml={1}>
+            {numSelected} selected
+          </Typography>
+        ) : (
+            <Box display={"flex"} className={classes.title}>
               <Typography
+                variant="h6"
                 color="text"
-                colorBrightness={"hint"}
-                variant={"caption"}
+                colorBrightness={"secondary"}
+                id="tableTitle"
+                style={{ display: "flex" }}
+                block
               >
-                1.340 total
+                Recent Orders
+                <Box display="flex" alignSelf={"flex-end"} ml={1}>
+                  <Typography
+                    color="text"
+                    colorBrightness={"hint"}
+                    variant={"caption"}
+                  >
+                    1.340 total
+                  </Typography>
+                </Box>
               </Typography>
             </Box>
-          </Typography>
-        </Box>
-      )}
+        )}
 
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton aria-label="filter list">
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
-      )}
-    </Toolbar>
+        {numSelected > 0 ? (
+            <Tooltip title="Delete">
+              <IconButton aria-label="delete">
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+        ) : (
+            <Tooltip title="Filter list">
+              <IconButton aria-label="filter list">
+                <FilterListIcon />
+              </IconButton>
+            </Tooltip>
+        )}
+      </Toolbar>
   );
 };
 
@@ -342,35 +355,12 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired
 };
 
-// const actionsMenuReducer = (state, action) => {
-//   switch (action.type) {
-//     case 'menu-1-op':
-//       return {menu1: true};
-//     case 'menu-1-cl':
-//       return {menu1: false};
-//     case 'menu-2-op':
-//       return {menu2: true};
-//     case 'menu-2-cl':
-//       return {menu2: false};
-//     case 'menu-3-op':
-//       return {menu3: true};
-//     case 'menu-3-cl':
-//       return {menu3: false};
-//     case 'menu-4-op':
-//       return {menu4: true};
-//     case 'menu-5':
-//       return {count: state.count - 1};
-//     default:
-//       throw new Error();
-//   }
-// }
-
 function Dashboard() {
-  var classes = useStyles();
-  var theme = useTheme();
+  let classes = useStyles();
+  let theme = useTheme();
 
   // local
-  var [mainChartState, setMainChartState] = useState("monthly");
+  let [mainChartState, setMainChartState] = useState("monthly");
 
   // Recent Orders table
 
@@ -379,7 +369,7 @@ function Dashboard() {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [actionsButtonRefid, setActionsButtonRefid] =  React.useState(null);
+  const [actionsButtonRefID, setActionsButtonRefID] =  React.useState(null);
   const [isActionsMenu, setActionsMenu] = React.useState(false)
 
 
@@ -410,8 +400,8 @@ function Dashboard() {
       newSelected = newSelected.concat(selected.slice(0, -1));
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
+          selected.slice(0, selectedIndex),
+          selected.slice(selectedIndex + 1)
       );
     }
 
@@ -430,15 +420,15 @@ function Dashboard() {
   const isSelected = name => selected.indexOf(name) !== -1;
 
   const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+      rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   const randomData = React.useMemo(() => getRandomData(10), []);
 
   const mainChartData = React.useMemo(() => {
-    var resultArray = [];
-    var tablet = getRandomData(31, 3500, 6500, 7500, 1000);
-    var desktop = getRandomData(31, 1500, 7500, 7500, 1500);
-    var mobile = getRandomData(31, 1500, 7500, 7500, 1500);
+    let resultArray = [];
+    let tablet = getRandomData(31, 3500, 6500, 7500, 1000);
+    let desktop = getRandomData(31, 1500, 7500, 7500, 1500);
+    let mobile = getRandomData(31, 1500, 7500, 7500, 1500);
 
     for (let i = 0; i < tablet.length; i++) {
       resultArray.push({
@@ -455,9 +445,9 @@ function Dashboard() {
     <Grid container spacing={3}>
       <Grid item lg={3} sm={6} xs={12}>
         <Widget
-          title="Support Tracker"
-          bodyClass={classes.fullHeightBody}
-          className={classes.card}
+            title="Support Tracker"
+            bodyClass={classes.fullHeightBody}
+            className={classes.card}
         >
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
@@ -467,49 +457,49 @@ function Dashboard() {
                 </Typography>
 
                 <Typography
-                  color="text"
-                  variant={"caption"}
-                  noWrap
-                  style={{ alignSelf: "flex-end", marginLeft: 8 }}
+                    color="text"
+                    variant={"caption"}
+                    noWrap
+                    style={{ alignSelf: "flex-end", marginLeft: 8 }}
                 >
                   Tickets
                 </Typography>
               </Box>
             </Grid>
             <Grid
-              item
-              xs={6}
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                display: "flex"
-              }}
+                item
+                xs={6}
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  display: "flex"
+                }}
             >
               <Typography
-                variant="caption"
-                weight={"medium"}
-                style={{ position: "absolute" }}
+                  variant="caption"
+                  weight={"medium"}
+                  style={{ position: "absolute" }}
               >
                 64%
               </Typography>
               <ResponsiveContainer width="100%" height={80}>
                 <PieChart>
                   <Pie
-                    data={TicketChartData}
-                    startAngle={270}
-                    endAngle={0}
-                    paddingAngle={5}
-                    innerRadius={30}
-                    outerRadius={35}
-                    dataKey="value"
-                    style={{ border: 0 }}
+                      data={TicketChartData}
+                      startAngle={270}
+                      endAngle={0}
+                      paddingAngle={5}
+                      innerRadius={30}
+                      outerRadius={35}
+                      dataKey="value"
+                      style={{ border: 0 }}
                   >
                     {TicketChartData.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={theme.palette[entry.color].main}
-                        stroke={""}
-                      />
+                        <Cell
+                            key={`cell-${index}`}
+                            fill={theme.palette[entry.color].main}
+                            stroke={""}
+                        />
                     ))}
                   </Pie>
                 </PieChart>
@@ -517,27 +507,27 @@ function Dashboard() {
             </Grid>
           </Grid>
           <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
-            wrap={"nowrap"}
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+              wrap={"nowrap"}
           >
             <Grid item>
               <Typography
-                color="text"
-                colorBrightness={"hint"}
-                variant={"caption"}
-                style={{ marginRight: 5 }}
-                noWrap
+                  color="text"
+                  colorBrightness={"hint"}
+                  variant={"caption"}
+                  style={{ marginRight: 5 }}
+                  noWrap
               >
                 New Tickets
               </Typography>
               <Box display="flex" alignItems="center" justifyContent={"center"}>
                 <Typography
-                  size="md"
-                  weight={"medium"}
-                  style={{ marginRight: 8 }}
+                    size="md"
+                    weight={"medium"}
+                    style={{ marginRight: 8 }}
                 >
                   45
                 </Typography>
@@ -546,18 +536,18 @@ function Dashboard() {
             </Grid>
             <Grid item>
               <Typography
-                color="text"
-                colorBrightness={"hint"}
-                variant={"caption"}
-                style={{ marginRight: 5 }}
+                  color="text"
+                  colorBrightness={"hint"}
+                  variant={"caption"}
+                  style={{ marginRight: 5 }}
               >
                 Open
               </Typography>
               <Box display="flex" alignItems="center" justifyContent={"center"}>
                 <Typography
-                  size="md"
-                  weight={"medium"}
-                  style={{ marginRight: 8 }}
+                    size="md"
+                    weight={"medium"}
+                    style={{ marginRight: 8 }}
                 >
                   147
                 </Typography>
@@ -566,17 +556,17 @@ function Dashboard() {
             </Grid>
             <Grid item>
               <Typography
-                color="text"
-                colorBrightness={"hint"}
-                variant={"caption"}
+                  color="text"
+                  colorBrightness={"hint"}
+                  variant={"caption"}
               >
                 Completed
               </Typography>
               <Box display="flex" alignItems="center" justifyContent={"center"}>
                 <Typography
-                  size="md"
-                  weight={"medium"}
-                  style={{ marginRight: 8 }}
+                    size="md"
+                    weight={"medium"}
+                    style={{ marginRight: 8 }}
                 >
                   351
                 </Typography>
@@ -588,42 +578,42 @@ function Dashboard() {
       </Grid>
       <Grid item lg={3} sm={6} xs={12}>
         <Widget
-          title="Revenue Breakdown"
-          className={classes.card}
-          bodyClass={classes.alignStandaloneElement}
+            title="Revenue Breakdown"
+            className={classes.card}
+            bodyClass={classes.alignStandaloneElement}
         >
           <Grid container spacing={3}>
             <Grid
-              item
-              xs={6}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                padding: 6
-              }}
+                item
+                xs={6}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: 6
+                }}
             >
               <Typography
-                variant={"caption"}
-                weight={"medium"}
-                style={{ position: "absolute" }}
+                  variant={"caption"}
+                  weight={"medium"}
+                  style={{ position: "absolute" }}
               >
                 1700
               </Typography>
               <ResponsiveContainer width="100%" height={144}>
                 <PieChart>
                   <Pie
-                    data={PieChartData}
-                    innerRadius={30}
-                    outerRadius={40}
-                    dataKey="value"
+                      data={PieChartData}
+                      innerRadius={30}
+                      outerRadius={40}
+                      dataKey="value"
                   >
                     {PieChartData.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={theme.palette[entry.color].main}
-                        stroke={""}
-                      />
+                        <Cell
+                            key={`cell-${index}`}
+                            fill={theme.palette[entry.color].main}
+                            stroke={""}
+                        />
                     ))}
                   </Pie>
                 </PieChart>
@@ -632,20 +622,20 @@ function Dashboard() {
             <Grid item xs={6}>
               <div className={classes.pieChartLegendWrapper}>
                 {PieChartData.map(({ name, value, color }, index) => (
-                  <div key={color} className={classes.legendItemContainer}>
-                    <Dot color={color} style={{ marginRight: 5 }} />
-                    <Typography
-                      color="text"
-                      colorBrightness={"hint"}
-                      variant={"caption"}
-                      noWrap
-                    >
-                      &nbsp;{name}&nbsp;
-                    </Typography>
-                    <Typography color="text" weight={"medium"}>
-                      &nbsp;{value}
-                    </Typography>
-                  </div>
+                    <div key={color} className={classes.legendItemContainer}>
+                      <Dot color={color} style={{ marginRight: 5 }} />
+                      <Typography
+                          color="text"
+                          colorBrightness={"hint"}
+                          variant={"caption"}
+                          noWrap
+                      >
+                        &nbsp;{name}&nbsp;
+                      </Typography>
+                      <Typography color="text" weight={"medium"}>
+                        &nbsp;{value}
+                      </Typography>
+                    </div>
                 ))}
               </div>
             </Grid>
@@ -654,18 +644,18 @@ function Dashboard() {
       </Grid>
       <Grid item lg={3} sm={6} xs={12}>
         <Widget
-          title="App Performance"
-          className={classes.card}
-          bodyClass={classes.fullHeightBody}
+            title="App Performance"
+            className={classes.card}
+            bodyClass={classes.fullHeightBody}
         >
           <div className={classes.performanceLegendWrapper}>
             <div className={classes.legendElement}>
               <Dot color="warning" />
               <Typography
-                color="text"
-                colorBrightness="hint"
-                variant={"body2"}
-                className={classes.legendElementText}
+                  color="text"
+                  colorBrightness="hint"
+                  variant={"body2"}
+                  className={classes.legendElementText}
               >
                 Integration
               </Typography>
@@ -673,10 +663,10 @@ function Dashboard() {
             <div className={classes.legendElement}>
               <Dot color="primary" />
               <Typography
-                color="text"
-                colorBrightness="hint"
-                variant={"body2"}
-                className={classes.legendElementText}
+                  color="text"
+                  colorBrightness="hint"
+                  variant={"body2"}
+                  className={classes.legendElementText}
               >
                 SDK
               </Typography>
@@ -684,17 +674,17 @@ function Dashboard() {
           </div>
           <div className={classes.progressSection}>
             <Typography
-              color="text"
-              variant={"body2"}
-              className={classes.progressSectionTitle}
+                color="text"
+                variant={"body2"}
+                className={classes.progressSectionTitle}
             >
               Integration
             </Typography>
             <LinearProgress
-                variant="determinate"
-                value={77}
-                classes={{ barColorPrimary: classes.progressBarPrimary }}
-                className={classes.progress}
+              variant="determinate"
+              value={77}
+              classes={{ barColorPrimary: classes.progressBarPrimary }}
+              className={classes.progress}
             />
           </div>
           <div>
@@ -706,27 +696,27 @@ function Dashboard() {
               SDK
             </Typography>
             <LinearProgress
-                variant="determinate"
-                value={73}
-                classes={{ barColorPrimary: classes.progressBarWarning }}
-                className={classes.progress}
+              variant="determinate"
+              value={73}
+              classes={{ barColorPrimary: classes.progressBarWarning }}
+              className={classes.progress}
             />
           </div>
         </Widget>
       </Grid>
       <Grid item lg={3} sm={6} xs={12}>
         <Widget
-          title="Server Overview"
-          className={classes.card}
-          bodyClass={classes.fullHeightBody}
+            title="Server Overview"
+            className={classes.card}
+            bodyClass={classes.fullHeightBody}
         >
           <div className={classes.serverOverviewElement}>
             <Typography
-              color="text"
-              noWrap
-              variant={"body2"}
-              weight={"medium"}
-              className={classes.serverOverviewElementText}
+                color="text"
+                noWrap
+                variant={"body2"}
+                weight={"medium"}
+                className={classes.serverOverviewElementText}
             >
               60% / 37°С / 3.3 Ghz
             </Typography>
@@ -734,12 +724,12 @@ function Dashboard() {
               <ResponsiveContainer height={50} width="99%">
                 <AreaChart data={randomData}>
                   <Area
-                    type="natural"
-                    dataKey="value"
-                    stroke={theme.palette.secondary.main}
-                    fill={theme.palette.secondary.light}
-                    strokeWidth={2}
-                    fillOpacity="0.25"
+                      type="natural"
+                      dataKey="value"
+                      stroke={theme.palette.secondary.main}
+                      fill={theme.palette.secondary.light}
+                      strokeWidth={2}
+                      fillOpacity="0.25"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -747,11 +737,11 @@ function Dashboard() {
           </div>
           <div className={classes.serverOverviewElement}>
             <Typography
-              color="text"
-              noWrap
-              weight={"medium"}
-              variant={"body2"}
-              className={classes.serverOverviewElementText}
+                color="text"
+                noWrap
+                weight={"medium"}
+                variant={"body2"}
+                className={classes.serverOverviewElementText}
             >
               54% / 31°С / 3.3 Ghz
             </Typography>
@@ -759,12 +749,12 @@ function Dashboard() {
               <ResponsiveContainer height={50} width="99%">
                 <AreaChart data={randomData}>
                   <Area
-                    type="natural"
-                    dataKey="value"
-                    stroke={theme.palette.primary.main}
-                    fill={theme.palette.primary.light}
-                    strokeWidth={2}
-                    fillOpacity="0.25"
+                      type="natural"
+                      dataKey="value"
+                      stroke={theme.palette.primary.main}
+                      fill={theme.palette.primary.light}
+                      strokeWidth={2}
+                      fillOpacity="0.25"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -772,11 +762,11 @@ function Dashboard() {
           </div>
           <div className={classes.serverOverviewElement}>
             <Typography
-              color="text"
-              noWrap
-              weight={"medium"}
-              variant={"body2"}
-              className={classes.serverOverviewElementText}
+                color="text"
+                noWrap
+                weight={"medium"}
+                variant={"body2"}
+                className={classes.serverOverviewElementText}
             >
               57% / 21°С / 3.3 Ghz
             </Typography>
@@ -784,12 +774,12 @@ function Dashboard() {
               <ResponsiveContainer height={50} width="99%">
                 <AreaChart data={randomData}>
                   <Area
-                    type="natural"
-                    dataKey="value"
-                    stroke={theme.palette.warning.main}
-                    fill={theme.palette.warning.light}
-                    strokeWidth={2}
-                    fillOpacity="0.25"
+                      type="natural"
+                      dataKey="value"
+                      stroke={theme.palette.warning.main}
+                      fill={theme.palette.warning.light}
+                      strokeWidth={2}
+                      fillOpacity="0.25"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -799,138 +789,137 @@ function Dashboard() {
       </Grid>
       <Grid item xs={12}>
         <Widget
-          bodyClass={classes.mainChartBody}
-          header={
-            <div className={classes.mainChartHeader}>
-              <Typography
-                variant="h6"
-                color="text"
-                weight={"medium"}
-                colorBrightness="secondary"
-              >
-                Daily Line Chart
-              </Typography>
-              <div className={classes.mainChartHeaderLabels}>
-                <div className={classes.mainChartHeaderLabel}>
-                  <Dot color="warning" />
-                  <Typography className={classes.mainChartLegentElement}>
-                    Tablet
-                  </Typography>
+            bodyClass={classes.mainChartBody}
+            header={
+              <div className={classes.mainChartHeader}>
+                <Typography
+                  variant="h6"
+                  color="text"
+                  weight={"medium"}
+                  colorBrightness="secondary"
+                >
+                  Daily Line Chart
+                </Typography>
+                <div className={classes.mainChartHeaderLabels}>
+                  <div className={classes.mainChartHeaderLabel}>
+                    <Dot color="warning" />
+                    <Typography className={classes.mainChartLegendElement}>
+                      Tablet
+                    </Typography>
+                  </div>
+                  <div className={classes.mainChartHeaderLabel}>
+                    <Dot color="primary" />
+                    <Typography className={classes.mainChartLegendElement}>
+                      Mobile
+                    </Typography>
+                  </div>
+                  <div className={classes.mainChartHeaderLabel}>
+                    <Dot color="secondary" />
+                    <Typography className={classes.mainChartLegendElement}>
+                      Desktop
+                    </Typography>
+                  </div>
                 </div>
-                <div className={classes.mainChartHeaderLabel}>
-                  <Dot color="primary" />
-                  <Typography className={classes.mainChartLegentElement}>
-                    Mobile
-                  </Typography>
-                </div>
-                <div className={classes.mainChartHeaderLabel}>
-                  <Dot color="secondary" />
-                  <Typography className={classes.mainChartLegentElement}>
-                    Desktop
-                  </Typography>
-                </div>
+                <Select
+                    value={mainChartState}
+                    onChange={e => setMainChartState(e.target.value)}
+                    input={
+                      <OutlinedInput
+                          classes={{
+                            notchedOutline: classes.mainChartSelectRoot,
+                            input: classes.mainChartSelect
+                          }}
+                      />
+                    }
+                    autoWidth
+                    className={classes.fixIconRight}
+                >
+                  <MenuItem value="daily">Daily</MenuItem>
+                  <MenuItem value="weekly">Weekly</MenuItem>
+                  <MenuItem value="monthly">Monthly</MenuItem>
+                </Select>
               </div>
-              <Select
-                value={mainChartState}
-                onChange={e => setMainChartState(e.target.value)}
-                input={
-                  <OutlinedInput
-                    labelWidth={0}
-                    classes={{
-                      notchedOutline: classes.mainChartSelectRoot,
-                      input: classes.mainChartSelect
-                    }}
-                  />
-                }
-                autoWidth
-                className={classes.fixIconRight}
-              >
-                <MenuItem value="daily">Daily</MenuItem>
-                <MenuItem value="weekly">Weekly</MenuItem>
-                <MenuItem value="monthly">Monthly</MenuItem>
-              </Select>
-            </div>
-          }
+            }
         >
           <ResponsiveContainer width="100%" minWidth={500} height={350}>
             <ComposedChart
-              margin={{ top: 0, right: -15, left: -15, bottom: 0 }}
-              data={mainChartData}
+                margin={{ top: 0, right: -15, left: -15, bottom: 0 }}
+                data={mainChartData}
             >
               <YAxis
-                ticks={[0, 2500, 5000, 7500]}
-                tick={{
-                  fill: theme.palette.text.hint + "80",
-                  fontSize: 14
-                }}
-                stroke={theme.palette.text.hint + "80"}
-                tickLine={false}
+                  ticks={[0, 2500, 5000, 7500]}
+                  tick={{
+                    fill: theme.palette.text.hint + "80",
+                    fontSize: 14
+                  }}
+                  stroke={theme.palette.text.hint + "80"}
+                  tickLine={false}
               />
               <XAxis
-                tickFormatter={i => i + 1}
-                tick={{
-                  fill: theme.palette.text.hint + "80",
-                  fontSize: 14
-                }}
-                stroke={theme.palette.text.hint + "80"}
-                tickLine={false}
+                  tickFormatter={i => i + 1}
+                  tick={{
+                    fill: theme.palette.text.hint + "80",
+                    fontSize: 14
+                  }}
+                  stroke={theme.palette.text.hint + "80"}
+                  tickLine={false}
               />
               <Tooltip />
               <Area
-                type="natural"
-                dataKey="desktop"
-                fill={theme.palette.background.light}
-                strokeWidth={0}
-                activeDot={false}
+                  type="natural"
+                  dataKey="desktop"
+                  fill={theme.palette.background.light}
+                  strokeWidth={0}
+                  activeDot={false}
               />
               <Line
-                type="natural"
-                dataKey="mobile"
-                stroke={theme.palette.primary.main}
-                strokeWidth={2}
-                dot={false}
-                activeDot={false}
+                  type="natural"
+                  dataKey="mobile"
+                  stroke={theme.palette.primary.main}
+                  strokeWidth={2}
+                  dot={false}
+                  activeDot={false}
               />
               <Line
-                type="linear"
-                dataKey="tablet"
-                stroke={theme.palette.warning.main}
-                strokeWidth={2}
-                dot={{
-                  stroke: theme.palette.warning.dark,
-                  strokeWidth: 2,
-                  fill: theme.palette.warning.main
-                }}
-                activeDot={{
-                  r: 8
-                }}
+                  type="linear"
+                  dataKey="tablet"
+                  stroke={theme.palette.warning.main}
+                  strokeWidth={2}
+                  dot={{
+                    stroke: theme.palette.warning.dark,
+                    strokeWidth: 2,
+                    fill: theme.palette.warning.main
+                  }}
+                  activeDot={{
+                    r: 8
+                  }}
               />
             </ComposedChart>
           </ResponsiveContainer>
         </Widget>
       </Grid>
       {mock.bigStat.map(stat => (
-        <Grid item md={4} sm={6} xs={12} key={stat.product}>
-          <BigStat {...stat} />
-        </Grid>
+          <Grid item md={4} sm={6} xs={12} key={stat.product}>
+            <BigStat {...stat} />
+          </Grid>
       ))}
       <Grid item xs={12}>
         <Widget noBodyPadding bodyClass={classes.tableWidget}>
           <EnhancedTableToolbar numSelected={selected.length} />
           <div className={classes.tableWrapper}>
             <Table
-              className={classes.table}
-              aria-labelledby="tableTitle"
-              aria-label="recent orders"
+                className={classes.table}
+                aria-labelledby="tableTitle"
+                aria-label="recent orders"
             >
               <EnhancedTableHead
-                classes={classes}
-                numSelected={selected.length}
-                order={order}
-                orderBy={orderBy}
-                onSelectAllClick={handleSelectAllClick}
-                onRequestSort={handleRequestSort}
-                rowCount={rows.length}
+                  classes={classes}
+                  numSelected={selected.length}
+                  order={order}
+                  orderBy={orderBy}
+                  onSelectAllClick={handleSelectAllClick}
+                  onRequestSort={handleRequestSort}
+                  rowCount={rows.length}
               />
               <TableBody>
                 {stableSort(rows, getSorting(order, orderBy))
@@ -951,28 +940,28 @@ function Dashboard() {
                       >
                         <TableCell padding="checkbox">
                           <Checkbox
-                            checked={isItemSelected}
-                            inputProps={{ "aria-labelledby": labelId }}
+                              checked={isItemSelected}
+                              inputProps={{ "aria-labelledby": labelId }}
                           />
                         </TableCell>
                         <TableCell
-                          component="th"
-                          id={labelId}
-                          scope="row"
-                          padding="none"
+                            component="th"
+                            id={labelId}
+                            scope="row"
+                            padding="none"
                         >
                           {row.orderId}
                         </TableCell>
                         <TableCell>
                           <Box
-                            display={"flex"}
-                            flexWrap={"nowrap"}
-                            alignItems={"center"}
+                              display={"flex"}
+                              flexWrap={"nowrap"}
+                              alignItems={"center"}
                           >
                             <Avatar
-                              alt={row.customer}
-                              color={row.color}
-                              style={{ marginRight: 8 }}
+                                alt={row.customer}
+                                color={row.color}
+                                style={{ marginRight: 8 }}
                             >
                               {row.customer[0]}
                             </Avatar>
@@ -997,37 +986,36 @@ function Dashboard() {
                               onClick={(e) => {
                                 e.stopPropagation();
                                 setActionsMenu(true);
-                                setActionsButtonRefid(e.currentTarget)
+                                setActionsButtonRefID(e.currentTarget)
                               }}
-                              buttonRef={setActionsButtonRefid}
+                              ref={setActionsButtonRefID}
                           >
                             <MoreIcon />
                           </IconButton>
 
-                            <Menu
-                                id="actions-menu"
-                                open={isActionsMenu}
-                                anchorEl={actionsButtonRefid}
-                                onClose={() => setActionsMenu(false)}
-                                disableAutoFocusItem
-                                //style={{padding: 0, margin: 0}}
-                            >
-                              <MenuItem>
-                                <Typography>Edit</Typography>
-                              </MenuItem>
-                              <MenuItem>
-                                <Typography>Delete</Typography>
-                              </MenuItem>
-                            </Menu>
-                  
+                          <Menu
+                            id="actions-menu"
+                            open={isActionsMenu}
+                            anchorEl={actionsButtonRefID}
+                            onClose={() => setActionsMenu(false)}
+                            disableAutoFocusItem
+                          >
+                            <MenuItem>
+                              <Typography>Edit</Typography>
+                            </MenuItem>
+                            <MenuItem>
+                              <Typography>Delete</Typography>
+                            </MenuItem>
+                          </Menu>
+
                         </TableCell>
                       </TableRow>
                     );
                   })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 53 * emptyRows }}>
-                    <TableCell colSpan={6} />
-                  </TableRow>
+                      <TableCell colSpan={6} />
+                    </TableRow>
                 )}
               </TableBody>
             </Table>
@@ -1044,8 +1032,8 @@ function Dashboard() {
             nextIconButtonProps={{
               "aria-label": "next page"
             }}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Widget>
       </Grid>
@@ -1056,17 +1044,17 @@ function Dashboard() {
 // #######################################################################
 
 function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
-  var array = new Array(length).fill();
+  let array = new Array(length).fill();
   let lastValue;
 
   return array.map((item, index) => {
     let randomValue = Math.floor(Math.random() * multiplier + 1);
 
     while (
-      randomValue <= min ||
-      randomValue >= max ||
-      (lastValue && randomValue - lastValue > maxDiff)
-    ) {
+        randomValue <= min ||
+        randomValue >= max ||
+        (lastValue && randomValue - lastValue > maxDiff)
+        ) {
       randomValue = Math.floor(Math.random() * multiplier + 1);
     }
 

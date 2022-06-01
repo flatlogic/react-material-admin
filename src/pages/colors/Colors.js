@@ -7,7 +7,7 @@ import {
   TableCell,
   Grid,
   Box
-} from "@material-ui/core";
+} from "@mui/material";
 import useStyles from "./styles";
 
 // components

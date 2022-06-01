@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import FolderGreenLight from '../../../images/profile/FolderGreenLight.svg';
 
 const styles = (theme) => ({

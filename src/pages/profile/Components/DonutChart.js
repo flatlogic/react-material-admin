@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from '../../../components/Wrappers';
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
 import Dot from '../../../components/Dot/Dot';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import {
     ResponsiveContainer,
     PieChart,
@@ -91,7 +91,6 @@ const DonutChart = ({ classes }) => {
               <Dot color={color} style={{ marginLeft: 5 }} />
               <Typography
                 color="text"
-                colorBrightness={"hint"}
                 variant={"caption"}
                 style={{ fontSize: 14 }}
                 noWrap

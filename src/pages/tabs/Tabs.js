@@ -4,17 +4,17 @@ import {
   Box,
   Tabs,
   Tab,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   AppBar
-} from "@material-ui/core";
+} from "@mui/material";
 import SwipeableViews from "react-swipeable-views";
-import { useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@mui/styles";
 import {
   Phone as PhoneIcon,
   ExpandMore as ExpandMoreIcon
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 
 // components
 import Widget from "../../components/Widget";
@@ -209,47 +209,47 @@ export default function TabsComp() {
             disableWidgetMenu
             inheritHeight
           >
-            <ExpansionPanel>
-              <ExpansionPanelSummary
+            <Accordion>
+              <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
                 <Typography>Expansion Panel 1</Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
+              </AccordionSummary>
+              <AccordionDetails>
                 <Typography>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
                   eget.
                 </Typography>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel>
-              <ExpansionPanelSummary
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
                 id="panel2a-header"
               >
                 <Typography>Expansion Panel 2</Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
+              </AccordionSummary>
+              <AccordionDetails>
                 <Typography>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
                   eget.
                 </Typography>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel disabled>
-              <ExpansionPanelSummary
+              </AccordionDetails>
+            </Accordion>
+            <Accordion disabled>
+              <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel3a-content"
                 id="panel3a-header"
               >
                 <Typography>Disabled Expansion Panel</Typography>
-              </ExpansionPanelSummary>
-            </ExpansionPanel>
+              </AccordionSummary>
+            </Accordion>
           </Widget>
         </Grid>
         <Grid item md={6}>
@@ -258,47 +258,47 @@ export default function TabsComp() {
             disableWidgetMenu
             inheritHeight
           >
-            <ExpansionPanel classes={{ root: classes.expansion }}>
-              <ExpansionPanelSummary
+            <Accordion classes={{ root: classes.expansion }}>
+              <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
                 <Typography>Expansion Panel 1</Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
+              </AccordionSummary>
+              <AccordionDetails>
                 <Typography>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
                   eget.
                 </Typography>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel classes={{ root: classes.expansion }}>
-              <ExpansionPanelSummary
+              </AccordionDetails>
+            </Accordion>
+            <Accordion classes={{ root: classes.expansion }}>
+              <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
                 id="panel2a-header"
               >
                 <Typography>Expansion Panel 2</Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
+              </AccordionSummary>
+              <AccordionDetails>
                 <Typography>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
                   eget.
                 </Typography>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel disabled>
-              <ExpansionPanelSummary
+              </AccordionDetails>
+            </Accordion>
+            <Accordion disabled>
+              <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel3a-content"
                 id="panel3a-header"
               >
                 <Typography>Disabled Expansion Panel</Typography>
-              </ExpansionPanelSummary>
-            </ExpansionPanel>
+              </AccordionSummary>
+            </Accordion>
           </Widget>
         </Grid>
       </Grid>

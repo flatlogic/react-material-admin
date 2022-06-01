@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTheme } from "@material-ui/styles";
+import { useTheme } from "@mui/styles";
 import ReactApexChart from "react-apexcharts";
 
 const themeOptions = theme => {

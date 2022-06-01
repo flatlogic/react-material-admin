@@ -1,9 +1,8 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import { withStyles } from '@mui/styles';
+import { Tabs, Tab, Box } from '@mui/material';
+
 import SwipeableViews from 'react-swipeable-views';
-import Box from '@material-ui/core/Box';
 import ToDoItem from './ToDoItem';
 
 function TabPanel(props) {
@@ -135,7 +134,6 @@ function CustomizedTabs({ classes }) {
     { color: '#FFC35F', time: '15.20', title: 'Development of the new Widget' },
     { color: '#536DFE', time: '16.00', title: 'Code review and refactoring' },
   ]
-
 
   return (
     <div className={classes.root}>

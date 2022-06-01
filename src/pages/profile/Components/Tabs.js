@@ -1,8 +1,8 @@
 import React from 'react';
-import { withStyles, useTheme } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
+import { withStyles, useTheme } from '@mui/styles';
+import {Tabs, Typography, Box} from '@mui/material';
+import Tab from '@mui/material/Tab';
+
 import FolderBlue from '../Icons/FolderBlue';
 import FolderBlueDark from '../Icons/FolderBlueDark';
 import FolderRed from '../Icons/FolderRed';
@@ -12,7 +12,6 @@ import FolderGreenDark from '../Icons/FolderGreenDark';
 import FolderYellow from '../Icons/FolderYellow';
 import FolderYellowDark from '../Icons/FolderYellowDark';
 import SwipeableViews from 'react-swipeable-views';
-import Box from '@material-ui/core/Box';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -27,7 +26,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={0}>
-          <Typography>{children}</Typography>
+          <Typography component={'div'} >{children}</Typography>
         </Box>
       )}
     </div>
@@ -83,9 +82,6 @@ const styles = (theme) => ({
     borderRadius: '10px', 
     backgroundColor: 'red',  
     border: '3px solid black',
-    // '&::-webkit-scrollbar': {
-    //   width: '6px'
-    // },
     '&:: -webkit-scrollbar-track': {
       '-webkit-box-shadow': 'inset 0 0 7px rgba(0,0,0,.3)', 
       borderRadius: '10px', 
@@ -144,7 +140,7 @@ function CustomizedTabs({ classes }) {
   const theme = useTheme();
 
   return (
-    <div class={classes.root}>
+    <div className={classes.root}>
       <AntTabs
         value={index}
         onChange={handleChange}

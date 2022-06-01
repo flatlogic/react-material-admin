@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Typography, Grid, Tabs, Tab, Paper } from "@material-ui/core";
-import * as Icons from "@material-ui/icons";
-
+import { Typography, Grid, Tabs, Tab, Paper } from "@mui/material";
+import * as Icons from "@mui/icons-material";
+import Widget from "../../components/Widget";
 // styles
 import useStyles from "./styles";
 
@@ -9,10 +9,10 @@ import useStyles from "./styles";
 import "font-awesome/css/font-awesome.min.css";
 
 export default function IconsPage() {
-  var classes = useStyles();
+  let classes = useStyles();
 
   // local
-  var [activeTabId, setActiveTabId] = useState(0);
+  let [activeTabId, setActiveTabId] = useState(0);
 
   return (
     <>
@@ -28,8 +28,8 @@ export default function IconsPage() {
           <Tab label="Font Awesome" classes={{ root: classes.tab }} />
         </Tabs>
         {activeTabId === 0 && (
-          <div>
-            <Grid container spacing={2} className="icon-list">
+          <Widget>
+            <Grid container spacing={2} className={classes.iconList}>
               <Grid
                 className={classes.materailIcon}
                 item
@@ -3847,71 +3847,6 @@ export default function IconsPage() {
                 sm={4}
                 xs={12}
               >
-                <Icons.ExposureNeg1 />
-                <Typography className={classes.materialIconText}>
-                  ExposureNeg1
-                </Typography>
-              </Grid>
-              <Grid
-                className={classes.materailIcon}
-                item
-                md={3}
-                lg={2}
-                sm={4}
-                xs={12}
-              >
-                <Icons.ExposureNeg2 />
-                <Typography className={classes.materialIconText}>
-                  ExposureNeg2
-                </Typography>
-              </Grid>
-              <Grid
-                className={classes.materailIcon}
-                item
-                md={3}
-                lg={2}
-                sm={4}
-                xs={12}
-              >
-                <Icons.ExposurePlus1 />
-                <Typography className={classes.materialIconText}>
-                  ExposurePlus1
-                </Typography>
-              </Grid>
-              <Grid
-                className={classes.materailIcon}
-                item
-                md={3}
-                lg={2}
-                sm={4}
-                xs={12}
-              >
-                <Icons.ExposurePlus2 />
-                <Typography className={classes.materialIconText}>
-                  ExposurePlus2
-                </Typography>
-              </Grid>
-              <Grid
-                className={classes.materailIcon}
-                item
-                md={3}
-                lg={2}
-                sm={4}
-                xs={12}
-              >
-                <Icons.ExposureZero />
-                <Typography className={classes.materialIconText}>
-                  ExposureZero
-                </Typography>
-              </Grid>
-              <Grid
-                className={classes.materailIcon}
-                item
-                md={3}
-                lg={2}
-                sm={4}
-                xs={12}
-              >
                 <Icons.Extension />
                 <Typography className={classes.materialIconText}>
                   Extension
@@ -7152,19 +7087,7 @@ export default function IconsPage() {
                   MoreVert
                 </Typography>
               </Grid>
-              <Grid
-                className={classes.materailIcon}
-                item
-                md={3}
-                lg={2}
-                sm={4}
-                xs={12}
-              >
-                <Icons.Motorcycle />
-                <Typography className={classes.materialIconText}>
-                  Motorcycle
-                </Typography>
-              </Grid>
+
               <Grid
                 className={classes.materailIcon}
                 item
@@ -8504,19 +8427,7 @@ export default function IconsPage() {
                   Poll
                 </Typography>
               </Grid>
-              <Grid
-                className={classes.materailIcon}
-                item
-                md={3}
-                lg={2}
-                sm={4}
-                xs={12}
-              >
-                <Icons.Polymer />
-                <Typography className={classes.materialIconText}>
-                  Polymer
-                </Typography>
-              </Grid>
+
               <Grid
                 className={classes.materailIcon}
                 item
@@ -12531,12 +12442,12 @@ export default function IconsPage() {
                 </Typography>
               </Grid>
             </Grid>
-          </div>
+          </Widget>
         )}
 
         {activeTabId === 1 && (
-          <div>
-            <Grid container spacing={2} className="icon-list">
+          <Widget>
+            <Grid container spacing={2} className={classes.iconList}>
               <Grid
                 className={classes.materailIcon}
                 item
@@ -13702,7 +13613,7 @@ export default function IconsPage() {
                 </Typography>
               </Grid>
             </Grid>
-          </div>
+          </Widget>
         )}
       </Paper>
     </>

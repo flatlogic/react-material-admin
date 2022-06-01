@@ -8,7 +8,7 @@ import {
   TableCell,
   Box,
   Grid
-} from "@material-ui/core";
+} from "@mui/material";
 import cn from "classnames";
 
 // components

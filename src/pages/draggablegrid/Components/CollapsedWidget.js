@@ -1,7 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
-
+import { withStyles } from '@mui/styles';
+import { Typography } from '@mui/material';
 
 const styles = (theme) => ({
   quote: {
@@ -20,7 +19,7 @@ const styles = (theme) => ({
 
 const CollapsedWidget = ({ classes }) => {
   return (
-    <Typography>
+    <Typography component={'div'}>
       <blockquote className={classes.quote}>
         "There are no limits. There are plateaus, but you must not stay there, you must go beyond
         them. If it kills you, it kills you. A man must constantly exceed his level."

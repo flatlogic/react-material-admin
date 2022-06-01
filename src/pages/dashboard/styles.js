@@ -1,53 +1,53 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from '@mui/styles';
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   card: {
-    minHeight: "100%",
-    display: "flex",
-    flexDirection: "column"
+    minHeight: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   progressSection: {
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
   },
-  progressTitle: {
-    marginBottom: theme.spacing(2)
+  progressSectionTitle: {
+    marginBottom: theme.spacing(1),
   },
   progress: {
     marginBottom: theme.spacing(1),
     backgroundColor: 'rgb(236, 236, 236)',
   },
   pieChartLegendWrapper: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "flex-end",
-    marginRight: theme.spacing(1)
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    marginRight: theme.spacing(1),
   },
   legendItemContainer: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     marginBottom: theme.spacing(1),
-    justifyContent: "space-between",
-    width: "100%"
+    justifyContent: 'space-between',
+    width: '100%',
   },
   fullHeightBody: {
-    display: "flex",
+    display: 'flex',
     flexGrow: 1,
-    flexDirection: "column",
-    justifyContent: "space-between"
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   alignStandaloneElement: {
-    display: "flex",
+    display: 'flex',
     flexGrow: 1,
-    flexDirection: "column",
-    justifyContent: "center"
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   tableWidget: {
-    overflowX: "auto"
+    overflowX: 'auto',
   },
   progressBar: {
-    backgroundColor: theme.palette.warning.main
+    backgroundColor: theme.palette.warning.main,
   },
   progressBarPrimary: {
     backgroundColor: theme.palette.primary.main,
@@ -56,93 +56,93 @@ export default makeStyles(theme => ({
     backgroundColor: theme.palette.warning.main,
   },
   performanceLegendWrapper: {
-    display: "flex",
+    display: 'flex',
     flexGrow: 1,
-    alignItems: "center",
-    marginBottom: theme.spacing(1)
+    alignItems: 'center',
+    marginBottom: theme.spacing(1),
   },
   legendElement: {
-    display: "flex",
-    alignItems: "center",
-    marginRight: theme.spacing(2)
+    display: 'flex',
+    alignItems: 'center',
+    marginRight: theme.spacing(2),
   },
   legendElementText: {
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(1),
   },
   serverOverviewElement: {
-    display: "flex",
-    alignItems: "center",
-    maxWidth: "100%"
+    display: 'flex',
+    alignItems: 'center',
+    maxWidth: '100%',
   },
   serverOverviewElementText: {
     minWidth: 149,
-    paddingRight: theme.spacing(2)
+    paddingRight: theme.spacing(2),
   },
   serverOverviewElementChartWrapper: {
-    width: "100%"
+    width: '100%',
   },
   mainChartBody: {
-    overflowX: "auto"
+    overflowX: 'auto',
   },
   mainChartHeader: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    [theme.breakpoints.only("xs")]: {
-      flexWrap: "wrap"
-    }
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    [theme.breakpoints.only('xs')]: {
+      flexWrap: 'wrap',
+    },
   },
   mainChartHeaderLabels: {
-    display: "flex",
-    alignItems: "center",
-    [theme.breakpoints.only("xs")]: {
+    display: 'flex',
+    alignItems: 'center',
+    [theme.breakpoints.only('xs')]: {
       order: 3,
-      width: "100%",
-      justifyContent: "center",
+      width: '100%',
+      justifyContent: 'center',
       marginTop: theme.spacing(3),
-      marginBottom: theme.spacing(2)
-    }
+      marginBottom: theme.spacing(2),
+    },
   },
   mainChartHeaderLabel: {
-    display: "flex",
-    alignItems: "center",
-    marginLeft: theme.spacing(3)
+    display: 'flex',
+    alignItems: 'center',
+    marginLeft: theme.spacing(3),
   },
   mainChartSelectRoot: {
-    borderColor: theme.palette.text.hint + "80 !important"
+    borderColor: theme.palette.text.hint + '80 !important',
   },
   mainChartSelect: {
     padding: 10,
-    paddingRight: 25
+    paddingRight: 25,
   },
-  mainChartLegentElement: {
-    fontSize: "14px !important",
-    marginLeft: theme.spacing(1)
+  mainChartLegendElement: {
+    fontSize: '14px !important',
+    marginLeft: theme.spacing(1),
   },
   table: {
-    minWidth: 750
+    minWidth: 750,
   },
   tableWrapper: {
-    overflowX: "auto"
+    overflowX: 'auto',
   },
   visuallyHidden: {
     border: 0,
-    clip: "rect(0 0 0 0)",
+    clip: 'rect(0 0 0 0)',
     height: 1,
     margin: -1,
-    overflow: "hidden",
+    overflow: 'hidden',
     padding: 0,
-    position: "absolute",
+    position: 'absolute',
     top: 20,
-    width: 1
+    width: 1,
   },
   fixIconRight: {
-    "& .MuiSelect-icon": {
-      right: 4
-    }
+    '& .MuiSelect-icon': {
+      right: 4,
+    },
   },
   actionsIcon: {
-    color: "#76767B"
-  }
+    color: '#76767B',
+  },
 }));

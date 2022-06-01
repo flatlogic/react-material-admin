@@ -8,7 +8,7 @@ import {
   Marker
 } from "react-simple-maps";
 import useStyles from "./styles";
-import map from "../../images/map.json";
+import map from "./map.json";
 
 const markers = [
   {

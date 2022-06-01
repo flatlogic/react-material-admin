@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
+import { Grid } from "@mui/material";
+import { useTheme } from "@mui/styles";
 import ReactApexChart from "react-apexcharts";
-import img from "../../images/2.jpg";
+import img from "../../images/carousel/2.jpg";
 
 // components
 import Widget from "../../components/Widget/Widget";

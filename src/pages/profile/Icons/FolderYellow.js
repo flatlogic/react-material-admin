@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import FolderYellowLight from '../../../images/profile/FolderYellowLight.svg';
 
 const styles = (theme) => ({

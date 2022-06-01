@@ -5,31 +5,31 @@ import {
   InputAdornment,
   Divider,
   MenuItem,
-  Select
-} from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+  Select,
+  TextField,
+} from "@mui/material";
+import { withStyles } from "@mui/styles";
 import useStyles from "./styles";
 import cn from "classnames";
-import Checkbox from "@material-ui/core/Checkbox";
-import Radio from "@material-ui/core/Radio";
-import Input from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Favorite from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
-import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
+import {Checkbox, Radio, Input, FormControlLabel} from "@mui/material";
+
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+
 import {
+  Favorite,
+  FavoriteBorder,
   AccountCircle,
   VpnKey as PasswordIcon,
   AccountBalanceWallet as WalletIcon
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 
 // components
 import Widget from "../../../components/Widget/Widget";
-import { Button, Typography } from "../../../components/Wrappers/";
-import Code from "../../../components/Code";
+import { Button, Typography } from "../../../components/Wrappers/Wrappers";
+import Code from "../../../components/Code/Code";
 
 const GreenCheckbox = withStyles({
   root: {
@@ -48,26 +48,6 @@ const GreenRadio = withStyles({
     }
   }
 })(props => <Radio color="default" {...props} />);
-
-const SuccessInput = withStyles(theme => ({
-  root: {
-    "& .MuiInputLabel-root": {
-      color: "green"
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "green"
-      },
-      "&:hover fieldset": {
-        borderColor: "green"
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "green",
-        borderWidth: 2
-      }
-    }
-  }
-}))(props => <Input {...props} />);
 
 const actions = [
   {
@@ -119,434 +99,422 @@ export default function FormsElements() {
   }
   return (
     <div>
-      <Grid container spacing={6}>
-
-        <Grid item md={6} xs={12}>
-          <Widget
-            title="Horizontal form"
-            bodyClass={classes.horizontalFormTop}
-            disableWidgetMenu
-            inheritHeight
-          >
-            <Grid container direction={"column"} spacing={3}>
-              <Grid item container alignItems={"center"}>
-                <Grid item xs={6}>
-                  <Typography variant={"body1"}>Normal field</Typography>
+      <Grid container spacing={4}>
+        <Grid container item spacing={4} >
+          <Grid item md={6} xs={12}>
+            <Widget
+                title="Horizontal form"
+                bodyClass={classes.horizontalFormTop}
+                disableWidgetMenu
+                inheritHeight
+            >
+              <Grid container direction={"column"} spacing={3}>
+                <Grid item container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography variant={"body1"}>Normal field</Typography>
+                  </Grid>
+                  <Grid xs={6} item>
+                    <Input
+                        id="component-helper1"
+                        placeholder={"May have placeholder"}
+                        style={{ width: "100%" }}
+                    />
+                  </Grid>
                 </Grid>
-                <Grid xs={6} item>
-                  <Input
-                    id="component-helper1"
-                    placeholder={"May have placeholder"}
-                    style={{ width: "100%" }}
-                  />
+                <Grid item container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography variant={"body1"}>Label hint</Typography>
+                  </Grid>
+                  <Grid xs={6} item>
+                    <Input
+                        id="component-helper2"
+                        aria-describedby="component-helper-text"
+                        style={{ width: "100%" }}
+                    />
+                    <FormHelperText id="component-helper-text">
+                      Some important helper text
+                    </FormHelperText>
+                  </Grid>
                 </Grid>
-              </Grid>
-              <Grid item container alignItems={"center"}>
-                <Grid item xs={6}>
-                  <Typography variant={"body1"}>Label hint</Typography>
+                <Grid item container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography variant={"body1"}>Disabled input</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Input
+                        disabled
+                        defaultValue={"Default value"}
+                        id="component-helper3"
+                        style={{ width: "100%" }}
+                    />
+                  </Grid>
                 </Grid>
-                <Grid xs={6} item>
-                  <Input
-                    id="component-helper2"
-                    aria-describedby="component-helper-text"
-                    style={{ width: "100%" }}
-                  />
-                  <FormHelperText id="component-helper-text">
-                    Some important helper text
-                  </FormHelperText>
+                <Grid item container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography variant={"body1"}>Max length</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Input
+                        id="component-helper4"
+                        inputProps={{ maxLength: 3 }}
+                        style={{ width: "100%" }}
+                    />
+                  </Grid>
                 </Grid>
-              </Grid>
-              <Grid item container alignItems={"center"}>
-                <Grid item xs={6}>
-                  <Typography variant={"body1"}>Disabled input</Typography>
+                <Grid item container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography variant={"body1"}>Prepended input</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Input
+                        id="component-helper5"
+                        startAdornment={
+                          <InputAdornment position="start">
+                            <AccountCircle />
+                          </InputAdornment>
+                        }
+                        style={{ width: "100%" }}
+                    />
+                  </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                  <Input
-                    disabled
-                    defaultValue={"Default value"}
-                    id="component-helper3"
-                    style={{ width: "100%" }}
-                  />
+                <Grid item container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography variant={"body1"}>Password</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Input
+                        id="component-helper6"
+                        startAdornment={
+                          <InputAdornment position="start">
+                            <PasswordIcon />
+                          </InputAdornment>
+                        }
+                        style={{ width: "100%" }}
+                    />
+                  </Grid>
                 </Grid>
-              </Grid>
-              <Grid item container alignItems={"center"}>
-                <Grid item xs={6}>
-                  <Typography variant={"body1"}>Max length</Typography>
+                <Grid item container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography variant={"body1"}>Appended input</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Input
+                        id="component-helper7"
+                        endAdornment={
+                          <InputAdornment position="start">.00</InputAdornment>
+                        }
+                        style={{ width: "100%" }}
+                    />
+                  </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                  <Input
-                    id="component-helper4"
-                    inputProps={{ maxLength: 3 }}
-                    style={{ width: "100%" }}
-                  />
+                <Grid item container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography variant={"body1"}>Combined input</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Input
+                        id="component-helper8"
+                        startAdornment={
+                          <InputAdornment position="start">
+                            <WalletIcon />
+                          </InputAdornment>
+                        }
+                        endAdornment={
+                          <InputAdornment position="start">.00</InputAdornment>
+                        }
+                        style={{ width: "100%" }}
+                    />
+                  </Grid>
                 </Grid>
-              </Grid>
-              <Grid item container alignItems={"center"}>
-                <Grid item xs={6}>
-                  <Typography variant={"body1"}>Prepended input</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Input
-                    id="component-helper5"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <AccountCircle />
-                        </InputAdornment>
-                      )
-                    }}
-                    style={{ width: "100%" }}
-                  />
-                </Grid>
-              </Grid>
-              <Grid item container alignItems={"center"}>
-                <Grid item xs={6}>
-                  <Typography variant={"body1"}>Password</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Input
-                    id="component-helper6"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <PasswordIcon />
-                        </InputAdornment>
-                      )
-                    }}
-                    style={{ width: "100%" }}
-                  />
-                </Grid>
-              </Grid>
-              <Grid item container alignItems={"center"}>
-                <Grid item xs={6}>
-                  <Typography variant={"body1"}>Appended input</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Input
-                    id="component-helper7"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="start">.00</InputAdornment>
-                      )
-                    }}
-                    style={{ width: "100%" }}
-                  />
-                </Grid>
-              </Grid>
-              <Grid item container alignItems={"center"}>
-                <Grid item xs={6}>
-                  <Typography variant={"body1"}>Combined input</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Input
-                    id="component-helper8"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <WalletIcon />
-                        </InputAdornment>
-                      ),
-                      endAdornment: (
-                        <InputAdornment position="start">.00</InputAdornment>
-                      )
-                    }}
-                    style={{ width: "100%" }}
-                  />
-                </Grid>
-              </Grid>
-              <Grid item container>
-                <Grid item>
-                  <Button
-                    variant={"contained"}
-                    color={"primary"}
-                    style={{ marginRight: 8 }}
-                  >
-                    Save changes
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant={"contained"} color={"secondary"}>
-                    Cancel
-                  </Button>
+                <Grid item container>
+                  <Grid item>
+                    <Button
+                        variant={"contained"}
+                        color={"primary"}
+                        style={{ marginRight: 8 }}
+                    >
+                      Save changes
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant={"contained"} color={"secondary"}>
+                      Cancel
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          </Widget>
-        </Grid>
-            
-        <Grid item md={6} xs={12} lg={6}>
-            <Grid item md={12} xs={12} lg={12} spacing={3}>
-              <Widget title="Default Form" disableWidgetMenu inheritHeight>
-                  <Grid container item md={12} xs={12} lg={12}  style={{justifyContent: "space-between", alignItems: "center", direction: "column"}} spacing={3}>
-                    <Grid item md={6} xs={12} lg={4}>
-                        <Typography variant={"body1"}>Search type input</Typography>
-                        <Input
-                          color={"primary"}
-                          type={"search"}
-                          style={{margin: "normal", marginTop: 30}}
-                          placeholder={"Search"}
-                        />
-                    </Grid>
-                    <Grid item md={6} xs={12} lg={4}>
-                      <Typography variant={"body1"}>
-                        Outlined input
-                      </Typography>
-                      <Input
+            </Widget>
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <Grid item xs={12} >
+              <Widget title="Default Form" disableWidgetMenu >
+                <Grid container item xs={12} justifyContent="space-between" alignItems="center" spacing={3}>
+                  <Grid item md={6} xs={12} lg={4}>
+                    <Typography variant="body1">Search type input</Typography>
+                    <Input
+                        variant="standard"
+                        color="primary"
+                        type="search"
+                        style={{margin: "none", marginTop: 30}}
+                        placeholder="Search"
+                    />
+                  </Grid>
+                  <Grid item md={6} xs={12} lg={4}>
+                    <Typography variant="body1">
+                      Outlined input
+                    </Typography>
+                    <TextField
                         id="outlined-input"
-                        style={{margin: "normal", marginTop: "16px"}}
-                        variant={"outlined"}
-                      />
-                    </Grid>
-                    <Grid item md={6} xs={12} lg={4}>
-                      <Typography>Filled input</Typography>
-                      <Input 
-                        id="outlined-input"  
-                        style={{margin: "normal", marginTop: "16px"}} 
-                        variant={"filled"} 
-                      />
-                    </Grid>
+                        style={{margin: "none", marginTop: "16px"}}
+                        variant="outlined"
+                        placeholder="Outlined"
+                    />
+                  </Grid>
+                  <Grid item md={6} xs={12} lg={4}>
+                    <Typography>Filled input</Typography>
+                    <TextField
+                        id="outlined-input"
+                        style={{margin: "none", marginTop: "16px"}}
+                        variant="filled"
+                        placeholder="Filled"
+                    />
+                  </Grid>
                 </Grid>
               </Widget>
             </Grid>
-          
-          
-
-                <Grid md={12} xs={12} lg={12} style={{justifyContent: "space-between", alignItems: "center", direction: "column", marginTop: '10%'}} spacing={3}>
-                  <Widget title="Selects" disableWidgetMenu inheritHeight>
-                    <Grid item container>
-                      <Grid item  md={6} xs={12} lg={6}>
-                        <Typography variant={"body1"}>Default select</Typography>
-                      </Grid>
-                      <Grid item md={6} xs={12} lg={6}>
-                        <Select
+            <Grid item xs={12} style={{marginTop: '2rem'}}>
+              <Widget title="Selects" disableWidgetMenu >
+                <Grid container item xs={12} justifyContent="space-between" alignItems="center" spacing={3}>
+                  <Grid container item spacing={6} xs={12} direction="row" justifyContent="space-between" alignItems="center">
+                    <Grid item xs={6} >
+                      <Typography variant="body1">Default select</Typography>
+                    </Grid>
+                    <Grid item xs={6} >
+                      <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
                           style={{ alignSelf: 'flex-end'}}
                           value={action}
                           onChange={handleChange}
-                        >
-                          {actions.map(c =>
+                      >
+                        {actions.map(c =>
                             c.type === "divider" ? (
-                              <Divider key={c.id} />
+                                <Divider key={c.id} />
                             ) : (
-                              <MenuItem value={c.value} key={c.id}>
-                                {c.value}
-                              </MenuItem>
+                                <MenuItem value={c.value} key={c.id}>
+                                  {c.value}
+                                </MenuItem>
                             )
-                          )}
-                        </Select>
-                      </Grid>
+                        )}
+                      </Select>
                     </Grid>
-                    <Grid item container>
-                      <Grid item md={6} xs={12} lg={6}>
-                        <Typography variant={"body1"}>Grouped select</Typography>
-                      </Grid>
-                      <Grid item md={6} xs={12} lg={6}>
-                        <Select
+                  </Grid>
+                  <Grid container item spacing={6} xs={12} direction="row" justifyContent="space-between" alignItems="center">
+                    <Grid item xs={6} >
+                      <Typography variant={"body1"}>Grouped select</Typography>
+                    </Grid>
+                    <Grid item xs={6} >
+                      <Select
                           style={{}}
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
                           value={action}
                           onChange={handleChange}
-                        >
-                          {actions.map(c =>
+                      >
+                        {actions.map(c =>
                             c.type === "divider" ? (
-                              <Divider key={c.id} />
+                                <Divider key={c.id} />
                             ) : (
-                              <MenuItem value={c.value} key={c.id}>
-                                {c.value}
-                              </MenuItem>
+                                <MenuItem value={c.value} key={c.id}>
+                                  {c.value}
+                                </MenuItem>
                             )
-                          )}
-                        </Select>
-                      </Grid>
+                        )}
+                      </Select>
                     </Grid>
-                  </Widget>
+                  </Grid>
                 </Grid>
+              </Widget>
+            </Grid>
           </Grid>
-      </Grid>
-        
-
-      <Grid container spacing={6}>
-        <Grid item md={5} xs={12}>
-          <Widget title="Control sizing" disableWidgetMenu inheritHeight>
-            <Grid container direction={"column"}>
-              <Grid item>
-                If{" "}
-                <Code row inline>
-                  dense
-                </Code>
-                or{" "}
-                <Code row inline>
-                  normal
-                </Code>
-                , will adjust vertical spacing of this and contained components.
-                <Input
-                  label='margin="dense"'
-                  placeholder={"Margin dense"}
-                  margin="dense"
-                  variant="outlined"
-                  fullWidth
-                />
-              </Grid>
-              <Grid item>
-                <Input
-                  label='margin="normal"'
-                  placeholder={"Margin normal"}
-                  margin="normal"
-                  variant="outlined"
-                  fullWidth
-                />
-              </Grid>
-            </Grid>
-          </Widget>
         </Grid>
-      </Grid>
 
-      <Grid container spacing={3}>
-        <Grid item md={6} xs={12}>
-          <Widget title="Input variants" disableWidgetMenu inheritHeight>
-            <Grid container direction={"column"}>
-              <Typography>Custom checkboxes & radios</Typography>
-              <Grid item>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      disabled
-                      defaultChecked={isChecked.default}
-                      onChange={e =>
-                        setChecked({ [e.target.value]: !isChecked.default })
-                      }
-                      value="checkedG"
-                    />
-                  }
-                  label="Disabled"
-                />
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      defaultChecked={isChecked.default}
-                      onChange={e =>
-                        setChecked({ [e.target.value]: !isChecked.default })
-                      }
-                      value="checkedG"
-                    />
-                  }
-                  label="Custom color"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      icon={<FavoriteBorder />}
-                      checkedIcon={<Favorite />}
-                      value="checkedH"
-                    />
-                  }
-                  label="Custom icon"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                      checkedIcon={<CheckBoxIcon fontSize="small" />}
-                      value="checkedI"
-                    />
-                  }
-                  label="Custom size"
-                />
-              </Grid>
-              <Grid item>
-                <FormControlLabel
-                  control={
-                    <Radio
-                      disabled
-                      defaultChecked={isChecked.default}
-                      onChange={e =>
-                        setChecked({ [e.target.value]: !isChecked.default })
-                      }
-                      value="c"
-                      name="radio-button-demo"
-                      inputProps={{ "aria-label": "C" }}
-                    />
-                  }
-                  label={"Disabled"}
-                />
-                <FormControlLabel
-                  control={
-                    <GreenRadio
-                      defaultChecked={isChecked.default}
-                      onChange={e =>
-                        setChecked({ [e.target.value]: !isChecked.default })
-                      }
-                      value="c"
-                      name="radio-button-demo"
-                      inputProps={{ "aria-label": "C" }}
-                    />
-                  }
-                  label={"Custom color"}
-                />
-                <FormControlLabel
-                  control={
-                    <Radio
-                      defaultChecked={isChecked.default}
-                      onChange={e =>
-                        setChecked({ [e.target.value]: !isChecked.default })
-                      }
-                      value="e"
-                      color="default"
-                      name="radio-button-demo"
-                      inputProps={{ "aria-label": "E" }}
-                      icon={<RadioButtonUncheckedIcon fontSize="small" />}
-                      checkedIcon={<RadioButtonCheckedIcon fontSize="small" />}
-                    />
-                  }
-                  label={"Small radio"}
-                />
-                <FormControlLabel
-                  value="a"
-                  control={<StyledRadio />}
-                  label="Custom style"
-                />
+        <Grid container item spacing={4}>
+          <Grid item xs={12}>
+            <Widget title="Control sizing" disableWidgetMenu inheritHeight>
+              <Grid container direction={"column"} spacing={4}>
                 <Grid item>
-                  <Input
-                    error
-                    label="Error input"
-                    placeholder={"Input with an error"}
-                    margin="normal"
-                    variant="outlined"
-                    fullWidth={true}
+                  Fancy smaller inputs? Use the size
+                  <Code row inline>
+                    small
+                  </Code>
+                  prop.{" "}
+                  <TextField
+                      label='Size="small"'
+                      placeholder={"Size small"}
+                      size="small"
+                      variant="outlined"
+                      fullWidth
                   />
-                  <SuccessInput
-                    label="Success input"
-                    placeholder={"Input with success"}
-                    margin="normal"
-                    variant="outlined"
-                    fullWidth={true}
+                </Grid>
+                <Grid item>
+                  <TextField
+                      label='Size="normal"'
+                      placeholder={"Size normal"}
+                      variant="outlined"
+                      fullWidth
                   />
                 </Grid>
               </Grid>
-            </Grid>
-          </Widget>
+            </Widget>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Widget title="Textareas" disableWidgetMenu inheritHeight>
-            <Grid item xs={6}>
-              <Typography variant={"body1"}>Simple textarea</Typography>
-            </Grid>
-            <Grid item container alignItems={"center"}>
-              <Grid xs={6} item>
-                <Input
-                  id="outlined-multiline-static"
-                  label="Multiline"
-                  multiline
-                  rows="4"
-                  defaultValue="Default Value"
-                  margin="normal"
-                  variant="outlined"
-                />
+
+        <Grid container item spacing={4}>
+          <Grid item md={6} xs={12}>
+            <Widget title="Input variants" disableWidgetMenu inheritHeight>
+              <Grid container direction={"column"}>
+                <Typography>Custom checkboxes & radios</Typography>
+                <Grid item>
+                  <FormControlLabel
+                      control={
+                        <Checkbox
+                            disabled
+                            defaultChecked={isChecked.default}
+                            onChange={e =>
+                                setChecked({ [e.target.value]: !isChecked.default })
+                            }
+                            value="checkedG"
+                        />
+                      }
+                      label="Disabled"
+                  />
+                  <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                            defaultChecked={isChecked.default}
+                            onChange={e =>
+                                setChecked({ [e.target.value]: !isChecked.default })
+                            }
+                            value="checkedG"
+                        />
+                      }
+                      label="Custom color"
+                  />
+                  <FormControlLabel
+                      control={
+                        <Checkbox
+                            icon={<FavoriteBorder />}
+                            checkedIcon={<Favorite />}
+                            value="checkedH"
+                        />
+                      }
+                      label="Custom icon"
+                  />
+                  <FormControlLabel
+                      control={
+                        <Checkbox
+                            icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                            checkedIcon={<CheckBoxIcon fontSize="small" />}
+                            value="checkedI"
+                        />
+                      }
+                      label="Custom size"
+                  />
+                </Grid>
+                <Grid item>
+                  <FormControlLabel
+                      control={
+                        <Radio
+                            disabled
+                            defaultChecked={isChecked.default}
+                            onChange={e =>
+                                setChecked({ [e.target.value]: !isChecked.default })
+                            }
+                            value="c"
+                            name="radio-button-demo"
+                            inputProps={{ "aria-label": "C" }}
+                        />
+                      }
+                      label={"Disabled"}
+                  />
+                  <FormControlLabel
+                      control={
+                        <GreenRadio
+                            defaultChecked={isChecked.default}
+                            onChange={e =>
+                                setChecked({ [e.target.value]: !isChecked.default })
+                            }
+                            value="c"
+                            name="radio-button-demo"
+                            inputProps={{ "aria-label": "C" }}
+                        />
+                      }
+                      label={"Custom color"}
+                  />
+                  <FormControlLabel
+                      control={
+                        <Radio
+                            defaultChecked={isChecked.default}
+                            onChange={e =>
+                                setChecked({ [e.target.value]: !isChecked.default })
+                            }
+                            value="e"
+                            color="default"
+                            name="radio-button-demo"
+                            inputProps={{ "aria-label": "E" }}
+                            icon={<RadioButtonUncheckedIcon fontSize="small" />}
+                            checkedIcon={<RadioButtonCheckedIcon fontSize="small" />}
+                        />
+                      }
+                      label={"Small radio"}
+                  />
+                  <FormControlLabel
+                      value="a"
+                      control={<StyledRadio />}
+                      label="Custom style"
+                  />
+                  <Grid item>
+                    <TextField
+                        error
+                        label="Error input"
+                        placeholder={"Input with an error"}
+                        variant="outlined"
+                        fullWidth={true}
+                        style={{marginBottom: '1rem'}}
+                    />
+                    <TextField
+                        color="success"
+                        label="Success input"
+                        placeholder={"Input with success"}
+                        variant="outlined"
+                        fullWidth={true}
+                        focused
+                    />
+                  </Grid>
+                </Grid>
               </Grid>
-            </Grid>
-          </Widget>
+            </Widget>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Widget title="Textareas" disableWidgetMenu inheritHeight>
+              <Grid item xs={6}>
+                <Typography variant="body1">Simple textarea</Typography>
+              </Grid>
+              <Grid item container alignItems="center">
+                <Grid xs={12} item>
+                  <TextField
+                      id="outlined-multiline-static"
+                      label="Multiline"
+                      multiline
+                      rows={4}
+                      defaultValue="Default Value"
+                      style={{marginTop: '1rem', width: '100%'}}
+                  />
+                </Grid>
+              </Grid>
+            </Widget>
+          </Grid>
         </Grid>
       </Grid>
     </div>

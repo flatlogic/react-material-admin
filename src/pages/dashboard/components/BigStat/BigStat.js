@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Grid, Select, MenuItem, Input } from "@material-ui/core";
-import { ArrowForward as ArrowForwardIcon } from "@material-ui/icons";
-import { useTheme } from "@material-ui/styles";
+import { Grid, Select, MenuItem, Input } from "@mui/material";
+import { ArrowForward as ArrowForwardIcon } from "@mui/icons-material";
+import { useTheme } from "@mui/styles";
 import { BarChart, Bar } from "recharts";
 import classnames from "classnames";
 

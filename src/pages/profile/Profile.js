@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
+import { Grid, Typography } from "@mui/material";
+import { useTheme } from "@mui/styles";
 
 import { Badge, Chip, Button } from '../../components/Wrappers';
 import Tabs from './Components/Tabs';
@@ -18,7 +18,6 @@ import DribbleIcon from '../../images/profile/DribbleIcon.svg';
 import InstagramIcon from '../../images/profile/InstagramIcon.svg';
 import CloudIcon from './Icons/CloudIcon' 
 
-
 // styles
 import useStyles from "./styles";
 
@@ -26,8 +25,8 @@ import useStyles from "./styles";
 import Widget from "../../components/Widget/Widget";
 
 function Profile() {
-  var classes = useStyles();
-  var theme = useTheme();
+  let classes = useStyles();
+  let theme = useTheme();
 
   return (
     <Grid container spacing={4}>
@@ -78,7 +77,7 @@ function Profile() {
         </Widget>
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={7}>
-        <Widget title="Files" disableWidgetMenu>
+        <Widget title="Files" >
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Tabs />
@@ -90,7 +89,7 @@ function Profile() {
       <Grid item xs={12} lg={5}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4} md={4} lg={6}>
-            <Widget widgetWithDropdown
+            <Widget
               bodyClass={classes.mediaBlockPadding}
               title="Media"
             >
@@ -100,7 +99,7 @@ function Profile() {
             </Widget>
           </Grid>
           <Grid item xs={12} sm={4} md={4} lg={6}>
-            <Widget widgetWithDropdown
+            <Widget
               className={classes.adjustHeight}
               title="Projects"
             >
@@ -118,7 +117,6 @@ function Profile() {
         <Widget
           title="Tasks"
           bodyClass={classes.widgetBody}
-          widgetWithDropdown
         >
           <ToDo />
         </Widget>

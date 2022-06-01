@@ -8,10 +8,10 @@ import {
   Toolbar,
   Button,
   IconButton
-} from "@material-ui/core";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MenuIcon from "@material-ui/icons/Menu";
-import { Search as SearchIcon } from "@material-ui/icons";
+} from "@mui/material";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Search as SearchIcon } from "@mui/icons-material";
 
 // components
 import Widget from "../../components/Widget";

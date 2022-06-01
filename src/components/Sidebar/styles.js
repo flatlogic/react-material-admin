@@ -1,131 +1,89 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from '@mui/styles';
 
 const drawerWidth = 240;
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   menuButton: {
     marginLeft: 12,
-    marginRight: 36
+    marginRight: 36,
   },
   hide: {
-    display: "none"
+    display: 'none',
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: "nowrap",
+    whiteSpace: 'nowrap',
   },
   drawerOpen: {
     width: drawerWidth,
-    '&::-webkit-scrollbar-track': {
-      backgroundColor: '#B9B9B9'
-    },
-    '&::-webkit-resizer':{
-      backgroundColor: '#4A4A4A'
-    },
-    '&::-webkit-scrollbar': {
-      width: '3px', 
-      height: '3px'
-    }, 
-    '&::-webkit-scrollbar-button': {
-      display: 'none'
-    },
-    '&::-webkit-scrollbar-thumb': { 
-      height: '50px',
-      borderRadius: '36px',  
-      backgroundColor: '#B9B9B9'
-    }, 
-    '&::-webkit-scrollbar-track-piece': {
-      backgroundColor: 'white'
-    }, 
-    transition: theme.transitions.create("width", {
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    }), 
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   drawerClose: {
-    transition: theme.transitions.create("width", {
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
-    '&::-webkit-scrollbar-track': {
-      backgroundColor: '#B9B9B9'
+    overflowX: 'hidden',
+    width: 85,
+    [theme.breakpoints.down('sm')]: {
+      width: drawerWidth,
     },
-    '&::-webkit-resizer':{
-      backgroundColor: '#4A4A4A'
-    },
-    '&::-webkit-scrollbar': {
-      width: '3px', 
-      height: '3px'
-    }, 
-    '&::-webkit-scrollbar-button': {
-      display: 'none'
-    },
-    '&::-webkit-scrollbar-thumb': { 
-      height: '20px',
-      borderRadius: '36px',  
-      backgroundColor: '#B9B9B9'
-    }, 
-    '&::-webkit-scrollbar-track-piece': {
-      backgroundColor: 'white'
-    },
-    overflowX: "hidden",
-    width: theme.spacing(7) + 40,
-    [theme.breakpoints.down("sm")]: {
-      width: drawerWidth
-    }
   },
   toolbar: {
     ...theme.mixins.toolbar,
-    [theme.breakpoints.down("sm")]: {
-      display: "none"
-    }, 
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3)
+    padding: theme.spacing(3),
   },
   sidebarList: {
-    marginTop: theme.spacing(1), 
+    marginTop: theme.spacing(1),
   },
   mobileBackButton: {
     marginTop: theme.spacing(0.5),
     marginLeft: theme.spacing(3),
-    [theme.breakpoints.only("sm")]: {
-      marginTop: theme.spacing(0.625)
+    [theme.breakpoints.only('sm')]: {
+      marginTop: theme.spacing(0.625),
     },
-    [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
   popover: {
     backgroundColor: theme.palette.primary.main,
-    color: "#fff"
+    color: '#fff',
   },
   fab: {
     width: 36,
-    height: 34
+    height: 34,
   },
   noBoxShadow: {
-    boxShadow: "none !important",
-    marginRight: theme.spacing(1)
+    boxShadow: 'none !important',
+    marginRight: theme.spacing(1),
   },
   buttonLabel: {
-    color: "#fff"
+    color: '#fff',
   },
   input: {
-    "& .MuiInputBase-input": {
-      color: "#fff"
+    '& .MuiInputBase-input': {
+      color: '#fff',
     },
-    "& .MuiInput-underline:before": {
-      borderBottom: "1px solid rgba(255, 255, 255, .45)"
-    }
+    '& .MuiInput-underline:before': {
+      borderBottom: '1px solid rgba(255, 255, 255, .45)',
+    },
   },
   chat: {
     width: 45,
-    height: 45
+    height: 45,
   },
   padding: {
-    paddingBottom: theme.spacing(2)
-  }
+    paddingBottom: theme.spacing(2),
+  },
 }));

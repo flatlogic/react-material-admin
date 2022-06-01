@@ -6,12 +6,12 @@ import {
   DialogTitle,
   TextField as Input,
   Box
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   KeyboardArrowLeft as LeftArrowIcon,
   KeyboardArrowRight as RightArrowIcon,
   CalendarToday as CalendarIcon
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -21,7 +21,6 @@ import interactionPlugin, { Draggable } from "@fullcalendar/interaction";
 
 import s from "./Calendar.module.scss";
 
-// import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
 

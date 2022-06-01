@@ -7,15 +7,15 @@ import {
   TableCell,
   TableHead,
   TableRow
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   Print as PrintIcon,
   ArrowForward as RightArrowIcon
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import useStyles from "./styles";
 
 //images
-import logo from "../../images/flatlogic.jpeg";
+import logo from "../../images/invoice/flatlogic.jpeg";
 
 //components
 import { Typography, Link, Button } from "../../components/Wrappers";

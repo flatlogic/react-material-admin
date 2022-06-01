@@ -1,5 +1,6 @@
 import React from "react";
-import { lighten, makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@mui/styles";
+import { lighten } from "@mui/material/styles";
 import {
   Table,
   TableBody,
@@ -13,7 +14,7 @@ import {
   IconButton,
   Grid,
   TableFooter
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   Delete as DeleteIcon,
   FilterList as FilterListIcon,
@@ -21,7 +22,7 @@ import {
   FirstPage as FirstPageIcon,
   KeyboardArrowRight,
   KeyboardArrowLeft
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import cn from "classnames";
 
 //components
@@ -40,22 +41,22 @@ const useStyles1 = makeStyles(theme => ({
 function TablePaginationActions(props) {
   const classes = useStyles1();
   const theme = useTheme();
-  const { count, page, rowsPerPage, onChangePage } = props;
+  const { count, page, rowsPerPage, onPageChange } = props;
 
   function handleFirstPageButtonClick(event) {
-    onChangePage(event, 0);
+    onPageChange(event, 0);
   }
 
   function handleBackButtonClick(event) {
-    onChangePage(event, page - 1);
+    onPageChange(event, page - 1);
   }
 
   function handleNextButtonClick(event) {
-    onChangePage(event, page + 1);
+    onPageChange(event, page + 1);
   }
 
   function handleLastPageButtonClick(event) {
-    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+    onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   }
 
   return (
@@ -204,7 +205,7 @@ function EnhancedTableHead(props) {
           <TableCell
             key={headCell.id}
             align={headCell.numeric ? "right" : "left"}
-            padding={headCell.disablePadding ? "none" : "default"}
+            padding={headCell.disablePadding ? "none" : null}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
@@ -494,8 +495,8 @@ export default function EnhancedTable() {
               nextIconButtonProps={{
                 "aria-label": "next page"
               }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
             />
           </Widget>
         </Grid>
@@ -516,9 +517,7 @@ export default function EnhancedTable() {
                     )
                     .map(row => (
                       <TableRow key={row.name}>
-                        <TableCell component="th" scope="row">
-                          {row.name}
-                        </TableCell>
+                        <TableCell component="th" scope="row">{row.name}</TableCell>
                         <TableCell align="right">{row.calories}</TableCell>
                         <TableCell align="right">{row.fat}</TableCell>
                       </TableRow>
@@ -563,8 +562,8 @@ export default function EnhancedTable() {
                                   inputProps: { "aria-label": "rows per page" },
                                   native: true
                                 }}
-                                onChangePage={handleChangePage2}
-                                onChangeRowsPerPage={handleChangeRowsPerPage2}
+                                onPageChange={handleChangePage2}
+                                onRowsPerPageChange={handleChangeRowsPerPage2}
                                 ActionsComponent={TablePaginationActions}
                               />
                             </TableRow>
@@ -578,20 +577,22 @@ export default function EnhancedTable() {
                     )}
                 </TableBody>
                 <TableFooter>
-                  <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
-                    colSpan={3}
-                    count={rows2.length}
-                    rowsPerPage={rowsPerPage2}
-                    page={page2}
-                    SelectProps={{
-                      inputProps: { "aria-label": "rows per page" },
-                      native: true
-                    }}
-                    onChangePage={handleChangePage2}
-                    onChangeRowsPerPage={handleChangeRowsPerPage2}
-                    ActionsComponent={TablePaginationActions}
-                  />
+                  <TableRow>
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25]}
+                      colSpan={3}
+                      count={rows2.length}
+                      rowsPerPage={rowsPerPage2}
+                      page={page2}
+                      SelectProps={{
+                        inputProps: { "aria-label": "rows per page" },
+                        native: true
+                      }}
+                      onPageChange={handleChangePage2}
+                      onRowsPerPageChange={handleChangeRowsPerPage2}
+                      ActionsComponent={TablePaginationActions}
+                    />
+                  </TableRow>
                 </TableFooter>
               </Table>
             </div>

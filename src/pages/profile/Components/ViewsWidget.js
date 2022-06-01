@@ -6,13 +6,10 @@ import {
     Tooltip,
   } from 'recharts';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Menu from '@material-ui/core/Menu';
-import IconButton from '@material-ui/core/IconButton';
-import { MoreVert as MoreIcon } from '@material-ui/icons';
-import MenuItem from '@material-ui/core/MenuItem';
-import Typography from '@material-ui/core/Typography';
-import Button from "@material-ui/core/Button";
+import { withStyles } from '@mui/styles';
+import { Menu, IconButton, MenuItem, Typography, Button } from '@mui/material';
+
+import { MoreVert as MoreIcon } from '@mui/icons-material';
 import GrowthIcon from '../../../images/profile/growth.svg';
 
 const styles = theme => ({
@@ -109,7 +106,7 @@ const SimpleLine = ({ classes, color, title, subtitle, value }) => {
               aria-owns="widget-menu"
               aria-haspopup="true"
               onClick={() => setMoreMenuOpen(true)}
-              buttonRef={setMoreButtonRef}
+              ref={setMoreButtonRef}
               className={classes.menuIcon}
           >
               <MoreIcon />

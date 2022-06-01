@@ -6,9 +6,8 @@ import {
   MenuItem,
   Select,
   TextField as Input
-} from "@material-ui/core";
+} from "@mui/material";
 import { useParams, useHistory } from "react-router-dom";
-import useStyles from "./styles";
 
 //context
 import {
@@ -23,12 +22,8 @@ import {
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
 import config from "../../config";
-import { toast, ToastContainer } from "react-toastify";
-import { Close as CloseIcon } from "@material-ui/icons";
-import Notification from "../../components/Notification";
 
 const CreateProduct = () => {
-  const classes = useStyles();
   const { id } = useParams();
   const context = useProductsState();
 
@@ -57,28 +52,28 @@ const CreateProduct = () => {
     discount: 0
   });
 
-  function sendNotification() {
-    const componentProps = {
-      type: "feedback",
-      message: "Product has been Updated!",
-      variant: "contained",
-      color: "success"
-    };
-    const options = {
-      type: "info",
-      position: toast.POSITION.TOP_RIGHT,
-      progressClassName: classes.progress,
-      className: classes.notification,
-      timeOut: 1000
-    };
-    return toast(
-      <Notification
-        {...componentProps}
-        className={classes.notificationComponent}
-      />,
-      options
-    );
-  }
+  // function sendNotification() {
+  //   const componentProps = {
+  //     type: "feedback",
+  //     message: "Product has been Updated!",
+  //     variant: "contained",
+  //     color: "success"
+  //   };
+  //   const options = {
+  //     type: "info",
+  //     position: toast.POSITION.TOP_RIGHT,
+  //     progressClassName: classes.progress,
+  //     className: classes.notification,
+  //     timeOut: 1000
+  //   };
+  //   return toast(
+  //     <Notification
+  //       {...componentProps}
+  //       className={classes.notificationComponent}
+  //     />,
+  //     options
+  //   );
+  // }
 
   useEffect(() => {
     getProductsRequest(context.setProducts);
@@ -107,7 +102,7 @@ const CreateProduct = () => {
 
   const getEditProduct = () => {
     updateProduct(localProducts, context.setProducts);
-    sendNotification();
+    // sendNotification();
   };
 
   const createNewProduct = () => {
@@ -130,14 +125,14 @@ const CreateProduct = () => {
   return (
     <>
       <Grid container spacing={3}>
-        <ToastContainer
-          className={classes.toastsContainer}
-          closeButton={
-            <CloseButton className={classes.notificationCloseButton} />
-          }
-          closeOnClick={false}
-          progressClassName={classes.notificationProgress}
-        />
+        {/*<ToastContainer*/}
+        {/*  className={classes.toastsContainer}*/}
+        {/*  closeButton={*/}
+        {/*    <CloseButton className={classes.notificationCloseButton} />*/}
+        {/*  }*/}
+        {/*  closeOnClick={false}*/}
+        {/*  progressClassName={classes.notificationProgress}*/}
+        {/*/>*/}
         <Grid item xs={12}>
           <Widget
             title={isCreateProduct ? "New product" : "Edit product"}
@@ -405,8 +400,5 @@ const CreateProduct = () => {
   );
 };
 
-function CloseButton({ closeToast, className }) {
-  return <CloseIcon className={className} onClick={closeToast} />;
-}
 
 export default CreateProduct;

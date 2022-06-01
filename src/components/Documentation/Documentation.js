@@ -1,45 +1,40 @@
-import React from "react";
+import React from 'react';
 import {
   Switch,
   Route,
   Redirect,
   useRouteMatch,
-  withRouter
-} from "react-router-dom";
+  withRouter,
+} from 'react-router-dom';
 
 //styles
-import useStyles from "./styles";
+import useStyles from './styles';
 
 //pages
-import Overview from "./pages/overview";
-import Licences from "./pages/licences";
-import Start from "./pages/start";
-import Pages from "./pages/pages";
-import TypographyPage from "./pages/typography";
-import WidgetPage from "./pages/widget";
-import Libs from "./pages/libs";
-import HeaderPage from './pages/header'
-import SidebarPage from './pages/sidebar'
-import ButtonsPage from './pages/buttons'
+import Start from './pages/start';
+import TypographyPage from './pages/typography';
+import HeaderPage from './pages/header';
+import SidebarPage from './pages/sidebar';
+import ButtonsPage from './pages/buttons';
 
 //components
-import Header from "./components/Header";
-import Sidebar from "../../components/Sidebar";
-import structure from "./components/Sidebar/SidebarStructure";
-import Widget from "../Widget";
+import Header from './components/Header';
+import Sidebar from '../../components/Sidebar';
+import structure from './components/Sidebar/SidebarStructure';
+import Widget from '../Widget';
 
-import { Typography } from "../Wrappers";
-import classnames from "classnames";
+import { Typography } from '../Wrappers';
+import classnames from 'classnames';
 
 //context
-import { useLayoutState } from "../../context/LayoutContext";
-import { Box, Breadcrumbs, Grid } from "@material-ui/core";
+import { useLayoutState } from '../../context/LayoutContext';
+import { Box, Breadcrumbs, Grid } from '@mui/material';
 
-import { NavigateNext as NavigateNextIcon } from "@material-ui/icons";
+import { NavigateNext as NavigateNextIcon } from '@mui/icons-material';
 
-const Documentation = props => {
+const Documentation = (props) => {
   // global
-  var layoutState = useLayoutState();
+  let layoutState = useLayoutState();
   const classes = useStyles();
   const { path } = useRouteMatch();
   return (
@@ -48,41 +43,40 @@ const Documentation = props => {
       <Sidebar structure={structure} />
       <div
         className={classnames(classes.content, {
-          [classes.contentShift]: layoutState.isSidebarOpened
+          [classes.contentShift]: layoutState.isSidebarOpened,
         })}
       >
         <div className={classes.fakeToolbar} />
         <Widget disableWidgetMenu inheritHeight className={classes.margin}>
           <Grid
             container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
+            direction='row'
+            justifyContent='space-between'
+            alignItems='center'
           >
-            {structure.map(c => { // eslint-disable-line
-              if (
-                !c.children &&
-                window.location.hash.includes(c.link) &&
-                c.link
-              ) {
+
+            {/* eslint-disable-next-line array-callback-return */}
+            {structure.map((c) => {
+              if (!c.children && window.location.hash.includes(c.link) && c.link) {
                 return (
-                  <Box display="flex" alignItems="center" key={c.id}>
-                    <Breadcrumbs aria-label="breadcrumb">
-                      <Typography variant="h4">{c.label}</Typography>
+                  <Box display='flex' alignItems='center' key={c.id}>
+                    <Breadcrumbs aria-label='breadcrumb'>
+                      <Typography variant='h4'>{c.label}</Typography>
                     </Breadcrumbs>
                   </Box>
                 );
               } else if (c.children) {
-                return c.children.map(currentInner => { // eslint-disable-line
+                return c.children.forEach((currentInner) => {
+                  // eslint-disable-array-callback-return
                   if (window.location.hash.includes(currentInner.link)) {
                     return (
                       <Breadcrumbs
-                        separator={<NavigateNextIcon fontSize="small" />}
-                        aria-label="breadcrumb"
+                        separator={<NavigateNextIcon fontSize='small' />}
+                        aria-label='breadcrumb'
                         key={c.id}
                       >
-                        <Typography variant={"h6"}>{c.label}</Typography>
-                        <Typography color="primary" variant={"h6"}>
+                        <Typography variant={'h6'}>{c.label}</Typography>
+                        <Typography color='primary' variant={'h6'}>
                           {currentInner.label}
                         </Typography>
                       </Breadcrumbs>
@@ -95,37 +89,22 @@ const Documentation = props => {
         </Widget>
         <Switch>
           <Route path={path} exact>
-            <Redirect to={`${path}/getting-started/overview`} />
-          </Route>
-          <Route path={`${path}/getting-started/overview`}>
-            <Overview />
-          </Route>
-          <Route path={`${path}/getting-started/licences`}>
-            <Licences />
+            <Redirect to={`${path}/getting-started/quick-start`} />
           </Route>
           <Route path={`${path}/getting-started/quick-start`}>
             <Start />
           </Route>
-          <Route path={`${path}/pages`}>
-            <Pages />
-          </Route>
           <Route path={`${path}/components/typography`}>
             <TypographyPage />
           </Route>
-          <Route path={`${path}/components/widget`}>
-            <WidgetPage />
-          </Route>
           <Route path={`${path}/components/header`}>
-            <HeaderPage/>
+            <HeaderPage />
           </Route>
           <Route path={`${path}/components/sidebar`}>
-            <SidebarPage/>
+            <SidebarPage />
           </Route>
           <Route path={`${path}/components/buttons`}>
-            <ButtonsPage/>
-          </Route>
-          <Route path={`${path}/libs`}>
-            <Libs />
+            <ButtonsPage />
           </Route>
         </Switch>
       </div>

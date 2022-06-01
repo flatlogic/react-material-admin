@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Popover from '@material-ui/core/Popover';
+import { withStyles } from '@mui/styles';
+import Popover from '@mui/material/Popover';
 
 const styles = (theme) => ({
 

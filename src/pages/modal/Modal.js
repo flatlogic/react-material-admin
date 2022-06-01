@@ -8,7 +8,7 @@ import {
   DialogContentText,
   DialogTitle,
   TextField
-} from "@material-ui/core";
+} from "@mui/material";
 import cn from "classnames";
 import useStyles from "./styles";
 

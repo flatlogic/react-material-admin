@@ -12,20 +12,20 @@ import {
   CardActions,
   CardContent,
   CardMedia
-} from "@material-ui/core";
+} from "@mui/material";
 import Icon from "@mdi/react";
 import {
   Star as StarIcon,
   StarBorder as StarOutlinedIcon,
   ShoppingCart as ShoppingCartIcon
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import {
   mdiFacebook as FacebookIcon,
   mdiInstagram as InstagramIcon,
   mdiTwitter as TwitterIcon
 } from "@mdi/js";
 import useStyles from "./styles";
-import { yellow } from "@material-ui/core/colors/index";
+import { yellow } from "@mui/material/colors";
 
 //components
 import Widget from "../../components/Widget";
@@ -33,16 +33,16 @@ import PageTitle from "../../components/PageTitle";
 import { Typography, Link, Button } from "../../components/Wrappers";
 
 //images
-import img1 from "../../images/img1.jpg";
-import img2 from "../../images/img2.jpg";
-import img3 from "../../images/img3.jpg";
-import img4 from "../../images/img4.jpg";
-import img5 from "../../images/img5.jpeg";
-import img6 from "../../images/img6.jpg";
-import payment1 from "../../images/mastercard.svg";
-import payment2 from "../../images/paypal.svg";
-import payment3 from "../../images/visa.svg";
-import payment4 from "../../images/aexpress.svg";
+import img1 from "../../images/product/img1.jpg";
+import img2 from "../../images/product/img2.jpg";
+import img3 from "../../images/product/img3.jpg";
+import img4 from "../../images/product/img4.jpg";
+import img5 from "../../images/product/img5.jpeg";
+import img6 from "../../images/product/img6.jpg";
+import payment1 from "../../images/product/mastercard.svg";
+import payment2 from "../../images/product/paypal.svg";
+import payment3 from "../../images/product/visa.svg";
+import payment4 from "../../images/product/aexpress.svg";
 
 export const rows = [
   {

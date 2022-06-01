@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import { useTheme } from '@material-ui/styles';
+import { Grid, Typography } from '@mui/material';
 import Widget from '../../components/Widget';
 import Sortable from 'react-sortablejs'
 // Components
@@ -17,8 +16,6 @@ import useStyles from "./styles";
 
 function DraggableGrid() {
   const classes = useStyles();
-  // eslint-disable-next-line no-unused-vars
-  const theme = useTheme();
 
   return (
     <Grid container spacing={4} className={classes.root}>
@@ -29,27 +26,25 @@ function DraggableGrid() {
               ghostClass: 'widget-placeholder-react'
             }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget 
-              className={classes.widgetLayout} 
+            <Widget
+              className={classes.widgetLayout}
               title="Draggable Grid"
             >
               <WidgsterInfo />
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget 
+            <Widget
               className={classes.widgetLayout}
               title="Default Widget"
             >
-              <Typography >
-                {mock.mainData.default.map(item => (  
-                    <p key={item.value}>{item.value}</p>
-                ))} 
-              </Typography>
+                {mock.mainData.default.map(item => (
+                  <Typography key={item.value} component="p" gutterBottom>{item.value}</Typography>
+                ))}
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget 
+            <Widget
               className={classes.widgetLayout}
               title="Latest Shares"
             >
@@ -57,7 +52,7 @@ function DraggableGrid() {
             </Widget>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget 
+            <Widget
               className={classes.autoloadWidgetLayout}
               title="Autoload Widget"
             >
@@ -73,7 +68,7 @@ function DraggableGrid() {
               ghostClass: 'widget-placeholder-react'
             }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget 
+            <Widget
               className={classes.widgetLayout}
               title="News"
             >
@@ -92,7 +87,7 @@ function DraggableGrid() {
             <DraggableStory/>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Widget 
+            <Widget
               className={classes.loaderWidgetLayout}
               title="Custom Loader"
               disableWidgetMenu
@@ -100,7 +95,7 @@ function DraggableGrid() {
               <Loader />
             </Widget>
           </Grid>
-          </Sortable>
+        </Sortable>
       </Grid>
     </Grid>
   )

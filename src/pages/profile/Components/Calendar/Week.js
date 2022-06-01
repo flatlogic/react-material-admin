@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import Day from './Day';
 import moment from 'moment/moment'
 import { v4 as uuid } from 'uuid';

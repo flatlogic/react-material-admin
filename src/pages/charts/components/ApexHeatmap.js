@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "@material-ui/styles";
+import { useTheme } from "@mui/styles";
 import ApexCharts from "react-apexcharts";
 
 const series = [

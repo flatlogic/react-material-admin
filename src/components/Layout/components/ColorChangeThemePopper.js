@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Popper,
@@ -6,31 +6,31 @@ import {
   RadioGroup,
   Box,
   Radio,
-  Switch as SwitchMode
-} from "@material-ui/core";
+  Switch as SwitchMode,
+} from '@mui/material';
 
-import useStyles from "../styles";
+import useStyles from '../styles';
 
 // components
-import Widget from "../../Widget";
-import { Typography, Button } from "../../../components/Wrappers";
-import Themes from "../../../themes";
-import { useThemeDispatch } from "../../../context/ThemeContext";
+import Widget from '../../Widget';
+import { Typography } from '../../Wrappers';
+import Themes from '../../../themes';
+import { useThemeDispatch } from '../../../context/ThemeContext';
 
 function ColorChangeThemePopper({ open, id, anchorEl }) {
   const classes = useStyles();
-  var themeDispatch = useThemeDispatch();
-  const handleChangeTheme = e => {
-    localStorage.setItem("theme", e.target.value);
+  let themeDispatch = useThemeDispatch();
+  const handleChangeTheme = (e) => {
+    localStorage.setItem('theme', e.target.value);
     themeDispatch(Themes[e.target.value]);
   };
 
   const toggleDarkTheme = () => {
-    if (localStorage.getItem("theme") === "dark") {
-      localStorage.setItem("theme", "default");
+    if (localStorage.getItem('theme') === 'dark') {
+      localStorage.setItem('theme', 'default');
       themeDispatch(Themes.default);
     } else {
-      localStorage.setItem("theme", "dark");
+      localStorage.setItem('theme', 'dark');
       themeDispatch(Themes.dark);
     }
   };
@@ -40,59 +40,43 @@ function ColorChangeThemePopper({ open, id, anchorEl }) {
       id={id}
       open={open}
       anchorEl={anchorEl}
-      placement={"left-start"}
+      placement={'left-start'}
       style={{ zIndex: 100 }}
       elevation={4}
     >
       <Widget disableWidgetMenu>
         <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="space-between"
-          alignItems="center"
+          display='flex'
+          flexDirection='column'
+          justifyContent='space-between'
+          alignItems='center'
         >
           <>
-            <Typography variant="body2" weight={"bold"} uppercase>
+            <Typography variant='body2' weight={'bold'} uppercase>
               color theme
             </Typography>
             <RadioGroup
-              aria-label="theme"
-              value={localStorage.getItem("theme")}
-              onChange={e => handleChangeTheme(e)}
+              aria-label='theme'
+              value={localStorage.getItem('theme')}
+              onChange={(e) => handleChangeTheme(e)}
             >
-              <Box display="flex" justifyContent="space-between">
-                <Radio value="default" className={classes.defaultRadio} />
-                <Radio value="secondary" className={classes.secondaryRadio} />
-                <Radio value="success" className={classes.successRadio} />
+              <Box display='flex' justifyContent='space-between'>
+                <Radio value='default' className={classes.defaultRadio} />
+                <Radio value='secondary' className={classes.secondaryRadio} />
+                <Radio value='success' className={classes.successRadio} />
               </Box>
             </RadioGroup>
           </>
-          <Divider style={{ width: "100%", margin: "8px 0 16px 0" }} />
+          <Divider style={{ width: '100%', margin: '8px 0 16px 0' }} />
           <>
-            <Typography variant="body2" weight={"bold"} uppercase>
+            <Typography variant='body2' weight={'bold'} uppercase>
               dark mode
             </Typography>
             <SwitchMode
-              checked={localStorage.getItem("theme") === "dark"}
+              checked={localStorage.getItem('theme') === 'dark'}
               onChange={() => toggleDarkTheme()}
             />
           </>
-          <Button
-            color={"success"}
-            variant={"contained"}
-            href="https://flatlogic.com/templates/react-material-admin-full"
-            style={{ width: "100%", marginTop: 8, marginBottom: 8 }}
-          >
-            buy
-          </Button>
-          <Button
-            href="https://flatlogic.github.io/react-material-admin-full/#/documentation/getting-started/overview"
-            color={"primary"}
-            variant={"contained"}
-            style={{ width: "100%" }}
-          >
-            documentation
-          </Button>
         </Box>
       </Widget>
     </Popper>

@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/styles';
-import { fade } from "@material-ui/core/styles/colorManipulator";
+import { makeStyles } from '@mui/styles';
+import { alpha } from "@mui/material/styles";
 
 export default makeStyles(theme => ({
   root: {
@@ -27,15 +27,15 @@ export default makeStyles(theme => ({
     borderRadius: 25,
     paddingLeft: theme.spacing(2.5),
     width: 36,
-    backgroundColor: fade(theme.palette.common.black, 0),
+    backgroundColor: alpha(theme.palette.common.black, 0),
     transition: theme.transitions.create(["background-color", "width"]),
     "&:hover": {
       cursor: "pointer",
-      backgroundColor: fade(theme.palette.common.black, 0.08),
+      backgroundColor: alpha(theme.palette.common.black, 0.08),
     },
   },
   searchFocused: {
-    backgroundColor: fade(theme.palette.common.black, 0.08),
+    backgroundColor: alpha(theme.palette.common.black, 0.08),
     width: "100%",
     [theme.breakpoints.up("md")]: {
       width: 250,

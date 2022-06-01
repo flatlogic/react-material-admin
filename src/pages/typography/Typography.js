@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 
 // styles
 import useStyles from "./styles";
@@ -9,7 +9,7 @@ import Widget from "../../components/Widget";
 import { Typography } from "../../components/Wrappers";
 
 export default function TypographyPage() {
-  var classes = useStyles();
+  let classes = useStyles();
 
   return (
     <>

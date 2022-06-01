@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import FolderBlueLight from '../../../images/profile/FolderBlueLight.svg';
 
 const styles = () => ({
@@ -39,10 +39,10 @@ const Folder = ({ classes, title, value, label }) => {
         <div className={classes.root} >
             <div className={classes.folderContent}>
                 <span className={classes.folderTitle}>{title}</span>
-                    <div className={classes.parag}>
-                        <span className={classes.folderValue}>{value}</span>{' '}
-                        <span className={classes.folderLabel}>{label}</span>
-                    </div>
+                <div className={classes.parag}>
+                    <span className={classes.folderValue}>{value}</span>{' '}
+                    <span className={classes.folderLabel}>{label}</span>
+                </div>
             </div>
         </div>
     )

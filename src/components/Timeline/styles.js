@@ -1,14 +1,14 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from '@mui/styles';
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   border: {
-    position: "relative",
-    "&:before": {
+    position: 'relative',
+    '&:before': {
       content: "''",
-      position: "absolute",
-      border: "1px solid #bdbdbd",
-      left: "50%",
-      height: "calc(100% + 40px)",
+      position: 'absolute',
+      border: '1px solid #bdbdbd',
+      left: '50%',
+      height: 'calc(100% + 40px)',
       width: 1,
     },
   },

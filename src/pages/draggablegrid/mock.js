@@ -32,7 +32,7 @@ export default {
         type: 'success'
       },
       {
-        img: '/react-material-admin-full/src/images/grid/a4.jpg',
+        img: '/react-material-admin-full/src/images/grid/a3.jpg',
         name: 'Rick Teagan',
         comment: '3 hours ago',
         type: 'warning'
@@ -105,7 +105,7 @@ export default {
         type: 'success'
       },
       {
-        img: '/react-material-admin-full/src/images/grid/a4.jpg',
+        img: '/react-material-admin-full/src/images/grid/a3.jpg',
         name: 'Rick Teagan',
         comment: '3 hours ago',
         type: 'warning'

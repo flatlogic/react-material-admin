@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@mui/styles";
 
 export default makeStyles(theme => ({
   root: {}, 
@@ -7,6 +7,7 @@ export default makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 24
   },
   profileImage: {
     padding: 5,
@@ -20,12 +21,13 @@ export default makeStyles(theme => ({
     }
   },
   profileDescription: {
+    marginTop: 24,
     paddingLeft: 20
   },
   profileTitle: {
     fontSize: 32,
     fontFamily: 'Roboto',
-    fonrWeight: 600,
+    fontWeight: 600,
     display: 'block'
   },
   profileSubtitle: {

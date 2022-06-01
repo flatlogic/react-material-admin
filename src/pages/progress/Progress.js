@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Box, LinearProgress } from "@material-ui/core";
+import { Grid, Box, LinearProgress } from "@mui/material";
 
 // components
 import Widget from "../../components/Widget";

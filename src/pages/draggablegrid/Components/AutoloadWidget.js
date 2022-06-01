@@ -1,6 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { Typography, Grid, FormGroup, FormLabel, TextField } from '@material-ui/core';
+import { withStyles } from '@mui/styles';
+import { Typography, Grid, FormGroup, FormLabel, TextField } from '@mui/material';
 import { Button } from "../../../components/Wrappers";
 
 const styles = (theme) => ({
@@ -49,11 +49,11 @@ const AutoloadWidget = ({ classes }) => {
         Faith makes it possible to achieve that which man&apos;s mind can conceive and believe.
         </div>
       </Grid>
-      <Grid container direction={'column'} xs={12}>
+      <Grid container item direction={'column'} xs={12}>
         <Grid item className={classes.blocksMargin}>
           <FormGroup>
             <div className={classes.formLabels}>
-              <FormLabel for="exampleInputEmail1">&nbsp; Email address</FormLabel>
+              <FormLabel htmlFor="exampleInputEmail1">&nbsp; Email address</FormLabel>
             </div>
             <TextField
               id="exampleInputEmail1"
@@ -68,7 +68,7 @@ const AutoloadWidget = ({ classes }) => {
         <Grid item className={classes.blocksMargin}>
           <FormGroup>
             <div className={classes.formLabels}>
-              <FormLabel for="pswd"><i /> &nbsp; Password</FormLabel>
+              <FormLabel htmlFor="pswd"><i /> &nbsp; Password</FormLabel>
             </div>
             <TextField 
               id="pswd" 

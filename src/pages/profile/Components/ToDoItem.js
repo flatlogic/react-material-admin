@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { MenuItem, IconButton, Menu } from '@material-ui/core';
-import { MoreVert as MoreIcon } from '@material-ui/icons';
+import { withStyles } from '@mui/styles';
+import Typography from '@mui/material/Typography';
+import { MenuItem, IconButton, Menu } from '@mui/material';
+import { MoreVert as MoreIcon } from '@mui/icons-material';
 import Dot from '../../../components/Dot/Dot';
 
 const styles = (theme) => ({
@@ -62,7 +62,7 @@ const ToDoItem = ({ classes, time, title, color, backgroundColor}) => {
           aria-owns="widget-menu"
           aria-haspopup="true"
           onClick={() => setMoreMenuOpen(true)}
-          buttonRef={setMoreButtonRef}
+          ref={setMoreButtonRef}
         >
           <MoreIcon className={classes.menuItem} />
         </IconButton>

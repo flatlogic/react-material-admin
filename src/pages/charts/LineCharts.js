@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
+import { Grid } from "@mui/material";
+import { useTheme } from "@mui/styles";
 import ReactApexChart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 

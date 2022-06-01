@@ -1,12 +1,12 @@
 import React from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { withStyles } from '@material-ui/core/styles';
+import CircularProgress from '@mui/material/CircularProgress';
+import { withStyles } from '@mui/styles';
 
 const styles = (theme) => ({
   container: {
     display: 'flex',
     justifyContent: 'center',
-    alingItems: 'center',
+    alignItems: 'center',
     margin: '3.5rem',
   },  
 })

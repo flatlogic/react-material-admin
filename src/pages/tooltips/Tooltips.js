@@ -5,7 +5,7 @@ import {
   ClickAwayListener,
   Popover,
   Button as ButtonNative
-} from "@material-ui/core";
+} from "@mui/material";
 import cn from "classnames";
 
 // components

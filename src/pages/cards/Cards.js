@@ -10,20 +10,20 @@ import {
   CardHeader,
   IconButton,
   Divider
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   Star as StarIcon,
   MoreVert as MoreVertIcon,
   Favorite as FavoriteIcon,
   Share as ShareIcon
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import useStyles from "./styles";
 
 //images
-import backImg from "../../images/lifestyle.jpg";
-import isometricImg from "../../images/isometric.jpg";
-import mountainsImg from "../../images/mountains.jpeg";
-import rnsImg from "../../images/rns.png";
+import backImg from "../../images/cards/lifestyle.jpg";
+import isometricImg from "../../images/cards/isometric.jpg";
+import mountainsImg from "../../images/cards/mountains.jpeg";
+import rnsImg from "../../images/cards/rns.png";
 
 // components
 import { Typography, Button, Link, Avatar } from "../../components/Wrappers";

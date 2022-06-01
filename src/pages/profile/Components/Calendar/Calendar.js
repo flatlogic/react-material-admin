@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import '../../../../../node_modules/line-awesome/dist/line-awesome/css/line-awesome.css';
+
 import DayNames from './DayNames'
 import { v4 as uuid } from 'uuid';
 import Week from './Week';

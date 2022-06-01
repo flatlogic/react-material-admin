@@ -1,10 +1,10 @@
 import React from "react";
-import { Grid, Box } from "@material-ui/core";
-import Input from "@material-ui/core/TextField";
+import { Grid, Box } from "@mui/material";
+import Input from "@mui/material/TextField";
 
 // components
-import Widget from "../../components/Widget/Widget";
-import { Button, Typography } from "../../components/Wrappers/";
+import Widget from "../../components/Widget";
+import { Button, Typography } from "../../components/Wrappers";
 
 export default () => {
   const ref = React.useRef(null);
@@ -23,13 +23,13 @@ export default () => {
           >
             <Grid
               container
-              direction={"column"}
+              direction="column"
               alignItems="center"
               spacing={6}
             >
-              <Grid item container alignItems={"center"} xs={6}>
+              <Grid item container alignItems="center" xs={6}>
                 <Grid item xs={6}>
-                  <Typography variant={"body1"}>Simple required</Typography>
+                  <Typography variant="body1">Simple required</Typography>
                 </Grid>
                 <Grid xs={6} item>
                   <Input

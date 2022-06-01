@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { ArrowBack as ArrowBackIcon } from "@material-ui/icons";
-import { Drawer, IconButton, List } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
-import { withRouter } from "react-router-dom";
-import classNames from "classnames";
+import React, { useState, useEffect, useMemo } from 'react';
+import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
+import { Drawer, IconButton, List } from '@mui/material';
+import { useTheme } from '@mui/material';
+import { withRouter } from 'react-router-dom';
+import classNames from 'classnames';
 
 // styles
-import useStyles from "./styles";
+import useStyles from './styles';
 
 // components
-import SidebarLink from "./components/SidebarLink/SidebarLink";
+import SidebarLink from './components/SidebarLink/SidebarLink';
 
 // context
 import {
   useLayoutState,
   useLayoutDispatch,
-  toggleSidebar
-} from "../../context/LayoutContext";
+  toggleSidebar,
+} from '../../context/LayoutContext';
 
 function Sidebar({ location, structure }) {
-  var classes = useStyles();
-  var theme = useTheme();
+  let classes = useStyles();
+  let theme = useTheme();
 
-  const toggleDrawer = value => event => {
+  const toggleDrawer = (value) => (event) => {
     if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
     ) {
       return;
     }
@@ -34,38 +34,39 @@ function Sidebar({ location, structure }) {
   };
 
   // global
-  var { isSidebarOpened } = useLayoutState();
-  var layoutDispatch = useLayoutDispatch();
+  let { isSidebarOpened } = useLayoutState();
+  let layoutDispatch = useLayoutDispatch();
 
   // local
-  var [isPermanent, setPermanent] = useState(true);
+  let [isPermanent, setPermanent] = useState(true);
 
-  useEffect(function() {
-    window.addEventListener("resize", handleWindowWidthChange);
+  const isSidebarOpenedWrapper = useMemo(
+    () => (!isPermanent ? !isSidebarOpened : isSidebarOpened),
+    [isPermanent, isSidebarOpened],
+  );
+
+  useEffect(function () {
+    window.addEventListener('resize', handleWindowWidthChange);
     handleWindowWidthChange();
     return function cleanup() {
-      window.removeEventListener("resize", handleWindowWidthChange);
+      window.removeEventListener('resize', handleWindowWidthChange);
     };
   });
 
   return (
     <Drawer
-      variant={isPermanent ? "permanent" : "temporary"}
+      variant={isPermanent ? 'permanent' : 'temporary'}
       className={classNames(classes.drawer, {
-        [classes.drawerOpen]: !isPermanent ? !isSidebarOpened : isSidebarOpened,
-        [classes.drawerClose]: !isPermanent ? isSidebarOpened : !isSidebarOpened
+        [classes.drawerOpen]: isSidebarOpenedWrapper,
+        [classes.drawerClose]: !isSidebarOpenedWrapper,
       })}
       classes={{
         paper: classNames({
-          [classes.drawerOpen]: !isPermanent
-            ? !isSidebarOpened
-            : isSidebarOpened,
-          [classes.drawerClose]: !isPermanent
-            ? isSidebarOpened
-            : !isSidebarOpened
-        })
+          [classes.drawerOpen]: isSidebarOpenedWrapper,
+          [classes.drawerClose]: !isSidebarOpenedWrapper,
+        }),
       }}
-      open={!isPermanent ? !isSidebarOpened : isSidebarOpened}
+      open={isSidebarOpenedWrapper}
       onClose={toggleDrawer(true)}
     >
       <div className={classes.toolbar} />
@@ -73,7 +74,7 @@ function Sidebar({ location, structure }) {
         <IconButton onClick={() => toggleSidebar(layoutDispatch)}>
           <ArrowBackIcon
             classes={{
-              root: classNames(classes.headerIcon, classes.headerIconCollapse)
+              root: classNames(classes.headerIcon, classes.headerIconCollapse),
             }}
           />
         </IconButton>
@@ -97,9 +98,9 @@ function Sidebar({ location, structure }) {
 
   // ##################################################################
   function handleWindowWidthChange() {
-    var windowWidth = window.innerWidth;
-    var breakpointWidth = theme.breakpoints.values.md;
-    var isSmallScreen = windowWidth < breakpointWidth;
+    let windowWidth = window.innerWidth;
+    let breakpointWidth = theme.breakpoints.values.md;
+    let isSmallScreen = windowWidth < breakpointWidth;
 
     if (isSmallScreen && isPermanent) {
       setPermanent(false);

@@ -1,6 +1,5 @@
-import React from "react";
+import React from 'react';
 import {
-  withStyles,
   Badge as BadgeBase,
   Typography as TypographyBase,
   Button as ButtonBase,
@@ -12,22 +11,23 @@ import {
   Link as LinkBase,
   CircularProgress as CircularProgressBase,
   LinearProgress as LinearProgressBase,
-  Radio as RadioBase
-} from "@material-ui/core";
-import { useTheme, makeStyles } from "@material-ui/styles";
-import classnames from "classnames";
+  Radio as RadioBase,
+} from '@mui/material';
+import { useTheme } from '@mui/material';
+import { withStyles, makeStyles } from '@mui/styles';
+import classnames from 'classnames';
 
 // styles
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   badge: {
     fontWeight: 600,
-    height: props => {
+    height: (props) => {
       if (!props.variant) return 16;
     },
-    minWidth: props => {
+    minWidth: (props) => {
       if (!props.variant) return 16;
-    }
-  }
+    },
+  },
 }));
 
 function Badge({ children, colorBrightness, color, type, ...props }) {
@@ -35,26 +35,28 @@ function Badge({ children, colorBrightness, color, type, ...props }) {
   const theme = useTheme();
   const Styled = createStyled({
     badge: {
-      backgroundColor: type === 'tag' ? `${getColor(color, theme, colorBrightness)}44` : getColor(color, theme, colorBrightness),
-      color: type === 'tag' ? getColor(color, theme, colorBrightness) : "white",
+      backgroundColor:
+        type === 'tag'
+          ? `${getColor(color, theme, colorBrightness)}44`
+          : getColor(color, theme, colorBrightness),
+      color: type === 'tag' ? getColor(color, theme, colorBrightness) : 'white',
       borderRadius: type === 'tag' && 4,
       padding: type === 'tag' && '6px 6px',
       height: type === 'tag' && 'auto',
       position: type === 'tag' && 'static',
       transform: type === 'tag' && 'none',
-      marginRight:  type === 'tag' && 10,
-      marginBottom:  type === 'tag' && 10,
+      marginRight: type === 'tag' && 10,
+      marginBottom: type === 'tag' && 10,
       alignContent: 'center',
-      
-    }
+    },
   });
 
   return (
     <Styled>
-      {styledProps => (
+      {(styledProps) => (
         <BadgeBase
           classes={{
-            badge: classnames(classes.badge, styledProps.classes.badge)
+            badge: classnames(classes.badge, styledProps.classes.badge),
           }}
           {...props}
         >
@@ -70,16 +72,16 @@ function Chip({ colorBrightness, color, variant, ...props }) {
   const Styled = createStyled({
     root: {
       backgroundColor: getColor(color, theme, colorBrightness),
-      color: "white",
-    }
+      color: 'white',
+    },
   });
 
   return (
     <Styled>
-      {styledProps => (
+      {(styledProps) => (
         <ChipBase
           classes={{
-            root: classnames(styledProps.classes.root)
+            root: classnames(styledProps.classes.root),
           }}
           {...props}
         />
@@ -107,10 +109,10 @@ function Typography({
         color: getColor(color, theme, colorBrightness),
         fontWeight: getFontWeight(weight),
         fontSize: getFontSize(size, props.variant, theme),
-        textTransform: uppercase ? "uppercase" : "none",
-        ...style
+        textTransform: uppercase ? 'uppercase' : 'none',
+        ...style,
       }}
-      component={block ? "div" : "p"}
+      component={block ? 'div' : 'p'}
       {...props}
     >
       {children}
@@ -119,33 +121,33 @@ function Typography({
 }
 
 function Button({ children, color, className, style, ...props }) {
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     root: {
-      color: getColor(color, theme)
+      color: getColor(color, theme),
     },
     contained: {
       backgroundColor: getColor(color, theme),
       boxShadow: theme.customShadows.widget,
       color:
-        theme.palette.type === "dark" && !color
-          ? "#000"
-          : `${color ? "white" : theme.palette.text.primary} !important`,
-      "&:hover": {
-        backgroundColor: getColor(color, theme, "light"),
-        boxShadow: theme.customShadows.widgetWide
+        theme.palette.type === 'dark' && !color
+          ? '#000'
+          : `${color ? 'white' : theme.palette.text.primary} !important`,
+      '&:hover': {
+        backgroundColor: getColor(color, theme, 'light'),
+        boxShadow: theme.customShadows.widgetWide,
       },
-      "&:active": {
-        boxShadow: theme.customShadows.widgetWide
-      }
+      '&:active': {
+        boxShadow: theme.customShadows.widgetWide,
+      },
     },
     outlined: {
       color: getColor(color, theme),
-      borderColor: getColor(color, theme)
+      borderColor: getColor(color, theme),
     },
     select: {
       backgroundColor: theme.palette.primary.main,
-      color: "#fff"
-    }
+      color: '#fff',
+    },
   }));
   const classes = useStyles();
 
@@ -154,16 +156,16 @@ function Button({ children, color, className, style, ...props }) {
       classes={{
         contained: classes.contained,
         root: classes.root,
-        outlined: classes.outlined
+        outlined: classes.outlined,
       }}
       {...props}
       className={classnames(
         {
-          [classes.select]: props.select
+          [classes.select]: props.select,
         },
-        className
+        className,
       )}
-      style={{...style}}
+      style={{ ...style }}
     >
       {children}
     </ButtonBase>
@@ -175,8 +177,8 @@ function Avatar({ children, color, colorBrightness, ...props }) {
 
   const Styled = createStyled({
     colorDefault: {
-      backgroundColor: getColor(color, theme, colorBrightness)
-    }
+      backgroundColor: getColor(color, theme, colorBrightness),
+    },
   });
 
   return (
@@ -196,8 +198,8 @@ function Tooltip({ children, color, ...props }) {
   const Styled = createStyled({
     tooltip: {
       backgroundColor: getColor(color, theme),
-      color: "white"
-    }
+      color: 'white',
+    },
   });
 
   return (
@@ -216,8 +218,8 @@ function Paper({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      backgroundColor: getColor(color, theme)
-    }
+      backgroundColor: getColor(color, theme),
+    },
   });
 
   return (
@@ -232,10 +234,10 @@ function Paper({ children, color, ...props }) {
 }
 
 function AppBar({ children, color, ...props }) {
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     root: {
-      backgroundColor: getColor(color, theme)
-    }
+      backgroundColor: getColor(color, theme),
+    },
   }));
 
   const classes = useStyles();
@@ -248,12 +250,13 @@ function AppBar({ children, color, ...props }) {
 }
 
 function Link({ children, color, ...props }) {
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     root: {
       color: color
         ? `${getColor(color, theme)} !important`
-        : theme.palette.text.primary
-    }
+        : theme.palette.text.primary,
+      textDecoration: 'none',
+    },
   }));
 
   const classes = useStyles();
@@ -266,12 +269,12 @@ function Link({ children, color, ...props }) {
 }
 
 function CircularProgress({ children, color, ...props }) {
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     root: {
       color: color
         ? `${getColor(color, theme)} !important`
-        : theme.palette.primary.main
-    }
+        : theme.palette.primary.main,
+    },
   }));
 
   const classes = useStyles();
@@ -288,13 +291,13 @@ function LinearProgress({ children, color, ...props }) {
 
   const Styled = createStyled({
     root: {
-      backgroundColor: getCustomBackgroundColor(color)
+      backgroundColor: getCustomBackgroundColor(color),
     },
     bar: {
       backgroundColor: color
         ? `${getColor(color, theme)} !important`
-        : theme.palette.primary.main
-    }
+        : theme.palette.primary.main,
+    },
   });
 
   return (
@@ -314,19 +317,12 @@ function LinearProgress({ children, color, ...props }) {
 function Radio({ children, color, ...props }) {
   const Styled = createStyled({
     root: {
-      color: "green",
-      "&$checked": {
-        color: "green"
-      }
+      color: 'green',
+      '&$checked': {
+        color: 'green',
+      },
     },
-    checked: {}
-    // '&.Mui-checked': {
-    // color: theme.palette[color].main
-    // },
-    // '&:hover': {
-    //   backgroundColor: `${theme.palette[color].main} !important`,
-    //   opacity: .1
-    // }
+    checked: {},
   });
 
   return (
@@ -335,7 +331,7 @@ function Radio({ children, color, ...props }) {
         <RadioBase
           classes={{
             root: classes.root,
-            checked: classes.checked
+            checked: classes.checked,
           }}
           {...props}
         />
@@ -356,68 +352,61 @@ export {
   Link,
   CircularProgress,
   LinearProgress,
-  Radio
+  Radio,
 };
 
 // ########################################################################
 
-function getColor(color, theme, brightness = "main") {
+function getColor(color, theme, brightness = 'main') {
   if (color && theme.palette[color] && theme.palette[color][brightness]) {
     return theme.palette[color][brightness];
   }
 }
 
-// eslint-disable-next-line no-unused-vars
-function getColorText (color, theme) {
-  if (color && theme.palette.text[color]) {
-    return theme.palette.text[color];
-  }
-}
-
 function getCustomBackgroundColor(color) {
   switch (color) {
-    case "primary":
-      return "rgba(83, 109, 254, .3)";
-    case "secondary":
-      return "rgba(255, 198, 208, 0.3)";
-    case "warning":
-      return "rgba(255, 219, 198, 0.3)";
-    case "success":
-      return "rgba(147, 212, 185, 0.3)";
-    case "info":
-      return "rgba(214, 172, 254, 0.3)";
+    case 'primary':
+      return 'rgba(83, 109, 254, .3)';
+    case 'secondary':
+      return 'rgba(255, 198, 208, 0.3)';
+    case 'warning':
+      return 'rgba(255, 219, 198, 0.3)';
+    case 'success':
+      return 'rgba(147, 212, 185, 0.3)';
+    case 'info':
+      return 'rgba(214, 172, 254, 0.3)';
     default:
-      return "#C4D4FE";
+      return '#C4D4FE';
   }
 }
 
 function getFontWeight(style) {
   switch (style) {
-    case "light":
+    case 'light':
       return 300;
-    case "medium":
+    case 'medium':
       return 500;
-    case "bold":
+    case 'bold':
       return 600;
     default:
       return 400;
   }
 }
 
-function getFontSize(size, variant = "", theme) {
+function getFontSize(size, variant = '', theme) {
   let multiplier;
 
   switch (size) {
-    case "sm":
+    case 'sm':
       multiplier = 0.8;
       break;
-    case "md":
+    case 'md':
       multiplier = 1.5;
       break;
-    case "xl":
+    case 'xl':
       multiplier = 2;
       break;
-    case "xxl":
+    case 'xxl':
       multiplier = 3;
       break;
     default:
@@ -428,13 +417,13 @@ function getFontSize(size, variant = "", theme) {
   const defaultSize =
     variant && theme.typography[variant]
       ? theme.typography[variant].fontSize
-      : theme.typography.fontStyle + "px";
+      : theme.typography.fontStyle + 'px';
 
   return `calc(${defaultSize} * ${multiplier})`;
 }
 
 function createStyled(styles, options) {
-  const Styled = function(props) {
+  const Styled = function (props) {
     const { children, ...other } = props;
     return children(other);
   };
