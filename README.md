@@ -68,6 +68,9 @@ Open http://localhost:3000 to view it in the browser. Whenever you modify any of
 the module bundler ([Webpack](http://webpack.github.io/)) will recompile the
 app on the fly and refresh all the connected browsers.
 
+#### 3.1 Run `yarn dev`
+Runs the app in the development mode without backend
+
 #### 4. Run `yarn build`
 
 Builds the app for production to the build folder.
