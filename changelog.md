@@ -1,5 +1,9 @@
 # Changelog
 
+# [2.3.1] - 18/07/2022
+
+- Fix users management
+
 # [2.3.0] - 01/06/2022
 
 - Updated from MUI4 to MUI5, fixed Dark Theme

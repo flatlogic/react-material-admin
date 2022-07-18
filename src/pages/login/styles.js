@@ -19,6 +19,7 @@ export default makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    padding: '1rem',
     [theme.breakpoints.down('md')]: {
       width: '50%',
     },
@@ -34,6 +35,7 @@ export default makeStyles((theme) => ({
     color: 'white',
     fontWeight: 500,
     fontSize: 84,
+    textAlign: 'center',
     [theme.breakpoints.down('md')]: {
       fontSize: 48,
     },

@@ -20,7 +20,6 @@ import { Link } from '../Wrappers';
 import ColorChangeThemePopper from './components/ColorChangeThemePopper';
 
 import EditUser from '../../pages/user/EditUser';
-import AddUser from '../../pages/CRUD/Users/form/UsersForm';
 
 // pages
 import Dashboard from '../../pages/dashboard';
@@ -181,7 +180,7 @@ function Layout(props) {
           />
 
           <Route path={'/app/users'} exact component={UsersTablePage} />
-          <Route path={'/app/user/new'} exact component={AddUser} />
+          <Route path={'/app/user/new'} exact component={UsersFormPage} />
           <Route
             path={'/app/users/:id/edit'}
             exact

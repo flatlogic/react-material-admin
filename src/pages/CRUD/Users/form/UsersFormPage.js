@@ -43,7 +43,7 @@ const UsersFormPage = (props) => {
   }, [match, dispatch]);
 
   return (
-    <React.Fragment>
+    <>
       {dispatched && (
         <UsersForm
           saveLoading={saveLoading}
@@ -53,10 +53,10 @@ const UsersFormPage = (props) => {
           isEditing={isEditing()}
           isProfile={isProfile()}
           onSubmit={doSubmit}
-          onCancel={() => dispatch(push('/admin/users'))}
+          onCancel={() => dispatch(push('/app/users'))}
         />
       )}
-    </React.Fragment>
+    </>
   );
 };
 

@@ -261,7 +261,7 @@ const UsersTable = () => {
     <div>
       <Widget title='Users' disableWidgetMenu>
         <Box className={classes.actions}>
-          <Link to='/admin/users/new'>
+          <Link to='/app/user/new'>
             <Button variant='contained'>New</Button>
           </Link>
           <Button type='button' variant='contained' onClick={addFilter}>

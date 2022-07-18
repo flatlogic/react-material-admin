@@ -47,7 +47,7 @@ const actions = {
           type: 'USERS_FORM_CREATE_SUCCESS',
         });
         showSnackbar({ type: 'success', message: 'Users created' });
-        dispatch(push('/admin/users'));
+        dispatch(push('/app/users'));
       });
     } catch (error) {
       Errors.handle(error);
