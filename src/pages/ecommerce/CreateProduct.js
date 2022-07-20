@@ -89,7 +89,7 @@ const CreateProduct = () => {
   const editProduct = e => {
     setLocalProducts({
       ...localProducts,
-      [e.target.id]: e.currentTarget.value
+      [e.target.id]: e.currentTarget.value.split(' ')
     });
   };
 
@@ -102,6 +102,7 @@ const CreateProduct = () => {
 
   const getEditProduct = () => {
     updateProduct(localProducts, context.setProducts);
+    history.push("/app/ecommerce/management");
     // sendNotification();
   };
 
@@ -345,6 +346,11 @@ const CreateProduct = () => {
                       variant="outlined"
                       placeholder={"Add Tag"}
                       fullWidth
+                      value={
+                        isCreateProduct
+                          ? newProduct.technology.join(' ')
+                          : localProducts.technology.join(' ')
+                      }
                       onChange={e =>
                         isCreateProduct ? editNewProduct(e) : editProduct(e)
                       }

@@ -1,5 +1,9 @@
 # Changelog
 
+# [2.3.2] - 20/07/2022
+
+- Fix ecommerce editing
+
 # [2.3.1] - 18/07/2022
 
 - Fix users management
