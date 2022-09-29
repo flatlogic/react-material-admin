@@ -26,7 +26,7 @@
     "react-scripts": "4.0.1",
     "react-syntax-highlighter": "^15.4.3",
     "react-toastify": "^7.0.3",
-    "recharts": "^2.0.4",
+    "recharts": "^2.1.14",
     "tinycolor2": "^1.4.2"
   },
   "scripts": {
