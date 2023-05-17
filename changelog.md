@@ -1,5 +1,10 @@
 # Changelog
 
+# [2.3.3] - 16/05/2023
+
+- Update dependencies
+- Update react version
+
 # [2.3.2] - 20/07/2022
 
 - Fix ecommerce editing

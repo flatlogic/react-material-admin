@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import axios from 'axios';
 import { createStore, applyMiddleware, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
@@ -45,7 +45,9 @@ export const store = createStore(
   compose(applyMiddleware(routerMiddleware(history), ReduxThunk)),
 );
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
   <Provider store={store}>
     <LayoutProvider>
       <UserProvider>
@@ -66,7 +68,6 @@ ReactDOM.render(
       </UserProvider>
     </LayoutProvider>
   </Provider>,
-  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
