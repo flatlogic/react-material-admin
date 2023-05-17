@@ -11,7 +11,7 @@ Built with [React](https://facebook.github.io/react/), [Material-UI](https://mat
 
 ## Features
 
-- React (**17.0.2**)
+- React (**18.2.0**)
 - React Hooks
 - React Context
 - **No jQuery and Bootstrap!**
