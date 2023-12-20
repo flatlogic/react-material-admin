@@ -6,7 +6,7 @@
   "homepage": "./",
   "scripts": {
     "build": "cross-env REACT_APP_BACKEND=true NODE_ENV=production PUBLIC_URL='./' react-scripts build",
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "cross-env REACT_APP_BACKEND=false react-scripts start",
     "dev": "cross-env react-scripts start",
     "test": "react-scripts test",
     "format": "prettier --write src/"
