@@ -1,5 +1,9 @@
 # Changelog
 
+# [2.3.4] - 20/12/2023
+
+- Update dependencies
+
 # [2.3.3] - 16/05/2023
 
 - Update dependencies
