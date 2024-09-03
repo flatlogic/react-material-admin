@@ -5,10 +5,10 @@
   "private": true,
   "homepage": "./",
   "scripts": {
-    "build": "cross-env REACT_APP_BACKEND=true NODE_ENV=production PUBLIC_URL='./' react-scripts build",
-    "start": "cross-env REACT_APP_BACKEND=false react-scripts start",
-    "dev": "cross-env react-scripts start",
-    "test": "react-scripts test",
+    "build": "cross-env REACT_APP_BACKEND=true NODE_ENV=production PUBLIC_URL='./' react-scripts --openssl-legacy-provider build",
+    "start": "cross-env REACT_APP_BACKEND=false react-scripts --openssl-legacy-provider start",
+    "dev": "cross-env react-scripts --openssl-legacy-provider start",
+    "test": "react-scripts --openssl-legacy-provider test",
     "format": "prettier --write src/"
   },
   "dependencies": {
@@ -77,6 +77,9 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "engines": {
+    "node": "^20.15"
+  },
   "devDependencies": {
     "@babel/helper-call-delegate": "^7.12.13",
     "@testing-library/jest-dom": "^5.17.0",
