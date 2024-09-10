@@ -12,7 +12,7 @@ import {
   PersonOutline as PersonOutlineIcon,
   Lock as LockIcon,
 } from '@mui/icons-material';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 
 import Widget from '../../components/Widget';
 import { Typography, Button } from '@mui/material';
