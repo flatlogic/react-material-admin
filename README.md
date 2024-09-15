@@ -47,7 +47,7 @@ We have implemented some basic pages, so you can see our template in action.
 
 #### 1. Get the latest version
 
-You can start by cloning the latest version of React Dashboard on your
+You can start by cloning the latest version of React Material Admin on your
 local machine by running:
 
 ```shell
