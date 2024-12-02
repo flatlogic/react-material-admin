@@ -47,12 +47,11 @@ We have implemented some basic pages, so you can see our template in action.
 
 #### 1. Get the latest version
 
-You can start by cloning the latest version of React Dashboard on your
+You can start by cloning the latest version of React Material Admin on your
 local machine by running:
 
 ```shell
-$ git clone https://github.com/flatlogic/react-material-admin.git MyApp
-$ cd MyApp
+$ git clone https://github.com/flatlogic/react-material-admin.git
 ```
 
 #### 2. Run `yarn install`
@@ -60,16 +59,16 @@ $ cd MyApp
 This will install both run-time project dependencies and developer tools listed
 in [package.json](package.json) file.
 
-#### 3. Run `yarn start`
+#### 3 Run `yarn dev`
+Runs the app in the development mode without backend
 
-Runs the app in the development mode.
+#### 3.1 Run `yarn start`
+
+Runs the app in the development mode with nodejs-backend (https://github.com/flatlogic/nodejs-backend)
 
 Open http://localhost:3000 to view it in the browser. Whenever you modify any of the source files inside the `/src` folder,
 the module bundler ([Webpack](http://webpack.github.io/)) will recompile the
 app on the fly and refresh all the connected browsers.
-
-#### 3.1 Run `yarn dev`
-Runs the app in the development mode without backend
 
 #### 4. Run `yarn build`
 
