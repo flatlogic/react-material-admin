@@ -5,20 +5,21 @@ import {
   TableHead,
   TableBody,
   TableCell,
-  Chip
-} from "@material-ui/core";
-import useStyles from "../../styles";
+  Box
+} from "@mui/material";
 
+import { Button, Avatar } from "../../../../components/Wrappers";
+
+// components
 const states = {
   sent: "success",
   pending: "warning",
-  declined: "secondary",
+  declined: "secondary"
 };
-
 export default function TableComponent({ data }) {
-  const classes = useStyles();
-  var keys = Object.keys(data[0]).map(i => i.toUpperCase());
-  keys.shift(); // delete "id" key
+  let keys = Object.keys(data[0]).map(i => i.toUpperCase());
+  keys.shift();
+  keys.pop(); // delete "id, colors" key
 
   return (
     <Table className="mb-0">
@@ -30,19 +31,35 @@ export default function TableComponent({ data }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {data.map(({ id, name, email, product, price, date, city, status }) => (
-          <TableRow key={id}>
-            <TableCell className="pl-3 fw-normal">{name}</TableCell>
-            <TableCell>{email}</TableCell>
-            <TableCell>{product}</TableCell>
-            <TableCell>{price}</TableCell>
-            <TableCell>{date}</TableCell>
-            <TableCell>{city}</TableCell>
-            <TableCell>
-              <Chip label={status} classes={{root: classes[states[status.toLowerCase()]]}}/>
-            </TableCell>
-          </TableRow>
-        ))}
+        {data.map(
+          ({ id, name, email, product, price, date, city, status, color }) => (
+            <TableRow key={id}>
+              <TableCell className="fw-normal">
+                <Box display={"flex"} alignItems={"center"}>
+                  <Avatar style={{ marginRight: 20 }} color={color}>
+                    {name[0]}
+                  </Avatar>{" "}
+                  {name}
+                </Box>
+              </TableCell>
+              <TableCell>{email}</TableCell>
+              <TableCell>{product}</TableCell>
+              <TableCell>{price}</TableCell>
+              <TableCell>{date}</TableCell>
+              <TableCell>{city}</TableCell>
+              <TableCell>
+                <Button
+                  color={states[status.toLowerCase()]}
+                  size="small"
+                  className="px-2"
+                  variant="contained"
+                >
+                  {status}
+                </Button>
+              </TableCell>
+            </TableRow>
+          )
+        )}
       </TableBody>
     </Table>
   );

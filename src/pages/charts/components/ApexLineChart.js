@@ -1,6 +1,6 @@
 import React from "react";
 import ApexCharts from "react-apexcharts";
-import { useTheme } from "@material-ui/styles";
+import { useTheme } from "@mui/styles";
 
 const series = [
   {
@@ -14,7 +14,7 @@ const series = [
 ];
 
 export default function ApexLineChart() {
-  var theme = useTheme();
+  let theme = useTheme();
 
   return (
     <ApexCharts

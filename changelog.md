@@ -1,66 +1,119 @@
 # Changelog
 
-# [1.3.2]
+## [2.4.1] - 22/11/2024
 
-### Updated
-- Packages updated
-- Edited README.md
+- Updated dependencies
 
-# [1.3.1]
+## [2.4.0] - 10/09/2024
+
+- Added react-scripts version 5 along with webpack version 5 support.
+- Added support for node.js version > 20
+- Removed old webpack configs.
+- Removed unnecessary dev dependencies.
+
+# [2.3.4] - 20/12/2023
+
+- Update dependencies
+
+# [2.3.3] - 16/05/2023
+
+- Update dependencies
+- Update react version
+
+# [2.3.2] - 20/07/2022
+
+- Fix ecommerce editing
+
+# [2.3.1] - 18/07/2022
+
+- Fix users management
+
+# [2.3.0] - 01/06/2022
+
+- Updated from MUI4 to MUI5, fixed Dark Theme
+- Fixed Grid actions
+- Fixed various bugs related to DataGrid
+- Updated packages
+
+# [2.2.5] - 05/03/2021
+
+- Fixed errors
+- Clear code
+- Hide warnings
+
+# [2.2.4]
+
+- Updated documentation
+
+# [2.2.3]
+
+### New Features
+- Added Profile page
+- Added Grid page
+- Updated packages
+- Updated README.md
+
+# [2.1.3]
 
 ### Updated
 - Added link to flatlogic on login and register pages
 
-# [1.3.0]
+# [2.1.2]
 
 ### Updated
-- Update packages
+- Updated fullcalendar package to v5.3.0
 
-### Fixed
-- Header button on md adjusting
-- Dashboard page make more responsive
-- Notification page fix
-- Tables page fix TableBody paddings
+# [2.1.1]
 
-# [1.2.3]
+### Improved
+- Improved css
 
-### Updated
-- Fixed security vulnerabilities in dependencies
+# [2.1.0]
 
-# [1.2.2]
+### New Features
+- Added upload image functionality
 
-### Updated
-- Packages updated
+# [2.0.0]
+
+### New Features
+- Added user management table
+- Added register functionality
+- Added reset password functionality
+- User invitation functionality
+- Social Login
 
 # [1.2.1]
 
-### Updated
-- Packages updated
-
 ### Fixed
-- Sign up name type of input
-- Dot component size prop
-- Performance errors
-
-# [1.2.0]
+- JWT token checking fix
 
 ### Updated
-- Packages update
-- Link to Full version
+- Update scrollbar color on Windows devices
+- Some color improvements
+
+# [1.1.1]
+
+### Updated
+- Adjust unused libs imports
+- Updated Docs
+- Minor components updates
+
+### New Features
+- Docs full update
 
 ### Fixed
-- User login state improvements
+- Wrappers of the components fix
+- Performance improve
 
 ## [1.1.0]
 
-### New Feactures
+### Fixed
 
-- React v16.8.6
-- React Router v5
-- new React Hooks
-- Material UI v4.3
+- set localStorage item of theme
 
-Bug fixes
+### Updated
+
+- redux updates
 
 ## [1.0.0]
 

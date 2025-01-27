@@ -1,10 +1,9 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { Grid } from "@mui/material";
 import MUIDataTable from "mui-datatables";
+import useStyles from "./styles";
 
 // components
-import PageTitle from "../../components/PageTitle";
 import Widget from "../../components/Widget";
 import Table from "../dashboard/components/Table/Table";
 
@@ -28,20 +27,13 @@ const datatableData = [
   ["Anna Siranush", "Example Inc.", "Yonkers", "NY"],
   ["Avram Sylva", "Example Inc.", "Hartford", "CT"],
   ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
-  ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
+  ["Gaston Festus", "Example Inc.", "Tampa", "FL"]
 ];
-
-const useStyles = makeStyles(theme => ({
-  tableOverflow: {
-    overflow: 'auto'
-  }
-}))
 
 export default function Tables() {
   const classes = useStyles();
   return (
     <>
-      <PageTitle title="Tables" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <MUIDataTable
@@ -49,12 +41,16 @@ export default function Tables() {
             data={datatableData}
             columns={["Name", "Company", "City", "State"]}
             options={{
-              filterType: "checkbox",
+              filterType: "checkbox"
             }}
           />
         </Grid>
         <Grid item xs={12}>
-          <Widget title="Material-UI Table" upperTitle noBodyPadding bodyClass={classes.tableOverflow}>
+          <Widget
+            title="Material-UI Table"
+            noBodyPadding
+            bodyClass={classes.tableWrapper}
+          >
             <Table data={mock.table} />
           </Widget>
         </Grid>

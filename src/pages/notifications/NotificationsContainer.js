@@ -28,7 +28,7 @@ export default compose(
       overflow: "visible"
     },
     notificationComponent: {
-      paddingRight: theme.spacing.unit * 4
+      paddingRight: theme.spacing(4)
     }*/
   })),
   withState("notificationsPosition", "setNotificationPosition", 2),
@@ -50,7 +50,7 @@ export default compose(
         type: "message",
         message: "Message was sent successfully!",
         variant: "contained",
-        color: "success",
+        color: "success"
       };
 
       toast.update(props.errorToastId, {

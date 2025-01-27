@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@mui/styles";
 import tinycolor from "tinycolor2";
 
 export default makeStyles(theme => ({
@@ -13,6 +13,11 @@ export default makeStyles(theme => ({
     borderColor: theme.palette.primary.main,
     position: "relative",
   },
+  head5: {
+      color: "rgb(110, 110, 110)", 
+      marginBottom: theme.spacing(2),
+      fontSize: "20px",
+  }, 
   layoutText: {
     color: tinycolor(theme.palette.background.light)
       .darken()
