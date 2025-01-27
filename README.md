@@ -1,108 +1,101 @@
-# React Material Admin Full — Material-UI Dashboard Template
+# 🚀 React Material Admin - A Free Material-UI Dashboard Template!
 
-Built with [React](https://facebook.github.io/react/), [Material-UI](https://material-ui.com), [React Router](https://reacttraining.com/react-router/).
-**No jQuery and Bootstrap!**
+[View Demo](https://flatlogic.com/templates/react-material-admin/demo) | [Download](https://github.com/flatlogic/react-material-admin/archive/refs/heads/master.zip) | [More Templates](https://flatlogic.com/templates) | [Discord Community](https://discord.gg/flatlogic-community) | [Support Forum](https://flatlogic.com/forum)
 
-**This version uses React 17, React Router v5, MaterialUI v5, built with React Hooks and React Context (No Redux)**
+**Originally a premium product priced at $99+, now available for free!** 🎉
 
-[Demo](https://flatlogic.com/admin-dashboards/react-material-admin/demo). Use any credentials to log in.
+Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web App Generator](https://flatlogic.com/generator) - our new tool, sort of a template++.
 
-[![image](https://user-images.githubusercontent.com/24964748/55800639-df780300-5adc-11e9-84b7-7c2437088516.png)](https://flatlogic.com/admin-dashboards/react-material-admin/demo)
+---
 
-## Features
+## 🎯 Why React Material Admin?
+- **Ex-Premium**: This template was previously paid. Enjoy it for free now. 😉
+- **Material-UI Based**: Built with Material-UI for a modern and sleek UI.
+- **Join the Community**: [Flatlogic Discord](https://discord.gg/flatlogic-community) is where the action happens.
+- **Free Node.js Backend**: Pair it up with [this backend](https://github.com/flatlogic/nodejs-backend) to go full-stack.
 
-- React (**18.2.0**)
-- React Hooks
-- React Context
-- **No jQuery and Bootstrap!**
-- Mobile friendly layout (responsive)
-- Create-react-app under the hood
-- React Router v5
-- Material-UI v5
+---
+
+## 🚀 Quick Start
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/flatlogic/react-material-admin.git
+   cd react-material-admin
+   ```
+2. **Install dependencies**
+   ```bash
+   yarn install
+   ```
+3. **Run the app**
+   ```bash
+   yarn start
+   ```
+4. **Runs the app in the development mode without backend**
+    ```bash 
+    yarn dev
+    ```
+
+5. **Build for production**
+   ```bash
+   yarn build
+   ```
+
+---
+
+## 🧩 Features
+
+- Three Color Themes
+- Fully Responsive
+- React 16.14.0 + Hooks
+- Material-UI v4
+- Authentication System
 - Modular Architecture
-- CSS-in-JS styles
-- Styled Components
-- Webpack build
-- Stylish, clean, responsive layout
-- Authentication
+- Charts Libraries
+- Dashboard Pages
+- CSS-in-JS Styling
+- Create-React-App Under the Hood
 
-## Pages
+---
 
-We have implemented some basic pages, so you can see our template in action.
+## 🛠 Built With
 
-- Profile
-- Dashboard
-- E-commerce (Product Management, Products Grid, Product Page)
-- Typography
-- Tables (Static, dynamic)
-- Forms
+- React 16.14.0
+- Material-UI v4
+- React Hooks & Context API
+- React Router v5
+- Webpack
+- Node.js (for backend)
+
+---
+
+## 📦 Components
+
+- UI Elements (Buttons, Modals, Forms)
+- Charts (Line, Bar, Pie)
+- Authentication (Login, Signup)
+- Tables (Static, Dynamic)
+- Profile Page
 - Notifications
-- Charts
-- Icons
-- Maps
-- Login
-- Error
 
-## Quick Start
+---
 
-#### 1. Get the latest version
+## 👨‍💻 How to Contribute
 
-You can start by cloning the latest version of React Material Admin on your
-local machine by running:
+- **Star this repo ⭐** - show some love.
+- **Report bugs** - but be nice.
+- **Join the [Discord](https://discord.gg/flatlogic-community)** - meet fellow devs.
 
-```shell
-$ git clone https://github.com/flatlogic/react-material-admin.git
-```
+---
 
-#### 2. Run `yarn install`
+## 🔥 About Flatlogic
 
-This will install both run-time project dependencies and developer tools listed
-in [package.json](package.json) file.
+[Flatlogic](https://flatlogic.com/ai-software-development-agent) builds modern business software so you don't have to. Our AI Software Development Agent helps you generate, deploy, and maintain enterprise applications with minimal effort.
 
-#### 3 Run `yarn dev`
-Runs the app in the development mode without backend
+---
 
-#### 3.1 Run `yarn start`
+> **Questions or feedback?**  
+> Join our [Flatlogic Community Discord](https://discord.gg/flatlogic-community) or visit our [support forum](https://flatlogic.com/forum). We might even reply!
 
-Runs the app in the development mode with nodejs-backend (https://github.com/flatlogic/nodejs-backend)
+---
 
-Open http://localhost:3000 to view it in the browser. Whenever you modify any of the source files inside the `/src` folder,
-the module bundler ([Webpack](http://webpack.github.io/)) will recompile the
-app on the fly and refresh all the connected browsers.
-
-#### 4. Run `yarn build`
-
-Builds the app for production to the build folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
-
-## Support
-
-For any additional information please refer to [Support forum](https://flatlogic.com/forum).
-
-## How can I support developers?
-
-- Star our GitHub repo :star:
-- [Tweet about it](https://twitter.com/intent/tweet?text=Amazing%20dashboard%20built%20with%20NodeJS,%20React%20and%20Bootstrap!&url=https://github.com/flatlogic/react-material-template&via=flatlogic).
-- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:
-- Follow [@flatlogic on Twitter](https://twitter.com/flatlogic).
-- Subscribe to Flatlogic newsletter at [flatlogic.com](https://flatlogic.com/)
-- Like our page on [Facebook](https://www.facebook.com/flatlogic/) :thumbsup:
-
-## More from Flatlogic
-
-- [React Native Starter](https://github.com/flatlogic/react-native-starter) - 🚀 A powerful react native starter template that bootstraps development of your mobile application
-- [Sing App](https://github.com/flatlogic/sing-app) - 💥 Free and open-source admin dashboard template built with Bootstrap 4
-- [Awesome Bootstrap Checkboxes & Radios](https://github.com/flatlogic/awesome-bootstrap-checkbox) - ✅ Pure css way to make inputs look prettier
-- [React Dashboard](https://github.com/flatlogic/react-dashboard) - 🔥 React Dashboard - isomorphic admin dashboard template with GraphQL
-- [Light Blue Dashboard](https://github.com/flatlogic/light-blue-dashboard) - 💦 Free and open-source admin dashboard template built with Bootstrap
-
-## Premium themes
-
-Looking for premium themes and templates? Check out more [admin dashboard templates at flatlogic.com](https://flatlogic.com/admin-dashboards).
-
-## License
-
-[MIT](https://github.com/flatlogic/react-material-dashboard/blob/master/LICENSE.txt).
