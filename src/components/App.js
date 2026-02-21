@@ -38,12 +38,13 @@ export default function App() {
               render={() => <Redirect to='/app/dashboard' />}
             />
 
+            <Route exact path='/403' render={() => <Error code={403} />} />
+            <Route exact path='/500' render={() => <Error code={500} />} />
             <Route path='/documentation' component={Documentation} />
             <PrivateRoute path='/app' component={Layout} />
             <PublicRoute path='/login' component={Login} />
             <PublicRoute path='/verify-email' exact component={Verify} />
             <PublicRoute path='/password-reset' exact component={Reset} />
-            <Redirect from='*' to='/app/dashboard' />
             <Route component={Error} />
           </Switch>
         </Router>

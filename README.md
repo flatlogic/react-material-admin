@@ -60,6 +60,17 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 
 ---
 
+## 📌 Current Stack Snapshot
+
+- React `19.2.4`
+- MUI `7.x` + Emotion
+- React Router `5.x` (Browser History, no hash routing)
+- Redux + Context (transitional architecture before consolidation)
+- CRA (`react-scripts`) + `react-app-rewired` (Vite migration is planned)
+- Frontend-only users/auth fallback is available when backend is disabled
+
+---
+
 ## 🧩 Features
 
 - Three Color Themes
