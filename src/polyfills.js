@@ -1,10 +1,12 @@
 import process from 'process';
 import { Buffer } from 'buffer';
 
-if (!globalThis.process) {
-  globalThis.process = process;
+const runtimeGlobal = typeof window !== 'undefined' ? window : {};
+
+if (!runtimeGlobal.process) {
+  runtimeGlobal.process = process;
 }
 
-if (!globalThis.Buffer) {
-  globalThis.Buffer = Buffer;
+if (!runtimeGlobal.Buffer) {
+  runtimeGlobal.Buffer = Buffer;
 }

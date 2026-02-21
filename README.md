@@ -32,14 +32,10 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 3. **Install dependencies**
    ```bash
    npm install
-   # or
-   yarn install
    ```
 4. **Run frontend-only mode (default)**
    ```bash
    npm run dev
-   # or
-   yarn dev
    ```
 5. **Enable backend mode (optional)**
    - Create `.env.local`:
@@ -54,8 +50,6 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 6. **Build for production**
    ```bash
    npm run build
-   # or
-   yarn build
    ```
 
 ---
@@ -64,8 +58,8 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 
 - React `19.2.4`
 - MUI `7.x` + Emotion
-- React Router `5.x` (Browser History, no hash routing)
-- Redux + Context (transitional architecture before consolidation)
+- React Router `6.x` (`BrowserRouter`, hooks API)
+- Context-based state for auth/users/layout/theme
 - Vite 5 + `@vitejs/plugin-react`
 - Frontend-only users/auth fallback is available when backend is disabled
 
@@ -91,7 +85,7 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 - React 19
 - MUI 7
 - React Hooks & Context API
-- React Router v5
+- React Router v6
 - Vite
 - Node.js (for backend)
 
