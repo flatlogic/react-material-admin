@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import { Button } from "../../../components/Wrappers";
 
 const styles = (theme) => ({

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTheme } from "@mui/styles";
+import { useTheme } from "styles/muiCompat";
 import ReactApexChart from "react-apexcharts";
 import { Box, Grid } from "@mui/material";
 
@@ -7,10 +7,31 @@ import { Box, Grid } from "@mui/material";
 import Widget from "../../components/Widget/Widget";
 import { Button } from "../../components/Wrappers";
 
-const themeOptions = theme => {
+const themeOptions = (theme) => {
   return {
     labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
     responsive: [
+    {
+      breakpoint: 480,
+      options: {
+        chart: {
+          width: 200
+        },
+        legend: {
+          position: "bottom"
+        }
+      }
+    }],
+
+    colors: [
+    theme.palette.primary.main,
+    theme.palette.secondary.main,
+    theme.palette.warning.main,
+    theme.palette.success.light,
+    theme.palette.info.main],
+
+    options: {
+      responsive: [
       {
         breakpoint: 480,
         options: {
@@ -21,36 +42,15 @@ const themeOptions = theme => {
             position: "bottom"
           }
         }
-      }
-    ],
-    colors: [
+      }],
+
+      colors: [
       theme.palette.primary.main,
       theme.palette.secondary.main,
       theme.palette.warning.main,
       theme.palette.success.light,
-      theme.palette.info.main
-    ],
-    options: {
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
-            }
-          }
-        }
-      ],
-      colors: [
-        theme.palette.primary.main,
-        theme.palette.secondary.main,
-        theme.palette.warning.main,
-        theme.palette.success.light,
-        theme.palette.info.main
-      ]
+      theme.palette.info.main]
+
     },
     options2: {
       dataLabels: {
@@ -58,65 +58,65 @@ const themeOptions = theme => {
       },
 
       responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              show: false
-            }
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            show: false
           }
         }
-      ],
+      }],
+
       legend: {
         position: "right",
         offsetY: 0,
         height: 230
       },
       colors: [
-        theme.palette.primary.main,
-        theme.palette.secondary.main,
-        theme.palette.warning.main,
-        theme.palette.success.light,
-        theme.palette.info.main
-      ]
+      theme.palette.primary.main,
+      theme.palette.secondary.main,
+      theme.palette.warning.main,
+      theme.palette.success.light,
+      theme.palette.info.main]
+
     },
     options3: {
       labels: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"],
+
       theme: {
         monochrome: {
           enabled: true
         }
       },
       colors: [
-        theme.palette.primary.main,
-        theme.palette.secondary.main,
-        theme.palette.warning.main,
-        theme.palette.success.light,
-        theme.palette.info.main
-      ],
+      theme.palette.primary.main,
+      theme.palette.secondary.main,
+      theme.palette.warning.main,
+      theme.palette.success.light,
+      theme.palette.info.main],
+
       responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
-            }
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: "bottom"
           }
         }
-      ]
+      }]
+
     }
   };
 };
@@ -174,44 +174,44 @@ export default function Charts(props) {
   return (
     <>
       <Grid container spacing={4}>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Simple Pie"} noBodyPadding>
             <ReactApexChart
               options={themeOptions(theme)}
               series={state.series}
               type="pie"
               height="380"
-              stroke={""}
-            />
+              stroke={""} />
+            
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Simple Donut"} noBodyPadding>
             <ReactApexChart
               options={themeOptions(theme).options}
               series={state.series2}
               type="donut"
               height="380"
-              stroke={""}
-            />
+              stroke={""} />
+            
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Update Donut"} noBodyPadding>
             <ReactApexChart
               options={themeOptions(theme).options2}
               series={state.series3}
               type="donut"
               height="380"
-              stroke={""}
-            />
+              stroke={""} />
+            
             <Box display={"flex"} flexWrap="wrap" m={3}>
               <Box mt={1} mr={1}>
                 <Button
                   variant="contained"
                   onClick={() => randomize()}
-                  color="primary"
-                >
+                  color="primary">
+                  
                   randomize
                 </Button>
               </Box>
@@ -219,8 +219,8 @@ export default function Charts(props) {
                 <Button
                   variant="contained"
                   onClick={() => appendData()}
-                  color="secondary"
-                >
+                  color="secondary">
+                  
                   add
                 </Button>
               </Box>
@@ -228,8 +228,8 @@ export default function Charts(props) {
                 <Button
                   variant="contained"
                   onClick={() => removeData()}
-                  color="warning"
-                >
+                  color="warning">
+                  
                   remove
                 </Button>
               </Box>
@@ -237,26 +237,26 @@ export default function Charts(props) {
                 <Button
                   variant="contained"
                   onClick={() => reset()}
-                  color="success"
-                >
+                  color="success">
+                  
                   reset
                 </Button>
               </Box>
             </Box>
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Monochrome Pie"} noBodyPadding>
             <ReactApexChart
               options={themeOptions(theme).options}
               series={state.series2}
               type="pie"
               height="380"
-              stroke={""}
-            />
+              stroke={""} />
+            
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 }

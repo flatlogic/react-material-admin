@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'styles/muiCompat';
 
 export default makeStyles((theme) => ({
   link: {
@@ -26,7 +26,7 @@ export default makeStyles((theme) => ({
     paddingLeft: 25,
     '&:hover, &:focus': {
       backgroundColor:
-        theme.palette.type === 'dark'
+        theme.palette.mode === 'dark'
           ? theme.palette.background.light
           : '#FFFFFF',
     },
@@ -34,7 +34,7 @@ export default makeStyles((theme) => ({
   linkIcon: {
     marginRight: theme.spacing(1),
     color:
-      theme.palette.type === 'dark'
+      theme.palette.mode === 'dark'
         ? '#616168 !important'
         : theme.palette.text.secondary + '99',
     transition: theme.transitions.create('color'),
@@ -47,7 +47,7 @@ export default makeStyles((theme) => ({
   linkText: {
     padding: 0,
     color:
-      theme.palette.type === 'dark'
+      theme.palette.mode === 'dark'
         ? '#D6D6D6 !important'
         : theme.palette.text.secondary + 'CC',
     transition: theme.transitions.create(['opacity', 'color']),
@@ -72,7 +72,7 @@ export default makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
     height: 1,
     backgroundColor:
-      theme.palette.type === 'dark' ? 'rgba(151,151,151, .15)' : '#D8D8D880',
+      theme.palette.mode === 'dark' ? 'rgba(151,151,151, .15)' : '#D8D8D880',
   },
   expand: {
     transform: 'rotate(180deg)',

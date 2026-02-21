@@ -1,8 +1,6 @@
 import React from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import { Tabs, Tab, Box } from '@mui/material';
-
-import SwipeableViews from 'react-swipeable-views';
 import ToDoItem from './ToDoItem';
 
 function TabPanel(props) {
@@ -81,9 +79,6 @@ const styles = (theme) => ({
       outline: '1px solid #D8D8D8',
     },
     flexGrow: 1,
-    '& .react-swipeable-view-container': {
-      transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s !important'
-    },
   },
   padding: {
     padding: theme.spacing(3),
@@ -105,10 +100,6 @@ function CustomizedTabs({ classes }) {
   const [index, setIndex] = React.useState(0);
 
   const handleChange = (event, index) => {
-    setIndex(index)
-  }
-
-  const handleChangeIndex = (index) => {
     setIndex(index)
   }
 
@@ -145,27 +136,21 @@ function CustomizedTabs({ classes }) {
         <AntTab value={1} label="This week" />
         <AntTab value={2} label="This month" />
       </AntTabs>
-      <SwipeableViews
-        index={index}
-        style={{ padding: 0 }}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel style={{ padding: 0 }}>
-          {Todos.map((item, index) => (
-            <ToDoItem key={index} title={item.title} color={item.color} time={item.time} />
-          ))}
-        </TabPanel>
-        <TabPanel>
-          {Todos.map((item, index) => (
-            <ToDoItem key={index} color={item.color} time={item.time} title={item.title} />
-          ))}
-        </TabPanel>
-        <TabPanel>
-          {Todos.map((item, index) => (
-            <ToDoItem key={index} color={item.color} time={item.time} title={item.title} />
-          ))}
-        </TabPanel>
-      </SwipeableViews>
+      <TabPanel value={index} index={0} style={{ padding: 0 }}>
+        {Todos.map((item, index) => (
+          <ToDoItem key={index} title={item.title} color={item.color} time={item.time} />
+        ))}
+      </TabPanel>
+      <TabPanel value={index} index={1}>
+        {Todos.map((item, index) => (
+          <ToDoItem key={index} color={item.color} time={item.time} title={item.title} />
+        ))}
+      </TabPanel>
+      <TabPanel value={index} index={2}>
+        {Todos.map((item, index) => (
+          <ToDoItem key={index} color={item.color} time={item.time} title={item.title} />
+        ))}
+      </TabPanel>
     </div>
   );
 }

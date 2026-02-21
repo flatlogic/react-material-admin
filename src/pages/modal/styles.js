@@ -1,4 +1,4 @@
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "styles/muiCompat";
 
 export default makeStyles(theme => ({
   marginRight: {
@@ -12,10 +12,6 @@ export default makeStyles(theme => ({
     textAlign: "center",
     padding: theme.spacing(2),
     color: "#f3f3f3",
-  },
-  paper: {
-    margin: theme.spacing(3),
-    backgroundColor: "#f3f3f3",
   },
   wrapFix: {
     whiteSpace: 'pre'

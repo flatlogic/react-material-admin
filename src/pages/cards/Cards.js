@@ -9,14 +9,14 @@ import {
   CardMedia,
   CardHeader,
   IconButton,
-  Divider
-} from "@mui/material";
+  Divider } from
+"@mui/material";
 import {
   Star as StarIcon,
   MoreVert as MoreVertIcon,
   Favorite as FavoriteIcon,
-  Share as ShareIcon
-} from "@mui/icons-material";
+  Share as ShareIcon } from
+"@mui/icons-material";
 import useStyles from "./styles";
 
 //images
@@ -36,14 +36,14 @@ export default function BadgeComp() {
   return (
     <div>
       <Grid container spacing={6}>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <Card className={classes.card}>
             <CardContent>
               <Typography
                 className={classes.title}
                 color="textSecondary"
-                gutterBottom
-              >
+                gutterBottom>
+                
                 13 Mar
               </Typography>
               <Typography variant="h5" component="h2">
@@ -64,14 +64,14 @@ export default function BadgeComp() {
             </CardActions>
           </Card>
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Card className={classes.cardMedia}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
                 image={isometricImg}
-                title="Contemplative Reptile"
-              />
+                title="Contemplative Reptile" />
+              
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   Lizard
@@ -92,7 +92,7 @@ export default function BadgeComp() {
             </CardActions>
           </Card>
         </Grid>
-        <Grid container item md={4} xs={12}>
+        <Grid container size={{ xs: 12, md: 4 }}>
           <Box display={"flex"} flexDirection={"column"} width={"100%"}>
             <Box mb={6}>
               <Card className={classes.cardMedia}>
@@ -130,29 +130,29 @@ export default function BadgeComp() {
               <Card className={classes.cardMedia}>
                 <CardHeader
                   avatar={
-                    <Avatar aria-label="" color={"primary"}>
+                  <Avatar aria-label="" color={"primary"}>
                       R
                     </Avatar>
                   }
                   action={
-                    <IconButton aria-label="settings">
+                  <IconButton aria-label="settings">
                       <MoreVertIcon />
                     </IconButton>
                   }
                   title="Weekly Inspiration"
-                  subheader="September 14, 2016"
-                />
+                  subheader="September 14, 2016" />
+                
                 <CardMedia
                   className={classes.media}
                   image={mountainsImg}
-                  title="Paella dish"
-                />
+                  title="Paella dish" />
+                
                 <CardContent>
                   <Typography
                     variant="body2"
                     color="textSecondary"
-                    component="p"
-                  >
+                    component="p">
+                    
                     There are at least 109 mountains on Earts with elevations
                     greeter than 7,200 meters
                   </Typography>
@@ -169,14 +169,14 @@ export default function BadgeComp() {
             </Box>
           </Box>
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Card className={classes.cardMedia}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
                 image={rnsImg}
-                title="Technology"
-              />
+                title="Technology" />
+              
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   Technology
@@ -193,14 +193,14 @@ export default function BadgeComp() {
                 size="small"
                 color="success"
                 variant="contained"
-                style={{ marginLeft: "auto" }}
-              >
+                style={{ marginLeft: "auto" }}>
+                
                 Read more
               </Button>
             </CardActions>
           </Card>
         </Grid>
       </Grid>
-    </div>
-  );
+    </div>);
+
 }

@@ -1,4 +1,4 @@
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "styles/muiCompat";
 
 export default makeStyles(theme => ({
   root: {

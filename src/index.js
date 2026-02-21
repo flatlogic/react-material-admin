@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import axios from 'axios';
-import { createStore, applyMiddleware, compose } from 'redux';
-import ReduxThunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
+import { thunk as ReduxThunk } from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { routerMiddleware } from 'connected-react-router';
 import { ThemeProvider as ThemeProviderV5 } from '@mui/material/styles';
 import { StyledEngineProvider } from '@mui/material/styles';
 import App from './components/App';
@@ -19,15 +18,7 @@ import {
 } from './context/ThemeContext';
 import CssBaseline from '@mui/material/CssBaseline';
 import config from '../src/config';
-
-import { createHashHistory, createMemoryHistory } from 'history';
-
-const history =
-  typeof window !== 'undefined'
-    ? createHashHistory()
-    : createMemoryHistory({
-        initialEntries: [],
-      });
+import history from './history';
 
 export function getHistory() {
   return history;
@@ -42,7 +33,7 @@ if (token) {
 
 export const store = createStore(
   createRootReducer(history),
-  compose(applyMiddleware(routerMiddleware(history), ReduxThunk)),
+  applyMiddleware(ReduxThunk),
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

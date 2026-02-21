@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import { Typography } from '@mui/material';
 
 const styles = (theme) => ({

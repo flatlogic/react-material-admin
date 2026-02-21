@@ -6,12 +6,12 @@ import {
   TableBody,
   TableCell,
   TableHead,
-  TableRow
-} from "@mui/material";
+  TableRow } from
+"@mui/material";
 import {
   Print as PrintIcon,
-  ArrowForward as RightArrowIcon
-} from "@mui/icons-material";
+  ArrowForward as RightArrowIcon } from
+"@mui/icons-material";
 import useStyles from "./styles";
 
 //images
@@ -22,39 +22,39 @@ import { Typography, Link, Button } from "../../components/Wrappers";
 import Widget from "../../components/Widget";
 
 const rows = [
-  {
-    id: 1,
-    item: "Brand-new 27 monitor",
-    desc: "2,560x1,440-pixel (WQHD) resolution supported!",
-    quantity: 2,
-    price: 700,
-    total: 1400.0
-  },
-  {
-    id: 2,
-    item: "Domain: okendoken.com",
-    desc: "6-month registration",
-    quantity: 1,
-    price: 10.99,
-    total: 21.88
-  },
-  {
-    id: 3,
-    item: "Atlas Shrugged",
-    desc: "Novel by Ayn Rand, first published in 1957 in the United States",
-    quantity: 5,
-    price: 35,
-    total: 175.0
-  },
-  {
-    id: 4,
-    item: "New Song by Dr. Pre",
-    desc: "Lyrics: praesent blandit augue non sapien ornare imperdiet",
-    quantity: 1,
-    price: 2,
-    total: 2.0
-  }
-];
+{
+  id: 1,
+  item: "Brand-new 27 monitor",
+  desc: "2,560x1,440-pixel (WQHD) resolution supported!",
+  quantity: 2,
+  price: 700,
+  total: 1400.0
+},
+{
+  id: 2,
+  item: "Domain: okendoken.com",
+  desc: "6-month registration",
+  quantity: 1,
+  price: 10.99,
+  total: 21.88
+},
+{
+  id: 3,
+  item: "Atlas Shrugged",
+  desc: "Novel by Ayn Rand, first published in 1957 in the United States",
+  quantity: 5,
+  price: 35,
+  total: 175.0
+},
+{
+  id: 4,
+  item: "New Song by Dr. Pre",
+  desc: "Lyrics: praesent blandit augue non sapien ornare imperdiet",
+  quantity: 1,
+  price: 2,
+  total: 2.0
+}];
+
 
 const windowPrint = () => {
   window.print();
@@ -65,14 +65,14 @@ const Invoice = () => {
   return (
     <>
       <Grid container spacing={6}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Widget disableWidgetMenu>
             <Box display="flex" justifyContent="space-between" mb={3}>
               <img
                 src={logo}
                 alt="Flatlogic"
-                style={{ maxHeight: 100, borderRadius: 10, marginRight: 24 }}
-              />
+                style={{ maxHeight: 100, borderRadius: 10, marginRight: 24 }} />
+              
               <Box>
                 <Typography weight="bold" display="inline">
                   #9.45613 /
@@ -106,8 +106,8 @@ const Invoice = () => {
               <Box
                 display="inline-flex"
                 flexDirection="column"
-                alignItems="flex-end"
-              >
+                alignItems="flex-end">
+                
                 <Typography variant="h4" style={{ marginBottom: 16 }}>
                   Client Information
                 </Typography>
@@ -148,8 +148,8 @@ const Invoice = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {rows.map(c => (
-                      <TableRow key={c.id}>
+                    {rows.map((c) =>
+                    <TableRow key={c.id}>
                         <TableCell>{c.id}</TableCell>
                         <TableCell>{c.item}</TableCell>
                         <TableCell>{c.desc}</TableCell>
@@ -157,7 +157,7 @@ const Invoice = () => {
                         <TableCell>{c.price}</TableCell>
                         <TableCell>{c.total}</TableCell>
                       </TableRow>
-                    ))}
+                    )}
                   </TableBody>
                 </Table>
               </div>
@@ -166,8 +166,8 @@ const Invoice = () => {
                 justifyContent="space-between"
                 width="100%"
                 mt={3}
-                flexWrap="wrap"
-              >
+                flexWrap="wrap">
+                
                 <Typography block style={{ marginBottom: 16 }}>
                   <Typography weight="bold" display="inline">
                     Note:
@@ -203,8 +203,8 @@ const Invoice = () => {
               display="flex"
               flexDirection="column"
               alignItems="flex-end"
-              mt={3}
-            >
+              mt={3}>
+              
               <Typography block style={{ marginBottom: 16 }}>
                 Marketing Consultant
                 <Typography weight="bold">Bob Smith</Typography>{" "}
@@ -214,16 +214,16 @@ const Invoice = () => {
                   variant="contained"
                   style={{ marginRight: 8 }}
                   aria-label="Print"
-                  onClick={windowPrint}
-                >
+                  onClick={windowPrint}>
+                  
                   <PrintIcon className={classes.iconButton} />
                   Print
                 </Button>
                 <Button
                   variant="contained"
                   color="success"
-                  aria-label="Proceed"
-                >
+                  aria-label="Proceed">
+                  
                   <RightArrowIcon className={classes.iconButton} />
                   Proceed with Payment
                 </Button>
@@ -232,8 +232,8 @@ const Invoice = () => {
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 };
 
 export default Invoice;

@@ -1,137 +1,112 @@
-import React from "react";
-import {
-  Grid,
-  Box,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText
-} from "@material-ui/core";
+import React from 'react';
+import { Grid, Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import {
   Done as DoneIcon,
-  ArrowRightAlt as ArrowRight
-} from "@material-ui/icons";
+  ArrowRightAlt as ArrowRight,
+} from '@mui/icons-material';
 
-import useStyles from './styles'
+import useStyles from './styles';
 
-//components
-import Widget from "../../../Widget";
-import { Typography, Link } from "../../../Wrappers";
+// components
+import Widget from '../../../Widget';
+import { Typography, Link } from '../../../Wrappers';
 
 const Overview = () => {
-  const styles = useStyles()
+  const styles = useStyles();
+
   return (
     <>
       <Grid container spacing={6}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Widget disableWidgetMenu>
-            <Typography variant={"h6"}>
-              React Material Admin Full is an admin dashboard template built
-              with React 16.8.6. Sing App goes beyond usual admin templates and
-              provides you entire intuitive programming framework. You can use
-              React Material Admin Full to build any type of web applications
-              like SAAS, CMS, financial dashboards, project management tools,
-              etc.
+            <Typography variant={'h6'}>
+              React Material Admin is a dashboard starter with modern React and MUI.
+              It is suitable for SaaS admin panels, internal tools, and data-heavy
+              business apps.
             </Typography>
+
             <Box pt={6}>
-              <Typography variant={"h3"}>Features</Typography>
+              <Typography variant={'h3'}>Features</Typography>
             </Box>
             <List>
               <ListItem>
                 <ListItemIcon>
                   <DoneIcon />
                 </ListItemIcon>
-                <ListItemText primary="Hundreds of Pages" />
+                <ListItemText primary='React 19 + MUI 7' />
               </ListItem>
               <ListItem>
                 <ListItemIcon>
                   <DoneIcon />
                 </ListItemIcon>
-                <ListItemText primary="Fully Responsive" />
+                <ListItemText primary='Routing with React Router v5' />
               </ListItem>
               <ListItem>
                 <ListItemIcon>
                   <DoneIcon />
                 </ListItemIcon>
-                <ListItemText primary="React 16 new" />
+                <ListItemText primary='Redux + thunk state management' />
               </ListItem>
               <ListItem>
                 <ListItemIcon>
                   <DoneIcon />
                 </ListItemIcon>
-                <ListItemText primary="Material-UI v4.6" />
+                <ListItemText primary='DataGrid tables, forms, charts, calendar, profile pages' />
               </ListItem>
               <ListItem>
                 <ListItemIcon>
                   <DoneIcon />
                 </ListItemIcon>
-                <ListItemText primary="2 Charts Library" />
+                <ListItemText primary='Frontend-only mode and optional backend mode' />
               </ListItem>
               <ListItem>
                 <ListItemIcon>
                   <DoneIcon />
                 </ListItemIcon>
-                <ListItemText primary="Theme Change Support" />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <DoneIcon />
-                </ListItemIcon>
-                <ListItemText primary="E-Commerce Section" />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <DoneIcon />
-                </ListItemIcon>
-                <ListItemText primary="2 State Sidebar" />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <DoneIcon />
-                </ListItemIcon>
-                <ListItemText primary="Fully Documented Codebase" />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <DoneIcon />
-                </ListItemIcon>
-                <ListItemText primary="And even more coming soon!" />
+                <ListItemText primary='Theme switching and responsive layout' />
               </ListItem>
             </List>
+
             <Box pt={6} pb={6}>
-              <Typography variant={"h3"}>Support</Typography>
-              <Typography variant={"p"}>
-              <p className="lead">For any additional information please go to our support forum and raise your questions or feedback provide there. We highly appreciate your participation!</p>
-              <a href="https://flatlogic.com/forum" target="_blank" rel="noopener noreferrer" className={styles.link}>
+              <Typography variant={'h3'}>Support</Typography>
+              <Typography variant={'body1'} style={{ marginTop: 12 }}>
+                For help and feedback, use the support forum.
+              </Typography>
+              <a
+                href='https://flatlogic.com/forum'
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.link}
+              >
                 Support forum <ArrowRight />
               </a>
-              </Typography>
             </Box>
-            <Box display={"flex"} justifyContent={"space-around"} my={3}>
+
+            <Box display='flex' justifyContent='space-around' my={3}>
               <Box>
-                <Typography variant={"h3"} style={{ marginBottom: 16 }}>
+                <Typography variant={'h3'} style={{ marginBottom: 16 }}>
                   Continue with
                 </Typography>
                 <Link
-                  href={"#/documentation/getting-started/licences"}
-                  variant={"h6"}
-                  color={"primary"}
+                  href={'/documentation/getting-started/quick-start'}
+                  variant={'h6'}
+                  color={'primary'}
                   className={styles.link}
                 >
-                  Licences <ArrowRight />
+                  Quick start <ArrowRight />
                 </Link>
               </Box>
               <Box>
-                <Typography variant={"h3"} style={{ marginBottom: 16 }}>
-                  Or learn about
+                <Typography variant={'h3'} style={{ marginBottom: 16 }}>
+                  Explore
                 </Typography>
                 <Link
-                  href={"#/documentation/getting-started/quick-start"}
-                  variant={"h6"}
-                  color={"primary"}
+                  href={'/documentation/components/typography'}
+                  variant={'h6'}
+                  color={'primary'}
                   className={styles.link}
                 >
-                  How to start project <ArrowRight />
+                  Components <ArrowRight />
                 </Link>
               </Box>
             </Box>

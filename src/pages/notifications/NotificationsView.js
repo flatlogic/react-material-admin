@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid, withStyles } from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons";
+import { Grid } from "@mui/material";
+import { Close as CloseIcon } from "@mui/icons-material";
 import classnames from "classnames";
 import { ToastContainer } from "react-toastify";
 import SyntaxHighlighter from "react-syntax-highlighter";
@@ -11,23 +11,24 @@ import "react-toastify/dist/ReactToastify.css";
 import Widget from "../../components/Widget";
 import NotificationCustomComponent from "../../components/Notification";
 import { Typography, Button } from "../../components/Wrappers";
+import { withStyles } from "styles/muiCompat";
 
-const CloseButton = ({ closeToast, className }) => (
-  <CloseIcon className={className} onClick={closeToast} />
-);
+const CloseButton = ({ closeToast, className }) =>
+<CloseIcon className={className} onClick={closeToast} />;
 
-const NotificationsPage = ({ classes, ...props }) => (
-  <React.Fragment>
+
+const NotificationsPage = ({ classes, ...props }) =>
+<React.Fragment>
     <Grid container spacing={3}>
       <ToastContainer
-        className={classes.toastsContainer}
-        closeButton={
-          <CloseButton className={classes.notificationCloseButton} />
-        }
-        closeOnClick={false}
-        progressClassName={classes.notificationProgress}
-      />
-      <Grid item xs={12} md={6} lg={4}>
+      className={classes.toastsContainer}
+      closeButton={
+      <CloseButton className={classes.notificationCloseButton} />
+      }
+      closeOnClick={false}
+      progressClassName={classes.notificationProgress} />
+    
+      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
         <Widget title="Layout Options" disableWidgetMenu>
           <Typography>
             There are few position options available for notifications. You can
@@ -36,57 +37,57 @@ const NotificationsPage = ({ classes, ...props }) => (
           <div className={classes.layoutContainer}>
             <div className={classes.layoutButtonsRow}>
               <button
-                onClick={() => props.changeNotificationPosition(0)}
-                className={classnames(classes.layoutButton, {
-                  [classes.layoutButtonActive]:
-                    props.notificationsPosition === 0
-                })}
-              />
+              onClick={() => props.changeNotificationPosition(0)}
+              className={classnames(classes.layoutButton, {
+                [classes.layoutButtonActive]:
+                props.notificationsPosition === 0
+              })} />
+            
               <button
-                onClick={() => props.changeNotificationPosition(1)}
-                className={classnames(classes.layoutButton, {
-                  [classes.layoutButtonActive]:
-                    props.notificationsPosition === 1
-                })}
-              />
+              onClick={() => props.changeNotificationPosition(1)}
+              className={classnames(classes.layoutButton, {
+                [classes.layoutButtonActive]:
+                props.notificationsPosition === 1
+              })} />
+            
               <button
-                onClick={() => props.changeNotificationPosition(2)}
-                className={classnames(classes.layoutButton, {
-                  [classes.layoutButtonActive]:
-                    props.notificationsPosition === 2
-                })}
-              />
+              onClick={() => props.changeNotificationPosition(2)}
+              className={classnames(classes.layoutButton, {
+                [classes.layoutButtonActive]:
+                props.notificationsPosition === 2
+              })} />
+            
             </div>
             <Typography className={classes.layoutText} size="md">
               Click any position
             </Typography>
             <div className={classes.layoutButtonsRow}>
               <button
-                onClick={() => props.changeNotificationPosition(3)}
-                className={classnames(classes.layoutButton, {
-                  [classes.layoutButtonActive]:
-                    props.notificationsPosition === 3
-                })}
-              />
+              onClick={() => props.changeNotificationPosition(3)}
+              className={classnames(classes.layoutButton, {
+                [classes.layoutButtonActive]:
+                props.notificationsPosition === 3
+              })} />
+            
               <button
-                onClick={() => props.changeNotificationPosition(4)}
-                className={classnames(classes.layoutButton, {
-                  [classes.layoutButtonActive]:
-                    props.notificationsPosition === 4
-                })}
-              />
+              onClick={() => props.changeNotificationPosition(4)}
+              className={classnames(classes.layoutButton, {
+                [classes.layoutButtonActive]:
+                props.notificationsPosition === 4
+              })} />
+            
               <button
-                onClick={() => props.changeNotificationPosition(5)}
-                className={classnames(classes.layoutButton, {
-                  [classes.layoutButtonActive]:
-                    props.notificationsPosition === 5
-                })}
-              />
+              onClick={() => props.changeNotificationPosition(5)}
+              className={classnames(classes.layoutButton, {
+                [classes.layoutButtonActive]:
+                props.notificationsPosition === 5
+              })} />
+            
             </div>
           </div>
         </Widget>
       </Grid>
-      <Grid item xs={12} md={6} lg={4}>
+      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
         <Widget title="Notifications Types" disableWidgetMenu>
           <Typography>
             Different types of notifications for lost of use cases. Custom
@@ -94,30 +95,30 @@ const NotificationsPage = ({ classes, ...props }) => (
           </Typography>
           <div className={classes.buttonsContainer}>
             <Button
-              variant="contained"
-              onClick={() => props.handleNotificationCall("info")}
-              className={classnames(classes.notificationCallButton)}
-            >
+            variant="contained"
+            onClick={() => props.handleNotificationCall("info")}
+            className={classnames(classes.notificationCallButton)}>
+            
               Info Message
             </Button>
             <Button
-              variant="contained"
-              onClick={() => props.handleNotificationCall("error")}
-              className={classnames(classes.notificationCallButton)}
-            >
+            variant="contained"
+            onClick={() => props.handleNotificationCall("error")}
+            className={classnames(classes.notificationCallButton)}>
+            
               Error + Retry Message
             </Button>
             <Button
-              variant="contained"
-              onClick={() => props.handleNotificationCall("success")}
-              className={classnames(classes.notificationCallButton)}
-            >
+            variant="contained"
+            onClick={() => props.handleNotificationCall("success")}
+            className={classnames(classes.notificationCallButton)}>
+            
               Success Message
             </Button>
           </div>
         </Widget>
       </Grid>
-      <Grid item xs={12} md={6} lg={4}>
+      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
         <Widget title="Usage" disableWidgetMenu>
           <Typography>
             Notifications are created with the help of{" "}
@@ -127,10 +128,10 @@ const NotificationsPage = ({ classes, ...props }) => (
           </Typography>
           <div className={classes.codeContainer}>
             <SyntaxHighlighter
-              className={classes.codeComponent}
-              language="javascript"
-              style={docco}
-            >{`
+            className={classes.codeComponent}
+            language="javascript"
+            style={docco}>
+            {`
   // import needed components, functions and styles
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
@@ -150,149 +151,149 @@ const NotificationsPage = ({ classes, ...props }) => (
           </div>
         </Widget>
       </Grid>
-      <Grid item xs={12} md={6} lg={4}>
+      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
         <Widget title="Notification Types Examples" disableWidgetMenu>
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            shadowless
-            type="message"
-            message="Thanks for Checking out Messenger"
-            variant="contained"
-            color="secondary"
-          />
+          className={classes.notificationItem}
+          shadowless
+          type="message"
+          message="Thanks for Checking out Messenger"
+          variant="contained"
+          color="secondary" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            shadowless
-            type="feedback"
-            message="New user feedback received"
-            variant="contained"
-            color="primary"
-          />
+          className={classes.notificationItem}
+          shadowless
+          type="feedback"
+          message="New user feedback received"
+          variant="contained"
+          color="primary" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            shadowless
-            type="customer"
-            message="New customer is registered"
-            variant="contained"
-            color="success"
-          />
+          className={classes.notificationItem}
+          shadowless
+          type="customer"
+          message="New customer is registered"
+          variant="contained"
+          color="success" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            shadowless
-            type="shipped"
-            message="The order was shipped"
-            variant="contained"
-            color="warning"
-          />
+          className={classes.notificationItem}
+          shadowless
+          type="shipped"
+          message="The order was shipped"
+          variant="contained"
+          color="warning" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            shadowless
-            type="delivered"
-            message="The order was delivered"
-            variant="contained"
-            color="primary"
-          />
+          className={classes.notificationItem}
+          shadowless
+          type="delivered"
+          message="The order was delivered"
+          variant="contained"
+          color="primary" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            shadowless
-            type="defence"
-            message="5 Defence alerts"
-            variant="contained"
-            color="info"
-          />
+          className={classes.notificationItem}
+          shadowless
+          type="defence"
+          message="5 Defence alerts"
+          variant="contained"
+          color="info" />
+        
         </Widget>
       </Grid>
-      <Grid item xs={12} md={6} lg={4}>
+      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
         <Widget title="Notification Types Examples" disableWidgetMenu>
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="report"
-            message="New report has been received"
-            color="secondary"
-          />
+          className={classes.notificationItem}
+          type="report"
+          message="New report has been received"
+          color="secondary" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="feedback"
-            message="New user feedback received"
-            color="primary"
-          />
+          className={classes.notificationItem}
+          type="feedback"
+          message="New user feedback received"
+          color="primary" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="shipped"
-            message="The item was shipped"
-            color="success"
-          />
+          className={classes.notificationItem}
+          type="shipped"
+          message="The item was shipped"
+          color="success" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="message"
-            message="The new message from user @nahawaii"
-            color="warning"
-          />
+          className={classes.notificationItem}
+          type="message"
+          message="The new message from user @nahawaii"
+          color="warning" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="upload"
-            message="Your file is ready to upload"
-            color="primary"
-          />
+          className={classes.notificationItem}
+          type="upload"
+          message="Your file is ready to upload"
+          color="primary" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="disc"
-            message="The disc is full"
-            color="info"
-          />
+          className={classes.notificationItem}
+          type="disc"
+          message="The disc is full"
+          color="info" />
+        
         </Widget>
       </Grid>
-      <Grid item xs={12} md={6} lg={4}>
+      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
         <Widget title="Notification Types Examples" disableWidgetMenu>
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="report"
-            message="New report has been received"
-            variant="rounded"
-            color="secondary"
-          />
+          className={classes.notificationItem}
+          type="report"
+          message="New report has been received"
+          variant="rounded"
+          color="secondary" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="feedback"
-            message="New user feedback received"
-            variant="rounded"
-            color="primary"
-          />
+          className={classes.notificationItem}
+          type="feedback"
+          message="New user feedback received"
+          variant="rounded"
+          color="primary" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="shipped"
-            message="The item was shipped"
-            variant="rounded"
-            color="success"
-          />
+          className={classes.notificationItem}
+          type="shipped"
+          message="The item was shipped"
+          variant="rounded"
+          color="success" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="message"
-            message="The new message from user @nahawaii"
-            variant="rounded"
-            color="warning"
-          />
+          className={classes.notificationItem}
+          type="message"
+          message="The new message from user @nahawaii"
+          variant="rounded"
+          color="warning" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="upload"
-            message="Your file is ready to upload"
-            variant="rounded"
-            color="primary"
-          />
+          className={classes.notificationItem}
+          type="upload"
+          message="Your file is ready to upload"
+          variant="rounded"
+          color="primary" />
+        
           <NotificationCustomComponent
-            className={classes.notificationItem}
-            type="disc"
-            message="The disc is full"
-            variant="rounded"
-            color="info"
-          />
+          className={classes.notificationItem}
+          type="disc"
+          message="The disc is full"
+          variant="rounded"
+          color="info" />
+        
         </Widget>
       </Grid>
     </Grid>
-  </React.Fragment>
-);
+  </React.Fragment>;
 
-const styles = theme => ({
+
+const styles = (theme) => ({
   layoutContainer: {
     height: 200,
     display: "flex",
@@ -305,9 +306,9 @@ const styles = theme => ({
     position: "relative"
   },
   layoutText: {
-    color: tinycolor(theme.palette.background.light)
-      .darken()
-      .toHexString()
+    color: tinycolor(theme.palette.background.light).
+    darken().
+    toHexString()
   },
   layoutButtonsRow: {
     width: "100%",
@@ -322,9 +323,9 @@ const styles = theme => ({
     border: "none"
   },
   layoutButtonActive: {
-    backgroundColor: tinycolor(theme.palette.background.light)
-      .darken()
-      .toHexString()
+    backgroundColor: tinycolor(theme.palette.background.light).
+    darken().
+    toHexString()
   },
   buttonsContainer: {
     display: "flex",
@@ -334,7 +335,7 @@ const styles = theme => ({
   },
   notificationCallButton: {
     color: "white",
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing(1),
     textTransform: "none"
   },
   codeContainer: {

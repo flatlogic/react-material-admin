@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import { Grid, IconButton } from "@mui/material";
 import { Bookmark as BookmarkIcon } from '@mui/icons-material';
 
@@ -40,15 +40,15 @@ const styles = (theme) => ({
 const RNSWidget = ({ classes }) => {
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <span className={classes.header}>TOP 5 REACT NATIVE STARTER KITS</span>
       </Grid>
-      <Grid item xs={12} md={12} lg={6}>
+      <Grid size={{ xs: 12, md: 12, lg: 6 }}>
         <div className={classes.rnsImgWrap}>
           <img src={rnsHero} alt="RNS" />
         </div>
       </Grid>
-      <Grid item xs={12} md={12} lg={6}>
+      <Grid size={{ xs: 12, md: 12, lg: 6 }}>
         <div>
           <span className={classes.author}>Nastassia Ovchinnikova</span>
           <p className={classes.text} >React Native allows us to create a boilerplate that have been crafted for both platforms. The ability to create an app both for Android and iOS...</p>

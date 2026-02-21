@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import UsersForm from 'pages/CRUD/Users/form/UsersForm';
-import { push } from 'connected-react-router';
 import actions from 'actions/users/usersFormActions';
 import { connect } from 'react-redux';
 
@@ -53,7 +52,7 @@ const UsersFormPage = (props) => {
           isEditing={isEditing()}
           isProfile={isProfile()}
           onSubmit={doSubmit}
-          onCancel={() => dispatch(push('/app/users'))}
+          onCancel={() => props.history.push('/app/users')}
         />
       )}
     </>

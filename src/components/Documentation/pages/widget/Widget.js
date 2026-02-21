@@ -1,7 +1,7 @@
 import React from 'react'
-import { AppBar, Tabs, Tab, Box } from '@material-ui/core'
+import { AppBar, Tabs, Tab, Box } from '@mui/material'
 
-import { ArrowRightAlt as ArrowRight } from '@material-ui/icons'
+import { ArrowRightAlt as ArrowRight } from '@mui/icons-material'
 
 import useStyles from '../../styles'
 import useStyles2 from '../overview/styles'
@@ -51,14 +51,15 @@ const WidgetPage = () => {
           Provide widget on your page.
         </Typography>
         <Code>{`import Widget from './components/Widget';`}</Code>
-        <AppBar position="static">
+        <AppBar position="static" className={classes.tabsAppBar}>
           <Tabs
+              className={classes.tabs}
               value={value}
               onChange={handleChange}
               aria-label="typography size"
           >
-            <Tab label="Example" />
-            <Tab label="Code" />
+            <Tab className={classes.tab} label="Example" />
+            <Tab className={classes.tab} label="Code" />
           </Tabs>
         </AppBar>
         <TabPanel index={0} value={value}>
@@ -73,14 +74,19 @@ const WidgetPage = () => {
     </Widget>
                 `}</Code>
         </TabPanel>
-        <AppBar position="static" style={{ marginTop: 16 }}>
+        <AppBar
+            position="static"
+            className={classes.tabsAppBar}
+            style={{ marginTop: 16 }}
+        >
           <Tabs
+              className={classes.tabs}
               value={weightValue}
               onChange={handleChangeWeight}
               aria-label="typography weight"
           >
-            <Tab label="Example" />
-            <Tab label="Code" />
+            <Tab className={classes.tab} label="Example" />
+            <Tab className={classes.tab} label="Code" />
           </Tabs>
         </AppBar>
         <TabPanel index={0} value={weightValue}>
@@ -95,14 +101,19 @@ const WidgetPage = () => {
     </Widget>
                 `}</Code>
         </TabPanel>
-        <AppBar position="static" style={{ marginTop: 16 }}>
+        <AppBar
+            position="static"
+            className={classes.tabsAppBar}
+            style={{ marginTop: 16 }}
+        >
           <Tabs
+              className={classes.tabs}
               value={colorValue}
               onChange={handleChangeColor}
               aria-label="typography weight"
           >
-            <Tab label="Example" />
-            <Tab label="Code" />
+            <Tab className={classes.tab} label="Example" />
+            <Tab className={classes.tab} label="Code" />
           </Tabs>
         </AppBar>
         <TabPanel index={0} value={colorValue}>
@@ -117,14 +128,19 @@ const WidgetPage = () => {
     </Widget>
                 `}</Code>
         </TabPanel>
-        <AppBar position="static" style={{ marginTop: 16 }}>
+        <AppBar
+            position="static"
+            className={classes.tabsAppBar}
+            style={{ marginTop: 16 }}
+        >
           <Tabs
+              className={classes.tabs}
               value={value4}
               onChange={handleChangeValue4}
               aria-label="typography weight"
           >
-            <Tab label="Example" />
-            <Tab label="Code" />
+            <Tab className={classes.tab} label="Example" />
+            <Tab className={classes.tab} label="Code" />
           </Tabs>
         </AppBar>
         <TabPanel index={0} value={value4}>
@@ -139,14 +155,19 @@ const WidgetPage = () => {
     </Widget>
                 `}</Code>
         </TabPanel>
-        <AppBar position="static" style={{ marginTop: 16 }}>
+        <AppBar
+            position="static"
+            className={classes.tabsAppBar}
+            style={{ marginTop: 16 }}
+        >
           <Tabs
+              className={classes.tabs}
               value={value5}
               onChange={handleChangeValue5}
               aria-label="typography weight"
           >
-            <Tab label="Example" />
-            <Tab label="Code" />
+            <Tab className={classes.tab} label="Example" />
+            <Tab className={classes.tab} label="Code" />
           </Tabs>
         </AppBar>
         <TabPanel index={0} value={value5}>
@@ -172,12 +193,12 @@ const WidgetPage = () => {
         <Box mt={1}>
           <Link
               href={
-                'https://material-ui.com/api/paper/'
+                'https://mui.com/material-ui/api/paper/'
               }
               color={'primary'}
               className={classes2.link}
               variant={'h6'}
-              target={""}
+              target={'_blank'}
           >
             Other props <ArrowRight />
           </Link>

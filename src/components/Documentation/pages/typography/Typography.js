@@ -41,14 +41,15 @@ const TypographyPage = () => {
         Provide typography on your page.
       </Typography>
       <Code>{`import { Typography } from './components/Wrappers';`}</Code>
-      <AppBar position='static'>
+      <AppBar position='static' className={classes.tabsAppBar}>
         <Tabs
+          className={classes.tabs}
           value={value}
           onChange={handleChange}
           aria-label='typography size'
         >
-          <Tab label='Example' />
-          <Tab label='Code' />
+          <Tab className={classes.tab} label='Example' />
+          <Tab className={classes.tab} label='Code' />
         </Tabs>
       </AppBar>
       <TabPanel index={0} value={value}>
@@ -75,14 +76,19 @@ const TypographyPage = () => {
     <Typography size={"xxl"} variant={"body1"}>XXL typography</Typography>
                 `}</Code>
       </TabPanel>
-      <AppBar position='static' style={{ marginTop: 16 }}>
+      <AppBar
+        position='static'
+        className={classes.tabsAppBar}
+        style={{ marginTop: 16 }}
+      >
         <Tabs
+          className={classes.tabs}
           value={weightValue}
           onChange={handleChangeWeight}
           aria-label='typography weight'
         >
-          <Tab label='Example' />
-          <Tab label='Code' />
+          <Tab className={classes.tab} label='Example' />
+          <Tab className={classes.tab} label='Code' />
         </Tabs>
       </AppBar>
       <TabPanel index={0} value={weightValue}>
@@ -105,14 +111,19 @@ const TypographyPage = () => {
     <Typography weight="bold" variant={"body1"}>Bold typography</Typography>
                 `}</Code>
       </TabPanel>
-      <AppBar position='static' style={{ marginTop: 16 }}>
+      <AppBar
+        position='static'
+        className={classes.tabsAppBar}
+        style={{ marginTop: 16 }}
+      >
         <Tabs
+          className={classes.tabs}
           value={colorValue}
           onChange={handleChangeColor}
           aria-label='typography weight'
         >
-          <Tab label='Example' />
-          <Tab label='Code' />
+          <Tab className={classes.tab} label='Example' />
+          <Tab className={classes.tab} label='Code' />
         </Tabs>
       </AppBar>
       <TabPanel index={0} value={colorValue}>
@@ -155,11 +166,11 @@ const TypographyPage = () => {
       </TabPanel>
       <Box mt={1}>
         <Link
-          href={'https://material-ui.com/api/typography/#typography-api'}
+          href={'https://mui.com/material-ui/api/typography/'}
           color={'primary'}
           className={classes.link}
           variant={'h6'}
-          target={''}
+          target={'_blank'}
         >
           Other props <ArrowRight />
         </Link>

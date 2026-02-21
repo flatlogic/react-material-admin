@@ -5,13 +5,13 @@ import {
   Dialog,
   DialogTitle,
   TextField as Input,
-  Box
-} from "@mui/material";
+  Box } from
+"@mui/material";
 import {
   KeyboardArrowLeft as LeftArrowIcon,
   KeyboardArrowRight as RightArrowIcon,
-  CalendarToday as CalendarIcon
-} from "@mui/icons-material";
+  CalendarToday as CalendarIcon } from
+"@mui/icons-material";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -50,70 +50,70 @@ class Calendar extends React.Component {
           right: ''
         },
         events: [
-          {
-            title: "All Day Event",
-            start: new Date(y, m, 1),
-            backgroundColor: "#79A5F0",
-            textColor: "#fff",
-            description: "Will be busy throughout the whole day"
-          },
-          {
-            title: "Long Event",
-            start: new Date(y, m, d + 5),
-            end: new Date(y, m, d + 7),
-            textColor: '#fff',
-            description: "This conference should be worse visiting"
-          },
-          {
-            id: 999,
-            title: "Blah Blah Car",
-            start: new Date(y, m, d - 3, 16, 0),
-            allDay: false,
-            textColor: "#333",
-            description: "Agree with this guy on arrival time"
-          },
-          {
-            id: 1000,
-            title: "Buy this template",
-            start: new Date(y, m, d + 3, 12, 0),
-            allDay: false,
-            backgroundColor: "#555",
-            textColor: "#fff",
-            description: "Make sure everything is consistent first"
-          },
-          {
-            title: "Got to school",
-            start: new Date(y, m, d + 16, 12, 0),
-            end: new Date(y, m, d + 16, 13, 0),
-            backgroundColor: "#64bd63",
-            textColor: "#fff",
-            description: "Time to go back"
-          },
-          {
-            title: "Study some Node",
-            start: new Date(y, m, d + 18, 12, 0),
-            end: new Date(y, m, d + 18, 13, 0),
-            backgroundColor: "#79A5F0",
-            textColor: "#fff",
-            description:
-              "Node.js is a platform built " +
-              "on Chrome's JavaScript runtime for easily" +
-              " building fast, scalable network applications." +
-              " Node.js uses an event-driven, non-blocking" +
-              " I/O model that makes it lightweight and" +
-              " efficient, perfect for data-intensive real-time" +
-              " applications that run across distributed devices."
-          },
-          {
-            title: "Click for Flatlogic",
-            start: new Date(y, m, 28),
-            end: new Date(y, m, 29),
-            url: "http://flatlogic.com/",
-            backgroundColor: "#e5603b",
-            textColor: "#fff",
-            description: "Creative solutions"
-          }
-        ],
+        {
+          title: "All Day Event",
+          start: new Date(y, m, 1),
+          backgroundColor: "#79A5F0",
+          textColor: "#fff",
+          description: "Will be busy throughout the whole day"
+        },
+        {
+          title: "Long Event",
+          start: new Date(y, m, d + 5),
+          end: new Date(y, m, d + 7),
+          textColor: '#fff',
+          description: "This conference should be worse visiting"
+        },
+        {
+          id: 999,
+          title: "Blah Blah Car",
+          start: new Date(y, m, d - 3, 16, 0),
+          allDay: false,
+          textColor: "#333",
+          description: "Agree with this guy on arrival time"
+        },
+        {
+          id: 1000,
+          title: "Buy this template",
+          start: new Date(y, m, d + 3, 12, 0),
+          allDay: false,
+          backgroundColor: "#555",
+          textColor: "#fff",
+          description: "Make sure everything is consistent first"
+        },
+        {
+          title: "Got to school",
+          start: new Date(y, m, d + 16, 12, 0),
+          end: new Date(y, m, d + 16, 13, 0),
+          backgroundColor: "#64bd63",
+          textColor: "#fff",
+          description: "Time to go back"
+        },
+        {
+          title: "Study some Node",
+          start: new Date(y, m, d + 18, 12, 0),
+          end: new Date(y, m, d + 18, 13, 0),
+          backgroundColor: "#79A5F0",
+          textColor: "#fff",
+          description:
+          "Node.js is a platform built " +
+          "on Chrome's JavaScript runtime for easily" +
+          " building fast, scalable network applications." +
+          " Node.js uses an event-driven, non-blocking" +
+          " I/O model that makes it lightweight and" +
+          " efficient, perfect for data-intensive real-time" +
+          " applications that run across distributed devices."
+        },
+        {
+          title: "Click for Flatlogic",
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 29),
+          url: "http://flatlogic.com/",
+          backgroundColor: "#e5603b",
+          textColor: "#fff",
+          description: "Creative solutions"
+        }],
+
         selectable: true,
         selectHelper: true,
         editable: true,
@@ -130,11 +130,11 @@ class Calendar extends React.Component {
     });
   }
 
-  drop = info => {
+  drop = (info) => {
     info.draggedEl.parentNode.removeChild(info.draggedEl);
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ event: { ...this.state.event, title: e.target.value } });
   };
   createEvent = () => {
@@ -155,7 +155,7 @@ class Calendar extends React.Component {
     });
     this.toggleModal();
   };
-  eventClick = e => {
+  eventClick = (e) => {
     this.setState({ event: e.event });
     this.toggleModalEvent();
   };
@@ -171,8 +171,8 @@ class Calendar extends React.Component {
   changeView = (view) => {
     this.setState({ calendarView: view });
     this.fullCalendar.getApi().changeView(view);
-  }
-  getFormattedDate = date => {
+  };
+  getFormattedDate = (date) => {
     return moment(date).format("YYYY-MM-DD");
   };
   toggleModal = () => {
@@ -187,7 +187,7 @@ class Calendar extends React.Component {
     return (
       <>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Typography variant="h3" style={{ marginBottom: 8 }}>
               Draggable Events
             </Typography>
@@ -195,10 +195,10 @@ class Calendar extends React.Component {
               Just drap and drop events from there directly into the calendar.
             </Typography>
             <div
-              ref={node => {
+              ref={(node) => {
                 this.externalEvents = node;
-              }}
-            >
+              }}>
+              
               <div
                 data-event='{ "classNames": ["bg-success", "text-white"], "title": "Make a tea" }'
                 className={cn(
@@ -207,14 +207,14 @@ class Calendar extends React.Component {
                   "draggable",
                   "external-event",
                   s.widget
-                )}
-              >
+                )}>
+                
                 <Box display={"flex"}>
                   <Dot color="success" size="large" />
                   <Typography
                     variant="body2"
-                    style={{ marginLeft: 8, color: "#000" }}
-                  >
+                    style={{ marginLeft: 8, color: "#000" }}>
+                    
                     Make a tea
                   </Typography>
                 </Box>
@@ -227,14 +227,14 @@ class Calendar extends React.Component {
                   "draggable",
                   "external-event",
                   s.widget
-                )}
-              >
+                )}>
+                
                 <Box display={"flex"}>
                   <Dot color="warning" size="large" />
                   <Typography
                     variant="body2"
-                    style={{ marginLeft: 8, color: "#000" }}
-                  >
+                    style={{ marginLeft: 8, color: "#000" }}>
+                    
                     Open windows
                   </Typography>
                 </Box>
@@ -247,30 +247,30 @@ class Calendar extends React.Component {
                   "draggable",
                   "external-event",
                   s.widget
-                )}
-              >
+                )}>
+                
                 <Box display={"flex"}>
                   <Dot color="info" size="large" />
                   <Typography
                     variant="body2"
-                    style={{ marginLeft: 8, color: "#000" }}
-                  >
+                    style={{ marginLeft: 8, color: "#000" }}>
+                    
                     Some stuff
                   </Typography>
                 </Box>
               </div>
             </div>
           </Grid>
-          <Grid item xs={12} md={8}>
+          <Grid size={{ xs: 12, md: 8 }}>
             <Widget disableWidgetMenu>
               <Grid
                 container
-                item
+
                 direction="row"
                 justify="space-between"
-                alignItems="center"
-              >
-                <Grid item>
+                alignItems="center">
+                
+                <Grid>
                   <IconButton onClick={this.prev} aria-label="previous page">
                     <LeftArrowIcon />
                   </IconButton>
@@ -279,74 +279,74 @@ class Calendar extends React.Component {
                   </IconButton>
                   <Button onClick={this.today}>Today</Button>
                 </Grid>
-                <Grid item>
+                <Grid>
                   <Button
                     onClick={() => this.changeView("dayGridMonth")}
                     color={
-                      this.state.calendarView === "dayGridMonth"
-                        ? "primary"
-                        : "none"
+                    this.state.calendarView === "dayGridMonth" ?
+                    "primary" :
+                    "none"
                     }
                     variant={
-                      this.state.calendarView === "dayGridMonth"
-                        ? "contained"
-                        : "text"
-                    }
-                  >
+                    this.state.calendarView === "dayGridMonth" ?
+                    "contained" :
+                    "text"
+                    }>
+                    
                     Month
                   </Button>
                   <Button
                     onClick={() => this.changeView("timeGridWeek")}
                     color={
-                      this.state.calendarView === "timeGridWeek"
-                        ? "primary"
-                        : "none"
+                    this.state.calendarView === "timeGridWeek" ?
+                    "primary" :
+                    "none"
                     }
                     variant={
-                      this.state.calendarView === "timeGridWeek"
-                        ? "contained"
-                        : "text"
+                    this.state.calendarView === "timeGridWeek" ?
+                    "contained" :
+                    "text"
                     }
-                    style={{ marginLeft: 8 }}
-                  >
+                    style={{ marginLeft: 8 }}>
+                    
                     Week
                   </Button>
                   <Button
                     onClick={() => this.changeView("timeGridDay")}
                     color={
-                      this.state.calendarView === "timeGridDay"
-                        ? "primary"
-                        : "none"
+                    this.state.calendarView === "timeGridDay" ?
+                    "primary" :
+                    "none"
                     }
                     variant={
-                      this.state.calendarView === "timeGridDay"
-                        ? "contained"
-                        : "text"
+                    this.state.calendarView === "timeGridDay" ?
+                    "contained" :
+                    "text"
                     }
-                    style={{ marginLeft: 8 }}
-                  >
+                    style={{ marginLeft: 8 }}>
+                    
                     Day
                   </Button>
                   <Button
                     onClick={() => this.changeView("list")}
                     color={
-                      this.state.calendarView === "list"
-                        ? "primary"
-                        : "none"
+                    this.state.calendarView === "list" ?
+                    "primary" :
+                    "none"
                     }
                     variant={
-                      this.state.calendarView === "list"
-                        ? "contained"
-                        : "text"
+                    this.state.calendarView === "list" ?
+                    "contained" :
+                    "text"
                     }
-                    style={{ marginLeft: 8 }}
-                  >
+                    style={{ marginLeft: 8 }}>
+                    
                     List
                   </Button>
                 </Grid>
               </Grid>
               <FullCalendar
-                ref={node => {
+                ref={(node) => {
                   this.fullCalendar = node;
                 }}
                 defaultView="dayGridMonth"
@@ -354,8 +354,8 @@ class Calendar extends React.Component {
                 select={this.select}
                 eventClick={this.eventClick}
                 drop={this.drop}
-                {...calendarOptions}
-              />
+                {...calendarOptions} />
+              
             </Widget>
           </Grid>
         </Grid>
@@ -373,22 +373,22 @@ class Calendar extends React.Component {
               className={s.calendarModalInput}
               value={event.title}
               name="title"
-              placeholder="Title"
-            />
+              placeholder="Title" />
+            
             <Box mt={2}>
               <Button
                 onClick={this.toggleModal}
                 data-dismiss="modal"
-                style={{ marginRight: 8 }}
-              >
+                style={{ marginRight: 8 }}>
+                
                 Close
               </Button>{" "}
               <Button
                 color="success"
                 variant="contained"
                 onClick={this.createEvent}
-                id="news-widget-remove"
-              >
+                id="news-widget-remove">
+                
                 Create
               </Button>
             </Box>
@@ -398,8 +398,8 @@ class Calendar extends React.Component {
         <Dialog
           open={modalEvent}
           onClose={this.toggleModalEvent}
-          id="news-close-modal"
-        >
+          id="news-close-modal">
+          
           <DialogTitle id="news-close-modal-label">{event.title}</DialogTitle>
           <Box m={3}>
             <Typography style={{ marginBottom: 16 }}>
@@ -413,14 +413,14 @@ class Calendar extends React.Component {
               color="primary"
               variant="contained"
               onClick={this.toggleModalEvent}
-              data-dismiss="modal"
-            >
+              data-dismiss="modal">
+              
               OK
             </Button>
           </Box>
         </Dialog>
-      </>
-    );
+      </>);
+
   }
 }
 

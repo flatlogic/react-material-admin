@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import config from '../config';
+import { rows as mockProducts } from '../pages/ecommerce/mock';
 
 const ProductsContext = React.createContext();
 
@@ -49,8 +50,9 @@ const rootReducer = (state, action) => {
 
 const ProductsProvider = ({ children }) => {
   const [products, setProducts] = React.useReducer(rootReducer, {
-    isLoaded: false,
-    products: [],
+    isLoaded: !config.isBackend,
+    products: config.isBackend ? [] : mockProducts,
+    images: config.isBackend ? [] : mockProducts.map((product) => product.img),
   });
   return (
     <ProductsContext.Provider value={{ products, setProducts }}>
@@ -71,6 +73,8 @@ export function getProductsRequest(dispatch) {
       dispatch({ type: 'UPDATE_PRODUCTS', payload: res.data });
     });
   }
+
+  dispatch({ type: 'UPDATE_PRODUCTS', payload: mockProducts });
 }
 
 export function deleteProductRequest({ id, history, dispatch }) {
@@ -122,7 +126,13 @@ export function createProduct(product, dispatch) {
 
 export function getProductsImages(dispatch) {
   // We check if app runs with backend mode
-  if (!config.isBackend) return;
+  if (!config.isBackend) {
+    dispatch({
+      type: 'GET_IMAGES',
+      payload: mockProducts.map((product) => product.img),
+    });
+    return;
+  }
 
   const replacer = (data) => {
     return data.map((c) => {

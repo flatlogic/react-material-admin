@@ -1,6 +1,6 @@
 import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 
 const styles = (theme) => ({
   container: {

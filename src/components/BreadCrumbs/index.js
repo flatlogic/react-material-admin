@@ -8,7 +8,7 @@ import {
   CalendarToday as CalendarIcon,
 } from '@mui/icons-material';
 import { useLocation } from 'react-router-dom';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 
 // styles
 import useStyles from '../Layout/styles';
@@ -119,7 +119,7 @@ const BreadCrumbs = () => {
           // eslint-disable-next-line array-callback-return
           structure.map((c) => {
             if (
-              window.location.hash.includes(c.link) &&
+              location.pathname.includes(c.link) &&
               c.link &&
               c.label === 'Dashboard'
             ) {
@@ -128,7 +128,7 @@ const BreadCrumbs = () => {
                   <Breadcrumbs aria-label='breadcrumb'>
                     <Typography variant='h4'>{c.label}</Typography>
                   </Breadcrumbs>
-                  {window.location.hash.includes('/app/dashboard') && (
+                  {location.pathname.includes('/app/dashboard') && (
                     <Tabs
                       value={value}
                       onChange={handleChange}
@@ -148,7 +148,7 @@ const BreadCrumbs = () => {
             }
           })
         }
-        {window.location.hash.includes('/app/dashboard') ? (
+        {location.pathname.includes('/app/dashboard') ? (
           <Box display='flex' alignItems='center'>
             <CalendarIcon className={classes.calendarIcon} />
             <Typography className={classes.date} style={{ marginRight: 38 }}>

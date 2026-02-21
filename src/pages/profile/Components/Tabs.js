@@ -1,7 +1,6 @@
 import React from 'react';
-import { withStyles, useTheme } from '@mui/styles';
-import {Tabs, Typography, Box} from '@mui/material';
-import Tab from '@mui/material/Tab';
+import { Box, Tab, Tabs } from '@mui/material';
+import { styled, useTheme } from '@mui/material/styles';
 
 import FolderBlue from '../Icons/FolderBlue';
 import FolderBlueDark from '../Icons/FolderBlueDark';
@@ -11,236 +10,131 @@ import FolderGreen from '../Icons/FolderGreen';
 import FolderGreenDark from '../Icons/FolderGreenDark';
 import FolderYellow from '../Icons/FolderYellow';
 import FolderYellowDark from '../Icons/FolderYellowDark';
-import SwipeableViews from 'react-swipeable-views';
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index }
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={0}>
-          <Typography component={'div'} >{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-const AntTabs = withStyles((theme) => ({
-  root: {
-    borderBottom: `1px solid rgba(185, 185, 185, 0.3)`,
-  },
-  indicator: {
+const StyledTabs = styled(Tabs)(({ theme }) => ({
+  borderBottom: '1px solid rgba(185, 185, 185, 0.3)',
+  '& .MuiTabs-indicator': {
     backgroundColor: theme.palette.secondary.main,
     borderRadius: 2,
   },
-}))(Tabs);
+}));
 
-const AntTab = withStyles((theme) => ({
-  root: {
-    textTransform: 'none',
-    minWidth: 72,
-    fontSize: '14px',
-    fontWeight: theme.typography.fontWeightMedium,
-    marginRight: theme.spacing(0),
+const StyledTab = styled(Tab)(({ theme }) => ({
+  textTransform: 'none',
+  minWidth: 72,
+  fontSize: 14,
+  fontWeight: theme.typography.fontWeightMedium,
+  color: theme.palette.text.primary,
+  '&:hover': {
     color: theme.palette.text.primary,
-    fontFamily: [
-      'Roboto',
-      'sans-serif'
-    ].join(','),
-    '&:hover': {
-      color: theme.palette.text.primary,
-      opacity: 1,
-    },
-    '&$selected': {
-      color: theme.palette.text.primary,
-    },
-    '&:focus': {
-      color: theme.palette.text.primary,
-    },
+    opacity: 1,
   },
-  selected: {},
-}))((props) => <Tab disableRipple {...props} />);
+  '&.Mui-selected': {
+    color: theme.palette.text.primary,
+  },
+}));
 
-const styles = (theme) => ({
-  root: {
-    flexGrow: 1,
-    '& .react-swipeable-view-container': {
-      transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s !important'
-    },
-    paddingBottom: 0,
+const tabsConfig = [
+  {
+    id: 'work',
+    label: 'Work',
+    files: [
+      { kind: 'blue', title: 'UI/UX', value: 178, label: 'files' },
+      { kind: 'red', title: 'Design', value: 154, label: 'files' },
+      { kind: 'green', title: 'Mobile', value: 98, label: 'files' },
+      { kind: 'yellow', title: 'Illustration', value: 154, label: 'files' },
+    ],
   },
-  codeComponent: {
-    flexGrow: 1,
-    borderRadius: '10px', 
-    backgroundColor: 'red',  
-    border: '3px solid black',
-    '&:: -webkit-scrollbar-track': {
-      '-webkit-box-shadow': 'inset 0 0 7px rgba(0,0,0,.3)', 
-      borderRadius: '10px', 
-      backgroundColor: '#F5F5F5'
-    },
-    '&:: -webkit-scrollbar': {
-      width: '5px', 
-      backgroundColor: '#F5F5F5', 
-      borderRadius: '10px'
-    }, 
-    '&:: -webkit-scrollbar-thumb': {
-      width: '4px', 
-      height: '5px',
-      borderRadius: '10px', 
-      '-webkit-box-shadow': 'inset 0 0 7px rgba(0,0,0,.3)', 
-      backgroundColor: 'white'
-    } 
+  {
+    id: 'private',
+    label: 'Private',
+    files: [
+      { kind: 'blue', title: 'Family', value: 42, label: 'files' },
+      { kind: 'red', title: 'Travel', value: 27, label: 'files' },
+      { kind: 'green', title: 'Finance', value: 16, label: 'files' },
+      { kind: 'yellow', title: 'Personal', value: 39, label: 'files' },
+    ],
   },
-  padding: {
-    padding: theme.spacing(3),
-    paddingBottom: 0,
+  {
+    id: 'social',
+    label: 'Social',
+    files: [
+      { kind: 'blue', title: 'Instagram', value: 84, label: 'files' },
+      { kind: 'red', title: 'Dribbble', value: 21, label: 'files' },
+      { kind: 'green', title: 'Behance', value: 18, label: 'files' },
+      { kind: 'yellow', title: 'Medium', value: 13, label: 'files' },
+    ],
   },
-  demo1: {
-    backgroundColor: theme.palette.background.paper,
-  },
-  demo2: {
-    backgroundColor: '#2e1534',
-  },
-  folderWrapper: {
-    display: 'flex',
-    justifyContent: 'space-between',
+];
+
+function renderFolder({ kind, title, value, label, isDark }) {
+  switch (kind) {
+    case 'blue':
+      return isDark ? (
+        <FolderBlueDark title={title} label={label} value={value} />
+      ) : (
+        <FolderBlue title={title} label={label} value={value} />
+      );
+    case 'red':
+      return isDark ? (
+        <FolderRedDark title={title} label={label} value={value} />
+      ) : (
+        <FolderRed title={title} label={label} value={value} />
+      );
+    case 'green':
+      return isDark ? (
+        <FolderGreenDark title={title} label={label} value={value} />
+      ) : (
+        <FolderGreen title={title} label={label} value={value} />
+      );
+    default:
+      return isDark ? (
+        <FolderYellowDark title={title} label={label} value={value} />
+      ) : (
+        <FolderYellow title={title} label={label} value={value} />
+      );
   }
-})
-
-function CustomizedTabs({ classes }) {
-  // eslint-disable-next-line no-unused-vars
-  const [value, setValue] = React.useState(0);
-  const [index, setIndex] = React.useState(0);
-
-  const handleChange = (event, index) => {
-    setIndex(index)
-  }
-
-  const handleChangeIndex = (index) => {
-    setIndex(index)
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  function a11yProps(index) {
-    return {
-      id: `full-width-tab-${index}`,
-      'aria-controls': `full-width-tabpanel-${index}`,
-    };
-  }
-
-  const theme = useTheme();
-
-  return (
-    <div className={classes.root}>
-      <AntTabs
-        value={index}
-        onChange={handleChange}
-      >
-        <AntTab value={0} label="Work" />
-        <AntTab value={1} label="Private" />
-        <AntTab value={2} label="Social" />
-      </AntTabs>
-      <SwipeableViews
-        index={index}
-        style={{ padding: '24px 0 0 '}}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel>
-          <span className={classes.folderWrapper}>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderBlueDark title="UI/UX" label="files" value={178} /> 
-              : <FolderBlue title="UI/UX" label="files" value={178} />
-            }
-          </div>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderRedDark title="Design" label="files" value={154} /> 
-              : <FolderRed title="Design" label="files" value={154} />
-            }
-          </div>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderGreenDark title="Mobile" label="files" value={98} /> 
-              : <FolderGreen title="Mobile" label="files" value={98} />
-            }
-          </div>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderYellowDark title="Illustration" label="files" value={154} /> 
-              : <FolderYellow title="Illustration" label="files" value={154} />
-            }
-          </div>
-          </span>
-        </TabPanel>
-        <TabPanel>
-          <span className={classes.folderWrapper}>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderBlueDark title="UI/UX" label="files" value={178} /> 
-              : <FolderBlue title="UI/UX" label="files" value={178} />
-            }
-          </div>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderRedDark title="Design" label="files" value={154} /> 
-              : <FolderRed title="Design" label="files" value={154} />
-            }
-          </div>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderGreenDark title="Mobile" label="files" value={98} /> 
-              : <FolderGreen title="Mobile" label="files" value={98} />
-            }
-          </div>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderYellowDark title="Illustration" label="files" value={154} /> 
-              : <FolderYellow title="Illustration" label="files" value={154} />
-            }
-          </div>
-          </span>
-        </TabPanel>
-        <TabPanel>
-          <span className={classes.folderWrapper}>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderBlueDark title="UI/UX" label="files" value={178} /> 
-              : <FolderBlue title="UI/UX" label="files" value={178} />
-            }
-          </div>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderRedDark title="Design" label="files" value={154} /> 
-              : <FolderRed title="Design" label="files" value={154} />
-            }
-          </div>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderGreenDark title="Mobile" label="files" value={98} /> 
-              : <FolderGreen title="Mobile" label="files" value={98} />
-            }
-          </div>
-          <div>
-            {theme.palette.type === "dark" 
-              ? <FolderYellowDark title="Illustration" label="files" value={154} /> 
-              : <FolderYellow title="Illustration" label="files" value={154} />
-            }
-          </div>
-          </span>
-        </TabPanel>
-      </SwipeableViews>
-    </div>
-  );
 }
 
-export default withStyles(styles)(CustomizedTabs);
+export default function ProfileFilesTabs() {
+  const theme = useTheme();
+  const [activeTab, setActiveTab] = React.useState(0);
+  const current = tabsConfig[activeTab];
+  const isDark = theme.palette.mode === 'dark';
+
+  return (
+    <Box sx={{ flexGrow: 1, pb: 0 }}>
+      <StyledTabs value={activeTab} onChange={(_, nextValue) => setActiveTab(nextValue)}>
+        {tabsConfig.map((tab, index) => (
+          <StyledTab key={tab.id} label={tab.label} value={index} disableRipple />
+        ))}
+      </StyledTabs>
+
+      <Box sx={{ pt: 3 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'nowrap',
+            overflowX: 'auto',
+            overflowY: 'hidden',
+            pb: 1,
+            '& > *': {
+              flex: '0 0 auto',
+            },
+            '&::-webkit-scrollbar': {
+              height: 6,
+            },
+            '&::-webkit-scrollbar-thumb': {
+              borderRadius: 6,
+              backgroundColor: theme.palette.mode === 'dark' ? '#4A4A53' : '#C4C4CC',
+            },
+          }}
+        >
+          {current.files.map((file) => (
+            <Box key={`${current.id}-${file.kind}-${file.title}`}>{renderFolder({ ...file, isDark })}</Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  );
+}

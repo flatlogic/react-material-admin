@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import { useTheme } from "@mui/styles";
+import { useTheme } from "styles/muiCompat";
 
 import { Badge, Chip, Button } from '../../components/Wrappers';
 import Tabs from './Components/Tabs';
@@ -30,10 +30,10 @@ function Profile() {
 
   return (
     <Grid container spacing={4}>
-      <Grid item xs={12} sm={6} md={6} lg={5}>
+      <Grid size={{ xs: 12, sm: 6, md: 6, lg: 5 }}>
         <Widget>
           <Grid container spacing={1}>
-            <Grid item xs={12} sm={5} md={5} lg={5}>
+            <Grid size={{ xs: 12, sm: 5, md: 5, lg: 5 }}>
               <div className={classes.visualProfile}>
                 <div className={classes.profileImage}>
                   <img width="100%" src={ProfileIcon} alt="profile" />
@@ -45,7 +45,7 @@ function Profile() {
                 />
               </div>
             </Grid>
-            <Grid item xs={12} sm={7} md={7} lg={7}>
+            <Grid size={{ xs: 12, sm: 7, md: 7, lg: 7 }}>
               <div className={classes.profileDescription}>
                 <Typography variant="h3" className={classes.profileTitle}>
                   Julee Cruise
@@ -76,19 +76,19 @@ function Profile() {
           </Grid>
         </Widget>
       </Grid>
-      <Grid item xs={12} sm={6} md={6} lg={7}>
+      <Grid size={{ xs: 12, sm: 6, md: 6, lg: 7 }}>
         <Widget title="Files" >
           <Grid container spacing={1}>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Tabs />
             </Grid>
           </Grid>
         </Widget>
       </Grid>
 
-      <Grid item xs={12} lg={5}>
+      <Grid size={{ xs: 12, lg: 5 }}>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={4} md={4} lg={6}>
+          <Grid size={{ xs: 12, sm: 4, md: 4, lg: 6 }}>
             <Widget
               bodyClass={classes.mediaBlockPadding}
               title="Media"
@@ -98,7 +98,7 @@ function Profile() {
               </Grid>
             </Widget>
           </Grid>
-          <Grid item xs={12} sm={4} md={4} lg={6}>
+          <Grid size={{ xs: 12, sm: 4, md: 4, lg: 6 }}>
             <Widget
               className={classes.adjustHeight}
               title="Projects"
@@ -106,14 +106,14 @@ function Profile() {
               <Donut />
             </Widget>
           </Grid>
-          <Grid item xs={12} sm={4} md={4} lg={12}>
+          <Grid size={{ xs: 12, sm: 4, md: 4, lg: 12 }}>
             <Widget>
               <RNSWidget/>
             </Widget>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} lg={4}>
+      <Grid size={{ xs: 12, lg: 4 }}>
         <Widget
           title="Tasks"
           bodyClass={classes.widgetBody}
@@ -121,19 +121,19 @@ function Profile() {
           <ToDo />
         </Widget>
       </Grid>
-      <Grid item xs={12} lg={3}>
+      <Grid size={{ xs: 12, lg: 3 }}>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={6} lg={12}>
+          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 12 }}>
             <Widget>
               <Calendar />
             </Widget>
           </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={12}>
+          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 12 }}>
             <Widget>
               <ViewsWidget color={theme.palette.primary.main} title="Views" subtitle="7.2%" value={7.156} />
             </Widget>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
             <div className={classes.updateWidget}>
               <div className={classes.updateWidgetFlexContainer}>
                 <CloudIcon />

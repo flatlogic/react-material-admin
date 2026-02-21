@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import '../../../../../node_modules/line-awesome/dist/line-awesome/css/line-awesome.css';
 
 import DayNames from './DayNames'
@@ -86,11 +86,11 @@ const styles = (theme) => ({
       flex: 1,
       height: '100%',
       transition: 'all 0.4s ease-in-out 0s',
-      '&:first-child': {
+      '&:first-of-type': {
           justifyContent: 'flex-start',
           paddingLeft: '15px',
       },
-      '&:last-child': {
+      '&:last-of-type': {
           justifyContent: 'flex-end',
           paddingRight: '15px',
       },

@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'styles/muiCompat';
 import tinycolor from 'tinycolor2';
 
 export default makeStyles((theme) => ({

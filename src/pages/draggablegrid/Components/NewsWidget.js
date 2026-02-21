@@ -1,6 +1,7 @@
 import React from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import mock from '../mock';
 
 const styles = (theme) => ({
@@ -66,7 +67,11 @@ const NewsWidget = ({ classes }) => {
             </span>
           </div>
           <div className={classes.newsItemInfo}>
-            <Typography variant="h5"><a className={classes.newsHeader} href="#/app/grid">{item.title}</a></Typography>
+            <Typography variant="h5">
+              <Link className={classes.newsHeader} to="/app/grid">
+                {item.title}
+              </Link>
+            </Typography>
             <div>
               {item.description}
             </div>

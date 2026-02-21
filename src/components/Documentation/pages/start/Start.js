@@ -10,26 +10,23 @@ const Start = () => {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Widget disableWidgetMenu>
             <Typography variant={'h5'} weight={'medium'}>
               Requirements:
             </Typography>
             <List>
               <ListItem>
-                <ListItemText primary='1. Mac OS X, Windows, or Linux' />
+                <ListItemText primary='1. macOS, Windows, or Linux' />
               </ListItem>
               <ListItem>
-                <ListItemText
-                  primary='2. Yarn package + Node.js v6.5 or newer
-'
-                />
+                <ListItemText primary='2. Node.js 20.15 or newer (LTS recommended)' />
               </ListItem>
               <ListItem>
-                <ListItemText
-                  primary='3. Running our Node.js backend (Required only in full stack version)
-'
-                />
+                <ListItemText primary='3. npm or Yarn package manager' />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary='4. Optional: Node.js backend running on http://localhost:8080' />
               </ListItem>
             </List>
             <Typography variant={'h5'} weight={'medium'}>
@@ -38,51 +35,47 @@ const Start = () => {
             <List>
               <ListItem>
                 <ListItemText
-                  children={
-                    <span>
-                      1. Run <Code inline>yarn install</Code>
-                    </span>
-                  }
+                  children={<span>1. Install dependencies: <Code inline>npm install</Code> or <Code inline>yarn install</Code></span>}
                 />
               </ListItem>
               <ListItem>
                 <ListItemText
-                  children={
-                    <span>
-                      1. Run <Code inline>yarn start</Code>
-                    </span>
-                  }
+                  children={<span>2. Start frontend-only mode (default): <Code inline>npm run dev</Code> or <Code inline>yarn dev</Code></span>}
+                />
+              </ListItem>
+              <ListItem>
+                <ListItemText
+                  children={<span>3. Enable backend mode by setting <Code inline>REACT_APP_BACKEND=true</Code> in <Code inline>.env.local</Code>, then run <Code inline>npm run dev</Code></span>}
+                />
+              </ListItem>
+              <ListItem>
+                <ListItemText
+                  children={<span>4. Build production bundle: <Code inline>npm run build</Code> or <Code inline>yarn build</Code></span>}
                 />
               </ListItem>
             </List>
             <Typography variant={'h5'} weight={'medium'}>
-              There are also other npm tasks:
+              Other scripts:
             </Typography>
             <List>
               <ListItem>
                 <ListItemText
-                  children={
-                    <span>
-                      <Code inline>yarn build</Code>: if you need just to build
-                      the app (without running a dev server)" />
-                    </span>
-                  }
+                  children={<span><Code inline>npm run start</Code>: starts development server (alias to dev)</span>}
                 />
               </ListItem>
               <ListItem>
                 <ListItemText
-                  children={
-                    <span>
-                      <Code inline>yarn lint</Code>: to check the source code
-                      for syntax errors and potential issues" />
-                    </span>
-                  }
+                  children={<span><Code inline>npm test</Code>: run tests in watch mode</span>}
+                />
+              </ListItem>
+              <ListItem>
+                <ListItemText
+                  children={<span><Code inline>npm run format</Code>: format source files with Prettier</span>}
                 />
               </ListItem>
             </List>
             <Typography variant={'body2'}>
-              For more instruction please refer to React Material Admin Full
-              readme.md.
+              If users pages show Network Error, run frontend-only mode or start backend API on port 8080.
             </Typography>
           </Widget>
         </Grid>

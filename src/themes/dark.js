@@ -9,10 +9,9 @@ const info = '#AE1ECC';
 const lightenRate = 7.5;
 const darkenRate = 15;
 
-export default {
+const darkTheme = {
   palette: {
     contrastText: '#fff',
-    type: 'dark',
     mode: 'dark',
     primary: {
       main: primary,
@@ -40,11 +39,6 @@ export default {
       light: tinycolor(info).lighten(lightenRate).toHexString(),
       dark: tinycolor(info).darken(darkenRate).toHexString(),
     },
-    inherit: {
-      main: 'inherit',
-      light: tinycolor('inherit').lighten('inherit').toHexString(),
-      dark: tinycolor('inherit').darken('inherit').toHexString(),
-    },
     text: {
       primary: '#fff',
       secondary: '#D6D6D6',
@@ -60,3 +54,5 @@ export default {
       '0px 1px 8px rgba(0, 0, 0, 0.103475), 0px 3px 3px rgba(0, 0, 0, 0.0988309), 0px 3px 4px rgba(0, 0, 0, 0.10301)',
   },
 };
+
+export default darkTheme;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
-import { useTheme } from "@mui/styles";
+import { useTheme } from "styles/muiCompat";
 import {
   CartesianGrid,
   Legend,
@@ -12,8 +12,8 @@ import {
   Sector,
   Tooltip,
   XAxis,
-  YAxis
-} from "recharts";
+  YAxis } from
+"recharts";
 
 // components
 import Widget from "../../components/Widget/Widget";
@@ -23,56 +23,56 @@ import ApexRadarChart from "./components/ApexRadarChart";
 import ApexBarChart from "./components/ApexBarChart";
 
 const lineChartData = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  }
-];
+{
+  name: "Page A",
+  uv: 4000,
+  pv: 2400,
+  amt: 2400
+},
+{
+  name: "Page B",
+  uv: 3000,
+  pv: 1398,
+  amt: 2210
+},
+{
+  name: "Page C",
+  uv: 2000,
+  pv: 9800,
+  amt: 2290
+},
+{
+  name: "Page D",
+  uv: 2780,
+  pv: 3908,
+  amt: 2000
+},
+{
+  name: "Page E",
+  uv: 1890,
+  pv: 4800,
+  amt: 2181
+},
+{
+  name: "Page F",
+  uv: 2390,
+  pv: 3800,
+  amt: 2500
+},
+{
+  name: "Page G",
+  uv: 3490,
+  pv: 4300,
+  amt: 2100
+}];
+
 
 const pieChartData = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 }
-];
+{ name: "Group A", value: 400 },
+{ name: "Group B", value: 300 },
+{ name: "Group C", value: 300 },
+{ name: "Group D", value: 200 }];
+
 
 export default function Charts(props) {
   var theme = useTheme();
@@ -83,27 +83,27 @@ export default function Charts(props) {
   return (
     <>
       <Grid container spacing={4}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Apex Line Chart" noBodyPadding>
             <ApexLineChart />
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Apex Heatmap" noBodyPadding>
             <ApexHeatmap />
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Apex Radar Chart"} noBodyPadding>
             <ApexRadarChart />
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Apex Bar Chart"} noBodyPadding>
             <ApexBarChart />
           </Widget>
         </Grid>
-        <Grid item xs={12} md={8}>
+        <Grid size={{ xs: 12, md: 8 }}>
           <Widget title="Simple Line Chart" noBodyPadding>
             <ResponsiveContainer width="100%" height={350}>
               <LineChart
@@ -115,8 +115,8 @@ export default function Charts(props) {
                   right: 30,
                   left: 20,
                   bottom: 5
-                }}
-              >
+                }}>
+                
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
@@ -126,18 +126,18 @@ export default function Charts(props) {
                   type="monotone"
                   dataKey="pv"
                   stroke={theme.palette.primary.main}
-                  activeDot={{ r: 8 }}
-                />
+                  activeDot={{ r: 8 }} />
+                
                 <Line
                   type="monotone"
                   dataKey="uv"
-                  stroke={theme.palette.secondary.main}
-                />
+                  stroke={theme.palette.secondary.main} />
+                
               </LineChart>
             </ResponsiveContainer>
           </Widget>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Widget title="Pie Chart with Tooltips" noBodyPadding>
             <ResponsiveContainer width="100%" height={300}>
               <PieChart width={200} height={300}>
@@ -151,15 +151,15 @@ export default function Charts(props) {
                   outerRadius={80}
                   fill={theme.palette.primary.main}
                   dataKey="value"
-                  onMouseEnter={(e, id) => setActiveIndexId(id)}
-                />
+                  onMouseEnter={(e, id) => setActiveIndexId(id)} />
+                
               </PieChart>
             </ResponsiveContainer>
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 }
 
 // ################################################################
@@ -201,8 +201,8 @@ function renderActiveShape(props) {
         outerRadius={outerRadius}
         startAngle={startAngle}
         endAngle={endAngle}
-        fill={fill}
-      />
+        fill={fill} />
+      
       <Sector
         cx={cx}
         cy={cy}
@@ -210,29 +210,29 @@ function renderActiveShape(props) {
         endAngle={endAngle}
         innerRadius={outerRadius + 6}
         outerRadius={outerRadius + 10}
-        fill={fill}
-      />
+        fill={fill} />
+      
       <path
         d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
         stroke={fill}
-        fill="none"
-      />
+        fill="none" />
+      
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
         textAnchor={textAnchor}
-        fill="#333"
-      >{`PV ${value}`}</text>
+        fill="#333">
+        {`PV ${value}`}</text>
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
         dy={18}
         textAnchor={textAnchor}
-        fill="#999"
-      >
+        fill="#999">
+        
         {`(Rate ${(percent * 100).toFixed(2)}%)`}
       </text>
-    </g>
-  );
+    </g>);
+
 }

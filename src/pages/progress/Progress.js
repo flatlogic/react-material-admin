@@ -9,7 +9,7 @@ export default function ProgressComp() {
   const [completed, setCompleted] = React.useState(0);
   React.useEffect(() => {
     function progress() {
-      setCompleted(oldCompleted => {
+      setCompleted((oldCompleted) => {
         if (oldCompleted === 100) {
           return 0;
         }
@@ -25,7 +25,7 @@ export default function ProgressComp() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Circular Indeterminate" disableWidgetMenu>
             <Box my={3} display="flex" flexWrap="wrap" justifyContent="center">
               <Box mt={1} mr={2}>
@@ -46,15 +46,15 @@ export default function ProgressComp() {
             </Box>
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Linear Indeterminate" disableWidgetMenu>
             <Box
               my={3}
               display="flex"
               flexWrap="wrap"
               alignItems="center"
-              flexDirection="column"
-            >
+              flexDirection="column">
+              
               <Box mt={1} mr={2} width="100%">
                 <LinearProgress />
               </Box>
@@ -73,13 +73,13 @@ export default function ProgressComp() {
                 <LinearProgress
                   color="info"
                   variant="determinate"
-                  value={completed}
-                />
+                  value={completed} />
+                
               </Box>
             </Box>
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 }

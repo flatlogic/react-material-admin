@@ -7,14 +7,12 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  AppBar
-} from "@mui/material";
-import SwipeableViews from "react-swipeable-views";
-import { useTheme } from "@mui/styles";
+  AppBar } from
+"@mui/material";
 import {
   Phone as PhoneIcon,
-  ExpandMore as ExpandMoreIcon
-} from "@mui/icons-material";
+  ExpandMore as ExpandMoreIcon } from
+"@mui/icons-material";
 
 // components
 import Widget from "../../components/Widget";
@@ -31,11 +29,11 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
-      {...other}
-    >
+      {...other}>
+      
       <Box p={3}>{children}</Box>
-    </Typography>
-  );
+    </Typography>);
+
 }
 
 function a11yProps(index) {
@@ -47,7 +45,6 @@ function a11yProps(index) {
 
 export default function TabsComp() {
   const classes = useStyles();
-  const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const [iconValue, setIconValue] = React.useState(0);
 
@@ -59,18 +56,10 @@ export default function TabsComp() {
     setIconValue(newValue);
   }
 
-  function handleChangeIndex(index) {
-    setValue(index);
-  }
-
-  function handleChangeIndexIconTab(index) {
-    setIconValue(index);
-  }
-
   return (
     <div>
       <Grid container spacing={6}>
-        <Grid item md={6}>
+        <Grid size={{ md: 6 }}>
           <Widget title="Tabs Example" disableWidgetMenu inheritHeight>
             <AppBar position="static" color="default" style={{ marginTop: 10 }}>
               <Tabs
@@ -79,19 +68,14 @@ export default function TabsComp() {
                 indicatorColor="primary"
                 textColor="primary"
                 variant="fullWidth"
-                aria-label="full width tabs example"
-              >
+                aria-label="full width tabs example">
+                
                 <Tab label="Item One" {...a11yProps(0)} />
                 <Tab label="Item Two" {...a11yProps(1)} />
                 <Tab label="Item Three" {...a11yProps(2)} />
               </Tabs>
             </AppBar>
-            <SwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={value}
-              onChangeIndex={handleChangeIndex}
-            >
-              <TabPanel value={value} index={0} dir={theme.direction}>
+            <TabPanel value={value} index={0}>
                 Tabs-enabled widget You will never know exactly how something
                 will go until you try it. You can think three hundred times and
                 still have no precise result. If you see attractive girl all you
@@ -117,13 +101,13 @@ export default function TabsComp() {
                   </Box>
                 </Box>
               </TabPanel>
-              <TabPanel value={value} index={1} dir={theme.direction}>
+              <TabPanel value={value} index={1}>
                 Why don't use Lore Ipsum? I think if some one says don't use
                 lore ipsum it's very controversial point. I think the opposite
                 actually. Everyone knows what is lore ipsum - it is easy to
                 understand if text is lore ipsum.
               </TabPanel>
-              <TabPanel value={value} index={2} dir={theme.direction}>
+              <TabPanel value={value} index={2}>
                 If you will think too much it will sink in the swamp of never
                 implemented plans and ideas or will just go away or will be
                 implemented by someone else. 5 months of doing everything to
@@ -131,11 +115,10 @@ export default function TabsComp() {
                 it's just non-informative stub. But what if there some text like
                 this one?
               </TabPanel>
-            </SwipeableViews>
           </Widget>
         </Grid>
 
-        <Grid item md={6}>
+        <Grid size={{ md: 6 }}>
           <Widget title="Icons Tabs" disableWidgetMenu inheritHeight>
             <AppBar position="static" color="default" style={{ marginTop: 10 }}>
               <Tabs
@@ -144,23 +127,18 @@ export default function TabsComp() {
                 indicatorColor="primary"
                 textColor="primary"
                 variant="fullWidth"
-                aria-label="full width tabs example"
-              >
+                aria-label="full width tabs example">
+                
                 <Tab label="Item One" icon={<PhoneIcon />} {...a11yProps(0)} />
                 <Tab label="Item Two" icon={<PhoneIcon />} {...a11yProps(1)} />
                 <Tab
                   label="Item Three"
                   icon={<PhoneIcon />}
-                  {...a11yProps(2)}
-                />
+                  {...a11yProps(2)} />
+                
               </Tabs>
             </AppBar>
-            <SwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={iconValue}
-              onChangeIndex={handleChangeIndexIconTab}
-            >
-              <TabPanel value={iconValue} index={0} dir={theme.direction}>
+            <TabPanel value={iconValue} index={0}>
                 Tabs-enabled widget You will never know exactly how something
                 will go until you try it. You can think three hundred times and
                 still have no precise result. If you see attractive girl all you
@@ -186,13 +164,13 @@ export default function TabsComp() {
                   </Box>
                 </Box>
               </TabPanel>
-              <TabPanel value={iconValue} index={1} dir={theme.direction}>
+              <TabPanel value={iconValue} index={1}>
                 Why don't use Lore Ipsum? I think if some one says don't use
                 lore ipsum it's very controversial point. I think the opposite
                 actually. Everyone knows what is lore ipsum - it is easy to
                 understand if text is lore ipsum.
               </TabPanel>
-              <TabPanel value={iconValue} index={2} dir={theme.direction}>
+              <TabPanel value={iconValue} index={2}>
                 If you will think too much it will sink in the swamp of never
                 implemented plans and ideas or will just go away or will be
                 implemented by someone else. 5 months of doing everything to
@@ -200,21 +178,20 @@ export default function TabsComp() {
                 it's just non-informative stub. But what if there some text like
                 this one?
               </TabPanel>
-            </SwipeableViews>
           </Widget>
         </Grid>
-        <Grid item md={6}>
+        <Grid size={{ md: 6 }}>
           <Widget
             title="Expansion Panel Example"
             disableWidgetMenu
-            inheritHeight
-          >
+            inheritHeight>
+            
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
+                id="panel1a-header">
+                
                 <Typography>Expansion Panel 1</Typography>
               </AccordionSummary>
               <AccordionDetails>
@@ -229,8 +206,8 @@ export default function TabsComp() {
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
-                id="panel2a-header"
-              >
+                id="panel2a-header">
+                
                 <Typography>Expansion Panel 2</Typography>
               </AccordionSummary>
               <AccordionDetails>
@@ -245,25 +222,25 @@ export default function TabsComp() {
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
+                id="panel3a-header">
+                
                 <Typography>Disabled Expansion Panel</Typography>
               </AccordionSummary>
             </Accordion>
           </Widget>
         </Grid>
-        <Grid item md={6}>
+        <Grid size={{ md: 6 }}>
           <Widget
             title="Customize Expansion Panel Example"
             disableWidgetMenu
-            inheritHeight
-          >
+            inheritHeight>
+            
             <Accordion classes={{ root: classes.expansion }}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
+                id="panel1a-header">
+                
                 <Typography>Expansion Panel 1</Typography>
               </AccordionSummary>
               <AccordionDetails>
@@ -278,8 +255,8 @@ export default function TabsComp() {
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
-                id="panel2a-header"
-              >
+                id="panel2a-header">
+                
                 <Typography>Expansion Panel 2</Typography>
               </AccordionSummary>
               <AccordionDetails>
@@ -294,14 +271,14 @@ export default function TabsComp() {
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
+                id="panel3a-header">
+                
                 <Typography>Disabled Expansion Panel</Typography>
               </AccordionSummary>
             </Accordion>
           </Widget>
         </Grid>
       </Grid>
-    </div>
-  );
+    </div>);
+
 }

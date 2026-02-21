@@ -6,9 +6,9 @@ import {
   TableCell,
   TableRow,
   TableHead,
-  Box
-} from "@material-ui/core";
-import { Add as PlusIcon, Remove as MinusIcon } from "@material-ui/icons";
+  Box } from
+"@mui/material";
+import { Add as PlusIcon, Remove as MinusIcon } from "@mui/icons-material";
 import useStyles from "./styles";
 
 //components
@@ -17,34 +17,34 @@ import { Typography } from "../../../Wrappers";
 
 // structure
 const rows = [
-  {
-    advantage: "Hundreds unique components",
-    single: "plus",
-    extended: "plus"
-  },
-  {
-    advantage: "All pages",
-    single: "plus",
-    extended: "plus"
-  },
-  {
-    advantage: "Free Updates",
-    single: "3 months",
-    extended: "6 months"
-  },
-  {
-    advantage: "Paying users allowed",
-    single: "no",
-    extended: "plus"
-  }
-];
+{
+  advantage: "Hundreds unique components",
+  single: "plus",
+  extended: "plus"
+},
+{
+  advantage: "All pages",
+  single: "plus",
+  extended: "plus"
+},
+{
+  advantage: "Free Updates",
+  single: "3 months",
+  extended: "6 months"
+},
+{
+  advantage: "Paying users allowed",
+  single: "no",
+  extended: "plus"
+}];
+
 
 const Licences = () => {
   const classes = useStyles();
   return (
     <>
       <Grid container spacing={6}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Widget disableWidgetMenu>
             <Typography variant={"h6"}>
               A license grants you a non-exclusive and non-transferable right to
@@ -63,27 +63,27 @@ const Licences = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map(row => (
-                  <TableRow key={row.advantage}>
+                {rows.map((row) =>
+                <TableRow key={row.advantage}>
                     <TableCell component="th" scope="row">
                       {row.advantage}
                     </TableCell>
                     <TableCell>
-                      {row.extended === "plus" ? (
-                        <PlusIcon className={classes.successIcon} />
-                      ) : (
-                        <MinusIcon className={classes.failIcon} />
-                      )}
+                      {row.extended === "plus" ?
+                    <PlusIcon className={classes.successIcon} /> :
+
+                    <MinusIcon className={classes.failIcon} />
+                    }
                     </TableCell>
                     <TableCell>
-                      {row.extended === "plus" ? (
-                        <PlusIcon className={classes.successIcon} />
-                      ) : (
-                        <MinusIcon className={classes.failIcon} />
-                      )}
+                      {row.extended === "plus" ?
+                    <PlusIcon className={classes.successIcon} /> :
+
+                    <MinusIcon className={classes.failIcon} />
+                    }
                     </TableCell>
                   </TableRow>
-                ))}
+                )}
               </TableBody>
             </Table>
             <Box mt={6}>
@@ -116,8 +116,8 @@ const Licences = () => {
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 };
 
 export default Licences;

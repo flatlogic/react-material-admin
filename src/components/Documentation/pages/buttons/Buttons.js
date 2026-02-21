@@ -11,16 +11,16 @@ const Pages = (props) => {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Widget disableWidgetMenu>
             <Typography
               variant={'h4'}
               style={{
                 marginBottom: 15,
                 marginTop: 10,
-                color: 'rgb(110, 110, 110)',
-              }}
-            >
+                color: 'rgb(110, 110, 110)'
+              }}>
+              
               Buttons
             </Typography>
             <Typography style={{ marginBottom: 16 }}>
@@ -114,8 +114,8 @@ const Pages = (props) => {
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 };
 
 export default withRouter(Pages);

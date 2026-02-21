@@ -223,12 +223,11 @@ const actions = {
           type: 'USERS_FORM_FIND_STARTED',
         });
 
-        axios.get(`/users/${id}`).then((res) => {
-          const currentUser = res.data;
-          dispatch({
-            type: 'USERS_FORM_FIND_SUCCESS',
-            payload: currentUser,
-          });
+        const res = await axios.get(`/users/${id}`);
+        const currentUser = res.data;
+        dispatch({
+          type: 'USERS_FORM_FIND_SUCCESS',
+          payload: currentUser,
         });
       } catch (error) {
         showSnackbar({ type: 'error', message: 'Error' });
@@ -245,12 +244,11 @@ const actions = {
       dispatch({
         type: 'USERS_FORM_CREATE_STARTED',
       });
-      axios.post('/users', { data: values }).then((res) => {
-        dispatch({
-          type: 'USERS_FORM_CREATE_SUCCESS',
-        });
-        history.push('/app/user/list');
+      await axios.post('/users', { data: values });
+      dispatch({
+        type: 'USERS_FORM_CREATE_SUCCESS',
       });
+      history.push('/app/users');
     } catch (error) {
       showSnackbar({ type: 'error', message: 'Error' });
       console.log(error);
@@ -273,7 +271,7 @@ const actions = {
         payload: values,
       });
 
-      history.push('/admin/dashboard');
+      history.push('/app/dashboard');
     } catch (error) {
       console.log(error);
 

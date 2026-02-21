@@ -1,0 +1,75 @@
+import React from 'react';
+import { makeStyles as tssMakeStyles, withStyles as tssWithStyles } from 'tss-react/mui-compat';
+import { useTheme as useMuiTheme } from '@mui/material/styles';
+
+const isPlainObject = (value) =>
+  value !== null && typeof value === 'object' && !Array.isArray(value);
+
+const replaceClassRefsInSelector = (selector, classes) =>
+  selector.replace(/\$([a-zA-Z0-9_-]+)/g, (_, className) =>
+    classes[className] ? `.${classes[className]}` : `$${className}`,
+  );
+
+const resolveDynamicValues = (value, params, theme, classes) => {
+  if (typeof value === 'function') {
+    return value(params, theme, classes);
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => resolveDynamicValues(item, params, theme, classes));
+  }
+
+  if (!isPlainObject(value)) {
+    return value;
+  }
+
+  return Object.entries(value).reduce((acc, [key, val]) => {
+    const resolvedKey = typeof key === 'string' ? replaceClassRefsInSelector(key, classes) : key;
+    acc[resolvedKey] = resolveDynamicValues(val, params, theme, classes);
+    return acc;
+  }, {});
+};
+
+const resolveStyleObject = (stylesOrCreator, theme, params, classes) => {
+  const rawStyles =
+    typeof stylesOrCreator === 'function'
+      ? stylesOrCreator(theme, params, classes)
+      : stylesOrCreator;
+
+  return resolveDynamicValues(rawStyles, params, theme, classes);
+};
+
+export const makeStyles = (stylesOrCreator, options) => {
+  const useTssStyles = tssMakeStyles(options)(
+    (theme, params, classes) =>
+      resolveStyleObject(stylesOrCreator, theme, params, classes),
+  );
+
+  return (params = {}) => useTssStyles(params).classes;
+};
+
+export const withStyles = (stylesOrCreator, options = {}) => (Component) => {
+  const { withTheme, ...tssOptions } = options || {};
+
+  const StyledComponent = tssWithStyles(
+    Component,
+    (theme, props, classes) =>
+      resolveStyleObject(stylesOrCreator, theme, props, classes),
+    tssOptions,
+  );
+
+  if (!withTheme) {
+    return StyledComponent;
+  }
+
+  const WithTheme = React.forwardRef((props, ref) => {
+    const theme = useMuiTheme();
+    return <StyledComponent ref={ref} theme={theme} {...props} />;
+  });
+
+  WithTheme.displayName = `WithTheme(${Component.displayName || Component.name || 'Component'})`;
+
+  return WithTheme;
+};
+
+export const useTheme = useMuiTheme;

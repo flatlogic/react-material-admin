@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import jwt from 'jsonwebtoken';
+import { decodeJwtPayload } from '../utils/jwt';
 
 import { mockUser } from './mock';
 
@@ -57,7 +57,7 @@ function UserProvider({ children }) {
       const token = localStorage.getItem('token');
       if (config.isBackend && token) {
         const date = new Date().getTime() / 1000;
-        const data = jwt.decode(token);
+        const data = decodeJwtPayload(token);
         if (!data) return false;
         return date < data.exp;
       } else if (token) {
@@ -186,15 +186,16 @@ export function receiveToken(token, dispatch) {
 
   // We check if app runs with backend mode
   if (config.isBackend) {
-    user = jwt.decode(token).user;
-    delete user.id;
+    user = decodeJwtPayload(token)?.user || {};
   } else {
     user = {
       email: config.auth.email,
     };
   }
 
-  delete user.id;
+  if (user && typeof user === 'object') {
+    delete user.id;
+  }
   localStorage.setItem('token', token);
   localStorage.setItem('user', JSON.stringify(user));
   localStorage.setItem('theme', 'default');
@@ -236,7 +237,11 @@ export function doInit() {
         if (token) {
           currentUser = await findMe();
         }
-        sessionStorage.setItem('user_id', currentUser.id);
+        if (currentUser?.id) {
+          sessionStorage.setItem('user_id', currentUser.id);
+        } else {
+          sessionStorage.removeItem('user_id');
+        }
         dispatch({
           type: 'LOGIN_SUCCESS',
           payload: {

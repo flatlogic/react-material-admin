@@ -10,8 +10,8 @@ import {
   CardActions,
   CardContent,
   CardActionArea,
-  CardMedia
-} from "@mui/material";
+  CardMedia } from
+"@mui/material";
 import { Star as StarIcon } from "@mui/icons-material";
 import { yellow } from "@mui/material/colors";
 import useStyles from "./styles";
@@ -22,7 +22,7 @@ import { Typography, Chip } from "../../components/Wrappers";
 //products array
 import { rows } from "./mock";
 
-const Product = props => {
+const Product = (props) => {
   const typeRef = React.useRef(null);
   const brandsRef = React.useRef(null);
   const sizeRef = React.useRef(null);
@@ -137,27 +137,27 @@ const Product = props => {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Box display="flex">
             <FormControl
               variant="outlined"
               className={classes.form}
-              style={{ marginRight: 15 }}
-            >
+              style={{ marginRight: 15 }}>
+              
               <InputLabel htmlFor="type_select" ref={typeRef}>
                 Type
               </InputLabel>
               <Select
                 value={state.valueType}
-                onChange={e =>
-                  dispatch({ type: "SELECT_TYPE", valueType: e.target.value })
+                onChange={(e) =>
+                dispatch({ type: "SELECT_TYPE", valueType: e.target.value })
                 }
                 labelWidth={width.type}
                 inputProps={{
                   name: "type",
                   id: "type_select"
-                }}
-              >
+                }}>
+                
                 <MenuItem value={"Shoes"}>Shoes</MenuItem>
                 <MenuItem value={"Boots"}>Boots</MenuItem>
                 <MenuItem value={"Trainers"}>Trainers</MenuItem>
@@ -166,25 +166,25 @@ const Product = props => {
             <FormControl
               variant="outlined"
               className={classes.form}
-              style={{ marginRight: 15 }}
-            >
+              style={{ marginRight: 15 }}>
+              
               <InputLabel htmlFor="brands_select" ref={brandsRef}>
                 Brands
               </InputLabel>
               <Select
                 value={state.valueBrands}
-                onChange={e =>
-                  dispatch({
-                    type: "SELECT_BRAND",
-                    valueBrands: e.target.value
-                  })
+                onChange={(e) =>
+                dispatch({
+                  type: "SELECT_BRAND",
+                  valueBrands: e.target.value
+                })
                 }
                 labelWidth={width.brands}
                 inputProps={{
                   name: "brands",
                   id: "brands_select"
-                }}
-              >
+                }}>
+                
                 <MenuItem value={"All"}>All</MenuItem>
                 <MenuItem value={"Nike"}>Nike</MenuItem>
                 <MenuItem value={"Adidas"}>Adidas</MenuItem>
@@ -193,22 +193,22 @@ const Product = props => {
             <FormControl
               variant="outlined"
               className={classes.form}
-              style={{ marginRight: 15 }}
-            >
+              style={{ marginRight: 15 }}>
+              
               <InputLabel htmlFor="size_select" ref={sizeRef}>
                 Size
               </InputLabel>
               <Select
                 value={state.valueSize}
-                onChange={e =>
-                  dispatch({ type: "SELECT_SIZE", valueSize: e.target.value })
+                onChange={(e) =>
+                dispatch({ type: "SELECT_SIZE", valueSize: e.target.value })
                 }
                 labelWidth={width.size}
                 inputProps={{
                   name: "size",
                   id: "size_select"
-                }}
-              >
+                }}>
+                
                 <MenuItem value={7}>7</MenuItem>
                 <MenuItem value={8}>8</MenuItem>
                 <MenuItem value={9}>9</MenuItem>
@@ -224,25 +224,25 @@ const Product = props => {
             <FormControl
               variant="outlined"
               className={classes.form}
-              style={{ marginRight: 15 }}
-            >
+              style={{ marginRight: 15 }}>
+              
               <InputLabel htmlFor="colour_select" ref={colourRef}>
                 Colour
               </InputLabel>
               <Select
                 value={state.valueColour}
-                onChange={e =>
-                  dispatch({
-                    type: "SELECT_COLOUR",
-                    valueColor: e.target.value
-                  })
+                onChange={(e) =>
+                dispatch({
+                  type: "SELECT_COLOUR",
+                  valueColor: e.target.value
+                })
                 }
                 labelWidth={width.colour}
                 inputProps={{
                   name: "colour",
                   id: "colour_select"
-                }}
-              >
+                }}>
+                
                 <MenuItem value={"All"}>All</MenuItem>
                 <MenuItem value={"White"}>White</MenuItem>
                 <MenuItem value={"Black"}>Black</MenuItem>
@@ -251,22 +251,22 @@ const Product = props => {
             <FormControl
               variant="outlined"
               className={classes.form}
-              style={{ marginRight: 15 }}
-            >
+              style={{ marginRight: 15 }}>
+              
               <InputLabel htmlFor="range_select" ref={rangeRef}>
                 Range
               </InputLabel>
               <Select
                 value={state.valueRange}
-                onChange={e =>
-                  dispatch({ type: "SELECT_RANGE", valueRange: e.target.value })
+                onChange={(e) =>
+                dispatch({ type: "SELECT_RANGE", valueRange: e.target.value })
                 }
                 labelWidth={width.range}
                 inputProps={{
                   name: "range",
                   id: "range_select"
-                }}
-              >
+                }}>
+                
                 <MenuItem value={"All"}>All</MenuItem>
                 <MenuItem value={"-"}>-</MenuItem>
                 <MenuItem value={"None"}>None</MenuItem>
@@ -275,22 +275,22 @@ const Product = props => {
             <FormControl
               variant="outlined"
               className={classes.form}
-              style={{ marginRight: 15 }}
-            >
+              style={{ marginRight: 15 }}>
+              
               <InputLabel htmlFor="sort_select" ref={sortRef}>
                 Sort
               </InputLabel>
               <Select
                 value={state.valueSort}
-                onChange={e =>
-                  dispatch({ type: "SELECT_SORT", valueSort: e.target.value })
+                onChange={(e) =>
+                dispatch({ type: "SELECT_SORT", valueSort: e.target.value })
                 }
                 labelWidth={width.sort}
                 inputProps={{
                   name: "sort",
                   id: "sort_select"
-                }}
-              >
+                }}>
+                
                 <MenuItem value={"Favorite"}>Favorite</MenuItem>
                 <MenuItem value={"Price"}>Price</MenuItem>
                 <MenuItem value={"Popular"}>Popular</MenuItem>
@@ -298,65 +298,65 @@ const Product = props => {
             </FormControl>
           </Box>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Box display={"flex"} flexWrap={"wrap"}>
-            <Grid container item spacing={3}>
-              {rows.map(c => (
-                <Grid item xs={12} md={3} key={c.id}>
+            <Grid container spacing={3}>
+              {rows.map((c) =>
+              <Grid key={c.id} size={{ xs: 12, md: 3 }}>
                   <Card className={classes.card}>
                     <CardActionArea>
                       <CardMedia
-                        className={classes.media}
-                        image={c.img}
-                        title={c.title}
-                      >
-                        {c.id % 2 ? (
-                          <Chip label={"New"} color={"success"} />
-                        ) : (
-                          <Chip label={"Sale"} color={"secondary"} />
-                        )}
+                      className={classes.media}
+                      image={c.img}
+                      title={c.title}>
+                      
+                        {c.id % 2 ?
+                      <Chip label={"New"} color={"success"} /> :
+
+                      <Chip label={"Sale"} color={"secondary"} />
+                      }
                       </CardMedia>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           {c.title}
                         </Typography>
                         <Typography
-                          variant="body2"
-                          color="text"
-                          colorBrightness={"secondary"}
-                          component="p"
-                        >
+                        variant="body2"
+                        color="text"
+                        colorBrightness={"secondary"}
+                        component="p">
+                        
                           {c.subtitle}
                         </Typography>
                       </CardContent>
                     </CardActionArea>
                     <CardActions style={{ padding: 16 }}>
                       <Box
-                        display={"flex"}
-                        justifyContent={"space-between"}
-                        alignItems="center"
-                        width={"100%"}
-                      >
+                      display={"flex"}
+                      justifyContent={"space-between"}
+                      alignItems="center"
+                      width={"100%"}>
+                      
                         <Typography weight={"bold"}>${c.price}</Typography>
                         <Typography block>
                           <div style={{ color: yellow[700] }}>
                             {rows[0].rating}
                             <StarIcon
-                              style={{ color: yellow[700], marginTop: -5 }}
-                            />
+                            style={{ color: yellow[700], marginTop: -5 }} />
+                          
                           </div>
                         </Typography>
                       </Box>
                     </CardActions>
                   </Card>
                 </Grid>
-              ))}
+              )}
             </Grid>
           </Box>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 };
 
 export default Product;

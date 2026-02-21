@@ -14,7 +14,7 @@ import {
   Radio as RadioBase,
 } from '@mui/material';
 import { useTheme } from '@mui/material';
-import { withStyles, makeStyles } from '@mui/styles';
+import { withStyles, makeStyles } from 'styles/muiCompat';
 import classnames from 'classnames';
 
 // styles
@@ -129,7 +129,7 @@ function Button({ children, color, className, style, ...props }) {
       backgroundColor: getColor(color, theme),
       boxShadow: theme.customShadows.widget,
       color:
-        theme.palette.type === 'dark' && !color
+        theme.palette.mode === 'dark' && !color
           ? '#000'
           : `${color ? 'white' : theme.palette.text.primary} !important`,
       '&:hover': {

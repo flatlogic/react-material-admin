@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 import { withRouter } from "react-router-dom";
 
 //components
@@ -7,11 +7,11 @@ import Widget from "../../../Widget";
 import { Typography, Button } from "../../../Wrappers";
 import Code from "../../../Code";
 
-const Pages = props => {
+const Pages = (props) => {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Widget disableWidgetMenu>
             <Typography variant={"h6"}>Auth</Typography>
             <Typography style={{ marginBottom: 16 }}>
@@ -85,15 +85,15 @@ const Pages = props => {
             <Button
               variant={"contained"}
               color={"primary"}
-              onClick={() => props.history.push("/app/dashboard")}
-            >
+              onClick={() => props.history.push("/app/dashboard")}>
+              
               Demo
             </Button>
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 };
 
 export default withRouter(Pages);

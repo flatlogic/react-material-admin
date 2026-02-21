@@ -3,7 +3,7 @@ const initialData = {
   loading: false,
 };
 
-export default (state = initialData, { type, payload }) => {
+const usersListReducer = (state = initialData, { type, payload }) => {
   if (type === 'USERS_LIST_FILTERED') {
     return {
       ...state,
@@ -79,3 +79,5 @@ export default (state = initialData, { type, payload }) => {
 
   return state;
 };
+
+export default usersListReducer;

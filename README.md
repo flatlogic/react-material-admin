@@ -25,21 +25,36 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
    git clone https://github.com/flatlogic/react-material-admin.git
    cd react-material-admin
    ```
-2. **Install dependencies**
+2. **Use Node.js 20.15+**
    ```bash
+   node -v
+   ```
+3. **Install dependencies**
+   ```bash
+   npm install
+   # or
    yarn install
    ```
-3. **Run the app**
+4. **Run frontend-only mode (default)**
    ```bash
-   yarn start
+   npm run dev
+   # or
+   yarn dev
    ```
-4. **Runs the app in the development mode without backend**
-    ```bash 
-    yarn dev
-    ```
-
-5. **Build for production**
+5. **Enable backend mode (optional)**
+   - Create `.env.local`:
+     ```bash
+     REACT_APP_BACKEND=true
+     ```
+   - Start backend API on `http://localhost:8080`
+   - Run:
+     ```bash
+     npm run dev
+     ```
+6. **Build for production**
    ```bash
+   npm run build
+   # or
    yarn build
    ```
 
@@ -49,21 +64,21 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 
 - Three Color Themes
 - Fully Responsive
-- React 16.14.0 + Hooks
-- Material-UI v4
+- React 19
+- MUI 7
 - Authentication System
 - Modular Architecture
 - Charts Libraries
 - Dashboard Pages
 - CSS-in-JS Styling
-- Create-React-App Under the Hood
+- CRA + react-app-rewired setup
 
 ---
 
 ## 🛠 Built With
 
-- React 16.14.0
-- Material-UI v4
+- React 19
+- MUI 7
 - React Hooks & Context API
 - React Router v5
 - Webpack
@@ -117,4 +132,3 @@ Additionally, these templates are tailored for specific business needs:
 > Join our [Flatlogic Community Discord](https://discord.gg/flatlogic-community) or visit our [support forum](https://flatlogic.com/forum). We might even reply!
 
 ---
-

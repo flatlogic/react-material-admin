@@ -1,21 +1,42 @@
 import Errors from 'components/FormItems/error/errors';
 import axios from 'axios';
 import queryString from 'query-string';
+import config from '../../config';
+import { deleteMockUser, listMockUsers } from './usersMockRepository';
 
 async function list(filter) {
-  const response = await axios.get(
-    `/users?page=${filter.page}&limit=${filter.limit}
+  if (!config.isBackend) {
+    return listMockUsers(filter);
+  }
 
-    &users=${filter.users ? filter.users : ''}
-    &${queryString.stringify(filter.orderBy)}${filter.request}`,
-  );
+  const query = queryString.stringify({
+    page: filter.page,
+    limit: filter.limit,
+    users: filter.users || '',
+    ...(filter.orderBy || {}),
+  });
+  const request = (filter.request || '').replace(/^(\?|&)+/, '');
+  const url = request ? `/users?${query}&${request}` : `/users?${query}`;
+  const response = await axios.get(url);
+
   return response.data;
 }
 
 async function filterUsers(request, filter) {
-  const response = await axios.get(
-    `/users?page=${filter.page}&limit=${filter.limit}${request}`,
-  );
+  if (!config.isBackend) {
+    return listMockUsers(filter, request);
+  }
+
+  const query = queryString.stringify({
+    page: filter.page,
+    limit: filter.limit,
+  });
+  const normalizedRequest = (request || '').replace(/^(\?|&)+/, '');
+  const url = normalizedRequest
+    ? `/users?${query}&${normalizedRequest}`
+    : `/users?${query}`;
+  const response = await axios.get(url);
+
   return response.data;
 }
 
@@ -72,7 +93,11 @@ const actions = {
         type: 'USERS_LIST_DELETE_STARTED',
       });
 
-      await axios.delete(`/users/${id}`);
+      if (config.isBackend) {
+        await axios.delete(`/users/${id}`);
+      } else {
+        deleteMockUser(id);
+      }
 
       dispatch({
         type: 'USERS_LIST_DELETE_SUCCESS',

@@ -14,7 +14,7 @@ export default function TypographyPage() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Headings" disableWidgetMenu>
             <div className={classes.dashedBorder}>
               <Typography variant="h1" className={classes.text}>
@@ -36,7 +36,7 @@ export default function TypographyPage() {
             </div>
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Typography Colors" disableWidgetMenu>
             <div className={classes.dashedBorder}>
               <Typography variant="h1" color="primary" className={classes.text}>
@@ -48,8 +48,8 @@ export default function TypographyPage() {
               <Typography
                 variant="h3"
                 color="secondary"
-                className={classes.text}
-              >
+                className={classes.text}>
+                
                 h3. Heading
               </Typography>
               <Typography variant="h4" color="warning" className={classes.text}>
@@ -59,8 +59,8 @@ export default function TypographyPage() {
                 variant="h5"
                 color="primary"
                 colorBrightness="light"
-                className={classes.text}
-              >
+                className={classes.text}>
+                
                 h5. Heading
               </Typography>
               <Typography variant="h6" color="info">
@@ -69,7 +69,7 @@ export default function TypographyPage() {
             </div>
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Basic Text Settings" disableWidgetMenu>
             <div className={classes.dashedBorder}>
               <Typography className={classes.text}>Basic text</Typography>
@@ -97,7 +97,7 @@ export default function TypographyPage() {
             </div>
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Text Size" disableWidgetMenu>
             <div className={classes.dashedBorder}>
               <Typography className={classes.text} size="sm">
@@ -119,8 +119,8 @@ export default function TypographyPage() {
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 }
 
 export { useStyles };

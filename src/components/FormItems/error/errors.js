@@ -1,6 +1,5 @@
-import { push } from 'connected-react-router';
-import { store } from '../../../index';
 import { showSnackbar } from '../../Snackbar';
+import history from '../../../history';
 
 const DEFAULT_ERROR_MESSAGE = 'Error';
 
@@ -34,7 +33,7 @@ export default class Errors {
     }
 
     if (selectErrorCode(error) === 403) {
-      store.dispatch(push('/403'));
+      history.push('/403');
       return;
     }
 
@@ -43,7 +42,7 @@ export default class Errors {
       return;
     }
 
-    store.dispatch(push('/500'));
+    history.push('/500');
   }
 
   static errorCode(error) {

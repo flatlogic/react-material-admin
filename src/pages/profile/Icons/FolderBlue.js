@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import FolderBlueLight from '../../../images/profile/FolderBlueLight.svg';
 
 const styles = () => ({

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import Typography from '@mui/material/Typography';
 import { MenuItem, IconButton, Menu } from '@mui/material';
 import { MoreVert as MoreIcon } from '@mui/icons-material';

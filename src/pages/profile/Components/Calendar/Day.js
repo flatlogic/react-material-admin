@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import Popover from '@mui/material/Popover';
 
 const styles = (theme) => ({
@@ -114,7 +114,7 @@ const styles = (theme) => ({
       },
 
       customShadow: {
-        '& > div:nth-child(3)': {
+        '& > div:nth-of-type(3)': {
           boxShadow: '0 0 40px -5px #8598AE!important',
         }
       }

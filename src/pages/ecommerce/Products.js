@@ -11,19 +11,19 @@ import {
   CardActionArea,
   CardActions,
   CardContent,
-  CardMedia
-} from "@mui/material";
+  CardMedia } from
+"@mui/material";
 import Icon from "@mdi/react";
 import {
   Star as StarIcon,
   StarBorder as StarOutlinedIcon,
-  ShoppingCart as ShoppingCartIcon
-} from "@mui/icons-material";
+  ShoppingCart as ShoppingCartIcon } from
+"@mui/icons-material";
 import {
   mdiFacebook as FacebookIcon,
   mdiInstagram as InstagramIcon,
-  mdiTwitter as TwitterIcon
-} from "@mdi/js";
+  mdiTwitter as TwitterIcon } from
+"@mdi/js";
 import useStyles from "./styles";
 import { yellow } from "@mui/material/colors";
 
@@ -45,141 +45,141 @@ import payment3 from "../../images/product/visa.svg";
 import payment4 from "../../images/product/aexpress.svg";
 
 export const rows = [
-  {
-    id: 1,
-    img: img1,
-    title: "Trainers",
-    subtitle: "Trainers In White",
-    price: 76,
-    rating: 4.6,
-    color: "primary",
-    status: "Shipped",
-    process: "64%"
-  },
-  {
-    id: 2,
-    img: img2,
-    title: "Boots",
-    subtitle: "Trainers In Blue",
-    price: 37,
-    rating: 4.6,
-    color: "success",
-    status: "Delivered",
-    process: "100%"
-  },
-  {
-    id: 3,
-    img: img3,
-    title: "Flat sandals",
-    subtitle: "Trainers In White",
-    price: 70,
-    rating: 4.6,
-    color: "secondary",
-    status: "Canceled",
-    process: "0%"
-  },
-  {
-    id: 4,
-    img: img4,
-    title: "Trainers",
-    subtitle: "Trainers In Blue",
-    price: 85,
-    rating: 4.6,
-    color: "primary",
-    status: "Shipped",
-    process: "64%"
-  },
-  {
-    id: 5,
-    img: img5,
-    title: "Flat sandals",
-    subtitle: "Trainers In White",
-    price: 12,
-    rating: 4.6,
-    color: "success",
-    status: "Delivered",
-    process: "100%"
-  },
-  {
-    id: 6,
-    img: img6,
-    title: "Trainers",
-    subtitle: "Trainers In Blue",
-    price: 76,
-    rating: 4.6,
-    color: "secondary",
-    status: "Canceled",
-    process: "0%"
-  },
-  {
-    id: 7,
-    img: img1,
-    title: "Boots",
-    subtitle: "Trainers In White",
-    price: 76,
-    rating: 4.6,
-    color: "primary",
-    status: "Shipped",
-    process: "64%"
-  },
-  {
-    id: 8,
-    img: img2,
-    title: "Flat sandals",
-    subtitle: "Trainers In White",
-    price: 76,
-    rating: 4.6,
-    color: "success",
-    status: "Delivered",
-    process: "100%"
-  },
-  {
-    id: 9,
-    img: img3,
-    title: "Trainers",
-    subtitle: "Trainers In White",
-    price: 76,
-    rating: 4.6,
-    color: "secondary",
-    status: "Canceled",
-    process: "0%"
-  },
-  {
-    id: 10,
-    img: img4,
-    title: "Boots",
-    subtitle: "Trainers In Blue",
-    price: 76,
-    rating: 4.6,
-    color: "primary",
-    status: "Shipped",
-    process: "64%"
-  },
-  {
-    id: 11,
-    img: img5,
-    title: "Trainers",
-    subtitle: "Trainers In White",
-    price: 71,
-    rating: 4.6,
-    color: "success",
-    status: "Delivered",
-    process: "100%"
-  },
-  {
-    id: 12,
-    img: img6,
-    title: "Flat sandals",
-    subtitle: "Trainers In Blue",
-    price: 76,
-    rating: 4.6,
-    color: "secondary",
-    status: "Canceled",
-    process: "0%"
-  }
-];
+{
+  id: 1,
+  img: img1,
+  title: "Trainers",
+  subtitle: "Trainers In White",
+  price: 76,
+  rating: 4.6,
+  color: "primary",
+  status: "Shipped",
+  process: "64%"
+},
+{
+  id: 2,
+  img: img2,
+  title: "Boots",
+  subtitle: "Trainers In Blue",
+  price: 37,
+  rating: 4.6,
+  color: "success",
+  status: "Delivered",
+  process: "100%"
+},
+{
+  id: 3,
+  img: img3,
+  title: "Flat sandals",
+  subtitle: "Trainers In White",
+  price: 70,
+  rating: 4.6,
+  color: "secondary",
+  status: "Canceled",
+  process: "0%"
+},
+{
+  id: 4,
+  img: img4,
+  title: "Trainers",
+  subtitle: "Trainers In Blue",
+  price: 85,
+  rating: 4.6,
+  color: "primary",
+  status: "Shipped",
+  process: "64%"
+},
+{
+  id: 5,
+  img: img5,
+  title: "Flat sandals",
+  subtitle: "Trainers In White",
+  price: 12,
+  rating: 4.6,
+  color: "success",
+  status: "Delivered",
+  process: "100%"
+},
+{
+  id: 6,
+  img: img6,
+  title: "Trainers",
+  subtitle: "Trainers In Blue",
+  price: 76,
+  rating: 4.6,
+  color: "secondary",
+  status: "Canceled",
+  process: "0%"
+},
+{
+  id: 7,
+  img: img1,
+  title: "Boots",
+  subtitle: "Trainers In White",
+  price: 76,
+  rating: 4.6,
+  color: "primary",
+  status: "Shipped",
+  process: "64%"
+},
+{
+  id: 8,
+  img: img2,
+  title: "Flat sandals",
+  subtitle: "Trainers In White",
+  price: 76,
+  rating: 4.6,
+  color: "success",
+  status: "Delivered",
+  process: "100%"
+},
+{
+  id: 9,
+  img: img3,
+  title: "Trainers",
+  subtitle: "Trainers In White",
+  price: 76,
+  rating: 4.6,
+  color: "secondary",
+  status: "Canceled",
+  process: "0%"
+},
+{
+  id: 10,
+  img: img4,
+  title: "Boots",
+  subtitle: "Trainers In Blue",
+  price: 76,
+  rating: 4.6,
+  color: "primary",
+  status: "Shipped",
+  process: "64%"
+},
+{
+  id: 11,
+  img: img5,
+  title: "Trainers",
+  subtitle: "Trainers In White",
+  price: 71,
+  rating: 4.6,
+  color: "success",
+  status: "Delivered",
+  process: "100%"
+},
+{
+  id: 12,
+  img: img6,
+  title: "Flat sandals",
+  subtitle: "Trainers In Blue",
+  price: 76,
+  rating: 4.6,
+  color: "secondary",
+  status: "Canceled",
+  process: "0%"
+}];
 
-const Product = props => {
+
+const Product = (props) => {
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -187,75 +187,75 @@ const Product = props => {
   }, []);
   const classes = useStyles();
   const [size, setValues] = React.useState("");
-  const handleChange = event => {
+  const handleChange = (event) => {
     setValues(event.target.value);
   };
   const [addSize, setAddSize] = React.useState(1);
-  const handleChangeAddSize = event => {
+  const handleChangeAddSize = (event) => {
     setAddSize(event.target.value);
   };
 
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Widget disableWidgetMenu noBodyPadding>
             <Grid container>
-              <Grid item md={6} xs={12}>
-                {!props.match.params.id ? (
-                  <img
-                    src={rows[0].img}
-                    alt={rows[0].title}
-                    style={{ width: "100%", minHeight: 400 }}
-                  />
-                ) : (
-                  <img
-                    src={rows[props.match.params.id - 1].img}
-                    alt={rows[props.match.params.id - 1].title}
-                    style={{ width: "100%", minHeight: 400 }}
-                  />
-                )}
+              <Grid size={{ xs: 12, md: 6 }}>
+                {!props.match.params.id ?
+                <img
+                  src={rows[0].img}
+                  alt={rows[0].title}
+                  style={{ width: "100%", minHeight: 400 }} /> :
+
+
+                <img
+                  src={rows[props.match.params.id - 1].img}
+                  alt={rows[props.match.params.id - 1].title}
+                  style={{ width: "100%", minHeight: 400 }} />
+
+                }
               </Grid>
-              <Grid item md={6} xs={12}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Box
                   m={3}
                   display="flex"
                   flexDirection="column"
                   justifyContent="space-between"
-                  style={{ height: "calc(100% - 48px)" }}
-                >
+                  style={{ height: "calc(100% - 48px)" }}>
+                  
                   <Box>
-                    {!props.match.params.id ? (
-                      <div style={{ fontSize: "1.5rem", color: yellow[700] }}>
+                    {!props.match.params.id ?
+                    <div style={{ fontSize: "1.5rem", color: yellow[700] }}>
                         {rows[0].rating}
                         <StarIcon
-                          style={{ color: yellow[700], marginTop: -5 }}
-                        />
-                      </div>
-                    ) : (
-                      <>
+                        style={{ color: yellow[700], marginTop: -5 }} />
+                      
+                      </div> :
+
+                    <>
                         <Typography
-                          style={{ color: yellow[700] }}
-                          display={"inline"}
-                        >
+                        style={{ color: yellow[700] }}
+                        display={"inline"}>
+                        
                           {rows[props.match.params.id - 1].rating}
                         </Typography>
                         <StarIcon
-                          style={{ color: yellow[700], marginTop: -5 }}
-                        />
+                        style={{ color: yellow[700], marginTop: -5 }} />
+                      
                       </>
-                    )}{" "}
+                    }{" "}
                   </Box>
                   <Box>
-                    {!props.match.params.id ? (
-                      <>
+                    {!props.match.params.id ?
+                    <>
                         <Typography variant="h3" uppercase>
                           {rows[0].title}
                         </Typography>
                         <Typography>{rows[0].subtitle}</Typography>
-                      </>
-                    ) : (
-                      <>
+                      </> :
+
+                    <>
                         <Typography variant="h3" uppercase>
                           {rows[props.match.params.id - 1].title}
                         </Typography>
@@ -263,22 +263,22 @@ const Product = props => {
                           {rows[props.match.params.id].subtitle}
                         </Typography>
                       </>
-                    )}{" "}
+                    }{" "}
                   </Box>
                   <Box>
-                    {!props.match.params.id ? (
-                      <>
+                    {!props.match.params.id ?
+                    <>
                         <Typography weight="medium" variant={"h5"}>
                           ${rows[0].price}
                         </Typography>
-                      </>
-                    ) : (
-                      <>
+                      </> :
+
+                    <>
                         <Typography weight="medium">
                           ${rows[props.match.params.id].price}
                         </Typography>
                       </>
-                    )}{" "}
+                    }{" "}
                   </Box>
                   <Box>
                     <Link>Size Guide</Link>
@@ -287,8 +287,8 @@ const Product = props => {
                     <FormControl
                       variant="outlined"
                       className={classes.form}
-                      style={{ marginRight: 15 }}
-                    >
+                      style={{ marginRight: 15 }}>
+                      
                       <InputLabel htmlFor="size-simple" ref={inputLabel}>
                         Select size
                       </InputLabel>
@@ -300,8 +300,8 @@ const Product = props => {
                           name: "size",
                           id: "size-simple"
                         }}
-                        className={classes.denseSelect}
-                      >
+                        className={classes.denseSelect}>
+                        
                         <MenuItem value={1}>1</MenuItem>
                         <MenuItem value={2}>2</MenuItem>
                         <MenuItem value={3}>3</MenuItem>
@@ -314,8 +314,8 @@ const Product = props => {
                         value={addSize}
                         onChange={handleChangeAddSize}
                         className={classes.selectEmpty}
-                        margin={"dense"}
-                      >
+                        margin={"dense"}>
+                        
                         <MenuItem value={1}>1</MenuItem>
                         <MenuItem value={2}>2</MenuItem>
                         <MenuItem value={3}>3</MenuItem>
@@ -330,37 +330,37 @@ const Product = props => {
                     <Button
                       color="primary"
                       variant="contained"
-                      style={{ flexGrow: 3 }}
-                    >
+                      style={{ flexGrow: 3 }}>
+                      
                       add to bag
                       <ShoppingCartIcon style={{ marginLeft: 8 }} />
                     </Button>
                     <StarOutlinedIcon
                       style={{ marginLeft: 16 }}
-                      className={classes.form}
-                    />
+                      className={classes.form} />
+                    
                   </Box>
                   <Box display="flex" alignItems="center">
                     <img
                       src={payment1}
                       alt={"mastercard"}
-                      style={{ width: 40, marginRight: 8 }}
-                    />
+                      style={{ width: 40, marginRight: 8 }} />
+                    
                     <img
                       src={payment2}
                       alt={"paypal"}
-                      style={{ width: 40, marginRight: 8 }}
-                    />
+                      style={{ width: 40, marginRight: 8 }} />
+                    
                     <img
                       src={payment3}
                       alt={"visa"}
-                      style={{ width: 40, marginRight: 8 }}
-                    />
+                      style={{ width: 40, marginRight: 8 }} />
+                    
                     <img
                       src={payment4}
                       alt={"americanexpress"}
-                      style={{ width: 40 }}
-                    />
+                      style={{ width: 40 }} />
+                    
                   </Box>
                   <Typography color="text" colorBrightness={"secondary"}>
                     FREE Delivery & Returns
@@ -370,12 +370,12 @@ const Product = props => {
             </Grid>
           </Widget>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Widget disableWidgetMenu title="Product Info">
             <Grid container>
-              <Grid item xs={12}>
-                <Grid container item spacing={3}>
-                  <Grid item container direction={"column"} md={4} xs={12}>
+              <Grid size={12}>
+                <Grid container spacing={3}>
+                  <Grid container direction={"column"} size={{ xs: 12, md: 4 }}>
                     <Typography variant="h5" style={{ marginBottom: 16 }}>
                       PRODUCT DESCRIPTION
                     </Typography>
@@ -395,13 +395,13 @@ const Product = props => {
                     </ul>
                   </Grid>
                   <Grid
-                    item
+
                     container
                     direction={"column"}
-                    justify={"space-between"}
-                    md={4}
-                    xs={12}
-                  >
+                    justify={"space-between"} size={{ xs:
+
+                      12, md: 4 }}>
+                    
                     <Box>
                       <Typography variant="h5" style={{ marginBottom: 16 }}>
                         PRODUCT CODE
@@ -419,7 +419,7 @@ const Product = props => {
                       </ul>
                     </Box>
                   </Grid>
-                  <Grid item container direction={"column"} md={4} xs={12}>
+                  <Grid container direction={"column"} size={{ xs: 12, md: 4 }}>
                     <Box>
                       <Typography variant="h5" style={{ marginBottom: 16 }}>
                         SHARE
@@ -435,15 +435,15 @@ const Product = props => {
                           <Icon
                             path={FacebookIcon}
                             size={1}
-                            color="#6E6E6E99"
-                          />
+                            color="#6E6E6E99" />
+                          
                         </IconButton>
                         <IconButton aria-label="instagram">
                           <Icon
                             path={InstagramIcon}
                             size={1}
-                            color="#6E6E6E99"
-                          />
+                            color="#6E6E6E99" />
+                          
                         </IconButton>
                         <IconButton aria-label="twitter">
                           <Icon path={TwitterIcon} size={1} color="#6E6E6E99" />
@@ -454,26 +454,26 @@ const Product = props => {
                       <Typography variant="h5" style={{ marginBottom: 16 }}>
                         RATING & REVIEWS
                       </Typography>
-                      {!props.match.params.id ? (
-                        <div style={{ fontSize: "1.5rem", color: yellow[700] }}>
+                      {!props.match.params.id ?
+                      <div style={{ fontSize: "1.5rem", color: yellow[700] }}>
                           {rows[0].rating}
                           <StarIcon
-                            style={{ color: yellow[700], marginTop: -5 }}
-                          />
-                        </div>
-                      ) : (
-                        <>
+                          style={{ color: yellow[700], marginTop: -5 }} />
+                        
+                        </div> :
+
+                      <>
                           <Typography
-                            style={{ color: yellow[700] }}
-                            display={"inline"}
-                          >
+                          style={{ color: yellow[700] }}
+                          display={"inline"}>
+                          
                             {rows[props.match.params.id - 1].rating}
                           </Typography>
                           <StarIcon
-                            style={{ color: yellow[700], marginTop: -5 }}
-                          />
+                          style={{ color: yellow[700], marginTop: -5 }} />
+                        
                         </>
-                      )}
+                      }
                       <p>32 Reviews</p>
                       <Link to="#" color="primary">
                         Read all
@@ -487,7 +487,7 @@ const Product = props => {
         </Grid>
       </Grid>
       <PageTitle title="You may also like" />
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Box display="flex" flexWrap="wrap">
           <Box flexGrow={1} mr={3} mb={3}>
             <Card className={classes.card}>
@@ -495,8 +495,8 @@ const Product = props => {
                 <CardMedia
                   className={classes.media}
                   image={img1}
-                  title={rows[0].title}
-                />
+                  title={rows[0].title} />
+                
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {rows[0].title}
@@ -507,8 +507,8 @@ const Product = props => {
                 </CardContent>
               </CardActionArea>
               <CardActions
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
+                style={{ display: "flex", justifyContent: "space-between" }}>
+                
                 <Typography variant="body2" component="p">
                   ${rows[0].price}
                 </Typography>
@@ -525,8 +525,8 @@ const Product = props => {
                 <CardMedia
                   className={classes.media}
                   image={img2}
-                  title={rows[1].img}
-                />
+                  title={rows[1].img} />
+                
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {rows[1].title}
@@ -537,8 +537,8 @@ const Product = props => {
                 </CardContent>
               </CardActionArea>
               <CardActions
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
+                style={{ display: "flex", justifyContent: "space-between" }}>
+                
                 <Typography variant="body2" component="p">
                   ${rows[1].price}
                 </Typography>
@@ -555,8 +555,8 @@ const Product = props => {
                 <CardMedia
                   className={classes.media}
                   image={img3}
-                  title={rows[2].img}
-                />
+                  title={rows[2].img} />
+                
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {rows[2].title}
@@ -567,8 +567,8 @@ const Product = props => {
                 </CardContent>
               </CardActionArea>
               <CardActions
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
+                style={{ display: "flex", justifyContent: "space-between" }}>
+                
                 <Typography variant="body2" component="p">
                   ${rows[2].price}
                 </Typography>
@@ -585,8 +585,8 @@ const Product = props => {
                 <CardMedia
                   className={classes.media}
                   image={img4}
-                  title={rows[3].img}
-                />
+                  title={rows[3].img} />
+                
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {rows[3].title}
@@ -597,8 +597,8 @@ const Product = props => {
                 </CardContent>
               </CardActionArea>
               <CardActions
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
+                style={{ display: "flex", justifyContent: "space-between" }}>
+                
                 <Typography variant="body2" component="p">
                   ${rows[3].price}
                 </Typography>
@@ -611,8 +611,8 @@ const Product = props => {
           </Box>
         </Box>
       </Grid>
-    </>
-  );
+    </>);
+
 };
 
 export default Product;

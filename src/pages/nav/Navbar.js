@@ -7,8 +7,8 @@ import {
   MenuItem,
   Toolbar,
   Button,
-  IconButton
-} from "@mui/material";
+  IconButton } from
+"@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Search as SearchIcon } from "@mui/icons-material";
@@ -38,7 +38,7 @@ export default function NavComp() {
   return (
     <div>
       <Grid container spacing={6}>
-        <Grid item md={6}>
+        <Grid size={{ md: 6 }}>
           <Widget title="Navbar Example" disableWidgetMenu>
             <Typography>
               App bar displays yours app links by importing and inserting AppBar
@@ -53,8 +53,8 @@ export default function NavComp() {
                       edge="start"
                       className={classes.menuButton}
                       color="inherit"
-                      aria-label="menu"
-                    >
+                      aria-label="menu">
+                      
                       <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
@@ -76,8 +76,8 @@ export default function NavComp() {
                     edge="start"
                     className={classes.menuButton}
                     color="inherit"
-                    aria-label="menu"
-                  >
+                    aria-label="menu">
+                    
                     <MenuIcon />
                   </IconButton>
                   <Typography variant="h6" className={classes.title}>
@@ -88,8 +88,8 @@ export default function NavComp() {
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
                     onClick={handleMenu}
-                    color="inherit"
-                  >
+                    color="inherit">
+                    
                     <AccountCircle />
                   </IconButton>
                   <Menu
@@ -105,8 +105,8 @@ export default function NavComp() {
                       horizontal: "right"
                     }}
                     open={open}
-                    onClose={handleClose}
-                  >
+                    onClose={handleClose}>
+                    
                     <MenuItem onClick={handleClose}>Profile</MenuItem>
                     <MenuItem onClick={handleClose}>My account</MenuItem>
                   </Menu>
@@ -115,7 +115,7 @@ export default function NavComp() {
             </Box>
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Navbar Search" disableWidgetMenu inheritHeight>
             <Typography>
               Search icon makes UX more flexible. To start using search icon,
@@ -129,8 +129,8 @@ export default function NavComp() {
                       edge="start"
                       className={classes.menuButton}
                       color="inherit"
-                      aria-label="menu"
-                    >
+                      aria-label="menu">
+                      
                       <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
@@ -140,14 +140,14 @@ export default function NavComp() {
                     <div
                       className={classNames(classes.search, {
                         [classes.searchFocused]: isSearchOpen
-                      })}
-                    >
+                      })}>
+                      
                       <div
                         className={classNames(classes.searchIcon, {
                           [classes.searchIconOpened]: isSearchOpen
                         })}
-                        onClick={() => setSearchOpen(!isSearchOpen)}
-                      >
+                        onClick={() => setSearchOpen(!isSearchOpen)}>
+                        
                         <SearchIcon classes={{ root: classes.headerIcon }} />
                       </div>
                       <InputBase
@@ -155,8 +155,8 @@ export default function NavComp() {
                         classes={{
                           root: classes.inputRoot,
                           input: classes.inputInput
-                        }}
-                      />
+                        }} />
+                      
                     </div>
                   </Toolbar>
                 </AppBar>
@@ -165,6 +165,6 @@ export default function NavComp() {
           </Widget>
         </Grid>
       </Grid>
-    </div>
-  );
+    </div>);
+
 }

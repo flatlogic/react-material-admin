@@ -6,7 +6,7 @@ import {
     Tooltip,
   } from 'recharts';
 import PropTypes from 'prop-types';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import { Menu, IconButton, MenuItem, Typography, Button } from '@mui/material';
 
 import { MoreVert as MoreIcon } from '@mui/icons-material';

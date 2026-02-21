@@ -5,6 +5,7 @@ import {
   Divider,
   List,
   ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
   Popover,
@@ -212,15 +213,14 @@ export default function SidebarLink({
   return (
     <>
       {props.badge ? (
-        <ListItem
-          button
-          component={link && Link}
+        <ListItemButton
+          component={link ? Link : 'div'}
           onClick={toggleCollapse}
           className={classnames(classes.link, {
             [classes.linkActive]: isLinkActive,
             [classes.nestedMenu]: type === 'nested',
           })}
-          to={link}
+          {...(link ? { to: link } : {})}
           disableRipple
         >
           <ListItemIcon
@@ -250,17 +250,16 @@ export default function SidebarLink({
               classes.expandWrapper,
             )}
           />
-        </ListItem>
+        </ListItemButton>
       ) : (
-        <ListItem
-          button
-          component={link && Link}
+        <ListItemButton
+          component={link ? Link : 'div'}
           onClick={toggleCollapse}
           className={classnames(classes.link, {
             [classes.linkActive]: isLinkActive,
             [classes.nestedMenu]: type === 'nested',
           })}
-          to={link}
+          {...(link ? { to: link } : {})}
           disableRipple
         >
           <ListItemIcon
@@ -288,7 +287,7 @@ export default function SidebarLink({
               classes.expandWrapper,
             )}
           />
-        </ListItem>
+        </ListItemButton>
       )}
       {children && (
         <Collapse

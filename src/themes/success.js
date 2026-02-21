@@ -12,7 +12,7 @@ const warning = '#FFC260';
 const success = '#3CD4A0';
 const info = '#9013FE';
 
-export default {
+const successTheme = {
   palette: {
     primary: {
       main: primary,
@@ -40,11 +40,6 @@ export default {
       light: tinycolor(info).lighten(lightenRate).toHexString(),
       dark: tinycolor(info).darken(darkenRate).toHexString(),
     },
-    inherit: {
-      main: 'inherit',
-      light: tinycolor('inherit').lighten('inherit').toHexString(),
-      dark: tinycolor('inherit').darken('inherit').toHexString(),
-    },
     text: {
       primary: '#4A4A4A',
       secondary: '#6E6E6E',
@@ -64,3 +59,5 @@ export default {
       '0px 12px 33px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
   },
 };
+
+export default successTheme;

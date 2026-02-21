@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export default {
+const draggableGridMock = {
   mainData: {
     default: [
         {
@@ -147,4 +147,6 @@ export default {
       }
     ]
   }
-}
+};
+
+export default draggableGridMock;

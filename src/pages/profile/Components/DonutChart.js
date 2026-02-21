@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '../../../components/Wrappers';
 import { Grid, Typography } from "@mui/material";
 import Dot from '../../../components/Dot/Dot';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import {
     ResponsiveContainer,
     PieChart,
@@ -49,9 +49,7 @@ const DonutChart = ({ classes }) => {
   return (
     <Grid container spacing={0}>
       <Grid
-        item
-        lg={12}
-        md={12} xs={12}
+        size={{ xs: 12, md: 12, lg: 12 }}
         style={{
           display: "flex",
           justifyContent: "center",
@@ -85,7 +83,7 @@ const DonutChart = ({ classes }) => {
           </PieChart>
         </ResponsiveContainer>
       </Grid>
-      <Grid item lg={12} md={12} xs={12} className={classes.legendItemsContainer}>
+      <Grid size={{ xs: 12, md: 12, lg: 12 }} className={classes.legendItemsContainer}>
           {PieChartData.map(({ name, value, color }, index) => (
             <div key={color} className={classes.legendItemContainer}>
               <Dot color={color} style={{ marginLeft: 5 }} />

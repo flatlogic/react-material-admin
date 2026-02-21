@@ -4,8 +4,8 @@ import {
   Box,
   ClickAwayListener,
   Popover,
-  Button as ButtonNative
-} from "@mui/material";
+  Button as ButtonNative } from
+"@mui/material";
 import cn from "classnames";
 
 // components
@@ -149,13 +149,13 @@ export default function TooltipsComp() {
   return (
     <div>
       <Grid container spacing={3}>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Tooltip Example" disableWidgetMenu inheritHeight>
             <Grid container alignItems={"center"}>
               <Box mt={2} display={"flex"}>
                 <ClickAwayListener
-                  onClickAway={() => dispatch({ type: "CLOSE_TOOLTIP" })}
-                >
+                  onClickAway={() => dispatch({ type: "CLOSE_TOOLTIP" })}>
+                  
                   <div>
                     <Tooltip
                       placement="top"
@@ -168,14 +168,14 @@ export default function TooltipsComp() {
                       disableFocusListener
                       disableHoverListener
                       disableTouchListener
-                      title="Add"
-                    >
+                      title="Add">
+                      
                       <ButtonNative
                         variant={"contained"}
                         color={"primary"}
                         onClick={() => dispatch({ type: "OPEN_TOOLTIP" })}
-                        className={cn(classes.button, classes.buttonWhite)}
-                      >
+                        className={cn(classes.button, classes.buttonWhite)}>
+                        
                         Click to toggle a tooltip
                       </ButtonNative>
                     </Tooltip>
@@ -186,13 +186,13 @@ export default function TooltipsComp() {
                   color={"secondary"}
                   disableFocusListener
                   disableTouchListener
-                  title="Add"
-                >
+                  title="Add">
+                  
                   <ButtonNative
                     variant={"contained"}
                     color={"secondary"}
-                    className={cn(classes.button, classes.buttonWhite)}
-                  >
+                    className={cn(classes.button, classes.buttonWhite)}>
+                    
                     Hover to toggle a tooltip
                   </ButtonNative>
                 </Tooltip>
@@ -201,25 +201,25 @@ export default function TooltipsComp() {
           </Widget>
         </Grid>
 
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Popover Example" disableWidgetMenu>
             <Box mt={2} width="100%">
               {" "}
               <Grid container alignItems={"center"}>
-                <Grid item>
+                <Grid>
                   <ButtonNative
                     variant={"contained"}
                     className={classes.button}
                     aria-describedby={
-                      state.togglePopover ? "simple-popover" : undefined
+                    state.togglePopover ? "simple-popover" : undefined
                     }
-                    onClick={e =>
-                      dispatch({
-                        type: "OPEN_POPOVER",
-                        setSibling: e.currentTarget
-                      })
-                    }
-                  >
+                    onClick={(e) =>
+                    dispatch({
+                      type: "OPEN_POPOVER",
+                      setSibling: e.currentTarget
+                    })
+                    }>
+                    
                     Open Popover
                   </ButtonNative>
                   <Popover
@@ -234,31 +234,31 @@ export default function TooltipsComp() {
                     transformOrigin={{
                       vertical: "top",
                       horizontal: "center"
-                    }}
-                  >
+                    }}>
+                    
                     <Typography className={classes.typography}>
                       The content of the Popover.
                     </Typography>
                   </Popover>
                 </Grid>
-                <Grid item>
+                <Grid>
                   <Typography
                     aria-owns={
-                      state.toggleHoverPopover
-                        ? "mouse-over-popover"
-                        : undefined
+                    state.toggleHoverPopover ?
+                    "mouse-over-popover" :
+                    undefined
                     }
                     aria-haspopup="true"
-                    onMouseEnter={e =>
-                      dispatch({
-                        type: "OPEN_HOVER_POPOVER",
-                        setHoverPopoverSibling: e.currentTarget
-                      })
+                    onMouseEnter={(e) =>
+                    dispatch({
+                      type: "OPEN_HOVER_POPOVER",
+                      setHoverPopoverSibling: e.currentTarget
+                    })
                     }
                     onMouseLeave={() =>
-                      dispatch({ type: "CLOSE_HOVER_POPOVER" })
-                    }
-                  >
+                    dispatch({ type: "CLOSE_HOVER_POPOVER" })
+                    }>
+                    
                     Hover with a Popover.
                   </Typography>
                   <Popover
@@ -274,8 +274,8 @@ export default function TooltipsComp() {
                       horizontal: "left"
                     }}
                     onClose={() => dispatch({ type: "CLOSE_HOVER_POPOVER" })}
-                    disableRestoreFocus
-                  >
+                    disableRestoreFocus>
+                    
                     <Typography className={classes.typography}>
                       I use Popover.
                     </Typography>
@@ -285,12 +285,12 @@ export default function TooltipsComp() {
             </Box>
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Tooltip Directions" disableWidgetMenu>
             <Box mt={2} display={"flex"}>
               <ClickAwayListener
-                onClickAway={() => dispatch({ type: "CLOSE_TOP_TOOLTIP" })}
-              >
+                onClickAway={() => dispatch({ type: "CLOSE_TOP_TOOLTIP" })}>
+                
                 <div>
                   <Tooltip
                     placement="top"
@@ -303,22 +303,22 @@ export default function TooltipsComp() {
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
-                    title="Add"
-                  >
+                    title="Add">
+                    
                     <ButtonNative
                       variant={"contained"}
                       color={"primary"}
                       onClick={() => dispatch({ type: "OPEN_TOP_TOOLTIP" })}
-                      className={cn(classes.button, classes.buttonWhite)}
-                    >
+                      className={cn(classes.button, classes.buttonWhite)}>
+                      
                       Tooltip on top
                     </ButtonNative>
                   </Tooltip>
                 </div>
               </ClickAwayListener>
               <ClickAwayListener
-                onClickAway={() => dispatch({ type: "CLOSE_RIGHT_TOOLTIP" })}
-              >
+                onClickAway={() => dispatch({ type: "CLOSE_RIGHT_TOOLTIP" })}>
+                
                 <div>
                   <Tooltip
                     placement="right"
@@ -331,22 +331,22 @@ export default function TooltipsComp() {
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
-                    title="Add"
-                  >
+                    title="Add">
+                    
                     <ButtonNative
                       variant={"contained"}
                       color={"primary"}
                       onClick={() => dispatch({ type: "OPEN_RIGHT_TOOLTIP" })}
-                      className={cn(classes.button, classes.buttonWhite)}
-                    >
+                      className={cn(classes.button, classes.buttonWhite)}>
+                      
                       Tooltip on right
                     </ButtonNative>
                   </Tooltip>
                 </div>
               </ClickAwayListener>
               <ClickAwayListener
-                onClickAway={() => dispatch({ type: "CLOSE_BOTTOM_TOOLTIP" })}
-              >
+                onClickAway={() => dispatch({ type: "CLOSE_BOTTOM_TOOLTIP" })}>
+                
                 <div>
                   <Tooltip
                     placement="bottom"
@@ -359,22 +359,22 @@ export default function TooltipsComp() {
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
-                    title="Add"
-                  >
+                    title="Add">
+                    
                     <ButtonNative
                       variant={"contained"}
                       color={"primary"}
                       onClick={() => dispatch({ type: "OPEN_BOTTOM_TOOLTIP" })}
-                      className={cn(classes.button, classes.buttonWhite)}
-                    >
+                      className={cn(classes.button, classes.buttonWhite)}>
+                      
                       Tooltip on bottom
                     </ButtonNative>
                   </Tooltip>
                 </div>
               </ClickAwayListener>
               <ClickAwayListener
-                onClickAway={() => dispatch({ type: "CLOSE_LEFT_TOOLTIP" })}
-              >
+                onClickAway={() => dispatch({ type: "CLOSE_LEFT_TOOLTIP" })}>
+                
                 <div>
                   <Tooltip
                     placement="left"
@@ -387,14 +387,14 @@ export default function TooltipsComp() {
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
-                    title="Add"
-                  >
+                    title="Add">
+                    
                     <ButtonNative
                       variant={"contained"}
                       color={"primary"}
                       onClick={() => dispatch({ type: "OPEN_LEFT_TOOLTIP" })}
-                      className={cn(classes.button, classes.buttonWhite)}
-                    >
+                      className={cn(classes.button, classes.buttonWhite)}>
+                      
                       Tooltip on left
                     </ButtonNative>
                   </Tooltip>
@@ -403,25 +403,25 @@ export default function TooltipsComp() {
             </Box>
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Popover Directions" disableWidgetMenu>
             <Box mt={2} width="100%">
               {" "}
               <Grid container alignItems={"center"}>
-                <Grid item>
+                <Grid>
                   <ButtonNative
                     variant={"contained"}
                     className={classes.button}
                     aria-describedby={
-                      state.toggleTopPopover ? "simple-popover" : undefined
+                    state.toggleTopPopover ? "simple-popover" : undefined
                     }
-                    onClick={e =>
-                      dispatch({
-                        type: "OPEN_TOP_POPOVER",
-                        setTopPopoverSibling: e.currentTarget
-                      })
-                    }
-                  >
+                    onClick={(e) =>
+                    dispatch({
+                      type: "OPEN_TOP_POPOVER",
+                      setTopPopoverSibling: e.currentTarget
+                    })
+                    }>
+                    
                     Popover on top
                   </ButtonNative>
                   <Popover
@@ -436,27 +436,27 @@ export default function TooltipsComp() {
                     transformOrigin={{
                       vertical: "bottom",
                       horizontal: "center"
-                    }}
-                  >
+                    }}>
+                    
                     <Typography className={classes.typography}>
                       The content of the Popover.
                     </Typography>
                   </Popover>
                 </Grid>
-                <Grid item>
+                <Grid>
                   <ButtonNative
                     variant={"contained"}
                     className={classes.button}
                     aria-describedby={
-                      state.toggleRightPopover ? "simple-popover" : undefined
+                    state.toggleRightPopover ? "simple-popover" : undefined
                     }
-                    onClick={e =>
-                      dispatch({
-                        type: "OPEN_RIGHT_POPOVER",
-                        setRightPopoverSibling: e.currentTarget
-                      })
-                    }
-                  >
+                    onClick={(e) =>
+                    dispatch({
+                      type: "OPEN_RIGHT_POPOVER",
+                      setRightPopoverSibling: e.currentTarget
+                    })
+                    }>
+                    
                     Popover on right
                   </ButtonNative>
                   <Popover
@@ -471,32 +471,32 @@ export default function TooltipsComp() {
                     transformOrigin={{
                       vertical: "center",
                       horizontal: "left"
-                    }}
-                  >
+                    }}>
+                    
                     <Typography className={classes.typography}>
                       The content of the Popover.
                     </Typography>
                   </Popover>
                 </Grid>
-                <Grid item>
+                <Grid>
                   <ButtonNative
                     variant={"contained"}
                     className={classes.button}
                     aria-describedby={
-                      state.toggleBottomPopover ? "simple-popover" : undefined
+                    state.toggleBottomPopover ? "simple-popover" : undefined
                     }
-                    onClick={e =>
-                      dispatch({
-                        type: "OPEN_BOTTOM_POPOVER",
-                        setBottomPopoverSibling: e.currentTarget
-                      })
-                    }
-                  >
+                    onClick={(e) =>
+                    dispatch({
+                      type: "OPEN_BOTTOM_POPOVER",
+                      setBottomPopoverSibling: e.currentTarget
+                    })
+                    }>
+                    
                     Popover on bottom
                   </ButtonNative>
                   <Popover
                     id={
-                      state.toggleBottomPopover ? "simple-popover" : undefined
+                    state.toggleBottomPopover ? "simple-popover" : undefined
                     }
                     open={state.toggleBottomPopover || false}
                     anchorEl={state.bottomPopoverSibling}
@@ -508,27 +508,27 @@ export default function TooltipsComp() {
                     transformOrigin={{
                       vertical: "top",
                       horizontal: "center"
-                    }}
-                  >
+                    }}>
+                    
                     <Typography className={classes.typography}>
                       The content of the Popover.
                     </Typography>
                   </Popover>
                 </Grid>
-                <Grid item>
+                <Grid>
                   <ButtonNative
                     variant={"contained"}
                     className={classes.button}
                     aria-describedby={
-                      state.toggleLeftPopover ? "simple-popover" : undefined
+                    state.toggleLeftPopover ? "simple-popover" : undefined
                     }
-                    onClick={e =>
-                      dispatch({
-                        type: "OPEN_LEFT_POPOVER",
-                        setLeftPopoverSibling: e.currentTarget
-                      })
-                    }
-                  >
+                    onClick={(e) =>
+                    dispatch({
+                      type: "OPEN_LEFT_POPOVER",
+                      setLeftPopoverSibling: e.currentTarget
+                    })
+                    }>
+                    
                     Popover on left
                   </ButtonNative>
                   <Popover
@@ -543,8 +543,8 @@ export default function TooltipsComp() {
                     transformOrigin={{
                       vertical: "center",
                       horizontal: "right"
-                    }}
-                  >
+                    }}>
+                    
                     <Typography className={classes.typography}>
                       The content of the Popover.
                     </Typography>
@@ -555,6 +555,6 @@ export default function TooltipsComp() {
           </Widget>
         </Grid>
       </Grid>
-    </div>
-  );
+    </div>);
+
 }

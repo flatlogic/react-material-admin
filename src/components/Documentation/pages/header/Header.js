@@ -36,14 +36,15 @@ const WidgetPage = () => {
     <Widget title={'Header'} inheritHeight disableWidgetMenu>
       <Typography variant={'body2'}>Header element on your page.</Typography>
       <Code>{`import { AppBar, Toolbar, IconButton } from '@mui/material'`}</Code>
-      <AppBar position='static'>
+      <AppBar position='static' className={classes.tabsAppBar}>
         <Tabs
+          className={classes.tabs}
           value={value}
           onChange={handleChange}
           aria-label='typography size'
         >
-          <Tab label='Example' />
-          <Tab label='Code' />
+          <Tab className={classes.tab} label='Example' />
+          <Tab className={classes.tab} label='Code' />
         </Tabs>
       </AppBar>
       <TabPanel index={0} value={value}>
@@ -83,11 +84,11 @@ const WidgetPage = () => {
       </TabPanel>
       <Box mt={1}>
         <Link
-          href={'https://material-ui.com/api/app-bar/'}
+          href={'https://mui.com/material-ui/api/app-bar/'}
           color={'primary'}
           className={classes.link}
           variant={'h6'}
-          target={''}
+          target={'_blank'}
         >
           Other props <ArrowRight />
         </Link>

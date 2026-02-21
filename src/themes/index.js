@@ -198,9 +198,11 @@ const darkModeOverrides = {
   },
 };
 
-export default {
+const themes = {
   default: createTheme({ ...defaultTheme, ...overrides }),
   secondary: createTheme({ ...secondaryTheme, ...overrides }),
   success: createTheme({ ...successTheme, ...overrides }),
   dark: createTheme({ ...darkTheme, ...overrides, ...darkModeOverrides }),
 };
+
+export default themes;

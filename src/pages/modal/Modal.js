@@ -7,8 +7,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField
-} from "@mui/material";
+  TextField } from
+"@mui/material";
 import cn from "classnames";
 import useStyles from "./styles";
 
@@ -98,7 +98,7 @@ export default function ModalComp() {
   return (
     <div>
       <Grid container spacing={6} alignItems={"flex-start"}>
-        <Grid container item md={6} xs={12}>
+        <Grid container size={{ xs: 12, md: 6 }}>
           <Box display={"flex"} flexDirection={"column"} width={"100%"}>
             <Box mb={6}>
               <Widget title="Live Demo" disableWidgetMenu>
@@ -111,16 +111,16 @@ export default function ModalComp() {
                     color={"primary"}
                     variant={"contained"}
                     className={classes.marginRight}
-                    onClick={() => dispatch({ type: "OPEN_MODAL" })}
-                  >
+                    onClick={() => dispatch({ type: "OPEN_MODAL" })}>
+                    
                     Demo
                   </Button>
                   <Dialog
                     open={state.toggleModal}
                     onClose={() => dispatch({ type: "CLOSE_MODAL" })}
                     scroll={"body"}
-                    aria-labelledby="scroll-dialog-title"
-                  >
+                    aria-labelledby="scroll-dialog-title">
+                    
                     <DialogTitle id="alert-dialog-title">
                       {"Use Google's location service?"}
                     </DialogTitle>
@@ -134,15 +134,15 @@ export default function ModalComp() {
                     <DialogActions>
                       <Button
                         onClick={() => dispatch({ type: "CLOSE_MODAL" })}
-                        color="primary"
-                      >
+                        color="primary">
+                        
                         Disagree
                       </Button>
                       <Button
                         onClick={() => dispatch({ type: "CLOSE_MODAL" })}
                         color="primary"
-                        autoFocus
-                      >
+                        autoFocus>
+                        
                         Agree
                       </Button>
                     </DialogActions>
@@ -150,42 +150,40 @@ export default function ModalComp() {
                   <Button
                     color={"secondary"}
                     variant={"contained"}
-                    onClick={() => dispatch({ type: "OPEN_BODY" })}
-                  >
+                    onClick={() => dispatch({ type: "OPEN_BODY" })}>
+                    
                     Scrolling long content
                   </Button>
                   <Dialog
                     open={state.toggleBody}
                     onClose={() => dispatch({ type: "CLOSE_BODY" })}
                     scroll={"body"}
-                    aria-labelledby="scroll-dialog-title"
-                  >
+                    aria-labelledby="scroll-dialog-title">
+                    
                     <DialogTitle id="scroll-dialog-title">
                       Subscribe
                     </DialogTitle>
                     <DialogContent>
                       <DialogContentText>
-                        {[...new Array(50)]
-                          .map(
-                            () => `Cras mattis consectetur purus sit amet fermentum.
+                        {[...new Array(50)].map(
+                          () => `Cras mattis consectetur purus sit amet fermentum.
 Cras justo odio, dapibus ac facilisis in, egestas eget quam.
 Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
 Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
-                          )
-                          .join("\n")}
+                        ).join("\n")}
                       </DialogContentText>
                     </DialogContent>
                     <DialogActions>
                       <Button
                         onClick={() => dispatch({ type: "CLOSE_BODY" })}
-                        color="primary"
-                      >
+                        color="primary">
+                        
                         Cancel
                       </Button>
                       <Button
                         onClick={() => dispatch({ type: "CLOSE_BODY" })}
-                        color="primary"
-                      >
+                        color="primary">
+                        
                         Subscribe
                       </Button>
                     </DialogActions>
@@ -204,8 +202,8 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                     color={"primary"}
                     variant={"contained"}
                     className={classes.marginRight}
-                    onClick={() => dispatch({ type: "OPEN_LARGE" })}
-                  >
+                    onClick={() => dispatch({ type: "OPEN_LARGE" })}>
+                    
                     Large Modal
                   </Button>
                   <Dialog
@@ -213,8 +211,8 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                     open={state.toggleLarge}
                     onClose={() => dispatch({ type: "CLOSE_LARGE" })}
                     aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                  >
+                    aria-describedby="alert-dialog-description">
+                    
                     <DialogTitle id="alert-dialog-title">
                       {"Use Google's location service?"}
                     </DialogTitle>
@@ -228,15 +226,15 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                     <DialogActions>
                       <Button
                         onClick={() => dispatch({ type: "CLOSE_LARGE" })}
-                        color="primary"
-                      >
+                        color="primary">
+                        
                         Disagree
                       </Button>
                       <Button
                         onClick={() => dispatch({ type: "CLOSE_LARGE" })}
                         color="primary"
-                        autoFocus
-                      >
+                        autoFocus>
+                        
                         Agree
                       </Button>
                     </DialogActions>
@@ -245,8 +243,8 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                     color={"secondary"}
                     variant={"contained"}
                     className={classes.marginRight}
-                    onClick={() => dispatch({ type: "OPEN_SMALL" })}
-                  >
+                    onClick={() => dispatch({ type: "OPEN_SMALL" })}>
+                    
                     Small modal
                   </Button>
                   <Dialog
@@ -254,8 +252,8 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                     open={state.toggleSmall}
                     onClose={() => dispatch({ type: "CLOSE_SMALL" })}
                     aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                  >
+                    aria-describedby="alert-dialog-description">
+                    
                     <DialogTitle id="alert-dialog-title">
                       {"Use Google's location service?"}
                     </DialogTitle>
@@ -269,15 +267,15 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                     <DialogActions>
                       <Button
                         onClick={() => dispatch({ type: "CLOSE_SMALL" })}
-                        color="primary"
-                      >
+                        color="primary">
+                        
                         Disagree
                       </Button>
                       <Button
                         onClick={() => dispatch({ type: "CLOSE_SMALL" })}
                         color="primary"
-                        autoFocus
-                      >
+                        autoFocus>
+                        
                         Agree
                       </Button>
                     </DialogActions>
@@ -297,15 +295,15 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                   <Button
                     variant="outlined"
                     color="primary"
-                    onClick={() => dispatch({ type: "OPEN_INPUT_MODAL" })}
-                  >
+                    onClick={() => dispatch({ type: "OPEN_INPUT_MODAL" })}>
+                    
                     Open form dialog
                   </Button>
                   <Dialog
                     open={state.toggleInputModal}
                     onClose={() => dispatch({ type: "CLOSE_INPUT_MODAL" })}
-                    aria-labelledby="form-dialog-title"
-                  >
+                    aria-labelledby="form-dialog-title">
+                    
                     <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
                     <DialogContent>
                       <DialogContentText>
@@ -318,20 +316,20 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                         id="name"
                         label="Email Address"
                         type="email"
-                        fullWidth
-                      />
+                        fullWidth />
+                      
                     </DialogContent>
                     <DialogActions>
                       <Button
                         color="primary"
-                        onClick={() => dispatch({ type: "CLOSE_INPUT_MODAL" })}
-                      >
+                        onClick={() => dispatch({ type: "CLOSE_INPUT_MODAL" })}>
+                        
                         Cancel
                       </Button>
                       <Button
                         color="primary"
-                        onClick={() => dispatch({ type: "CLOSE_INPUT_MODAL" })}
-                      >
+                        onClick={() => dispatch({ type: "CLOSE_INPUT_MODAL" })}>
+                        
                         Subscribe
                       </Button>
                     </DialogActions>
@@ -341,7 +339,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
             </Box>
           </Box>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Using Grid" disableWidgetMenu>
             <Typography block>
               Utilize the Material UI grid system within a modal by nesting{" "}
@@ -354,33 +352,31 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                 color={"primary"}
                 variant={"contained"}
                 className={classes.marginRight}
-                onClick={() => dispatch({ type: "OPEN_GRID" })}
-              >
+                onClick={() => dispatch({ type: "OPEN_GRID" })}>
+                
                 Grid
               </Button>
-              <Paper className={classes.paper}>
-                  <Widget item xs zeroMinWidth>
-                  <Code>{`
+              <Box mt={2}>
+                <Code>{`
   <Grid container>
     <Box display="flex" flexDirection="column">
       <Box display="flex" flexDirection="row" justifyContent="flex-end">
-        <Grid item xs={3}>1</Grid>
-        <Grid item xs={3}>2</Grid>
+        <Grid size={3}>1</Grid>
+        <Grid size={3}>2</Grid>
       </Box>
-      <Box display="flex" flexDirection="row" justifyContent="flex-around">
-        <Grid item xs={3}>1</Grid>
-        <Grid item xs={3}>2</Grid>
+      <Box display="flex" flexDirection="row" justifyContent="space-around">
+        <Grid size={3}>1</Grid>
+        <Grid size={3}>2</Grid>
       </Box>
-      <Box display="flex" flexDirection="row" justifyContent="flex-between">
-        <Grid item xs={3}>1</Grid>
-        <Grid item xs={3}>2</Grid>
-        <Grid item xs={3}>3</Grid>Code
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
+        <Grid size={3}>1</Grid>
+        <Grid size={3}>2</Grid>
+        <Grid size={3}>3</Grid>
       </Box>
     </Box>
   </Grid>
-                  `}</Code>
-                   </Widget>
-              </Paper>
+                `}</Code>
+              </Box>
             </Box>
             <Dialog
               fullWidth={true}
@@ -388,34 +384,34 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
               open={state.toggleGrid}
               onClose={() => dispatch({ type: "CLOSE_GRID" })}
               aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-            >
+              aria-describedby="alert-dialog-description">
+              
               <DialogTitle id="alert-dialog-title">{"Grid system"}</DialogTitle>
               <DialogContent>
                 <DialogContentText
                   id="alert-dialog-description"
-                  component={"div"}
-                >
+                  component={"div"}>
+                  
                   <Box display="flex" width={"100%"} flexDirection="column">
                     <Box
                       display="flex"
                       flexDirection="row"
                       justifyContent="flex-end"
-                      width={"100%"}
-                    >
-                      <Grid item xs={3}>
+                      width={"100%"}>
+                      
+                      <Grid size={3}>
                         <Paper
                           className={cn(classes.paperItem, classes.paperMargin)}
-                          color="primary"
-                        >
+                          color="primary">
+                          
                           1
                         </Paper>
                       </Grid>
-                      <Grid item xs={3}>
+                      <Grid size={3}>
                         <Paper
                           className={cn(classes.paperItem, classes.paperMargin)}
-                          color="secondary"
-                        >
+                          color="secondary">
+                          
                           2
                         </Paper>
                       </Grid>
@@ -424,21 +420,21 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                       display="flex"
                       flexDirection="row"
                       justifyContent="space-around"
-                      width={"100%"}
-                    >
-                      <Grid item xs={3}>
+                      width={"100%"}>
+                      
+                      <Grid size={3}>
                         <Paper
                           className={cn(classes.paperItem, classes.paperMargin)}
-                          color="primary"
-                        >
+                          color="primary">
+                          
                           1
                         </Paper>
                       </Grid>
-                      <Grid item xs={3}>
+                      <Grid size={3}>
                         <Paper
                           className={cn(classes.paperItem, classes.paperMargin)}
-                          color="secondary"
-                        >
+                          color="secondary">
+                          
                           2
                         </Paper>
                       </Grid>
@@ -447,29 +443,29 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                       display="flex"
                       flexDirection="row"
                       justifyContent="space-between"
-                      width={"100%"}
-                    >
-                      <Grid item xs={3}>
+                      width={"100%"}>
+                      
+                      <Grid size={3}>
                         <Paper
                           className={cn(classes.paperItem, classes.paperMargin)}
-                          color="primary"
-                        >
+                          color="primary">
+                          
                           1
                         </Paper>
                       </Grid>
-                      <Grid item xs={3}>
+                      <Grid size={3}>
                         <Paper
                           className={cn(classes.paperItem, classes.paperMargin)}
-                          color="secondary"
-                        >
+                          color="secondary">
+                          
                           2
                         </Paper>
                       </Grid>
-                      <Grid item xs={3}>
+                      <Grid size={3}>
                         <Paper
                           className={cn(classes.paperItem, classes.paperMargin)}
-                          color="warning"
-                        >
+                          color="warning">
+                          
                           3
                         </Paper>
                       </Grid>
@@ -480,15 +476,15 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
               <DialogActions>
                 <Button
                   onClick={() => dispatch({ type: "CLOSE_GRID" })}
-                  color="primary"
-                >
+                  color="primary">
+                  
                   Disagree
                 </Button>
                 <Button
                   onClick={() => dispatch({ type: "CLOSE_GRID" })}
                   color="primary"
-                  autoFocus
-                >
+                  autoFocus>
+                  
                   Agree
                 </Button>
               </DialogActions>
@@ -496,6 +492,6 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
           </Widget>
         </Grid>
       </Grid>
-    </div>
-  );
+    </div>);
+
 }

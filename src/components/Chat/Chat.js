@@ -5,7 +5,7 @@ import {
   DialogTitle,
   TextField as Input,
   Box
-} from "@material-ui/core";
+} from "@mui/material";
 
 // components
 import { Button, Typography } from "../Wrappers";

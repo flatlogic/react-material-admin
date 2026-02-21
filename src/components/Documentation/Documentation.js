@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
   useRouteMatch,
+  useLocation,
   withRouter,
 } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ import useStyles from './styles';
 //pages
 import Start from './pages/start';
 import TypographyPage from './pages/typography';
+import WidgetPage from './pages/widget';
 import HeaderPage from './pages/header';
 import SidebarPage from './pages/sidebar';
 import ButtonsPage from './pages/buttons';
@@ -37,6 +39,7 @@ const Documentation = (props) => {
   let layoutState = useLayoutState();
   const classes = useStyles();
   const { path } = useRouteMatch();
+  const location = useLocation();
   return (
     <div className={classes.root}>
       <Header />
@@ -57,7 +60,7 @@ const Documentation = (props) => {
 
             {/* eslint-disable-next-line array-callback-return */}
             {structure.map((c) => {
-              if (!c.children && window.location.hash.includes(c.link) && c.link) {
+              if (!c.children && location.pathname.includes(c.link) && c.link) {
                 return (
                   <Box display='flex' alignItems='center' key={c.id}>
                     <Breadcrumbs aria-label='breadcrumb'>
@@ -68,7 +71,7 @@ const Documentation = (props) => {
               } else if (c.children) {
                 return c.children.forEach((currentInner) => {
                   // eslint-disable-array-callback-return
-                  if (window.location.hash.includes(currentInner.link)) {
+                  if (location.pathname.includes(currentInner.link)) {
                     return (
                       <Breadcrumbs
                         separator={<NavigateNextIcon fontSize='small' />}
@@ -96,6 +99,9 @@ const Documentation = (props) => {
           </Route>
           <Route path={`${path}/components/typography`}>
             <TypographyPage />
+          </Route>
+          <Route path={`${path}/components/widget`}>
+            <WidgetPage />
           </Route>
           <Route path={`${path}/components/header`}>
             <HeaderPage />

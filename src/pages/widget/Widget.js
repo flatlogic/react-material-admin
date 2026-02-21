@@ -12,7 +12,7 @@ export default function WidgetComp() {
   return (
     <>
       <Grid container spacing={6}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Simple Widget" disableWidgetMenu>
             <Typography block>
               It appears in the top of the page container. It have to be the
@@ -20,11 +20,11 @@ export default function WidgetComp() {
               statement.
             </Typography>
               <Widget
-                className={classes.paper}
-                title="Simple Widget"
-                disableWidgetMenu
-                slyle={{ backgroundColor: "#fff"}}
-              >
+              className={classes.paper}
+              title="Simple Widget"
+              disableWidgetMenu
+              slyle={{ backgroundColor: "#fff" }}>
+              
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. A,
                 rem?
               <Code className={classes.scrollX}>
@@ -38,7 +38,7 @@ export default function WidgetComp() {
               </Widget>
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title="Page Title" disableWidgetMenu inheritHeight>
             <Typography block>
               It appears in the top of the page container. It have to be the
@@ -55,6 +55,6 @@ export default function WidgetComp() {
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 }

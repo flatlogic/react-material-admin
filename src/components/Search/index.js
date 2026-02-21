@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Search as SearchIcon } from '@mui/icons-material';
 import { InputBase } from '@mui/material';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import { alpha } from '@mui/material/styles';
 
 const styles = (theme) => ({

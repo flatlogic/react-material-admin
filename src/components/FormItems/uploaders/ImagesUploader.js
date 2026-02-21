@@ -8,27 +8,27 @@ import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
 import FileUploader from 'components/FormItems/uploaders/UploadService';
 import Errors from '../../../components/FormItems/error/errors';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'styles/muiCompat';
 
 const useStyles = makeStyles({
   actionButtonsWrapper: {
-    position: 'relative',
+    position: 'relative'
   },
   previewContent: {
-    padding: '0px !important',
+    padding: '0px !important'
   },
   imageItem: {
     '&.MuiGrid-root': {
       margin: 10,
       boxShadow: '2px 2px 8px 0 rgb(0 0 0 / 40%)',
-      borderRadius: 10,
+      borderRadius: 10
     },
-    height: '100px',
+    height: '100px'
   },
   actionButtons: {
     position: 'absolute',
     bottom: 5,
-    right: 4,
+    right: 4
   },
   previewContainer: {
     '& button': {
@@ -40,9 +40,9 @@ const useStyles = makeStyles({
         width: 50,
         fill: '#FFF',
         stroke: '#909090',
-        strokeWidth: 0.5,
-      },
-    },
+        strokeWidth: 0.5
+      }
+    }
   },
   button: {
     padding: '0px !important',
@@ -52,9 +52,9 @@ const useStyles = makeStyles({
       width: 36,
       fill: '#FFF',
       stroke: '#909090',
-      strokeWidth: 0.5,
-    },
-  },
+      strokeWidth: 0.5
+    }
+  }
 });
 
 const ImagesUploader = (props) => {
@@ -65,7 +65,7 @@ const ImagesUploader = (props) => {
   const [showPreview, setShowPreview] = useState(false);
   const [imageMeta, setImageMeta] = useState({
     imageSrc: null,
-    imageAlt: null,
+    imageAlt: null
   });
   const inputElement = useRef(null);
 
@@ -81,7 +81,7 @@ const ImagesUploader = (props) => {
       uid: item.id || undefined,
       name: item.name,
       status: 'done',
-      url: item.publicUrl,
+      url: item.publicUrl
     }));
   };
 
@@ -119,7 +119,7 @@ const ImagesUploader = (props) => {
   const doPreviewImage = (image) => {
     setImageMeta({
       imageSrc: image.publicUrl,
-      imageAlt: image.name,
+      imageAlt: image.name
     });
     setShowPreview(true);
   };
@@ -127,87 +127,87 @@ const ImagesUploader = (props) => {
   const doCloseImageModal = () => {
     setImageMeta({
       imageSrc: null,
-      imageAlt: null,
+      imageAlt: null
     });
     setShowPreview(false);
   };
 
-  const uploadButton = (
-    <Box>
+  const uploadButton =
+  <Box>
       <label htmlFor='button-file' style={{ cursor: 'pointer' }}>
         <input
-          id='button-file'
-          style={{ display: 'none' }}
-          disabled={loading || readonly}
-          accept='image/*'
-          type='file'
-          onChange={handleChange}
-          ref={inputElement}
-        />
+        id='button-file'
+        style={{ display: 'none' }}
+        disabled={loading || readonly}
+        accept='image/*'
+        type='file'
+        onChange={handleChange}
+        ref={inputElement} />
+      
         <Button variant='contained' component='span'>
           Upload an Image
         </Button>{' '}
       </label>
-    </Box>
-  );
+    </Box>;
+
 
   return (
     <Box>
-      {readonly || (max && fileList().length >= max) ? null : uploadButton}
+      {readonly || max && fileList().length >= max ? null : uploadButton}
 
-      {valuesArr() && valuesArr().length ? (
-        <Grid container>
+      {valuesArr() && valuesArr().length ?
+      <Grid container>
           {valuesArr().map((item) => {
-            return (
-              <Grid item className={classes.imageItem} key={item.id}>
+          return (
+            <Grid className={classes.imageItem} key={item.id}>
                 <img
-                  alt={item.name}
-                  src={item.publicUrl}
-                  style={{
-                    width: '100px',
-                    height: '100px',
-                    objectFit: 'cover',
-                    borderRadius: 10,
-                  }}
-                />
+                alt={item.name}
+                src={item.publicUrl}
+                style={{
+                  width: '100px',
+                  height: '100px',
+                  objectFit: 'cover',
+                  borderRadius: 10
+                }} />
+              
 
                 <div className={classes.actionButtonsWrapper}>
                   <div className={classes.actionButtons}>
                     <Button
-                      classes={{ root: classes.button }}
-                      variant='text'
-                      onClick={() => doPreviewImage(item)}
-                    >
+                    classes={{ root: classes.button }}
+                    variant='text'
+                    onClick={() => doPreviewImage(item)}>
+                    
                       <SearchIcon />
                     </Button>
-                    {!readonly && (
-                      <Button
-                        classes={{ root: classes.button }}
-                        variant='text'
-                        onClick={() => handleRemove(item.id)}
-                      >
+                    {!readonly &&
+                  <Button
+                    classes={{ root: classes.button }}
+                    variant='text'
+                    onClick={() => handleRemove(item.id)}>
+                    
                         <CloseIcon />
                       </Button>
-                    )}
+                  }
                   </div>
                 </div>
-              </Grid>
-            );
-          })}
-        </Grid>
-      ) : null}
+              </Grid>);
+
+        })}
+        </Grid> :
+      null}
       <Dialog
         open={showPreview}
         onClose={doCloseImageModal}
-        classes={{ root: classes.previewContainer }}
-      >
+        classes={{ root: classes.previewContainer }}>
+        
         <Button variant='text' onClick={() => doCloseImageModal()}>
           <CloseIcon />
         </Button>
         <img src={imageMeta.imageSrc} alt={imageMeta.imageAlt} />
       </Dialog>
-    </Box>
-  );
+    </Box>);
+
 };
 
 ImagesUploader.propTypes = {
@@ -217,10 +217,10 @@ ImagesUploader.propTypes = {
   schema: PropTypes.shape({
     image: PropTypes.bool,
     size: PropTypes.number,
-    formats: PropTypes.arrayOf(PropTypes.string),
+    formats: PropTypes.arrayOf(PropTypes.string)
   }),
   value: PropTypes.any,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default ImagesUploader;

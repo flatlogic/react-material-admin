@@ -5,8 +5,8 @@ import {
   CardActionArea,
   CardActions,
   CardMedia,
-  IconButton
-} from "@mui/material";
+  IconButton } from
+"@mui/material";
 import { Favorite as LikeIcon, Chat as CommentsIcon } from "@mui/icons-material";
 
 //images
@@ -25,69 +25,69 @@ import img12 from "../../images/gallery/gallery12.jpg";
 
 
 const gallery = [
-  {
-    img: img1,
-    id: 1
-  },
-  {
-    img: img2,
-    id: 2
-  },
-  {
-    img: img3,
-    id: 3
-  },
-  {
-    img: img4,
-    id: 4
-  },
-  {
-    img: img5,
-    id: 5
-  },
-  {
-    img: img6,
-    id: 6
-  },
-  {
-    img: img7,
-    id: 7
-  },
-  {
-    img: img8,
-    id: 8
-  },
-  {
-    img: img9,
-    id: 9
-  },
-  {
-    img: img10,
-    id: 10
-  },
-  {
-    img: img11,
-    id: 11
-  },
-  {
-    img: img12,
-    id: 12
-  }
-];
+{
+  img: img1,
+  id: 1
+},
+{
+  img: img2,
+  id: 2
+},
+{
+  img: img3,
+  id: 3
+},
+{
+  img: img4,
+  id: 4
+},
+{
+  img: img5,
+  id: 5
+},
+{
+  img: img6,
+  id: 6
+},
+{
+  img: img7,
+  id: 7
+},
+{
+  img: img8,
+  id: 8
+},
+{
+  img: img9,
+  id: 9
+},
+{
+  img: img10,
+  id: 10
+},
+{
+  img: img11,
+  id: 11
+},
+{
+  img: img12,
+  id: 12
+}];
+
 
 const Gallery = () => {
   return (
     <>
       <Grid container spacing={6}>
-        {gallery.map((c, n) => (
-          <Grid item md={3} xs={12} key={c.id}>
+        {gallery.map((c, n) =>
+        <Grid key={c.id} size={{ xs: 12, md: 3 }}>
             <Card>
               <CardActionArea>
                 <CardMedia
-                  image={c.img}
-                  title="Gallery"
-                  style={{ height: 200 }}
-                />
+                image={c.img}
+                title="Gallery"
+                style={{ height: 200 }} />
+              
               </CardActionArea>
               <CardActions>
                 <IconButton aria-label="like">
@@ -99,10 +99,10 @@ const Gallery = () => {
               </CardActions>
             </Card>
           </Grid>
-        ))}
+        )}
       </Grid>
-    </>
-  );
+    </>);
+
 };
 
 export default Gallery;

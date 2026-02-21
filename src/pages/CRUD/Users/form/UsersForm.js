@@ -22,7 +22,7 @@ const UsersForm = (props) => {
     findLoading,
     record,
     onSubmit,
-    onCancel,
+    onCancel
   } = props;
 
   const iniValues = () => {
@@ -46,95 +46,95 @@ const UsersForm = (props) => {
     return isEditing ? 'Edit Users' : 'Add Users';
   };
 
-  const renderForm = () => (
-    <Widget title={title()} collapse close>
+  const renderForm = () =>
+  <Widget title={title()} collapse close>
       <Formik
-        onSubmit={handleSubmit}
-        initialValues={iniValues()}
-        validationSchema={formValidations()}
-      >
-        {(form) => (
-          <form onSubmit={form.handleSubmit}>
+      onSubmit={handleSubmit}
+      initialValues={iniValues()}
+      validationSchema={formValidations()}>
+      
+        {(form) =>
+      <form onSubmit={form.handleSubmit}>
             <Grid container spacing={3} direction='column'>
-              <Grid item>
+              <Grid>
                 <InputFormItem
-                  name={'firstName'}
-                  schema={usersFields}
-                  autoFocus
-                />
+              name={'firstName'}
+              schema={usersFields}
+              autoFocus />
+            
               </Grid>
 
-              <Grid item>
+              <Grid>
                 <InputFormItem name={'lastName'} schema={usersFields} />
               </Grid>
 
-              <Grid item>
+              <Grid>
                 <InputFormItem name={'phoneNumber'} schema={usersFields} />
               </Grid>
 
-              <Grid item>
+              <Grid>
                 <InputFormItem name={'email'} schema={usersFields} />
               </Grid>
 
-              <Grid item>
+              <Grid>
                 <RadioFormItem name={'role'} schema={usersFields} />
               </Grid>
 
-              <Grid item>
+              <Grid>
                 <SwitchFormItem name={'disabled'} schema={usersFields} />
               </Grid>
 
-              <Grid item>
+              <Grid>
                 <ImagesFormItem
-                  name={'avatar'}
-                  schema={usersFields}
-                  path={'users/avatar'}
-                  fileProps={{
-                    size: undefined,
-                    formats: undefined,
-                  }}
-                  max={undefined}
-                />
+              name={'avatar'}
+              schema={usersFields}
+              path={'users/avatar'}
+              fileProps={{
+                size: undefined,
+                formats: undefined
+              }}
+              max={undefined} />
+            
               </Grid>
 
-              <Grid item>
+              <Grid>
                 <InputFormItem name={'password'} schema={usersFields} />
               </Grid>
             </Grid>
             <Grid container spacing={3} mt={2}>
-              <Grid item>
+              <Grid>
                 <Button
-                  color='primary'
-                  variant='contained'
-                  onClick={form.handleSubmit}
-                >
+              color='primary'
+              variant='contained'
+              onClick={form.handleSubmit}>
+              
                   Save
                 </Button>
               </Grid>
-              <Grid item>
+              <Grid>
                 <Button
-                  color='primary'
-                  variant='outlined'
-                  onClick={form.handleReset}
-                >
+              color='primary'
+              variant='outlined'
+              onClick={form.handleReset}>
+              
                   Reset
                 </Button>
               </Grid>
-              <Grid item>
+              <Grid>
                 <Button
-                  color='primary'
-                  variant='outlined'
-                  onClick={() => onCancel()}
-                >
+              color='primary'
+              variant='outlined'
+              onClick={() => onCancel()}>
+              
                   Cancel
                 </Button>
               </Grid>
             </Grid>
           </form>
-        )}
+      }
       </Formik>
-    </Widget>
-  );
+    </Widget>;
+
   if (findLoading) {
     return <Loader />;
   }

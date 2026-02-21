@@ -1,13 +1,13 @@
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "styles/muiCompat";
 
 export default makeStyles(theme => ({
   table: {
     "& .MuiTableRow-root:nth-child(odd)": {
-      backgroundColor: theme.palette.type === "dark" ? "none" : "#f3f3f3"
+      backgroundColor: theme.palette.mode === "dark" ? "none" : "#f3f3f3"
     }
   },
   tableFooter: {
-    backgroundColor: theme.palette.type === "dark" ? "none" : "#fff !important"
+    backgroundColor: theme.palette.mode === "dark" ? "none" : "#fff !important"
   },
   tableWrapper: {
     marginTop: theme.spacing(3),

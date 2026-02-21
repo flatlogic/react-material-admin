@@ -1,10 +1,10 @@
 import React from "react";
-import { withStyles } from "@material-ui/core";
 import { compose, withState, withHandlers } from "recompose";
 import { toast } from "react-toastify";
 
 import Notification from "../../components/Notification";
 import NotificationsView from "./NotificationsView";
+import { withStyles } from "styles/muiCompat";
 
 const positions = [
   toast.POSITION.TOP_LEFT,

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import config from '../config';
-import jwt from 'jsonwebtoken';
 import { showSnackbar } from '../components/Snackbar';
-import { push } from 'connected-react-router';
 import Errors from 'components/FormItems/error/errors';
+import history from '../history';
+import { decodeJwtPayload } from '../utils/jwt';
 
 export const AUTH_FAILURE = 'AUTH_FAILURE';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
@@ -67,13 +67,13 @@ export function logoutUser() {
     dispatch({
       type: LOGOUT_SUCCESS,
     });
-    dispatch(push('/login'));
+    history.push('/login');
   };
 }
 
 export function receiveToken(token) {
   return (dispatch) => {
-    let user = jwt.decode(token);
+    let user = decodeJwtPayload(token);
 
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
@@ -81,7 +81,7 @@ export function receiveToken(token) {
     dispatch({
       type: LOGIN_SUCCESS,
     });
-    dispatch(push('/app'));
+    history.push('/app');
   };
 }
 
@@ -99,7 +99,7 @@ export function loginUser(creds) {
           const token = res.data;
           dispatch(receiveToken(token));
           dispatch(doInit());
-          dispatch(push('/app'));
+          history.push('/app');
         })
         .catch((err) => {
           dispatch(authError(err.response.data));
@@ -123,7 +123,7 @@ export function verifyEmail(token) {
         showSnackbar({ type: 'error', message: err.response.data });
       })
       .finally(() => {
-        dispatch(push('/login'));
+        history.push('/login');
       });
   };
 }
@@ -140,7 +140,7 @@ export function resetPassword(token, password) {
           type: RESET_SUCCESS,
         });
         showSnackbar({ type: 'success', message: 'Password has been updated' });
-        dispatch(push('/login'));
+        history.push('/login');
       })
       .catch((err) => {
         dispatch(authError(err.response.data));
@@ -163,7 +163,7 @@ export function sendPasswordResetEmail(email) {
           type: 'success',
           message: 'Email with resetting instructions has been sent',
         });
-        dispatch(push('/login'));
+        history.push('/login');
       })
       .catch((err) => {
         dispatch(authError(err.response.data));
@@ -189,7 +189,7 @@ export function registerUser(creds) {
             message:
               "You've been registered successfully. Please check your email for verification link",
           });
-          dispatch(push('/login'));
+          history.push('/login');
         })
         .catch((err) => {
           dispatch(authError(err.response.data));

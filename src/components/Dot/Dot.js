@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'styles/muiCompat';
 import classnames from 'classnames';
 
 let useStyles = makeStyles((theme) => ({

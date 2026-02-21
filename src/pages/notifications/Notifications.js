@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Grid, Box, Snackbar, Alert} from "@mui/material";
+import { Grid, Box, Snackbar, Alert } from "@mui/material";
 
 // styles
 import classnames from "classnames";
@@ -18,18 +18,18 @@ export default function NotificationsPage() {
   const [type, setType] = useState({
     type: 'success',
     message: 'This is a success message!'
-  })
+  });
   const [state, setState] = useState({
     open: false,
     vertical: 'top',
-    horizontal: 'center',
+    horizontal: 'center'
   });
 
   const { vertical, horizontal, open } = state;
 
   const handleClick = (newState, positionId) => () => {
     setState({ open: true, ...newState });
-    setNotificationPosition(positionId)
+    setNotificationPosition(positionId);
   };
 
   const handleClose = () => {
@@ -39,17 +39,17 @@ export default function NotificationsPage() {
   let [notificationsPosition, setNotificationPosition] = useState(2);
 
   const handleChange = (type) => {
-    setType(type)
-    setState({...state, open: true})
-  }
+    setType(type);
+    setState({ ...state, open: true });
+  };
 
   return (
     <>
       <Grid container spacing={3}>
-       <Grid item xs={12} md={12} lg={12}>
+       <Grid size={{ xs: 12, md: 12, lg: 12 }}>
         <Widget>
           <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
               <Typography className={classes.head5}>
                 Layout Options
               </Typography>
@@ -60,70 +60,70 @@ export default function NotificationsPage() {
               <div className={classes.layoutContainer}>
                 <div className={classes.layoutButtonsRow}>
                   <button
-                    onClick={handleClick({
-                      vertical: 'top',
-                      horizontal: 'left',
-                    }, 0)}
+                      onClick={handleClick({
+                        vertical: 'top',
+                        horizontal: 'left'
+                      }, 0)}
 
-                    className={classnames(classes.layoutButton, {
-                      [classes.layoutButtonActive]: notificationsPosition === 0
-                    })}
-                  />
+                      className={classnames(classes.layoutButton, {
+                        [classes.layoutButtonActive]: notificationsPosition === 0
+                      })} />
+                    
                   <button
-                    onClick={handleClick({
-                      vertical: 'top',
-                      horizontal: 'center',
-                    }, 1)}
-                    className={classnames(classes.layoutButton, {
-                      [classes.layoutButtonActive]: notificationsPosition === 1
-                    })}
-                  />
+                      onClick={handleClick({
+                        vertical: 'top',
+                        horizontal: 'center'
+                      }, 1)}
+                      className={classnames(classes.layoutButton, {
+                        [classes.layoutButtonActive]: notificationsPosition === 1
+                      })} />
+                    
                   <button
-                    onClick={handleClick({
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }, 2)}
-                    className={classnames(classes.layoutButton, {
-                      [classes.layoutButtonActive]: notificationsPosition === 2
-                    })}
-                  />
+                      onClick={handleClick({
+                        vertical: 'top',
+                        horizontal: 'right'
+                      }, 2)}
+                      className={classnames(classes.layoutButton, {
+                        [classes.layoutButtonActive]: notificationsPosition === 2
+                      })} />
+                    
                 </div>
                 <Typography className={classes.layoutText} size="md">
                   Click any position
                 </Typography>
                 <div className={classes.layoutButtonsRow}>
                   <button
-                    onClick={handleClick({
-                      vertical: 'bottom',
-                      horizontal: 'left',
-                    }, 3)}
-                    className={classnames(classes.layoutButton, {
-                      [classes.layoutButtonActive]: notificationsPosition === 3
-                    })}
-                  />
+                      onClick={handleClick({
+                        vertical: 'bottom',
+                        horizontal: 'left'
+                      }, 3)}
+                      className={classnames(classes.layoutButton, {
+                        [classes.layoutButtonActive]: notificationsPosition === 3
+                      })} />
+                    
                   <button
-                    onClick={handleClick({
-                      vertical: 'bottom',
-                      horizontal: 'center',
-                    }, 4)}
-                    className={classnames(classes.layoutButton, {
-                      [classes.layoutButtonActive]: notificationsPosition === 4
-                    })}
-                  />
+                      onClick={handleClick({
+                        vertical: 'bottom',
+                        horizontal: 'center'
+                      }, 4)}
+                      className={classnames(classes.layoutButton, {
+                        [classes.layoutButtonActive]: notificationsPosition === 4
+                      })} />
+                    
                   <button
-                    onClick={handleClick({
-                      vertical: 'bottom',
-                      horizontal: 'right',
-                    }, 5)}
-                    className={classnames(classes.layoutButton, {
-                      [classes.layoutButtonActive]: notificationsPosition === 5
-                    })}
-                  />
+                      onClick={handleClick({
+                        vertical: 'bottom',
+                        horizontal: 'right'
+                      }, 5)}
+                      className={classnames(classes.layoutButton, {
+                        [classes.layoutButtonActive]: notificationsPosition === 5
+                      })} />
+                    
                 </div>
               </div>
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
               <Typography className={classes.head5}>
                   Notifications Types
               </Typography>
@@ -133,56 +133,62 @@ export default function NotificationsPage() {
               </Typography>
               <div className={classes.buttonsContainer}>
                 <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => handleChange({type: 'info', message: 'This is a info message!'})}
-                  className={classnames(classes.notificationCallButton)}
-                >
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleChange({ type: 'info', message: 'This is a info message!' })}
+                    className={classnames(classes.notificationCallButton)}>
+                    
                   Info Message
                 </Button>
                 <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => handleChange({type: 'error', message: 'This is a error message!'})}
-                  className={classnames(classes.notificationCallButton)}
-                >
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => handleChange({ type: 'error', message: 'This is a error message!' })}
+                    className={classnames(classes.notificationCallButton)}>
+                    
                   Error + Retry Message
                 </Button>
                 <Button
-                  variant="contained"
-                  color="success"
-                  onClick={() => handleChange({type: "success", message: 'This is a success message!' })}
-                  className={classnames(classes.notificationCallButton)}
-                >
+                    variant="contained"
+                    color="success"
+                    onClick={() => handleChange({ type: "success", message: 'This is a success message!' })}
+                    className={classnames(classes.notificationCallButton)}>
+                    
                   Success Message
                 </Button>
               </div>
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
             <Typography className={classes.head5}>
                   Usage
               </Typography>
               <Typography>
                 Notifications are created with the help of{" "}
                 <a href="https://mui.com/material-ui/react-snackbar/">
-                  react-snackbar
+                  MUI Snackbar
                 </a>
               </Typography>
               <Code>{`
     // import needed components, functions and styles
-    import Snackbar from '@mui/material/Snackbar';
+    import { useState } from 'react';
+    import { Snackbar, Alert, Button } from '@mui/material';
+
+    const [open, setOpen] = useState(false);
 
     return (
         <div>
-          <Button onClick={handleClick}>Open simple snackbar</Button>
+          <Button onClick={() => setOpen(true)}>Open notification</Button>
           <Snackbar
             open={open}
-            autoHideDuration={6000}
-            onClose={handleClose}
-            message="Note archived"
-            action={action}
-          />
+            autoHideDuration={3000}
+            onClose={() => setOpen(false)}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+          >
+            <Alert onClose={() => setOpen(false)} severity="success" sx={{ width: '100%' }}>
+              This is a success message!
+            </Alert>
+          </Snackbar>
         </div>
       );
               `}</Code>
@@ -197,143 +203,143 @@ export default function NotificationsPage() {
         </Grid>
       </Grid>
 
-        <Grid container spacing={3}>
-        <Grid item xs={12} md={6} lg={4}>
-          <Widget title="Notification Types Examples" disableWidgetMenu>
+        <Grid container spacing={3} sx={{ mt: 1 }}>
+        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Widget title="Contained Notifications" disableWidgetMenu>
             <Notification
               className={classes.notificationItem}
               shadowless
               type="message"
               message="Thanks for Checking out Messenger"
               variant="contained"
-              color="secondary"
-            />
+              color="secondary" />
+            
             <Notification
               className={classes.notificationItem}
               shadowless
               type="feedback"
               message="New user feedback received"
               variant="contained"
-              color="primary"
-            />
+              color="primary" />
+            
             <Notification
               className={classes.notificationItem}
               shadowless
               type="customer"
               message="New customer is registered"
               variant="contained"
-              color="success"
-            />
+              color="success" />
+            
             <Notification
               className={classes.notificationItem}
               shadowless
               type="shipped"
               message="The order was shipped"
               variant="contained"
-              color="warning"
-            />
+              color="warning" />
+            
             <Notification
               className={classes.notificationItem}
               shadowless
               type="delivered"
               message="The order was delivered"
               variant="contained"
-              color="primary"
-            />
+              color="primary" />
+            
             <Notification
               className={classes.notificationItem}
               shadowless
               type="defence"
               message="5 Defence alerts"
               variant="contained"
-              color="info"
-            />
+              color="info" />
+            
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <Widget title="Notification Types Examples" disableWidgetMenu>
+        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Widget title="Default Notifications" disableWidgetMenu>
             <Notification
               className={classes.notificationItem}
               type="report"
               message="New report has been received"
-              color="secondary"
-            />
+              color="secondary" />
+            
             <Notification
               className={classes.notificationItem}
               type="feedback"
               message="New user feedback received"
-              color="primary"
-            />
+              color="primary" />
+            
             <Notification
               className={classes.notificationItem}
               type="shipped"
               message="The item was shipped"
-              color="success"
-            />
+              color="success" />
+            
             <Notification
               className={classes.notificationItem}
               type="message"
               message="The new message from user @nahawaii"
-              color="warning"
-            />
+              color="warning" />
+            
             <Notification
               className={classes.notificationItem}
               type="upload"
               message="Your file is ready to upload"
-              color="primary"
-            />
+              color="primary" />
+            
             <Notification
               className={classes.notificationItem}
               type="disc"
               message="The disc is full"
-              color="info"
-            />
+              color="info" />
+            
           </Widget>
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <Widget title="Notification Types Examples" disableWidgetMenu>
+        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Widget title="Rounded Notifications" disableWidgetMenu>
             <Notification
               className={classes.notificationItem}
               type="report"
               message="New report has been received"
               variant="rounded"
-              color="secondary"
-            />
+              color="secondary" />
+            
             <Notification
               className={classes.notificationItem}
               type="feedback"
               message="New user feedback received"
               variant="rounded"
-              color="primary"
-            />
+              color="primary" />
+            
             <Notification
               className={classes.notificationItem}
               type="shipped"
               message="The item was shipped"
               variant="rounded"
-              color="success"
-            />
+              color="success" />
+            
             <Notification
               className={classes.notificationItem}
               type="message"
               message="The new message from user @nahawaii"
               variant="rounded"
-              color="warning"
-            />
+              color="warning" />
+            
             <Notification
               className={classes.notificationItem}
               type="upload"
               message="Your file is ready to upload"
               variant="rounded"
-              color="primary"
-            />
+              color="primary" />
+            
             <Notification
               className={classes.notificationItem}
               type="disc"
               message="The disc is full"
               variant="rounded"
-              color="info"
-            />
+              color="info" />
+            
           </Widget>
         </Grid>
       </Grid>
@@ -341,12 +347,12 @@ export default function NotificationsPage() {
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
-        key={vertical + horizontal}
-      >
+        key={vertical + horizontal}>
+        
         <Alert onClose={handleClose} severity={type.type} sx={{ width: '100%' }}>
           {type.message}
         </Alert>
       </Snackbar>
-    </>
-  );
+    </>);
+
 }

@@ -1,84 +1,150 @@
-import React from "react";
-import { Grid, Box } from "@mui/material";
-import Input from "@mui/material/TextField";
+import React from 'react';
+import { Grid, Box } from '@mui/material';
+import Input from '@mui/material/TextField';
 
 // components
-import Widget from "../../components/Widget";
-import { Button, Typography } from "../../components/Wrappers";
+import Widget from '../../components/Widget';
+import { Button, Typography } from '../../components/Wrappers';
 
-export default () => {
-  const ref = React.useRef(null);
-  const [isError, setError] = React.useState(false);
+const Validation = () => {
+  const MIN_LENGTH = 10;
+  const [requiredValue, setRequiredValue] = React.useState('');
+  const [minLengthValue, setMinLengthValue] = React.useState('');
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const requiredError = isSubmitted && !requiredValue.trim();
+  const minLengthError =
+    minLengthValue.length > 0 && minLengthValue.length < MIN_LENGTH;
+
   const validate = () => {
-    setError(true);
+    setIsSubmitted(true);
   };
+
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setRequiredValue('');
+    setMinLengthValue('');
+  };
+
   return (
     <div>
       <Grid container spacing={6}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Widget
-            title="Dead simple validation"
+            title='Dead simple validation'
             disableWidgetMenu
             inheritHeight
           >
-            <Grid
-              container
-              direction="column"
-              alignItems="center"
-              spacing={6}
-            >
-              <Grid item container alignItems="center" xs={6}>
-                <Grid item xs={6}>
-                  <Typography variant="body1">Simple required</Typography>
-                </Grid>
-                <Grid xs={6} item>
-                  <Input
-                    id="component-helper9"
-                    style={{ width: "100%" }}
-                    ref={ref}
-                    error={isError}
-                  />
-                </Grid>
-              </Grid>
-              <Grid item container alignItems={"center"} xs={6}>
-                <Grid item xs={6}>
-                  <Typography variant={"body1"}>
-                    Min-length On Change
-                  </Typography>
-                  <Typography
-                    variant={"caption"}
-                    color="text"
-                    colorBrightness={"secondary"}
+            <Box sx={{ maxWidth: 860, width: '100%', mx: 'auto' }}>
+              <Typography
+                variant='body2'
+                color='text'
+                colorBrightness='secondary'
+                style={{ marginBottom: 16 }}
+              >
+                Basic example with required and minimum-length validation.
+              </Typography>
+
+              <Grid container direction='column' spacing={2.5}>
+                <Grid size={12}>
+                  <Box
+                    sx={{
+                      p: 2.5,
+                      border: '1px solid',
+                      borderColor: 'divider',
+                      borderRadius: 2,
+                      backgroundColor: 'background.default',
+                    }}
                   >
-                    At least 10
-                  </Typography>
+                    <Grid container spacing={2} alignItems='center'>
+                      <Grid size={{ xs: 12, md: 4 }}>
+                        <Typography variant='body1' weight='medium'>
+                          Simple required
+                        </Typography>
+                        <Typography
+                          variant='caption'
+                          color='text'
+                          colorBrightness='secondary'
+                        >
+                          Checked when you click Validate
+                        </Typography>
+                      </Grid>
+                      <Grid size={{ xs: 12, md: 8 }}>
+                        <Input
+                          id='component-helper9'
+                          style={{ width: '100%' }}
+                          value={requiredValue}
+                          onChange={(event) => setRequiredValue(event.target.value)}
+                          error={requiredError}
+                          helperText={requiredError ? 'This field is required' : ' '}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Box>
                 </Grid>
-                <Grid xs={6} item>
-                  <Input
-                    id="component-helper10"
-                    style={{ width: "100%" }}
-                    inputProps={{ maxLength: 10 }}
-                  />
+
+                <Grid size={12}>
+                  <Box
+                    sx={{
+                      p: 2.5,
+                      border: '1px solid',
+                      borderColor: 'divider',
+                      borderRadius: 2,
+                      backgroundColor: 'background.default',
+                    }}
+                  >
+                    <Grid container spacing={2} alignItems='center'>
+                      <Grid size={{ xs: 12, md: 4 }}>
+                        <Typography variant='body1' weight='medium'>
+                          Min-length on change
+                        </Typography>
+                        <Typography
+                          variant='caption'
+                          color='text'
+                          colorBrightness='secondary'
+                        >
+                          At least {MIN_LENGTH} characters
+                        </Typography>
+                      </Grid>
+                      <Grid size={{ xs: 12, md: 8 }}>
+                        <Input
+                          id='component-helper10'
+                          style={{ width: '100%' }}
+                          value={minLengthValue}
+                          onChange={(event) => setMinLengthValue(event.target.value)}
+                          error={minLengthError}
+                          helperText={
+                            minLengthError
+                              ? `At least ${MIN_LENGTH} characters (${minLengthValue.length}/${MIN_LENGTH})`
+                              : ' '
+                          }
+                        />
+                      </Grid>
+                    </Grid>
+                  </Box>
                 </Grid>
-              </Grid>
-              <Grid item container alignItems={"center"} xs={6}>
-                <Grid xs={12} item>
-                  <Box display="flex" justifyContent="space-between">
-                    <Button variant="contained">Cancel</Button>
+
+                <Grid size={12}>
+                  <Box display='flex' justifyContent='flex-end' gap={1.5}>
+                    <Button variant='outlined' onClick={resetForm}>
+                      Reset
+                    </Button>
                     <Button
-                      variant="contained"
-                      color="success"
-                      onClick={() => validate()}
+                      variant='contained'
+                      color='success'
+                      onClick={validate}
                     >
                       Validate
                     </Button>
                   </Box>
                 </Grid>
               </Grid>
-            </Grid>
+            </Box>
           </Widget>
         </Grid>
       </Grid>
     </div>
   );
 };
+
+export default Validation;

@@ -6,9 +6,8 @@ import {
   InputBase,
   Menu,
   MenuItem,
-  Fab,
-  withStyles
-} from "@material-ui/core";
+  Fab
+} from "@mui/material";
 import {
   Menu as MenuIcon,
   MailOutline as MailIcon,
@@ -17,8 +16,9 @@ import {
   Search as SearchIcon,
   Send as SendIcon,
   ArrowBack as ArrowBackIcon
-} from "@material-ui/icons";
-import { fade } from "@material-ui/core/styles/colorManipulator";
+} from "@mui/icons-material";
+import { alpha } from "@mui/material/styles";
+import { withStyles } from "styles/muiCompat";
 import classNames from "classnames";
 
 import { Badge, Typography } from "../Wrappers";
@@ -332,15 +332,15 @@ const styles = theme => ({
     borderRadius: 25,
     paddingLeft: theme.spacing(2.5),
     width: 36,
-    backgroundColor: fade(theme.palette.common.black, 0),
+    backgroundColor: alpha(theme.palette.common.black, 0),
     transition: theme.transitions.create(["background-color", "width"]),
     "&:hover": {
       cursor: "pointer",
-      backgroundColor: fade(theme.palette.common.black, 0.08)
+      backgroundColor: alpha(theme.palette.common.black, 0.08)
     }
   },
   searchFocused: {
-    backgroundColor: fade(theme.palette.common.black, 0.08),
+    backgroundColor: alpha(theme.palette.common.black, 0.08),
     width: "100%",
     [theme.breakpoints.up("md")]: {
       width: 250
@@ -391,7 +391,7 @@ const styles = theme => ({
   },
   headerMenuButton: {
     marginLeft: theme.spacing(2),
-    padding: theme.spacing.unit / 2
+    padding: theme.spacing(1) / 2
   },
   headerMenuButtonCollapse: {
     marginRight: theme.spacing(2)

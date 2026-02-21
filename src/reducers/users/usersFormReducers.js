@@ -4,7 +4,7 @@ const initialData = {
   record: null,
 };
 
-export default (state = initialData, { type, payload }) => {
+const usersFormReducer = (state = initialData, { type, payload }) => {
   if (type === 'USERS_FORM_RESET') {
     return {
       ...initialData,
@@ -79,3 +79,5 @@ export default (state = initialData, { type, payload }) => {
 
   return state;
 };
+
+export default usersFormReducer;

@@ -6,21 +6,15 @@ import {
   Divider,
   Collapse,
   CardContent,
-  TextField as Input
-} from "@mui/material";
+  TextField as Input } from
+"@mui/material";
 import { Navigation as NavigationIcon } from "@mui/icons-material";
-import {
-  withGoogleMap,
-  withScriptjs,
-  GoogleMap,
-  Marker
-} from "react-google-maps";
 import {
   Favorite as LikeIcon,
   Chat as CommentsIcon,
   ChatBubble as ChatIcon,
-  FreeBreakfast as BreakfastIcon
-} from "@mui/icons-material";
+  FreeBreakfast as BreakfastIcon } from
+"@mui/icons-material";
 import useStyles from "./styles";
 
 //images
@@ -60,13 +54,13 @@ export default function TimelineComp() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Box
             display={"flex"}
             flexDirection={"column"}
             justifyContent={"center"}
-            className={classes.wrapper}
-          >
+            className={classes.wrapper}>
+            
             <Annotation>
               <Box width={"45%"}>
                 <Widget disableWidgetMenu inheritHeight>
@@ -117,16 +111,16 @@ export default function TimelineComp() {
                           fontWeight={"fontWeightBold"}
                           display="flex"
                           alignItems="center"
-                          fontSize={".77rem"}
-                        >
+                          fontSize={".77rem"}>
+                          
                           <Link to="#" color="primary">
                             Jessica Nilson
                           </Link>{" "}
                           <Box
                             fontSize={".7rem"}
                             fontWeight="fontWeightRegular"
-                            ml={1}
-                          >
+                            ml={1}>
+                            
                             7 mins ago
                           </Box>
                         </Box>
@@ -144,16 +138,16 @@ export default function TimelineComp() {
                           fontWeight={"fontWeightBold"}
                           display="flex"
                           alignItems="center"
-                          fontSize={".77rem"}
-                        >
+                          fontSize={".77rem"}>
+                          
                           <Link to="#" color="primary">
                             Ignacio Abad
                           </Link>{" "}
                           <Box
                             fontSize={".7rem"}
                             fontWeight="fontWeightRegular"
-                            ml={1}
-                          >
+                            ml={1}>
+                            
                             6 mins ago
                           </Box>
                         </Box>
@@ -169,8 +163,8 @@ export default function TimelineComp() {
                       </Avatar>
                       <Input
                         placeholder="Write your comment..."
-                        style={{ flexGrow: 1 }}
-                      />
+                        style={{ flexGrow: 1 }} />
+                      
                     </Box>
                   </Box>
                 </Widget>
@@ -245,8 +239,8 @@ export default function TimelineComp() {
                       <img
                         src={mountains}
                         alt="mountains"
-                        style={{ height: "100%", width: "calc(100% + 48px)" }}
-                      />
+                        style={{ height: "100%", width: "calc(100% + 48px)" }} />
+                      
                     </Box>
                     <Box display="flex" ml={"-12px"} mt={1}>
                       <IconButton aria-label="like">
@@ -269,16 +263,16 @@ export default function TimelineComp() {
                           fontWeight={"fontWeightBold"}
                           display="flex"
                           alignItems="center"
-                          fontSize={".77rem"}
-                        >
+                          fontSize={".77rem"}>
+                          
                           <Link to="#" color="warning">
                             Ignacio Abad
                           </Link>{" "}
                           <Box
                             fontSize={".7rem"}
                             fontWeight="fontWeightRegular"
-                            ml={1}
-                          >
+                            ml={1}>
+                            
                             6 mins ago
                           </Box>
                         </Box>
@@ -294,8 +288,8 @@ export default function TimelineComp() {
                       </Avatar>
                       <Input
                         placeholder="Write your comment..."
-                        style={{ flexGrow: 1 }}
-                      />
+                        style={{ flexGrow: 1 }} />
+                      
                     </Box>
                   </Box>
                 </Widget>
@@ -388,6 +382,6 @@ export default function TimelineComp() {
           </Box>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 }

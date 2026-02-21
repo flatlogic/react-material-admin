@@ -1,4 +1,4 @@
-export default {
+const profileMock = {
   donut: {
     labels: {
       show: true,
@@ -11,25 +11,29 @@ export default {
       legend: {
         labels: {
           colors: ['#27282C'],
-        }
+        },
       },
-      responsive: [{
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 200,
-            height: 300,
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+              height: 300,
+            },
+            legend: {
+              position: 'bottom',
+            },
           },
-          legend: {
-            position: 'bottom',
-          }
-        }
-      }],
+        },
+      ],
       stroke: {
         show: false,
         width: 0,
       },
       colors: ['#4B9FFE', '#FF4D3A', '#FEAA4B', '#1ACA95'],
-    }
+    },
   },
-}
+};
+
+export default profileMock;

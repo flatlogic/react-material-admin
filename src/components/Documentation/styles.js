@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'styles/muiCompat';
 
 export default makeStyles((theme) => ({
   root: {
@@ -28,6 +28,30 @@ export default makeStyles((theme) => ({
   tabPanel: {
     backgroundColor: '#f5f5f5',
     padding: theme.spacing(2),
+  },
+  tabsAppBar: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    boxShadow: 'none',
+    borderRadius: theme.shape.borderRadius,
+  },
+  tabs: {
+    minHeight: 44,
+    '& .MuiTabs-indicator': {
+      backgroundColor: theme.palette.primary.contrastText,
+      height: 3,
+    },
+  },
+  tab: {
+    minHeight: 44,
+    textTransform: 'none',
+    fontWeight: 600,
+    color: `${theme.palette.primary.contrastText} !important`,
+    opacity: 0.78,
+    '&.Mui-selected': {
+      color: `${theme.palette.primary.contrastText} !important`,
+      opacity: 1,
+    },
   },
   link: {
     display: 'flex',

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
-import { useTheme } from "@mui/styles";
+import { useTheme } from "styles/muiCompat";
 import ReactApexChart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 
@@ -18,7 +18,7 @@ function getDayWiseTimeSeries(baseval, count, yrange) {
   while (i < count) {
     var x = baseval;
     var y =
-      Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+    Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
 
     data.push({
       x,
@@ -39,10 +39,10 @@ function intervals() {
       });
 
       ApexCharts.exec("realtime", "updateSeries", [
-        {
-          data: data
-        }
-      ]);
+      {
+        data: data
+      }]
+      );
     }, 1000);
   }
 }
@@ -79,7 +79,7 @@ for (var i = 0; i < 120; i++) {
   dates.push(innerArr);
 }
 
-const themeOptions = theme => {
+const themeOptions = (theme) => {
   return {
     // first container chart
     grid: {
@@ -91,16 +91,16 @@ const themeOptions = theme => {
     colors: [theme.palette.primary.main],
     xaxis: {
       categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep"
-      ]
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep"]
+
     },
     dataLabels: {
       enabled: false
@@ -218,7 +218,7 @@ const themeOptions = theme => {
       tooltip: {
         shared: false,
         y: {
-          formatter: function(val) {
+          formatter: function (val) {
             return val;
           }
         }
@@ -268,32 +268,32 @@ const themeOptions = theme => {
 
 const values = {
   series: [
-    {
-      name: "Desktops",
-      data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-    }
-  ],
+  {
+    name: "Desktops",
+    data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+  }],
+
   series2: [
-    {
-      name: "High - 2019",
-      data: [28, 29, 33, 36, 32, 32, 33]
-    },
-    {
-      name: "Low - 2019",
-      data: [12, 11, 14, 18, 17, 13, 13]
-    }
-  ],
+  {
+    name: "High - 2019",
+    data: [28, 29, 33, 36, 32, 32, 33]
+  },
+  {
+    name: "Low - 2019",
+    data: [12, 11, 14, 18, 17, 13, 13]
+  }],
+
   series3: [
-    {
-      name: "Flatlogic LLC",
-      data: dates
-    }
-  ],
+  {
+    name: "Flatlogic LLC",
+    data: dates
+  }],
+
   series4: [
-    {
-      data: data.slice()
-    }
-  ]
+  {
+    data: data.slice()
+  }]
+
 };
 
 export default function Charts(props) {
@@ -312,47 +312,47 @@ export default function Charts(props) {
   return (
     <>
       <Grid container spacing={4}>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Line Basic"} noBodyPadding>
             <ReactApexChart
               options={themeOptions(theme)}
               series={state.series}
               type="line"
-              height="350"
-            />
+              height="350" />
+            
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Line with Data Labels"} noBodyPadding>
             <ReactApexChart
               options={themeOptions(theme).options}
               series={state.series2}
               type="line"
-              height="350"
-            />
+              height="350" />
+            
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Zoomable Timeseries"} noBodyPadding>
             <ReactApexChart
               options={themeOptions(theme).options2}
               series={state.series3}
               type="area"
-              height="350"
-            />
+              height="350" />
+            
           </Widget>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Widget title={"Dynamic Updating Chart"} noBodyPadding>
             <ReactApexChart
               options={themeOptions(theme).options3}
               series={state.series4}
               type="line"
-              height="350"
-            />
+              height="350" />
+            
           </Widget>
         </Grid>
       </Grid>
-    </>
-  );
+    </>);
+
 }

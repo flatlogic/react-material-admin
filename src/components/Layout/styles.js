@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'styles/muiCompat';
 
 export default makeStyles((theme) => ({
   root: {
@@ -91,6 +91,6 @@ export default makeStyles((theme) => ({
   },
   date: {
     marginRight: 38,
-    color: theme.palette.type === 'dark' ? '#D6D6D6' : '#4A494A',
+    color: theme.palette.mode === 'dark' ? '#D6D6D6' : '#4A494A',
   },
 }));

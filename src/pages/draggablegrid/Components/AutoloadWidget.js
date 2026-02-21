@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'styles/muiCompat';
 import { Typography, Grid, FormGroup, FormLabel, TextField } from '@mui/material';
 import { Button } from "../../../components/Wrappers";
 
@@ -9,10 +9,10 @@ const styles = (theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 10
   },
   headerText: {
-    textAlign: 'center',
+    textAlign: 'center'
   },
   description: {
     fontSize: '1.25rem',
@@ -21,66 +21,66 @@ const styles = (theme) => ({
     color: theme.palette.text.secondary
   },
   label: {
-    margin: '5px 0',
+    margin: '5px 0'
   },
   blocksMargin: {
-    marginBottom: '1rem',
+    marginBottom: '1rem'
   },
   buttonsGroup: {
     display: 'flex',
     flexDirection: 'row',
-    float: 'right',
+    float: 'right'
   },
   button: {
-    marginLeft: '1rem',
+    marginLeft: '1rem'
   },
   formLabels: {
     padding: 0,
-    margin: 0,
-  },
+    margin: 0
+  }
 });
 
 const AutoloadWidget = ({ classes }) => {
   return (
-    <Grid container direction={'column'} >
-      <Grid item className={classes.header} xs={12}>
+    <Grid container direction={'column'}>
+      <Grid className={classes.header} size={12}>
         <Typography variant="h2" className={classes.headerText}>Sign up, it&apos;s <strong>free</strong>!</Typography>
-        <div className={classes.description} >
+        <div className={classes.description}>
         Faith makes it possible to achieve that which man&apos;s mind can conceive and believe.
         </div>
       </Grid>
-      <Grid container item direction={'column'} xs={12}>
-        <Grid item className={classes.blocksMargin}>
+      <Grid container direction={'column'} size={12}>
+        <Grid className={classes.blocksMargin}>
           <FormGroup>
             <div className={classes.formLabels}>
               <FormLabel htmlFor="exampleInputEmail1">&nbsp; Email address</FormLabel>
             </div>
             <TextField
               id="exampleInputEmail1"
-              type="email" 
+              type="email"
               placeholder="Enter email"
               margin="dense"
               variant="outlined"
-              fullWidth
-            />
+              fullWidth />
+            
           </FormGroup>
         </Grid>
-        <Grid item className={classes.blocksMargin}>
+        <Grid className={classes.blocksMargin}>
           <FormGroup>
             <div className={classes.formLabels}>
               <FormLabel htmlFor="pswd"><i /> &nbsp; Password</FormLabel>
             </div>
-            <TextField 
-              id="pswd" 
-              type="text" 
+            <TextField
+              id="pswd"
+              type="text"
               placeholder="Min 8 characters"
               margin="dense"
               variant="outlined"
-              fullWidth
-            />
+              fullWidth />
+            
           </FormGroup>
         </Grid>
-        <Grid item>
+        <Grid>
           <Typography className={classes.blocksMargin}>
             To make a widget automatically load it's content you just need to set <strong>autoload</strong> attribute and provide an api to update the widget content.
           </Typography>
@@ -89,12 +89,12 @@ const AutoloadWidget = ({ classes }) => {
             defaultValue="<Widget updateWidgetData={this.updateWidgetData}/>"
             size="small"
             InputProps={{
-              readOnly: true,
+              readOnly: true
             }}
             variant="outlined"
             fullWidth
-            margin="normal"
-          >
+            margin="normal">
+            
           </TextField>
 
           {/* <pre><code>&lt;Widget updateWidgetData={"{this.updateWidgetData}"} /&gt;</code></pre> */}
@@ -103,23 +103,23 @@ const AutoloadWidget = ({ classes }) => {
           </Typography>
           <div className={classes.buttonsGroup}>
             <Button
-              variant="contained"
-            >
+              variant="contained">
+              
               Cancel
             </Button>
             <Button
               className={classes.button}
               color="success"
-              variant="contained"
-            >
+              variant="contained">
+              
               &nbsp;Submit&nbsp;
             </Button>
           </div>
 
         </Grid>
       </Grid>
-    </Grid>
-  )
-}
+    </Grid>);
+
+};
 
 export default withStyles(styles)(AutoloadWidget);
