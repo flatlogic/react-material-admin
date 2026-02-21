@@ -2,27 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import axios from 'axios';
 import './polyfills';
-import { createStore, applyMiddleware } from 'redux';
-import { thunk as ReduxThunk } from 'redux-thunk';
-import { Provider } from 'react-redux';
 import { ThemeProvider as ThemeProviderV5 } from '@mui/material/styles';
 import { StyledEngineProvider } from '@mui/material/styles';
 import App from './components/App';
 import { LayoutProvider } from './context/LayoutContext';
 import { UserProvider } from './context/UserContext';
 import { ManagementProvider } from './context/ManagementContext';
-import createRootReducer from './reducers';
 import {
   ThemeProvider as ThemeChangeProvider,
   ThemeStateContext,
 } from './context/ThemeContext';
 import CssBaseline from '@mui/material/CssBaseline';
 import config from '../src/config';
-import history from './history';
-
-export function getHistory() {
-  return history;
-}
 
 axios.defaults.baseURL = config.baseURLApi;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
@@ -31,32 +22,25 @@ if (token) {
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 }
 
-export const store = createStore(
-  createRootReducer(history),
-  applyMiddleware(ReduxThunk),
-);
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <Provider store={store}>
-    <LayoutProvider>
-      <UserProvider>
-        <StyledEngineProvider injectFirst>
-          <ThemeChangeProvider>
-            <ThemeStateContext.Consumer>
-              {(theme) => (
-                <ThemeProviderV5 theme={theme}>
-                  <ManagementProvider>
-                    <CssBaseline />
-                    <App />
-                  </ManagementProvider>
-                </ThemeProviderV5>
-              )}
-            </ThemeStateContext.Consumer>
-          </ThemeChangeProvider>
-        </StyledEngineProvider>
-      </UserProvider>
-    </LayoutProvider>
-  </Provider>,
+  <LayoutProvider>
+    <UserProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeChangeProvider>
+          <ThemeStateContext.Consumer>
+            {(theme) => (
+              <ThemeProviderV5 theme={theme}>
+                <ManagementProvider>
+                  <CssBaseline />
+                  <App />
+                </ManagementProvider>
+              </ThemeProviderV5>
+            )}
+          </ThemeStateContext.Consumer>
+        </ThemeChangeProvider>
+      </StyledEngineProvider>
+    </UserProvider>
+  </LayoutProvider>,
 );

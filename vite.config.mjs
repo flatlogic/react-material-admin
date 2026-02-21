@@ -17,9 +17,25 @@ const srcDirectoryAliases = fs
   }));
 
 export default defineConfig(({ mode }) => ({
-  plugins: [react()],
+  plugins: [
+    react({
+      include: /\.[jt]sx?$/,
+    }),
+  ],
   build: {
     outDir: 'build',
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
+  },
+  esbuild: {
+    loader: 'jsx',
+    include: /src\/.*\.js$/,
+    exclude: [],
   },
   resolve: {
     alias: [
@@ -44,6 +60,9 @@ export default defineConfig(({ mode }) => ({
   },
   optimizeDeps: {
     esbuildOptions: {
+      loader: {
+        '.js': 'jsx',
+      },
       define: {
         global: 'globalThis',
       },

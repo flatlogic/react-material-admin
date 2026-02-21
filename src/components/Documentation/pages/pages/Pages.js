@@ -1,13 +1,15 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import { withRouter } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 //components
 import Widget from "../../../Widget";
 import { Typography, Button } from "../../../Wrappers";
 import Code from "../../../Code";
 
-const Pages = (props) => {
+const Pages = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Grid container spacing={3}>
@@ -85,7 +87,7 @@ const Pages = (props) => {
             <Button
               variant={"contained"}
               color={"primary"}
-              onClick={() => props.history.push("/app/dashboard")}>
+              onClick={() => navigate('/app/dashboard')}>
               
               Demo
             </Button>
@@ -96,4 +98,4 @@ const Pages = (props) => {
 
 };
 
-export default withRouter(Pages);
+export default Pages;

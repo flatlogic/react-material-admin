@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Menu, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material';
 import {
@@ -33,9 +33,10 @@ import {
 import { actions } from '../../context/ManagementContext';
 import { useUserDispatch, signOut } from '../../context/UserContext';
 
-export default function Header(props) {
+export default function Header() {
   let classes = useStyles();
   let theme = useTheme();
+  const navigate = useNavigate();
 
   // global
   let layoutState = useLayoutState();
@@ -177,7 +178,7 @@ export default function Header(props) {
             <Typography
               className={classes.profileMenuLink}
               color='primary'
-              onClick={() => signOut(userDispatch, props.history)}
+              onClick={() => signOut(userDispatch, navigate)}
             >
               Sign Out
             </Typography>

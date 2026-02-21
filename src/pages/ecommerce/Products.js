@@ -43,6 +43,7 @@ import payment1 from "../../images/product/mastercard.svg";
 import payment2 from "../../images/product/paypal.svg";
 import payment3 from "../../images/product/visa.svg";
 import payment4 from "../../images/product/aexpress.svg";
+import { useParams } from 'react-router-dom';
 
 export const rows = [
 {
@@ -179,7 +180,9 @@ export const rows = [
 }];
 
 
-const Product = (props) => {
+const Product = () => {
+  const { id } = useParams();
+  const productId = Number(id);
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -202,7 +205,7 @@ const Product = (props) => {
           <Widget disableWidgetMenu noBodyPadding>
             <Grid container>
               <Grid size={{ xs: 12, md: 6 }}>
-                {!props.match.params.id ?
+                {!productId ?
                 <img
                   src={rows[0].img}
                   alt={rows[0].title}
@@ -210,8 +213,8 @@ const Product = (props) => {
 
 
                 <img
-                  src={rows[props.match.params.id - 1].img}
-                  alt={rows[props.match.params.id - 1].title}
+                  src={rows[productId - 1].img}
+                  alt={rows[productId - 1].title}
                   style={{ width: "100%", minHeight: 400 }} />
 
                 }
@@ -225,7 +228,7 @@ const Product = (props) => {
                   style={{ height: "calc(100% - 48px)" }}>
                   
                   <Box>
-                    {!props.match.params.id ?
+                    {!productId ?
                     <div style={{ fontSize: "1.5rem", color: yellow[700] }}>
                         {rows[0].rating}
                         <StarIcon
@@ -238,7 +241,7 @@ const Product = (props) => {
                         style={{ color: yellow[700] }}
                         display={"inline"}>
                         
-                          {rows[props.match.params.id - 1].rating}
+                          {rows[productId - 1].rating}
                         </Typography>
                         <StarIcon
                         style={{ color: yellow[700], marginTop: -5 }} />
@@ -247,7 +250,7 @@ const Product = (props) => {
                     }{" "}
                   </Box>
                   <Box>
-                    {!props.match.params.id ?
+                    {!productId ?
                     <>
                         <Typography variant="h3" uppercase>
                           {rows[0].title}
@@ -257,16 +260,16 @@ const Product = (props) => {
 
                     <>
                         <Typography variant="h3" uppercase>
-                          {rows[props.match.params.id - 1].title}
+                          {rows[productId - 1].title}
                         </Typography>
                         <Typography>
-                          {rows[props.match.params.id].subtitle}
+                          {rows[productId].subtitle}
                         </Typography>
                       </>
                     }{" "}
                   </Box>
                   <Box>
-                    {!props.match.params.id ?
+                    {!productId ?
                     <>
                         <Typography weight="medium" variant={"h5"}>
                           ${rows[0].price}
@@ -275,7 +278,7 @@ const Product = (props) => {
 
                     <>
                         <Typography weight="medium">
-                          ${rows[props.match.params.id].price}
+                          ${rows[productId].price}
                         </Typography>
                       </>
                     }{" "}
@@ -454,7 +457,7 @@ const Product = (props) => {
                       <Typography variant="h5" style={{ marginBottom: 16 }}>
                         RATING & REVIEWS
                       </Typography>
-                      {!props.match.params.id ?
+                      {!productId ?
                       <div style={{ fontSize: "1.5rem", color: yellow[700] }}>
                           {rows[0].rating}
                           <StarIcon
@@ -467,7 +470,7 @@ const Product = (props) => {
                           style={{ color: yellow[700] }}
                           display={"inline"}>
                           
-                            {rows[props.match.params.id - 1].rating}
+                            {rows[productId - 1].rating}
                           </Typography>
                           <StarIcon
                           style={{ color: yellow[700], marginTop: -5 }} />

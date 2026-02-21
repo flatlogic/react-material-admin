@@ -77,7 +77,7 @@ export function getProductsRequest(dispatch) {
   dispatch({ type: 'UPDATE_PRODUCTS', payload: mockProducts });
 }
 
-export function deleteProductRequest({ id, history, dispatch }) {
+export function deleteProductRequest({ id, navigate, pathname, dispatch }) {
   // We check if app runs with backend mode
   if (!config.isBackend) return;
 
@@ -88,8 +88,8 @@ export function deleteProductRequest({ id, history, dispatch }) {
   } else {
     axios.delete('/products/' + id).then((res) => {
       getProductsRequest(dispatch);
-      if (history.location.pathname !== '/app/ecommerce/management') {
-        history.push('/app/ecommerce/management');
+      if (pathname !== '/app/ecommerce/management') {
+        navigate('/app/ecommerce/management');
       }
       return;
     });

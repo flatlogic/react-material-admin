@@ -104,7 +104,6 @@ function loginUser(
   dispatch,
   login,
   password,
-  history,
   setIsLoading,
   setError,
   social = '',
@@ -171,14 +170,14 @@ export function sendPasswordResetEmail(email) {
   };
 }
 
-function signOut(dispatch, history) {
+function signOut(dispatch, navigate) {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
   localStorage.removeItem('user_id');
   document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   axios.defaults.headers.common['Authorization'] = '';
   dispatch({ type: 'SIGN_OUT_SUCCESS' });
-  history.push('/login');
+  navigate('/login');
 }
 
 export function receiveToken(token, dispatch) {
@@ -264,14 +263,14 @@ export function registerUser(
   dispatch,
   login,
   password,
-  history,
+  navigate,
   setIsLoading,
   setError,
   social = '',
 ) {
   return () => {
     if (!config.isBackend) {
-      history.push('/login');
+      navigate('/login');
     } else {
       dispatch({
         type: 'REGISTER_REQUEST',
@@ -288,7 +287,7 @@ export function registerUser(
               message:
                 "You've been registered successfully. Please check your email for verification link",
             });
-            history.push('/login');
+            navigate('/login');
           })
           .catch((err) => {
             dispatch(authError(err.response.data));
@@ -300,10 +299,10 @@ export function registerUser(
   };
 }
 
-export function verifyEmail(token, history) {
+export function verifyEmail(token, navigate) {
   return (dispatch) => {
     if (!config.isBackend) {
-      history.push('/login');
+      navigate('/login');
     } else {
       axios
         .put('/auth/verify-email', { token })
@@ -319,16 +318,16 @@ export function verifyEmail(token, history) {
           showSnackbar({ type: 'error', message: err.response });
         })
         .finally(() => {
-          history.push('/login');
+          navigate('/login');
         });
     }
   };
 }
 
-export function resetPassword(token, password, history) {
+export function resetPassword(token, password, navigate) {
   return (dispatch) => {
     if (!config.isBackend) {
-      history.push('/login');
+      navigate('/login');
     } else {
       dispatch({
         type: 'RESET_REQUEST',
@@ -343,7 +342,7 @@ export function resetPassword(token, password, history) {
             type: 'success',
             message: 'Password has been updated',
           });
-          history.push('/login');
+          navigate('/login');
         })
         .catch((err) => {
           dispatch(authError(err.response.data));

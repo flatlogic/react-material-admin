@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import classnames from 'classnames';
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -8,7 +8,6 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 import { Fab, IconButton } from '@mui/material';
-import { connect } from 'react-redux';
 // styles
 import useStyles from './styles';
 
@@ -79,12 +78,7 @@ import UsersTablePage from 'pages/CRUD/Users/table/UsersTablePage';
 //Sidebar structure
 import structure from '../Sidebar/SidebarStructure'
 
-const Redirect = (props) => {
-  useEffect(() => window.location.replace(props.url));
-  return <span>Redirecting...</span>;
-};
-
-function Layout(props) {
+function Layout() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -99,7 +93,7 @@ function Layout(props) {
 
   return (
     <div className={classes.root}>
-      <Header history={props.history} />
+      <Header />
       <Sidebar structure={structure}/>
       <div
         className={classnames(classes.content, {
@@ -108,83 +102,107 @@ function Layout(props) {
       >
         <div className={classes.fakeToolbar} />
         <BreadCrumbs />
-        <Switch>
-          <Route path='/app/dashboard' component={Dashboard} />
-          <Route path="/app/profile" component={Profile} />
-          <Route path='/app/user/edit' component={EditUser} />
+        <Routes>
+          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='user/edit' element={<EditUser />} />
 
-          <Route exact path="/app/core" render={() => <Redirect to="/app/core/typography" />} />
-          <Route path="/app/core/typography" component={TypographyPage} />
-          <Route path="/app/core/colors" component={ColorsPage} />
-          <Route path="/app/core/grid" component={GridPage} />
-
-          <Route exact path="/app/tables" render={() => <Redirect to={'/app/tables/static'} />} />
-          <Route path="/app/tables/static" component={StaticTablesPage} />
-          <Route path="/app/tables/dynamic" component={DynamicTablesPage} />
-
-          <Route exact path="/app/ui" render={() => <Redirect to="/app/ui/icons" />} />
-          <Route path="/app/ui/icons" component={IconsPage} />
-          <Route path="/app/ui/badge" component={BadgesPage} />
-          <Route path="/app/ui/carousel" component={CarouselsPage} />
-          <Route path="/app/ui/modal" component={ModalsPage} />
-          <Route path="/app/ui/navbar" component={NavbarsPage} />
-          <Route path="/app/ui/tooltips" component={TooltipsPage} />
-          <Route path="/app/ui/tabs" component={TabsPage} />
-          <Route path="/app/ui/cards" component={CardsPage} />
-          <Route path="/app/ui/widget" component={WidgetsPage} />
-          <Route path="/app/ui/progress" component={ProgressPage} />
-          <Route path="/app/ui/notifications" component={NotificationsPage} />
-
-          <Route exact path="/app/forms" render={() => <Redirect to="/app/forms/elements" />} />
-          <Route path="/app/forms/elements" component={FormsElements} />
-          <Route path="/app/forms/validation" component={FormValidation} />
-
-          <Route exact path="/app/charts" render={() => <Redirect to={'/app/charts/overview'} />} />
-          <Route path="/app/charts/overview" component={Charts} />
-          <Route path="/app/charts/line" component={LineCharts} />
-          <Route path="/app/charts/bar" component={BarCharts} />
-          <Route path="/app/charts/pie" component={PieCharts} />
-
-          <Route path="/app/grid" component={DraggableGrid} />
-
-          <Route exact path="/app/maps" render={() => <Redirect to="/app/maps/google" />} />
-          <Route path="/app/maps/google" component={MapsGoogle} />
-          <Route path="/app/maps/vector" component={VectorMaps} />
-
-          <Route exact path="/app/extra" render={() => <Redirect to="/app/extra/timeline" />}/>
-          <Route path="/app/extra/timeline" component={Timeline} />
-          <Route path="/app/extra/search" component={Search} />
-          <Route path="/app/extra/gallery" component={Gallery} />
-          <Route path="/app/extra/invoice" component={Invoice} />
-          <Route path="/app/extra/calendar" component={Calendar} />
-
-          <Route path="/app/ecommerce/management" exact>
-            <ProductsProvider>
-              <Ecommerce />
-            </ProductsProvider>
-          </Route>
-          <Route path="/app/ecommerce/management/edit/:id" exact>
-            <ProductsProvider>
-              <CreateProduct />
-            </ProductsProvider>
-          </Route>
-          <Route path="/app/ecommerce/management/create">
-            <ProductsProvider>
-              <CreateProduct />
-            </ProductsProvider>
-          </Route>
-          <Route path="/app/ecommerce/product/:id" component={Product}/>
-          <Route path="/app/ecommerce/product" component={Product} />
-          <Route path="/app/ecommerce/gridproducts" component={ProductsGrid}/>
-
-          <Route path={'/app/users'} exact component={UsersTablePage} />
-          <Route path={'/app/user/new'} exact component={UsersFormPage} />
           <Route
-            path={'/app/users/:id/edit'}
-            exact
-            component={UsersFormPage}
+            path='core'
+            element={<Navigate to='/app/core/typography' replace />}
           />
-        </Switch>
+          <Route path='core/typography' element={<TypographyPage />} />
+          <Route path='core/colors' element={<ColorsPage />} />
+          <Route path='core/grid' element={<GridPage />} />
+
+          <Route
+            path='tables'
+            element={<Navigate to='/app/tables/static' replace />}
+          />
+          <Route path='tables/static' element={<StaticTablesPage />} />
+          <Route path='tables/dynamic' element={<DynamicTablesPage />} />
+
+          <Route path='ui' element={<Navigate to='/app/ui/icons' replace />} />
+          <Route path='ui/icons' element={<IconsPage />} />
+          <Route path='ui/badge' element={<BadgesPage />} />
+          <Route path='ui/carousel' element={<CarouselsPage />} />
+          <Route path='ui/modal' element={<ModalsPage />} />
+          <Route path='ui/navbar' element={<NavbarsPage />} />
+          <Route path='ui/tooltips' element={<TooltipsPage />} />
+          <Route path='ui/tabs' element={<TabsPage />} />
+          <Route path='ui/cards' element={<CardsPage />} />
+          <Route path='ui/widget' element={<WidgetsPage />} />
+          <Route path='ui/progress' element={<ProgressPage />} />
+          <Route path='ui/notifications' element={<NotificationsPage />} />
+
+          <Route
+            path='forms'
+            element={<Navigate to='/app/forms/elements' replace />}
+          />
+          <Route path='forms/elements' element={<FormsElements />} />
+          <Route path='forms/validation' element={<FormValidation />} />
+
+          <Route
+            path='charts'
+            element={<Navigate to='/app/charts/overview' replace />}
+          />
+          <Route path='charts/overview' element={<Charts />} />
+          <Route path='charts/line' element={<LineCharts />} />
+          <Route path='charts/bar' element={<BarCharts />} />
+          <Route path='charts/pie' element={<PieCharts />} />
+
+          <Route path='grid' element={<DraggableGrid />} />
+
+          <Route
+            path='maps'
+            element={<Navigate to='/app/maps/google' replace />}
+          />
+          <Route path='maps/google' element={<MapsGoogle />} />
+          <Route path='maps/vector' element={<VectorMaps />} />
+
+          <Route
+            path='extra'
+            element={<Navigate to='/app/extra/timeline' replace />}
+          />
+          <Route path='extra/timeline' element={<Timeline />} />
+          <Route path='extra/search' element={<Search />} />
+          <Route path='extra/gallery' element={<Gallery />} />
+          <Route path='extra/invoice' element={<Invoice />} />
+          <Route path='extra/calendar' element={<Calendar />} />
+
+          <Route
+            path='ecommerce/management'
+            element={
+              <ProductsProvider>
+                <Ecommerce />
+              </ProductsProvider>
+            }
+          />
+          <Route
+            path='ecommerce/management/edit/:id'
+            element={
+              <ProductsProvider>
+                <CreateProduct />
+              </ProductsProvider>
+            }
+          />
+          <Route
+            path='ecommerce/management/create'
+            element={
+              <ProductsProvider>
+                <CreateProduct />
+              </ProductsProvider>
+            }
+          />
+          <Route path='ecommerce/product/:id' element={<Product />} />
+          <Route path='ecommerce/product' element={<Product />} />
+          <Route path='ecommerce/gridproducts' element={<ProductsGrid />} />
+
+          <Route path='users' element={<UsersTablePage />} />
+          <Route path='user/new' element={<UsersFormPage />} />
+          <Route path='users/:id/edit' element={<UsersFormPage />} />
+          <Route path='*' element={<Navigate to='/app/dashboard' replace />} />
+        </Routes>
         <Fab
           color='primary'
           aria-label='settings'
@@ -248,4 +266,4 @@ function Layout(props) {
   );
 }
 
-export default withRouter(connect()(Layout));
+export default Layout;

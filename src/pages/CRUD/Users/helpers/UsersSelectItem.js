@@ -1,7 +1,6 @@
 import axios from 'axios';
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import AutocompleteFormItem from 'components/FormItems/items/AutocompleteFormItem';
-import { connect } from 'react-redux';
 
 async function selectList(query, limit) {
   const params = { query, limit };
@@ -67,8 +66,4 @@ const UsersSelectItem = (props) => {
   );
 };
 
-const select = (state) => ({
-  hasPermissionToCreate: state.users.hasPermissionToCreate,
-});
-
-export default connect(select)(UsersSelectItem);
+export default UsersSelectItem;

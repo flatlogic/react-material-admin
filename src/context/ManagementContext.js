@@ -1,12 +1,62 @@
 import React from 'react';
 import axios from 'axios';
-import { mockUser } from './mock';
+import queryString from 'query-string';
 import config from '../../src/config';
 import { showSnackbar } from '../components/Snackbar';
+import {
+  createMockUser,
+  deleteMockUser,
+  findMockUser,
+  listMockUsers,
+  updateMockUser,
+} from '../repositories/usersMockRepository';
 
-async function list() {
-  const response = await axios.get(`/users`);
+async function list(filter = {}) {
+  if (!config.isBackend) {
+    return listMockUsers(filter, filter.request);
+  }
+
+  const query = queryString.stringify({
+    page: filter.page,
+    limit: filter.limit,
+    users: filter.users || '',
+    ...(filter.orderBy || {}),
+  });
+  const request = (filter.request || '').replace(/^(\?|&)+/, '');
+  const url = request ? `/users?${query}&${request}` : `/users?${query}`;
+  const response = await axios.get(url);
+
   return response.data;
+}
+
+function syncUserInLocalStorage(updatedUser) {
+  const rawUser = localStorage.getItem('user');
+
+  if (!rawUser || !updatedUser?.id) {
+    return;
+  }
+
+  try {
+    const parsedUser = JSON.parse(rawUser);
+    const currentUserId = parsedUser?.user?.id;
+
+    if (!currentUserId || String(currentUserId) !== String(updatedUser.id)) {
+      return;
+    }
+
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        ...parsedUser,
+        user: {
+          ...parsedUser.user,
+          ...updatedUser,
+        },
+      }),
+    );
+  } catch (_) {
+    return;
+  }
 }
 
 let ManagementStateContext = React.createContext();
@@ -25,13 +75,17 @@ const initialData = {
 function managementReducer(state = initialData, { type, payload }) {
   if (type === 'USERS_FORM_RESET') {
     return {
-      ...initialData,
+      ...state,
+      findLoading: false,
+      saveLoading: false,
+      currentUser: null,
     };
   }
 
   if (type === 'USERS_FORM_FIND_STARTED') {
     return {
       ...state,
+      currentUser: null,
       findLoading: true,
     };
   }
@@ -163,15 +217,7 @@ function managementReducer(state = initialData, { type, payload }) {
 }
 
 function ManagementProvider({ children }) {
-  let [state, dispatch] = React.useReducer(managementReducer, {
-    findLoading: false,
-    saveLoading: false,
-    currentUser: null,
-    rows: [],
-    loading: false,
-    idToDelete: null,
-    modalOpen: false,
-  });
+  let [state, dispatch] = React.useReducer(managementReducer, initialData);
 
   return (
     <ManagementStateContext.Provider value={state}>
@@ -211,18 +257,43 @@ const actions = {
     };
   },
 
-  doFind: (id) => async (dispatch) => {
+  doFind: (id, options = {}) => async (dispatch) => {
+    const { navigate, redirectPath = null } = options;
+
+    dispatch({
+      type: 'USERS_FORM_FIND_STARTED',
+    });
+
+    if (!id) {
+      dispatch({
+        type: 'USERS_FORM_FIND_ERROR',
+      });
+      if (navigate && redirectPath) {
+        navigate(redirectPath);
+      }
+      return;
+    }
+
     if (!config.isBackend) {
+      const record = findMockUser(id);
+
+      if (!record) {
+        showSnackbar({ type: 'error', message: 'User not found' });
+        dispatch({
+          type: 'USERS_FORM_FIND_ERROR',
+        });
+        if (navigate && redirectPath) {
+          navigate(redirectPath);
+        }
+        return;
+      }
+
       dispatch({
         type: 'USERS_FORM_FIND_SUCCESS',
-        payload: mockUser,
+        payload: record,
       });
     } else {
       try {
-        dispatch({
-          type: 'USERS_FORM_FIND_STARTED',
-        });
-
         const res = await axios.get(`/users/${id}`);
         const currentUser = res.data;
         dispatch({
@@ -235,20 +306,33 @@ const actions = {
         dispatch({
           type: 'USERS_FORM_FIND_ERROR',
         });
+        if (navigate && redirectPath) {
+          navigate(redirectPath);
+        }
       }
     }
   },
 
-  doCreate: (values, history) => async (dispatch) => {
+  doCreate: (values, navigate, redirectPath = '/app/users') => async (dispatch) => {
     try {
       dispatch({
         type: 'USERS_FORM_CREATE_STARTED',
       });
-      await axios.post('/users', { data: values });
+
+      if (config.isBackend) {
+        await axios.post('/users', { data: values });
+      } else {
+        createMockUser(values);
+      }
+
       dispatch({
         type: 'USERS_FORM_CREATE_SUCCESS',
       });
-      history.push('/app/users');
+      showSnackbar({ type: 'success', message: 'Users created' });
+
+      if (navigate && redirectPath) {
+        navigate(redirectPath);
+      }
     } catch (error) {
       showSnackbar({ type: 'error', message: 'Error' });
       console.log(error);
@@ -258,21 +342,46 @@ const actions = {
     }
   },
 
-  doUpdate: (id, values, history) => async (dispatch, getState) => {
+  doUpdate: (id, values, navigate, options = {}) => async (dispatch) => {
+    const { redirectPath = '/app/dashboard', isProfile = false } = options;
+
     try {
       dispatch({
         type: 'USERS_FORM_UPDATE_STARTED',
       });
 
-      await axios.put(`/users/${id}`, { id, data: values });
+      let updatedUser = values;
+      if (config.isBackend) {
+        await axios.put(`/users/${id}`, { id, data: values });
+        updatedUser = { id, ...values };
+      } else {
+        updatedUser = updateMockUser(id, values);
+        if (!updatedUser) {
+          showSnackbar({ type: 'error', message: 'User not found' });
+          dispatch({
+            type: 'USERS_FORM_UPDATE_ERROR',
+          });
+          return;
+        }
+      }
+
+      syncUserInLocalStorage(updatedUser);
 
       dispatch({
         type: 'USERS_FORM_UPDATE_SUCCESS',
-        payload: values,
+        payload: updatedUser,
       });
 
-      history.push('/app/dashboard');
+      showSnackbar({
+        type: 'success',
+        message: isProfile ? 'Profile updated' : 'Users updated',
+      });
+
+      if (navigate && redirectPath) {
+        navigate(redirectPath);
+      }
     } catch (error) {
+      showSnackbar({ type: 'error', message: 'Error' });
       console.log(error);
 
       dispatch({
@@ -310,58 +419,14 @@ const actions = {
   doFetch:
     (filter, keepPagination = false) =>
     async (dispatch) => {
-      if (!config.isBackend) {
-        dispatch({
-          type: 'USERS_LIST_FETCH_SUCCESS',
-          payload: {
-            rows: [mockUser],
-            count: 1,
-          },
-        });
-      } else {
-        try {
-          dispatch({
-            type: 'USERS_LIST_FETCH_STARTED',
-            payload: { filter, keepPagination },
-          });
-
-          const response = await list();
-
-          dispatch({
-            type: 'USERS_LIST_FETCH_SUCCESS',
-            payload: {
-              rows: response.rows,
-              count: response.count,
-            },
-          });
-        } catch (error) {
-          showSnackbar({ type: 'error', message: 'Error' });
-          console.log(error);
-
-          dispatch({
-            type: 'USERS_LIST_FETCH_ERROR',
-          });
-        }
-      }
-    },
-
-  doDelete: (id) => async (dispatch) => {
-    if (!config.isBackend) {
-      dispatch({
-        type: 'USERS_LIST_DELETE_ERROR',
-      });
-    } else {
       try {
         dispatch({
-          type: 'USERS_LIST_DELETE_STARTED',
+          type: 'USERS_LIST_FETCH_STARTED',
+          payload: { filter, keepPagination },
         });
 
-        await axios.delete(`/users/${id}`);
+        const response = await list(filter);
 
-        dispatch({
-          type: 'USERS_LIST_DELETE_SUCCESS',
-        });
-        const response = await list();
         dispatch({
           type: 'USERS_LIST_FETCH_SUCCESS',
           payload: {
@@ -372,10 +437,43 @@ const actions = {
       } catch (error) {
         showSnackbar({ type: 'error', message: 'Error' });
         console.log(error);
+
         dispatch({
-          type: 'USERS_LIST_DELETE_ERROR',
+          type: 'USERS_LIST_FETCH_ERROR',
         });
       }
+    },
+
+  doDelete: (filter, id) => async (dispatch) => {
+    try {
+      dispatch({
+        type: 'USERS_LIST_DELETE_STARTED',
+      });
+
+      if (config.isBackend) {
+        await axios.delete(`/users/${id}`);
+      } else {
+        deleteMockUser(id);
+      }
+
+      dispatch({
+        type: 'USERS_LIST_DELETE_SUCCESS',
+      });
+
+      const response = await list(filter);
+      dispatch({
+        type: 'USERS_LIST_FETCH_SUCCESS',
+        payload: {
+          rows: response.rows,
+          count: response.count,
+        },
+      });
+    } catch (error) {
+      showSnackbar({ type: 'error', message: 'Error' });
+      console.log(error);
+      dispatch({
+        type: 'USERS_LIST_DELETE_ERROR',
+      });
     }
   },
   doOpenConfirm: (id) => async (dispatch) => {

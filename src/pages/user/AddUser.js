@@ -10,7 +10,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useStyles from './styles';
 import { toast } from 'react-toastify';
 import Axios from 'axios';
@@ -137,9 +137,9 @@ const AddUser = () => {
   };
 
   var managementDispatch = useManagementDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const doSubmit = (id, data) => {
-    actions.doCreate(data, history)(managementDispatch);
+    actions.doCreate(data, navigate)(managementDispatch);
 
   };
 
@@ -154,7 +154,7 @@ const AddUser = () => {
     setSkipped(newSkipped);
 
     if (activeStep === 3) {
-      doSubmit(null, newUser, history);
+      doSubmit(null, newUser);
       sendNotification();
     }
   };

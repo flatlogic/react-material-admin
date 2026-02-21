@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { Grid, Box, TextField } from '@mui/material';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
 import Switch from '@mui/material/Switch';
-import { useLocation, useHistory } from 'react-router-dom';
 import useStyles from './styles';
 
 import {
@@ -101,7 +100,7 @@ const EditUser = () => {
 
     return null;
   };
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     actions.doFind(sessionStorage.getItem('user_id'))(managementDispatch);
@@ -129,7 +128,7 @@ const EditUser = () => {
     actions.doUpdate(
       sessionStorage.getItem('user_id'),
       data,
-      history
+      navigate
     )(managementDispatch);
     showSnackbar({ type: 'success', message: 'User Edited' });
   }

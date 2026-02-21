@@ -54,7 +54,7 @@ function filesFormatter(cell) {
   );
 }
 
-function listFormatter(cell, history, entity) {
+function listFormatter(cell, navigate, entity) {
   if (!cell) return null;
 
   const getContent = (id, title) => (
@@ -64,7 +64,7 @@ function listFormatter(cell, history, entity) {
         color={'primary'}
         onClick={(e) => {
           e.preventDefault();
-          history.push(`/admin/${entity}/${id}/edit`);
+          navigate(`/app/${entity}/${id}/edit`);
         }}
       >
         {title}

@@ -2,8 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Drawer, IconButton, List } from '@mui/material';
 import { useTheme } from '@mui/material';
-import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
+import { useLocation } from 'react-router-dom';
 
 // styles
 import useStyles from './styles';
@@ -18,9 +18,10 @@ import {
   toggleSidebar,
 } from '../../context/LayoutContext';
 
-function Sidebar({ location, structure }) {
+function Sidebar({ structure }) {
   let classes = useStyles();
   let theme = useTheme();
+  const location = useLocation();
 
   const toggleDrawer = (value) => (event) => {
     if (
@@ -110,4 +111,4 @@ function Sidebar({ location, structure }) {
   }
 }
 
-export default withRouter(Sidebar);
+export default Sidebar;

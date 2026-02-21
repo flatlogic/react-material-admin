@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useStyles from './styles';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Material-UI core components
 import { AppBar, Toolbar, IconButton, Box, Button } from '@mui/material';
@@ -27,9 +27,10 @@ import {
 } from '../../../../context/LayoutContext';
 import classNames from 'classnames';
 
-const Header = (props) => {
+const Header = () => {
   const theme = useTheme();
   const classes = useStyles();
+  const navigate = useNavigate();
   let layoutState = useLayoutState();
   let layoutDispatch = useLayoutDispatch();
   const [isSmall, setSmall] = useState(false);
@@ -121,7 +122,7 @@ const Header = (props) => {
             <Button
               color={'inherit'}
               style={{ marginRight: 16 }}
-              onClick={() => props.history.push('/app')}
+              onClick={() => navigate('/app')}
             >
               Live Preview
             </Button>
@@ -139,4 +140,4 @@ const Header = (props) => {
   );
 };
 
-export default withRouter(Header);
+export default Header;

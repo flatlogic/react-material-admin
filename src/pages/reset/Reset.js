@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, CircularProgress, TextField as Input } from '@mui/material';
-import { withRouter, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // styles
 import useStyles from './styles';
@@ -18,9 +18,10 @@ import {
 //components
 import { Button, Typography } from '../../components/Wrappers';
 
-function Reset(props) {
+function Reset() {
   let classes = useStyles();
-  const history = useHistory();
+  const navigate = useNavigate();
+  const location = useLocation();
   // global
   let userDispatch = useUserDispatch();
   const [passwordValue, setPasswordValue] = useState('');
@@ -42,7 +43,7 @@ function Reset(props) {
   };
 
   const doReset = () => {
-    const params = new URLSearchParams(history.location.search);
+    const params = new URLSearchParams(location.search);
     const token = params.get('token');
     if (!token) {
       authError('There are no token')(userDispatch);
@@ -51,7 +52,7 @@ function Reset(props) {
     if (!isPasswordValid()) {
       checkPassword();
     } else {
-      resetPassword(token, passwordValue, history)(userDispatch);
+      resetPassword(token, passwordValue, navigate)(userDispatch);
     }
   };
 
@@ -116,7 +117,7 @@ function Reset(props) {
             <Button
               color='primary'
               size='large'
-              onClick={() => history.push('/login')}
+              onClick={() => navigate('/login')}
               className={classes.forgetButton}
             >
               Back to login
@@ -140,4 +141,4 @@ function Reset(props) {
   );
 }
 
-export default withRouter(Reset);
+export default Reset;

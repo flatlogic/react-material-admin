@@ -1,10 +1,7 @@
 import * as dataFormat from 'pages/CRUD/Users/table/UsersDataFormatters';
 
-import actions from 'actions/users/usersListActions';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 import { uniqueId } from 'lodash';
 
 import { makeStyles } from 'styles/muiCompat';
@@ -26,6 +23,11 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Widget from 'components/Widget';
 import Actions from '../../../../components/Table/Actions';
 import Dialog from '../../../../components/Dialog';
+import {
+  actions,
+  useManagementDispatch,
+  useManagementState,
+} from '../../../../context/ManagementContext';
 
 const useStyles = makeStyles({
   container: {
@@ -44,8 +46,9 @@ const useStyles = makeStyles({
 });
 
 const UsersTable = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const managementDispatch = useManagementDispatch();
+  const managementState = useManagementState();
+  const navigate = useNavigate();
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -63,11 +66,10 @@ const UsersTable = () => {
   const [loading, setLoading] = React.useState(false);
   const [sortModel, setSortModel] = React.useState([]);
   const [selectionModel, setSelectionModel] = React.useState([]);
-  // eslint-disable-next-line no-unused-vars
-  const count = useSelector((store) => store.users.list.count);
-  const modalOpen = useSelector((store) => store.users.list.modalOpen);
-  const rows = useSelector((store) => store.users.list.rows);
-  const idToDelete = useSelector((store) => store.users.list.idToDelete);
+  const count = managementState.count || 0;
+  const modalOpen = managementState.modalOpen;
+  const rows = managementState.rows;
+  const idToDelete = managementState.idToDelete;
 
   const [rowsState, setRowsState] = React.useState({
     page: 0,
@@ -76,7 +78,7 @@ const UsersTable = () => {
 
   const loadData = async (limit, page, orderBy, request) => {
     setLoading(true);
-    await dispatch(actions.doFetch({ limit, page, orderBy, request }));
+    await actions.doFetch({ limit, page, orderBy, request })(managementDispatch);
     setLoading(false);
   };
 
@@ -131,8 +133,8 @@ const UsersTable = () => {
   const handleReset = () => {
     setFilterItems([]);
     setFilterUrl('');
-    dispatch(
-      actions.doFetch({ limit: rowsState.pageSize, page: 0, request: '' })
+    actions.doFetch({ limit: rowsState.pageSize, page: 0, request: '' })(
+      managementDispatch,
     );
   };
 
@@ -155,25 +157,26 @@ const UsersTable = () => {
     if (newItems.length) {
       setFilterItems(newItems);
     } else {
-      dispatch(actions.doFetch({ limit: 10, page: 1 }));
+      actions.doFetch({ limit: 10, page: 1 })(managementDispatch);
       setFilterItems(newItems);
     }
   };
 
   const handleDelete = () => {
-    dispatch(
-      actions.doDelete({ limit: 10, page: 0, request: filterUrl }, idToDelete)
-    );
+    actions.doDelete(
+      { limit: 10, page: 0, request: filterUrl },
+      idToDelete,
+    )(managementDispatch);
   };
 
   const openModal = (event, cell) => {
     const id = cell;
     event.stopPropagation();
-    dispatch(actions.doOpenConfirm(id));
+    actions.doOpenConfirm(id)(managementDispatch);
   };
 
   const closeModal = () => {
-    dispatch(actions.doCloseConfirm());
+    actions.doCloseConfirm()(managementDispatch);
   };
 
   function NoRowsOverlay() {
@@ -374,6 +377,7 @@ const UsersTable = () => {
           
           <DataGrid
             rows={loading ? [] : rows}
+            rowCount={count}
             columns={columns}
             sortingMode='server'
             sortModel={sortModel}
@@ -399,7 +403,7 @@ const UsersTable = () => {
             disableColumnMenu
             loading={loading}
             onRowClick={(e) => {
-              history.push(`/app/users/${e.id}/edit`);
+              navigate(`/app/users/${e.id}/edit`);
             }}
             autoHeight />
           

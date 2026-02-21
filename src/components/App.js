@@ -1,5 +1,11 @@
 import React from 'react';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useNavigate,
+} from 'react-router-dom';
 import { SnackbarProvider } from './Snackbar';
 
 // components
@@ -14,7 +20,7 @@ import Reset from '../pages/reset';
 
 // context
 import { useUserState } from '../context/UserContext';
-import history from '../history';
+import { setNavigator } from '../router/navigation';
 
 export default function App() {
   // global
@@ -24,67 +30,82 @@ export default function App() {
   return (
     <>
       <SnackbarProvider>
-        <Router history={history}>
-          <Switch>
+        <BrowserRouter>
+          <RouterNavigatorSync />
+          <Routes>
+            <Route path='/' element={<Navigate to='/app/profile' replace />} />
             <Route
-              exact
-              path='/'
-              render={() => <Redirect to='/app/profile' />}
-            />
-
-            <Route
-              exact
               path='/app'
-              render={() => <Redirect to='/app/dashboard' />}
+              element={<Navigate to='/app/dashboard' replace />}
             />
-
-            <Route exact path='/403' render={() => <Error code={403} />} />
-            <Route exact path='/500' render={() => <Error code={500} />} />
-            <Route path='/documentation' component={Documentation} />
-            <PrivateRoute path='/app' component={Layout} />
-            <PublicRoute path='/login' component={Login} />
-            <PublicRoute path='/verify-email' exact component={Verify} />
-            <PublicRoute path='/password-reset' exact component={Reset} />
-            <Route component={Error} />
-          </Switch>
-        </Router>
+            <Route path='/403' element={<Error code={403} />} />
+            <Route path='/500' element={<Error code={500} />} />
+            <Route path='/documentation/*' element={<Documentation />} />
+            <Route
+              path='/app/*'
+              element={
+                <PrivateRoute>
+                  <Layout />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/login'
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path='/verify-email'
+              element={
+                <PublicRoute>
+                  <Verify />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path='/password-reset'
+              element={
+                <PublicRoute>
+                  <Reset />
+                </PublicRoute>
+              }
+            />
+            <Route path='*' element={<Error />} />
+          </Routes>
+        </BrowserRouter>
       </SnackbarProvider>
     </>
   );
 
   // #######################################################################
 
-  function PrivateRoute({ component, ...rest }) {
-    return (
-      <Route
-        {...rest}
-        render={(props) =>
-          isAuth ? (
-            React.createElement(component, props)
-          ) : (
-            <Redirect to={'/login'} />
-          )
-        }
-      />
-    );
+  function PrivateRoute({ children }) {
+    if (!isAuth) {
+      return <Navigate to='/login' replace />;
+    }
+
+    return children;
   }
 
-  function PublicRoute({ component, ...rest }) {
-    return (
-      <Route
-        {...rest}
-        render={(props) =>
-          isAuth ? (
-            <Redirect
-              to={{
-                pathname: '/',
-              }}
-            />
-          ) : (
-            React.createElement(component, props)
-          )
-        }
-      />
-    );
+  function PublicRoute({ children }) {
+    if (isAuth) {
+      return <Navigate to='/' replace />;
+    }
+
+    return children;
   }
+}
+
+function RouterNavigatorSync() {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    setNavigator(navigate);
+    return () => setNavigator(null);
+  }, [navigate]);
+
+  return null;
 }

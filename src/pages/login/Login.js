@@ -8,8 +8,8 @@ import {
   TextField as Input,
   Typography,
 } from '@mui/material';
-import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // styles
 import useStyles from './styles';
@@ -45,15 +45,17 @@ const getGreeting = () => {
   }
 };
 
-function Login(props) {
+function Login() {
   let classes = useStyles();
-  const tab = new URLSearchParams(props.location.search).get('tab');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const tab = new URLSearchParams(location.search).get('tab');
 
   // global
   let userDispatch = useUserDispatch();
 
   useEffect(() => {
-    const params = new URLSearchParams(props.location.search);
+    const params = new URLSearchParams(location.search);
     const token = params.get('token');
     if (token) {
       receiveToken(token, userDispatch);
@@ -64,7 +66,8 @@ function Login(props) {
   // local
   let [isLoading, setIsLoading] = useState(false);
   let [error, setError] = useState(null);
-  let [activeTabId, setActiveTabId] = useState(+tab ?? 0);
+  const parsedTab = Number(tab);
+  let [activeTabId, setActiveTabId] = useState(Number.isFinite(parsedTab) ? parsedTab : 0);
   let [nameValue, setNameValue] = useState('');
   let [loginValue, setLoginValue] = useState('admin@flatlogic.com');
   let [passwordValue, setPasswordValue] = useState('password');
@@ -81,7 +84,6 @@ function Login(props) {
         userDispatch,
         loginValue,
         passwordValue,
-        props.history,
         setIsLoading,
         setError,
       );
@@ -189,7 +191,6 @@ function Login(props) {
                         userDispatch,
                         loginValue,
                         passwordValue,
-                        props.history,
                         setIsLoading,
                         setError,
                         'google',
@@ -266,7 +267,6 @@ function Login(props) {
                             userDispatch,
                             loginValue,
                             passwordValue,
-                            props.history,
                             setIsLoading,
                             setError,
                           )
@@ -357,7 +357,7 @@ function Login(props) {
                             userDispatch,
                             loginValue,
                             passwordValue,
-                            props.history,
+                            navigate,
                             setIsLoading,
                             setError,
                           )()
@@ -395,7 +395,6 @@ function Login(props) {
                         userDispatch,
                         loginValue,
                         passwordValue,
-                        props.history,
                         setIsLoading,
                         setError,
                         'google',
@@ -431,4 +430,4 @@ function Login(props) {
   );
 }
 
-export default withRouter(Login);
+export default Login;

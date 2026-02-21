@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -9,7 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 const Actions = ({ classes, id, openModal, entity }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -36,7 +36,11 @@ const Actions = ({ classes, id, openModal, entity }) => {
         <MenuItem
           classes={classes}
           onClick={() => {
-            history.push(`/admin/${entity}/${id}/edit`);
+            const editPath =
+              entity === 'users'
+                ? `/app/users/${id}/edit`
+                : `/admin/${entity}/${id}/edit`;
+            navigate(editPath);
             handleClose();
           }}
         >

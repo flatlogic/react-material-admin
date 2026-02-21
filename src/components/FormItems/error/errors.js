@@ -1,5 +1,5 @@
 import { showSnackbar } from '../../Snackbar';
-import history from '../../../history';
+import { navigateTo } from '../../../router/navigation';
 
 const DEFAULT_ERROR_MESSAGE = 'Error';
 
@@ -33,7 +33,7 @@ export default class Errors {
     }
 
     if (selectErrorCode(error) === 403) {
-      history.push('/403');
+      navigateTo('/403');
       return;
     }
 
@@ -42,7 +42,7 @@ export default class Errors {
       return;
     }
 
-    history.push('/500');
+    navigateTo('/500');
   }
 
   static errorCode(error) {

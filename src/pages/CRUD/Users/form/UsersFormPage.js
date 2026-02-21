@@ -1,71 +1,75 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import UsersForm from 'pages/CRUD/Users/form/UsersForm';
-import actions from 'actions/users/usersFormActions';
-import { connect } from 'react-redux';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  actions,
+  useManagementDispatch,
+  useManagementState,
+} from '../../../../context/ManagementContext';
 
-const UsersFormPage = (props) => {
-  const { dispatch, match, saveLoading, findLoading, record, currentUser } =
-    props;
-
-  const [dispatched, setDispatched] = useState(false);
+const UsersFormPage = () => {
+  const managementDispatch = useManagementDispatch();
+  const managementState = useManagementState();
+  const params = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const isEditing = () => {
-    return !!match.params.id;
+    return !!params.id;
   };
 
   const isProfile = () => {
-    return match.url === '/app/profile';
+    return location.pathname === '/app/profile';
   };
 
   const doSubmit = (id, data) => {
     if (isEditing() || isProfile()) {
-      dispatch(actions.doUpdate(id, data, isProfile()));
+      actions.doUpdate(id, data, navigate, {
+        isProfile: isProfile(),
+        redirectPath: isProfile() ? null : '/app/users',
+      })(managementDispatch);
     } else {
-      dispatch(actions.doCreate(data));
+      actions.doCreate(data, navigate, '/app/users')(managementDispatch);
     }
   };
 
   useEffect(() => {
     if (isEditing()) {
-      dispatch(actions.doFind(match.params.id));
+      actions.doFind(params.id, {
+        navigate,
+        redirectPath: '/app/users',
+      })(managementDispatch);
     } else {
       if (isProfile()) {
-        const currentUser = JSON.parse(localStorage.getItem('user'));
-        const currentUserId = currentUser.user.id;
-        dispatch(actions.doFind(currentUserId));
+        const currentUser = JSON.parse(localStorage.getItem('user') || 'null');
+        const currentUserId = currentUser?.user?.id;
+        actions.doFind(currentUserId, {
+          navigate,
+          redirectPath: '/app/dashboard',
+        })(managementDispatch);
       } else {
-        dispatch(actions.doNew());
+        managementDispatch(actions.doNew());
       }
     }
-    setDispatched(true);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [match, dispatch]);
+  }, [location.pathname, managementDispatch, navigate, params.id]);
+
+  const { saveLoading, findLoading, currentUser } = managementState;
+  const record = isEditing() || isProfile() ? currentUser : {};
 
   return (
     <>
-      {dispatched && (
-        <UsersForm
-          saveLoading={saveLoading}
-          findLoading={findLoading}
-          currentUser={currentUser}
-          record={isEditing() || isProfile() ? record : {}}
-          isEditing={isEditing()}
-          isProfile={isProfile()}
-          onSubmit={doSubmit}
-          onCancel={() => props.history.push('/app/users')}
-        />
-      )}
+      <UsersForm
+        saveLoading={saveLoading}
+        findLoading={findLoading}
+        currentUser={currentUser}
+        record={record}
+        isEditing={isEditing()}
+        isProfile={isProfile()}
+        onSubmit={doSubmit}
+        onCancel={() => navigate('/app/users')}
+      />
     </>
   );
 };
 
-function mapStateToProps(store) {
-  return {
-    findLoading: store.users.form.findLoading,
-    saveLoading: store.users.form.saveLoading,
-    record: store.users.form.record,
-    currentUser: store.auth.currentUser,
-  };
-}
-
-export default connect(mapStateToProps)(UsersFormPage);
+export default UsersFormPage;

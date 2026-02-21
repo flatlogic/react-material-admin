@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  Switch,
+  Navigate,
   Route,
-  Redirect,
-  useRouteMatch,
+  Routes,
   useLocation,
-  withRouter,
 } from 'react-router-dom';
 
 //styles
@@ -34,11 +32,10 @@ import { Box, Breadcrumbs, Grid } from '@mui/material';
 
 import { NavigateNext as NavigateNextIcon } from '@mui/icons-material';
 
-const Documentation = (props) => {
+const Documentation = () => {
   // global
   let layoutState = useLayoutState();
   const classes = useStyles();
-  const { path } = useRouteMatch();
   const location = useLocation();
   return (
     <div className={classes.root}>
@@ -90,32 +87,21 @@ const Documentation = (props) => {
             })}
           </Grid>
         </Widget>
-        <Switch>
-          <Route path={path} exact>
-            <Redirect to={`${path}/getting-started/quick-start`} />
-          </Route>
-          <Route path={`${path}/getting-started/quick-start`}>
-            <Start />
-          </Route>
-          <Route path={`${path}/components/typography`}>
-            <TypographyPage />
-          </Route>
-          <Route path={`${path}/components/widget`}>
-            <WidgetPage />
-          </Route>
-          <Route path={`${path}/components/header`}>
-            <HeaderPage />
-          </Route>
-          <Route path={`${path}/components/sidebar`}>
-            <SidebarPage />
-          </Route>
-          <Route path={`${path}/components/buttons`}>
-            <ButtonsPage />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route
+            index
+            element={<Navigate to='getting-started/quick-start' replace />}
+          />
+          <Route path='getting-started/quick-start' element={<Start />} />
+          <Route path='components/typography' element={<TypographyPage />} />
+          <Route path='components/widget' element={<WidgetPage />} />
+          <Route path='components/header' element={<HeaderPage />} />
+          <Route path='components/sidebar' element={<SidebarPage />} />
+          <Route path='components/buttons' element={<ButtonsPage />} />
+        </Routes>
       </div>
     </div>
   );
 };
 
-export default withRouter(Documentation);
+export default Documentation;
