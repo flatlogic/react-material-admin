@@ -34,7 +34,7 @@ export default defineConfig(({ mode }) => ({
   },
   esbuild: {
     loader: 'jsx',
-    include: /src\/.*\.js$/,
+    include: /src\/.*\.[jt]sx?$/,
     exclude: [],
   },
   resolve: {
@@ -70,5 +70,12 @@ export default defineConfig(({ mode }) => ({
   },
   server: {
     port: 3000,
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.js',
+    css: true,
+    fileParallelism: false,
   },
 }));

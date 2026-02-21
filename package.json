@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "lint": "cross-env NODE_ENV=development BABEL_ENV=development eslint src --ext .js,.jsx",
     "lint:fix": "cross-env NODE_ENV=development BABEL_ENV=development eslint src --ext .js,.jsx --fix",
-    "test": "echo \"Tests are not configured yet\" && exit 0",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "format": "prettier --write src/"
   },
   "dependencies": {
@@ -95,7 +96,9 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.57.1",
     "eslint-config-react-app": "^7.0.1",
+    "jsdom": "^25.0.1",
     "sass": "^1.81.0",
-    "vite": "^5.4.10"
+    "vite": "^5.4.10",
+    "vitest": "^2.1.8"
   }
 }
