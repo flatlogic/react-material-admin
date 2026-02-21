@@ -1,10 +1,15 @@
-const hostApi = process.env.NODE_ENV === "development"
+const isDevelopment = import.meta.env.DEV;
+const hostApi = isDevelopment
   ? "http://localhost"
   : "https://sing-generator-node.herokuapp.com";
-const portApi = process.env.NODE_ENV === "development" ? 8080 : "";
+const portApi = isDevelopment ? 8080 : "";
 const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}/api`;
-const redirectUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://flatlogic.github.io/react-material-admin-full";
-const isBackend = String(process.env.REACT_APP_BACKEND).toLowerCase() === "true";
+const redirectUrl = isDevelopment
+  ? "http://localhost:3000"
+  : typeof window !== "undefined"
+    ? window.location.origin
+    : "https://flatlogic.github.io/react-material-admin-full";
+const isBackend = String(import.meta.env.VITE_BACKEND).toLowerCase() === "true";
 
 const appConfig = {
   hostApi,

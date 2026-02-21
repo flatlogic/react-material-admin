@@ -44,7 +44,7 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 5. **Enable backend mode (optional)**
    - Create `.env.local`:
      ```bash
-     REACT_APP_BACKEND=true
+     VITE_BACKEND=true
      ```
    - Start backend API on `http://localhost:8080`
    - Run:
@@ -66,7 +66,7 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 - MUI `7.x` + Emotion
 - React Router `5.x` (Browser History, no hash routing)
 - Redux + Context (transitional architecture before consolidation)
-- CRA (`react-scripts`) + `react-app-rewired` (Vite migration is planned)
+- Vite 5 + `@vitejs/plugin-react`
 - Frontend-only users/auth fallback is available when backend is disabled
 
 ---
@@ -82,7 +82,7 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 - Charts Libraries
 - Dashboard Pages
 - CSS-in-JS Styling
-- CRA + react-app-rewired setup
+- Vite-based build setup
 
 ---
 
@@ -92,7 +92,7 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 - MUI 7
 - React Hooks & Context API
 - React Router v5
-- Webpack
+- Vite
 - Node.js (for backend)
 
 ---

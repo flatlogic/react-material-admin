@@ -45,7 +45,7 @@ const Start = () => {
               </ListItem>
               <ListItem>
                 <ListItemText
-                  children={<span>3. Enable backend mode by setting <Code inline>REACT_APP_BACKEND=true</Code> in <Code inline>.env.local</Code>, then run <Code inline>npm run dev</Code></span>}
+                  children={<span>3. Enable backend mode by setting <Code inline>VITE_BACKEND=true</Code> in <Code inline>.env.local</Code>, then run <Code inline>npm run dev</Code></span>}
                 />
               </ListItem>
               <ListItem>
@@ -65,7 +65,7 @@ const Start = () => {
               </ListItem>
               <ListItem>
                 <ListItemText
-                  children={<span><Code inline>npm test</Code>: run tests in watch mode</span>}
+                  children={<span><Code inline>npm run preview</Code>: preview production build locally</span>}
                 />
               </ListItem>
               <ListItem>

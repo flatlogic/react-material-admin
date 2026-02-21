@@ -27,7 +27,7 @@ function selectErrorCode(error) {
 
 export default class Errors {
   static handle(error) {
-    if (process.env.NODE_ENV !== 'test') {
+    if (import.meta.env.MODE !== 'test') {
       console.error(selectErrorMessage(error));
       console.error(error);
     }

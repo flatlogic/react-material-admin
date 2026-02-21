@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import axios from 'axios';
+import './polyfills';
 import { createStore, applyMiddleware } from 'redux';
 import { thunk as ReduxThunk } from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { ThemeProvider as ThemeProviderV5 } from '@mui/material/styles';
 import { StyledEngineProvider } from '@mui/material/styles';
 import App from './components/App';
-import * as serviceWorker from './serviceWorker';
 import { LayoutProvider } from './context/LayoutContext';
 import { UserProvider } from './context/UserContext';
 import { ManagementProvider } from './context/ManagementContext';
@@ -60,8 +60,3 @@ root.render(
     </LayoutProvider>
   </Provider>,
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
