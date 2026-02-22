@@ -10,7 +10,7 @@ function decodeBase64Url(value) {
         .map((char) => `%${(`00${char.charCodeAt(0).toString(16)}`).slice(-2)}`)
         .join(''),
     );
-  } catch (error) {
+  } catch {
     return ascii;
   }
 }
@@ -27,8 +27,7 @@ export function decodeJwtPayload(token) {
 
   try {
     return JSON.parse(decodeBase64Url(parts[1]));
-  } catch (error) {
+  } catch {
     return null;
   }
 }
-

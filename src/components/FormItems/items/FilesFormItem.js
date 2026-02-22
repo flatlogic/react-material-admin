@@ -1,4 +1,3 @@
-import React from 'react';
 import FilesUploader from 'components/FormItems/uploaders/FilesUploader';
 import FormErrors from 'components/FormItems/formErrors';
 import { FastField } from 'formik';

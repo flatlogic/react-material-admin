@@ -1,5 +1,4 @@
 import dayjs from 'utils/dayjs';
-import React from 'react';
 import Box from '@mui/material/Box';
 import { Link as LinkMaterial } from '../../../../components/Wrappers';
 

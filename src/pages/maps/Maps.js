@@ -1,4 +1,3 @@
-import React from "react";
 import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
 
 // styles

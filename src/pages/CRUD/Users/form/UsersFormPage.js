@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import UsersForm from 'pages/CRUD/Users/form/UsersForm';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import {

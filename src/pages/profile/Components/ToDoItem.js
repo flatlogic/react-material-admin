@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { makeStyles } from 'styles/mui';
 import Typography from '@mui/material/Typography';
 import { MenuItem, IconButton, Menu } from '@mui/material';

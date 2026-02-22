@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Grid,
   Card,
@@ -79,7 +78,7 @@ const Gallery = () => {
   return (
     <>
       <Grid container spacing={6}>
-        {gallery.map((c, n) =>
+        {gallery.map((c) =>
         <Grid key={c.id} size={{ xs: 12, md: 3 }}>
             <Card>
               <CardActionArea>

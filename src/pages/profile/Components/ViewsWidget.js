@@ -84,7 +84,7 @@ const SimpleLine = ({ color, title, subtitle, value }) => {
       var array = new Array(length).fill();
       let lastValue;
     
-      return array.map((item, index) => {
+      return array.map(() => {
         let randomValue = Math.floor(Math.random() * multiplier + 1);
     
         while (

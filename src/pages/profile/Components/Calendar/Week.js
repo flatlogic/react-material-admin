@@ -1,10 +1,9 @@
-import React from 'react';
 import { makeStyles } from 'styles/mui';
 import Day from './Day';
 import dayjs from 'utils/dayjs'
 import { v4 as uuid } from 'uuid';
 
-const styles = (theme) => ({
+const styles = () => ({
     calendarRow: {
         display: 'flex',
         justifyContent: 'center',
@@ -18,7 +17,7 @@ const styles = (theme) => ({
 
 const useStyles = makeStyles(styles);
 
-const Week = ({ selected, currentMonthView, previousCurrentNextView, currentDay }) => {
+const Week = ({ selected, currentMonthView, previousCurrentNextView }) => {
     const classes = useStyles();
 
     let days = [];

@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles } from 'styles/mui';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles } from 'styles/mui';
 
 import DocIcon from '../Icons/DocIcon';
@@ -6,7 +5,7 @@ import ProjectIcon from '../Icons/ProjectIcon';
 import UsersIcon from '../Icons/UsersIcon';
 import FollowIcon from '../Icons/FollowIcon';
 
-const styles = (theme) => ({
+const styles = () => ({
   mediaIndicator: {
     fontSize: 18,
     width: '50%',

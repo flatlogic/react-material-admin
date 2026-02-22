@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { makeStyles } from 'styles/mui';
+import { useState } from 'react';import { makeStyles } from 'styles/mui';
 import {
   KeyboardArrowLeft as KeyboardArrowLeftIcon,
   KeyboardArrowRight as KeyboardArrowRightIcon,

@@ -22,7 +22,7 @@ import { Typography, Chip } from "../../components/Wrappers";
 //products array
 import { rows } from "./mock";
 
-const Product = (props) => {
+const Product = () => {
   const classes = useStyles();
 
   const selectReducer = (state, action) => {

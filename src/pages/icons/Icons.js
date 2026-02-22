@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Typography, Grid, Tabs, Tab, Paper } from '@mui/material';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';

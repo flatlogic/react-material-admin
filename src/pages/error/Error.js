@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid, Paper } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames';

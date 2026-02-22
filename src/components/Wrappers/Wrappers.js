@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Badge as BadgeBase,
   Typography as TypographyBase,
@@ -18,7 +17,7 @@ import { makeStyles } from 'styles/mui';
 import classnames from 'classnames';
 
 // styles
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   badge: {
     fontWeight: 600,
     height: (props) => {
@@ -67,7 +66,7 @@ function Badge({ children, colorBrightness, color, type, ...props }) {
   );
 }
 
-function Chip({ colorBrightness, color, variant, ...props }) {
+function Chip({ colorBrightness, color, ...props }) {
   const theme = useTheme();
   const Styled = createStyled({
     root: {
@@ -314,7 +313,7 @@ function LinearProgress({ children, color, ...props }) {
   );
 }
 
-function Radio({ children, color, ...props }) {
+function Radio({ ...props }) {
   const Styled = createStyled({
     root: {
       color: 'green',

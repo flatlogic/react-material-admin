@@ -67,7 +67,7 @@ function syncUserInLocalStorage(updatedUser) {
         },
       }),
     );
-  } catch (_) {
+  } catch {
     return;
   }
 }

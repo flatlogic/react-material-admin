@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTheme } from "styles/mui";
 import ReactApexChart from "react-apexcharts";
 import { Box, Grid } from "@mui/material";
@@ -128,7 +128,7 @@ const values = {
   series4: [25, 15, 44, 55, 41, 17]
 };
 
-export default function Charts(props) {
+export default function Charts() {
   const theme = useTheme();
   const [state, setState] = useState(values);
   const appendData = () => {

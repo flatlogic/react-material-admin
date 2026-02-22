@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles } from 'styles/mui';
 import { Grid, IconButton } from "@mui/material";
 import { Bookmark as BookmarkIcon } from '@mui/icons-material';

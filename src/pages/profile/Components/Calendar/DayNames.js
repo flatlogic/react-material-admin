@@ -1,7 +1,6 @@
-import React from 'react';
 import { makeStyles } from 'styles/mui';
 
-const styles = (theme) => ({
+const styles = () => ({
     calendarItemContainer: {
         flexGrow: 1,
         display: 'flex',

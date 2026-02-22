@@ -1,6 +1,6 @@
 import { makeStyles } from "styles/mui";
 
-export default makeStyles(theme => ({
+export default makeStyles(() => ({
   tableWrapper: {
     overflowX: "auto"
   }

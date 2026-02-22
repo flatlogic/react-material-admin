@@ -154,7 +154,7 @@ export function sendPasswordResetEmail(email) {
       });
       axios
         .post('/auth/send-password-reset-email', { email })
-        .then((res) => {
+        .then(() => {
           dispatch({
             type: 'PASSWORD_RESET_EMAIL_SUCCESS',
           });
@@ -264,9 +264,6 @@ export function registerUser(
   login,
   password,
   navigate,
-  setIsLoading,
-  setError,
-  social = '',
 ) {
   return () => {
     if (!config.isBackend) {
@@ -278,7 +275,7 @@ export function registerUser(
       if (login.length > 0 && password.length > 0) {
         axios
           .post('/auth/signup', { email: login, password })
-          .then((res) => {
+          .then(() => {
             dispatch({
               type: 'REGISTER_SUCCESS',
             });
@@ -300,7 +297,7 @@ export function registerUser(
 }
 
 export function verifyEmail(token, navigate) {
-  return (dispatch) => {
+  return () => {
     if (!config.isBackend) {
       navigate('/login');
     } else {
@@ -334,7 +331,7 @@ export function resetPassword(token, password, navigate) {
       });
       axios
         .put('/auth/password-reset', { token, password })
-        .then((res) => {
+        .then(() => {
           dispatch({
             type: 'RESET_SUCCESS',
           });

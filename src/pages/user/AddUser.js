@@ -301,7 +301,7 @@ const AddUser = () => {
                                     </Typography>
                                     <div class={classes.galleryWrap}>
                                     {newUser && newUser.avatars && newUser.avatars.length !== 0 ?
-                  newUser.avatars.map((avatar, idx) =>
+                  newUser.avatars.map((avatar) =>
                   <div className={classes.imgWrap}>
                                           <span className={classes.deleteImageX} onClick={() => deleteOneImage(avatar.id)}>×</span>
                                           <img

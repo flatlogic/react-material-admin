@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import FormErrors from 'components/FormItems/formErrors';
 import { FastField } from 'formik';

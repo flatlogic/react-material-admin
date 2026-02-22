@@ -162,7 +162,7 @@ const CreateProduct = () => {
                     fullWidth
                     onChange={(e) => changeImgSrc(e)}>
                     
-                      {context.products.images.map((c, i) =>
+                      {context.products.images.map((c) =>
                     <MenuItem value={c} key={c}>
                           <img src={c} style={{ height: 100, width: 200 }} alt={"ecommerce product"} />
                         </MenuItem>

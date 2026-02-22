@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import axios from 'axios';
 import { ThemeProvider as ThemeProviderV5 } from '@mui/material/styles';

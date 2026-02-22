@@ -241,7 +241,7 @@ const EditUser = () => {
                   <Typography weight={'medium'}>Photo:</Typography>
                   <div className={classes.galleryWrap}>
                     {data && data.avatar && data.avatar.length !== 0 ?
-                  data.avatar.map((avatar, idx) =>
+                  data.avatar.map((avatar) =>
                   <div className={classes.imgWrap}>
                             <span
                       className={classes.deleteImageX}

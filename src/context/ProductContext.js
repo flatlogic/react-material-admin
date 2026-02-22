@@ -14,7 +14,7 @@ const rootReducer = (state, action) => {
         products: action.payload,
         images: state.images ? state.images : [],
       };
-    case 'EDIT_PRODUCT':
+    case 'EDIT_PRODUCT': {
       const index = action.payload.id;
       return {
         ...state,
@@ -26,6 +26,7 @@ const rootReducer = (state, action) => {
           return c;
         }),
       };
+    }
 
     case 'GET_IMAGES':
       return {
@@ -83,10 +84,10 @@ export function deleteProductRequest({ id, navigate, pathname, dispatch }) {
 
   if (Array.isArray(id)) {
     for (let key in id) {
-      axios.delete('/products/' + id[key]).then((res) => {});
+      axios.delete('/products/' + id[key]).then(() => {});
     }
   } else {
-    axios.delete('/products/' + id).then((res) => {
+    axios.delete('/products/' + id).then(() => {
       getProductsRequest(dispatch);
       if (pathname !== '/app/ecommerce/management') {
         navigate('/app/ecommerce/management');

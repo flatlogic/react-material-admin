@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "styles/mui";
 import ApexCharts from "react-apexcharts";
 

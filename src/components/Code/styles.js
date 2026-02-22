@@ -1,6 +1,6 @@
 import { makeStyles } from 'styles/mui';
 
-export default makeStyles((theme) => ({
+export default makeStyles(() => ({
   codeContainer: {
     display: (props) => (props.inline ? 'inline-block' : 'flex'),
     flexDirection: (props) => (props.row ? 'row' : 'column'),

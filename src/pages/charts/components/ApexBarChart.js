@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTheme } from "styles/mui";
 import ReactApexChart from "react-apexcharts";
 

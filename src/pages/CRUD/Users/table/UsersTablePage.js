@@ -1,4 +1,3 @@
-import React from 'react';
 import UsersTable from 'pages/CRUD/Users/table/UsersTable';
 
 const UsersTablePage = () => {

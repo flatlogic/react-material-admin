@@ -116,10 +116,11 @@ const UsersTable = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let request = '&';
-    filterItems.forEach((item) => {
+      filterItems.forEach((item) => {
+      Object.hasOwn(
       filters[
-      filters.map((filter) => filter.title).indexOf(item.fields.selectedField)]
-      .hasOwnProperty('number') ?
+      filters.map((filter) => filter.title).indexOf(item.fields.selectedField)],
+      'number') ?
       request += `${item.fields.selectedField}Range=${item.fields.filterValueFrom}&${item.fields.selectedField}Range=${item.fields.filterValueTo}&` :
       request += `${item.fields.selectedField}=${item.fields.filterValue}&`;
     });
@@ -301,9 +302,10 @@ const UsersTable = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              {filters
-            .find((filter) => filter.title === item.fields.selectedField)
-            .hasOwnProperty('number') ?
+              {Object.hasOwn(
+            filters.find((filter) => filter.title === item.fields.selectedField) || {},
+            'number',
+          ) ?
             <>
                   <Grid size={2}>
                     <TextField

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useUserDispatch, verifyEmail } from '../../context/UserContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 const Verify = () => {

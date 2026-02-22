@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 import { Search as SearchIcon } from '@mui/icons-material';
 import { InputBase } from '@mui/material';

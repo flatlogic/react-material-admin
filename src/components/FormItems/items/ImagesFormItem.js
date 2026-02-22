@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import ImagesUploader from 'components/FormItems/uploaders/ImagesUploader';
 import FormErrors from 'components/FormItems/formErrors';
 import Typography from '@mui/material/Typography';

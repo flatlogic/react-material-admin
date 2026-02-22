@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid, Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import {
   Done as DoneIcon,

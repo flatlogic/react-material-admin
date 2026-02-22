@@ -1,5 +1,4 @@
 import { Formik } from 'formik';
-import React from 'react';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Loader from 'components/Loader';

@@ -5,7 +5,7 @@ const PreparedValues = (fields, record = {}) => {
   Object.keys(fields).forEach((field) => {
     const type = fields[field].type;
     const value = record[field];
-    let preparedValue = '';
+    let preparedValue;
     switch (type) {
       case 'date':
         preparedValue = value ? dayjs(value, 'YYYY-MM-DD').toDate() : null;

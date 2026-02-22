@@ -1,4 +1,3 @@
-import React from 'react';
 import { Typography, useTheme } from '@mui/material';
 
 function CollapsedWidget() {

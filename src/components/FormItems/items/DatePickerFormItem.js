@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FastField } from 'formik';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';

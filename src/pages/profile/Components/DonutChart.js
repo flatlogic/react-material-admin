@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Button } from '../../../components/Wrappers';
 import { Grid, Typography } from "@mui/material";
 import Dot from '../../../components/Dot/Dot';
@@ -9,7 +8,6 @@ import {
     Pie,
     Cell,
   } from "recharts";
-import chartsData from './mock';
 
 const PieChartData = [
   { name: "New", value: 400 ,color: "#536DFE" },
@@ -18,7 +16,7 @@ const PieChartData = [
   { name: "Cancel", value: 200 ,color: "#FF5C93" }
 ];
 
-const styles = (theme) => ({
+const styles = () => ({
   legendItemContainer: {
     display: 'flex',
     alignItems: 'center',
@@ -44,10 +42,6 @@ const useStyles = makeStyles(styles);
 
 const DonutChart = () => {
   const classes = useStyles();
-  // eslint-disable-next-line no-unused-vars
-  const [donutData, setDonutData] = useState(chartsData);
-  // eslint-disable-next-line no-unused-vars
-  const [age, setAge] = React.useState('');
 
   return (
     <Grid container spacing={0}>
@@ -87,7 +81,7 @@ const DonutChart = () => {
         </ResponsiveContainer>
       </Grid>
       <Grid size={{ xs: 12, md: 12, lg: 12 }} className={classes.legendItemsContainer}>
-          {PieChartData.map(({ name, value, color }, index) => (
+          {PieChartData.map(({ name, color }) => (
             <div key={color} className={classes.legendItemContainer}>
               <Dot color={color} style={{ marginLeft: 5 }} />
               <Typography

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Grid } from "@mui/material";
 import { useTheme } from "styles/mui";
 import {
@@ -74,7 +74,7 @@ const pieChartData = [
 { name: "Group D", value: 200 }];
 
 
-export default function Charts(props) {
+export default function Charts() {
   var theme = useTheme();
 
   // local

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Paper, Box } from '@mui/material';
 import classnames from 'classnames';
 
@@ -14,12 +13,9 @@ export default function Widget({
   subtitle,
   noBodyPadding,
   bodyClass,
-  disableWidgetMenu,
   header,
   inheritHeight,
-  searchField,
   className,
-  showMenu,
   style,
   widgetWithDropdown,
   ...props

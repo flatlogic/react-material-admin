@@ -1,13 +1,13 @@
 import dayjs from 'utils/dayjs';
 import * as yup from 'yup';
 
-const formValidations = (fields, record = {}) => {
+const formValidations = (fields) => {
   const yupArray = {};
   Object.keys(fields).forEach((field) => {
     const type = fields[field].type;
     const label = fields[field].label;
     const required = fields[field].required;
-    let yupConds = {};
+    let yupConds;
     switch (type) {
       case 'boolean':
         yupConds = yup.bool().default(false);

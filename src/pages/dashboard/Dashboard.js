@@ -632,7 +632,7 @@ function Dashboard() {
             </Grid>
             <Grid size={6}>
               <div className={classes.pieChartLegendWrapper}>
-                {PieChartData.map(({ name, value, color }, index) =>
+                {PieChartData.map(({ name, value, color }) =>
                 <div key={color} className={classes.legendItemContainer}>
                       <Dot color={color} style={{ marginRight: 5 }} />
                       <Typography
@@ -1054,7 +1054,7 @@ function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
   let array = new Array(length).fill();
   let lastValue;
 
-  return array.map((item, index) => {
+  return array.map(() => {
     let randomValue = Math.floor(Math.random() * multiplier + 1);
 
     while (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { useTheme } from "styles/mui";
 import ReactApexChart from "react-apexcharts";
@@ -296,7 +296,7 @@ const values = {
 
 };
 
-export default function Charts(props) {
+export default function Charts() {
   useEffect(() => {
     intervals();
     return function cleanup() {

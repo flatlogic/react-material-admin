@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid, Box, IconButton, Tab, Tabs, AppBar } from "@mui/material";
 import {
   Mail as MailIcon,

@@ -5,7 +5,7 @@ const IniValues = (fields, record = {}) => {
   Object.keys(fields).forEach((field) => {
     const type = fields[field].type;
     const value = record[field];
-    let showValue = '';
+    let showValue;
     switch (type) {
       case 'boolean':
         showValue = value;

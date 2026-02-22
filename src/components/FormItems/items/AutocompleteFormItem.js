@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import FormControl from '@mui/material/FormControl';
 import FormErrors from 'components/FormItems/formErrors';
 import Autocomplete from '@mui/material/Autocomplete';

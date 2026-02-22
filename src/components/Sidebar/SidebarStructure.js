@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Home as HomeIcon,
   FilterNone as UIElementsIcon,
