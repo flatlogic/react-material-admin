@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FastField } from 'formik';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -12,14 +12,7 @@ const DatePickerFormItem = (props) => {
     name,
     schema,
     hint,
-    size,
-    placeholder,
-    autoFocus,
-    autoComplete,
-    inputProps,
     errorMessage,
-    required = false,
-    showTimeInput,
   } = props;
 
   const { label } = schema[name];

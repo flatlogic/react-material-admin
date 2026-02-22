@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Search as SearchIcon } from '@mui/icons-material';
 import { InputBase } from '@mui/material';
-import { withStyles } from 'styles/muiCompat';
 import { alpha } from '@mui/material/styles';
+import { makeStyles } from 'styles/mui';
 
 const styles = (theme) => ({
   root: {
@@ -61,7 +61,10 @@ const styles = (theme) => ({
   },
 });
 
-const Search = ({ classes }) => {
+const useStyles = makeStyles(styles);
+
+const Search = () => {
+  const classes = useStyles();
   const [isSearchOpen, setSearchOpen] = useState(false);
 
   return (
@@ -91,4 +94,4 @@ const Search = ({ classes }) => {
   );
 };
 
-export default withStyles(styles)(Search);
+export default Search;

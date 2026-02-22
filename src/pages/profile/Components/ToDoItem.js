@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import Typography from '@mui/material/Typography';
 import { MenuItem, IconButton, Menu } from '@mui/material';
 import { MoreVert as MoreIcon } from '@mui/icons-material';
@@ -44,7 +44,10 @@ const styles = (theme) => ({
   }
 })
 
-const ToDoItem = ({ classes, time, title, color, backgroundColor}) => {
+const useStyles = makeStyles(styles);
+
+const ToDoItem = ({ time, title, color, backgroundColor}) => {
+  const classes = useStyles();
   const [moreButtonRef, setMoreButtonRef] = useState(null);
   const [isMoreMenuOpen, setMoreMenuOpen] = useState(false);
   const [itemStatus, setItemStatus] = useState(false);
@@ -91,4 +94,4 @@ const ToDoItem = ({ classes, time, title, color, backgroundColor}) => {
   )
 }
 
-export default withStyles(styles)(ToDoItem);
+export default ToDoItem;

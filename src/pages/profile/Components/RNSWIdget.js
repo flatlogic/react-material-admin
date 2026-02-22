@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import { Grid, IconButton } from "@mui/material";
 import { Bookmark as BookmarkIcon } from '@mui/icons-material';
 
@@ -37,7 +37,10 @@ const styles = (theme) => ({
   },
 })
 
-const RNSWidget = ({ classes }) => {
+const useStyles = makeStyles(styles);
+
+const RNSWidget = () => {
+  const classes = useStyles();
   return (
     <Grid container spacing={3}>
       <Grid size={12}>
@@ -64,4 +67,4 @@ const RNSWidget = ({ classes }) => {
   )
 }
 
-export default withStyles(styles)(RNSWidget);
+export default RNSWidget;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
-import { useTheme } from "styles/muiCompat";
+import { useTheme } from "styles/mui";
 import ReactApexChart from "react-apexcharts";
 import img from "../../images/carousel/2.jpg";
 

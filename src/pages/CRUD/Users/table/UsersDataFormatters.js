@@ -1,8 +1,21 @@
-import moment from 'moment';
+import dayjs from 'utils/dayjs';
 import React from 'react';
 import Box from '@mui/material/Box';
-import { truncate } from 'lodash';
 import { Link as LinkMaterial } from '../../../../components/Wrappers';
+
+function truncateText(value, maxLength = 30) {
+  if (!value) {
+    return '';
+  }
+
+  const stringValue = String(value);
+
+  if (stringValue.length <= maxLength) {
+    return stringValue;
+  }
+
+  return `${stringValue.slice(0, Math.max(0, maxLength - 3))}...`;
+}
 
 function imageFormatter(cell) {
   const images = cell?.image || cell?.avatar;
@@ -29,7 +42,7 @@ function booleanFormatter(cell) {
 }
 
 function dateTimeFormatter(cell) {
-  return cell ? moment(cell).format('YYYY-MM-DD HH:mm') : null;
+  return cell ? dayjs(cell).format('YYYY-MM-DD HH:mm') : null;
 }
 
 function filesFormatter(cell) {
@@ -45,7 +58,7 @@ function filesFormatter(cell) {
                 rel='noopener noreferrer'
                 download
               >
-                {truncate(value.name)}
+                {truncateText(value.name)}
               </a>
             </div>
           );

@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import { useTheme } from "styles/muiCompat";
+import { useTheme } from "styles/mui";
 
 import { Badge, Chip, Button } from '../../components/Wrappers';
 import Tabs from './Components/Tabs';
@@ -60,15 +60,15 @@ function Profile() {
                   <Badge type="tag" badgeContent={"Mobile"} color="success"/>
                 </div>
                 <div className={classes.socials}>
-                  {/* eslint-disable-next-line */}
+                  { }
                   <a href="#"><img src={FacebookIcon} alt="FacebookIcon" /></a>
-                  {/* eslint-disable-next-line */}
+                  { }
                   <a href="#"><img src={MediumIcon} alt="MediumIcon" /></a>
-                  {/* eslint-disable-next-line */}
+                  { }
                   <a href="#"><img src={DribbleIcon} alt="DribbleIcon" /></a>
-                  {/* eslint-disable-next-line */}
+                  { }
                   <a href="#"><img src={BehanceIcon} alt="BehanceIcon" /></a>
-                  {/* eslint-disable-next-line */}
+                  { }
                   <a href="#"><img src={InstagramIcon} alt="InstagramIcon" /></a>
                 </div>
               </div>

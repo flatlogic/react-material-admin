@@ -12,7 +12,6 @@ const Verify = () => {
     if (token) {
       verifyEmail(token, navigate)(userDispatch);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <></>;

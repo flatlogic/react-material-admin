@@ -1,10 +1,21 @@
-import { makeStyles } from "styles/muiCompat";
+import { makeStyles } from "styles/mui";
 
 export default makeStyles(theme => ({
   mapContainer: {
-    height: "100%",
+    height: "calc(100vh - 170px)",
+    minHeight: 480,
+    borderRadius: 8,
+    overflow: "hidden",
   },
   vectorContainer: {
-    margin: -theme.spacing(3)
-  }
+    height: "calc(100vh - 170px)",
+    minHeight: 480,
+    borderRadius: 8,
+    overflow: "hidden",
+  },
+  leafletMap: {
+    height: "100%",
+    width: "100%",
+    background: theme.palette.background.default,
+  },
 }));

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '../../../components/Wrappers';
 import { Grid, Typography } from "@mui/material";
 import Dot from '../../../components/Dot/Dot';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import {
     ResponsiveContainer,
     PieChart,
@@ -40,7 +40,10 @@ const styles = (theme) => ({
   }
 })
 
-const DonutChart = ({ classes }) => {
+const useStyles = makeStyles(styles);
+
+const DonutChart = () => {
+  const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
   const [donutData, setDonutData] = useState(chartsData);
   // eslint-disable-next-line no-unused-vars
@@ -110,4 +113,4 @@ const DonutChart = ({ classes }) => {
   )
 }
 
-export default withStyles(styles)(DonutChart)
+export default DonutChart

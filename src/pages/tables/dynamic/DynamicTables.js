@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, useTheme } from "styles/muiCompat";
+import { makeStyles, useTheme } from "styles/mui";
 import { lighten } from "@mui/material/styles";
 import {
   Table,
@@ -114,8 +114,8 @@ createData("KitKat", 518, 26.0),
 createData("Lollipop", 392, 0.2),
 createData("Marshmallow", 318, 0),
 createData("Nougat", 360, 19.0),
-createData("Oreo", 437, 18.0)].
-sort((a, b) => a.calories < b.calories ? -1 : 1);
+createData("Oreo", 437, 18.0)]
+.sort((a, b) => a.calories < b.calories ? -1 : 1);
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -438,9 +438,9 @@ export default function EnhancedTable() {
                   rowCount={rows.length} />
                 
                 <TableBody>
-                  {stableSort(rows, getSorting(order, orderBy)).
-                  slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).
-                  map((row, index) => {
+                  {stableSort(rows, getSorting(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
                     const isItemSelected = isSelected(row.name);
                     const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -510,12 +510,12 @@ export default function EnhancedTable() {
             <div className={classes2.tableWrapper}>
               <Table className={classes2.table}>
                 <TableBody>
-                  {rows2.
-                  slice(
+                  {rows2
+                  .slice(
                     page2 * rowsPerPage2,
                     page2 * rowsPerPage2 + rowsPerPage2
-                  ).
-                  map((row) =>
+                  )
+                  .map((row) =>
                   <TableRow key={row.name}>
                         <TableCell component="th" scope="row">{row.name}</TableCell>
                         <TableCell align="right">{row.calories}</TableCell>
@@ -527,12 +527,12 @@ export default function EnhancedTable() {
                   <div className={classes2.tableWrapper}>
                         <Table className={classes.table}>
                           <TableBody>
-                            {rows2.
-                        slice(
+                            {rows2
+                        .slice(
                           page2 * rowsPerPage2,
                           page2 * rowsPerPage2 + rowsPerPage2
-                        ).
-                        map((row) =>
+                        )
+                        .map((row) =>
                         <TableRow key={row.name}>
                                   <TableCell component="th" scope="row">
                                     {row.name}

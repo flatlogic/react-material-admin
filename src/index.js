@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import axios from 'axios';
-import './polyfills';
 import { ThemeProvider as ThemeProviderV5 } from '@mui/material/styles';
 import { StyledEngineProvider } from '@mui/material/styles';
 import App from './components/App';
@@ -14,6 +13,7 @@ import {
 } from './context/ThemeContext';
 import CssBaseline from '@mui/material/CssBaseline';
 import config from '../src/config';
+import 'leaflet/dist/leaflet.css';
 
 axios.defaults.baseURL = config.baseURLApi;
 axios.defaults.headers.common['Content-Type'] = 'application/json';

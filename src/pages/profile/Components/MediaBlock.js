@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 
 import DocIcon from '../Icons/DocIcon';
 import ProjectIcon from '../Icons/ProjectIcon';
@@ -35,7 +35,10 @@ const styles = (theme) => ({
   }
 })
 
-const MediaBlock = ({ classes }) => {
+const useStyles = makeStyles(styles);
+
+const MediaBlock = () => {
+  const classes = useStyles();
   return (
     <div className={classes.mediaIconsWrapper}>
       <div className={classes.mediaIndicator}>
@@ -62,4 +65,4 @@ const MediaBlock = ({ classes }) => {
   )
 }
 
-export default withStyles(styles)(MediaBlock);
+export default MediaBlock;

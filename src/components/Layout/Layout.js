@@ -208,7 +208,7 @@ function Layout() {
           aria-label='settings'
           onClick={(e) => handleClick(e)}
           className={classes.changeThemeFab}
-          style={{ zIndex: 100 }}
+          style={{ zIndex: 2000 }}
         >
           <SettingsIcon style={{ color: '#fff' }} />
         </Fab>

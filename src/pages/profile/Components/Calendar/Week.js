@@ -1,7 +1,7 @@
 import React from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import Day from './Day';
-import moment from 'moment/moment'
+import dayjs from 'utils/dayjs'
 import { v4 as uuid } from 'uuid';
 
 const styles = (theme) => ({
@@ -16,7 +16,10 @@ const styles = (theme) => ({
     },
 })
 
-const Week = ({ selected, currentMonthView, previousCurrentNextView, currentDay, classes }) => {
+const useStyles = makeStyles(styles);
+
+const Week = ({ selected, currentMonthView, previousCurrentNextView, currentDay }) => {
+    const classes = useStyles();
 
     let days = [];
     let date = previousCurrentNextView;
@@ -25,26 +28,26 @@ const Week = ({ selected, currentMonthView, previousCurrentNextView, currentDay,
           title: "The flower bed",
           info: "Contents here",
           itemStyle: "#7C90FF",
-          date: moment(`${moment().year()}-${moment().month() + 1}-02`, "YYYYMMDD"),
+          date: dayjs(`${dayjs().year()}-${dayjs().month() + 1}-02`, 'YYYY-M-DD'),
         },
         {
           title: "Stop world water pollution",
           info: "Have a kick off meeting with .inc company",
           itemStyle: "#FFC35F",
-          date: moment(`${moment().year()}-${moment().month() + 1}-05`, "YYYYMMDD"),
+          date: dayjs(`${dayjs().year()}-${dayjs().month() + 1}-05`, 'YYYY-M-DD'),
         },
         {
           title: "Light Blue 2.2 release",
           info: "Some contents here",
           itemStyle: "#3CD4A0",
-          date: moment(`${moment().year()}-${moment().month() + 1}-18`, "YYYYMMDD"),
+          date: dayjs(`${dayjs().year()}-${dayjs().month() + 1}-18`, 'YYYY-M-DD'),
         },
         {
           title: "A link",
           info: "",
           itemStyle: "#FF5C93",
           link: "http://www.flatlogic.com",
-          date: moment(`${moment().year()}-${moment().month() + 1}-28`, "YYYYMMDD"),
+          date: dayjs(`${dayjs().year()}-${dayjs().month() + 1}-28`, 'YYYY-M-DD'),
         },
     ];
 
@@ -83,8 +86,7 @@ const Week = ({ selected, currentMonthView, previousCurrentNextView, currentDay,
         day={day}
         selected={selected} 
         />);
-        date = date.clone();
-        date.add(1, "d");
+        date = date.add(1, "day");
     }
     return (
       <div className={`${classes.calendarRow} ${classes.week}`}>
@@ -93,4 +95,4 @@ const Week = ({ selected, currentMonthView, previousCurrentNextView, currentDay,
     );
 }
 
-export default withStyles(styles)(Week);
+export default Week;

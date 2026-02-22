@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { useTheme } from '@mui/material/styles';
 import FormControl from '@mui/material/FormControl';
 import FormErrors from 'components/FormItems/formErrors';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -15,7 +14,6 @@ export default function MultipleSelectChip({
   multiple,
   items,
 }) {
-  const theme = useTheme();
   const { label } = schema[name];
 
   const selected = useMemo(() => {
@@ -25,7 +23,7 @@ export default function MultipleSelectChip({
         : mapper.intoSelect(form.values[name]);
     }
     return multiple ? [] : '';
-  }, [multiple, form.values]);
+  }, [form.values, mapper, multiple, name]);
 
   const handleChange = (event, value) => {
     if (!value) {

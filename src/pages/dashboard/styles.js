@@ -1,4 +1,4 @@
-import { makeStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 
 export default makeStyles((theme) => ({
   card: {

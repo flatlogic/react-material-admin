@@ -29,7 +29,7 @@ const CreateProduct = () => {
 
   const getId = (id) => {
     return context.products.products.findIndex((c) => {
-      return c.id == id; // eslint-disable-line
+      return c.id == id;  
     });
   };
 
@@ -78,11 +78,11 @@ const CreateProduct = () => {
   useEffect(() => {
     getProductsRequest(context.setProducts);
     getProductsImages(context.setProducts);
-  }, []); // eslint-disable-line
+  }, []);  
 
   useEffect(() => {
     setLocalProducts(context.products.products[getId(id)]);
-  }, [context]); // eslint-disable-line
+  }, [context]);  
 
   const navigate = useNavigate();
   const location = useLocation();

@@ -104,7 +104,6 @@ const EditUser = () => {
 
   useEffect(() => {
     actions.doFind(sessionStorage.getItem('user_id'))(managementDispatch);
-    // eslint-disable-next-line  react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

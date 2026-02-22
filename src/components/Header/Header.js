@@ -53,7 +53,6 @@ export default function Header() {
 
   useEffect(() => {
     actions.doFind(sessionStorage.getItem('user_id'))(managementDispatch);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -122,7 +121,7 @@ export default function Header() {
         >
           <Avatar
             alt={currentUser?.firstName}
-            // eslint-disable-next-line no-mixed-operators
+             
             src={
               (currentUser?.avatar?.length >= 1 &&
               currentUser?.avatar[currentUser.avatar.length - 1].publicUrl) || profile

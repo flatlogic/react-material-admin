@@ -1,16 +1,11 @@
 import React from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { useTheme } from '@mui/material/styles';
 
 import { Typography } from "../../../components/Wrappers";
 
-const styles = (theme) => ({
-  link: {
-    textDecoration: 'none',
-    color: theme.palette.primary.main,
-  },
-})
+function WidgsterInfo() {
+  const theme = useTheme();
 
-const WidgsterInfo = ({ classes }) => {
   return (
     <Typography block={'div'}>
       <p>
@@ -31,12 +26,20 @@ const WidgsterInfo = ({ classes }) => {
         </li>
       </ul>
       <p>It&apos;s available under MIT license, check out
-          <a className={classes.link} href="https://github.com/flatlogic/widgster" target="_blank" rel="noopener noreferrer"> github </a>
+          <a
+            href="https://github.com/flatlogic/widgster"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none', color: theme.palette.primary.main }}
+          >
+            {' '}github{' '}
+          </a>
           to find it.</p>
       <p>
           Test it out!
       </p>
     </Typography>
-  )
+  );
 }
-export default withStyles(styles)(WidgsterInfo)
+
+export default WidgsterInfo;

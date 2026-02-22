@@ -1,5 +1,4 @@
-import React from 'react';
-import { makeStyles as tssMakeStyles, withStyles as tssWithStyles } from 'tss-react/mui-compat';
+import { makeStyles as tssMakeStyles } from 'tss-react/mui';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
 
 const isPlainObject = (value) =>
@@ -46,30 +45,6 @@ export const makeStyles = (stylesOrCreator, options) => {
   );
 
   return (params = {}) => useTssStyles(params).classes;
-};
-
-export const withStyles = (stylesOrCreator, options = {}) => (Component) => {
-  const { withTheme, ...tssOptions } = options || {};
-
-  const StyledComponent = tssWithStyles(
-    Component,
-    (theme, props, classes) =>
-      resolveStyleObject(stylesOrCreator, theme, props, classes),
-    tssOptions,
-  );
-
-  if (!withTheme) {
-    return StyledComponent;
-  }
-
-  const WithTheme = React.forwardRef((props, ref) => {
-    const theme = useMuiTheme();
-    return <StyledComponent ref={ref} theme={theme} {...props} />;
-  });
-
-  WithTheme.displayName = `WithTheme(${Component.displayName || Component.name || 'Component'})`;
-
-  return WithTheme;
 };
 
 export const useTheme = useMuiTheme;

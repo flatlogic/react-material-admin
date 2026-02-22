@@ -2,13 +2,13 @@ import React from 'react';
 import Widget from '../Widget';
 import { Link } from 'react-router-dom';
 import { Box, Grid, Breadcrumbs, Tabs, Tab } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { Typography, Button } from '../Wrappers';
 import {
   NavigateNext as NavigateNextIcon,
   CalendarToday as CalendarIcon,
 } from '@mui/icons-material';
 import { useLocation } from 'react-router-dom';
-import { withStyles } from 'styles/muiCompat';
 
 // styles
 import useStyles from '../Layout/styles';
@@ -17,13 +17,11 @@ import useStyles from '../Layout/styles';
 import structure from '../Sidebar/SidebarStructure';
 
 // Tab styling
-const CustomTab = withStyles((theme) => ({
-  root: {
-    minWidth: 72,
-    textTransform: 'none',
-    fontWeight: 400,
-  },
-}))((props) => <Tab {...props} />);
+const CustomTab = styled(Tab)(() => ({
+  minWidth: 72,
+  textTransform: 'none',
+  fontWeight: 400,
+}));
 
 //Sidebar structure
 const BreadCrumbs = () => {
@@ -116,7 +114,7 @@ const BreadCrumbs = () => {
         style={{ overflowX: 'auto' }}
       >
         {
-          // eslint-disable-next-line array-callback-return
+           
           structure.map((c) => {
             if (
               location.pathname.includes(c.link) &&

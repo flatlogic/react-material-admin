@@ -55,7 +55,7 @@ const Documentation = () => {
             alignItems='center'
           >
 
-            {/* eslint-disable-next-line array-callback-return */}
+            { }
             {structure.map((c) => {
               if (!c.children && location.pathname.includes(c.link) && c.link) {
                 return (

@@ -1,22 +1,19 @@
 import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import { withStyles } from 'styles/muiCompat';
 
-const styles = (theme) => ({
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '3.5rem',
-  },  
-})
-
-const Loader = ({ classes }) => {
+function Loader() {
   return (
-      <div className={classes.container}>
-        <CircularProgress/>
-      </div>
-  )
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: '3.5rem',
+      }}
+    >
+      <CircularProgress />
+    </div>
+  );
 }
 
-export default withStyles(styles)(Loader);
+export default Loader;

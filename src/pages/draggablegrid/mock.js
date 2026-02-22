@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'utils/dayjs';
 
 const draggableGridMock = {
   mainData: {
@@ -61,7 +61,7 @@ const draggableGridMock = {
         icon: 'eye',
         title: 'No more spying',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        date: moment().format('MMM DD, hh:mm:ss')
+        date: dayjs().format('MMM DD, hh:mm:ss')
       }
     ]
   },
@@ -75,7 +75,7 @@ const draggableGridMock = {
         value: 'A timestamp this widget was created: Apr 24, 19:07:07'
       },
       {
-        value: 'A timestamp this widget was updated: ' + moment().format('MMM DD, hh:mm:ss')
+        value: 'A timestamp this widget was updated: ' + dayjs().format('MMM DD, hh:mm:ss')
       },
     ],
     shares: [
@@ -143,7 +143,7 @@ const draggableGridMock = {
         icon: 'eye',
         title: 'No more spying',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        date: moment().format('MMM DD, hh:mm:ss')
+        date: dayjs().format('MMM DD, hh:mm:ss')
       }
     ]
   }

@@ -18,7 +18,7 @@ import {
   ArrowBack as ArrowBackIcon
 } from "@mui/icons-material";
 import { alpha } from "@mui/material/styles";
-import { withStyles } from "styles/muiCompat";
+import { makeStyles } from "styles/mui";
 import classNames from "classnames";
 
 import { Badge, Typography } from "../Wrappers";
@@ -78,8 +78,11 @@ const notifications = [
   }
 ];
 
-const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
-  <AppBar position="fixed" className={classes.appBar}>
+const Header = ({ isSidebarOpened, toggleSidebar, ...props }) => {
+  const classes = useStyles();
+
+  return (
+    <AppBar position="fixed" className={classes.appBar}>
     <Toolbar className={classes.toolbar}>
       <IconButton
         color="inherit"
@@ -294,8 +297,9 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         </div>
       </Menu>
     </Toolbar>
-  </AppBar>
-);
+    </AppBar>
+  );
+};
 
 const styles = theme => ({
   logotype: {
@@ -454,4 +458,6 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(Header);
+const useStyles = makeStyles(styles);
+
+export default Header;

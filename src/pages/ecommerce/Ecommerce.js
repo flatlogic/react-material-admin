@@ -32,7 +32,7 @@ import {
 "@mui/icons-material";
 import { yellow } from "@mui/material/colors";
 import { lighten } from "@mui/material/styles";
-import { makeStyles } from "styles/muiCompat";
+import { makeStyles } from "styles/mui";
 import PropTypes from "prop-types";
 import useStyles from "./styles";
 import cn from "classnames";
@@ -233,7 +233,7 @@ function EcommercePage() {
   useEffect(() => {
     // sendNotification();
     getProductsRequest(context.setProducts);
-  }, []); // eslint-disable-line
+  }, []);  
 
   useEffect(() => {
     setBackProducts(context.products.products);
@@ -446,12 +446,12 @@ function EcommercePage() {
                   rowCount={backProducts.length} />
                 
                     <TableBody>
-                      {stableSort(backProducts, getSorting(order, orderBy)).
-                    slice(
+                      {stableSort(backProducts, getSorting(order, orderBy))
+                    .slice(
                       page * rowsPerPage,
                       page * rowsPerPage + rowsPerPage
-                    ).
-                    map((row, index) => {
+                    )
+                    .map((row, index) => {
                       const isItemSelected = isSelected(row.id);
                       const labelId = `enhanced-table-checkbox-${index}`;
 

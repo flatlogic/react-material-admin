@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Select, MenuItem, Input } from "@mui/material";
 import { ArrowForward as ArrowForwardIcon } from "@mui/icons-material";
-import { useTheme } from "styles/muiCompat";
+import { useTheme } from "styles/mui";
 import { BarChart, Bar } from "recharts";
 import classnames from "classnames";
 
@@ -26,7 +26,7 @@ export default function BigStat(props) {
         .fill()
         .map(() => ({ value: Math.floor(Math.random() * 10) + 1 }));
     },
-    [value] // eslint-disable-line
+    [value]  
   );
 
   return (

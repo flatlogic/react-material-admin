@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 
 const styles = (theme) => ({
     calendarItemContainer: {
@@ -27,7 +27,10 @@ const styles = (theme) => ({
     },
 })
 
-const DayNames = ({ classes }) => {
+const useStyles = makeStyles(styles);
+
+const DayNames = () => {
+    const classes = useStyles();
     return (
         <div className={`${classes.calendarRow} ${classes.daysHeader}`}>
         <span className={`${classes.calendarItemContainer} ${classes.dayName}`}>S</span>
@@ -41,4 +44,4 @@ const DayNames = ({ classes }) => {
     );
 }
 
-export default withStyles(styles)(DayNames);
+export default DayNames;

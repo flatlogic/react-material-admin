@@ -23,68 +23,6 @@ import { Typography, Chip } from "../../components/Wrappers";
 import { rows } from "./mock";
 
 const Product = (props) => {
-  const typeRef = React.useRef(null);
-  const brandsRef = React.useRef(null);
-  const sizeRef = React.useRef(null);
-  const colourRef = React.useRef(null);
-  const rangeRef = React.useRef(null);
-  const sortRef = React.useRef(null);
-
-  const widthReducer = (state, action) => {
-    switch (action.type) {
-      case "TYPE":
-        return {
-          ...state,
-          type: action.typeWidth
-        };
-      case "BRANDS":
-        return {
-          ...state,
-          brands: action.brandsWidth
-        };
-      case "SIZE":
-        return {
-          ...state,
-          size: action.sizeWidth
-        };
-      case "COLOUR":
-        return {
-          ...state,
-          colour: action.colourWidth
-        };
-      case "RANGE":
-        return {
-          ...state,
-          range: action.rangeWidth
-        };
-      case "SORT":
-        return {
-          ...state,
-          sort: action.sortWidth
-        };
-      default:
-        return {
-          ...state
-        };
-    }
-  };
-
-  const [width, setWidth] = React.useReducer(widthReducer, {
-    type: 0,
-    brands: 0,
-    size: 0,
-    colour: 0,
-    range: 0,
-    sort: 0
-  });
-  React.useEffect(() => {
-    setWidth({ type: "TYPE", typeWidth: typeRef.current.offsetWidth });
-    setWidth({ type: "BRANDS", brandsWidth: brandsRef.current.offsetWidth });
-    setWidth({ type: "SIZE", sizeWidth: sizeRef.current.offsetWidth });
-    setWidth({ type: "COLOUR", colourWidth: colourRef.current.offsetWidth });
-    setWidth({ type: "RANGE", rangeWidth: rangeRef.current.offsetWidth });
-    setWidth({ type: "SORT", sortWidth: sortRef.current.offsetWidth });
-  }, []);
   const classes = useStyles();
 
   const selectReducer = (state, action) => {
@@ -144,7 +82,7 @@ const Product = (props) => {
               className={classes.form}
               style={{ marginRight: 15 }}>
               
-              <InputLabel htmlFor="type_select" ref={typeRef}>
+              <InputLabel htmlFor="type_select">
                 Type
               </InputLabel>
               <Select
@@ -152,7 +90,7 @@ const Product = (props) => {
                 onChange={(e) =>
                 dispatch({ type: "SELECT_TYPE", valueType: e.target.value })
                 }
-                labelWidth={width.type}
+                label="Type"
                 inputProps={{
                   name: "type",
                   id: "type_select"
@@ -168,7 +106,7 @@ const Product = (props) => {
               className={classes.form}
               style={{ marginRight: 15 }}>
               
-              <InputLabel htmlFor="brands_select" ref={brandsRef}>
+              <InputLabel htmlFor="brands_select">
                 Brands
               </InputLabel>
               <Select
@@ -179,7 +117,7 @@ const Product = (props) => {
                   valueBrands: e.target.value
                 })
                 }
-                labelWidth={width.brands}
+                label="Brands"
                 inputProps={{
                   name: "brands",
                   id: "brands_select"
@@ -195,7 +133,7 @@ const Product = (props) => {
               className={classes.form}
               style={{ marginRight: 15 }}>
               
-              <InputLabel htmlFor="size_select" ref={sizeRef}>
+              <InputLabel htmlFor="size_select">
                 Size
               </InputLabel>
               <Select
@@ -203,7 +141,7 @@ const Product = (props) => {
                 onChange={(e) =>
                 dispatch({ type: "SELECT_SIZE", valueSize: e.target.value })
                 }
-                labelWidth={width.size}
+                label="Size"
                 inputProps={{
                   name: "size",
                   id: "size_select"
@@ -226,7 +164,7 @@ const Product = (props) => {
               className={classes.form}
               style={{ marginRight: 15 }}>
               
-              <InputLabel htmlFor="colour_select" ref={colourRef}>
+              <InputLabel htmlFor="colour_select">
                 Colour
               </InputLabel>
               <Select
@@ -237,7 +175,7 @@ const Product = (props) => {
                   valueColor: e.target.value
                 })
                 }
-                labelWidth={width.colour}
+                label="Colour"
                 inputProps={{
                   name: "colour",
                   id: "colour_select"
@@ -253,7 +191,7 @@ const Product = (props) => {
               className={classes.form}
               style={{ marginRight: 15 }}>
               
-              <InputLabel htmlFor="range_select" ref={rangeRef}>
+              <InputLabel htmlFor="range_select">
                 Range
               </InputLabel>
               <Select
@@ -261,7 +199,7 @@ const Product = (props) => {
                 onChange={(e) =>
                 dispatch({ type: "SELECT_RANGE", valueRange: e.target.value })
                 }
-                labelWidth={width.range}
+                label="Range"
                 inputProps={{
                   name: "range",
                   id: "range_select"
@@ -277,7 +215,7 @@ const Product = (props) => {
               className={classes.form}
               style={{ marginRight: 15 }}>
               
-              <InputLabel htmlFor="sort_select" ref={sortRef}>
+              <InputLabel htmlFor="sort_select">
                 Sort
               </InputLabel>
               <Select
@@ -285,7 +223,7 @@ const Product = (props) => {
                 onChange={(e) =>
                 dispatch({ type: "SELECT_SORT", valueSort: e.target.value })
                 }
-                labelWidth={width.sort}
+                label="Sort"
                 inputProps={{
                   name: "sort",
                   id: "sort_select"

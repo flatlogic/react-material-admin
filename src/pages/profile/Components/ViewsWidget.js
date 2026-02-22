@@ -6,7 +6,7 @@ import {
     Tooltip,
   } from 'recharts';
 import PropTypes from 'prop-types';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import { Menu, IconButton, MenuItem, Typography, Button } from '@mui/material';
 
 import { MoreVert as MoreIcon } from '@mui/icons-material';
@@ -72,7 +72,10 @@ const styles = theme => ({
   }
 })
 
-const SimpleLine = ({ classes, color, title, subtitle, value }) => {
+const useStyles = makeStyles(styles);
+
+const SimpleLine = ({ color, title, subtitle, value }) => {
+  const classes = useStyles();
 
   const [moreButtonRef, setMoreButtonRef] = useState(null);
   const [isMoreMenuOpen, setMoreMenuOpen] = useState(false);
@@ -182,11 +185,10 @@ const SimpleLine = ({ classes, color, title, subtitle, value }) => {
 }
 
 SimpleLine.propTypes = {
-  classes: PropTypes.object.isRequired,
   color: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   value: PropTypes.number,
 }
 
-export default withStyles(styles)(SimpleLine);
+export default SimpleLine;

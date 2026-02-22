@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import { Typography, Grid, FormGroup, FormLabel, TextField } from '@mui/material';
 import { Button } from "../../../components/Wrappers";
 
@@ -40,7 +40,10 @@ const styles = (theme) => ({
   }
 });
 
-const AutoloadWidget = ({ classes }) => {
+const useStyles = makeStyles(styles);
+
+const AutoloadWidget = () => {
+  const classes = useStyles();
   return (
     <Grid container direction={'column'}>
       <Grid className={classes.header} size={12}>
@@ -122,4 +125,4 @@ const AutoloadWidget = ({ classes }) => {
 
 };
 
-export default withStyles(styles)(AutoloadWidget);
+export default AutoloadWidget;

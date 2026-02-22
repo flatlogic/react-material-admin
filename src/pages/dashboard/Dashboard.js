@@ -17,7 +17,7 @@ import {
   Toolbar,
   IconButton, Menu } from
 "@mui/material";
-import { useTheme, makeStyles } from 'styles/muiCompat';
+import { useTheme, makeStyles } from 'styles/mui';
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -450,7 +450,7 @@ function Dashboard() {
     }
 
     return resultArray;
-  }, [mainChartState]); // eslint-disable-line
+  }, [mainChartState]);  
 
   return (
     <Grid container spacing={3}>
@@ -933,9 +933,9 @@ function Dashboard() {
                 rowCount={rows.length} />
               
               <TableBody>
-                {stableSort(rows, getSorting(order, orderBy)).
-                slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).
-                map((row, index) => {
+                {stableSort(rows, getSorting(order, orderBy))
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row, index) => {
                   const isItemSelected = isSelected(row.id);
                   const labelId = `orders-table-checkbox-${index}`;
 
@@ -1058,10 +1058,10 @@ function getRandomData(length, min, max, multiplier = 10, maxDiff = 10) {
     let randomValue = Math.floor(Math.random() * multiplier + 1);
 
     while (
-    randomValue <= min ||
-    randomValue >= max ||
-    lastValue && randomValue - lastValue > maxDiff)
-    {
+      randomValue <= min ||
+      randomValue >= max ||
+      (lastValue && randomValue - lastValue > maxDiff)
+    ) {
       randomValue = Math.floor(Math.random() * multiplier + 1);
     }
 

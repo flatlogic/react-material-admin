@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { withStyles } from 'styles/muiCompat';
-import '../../../../../node_modules/line-awesome/dist/line-awesome/css/line-awesome.css';
+import { makeStyles } from 'styles/mui';
+import {
+  KeyboardArrowLeft as KeyboardArrowLeftIcon,
+  KeyboardArrowRight as KeyboardArrowRightIcon,
+} from '@mui/icons-material';
 
 import DayNames from './DayNames'
 import { v4 as uuid } from 'uuid';
 import Week from './Week';
-import moment from 'moment/moment';
+import dayjs from 'utils/dayjs';
 
 const styles = (theme) => ({
 
@@ -104,51 +107,57 @@ const styles = (theme) => ({
       
 });
 
-const Calendar = ({ classes }) => {
+const useStyles = makeStyles(styles);
+
+const Calendar = () => {
+  const classes = useStyles();
+  const currentDate = dayjs();
 
   const [date, setDate] = useState({
-      selectedMonth: moment(),
-      selectedDay: moment().startOf("day"),
+      selectedMonth: dayjs(),
+      selectedDay: dayjs().startOf("day"),
       selectedMonthEvents: [
           {
           title: "The flower bed",
           info: "Contents here",
           itemStyle: "#1870dc",
-          date: moment(`${moment().year()}-${moment().month() + 1}-02`, "YYYYMMDD"),
+          date: dayjs(`${currentDate.year()}-${currentDate.month() + 1}-02`, 'YYYY-M-DD'),
           },
           {
           title: "Stop world water pollution",
           info: "Have a kick off meeting with .inc company",
           itemStyle: "#f0b518",
-          date: moment(`${moment().year()}-${moment().month() + 1}-05`, "YYYYMMDD"),
+          date: dayjs(`${currentDate.year()}-${currentDate.month() + 1}-05`, 'YYYY-M-DD'),
           },
           {
           title: "Light Blue 2.2 release",
           info: "Some contents here",
           itemStyle: "#58d777",
-          date: moment(`${moment().year()}-${moment().month() + 1}-18`, "YYYYMMDD"),
+          date: dayjs(`${currentDate.year()}-${currentDate.month() + 1}-18`, 'YYYY-M-DD'),
           },
           {
           title: "A link",
           info: "",
           itemStyle: "#f45722",
           link: "http://www.flatlogic.com",
-          date: moment(`${moment().year()}-${moment().month() + 1}-28`, "YYYYMMDD"),
+          date: dayjs(`${currentDate.year()}-${currentDate.month() + 1}-28`, 'YYYY-M-DD'),
           },
       ],
       showEvents: false
   });
 
   const previous = () => {
-      setDate({
-          selectedMonth: date.selectedMonth.subtract(1, "month")
-      });
+      setDate((prev) => ({
+          ...prev,
+          selectedMonth: prev.selectedMonth.subtract(1, "month")
+      }));
   }
   
   const next = () =>  {
-      setDate({
-          selectedMonth: date.selectedMonth.add(1, "month")
-      });
+      setDate((prev) => ({
+          ...prev,
+          selectedMonth: prev.selectedMonth.add(1, "month")
+      }));
   }
   
   const renderMonthLabel = () =>  {
@@ -168,8 +177,8 @@ const Calendar = ({ classes }) => {
   let previousCurrentNextView = currentMonthView
       .clone()
       .startOf("month")
-      .subtract(1, "d")
-      .day("Sunday");
+      .subtract(1, "day")
+      .day(0);
   let count = 0;
   let monthIndex = previousCurrentNextView.month();
 
@@ -183,7 +192,7 @@ const Calendar = ({ classes }) => {
               selected={currentSelectedDay}
           />
       );
-      previousCurrentNextView.add(1, "w");
+      previousCurrentNextView = previousCurrentNextView.add(1, "week");
       done = count++ > 2 && monthIndex !== previousCurrentNextView.month();
       monthIndex = previousCurrentNextView.month();
   }
@@ -196,17 +205,17 @@ const Calendar = ({ classes }) => {
       <section className={`${classes.mainCalendar}`}>
         <header className={`${classes.calendarHeader}`}>
           <div className={`${classes.calendarRow} ${classes.titleHeader}`}>
-            <i
-              className={`${classes.calendarItemContainer} ${classes.arrow} la la-angle-left`}
+            <KeyboardArrowLeftIcon
+              className={`${classes.calendarItemContainer} ${classes.arrow}`}
               onClick={previous}
             />
             <div className={`${classes.calendarItemContainer} ${classes.headerText}`}>
             
             {renderMonthLabel()}
             </div>
-            <i 
-              className={`${classes.calendarItemContainer} ${classes.arrow} la la-angle-right`} 
-              onClick={next} 
+            <KeyboardArrowRightIcon
+              className={`${classes.calendarItemContainer} ${classes.arrow}`}
+              onClick={next}
             />
           </div>
           <DayNames />
@@ -220,4 +229,4 @@ const Calendar = ({ classes }) => {
   )
 }
 
-export default withStyles(styles)(Calendar);
+export default Calendar;

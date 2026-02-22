@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import InsertLinkIcon from '@mui/icons-material/InsertLink';
+import CloseIcon from '@mui/icons-material/Close';
 import FileUploader from 'components/FormItems/uploaders/UploadService';
 import Errors from '../../../components/FormItems/error/errors';
 
@@ -89,7 +91,11 @@ const FilesUploader = (props) => {
           {valuesArr().map((item) => {
             return (
               <div key={item.id}>
-                <i className='la la-link text-muted mr-2'></i>
+                <InsertLinkIcon
+                  fontSize='small'
+                  className='text-muted mr-2'
+                  style={{ verticalAlign: 'text-bottom' }}
+                />
                 <a
                   href={item.publicUrl}
                   target='_blank'
@@ -105,7 +111,7 @@ const FilesUploader = (props) => {
                     type='button'
                     onClick={() => handleRemove(item.id)}
                   >
-                    <i className='la la-times'></i>
+                    <CloseIcon fontSize='small' />
                   </button>
                 )}
               </div>

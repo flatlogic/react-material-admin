@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
 import FileUploader from 'components/FormItems/uploaders/UploadService';
 import Errors from '../../../components/FormItems/error/errors';
-import { makeStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 
 const useStyles = makeStyles({
   actionButtonsWrapper: {
@@ -153,7 +153,7 @@ const ImagesUploader = (props) => {
 
   return (
     <Box>
-      {readonly || max && fileList().length >= max ? null : uploadButton}
+      {readonly || (max && fileList().length >= max) ? null : uploadButton}
 
       {valuesArr() && valuesArr().length ?
       <Grid container>

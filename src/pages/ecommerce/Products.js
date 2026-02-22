@@ -13,17 +13,14 @@ import {
   CardContent,
   CardMedia } from
 "@mui/material";
-import Icon from "@mdi/react";
 import {
   Star as StarIcon,
   StarBorder as StarOutlinedIcon,
-  ShoppingCart as ShoppingCartIcon } from
+  ShoppingCart as ShoppingCartIcon,
+  Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
+  Twitter as TwitterIcon } from
 "@mui/icons-material";
-import {
-  mdiFacebook as FacebookIcon,
-  mdiInstagram as InstagramIcon,
-  mdiTwitter as TwitterIcon } from
-"@mdi/js";
 import useStyles from "./styles";
 import { yellow } from "@mui/material/colors";
 
@@ -183,11 +180,6 @@ export const rows = [
 const Product = () => {
   const { id } = useParams();
   const productId = Number(id);
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
-  React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
   const classes = useStyles();
   const [size, setValues] = React.useState("");
   const handleChange = (event) => {
@@ -292,13 +284,13 @@ const Product = () => {
                       className={classes.form}
                       style={{ marginRight: 15 }}>
                       
-                      <InputLabel htmlFor="size-simple" ref={inputLabel}>
+                      <InputLabel htmlFor="size-simple">
                         Select size
                       </InputLabel>
                       <Select
                         value={size}
                         onChange={handleChange}
-                        labelWidth={labelWidth}
+                        label="Select size"
                         inputProps={{
                           name: "size",
                           id: "size-simple"
@@ -435,21 +427,13 @@ const Product = () => {
                       </p>
                       <Box mb={1} ml={"-16px"}>
                         <IconButton aria-label="facebook">
-                          <Icon
-                            path={FacebookIcon}
-                            size={1}
-                            color="#6E6E6E99" />
-                          
+                          <FacebookIcon style={{ color: "#6E6E6E99" }} />
                         </IconButton>
                         <IconButton aria-label="instagram">
-                          <Icon
-                            path={InstagramIcon}
-                            size={1}
-                            color="#6E6E6E99" />
-                          
+                          <InstagramIcon style={{ color: "#6E6E6E99" }} />
                         </IconButton>
                         <IconButton aria-label="twitter">
-                          <Icon path={TwitterIcon} size={1} color="#6E6E6E99" />
+                          <TwitterIcon style={{ color: "#6E6E6E99" }} />
                         </IconButton>
                       </Box>
                     </Box>

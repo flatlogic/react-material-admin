@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@mui/material';
-import { makeStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import classnames from 'classnames';
 
 // styles

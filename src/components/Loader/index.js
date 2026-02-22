@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Loader({ size }) {
   return (
     <div>
-      <i className='la la-spinner la-spin' style={{ fontSize: size }} />
+      <CircularProgress size={size} />
     </div>
   );
 }

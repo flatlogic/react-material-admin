@@ -14,19 +14,14 @@ const UsersFormPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isEditing = () => {
-    return !!params.id;
-  };
-
-  const isProfile = () => {
-    return location.pathname === '/app/profile';
-  };
+  const isEditing = Boolean(params.id);
+  const isProfile = location.pathname === '/app/profile';
 
   const doSubmit = (id, data) => {
-    if (isEditing() || isProfile()) {
+    if (isEditing || isProfile) {
       actions.doUpdate(id, data, navigate, {
-        isProfile: isProfile(),
-        redirectPath: isProfile() ? null : '/app/users',
+        isProfile,
+        redirectPath: isProfile ? null : '/app/users',
       })(managementDispatch);
     } else {
       actions.doCreate(data, navigate, '/app/users')(managementDispatch);
@@ -34,27 +29,25 @@ const UsersFormPage = () => {
   };
 
   useEffect(() => {
-    if (isEditing()) {
+    if (isEditing) {
       actions.doFind(params.id, {
         navigate,
         redirectPath: '/app/users',
       })(managementDispatch);
+    } else if (isProfile) {
+      const currentUser = JSON.parse(localStorage.getItem('user') || 'null');
+      const currentUserId = currentUser?.user?.id;
+      actions.doFind(currentUserId, {
+        navigate,
+        redirectPath: '/app/dashboard',
+      })(managementDispatch);
     } else {
-      if (isProfile()) {
-        const currentUser = JSON.parse(localStorage.getItem('user') || 'null');
-        const currentUserId = currentUser?.user?.id;
-        actions.doFind(currentUserId, {
-          navigate,
-          redirectPath: '/app/dashboard',
-        })(managementDispatch);
-      } else {
-        managementDispatch(actions.doNew());
-      }
+      managementDispatch(actions.doNew());
     }
-  }, [location.pathname, managementDispatch, navigate, params.id]);
+  }, [isEditing, isProfile, managementDispatch, navigate, params.id]);
 
   const { saveLoading, findLoading, currentUser } = managementState;
-  const record = isEditing() || isProfile() ? currentUser : {};
+  const record = isEditing || isProfile ? currentUser : {};
 
   return (
     <>
@@ -63,8 +56,8 @@ const UsersFormPage = () => {
         findLoading={findLoading}
         currentUser={currentUser}
         record={record}
-        isEditing={isEditing()}
-        isProfile={isProfile()}
+        isEditing={isEditing}
+        isProfile={isProfile}
         onSubmit={doSubmit}
         onCancel={() => navigate('/app/users')}
       />

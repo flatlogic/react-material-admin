@@ -50,8 +50,8 @@ export default function ColorsComp() {
                   <TableCell>
                     <Code row>
                       {
-                      Theme[localStorage.getItem("theme")].palette.primary.
-                      main
+                      Theme[localStorage.getItem("theme")].palette.primary
+                      .main
                       }
                     </Code>
                   </TableCell>
@@ -67,8 +67,8 @@ export default function ColorsComp() {
                   <TableCell>
                     <Code row>
                       {
-                      Theme[localStorage.getItem("theme")].palette.secondary.
-                      main
+                      Theme[localStorage.getItem("theme")].palette.secondary
+                      .main
                       }
                     </Code>
                   </TableCell>
@@ -84,8 +84,8 @@ export default function ColorsComp() {
                   <TableCell>
                     <Code row>
                       {
-                      Theme[localStorage.getItem("theme")].palette.warning.
-                      main
+                      Theme[localStorage.getItem("theme")].palette.warning
+                      .main
                       }
                     </Code>
                   </TableCell>
@@ -101,8 +101,8 @@ export default function ColorsComp() {
                   <TableCell>
                     <Code row>
                       {
-                      Theme[localStorage.getItem("theme")].palette.success.
-                      main
+                      Theme[localStorage.getItem("theme")].palette.success
+                      .main
                       }
                     </Code>
                   </TableCell>

@@ -1,5 +1,4 @@
-import moment from 'moment';
-import { isString } from 'lodash';
+import dayjs from 'utils/dayjs';
 
 const IniValues = (fields, record = {}) => {
   const iniArray = {};
@@ -13,7 +12,7 @@ const IniValues = (fields, record = {}) => {
         break;
 
       case 'date':
-        showValue = value ? moment(value, 'YYYY-MM-DD').toDate() : null;
+        showValue = value ? dayjs(value, 'YYYY-MM-DD').toDate() : null;
         break;
 
       case 'dateRange':
@@ -21,13 +20,13 @@ const IniValues = (fields, record = {}) => {
           showValue = [];
         } else {
           showValue = value.map((item) =>
-            item ? moment(item, 'YYYY-MM-DD').toDate() : null,
+            item ? dayjs(item, 'YYYY-MM-DD').toDate() : null,
           );
         }
         break;
 
       case 'datetime':
-        showValue = value ? moment(value).toDate() : null;
+        showValue = value ? dayjs(value).toDate() : null;
         break;
 
       case 'datetimeRange':
@@ -35,7 +34,7 @@ const IniValues = (fields, record = {}) => {
           showValue = [];
         } else {
           showValue = value.map((item) =>
-            item ? moment(item).toDate() : null,
+            item ? dayjs(item).toDate() : null,
           );
         }
         break;
@@ -49,7 +48,7 @@ const IniValues = (fields, record = {}) => {
         break;
 
       case 'enum':
-        if (!value || isString(value)) {
+        if (!value || typeof value === 'string' || value instanceof String) {
           showValue = value;
         } else {
           showValue = value.id;

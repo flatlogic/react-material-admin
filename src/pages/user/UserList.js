@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import {
   Grid,
@@ -11,7 +10,7 @@ import {
   DialogTitle,
   TextField as Input } from
 '@mui/material';
-import moment from 'moment';
+import dayjs from 'utils/dayjs';
 import Widget from '../../components/Widget';
 import { Button } from '../../components/Wrappers';
 import Table from '@mui/material/Table';
@@ -266,9 +265,9 @@ const UserList = () => {
 
   const handleSearch = (e) => {
     const newArr = usersRows.filter((c) => {
-      return c.name.
-      toLowerCase().
-      includes(e.currentTarget.value.toLowerCase());
+      return c.name
+      .toLowerCase()
+      .includes(e.currentTarget.value.toLowerCase());
     });
     setUsersRows(newArr);
   };
@@ -372,12 +371,12 @@ const UserList = () => {
                                 {stableSort(
                   usersRows,
                   getComparator(order, orderBy)
-                ).
-                slice(
+                )
+                .slice(
                   page * rowsPerPage,
                   page * rowsPerPage + rowsPerPage
-                ).
-                map((row, index) => {
+                )
+                .map((row, index) => {
                   const isItemSelected = isSelected(
                     row.id
                   );
@@ -487,7 +486,7 @@ const UserList = () => {
                                                     <Typography
                           variant={'body2'}>
                           
-                                                        {moment(row.createdAt).format('YYYY-DD-MM')}
+                                                        {dayjs(row.createdAt).format('YYYY-DD-MM')}
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell align="left">

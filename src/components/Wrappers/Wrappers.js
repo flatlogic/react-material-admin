@@ -14,7 +14,7 @@ import {
   Radio as RadioBase,
 } from '@mui/material';
 import { useTheme } from '@mui/material';
-import { withStyles, makeStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import classnames from 'classnames';
 
 // styles
@@ -422,11 +422,16 @@ function getFontSize(size, variant = '', theme) {
   return `calc(${defaultSize} * ${multiplier})`;
 }
 
-function createStyled(styles, options) {
-  const Styled = function (props) {
-    const { children, ...other } = props;
-    return children(other);
-  };
+function createStyled(styles) {
+  const useStyledClasses = makeStyles(styles);
 
-  return withStyles(styles, options)(Styled);
+  return function Styled(props) {
+    const { children, ...other } = props;
+    const classes = useStyledClasses(other);
+
+    return children({
+      ...other,
+      classes,
+    });
+  };
 }

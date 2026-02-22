@@ -21,7 +21,7 @@ import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
 import s from './Calendar.module.scss';
 
-import moment from 'moment/moment';
+import dayjs from 'utils/dayjs';
 import cn from 'classnames';
 
 // components
@@ -201,7 +201,7 @@ function Calendar() {
     getCalendarApi()?.changeView(view);
   };
 
-  const getFormattedDate = (date) => moment(date).format('YYYY-MM-DD');
+  const getFormattedDate = (date) => dayjs(date).format('YYYY-MM-DD');
 
   return (
     <>

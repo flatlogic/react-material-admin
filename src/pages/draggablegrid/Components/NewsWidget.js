@@ -1,7 +1,14 @@
 import React from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import {
+  Star as StarIcon,
+  Mic as MicIcon,
+  Visibility as VisibilityIcon,
+  Lock as LockIcon,
+  HelpOutline as HelpOutlineIcon,
+} from '@mui/icons-material';
 import mock from '../mock';
 
 const styles = (theme) => ({
@@ -56,14 +63,32 @@ const styles = (theme) => ({
   }
 })
 
-const NewsWidget = ({ classes }) => {
+const useStyles = makeStyles(styles);
+
+const NewsWidget = () => {
+  const classes = useStyles();
+  const getNewsIcon = (icon) => {
+    switch (icon) {
+      case 'star':
+        return <StarIcon />;
+      case 'microphone':
+        return <MicIcon />;
+      case 'eye':
+        return <VisibilityIcon />;
+      case 'lock':
+        return <LockIcon />;
+      default:
+        return <HelpOutlineIcon />;
+    }
+  };
+
   return (
     <ul className={classes.newsList}>
       {mock.mainData.news.map(item => (
         <li className={classes.listRow} key={item.title}>
           <div className={classes.iconBlock}>
             <span className={`${classes.icon}`} style={{ backgroundColor: item.background }}>
-              <i className={`fa fa-${item.icon}`}></i>
+              {getNewsIcon(item.icon)}
             </span>
           </div>
           <div className={classes.newsItemInfo}>
@@ -83,4 +108,4 @@ const NewsWidget = ({ classes }) => {
   )
 }
 
-export default withStyles(styles)(NewsWidget);
+export default NewsWidget;

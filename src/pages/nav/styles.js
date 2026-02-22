@@ -1,4 +1,4 @@
-import { makeStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import { alpha } from "@mui/material/styles";
 
 export default makeStyles(theme => ({

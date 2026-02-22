@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import Popover from '@mui/material/Popover';
 
 const styles = (theme) => ({
@@ -120,7 +120,10 @@ const styles = (theme) => ({
       }
 })
 
-const Day = ({ classes, day, selected }) => {
+const useStyles = makeStyles(styles);
+
+const Day = ({ day, selected }) => {
+  const classes = useStyles();
   const [popover, setPopover] = useState({
     popoverShow: false,
     tooltipShow: false
@@ -203,4 +206,4 @@ const Day = ({ classes, day, selected }) => {
       </div>
     );
 }
-export default withStyles(styles)(Day);
+export default Day;

@@ -44,28 +44,28 @@ function Starter() {
           <h5>More useful links</h5>
           <div>
             🌟
-            <a target={'_blank'} href='https://reactjs.org/'>
+            <a target={'_blank'} href='https://reactjs.org/' rel="noreferrer">
               {' '}
               ReactJS
             </a>
           </div>
           <div>
             ✨
-            <a target={'_blank'} href='https://nodejs.org/en/'>
+            <a target={'_blank'} href='https://nodejs.org/en/' rel="noreferrer">
               {' '}
               Node.js
             </a>
           </div>
           <div>
             💫
-            <a target={'_blank'} href='https://flatlogic.com/forum/'>
+            <a target={'_blank'} href='https://flatlogic.com/forum/' rel="noreferrer">
               {' '}
               Flatlogic Forum
             </a>
           </div>
           <div>
             ⭐
-            <a target={'_blank'} href='https://mui.com/'>
+            <a target={'_blank'} href='https://mui.com/' rel="noreferrer">
               {' '}
               Material-UI
             </a>

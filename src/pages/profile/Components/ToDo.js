@@ -1,6 +1,7 @@
 import React from 'react';
-import { withStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import { Tabs, Tab, Box } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import ToDoItem from './ToDoItem';
 
 function TabPanel(props) {
@@ -14,49 +15,40 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box style={{ background: index % 2 === 0 && '#E1EFFF' }} p={0}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box p={0}>{children}</Box>}
     </div>
   );
 }
 
-const AntTabs = withStyles((theme) => ({
-  root: {
-    borderBottom: `1px solid rgba(185, 185, 185, 0.3)`,
-    margin: '0 24px',
-  },
-  indicator: {
+const AntTabs = styled(Tabs)(({ theme }) => ({
+  borderBottom: `1px solid rgba(185, 185, 185, 0.3)`,
+  margin: '0 24px',
+  '& .MuiTabs-indicator': {
     backgroundColor: theme.palette.secondary.main,
     borderRadius: 2,
   },
-}))(Tabs);
+}));
 
-const AntTab = withStyles((theme) => ({
-  root: {
-    textTransform: 'none',
-    minWidth: 72,
-    fontSize: '14px',
-    fontWeight: theme.typography.fontWeightMedium,
-    marginRight: theme.spacing(4),
+const AntTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
+  textTransform: 'none',
+  minWidth: 72,
+  fontSize: '14px',
+  fontWeight: theme.typography.fontWeightMedium,
+  marginRight: theme.spacing(4),
+  color: theme.palette.text.primary,
+  fontFamily: ['Roboto', 'sans-serif'].join(','),
+  '&:hover': {
     color: theme.palette.text.primary,
-    fontFamily: ['Roboto', 'sans-serif'].join(','),
-    '&:hover': {
-      color: theme.palette.text.primary,
-      opacity: 1,
-    },
-    '&$selected': {
-      color: theme.palette.text.primary,
-      fontWeight: theme.typography.fontWeightMedium,
-    },
-    '&:focus': {
-      color: theme.palette.text.primary,
-    },
+    opacity: 1,
   },
-  selected: {},
-}))((props) => <Tab disableRipple {...props} />);
+  '&.Mui-selected': {
+    color: theme.palette.text.primary,
+    fontWeight: theme.typography.fontWeightMedium,
+  },
+  '&:focus': {
+    color: theme.palette.text.primary,
+  },
+}));
 
 const styles = (theme) => ({
   root: {
@@ -95,7 +87,10 @@ const styles = (theme) => ({
   },
 })
 
-function CustomizedTabs({ classes }) {
+const useStyles = makeStyles(styles);
+
+function CustomizedTabs() {
+  const classes = useStyles();
 
   const [index, setIndex] = React.useState(0);
 
@@ -155,4 +150,4 @@ function CustomizedTabs({ classes }) {
   );
 }
 
-export default withStyles(styles)(CustomizedTabs);
+export default CustomizedTabs;

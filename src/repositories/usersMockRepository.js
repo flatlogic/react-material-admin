@@ -1,5 +1,3 @@
-import queryString from 'query-string';
-
 const INITIAL_USERS = [
   {
     id: '1',
@@ -198,7 +196,26 @@ function parseRequestQuery(request) {
     return {};
   }
 
-  return queryString.parse(normalized);
+  const result = {};
+  const params = new URLSearchParams(normalized);
+
+  params.forEach((value, key) => {
+    const currentValue = result[key];
+
+    if (currentValue === undefined) {
+      result[key] = value;
+      return;
+    }
+
+    if (Array.isArray(currentValue)) {
+      result[key] = [...currentValue, value];
+      return;
+    }
+
+    result[key] = [currentValue, value];
+  });
+
+  return result;
 }
 
 function toComparableValue(value) {

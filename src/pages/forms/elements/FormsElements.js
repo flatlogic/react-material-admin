@@ -8,7 +8,7 @@ import {
   Select,
   TextField } from
 "@mui/material";
-import { withStyles } from "styles/muiCompat";
+import { styled } from '@mui/material/styles';
 import useStyles from "./styles";
 import cn from "classnames";
 import { Checkbox, Radio, Input, FormControlLabel } from "@mui/material";
@@ -31,23 +31,19 @@ import Widget from "../../../components/Widget/Widget";
 import { Button, Typography } from "../../../components/Wrappers/Wrappers";
 import Code from "../../../components/Code/Code";
 
-const GreenCheckbox = withStyles({
-  root: {
+const GreenCheckbox = styled((props) => <Checkbox color="default" {...props} />)({
+  color: "green",
+  "&.Mui-checked": {
     color: "green",
-    "&.Mui-checked": {
-      color: "green"
-    }
-  }
-})((props) => <Checkbox color="default" {...props} />);
+  },
+});
 
-const GreenRadio = withStyles({
-  root: {
+const GreenRadio = styled((props) => <Radio color="default" {...props} />)({
+  color: "green",
+  "&.Mui-checked": {
     color: "green",
-    "&.Mui-checked": {
-      color: "green"
-    }
-  }
-})((props) => <Radio color="default" {...props} />);
+  },
+});
 
 const actions = [
 {

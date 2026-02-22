@@ -61,7 +61,7 @@ function Login() {
       receiveToken(token, userDispatch);
       doInit()(userDispatch);
     }
-  }, []); // eslint-disable-line
+  }, []);  
 
   // local
   let [isLoading, setIsLoading] = useState(false);

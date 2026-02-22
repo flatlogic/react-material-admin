@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import queryString from 'query-string';
 import config from '../../src/config';
 import { showSnackbar } from '../components/Snackbar';
 import {
@@ -16,12 +15,26 @@ async function list(filter = {}) {
     return listMockUsers(filter, filter.request);
   }
 
-  const query = queryString.stringify({
-    page: filter.page,
-    limit: filter.limit,
-    users: filter.users || '',
-    ...(filter.orderBy || {}),
-  });
+  const queryParams = new URLSearchParams();
+  queryParams.set('users', filter.users || '');
+
+  if (filter.page !== undefined && filter.page !== null) {
+    queryParams.set('page', String(filter.page));
+  }
+
+  if (filter.limit !== undefined && filter.limit !== null) {
+    queryParams.set('limit', String(filter.limit));
+  }
+
+  if (filter.orderBy && typeof filter.orderBy === 'object') {
+    Object.entries(filter.orderBy).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        queryParams.set(key, String(value));
+      }
+    });
+  }
+
+  const query = queryParams.toString();
   const request = (filter.request || '').replace(/^(\?|&)+/, '');
   const url = request ? `/users?${query}&${request}` : `/users?${query}`;
   const response = await axios.get(url);

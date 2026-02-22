@@ -117,7 +117,7 @@ function loginUser(
     setIsLoading(false);
     receiveToken('token', dispatch);
   } else {
-    if (!!social) {
+    if (social) {
       window.location.href =
         config.baseURLApi +
         '/auth/signin/' +

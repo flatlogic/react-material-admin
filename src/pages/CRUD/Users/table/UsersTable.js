@@ -2,9 +2,8 @@ import * as dataFormat from 'pages/CRUD/Users/table/UsersDataFormatters';
 
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { uniqueId } from 'lodash';
 
-import { makeStyles } from 'styles/muiCompat';
+import { makeStyles } from 'styles/mui';
 import { DataGrid } from '@mui/x-data-grid';
 
 import MenuItem from '@mui/material/MenuItem';
@@ -62,6 +61,7 @@ const UsersTable = () => {
 
   const [filterItems, setFilterItems] = React.useState([]);
   const [filterUrl, setFilterUrl] = React.useState('');
+  const filterItemIdRef = React.useRef(0);
 
   const [loading, setLoading] = React.useState(false);
   const [sortModel, setSortModel] = React.useState([]);
@@ -84,14 +84,12 @@ const UsersTable = () => {
 
   React.useEffect(() => {
     loadData(rowsState.pageSize, rowsState.page, sortModel[0], filterUrl);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortModel, rowsState, filterUrl]);
 
   React.useEffect(() => {
     updateWindowDimensions();
     window.addEventListener('resize', updateWindowDimensions);
     return () => window.removeEventListener('resize', updateWindowDimensions);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSortModelChange = (newModel) => {
@@ -120,8 +118,8 @@ const UsersTable = () => {
     let request = '&';
     filterItems.forEach((item) => {
       filters[
-      filters.map((filter) => filter.title).indexOf(item.fields.selectedField)].
-      hasOwnProperty('number') ?
+      filters.map((filter) => filter.title).indexOf(item.fields.selectedField)]
+      .hasOwnProperty('number') ?
       request += `${item.fields.selectedField}Range=${item.fields.filterValueFrom}&${item.fields.selectedField}Range=${item.fields.filterValueTo}&` :
       request += `${item.fields.selectedField}=${item.fields.filterValue}&`;
     });
@@ -139,8 +137,9 @@ const UsersTable = () => {
   };
 
   const addFilter = () => {
+    filterItemIdRef.current += 1;
     let newItem = {
-      id: uniqueId(),
+      id: `filter_${filterItemIdRef.current}`,
       fields: {
         filterValue: '',
         filterValueFrom: '',
@@ -302,9 +301,9 @@ const UsersTable = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              {filters.
-            find((filter) => filter.title === item.fields.selectedField).
-            hasOwnProperty('number') ?
+              {filters
+            .find((filter) => filter.title === item.fields.selectedField)
+            .hasOwnProperty('number') ?
             <>
                   <Grid size={2}>
                     <TextField

@@ -43,6 +43,10 @@ const tabsConfig = [
       { kind: 'red', title: 'Design', value: 154, label: 'files' },
       { kind: 'green', title: 'Mobile', value: 98, label: 'files' },
       { kind: 'yellow', title: 'Illustration', value: 154, label: 'files' },
+      { kind: 'blue', title: 'Branding', value: 73, label: 'files' },
+      { kind: 'red', title: 'Web', value: 127, label: 'files' },
+      { kind: 'green', title: 'Research', value: 46, label: 'files' },
+      { kind: 'yellow', title: 'Prototype', value: 59, label: 'files' },
     ],
   },
   {
@@ -53,6 +57,10 @@ const tabsConfig = [
       { kind: 'red', title: 'Travel', value: 27, label: 'files' },
       { kind: 'green', title: 'Finance', value: 16, label: 'files' },
       { kind: 'yellow', title: 'Personal', value: 39, label: 'files' },
+      { kind: 'blue', title: 'Health', value: 31, label: 'files' },
+      { kind: 'red', title: 'Home', value: 22, label: 'files' },
+      { kind: 'green', title: 'Education', value: 18, label: 'files' },
+      { kind: 'yellow', title: 'Archive', value: 64, label: 'files' },
     ],
   },
   {
@@ -63,6 +71,10 @@ const tabsConfig = [
       { kind: 'red', title: 'Dribbble', value: 21, label: 'files' },
       { kind: 'green', title: 'Behance', value: 18, label: 'files' },
       { kind: 'yellow', title: 'Medium', value: 13, label: 'files' },
+      { kind: 'blue', title: 'LinkedIn', value: 33, label: 'files' },
+      { kind: 'red', title: 'X/Twitter', value: 47, label: 'files' },
+      { kind: 'green', title: 'GitHub', value: 24, label: 'files' },
+      { kind: 'yellow', title: 'YouTube', value: 19, label: 'files' },
     ],
   },
 ];
@@ -115,9 +127,11 @@ export default function ProfileFilesTabs() {
           sx={{
             display: 'flex',
             flexWrap: 'nowrap',
+            gap: 0.75,
             overflowX: 'auto',
             overflowY: 'hidden',
             pb: 1,
+            scrollBehavior: 'smooth',
             '& > *': {
               flex: '0 0 auto',
             },

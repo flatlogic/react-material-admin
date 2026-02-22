@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, MobileStepper } from "@mui/material";
-import { makeStyles, useTheme } from "styles/muiCompat";
+import { makeStyles, useTheme } from "styles/mui";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -19,18 +19,26 @@ const srcDirectoryAliases = fs
 export default defineConfig(({ mode }) => ({
   plugins: [
     react({
-      include: /\.[jt]sx?$/,
+      parserConfig: (id) => {
+        if (id.endsWith('.ts')) {
+          return { syntax: 'typescript', tsx: false };
+        }
+        if (id.endsWith('.tsx')) {
+          return { syntax: 'typescript', tsx: true };
+        }
+        if (id.endsWith('.js') || id.endsWith('.jsx')) {
+          return { syntax: 'ecmascript', jsx: true };
+        }
+
+        return undefined;
+      },
     }),
   ],
   build: {
     outDir: 'build',
   },
   css: {
-    preprocessorOptions: {
-      scss: {
-        silenceDeprecations: ['legacy-js-api'],
-      },
-    },
+    preprocessorOptions: {},
   },
   esbuild: {
     loader: 'jsx',
@@ -41,16 +49,6 @@ export default defineConfig(({ mode }) => ({
     alias: [
       { find: '@', replacement: srcRoot },
       ...srcDirectoryAliases,
-      { find: 'process', replacement: 'process/browser' },
-      { find: 'buffer', replacement: 'buffer' },
-      { find: 'crypto', replacement: 'crypto-browserify' },
-      { find: 'stream', replacement: 'stream-browserify' },
-      { find: 'assert', replacement: 'assert' },
-      { find: 'http', replacement: 'stream-http' },
-      { find: 'https', replacement: 'https-browserify' },
-      { find: 'os', replacement: 'os-browserify/browser' },
-      { find: 'url', replacement: 'url' },
-      { find: 'vm', replacement: 'vm-browserify' },
     ],
   },
   define: {
