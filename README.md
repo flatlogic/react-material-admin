@@ -25,7 +25,7 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
    git clone https://github.com/flatlogic/react-material-admin.git
    cd react-material-admin
    ```
-2. **Use Node.js 20.15+**
+2. **Use Node.js 22.x (recommended) or 20.19+**
    ```bash
    node -v
    ```
@@ -51,6 +51,10 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
    ```bash
    npm run build
    ```
+7. **Preview production build (optional)**
+   ```bash
+   npm run preview
+   ```
 
 ---
 
@@ -58,9 +62,10 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 
 - React `19.2.4`
 - MUI `7.x` + Emotion
-- React Router `6.x` (`BrowserRouter`, hooks API)
+- React Router `7.x` (`BrowserRouter`, hooks API)
 - Context-based state for auth/users/layout/theme
-- Vite 5 + `@vitejs/plugin-react`
+- Vite `7.x` + `@vitejs/plugin-react-swc`
+- Vitest `4.x` smoke tests + GitHub Actions CI (`lint`, `build`, `test`)
 - Frontend-only users/auth fallback is available when backend is disabled
 
 ---
@@ -85,8 +90,9 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 - React 19
 - MUI 7
 - React Hooks & Context API
-- React Router v6
-- Vite
+- React Router v7
+- Vite 7 + SWC React plugin
+- Vitest + Testing Library
 - Node.js (for backend)
 
 ---
