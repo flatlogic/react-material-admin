@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0] - 22/02/2026
+
+- Migrated build tooling from CRA/rewired to Vite (`dev`, `build`, `preview`) with npm-only workflow.
+- Upgraded runtime stack to modern baseline: React Router 7 + Vite 7 + SWC React plugin.
+- Removed legacy runtime layers (`connected-react-router`, old router/history glue, Babel project config, CRA polyfill path).
+- Completed active-code UI modernization: no legacy `@material-ui/*`, class components migrated to hooks in active paths.
+- Restored and modernized maps using `leaflet` + `react-leaflet` + `topojson-client`.
+- Added smoke test coverage on critical routes (login, dashboard, users) with Vitest.
+- Added CI quality gates (`lint`, `build`, `test`) and cleaned eslint output to zero warnings/errors.
+- Refreshed README and modernization plan docs to match the current stack and release workflow.
+
 ## [2.4.1] - 22/11/2024
 
 - Updated dependencies
