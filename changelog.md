@@ -1,5 +1,10 @@
 # Changelog
 
+## [3.0.1] - 22/02/2026
+
+- Fixed CI build failure by restoring direct `uuid` dependency used in users/forms flows.
+- Verified release checks after fix (`lint`, `build`, `test`) to keep pipeline green.
+
 ## [3.0.0] - 22/02/2026
 
 - Migrated build tooling from CRA/rewired to Vite (`dev`, `build`, `preview`) with npm-only workflow.
