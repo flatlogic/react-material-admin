@@ -39,7 +39,7 @@ const CreateProduct = () => {
 
   const [newProduct, setNewProduct] = React.useState({
     img:
-    "https://flatlogic-node-backend.herokuapp.com/assets/products/img1.jpg",
+    "https://flatlogic-node-backend.flatlogic.com/assets/products/img1.jpg",
     title: null,
     subtitle: null,
     price: 0.1,

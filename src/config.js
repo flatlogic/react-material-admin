@@ -1,7 +1,7 @@
 const isDevelopment = import.meta.env.DEV;
 const hostApi = isDevelopment
   ? "http://localhost"
-  : "https://sing-generator-node.herokuapp.com";
+  : "https://sing-generator-node.flatlogic.com";
 const portApi = isDevelopment ? 8080 : "";
 const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}/api`;
 const redirectUrl = isDevelopment
@@ -16,7 +16,7 @@ const appConfig = {
   portApi,
   baseURLApi,
   redirectUrl,
-  remote: "https://sing-generator-node.herokuapp.com",
+  remote: "https://sing-generator-node.flatlogic.com",
   isBackend,
   auth: {
     email: 'admin@flatlogic.com',
