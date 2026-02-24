@@ -17,6 +17,7 @@ const srcDirectoryAliases = fs
   }));
 
 export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/react-material-admin/' : '/',
   plugins: [
     react({
       parserConfig: (id) => {
