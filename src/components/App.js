@@ -26,11 +26,12 @@ export default function App() {
   // global
   let { isAuthenticated } = useUserState();
   const isAuth = isAuthenticated();
+  const routerBase = import.meta.env.BASE_URL || '/';
 
   return (
     <>
       <SnackbarProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={routerBase}>
           <RouterNavigatorSync />
           <Routes>
             <Route path='/' element={<Navigate to='/app/profile' replace />} />
