@@ -29,7 +29,7 @@
     "@mui/x-data-grid": "^8.27.1",
     "@mui/x-date-pickers": "^8.27.2",
     "apexcharts": "^5.6.0",
-    "axios": "^1.13.5",
+    "axios": "^1.15.0",
     "classnames": "^2.3.2",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.19",
