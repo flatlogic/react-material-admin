@@ -40,7 +40,7 @@
     "react-apexcharts": "^2.0.1",
     "react-dom": "^19.2.4",
     "react-leaflet": "^5.0.0",
-    "react-router-dom": "^7.13.0",
+    "react-router-dom": "^7.17.0",
     "react-sortablejs": "^6.1.4",
     "react-syntax-highlighter": "^16.1.0",
     "recharts": "^3.7.0",
