@@ -143,3 +143,5 @@ Additionally, these templates are tailored for specific business needs:
 > Join our [Flatlogic Community Discord](https://discord.gg/flatlogic-community) or visit our [support forum](https://flatlogic.com/forum). We might even reply!
 
 ---
+
+The committed GitHub Pages demo in `docs` must be refreshed after dependency updates: run `npm run build`, replace generated `docs` files with `build`, and copy the new `index.html` to `404.html` for direct BrowserRouter URLs.
